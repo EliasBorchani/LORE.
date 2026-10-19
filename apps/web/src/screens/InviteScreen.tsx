@@ -33,7 +33,8 @@ export function InviteScreen() {
       navigate('/', { replace: true })
     } catch (e) {
       if (e instanceof ApiError && e.status === 404) setInvalid(true)
-      else setError(e instanceof ApiError && e.status === 409 ? fr.invite.exists : fr.errors.generic)
+      else setError(!(e instanceof ApiError) ? fr.errors.generic
+        : e.status === 409 ? fr.invite.exists : e.status === 429 ? fr.login.blocked : fr.errors.generic)
       setBusy(false)
     }
   }

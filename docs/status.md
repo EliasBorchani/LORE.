@@ -107,7 +107,10 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    "Search"; names and ids are done); later sharing characters inside the group (MVP+).
 3. Deploy on an OVHcloud VPS with a DuckDNS address (owner's choice, 2026-10-19), following `docs/deploy.md`: `compose.prod.yaml`, Caddy
    (HTTPS, web app, `/api`), `deploy/import-content.sh`, `deploy/backup.sh`. Deployed and working on the owner's
-   OVH VPS (2026-10-19). Still missing: login limits per address, core sections in a batch of their own.
+   OVH VPS (2026-10-19). Still missing: core sections in a batch of their own.
+   Login limit per address (2026-10-19): Caddy with the `caddy-ratelimit` plugin, 20 tries in 10 minutes per address
+   on `/api/auth/login` and the invitation routes, 429 after that. Tested locally (20 pass, then 429); on the VPS the
+   owner checks that Caddy sees real addresses (`docs/deploy.md`, step 6).
    Invitations by email (2026-10-19, owner's choices: Gmail SMTP with an app password, the email is the login):
    `server user invite <email>`, page `/invite#<token>`, `server user rename` for older logins. Tested in Chrome on the
    dev stack with `--no-email`; a real Gmail send still to be tried by the owner (needs the app password in `.env`).

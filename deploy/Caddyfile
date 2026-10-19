@@ -2,6 +2,21 @@
 {$LORE_DOMAIN} {
 	encode zstd gzip
 
+	# Limit per client address on the routes that check a secret (password, invitation link). The server limits
+	# failures per login: together, one address cannot try many logins, nor many addresses one login. 20 tries in
+	# 10 minutes leaves room for a whole table on one Wi-Fi. ipv6_prefix: one IPv6 home owns a whole /64.
+	rate_limit {
+		zone auth {
+			match {
+				path /api/auth/login /api/auth/invitation /api/auth/invitation/accept
+			}
+			key {remote_host}
+			events 20
+			window 10m
+			ipv6_prefix 64
+		}
+	}
+
 	# The same origin as in development (Vite's proxy): the browser calls /api/..., the server sees /...
 	handle_path /api/* {
 		reverse_proxy server:8080

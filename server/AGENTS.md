@@ -62,7 +62,7 @@ rule sections plus the closure of its character's entities, and later only what 
   - Refresh token: random, 30 days, only its SHA-256 hash is stored. Each refresh replaces it (same family = same
     session); reusing a used token revokes the whole family, except a retry within 30 s while no
     newer token of the family was used (a lost answer): it gets a new pair, and the token never received is revoked. Logout revokes the family.
-  - Login rate limit: 5 failures per login in 15 minutes, in memory (per-address limits belong to the reverse proxy).
+  - Login rate limit: 5 failures per login in 15 minutes, in memory (per address: Caddy, 20 tries in 10 minutes, `deploy/Caddyfile`).
   - Accounts: no sign-up; `server user add <login> [--role admin]`, `server user password <login>`,
     `server user disable <login>`, `server user rename <login> <new login>` (password read from the terminal or stdin).
     A new password or disabling ends every session. Owner's rule: the login is the person's email.

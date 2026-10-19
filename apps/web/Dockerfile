@@ -18,7 +18,13 @@ RUN --mount=type=cache,target=/root/.npm npm ci
 COPY apps/web/ ./
 RUN npm run build
 
-# 3. Caddy: HTTPS, the app's files, and /api forwarded to the server.
-FROM caddy:2-alpine
+# 3. Caddy with the rate limit plugin (limit per address on login, see deploy/Caddyfile): official Caddy has none.
+FROM caddy:2.11.7-builder-alpine AS caddy
+RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build \
+    xcaddy build v2.11.7 --with github.com/mholt/caddy-ratelimit@5625512f24f6f59d6f64fb3aafe5eecff0b286db
+
+# 4. Caddy: HTTPS, the app's files, and /api forwarded to the server.
+FROM caddy:2.11.7-alpine
+COPY --from=caddy /usr/bin/caddy /usr/bin/caddy
 COPY deploy/Caddyfile /etc/caddy/Caddyfile
 COPY --from=web /src/apps/web/dist /srv

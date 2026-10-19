@@ -104,6 +104,17 @@ docker compose -f compose.prod.yaml logs web | grep -i certificate   # "certific
 curl https://<your domain>/api/health                        # ok
 ```
 
+Caddy limits each client address to 20 tries in 10 minutes on login and invitation links (`deploy/Caddyfile`); the
+21st gets 429 for the rest of the window. Check once that Caddy sees the real addresses, from your Mac:
+
+```sh
+for i in $(seq 21); do curl -s -o /dev/null -w '%{http_code} ' -X POST https://<your domain>/api/auth/login; done
+```
+
+It prints 415 twenty times (the server refuses an empty request), then 429. Then log in from your phone on mobile data (another
+address): it must still work. If the phone is blocked too, Caddy sees one address for everyone (Docker's) and the
+limit would block the whole group: tell Claude.
+
 ## 7. Content and accounts
 
 ```sh
@@ -164,8 +175,9 @@ database.
 
 ## Known limits
 
-- No limit on login attempts per address: the server limits failures per login only. Caddy has no rate limit
-  built in; a plugin or fail2ban can come later.
+- The limit per address counts every try, right or wrong, and lives in Caddy's memory: a restart clears it. Caddy is
+  built with the `caddy-ratelimit` plugin (`apps/web/Dockerfile`, Caddy and plugin versions pinned there); updating
+  Caddy means changing both versions together.
 - The core rule sections (statistics, bonus types, dice steps) come from `test-references/danalieth/catalog.json`.
   They should move to a batch of their own in `content/` so production does not depend on a test file.
 - Images are built on the server. If that ever becomes too slow, GitHub Actions can build them instead.
