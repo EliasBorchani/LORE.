@@ -1,0 +1,16 @@
+# Build context of apps/web/Dockerfile (the repository root): only sources go in.
+**/node_modules
+**/build
+**/dist
+**/target
+**/.gradle
+**/.kotlin
+**/*.tsbuildinfo
+.git
+.env
+.envrc
+exports
+content
+test-references
+server
+docs

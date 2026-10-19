@@ -1,0 +1,29 @@
+# LORE_DOMAIN comes from .env (lore.example.org). Caddy gets and renews its HTTPS certificate by itself.
+{$LORE_DOMAIN} {
+	encode zstd gzip
+
+	# The same origin as in development (Vite's proxy): the browser calls /api/..., the server sees /...
+	handle_path /api/* {
+		reverse_proxy server:8080
+	}
+
+	handle {
+		root * /srv
+		# Built files carry a hash in their name, so they never change: cache them for a year. Every other path is a
+		# screen of the app, answered with index.html, which must always be fresh (it names the current files).
+		@assets path /assets/*
+		@app not path /assets/*
+		header @assets Cache-Control "public, max-age=31536000, immutable"
+		header @app Cache-Control "no-cache"
+		try_files {path} /index.html
+		file_server
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "same-origin"
+		-Server
+	}
+}

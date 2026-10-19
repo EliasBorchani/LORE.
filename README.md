@@ -41,6 +41,8 @@ cd apps/web && npm install && npm run dev  # http://localhost:5173
 
 The official SRD batches are imported the same way, one file at a time from `/content/srd/` (with `--dry-run` first).
 
+Production (a small VPS, Caddy with automatic HTTPS, nightly backups): see `docs/deploy.md`.
+
 ## Tests
 
 | Part | Command |

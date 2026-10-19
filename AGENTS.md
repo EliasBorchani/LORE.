@@ -21,7 +21,8 @@ a document disagree, ask.
 | `apps/android/`, `apps/ios/` | later (mobile milestone) | |
 | `content/` | official catalog batches, the scripts that built them, Danalieth's spreadsheet | `content/AGENTS.md` |
 | `test-references/` | hand-checked sheets the engine must keep giving (Danalieth level 59 + six small cases) | `test-references/README.md` |
-| `docs/` | `status.md`: where the project stands, next steps, decisions, known limits | |
+| `deploy/` | production: `Caddyfile`, `import-content.sh` (first import), `backup.sh` (nightly export) | `docs/deploy.md` |
+| `docs/` | `status.md`: where the project stands, next steps, decisions, known limits; `deploy.md`: the VPS guide | |
 
 ## Current phase: PoC (server + web app), before the first commit
 
@@ -30,8 +31,9 @@ Android demo and real-phone timings move to the mobile milestone. The owner comm
 reviews the code before any commit.
 
 Not done yet: magic items, search facets, tags, glossary and descriptions, editing a past level, editing relations
-other than spell levels and class tables in the app, play state on the server, sharing characters, reverse proxy and
-TLS, English, import pipeline.
+other than spell levels and class tables in the app, play state on the server, sharing characters,
+English, import pipeline. Production setup (`compose.prod.yaml`, Caddy with HTTPS, backups) is written and tested
+locally, not deployed yet (`docs/deploy.md`).
 
 ## Before saying something works
 

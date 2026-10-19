@@ -75,7 +75,8 @@ rule sections plus the closure of its character's entities, and later only what 
   - Endpoints: `GET|POST /characters` (`updatedSince`, `archived`, `all` for admins), `GET|PUT /characters/{id}`,
     `PUT /characters/{id}/play`, `POST /characters/{id}/archive|restore|duplicate`,
     `GET /characters/{id}/versions[/{n}]`, `GET /characters/{id}/catalog` (closure of the ids in the character).
-- Compose publishes the server on 127.0.0.1:8080 only until the reverse proxy and TLS exist.
+- Development (`compose.yaml`) publishes the server on 127.0.0.1:8080 only. Production (`compose.prod.yaml`, `docs/deploy.md`)
+  publishes nothing but Caddy (80, 443), which serves the web app and forwards `/api/*` to the server over HTTPS.
 
 ## Data safety (owner's rules)
 

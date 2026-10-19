@@ -1,0 +1,54 @@
+# Production: docker compose -f compose.prod.yaml up -d --build (see docs/deploy.md).
+# Only Caddy is reachable from outside (80, 443); the server and PostgreSQL stay on the internal network.
+services:
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dnd
+      POSTGRES_DB: dnd
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set it in .env}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dnd -d dnd"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  server:
+    build: ./server
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://dnd:${POSTGRES_PASSWORD}@postgres:5432/dnd
+      JWT_SECRET: ${JWT_SECRET:?set it in .env}
+      RUST_LOG: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./content:/content:ro
+      - ./test-references:/test-references:ro
+      - ./exports:/exports
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    restart: unless-stopped
+    environment:
+      LORE_DOMAIN: ${LORE_DOMAIN:?set it in .env}
+    depends_on:
+      - server
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  postgres-data:
+  caddy-data:
+  caddy-config:
