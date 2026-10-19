@@ -83,10 +83,16 @@ nano .env
 - `LORE_DOMAIN`: your address, for example `my-group.duckdns.org`.
 - `DATABASE_URL`: not used in production (it is for tests on a development machine).
 - `BACKUP_REMOTE`: see step 8.
+- `SMTP_USER`, `SMTP_PASSWORD`: for invitation mails (step 7). `SMTP_USER` is your Gmail address. `SMTP_PASSWORD` is
+  a Gmail **app password**, not your real password: on your Google account, turn on 2-step verification, then open
+  myaccount.google.com/apppasswords, create one named "LORE.", and paste the 16 letters (spaces don't matter).
+  Left empty, invitations print the link instead (`--no-email`).
 
 ## 6. Start
 
 ```sh
+mkdir -p exports      # before the first start: else Docker creates it for root, and backups cannot write there
+tmux new -s build     # the build goes on if the connection drops (back with: tmux attach -t build)
 docker compose -f compose.prod.yaml up -d --build
 ```
 
@@ -104,11 +110,18 @@ curl https://<your domain>/api/health                        # ok
 deploy/import-content.sh --dry-run    # what would be imported
 deploy/import-content.sh              # the whole official catalog (about 1,430 entities)
 
-docker compose -f compose.prod.yaml exec server server user add <your login> --role admin
-docker compose -f compose.prod.yaml exec server server user add <a player>          # each member
+docker compose -f compose.prod.yaml exec server server user add <your email> --role admin
+docker compose -f compose.prod.yaml exec server server user invite <a player's email>   # each member
 ```
 
-`user add` asks for the password twice (at least 12 characters). `import-content.sh` is for the first import only:
+The email is the login. `user add` asks for the password twice (at least 12 characters). `user invite` mails a
+link, valid 7 days and usable once, where the person chooses their password. Inviting the same email again replaces
+the link. Add `--role admin` for another admin, or `--no-email` to print the link and send it yourself. If the mail
+cannot be sent, the command prints the link anyway.
+
+An account created before invitations, with a login that is not an email:
+`docker compose -f compose.prod.yaml exec server server user rename <old login> <email>`. Characters stay attached;
+the edit history keeps the old name. `import-content.sh` is for the first import only:
 it refuses a database that already has entities. A later batch is imported on its own:
 `docker compose -f compose.prod.yaml exec server server import /content/srd/<file>.json --author srd-import --dry-run`,
 then the same without `--dry-run`.
@@ -129,7 +142,11 @@ another server, a NAS at home). Give the `lore` user a key (`ssh-keygen -t ed255
 set for example `BACKUP_REMOTE=user@backup-host:lore`. Until then, OVH's automated backup option keeps copies of the
 whole disk.
 
-Check once by hand: `deploy/backup.sh`, then `ls exports/`.
+Check once by hand: `deploy/backup.sh`, then `ls exports/`. If it cannot write, `exports/` belongs to root: as
+`ubuntu`, `sudo chown lore:lore /srv/lore/exports`.
+
+A copy on your own computer, now and then:
+`rsync -a -e "ssh -i ~/.ssh/id_ed25519_perso" lore@<server address>:/srv/lore/exports/ ~/LORE-backups/`.
 
 Restoring (a new server, or after a disaster): an empty database, then
 `docker compose -f compose.prod.yaml exec server server restore /exports/<date>` (see `server/AGENTS.md`, Data safety).

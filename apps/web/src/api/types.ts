@@ -9,6 +9,12 @@ export interface TokenPair {
   expiresIn: number
 }
 
+export interface Invitation {
+  email: string
+  role: 'member' | 'admin'
+  expiresAt: string
+}
+
 export interface Me {
   id: number
   login: string

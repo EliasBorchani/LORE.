@@ -3,6 +3,7 @@ pub mod auth;
 pub mod catalog;
 pub mod characters;
 pub mod error;
+pub mod mail;
 pub mod routes;
 pub mod state;
 

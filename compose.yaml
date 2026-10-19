@@ -22,6 +22,11 @@ services:
       DATABASE_URL: postgres://dnd:${POSTGRES_PASSWORD}@postgres:5432/dnd
       JWT_SECRET: ${JWT_SECRET:?set it in .env (see .env.example)}
       RUST_LOG: info
+      # Invitations (server user invite): without SMTP settings, use --no-email to print the link.
+      APP_URL: http://localhost:5173
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      MAIL_FROM: ${MAIL_FROM:-}
     depends_on:
       postgres:
         condition: service_healthy

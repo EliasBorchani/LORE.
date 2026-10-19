@@ -57,6 +57,29 @@ pub async fn create(
     Ok(id)
 }
 
+/// Characters and sessions follow the user id, so they stay attached; the edit history keeps the old login as author.
+pub async fn rename(pool: &PgPool, login: &str, new_login: &str) -> anyhow::Result<()> {
+    let new_login = new_login.trim();
+    if new_login.is_empty() || new_login.chars().any(char::is_whitespace) {
+        anyhow::bail!("the login must be one word");
+    }
+    sqlx::query_scalar::<_, i64>(
+        "UPDATE app_user SET login = $2 WHERE lower(login) = lower($1) RETURNING id",
+    )
+    .bind(login.trim())
+    .bind(new_login)
+    .fetch_optional(pool)
+    .await
+    .map_err(|error| match &error {
+        sqlx::Error::Database(db) if db.is_unique_violation() => {
+            anyhow::anyhow!("{new_login} already exists")
+        }
+        _ => error.into(),
+    })?
+    .with_context(|| format!("{login}: unknown user"))?;
+    Ok(())
+}
+
 /// Also ends every session of the user.
 pub async fn set_password(pool: &PgPool, login: &str, new_password: &str) -> anyhow::Result<()> {
     password::check_policy(new_password)?;

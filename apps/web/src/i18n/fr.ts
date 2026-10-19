@@ -6,13 +6,29 @@ export const fr = {
   tagline: 'Fiches et catalogue de la table',
 
   login: {
-    login: 'Identifiant',
+    login: 'E-mail',
     password: 'Mot de passe',
     submit: 'Se connecter',
     busy: 'Connexion…',
-    failed: 'Identifiant ou mot de passe incorrect.',
+    failed: 'E-mail ou mot de passe incorrect.',
     blocked: 'Trop d’essais. Réessayez dans quelques minutes.',
     invite: 'Pas encore de compte ? Demandez une invitation à l’administrateur du groupe.',
+  },
+
+  invite: {
+    title: 'Créer votre compte',
+    account: (email: string) => `Compte pour ${email}`,
+    hint: 'Votre identifiant sera cette adresse e-mail. Choisissez un mot de passe d’au moins 12 caractères.',
+    password: 'Mot de passe',
+    again: 'Confirmer le mot de passe',
+    submit: 'Créer mon compte',
+    busy: 'Création…',
+    loading: 'Vérification du lien…',
+    short: 'Le mot de passe doit avoir au moins 12 caractères.',
+    differ: 'Les deux mots de passe sont différents.',
+    invalid: 'Ce lien n’est plus valable : demandez une nouvelle invitation à l’administrateur du groupe.',
+    exists: 'Un compte existe déjà pour cette adresse : connectez-vous.',
+    toLogin: 'Aller à la connexion',
   },
 
   nav: {

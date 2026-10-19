@@ -20,7 +20,7 @@ const DEFAULT_PAGE: i64 = 50;
 const MAX_PAGE: i64 = 200;
 
 pub fn app(state: AppState) -> Router {
-    // All content requires a logged-in user (PRD 5.6); only health and getting tokens are open.
+    // All content requires a logged-in user (PRD 5.6); only health, getting tokens and invitation links are open.
     let protected = Router::new()
         .route("/auth/me", get(auth::me))
         .route("/catalog/core", get(core))
@@ -57,6 +57,8 @@ pub fn app(state: AppState) -> Router {
         .route("/auth/login", post(auth::login))
         .route("/auth/refresh", post(auth::refresh))
         .route("/auth/logout", post(auth::logout))
+        .route("/auth/invitation", post(auth::invitation))
+        .route("/auth/invitation/accept", post(auth::accept_invitation))
         .merge(protected)
         .with_state(state)
 }

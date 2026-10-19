@@ -77,4 +77,18 @@ describe('ApiClient', () => {
     expect(error.status).toBe(409)
     expect(error.body).toEqual({ error: 'changed', current: { version: 3 } })
   })
+
+  it('accepting an invitation opens the session', async () => {
+    const store = memoryStore()
+    const sent: string[] = []
+    const client = new ApiClient((async (input: RequestInfo | URL, init?: RequestInit) => {
+      sent.push(`${input} ${init?.body}`)
+      return json(200, tokens(1))
+    }) as typeof fetch, store)
+
+    await client.acceptInvitation('abc', 'a long enough passphrase')
+    expect(sent).toEqual(['/api/auth/invitation/accept {"token":"abc","password":"a long enough passphrase"}'])
+    expect(store.data['lore.refreshToken']).toBe('refresh1')
+    expect(client.hasSession).toBe(true)
+  })
 })

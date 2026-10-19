@@ -8,6 +8,7 @@ import type {
   EntityDetail,
   EntityPage,
   EntityVersion,
+  Invitation,
   Me,
   SearchPage,
   SpellLevel,
@@ -72,6 +73,17 @@ export class ApiClient {
 
   async login(login: string, password: string): Promise<void> {
     const response = await this.fetchImpl(`${this.base}/auth/login`, jsonInit('POST', { login, password }))
+    this.keep(await read<TokenPair>(response))
+  }
+
+  /** The email and role an invitation link is for; 404 when the link is unknown, used or expired. */
+  async invitation(token: string): Promise<Invitation> {
+    return read<Invitation>(await this.fetchImpl(`${this.base}/auth/invitation`, jsonInit('POST', { token })))
+  }
+
+  /** Creates the invited account (its login is the email) and opens its session. */
+  async acceptInvitation(token: string, password: string): Promise<void> {
+    const response = await this.fetchImpl(`${this.base}/auth/invitation/accept`, jsonInit('POST', { token, password }))
     this.keep(await read<TokenPair>(response))
   }
 

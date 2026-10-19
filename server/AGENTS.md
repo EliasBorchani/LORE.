@@ -54,7 +54,7 @@ rule sections plus the closure of its character's entities, and later only what 
   known; the closure leaves `on_spell_list` out).
 - Endpoints: `GET /health`, `GET /catalog/core`, `POST /catalog/closure`, `GET /entities?type=&after=&limit=` (paged by
   id, max 200; each item has `id`, `type`, `name`, `labels`), `GET /search?q=&type=&offset=&limit=` (same items), `GET /entities/{id}`, `GET /entities/{id}/versions`.
-- Auth (`server/src/auth/`, PRD 5.6): everything except `/health` and `/auth/login|refresh|logout` goes through the
+- Auth (`server/src/auth/`, PRD 5.6): everything except `/health`, `/auth/login|refresh|logout` and `/auth/invitation[/accept]` goes through the
   `require_user` middleware (`Authorization: Bearer <access token>`); handlers take `CurrentUser` to know who calls.
   - Passwords: Argon2id, at least 12 characters; logins are case-insensitive. Unknown login and wrong password give
     the same answer and take the same time.
@@ -64,8 +64,16 @@ rule sections plus the closure of its character's entities, and later only what 
     newer token of the family was used (a lost answer): it gets a new pair, and the token never received is revoked. Logout revokes the family.
   - Login rate limit: 5 failures per login in 15 minutes, in memory (per-address limits belong to the reverse proxy).
   - Accounts: no sign-up; `server user add <login> [--role admin]`, `server user password <login>`,
-    `server user disable <login>` (password read from the terminal or stdin). A new password or disabling ends every
-    session.
+    `server user disable <login>`, `server user rename <login> <new login>` (password read from the terminal or stdin).
+    A new password or disabling ends every session. Owner's rule: the login is the person's email.
+  - Invitations (`server/src/auth/invitations.rs`, `migrations/0006_invitation.sql`): `server user invite <email>
+    [--role admin] [--no-email]` stores the SHA-256 of a random token (7 days, one use; a new one for the same email
+    replaces the pending one) and mails `<APP_URL>/invite#<token>` (`server/src/mail.rs`: lettre, SMTP on 465 with
+    rustls, `SMTP_HOST` default Gmail, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM`). The token sits after `#` so it
+    stays out of server logs. `POST /auth/invitation {token}` gives `{email, role, expiresAt}`;
+    `POST /auth/invitation/accept {token, password}` creates the account (login = email) and returns a token pair.
+    Unknown, used and expired tokens give the same 404; a short password 400 (the link stays usable); an account
+    made meanwhile 409. Invitations are not exported (temporary, like refresh tokens).
 - Characters (`server/src/characters/`): build choices (the engine's character JSON, every saved version kept in
   `player_character_version`) and play state (`player_character_play`, an opaque JSON object owned by the clients,
   no history), each with its own `updatedAt`. The server sets `content.id` to the character's UUID and checks only

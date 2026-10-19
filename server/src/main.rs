@@ -3,7 +3,8 @@ use std::path::PathBuf;
 
 use anyhow::Context;
 use clap::{Parser, Subcommand};
-use server::auth::{AuthConfig, Role, users};
+use server::auth::{AuthConfig, Role, invitations, users};
+use server::mail::{self, SmtpConfig};
 use sqlx::postgres::PgPoolOptions;
 use tracing_subscriber::EnvFilter;
 
@@ -57,6 +58,30 @@ enum UserCommand {
         #[arg(long, value_enum, default_value = "member")]
         role: Role,
     },
+    /// Email an invitation link: the person chooses a password, and the email becomes the login. A new invitation
+    /// replaces the pending one for the same email.
+    Invite {
+        email: String,
+        #[arg(long, value_enum, default_value = "member")]
+        role: Role,
+        /// Print the link instead of mailing it (to send it some other way).
+        #[arg(long)]
+        no_email: bool,
+        /// The address of the web app, start of the link.
+        #[arg(long, env = "APP_URL")]
+        app_url: String,
+        #[arg(long, env = "SMTP_HOST", default_value = "smtp.gmail.com")]
+        smtp_host: String,
+        #[arg(long, env = "SMTP_USER")]
+        smtp_user: Option<String>,
+        #[arg(long, env = "SMTP_PASSWORD", hide_env_values = true)]
+        smtp_password: Option<String>,
+        /// `Name <address>`; default `LORE. <SMTP_USER>`.
+        #[arg(long, env = "MAIL_FROM")]
+        mail_from: Option<String>,
+    },
+    /// Change a login (for example to the person's email); characters stay attached.
+    Rename { login: String, new_login: String },
     /// Set a new password; ends every session of the user.
     Password { login: String },
     /// Block logins and end every session of the user.
@@ -133,6 +158,62 @@ async fn main() -> anyhow::Result<()> {
                 let password = read_new_password()?;
                 users::create(&pool, &login, &password, role).await?;
                 println!("{login} created ({})", role.as_str());
+            }
+            UserCommand::Invite {
+                email,
+                role,
+                no_email,
+                app_url,
+                smtp_host,
+                smtp_user,
+                smtp_password,
+                mail_from,
+            } => {
+                let smtp = if no_email {
+                    None
+                } else {
+                    Some(SmtpConfig {
+                        host: smtp_host,
+                        user: smtp_user.filter(|user| !user.is_empty()).context(
+                            "SMTP_USER is not set (or use --no-email to print the link)",
+                        )?,
+                        password: smtp_password
+                            .filter(|password| !password.is_empty())
+                            .context(
+                                "SMTP_PASSWORD is not set (or use --no-email to print the link)",
+                            )?,
+                        from: mail_from,
+                    })
+                };
+                let created = invitations::create(&pool, &email, role).await?;
+                let email = invitations::normalize_email(&email)?;
+                let link = format!("{}/invite#{}", app_url.trim_end_matches('/'), created.token);
+                let until = created.expires_at.date();
+                match smtp {
+                    None => println!(
+                        "invitation for {email} ({}), valid until {until}:\n{link}",
+                        role.as_str()
+                    ),
+                    Some(smtp) => {
+                        match mail::send_invitation(&smtp, &email, &link, created.expires_at).await
+                        {
+                            Ok(()) => println!(
+                                "invitation sent to {email} ({}), valid until {until}",
+                                role.as_str()
+                            ),
+                            Err(error) => {
+                                eprintln!("{error:#}");
+                                println!(
+                                    "the mail was not sent; the link still works, send it another way:\n{link}"
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+            UserCommand::Rename { login, new_login } => {
+                users::rename(&pool, &login, &new_login).await?;
+                println!("{login} is now {}", new_login.trim());
             }
             UserCommand::Password { login } => {
                 let password = read_new_password()?;

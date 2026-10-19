@@ -32,8 +32,8 @@ reviews the code before any commit.
 
 Not done yet: magic items, search facets, tags, glossary and descriptions, editing a past level, editing relations
 other than spell levels and class tables in the app, play state on the server, sharing characters,
-English, import pipeline. Production setup (`compose.prod.yaml`, Caddy with HTTPS, backups) is written and tested
-locally, not deployed yet (`docs/deploy.md`).
+English, import pipeline. Production (`compose.prod.yaml`, Caddy with HTTPS, nightly backups) runs on an OVH VPS
+(`docs/deploy.md`).
 
 ## Before saying something works
 

@@ -1,5 +1,6 @@
 //! Login and password, short-lived access tokens (JWT) and rotating refresh tokens (PRD 5.6).
 
+pub mod invitations;
 pub mod password;
 pub mod rate_limit;
 pub mod routes;

@@ -192,6 +192,7 @@ a.tile:hover { border-color: var(--control-edge); }
 .login-brand h1 { font-size: 56px; line-height: 1; letter-spacing: 2px; }
 .login-brand p { font-size: 18px; font-style: italic; color: var(--ink-muted); }
 .login form { display: flex; flex-direction: column; gap: var(--space-4); }
+.login-message { display: flex; flex-direction: column; gap: var(--space-4); text-align: center; }
 
 /* ---------- Sheet ---------- */
 

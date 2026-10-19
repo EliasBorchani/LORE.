@@ -106,8 +106,11 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
 2. Then, in PRD order: the rest of search (facets, tags, glossary, full text in descriptions, Catalog model
    "Search"; names and ids are done); later sharing characters inside the group (MVP+).
 3. Deploy on an OVHcloud VPS with a DuckDNS address (owner's choice, 2026-10-19), following `docs/deploy.md`: `compose.prod.yaml`, Caddy
-   (HTTPS, web app, `/api`), `deploy/import-content.sh`, `deploy/backup.sh`. Tested locally as a full stack with
-   `localhost`; not deployed yet. Still missing: login limits per address, core sections in a batch of their own.
+   (HTTPS, web app, `/api`), `deploy/import-content.sh`, `deploy/backup.sh`. Deployed and working on the owner's
+   OVH VPS (2026-10-19). Still missing: login limits per address, core sections in a batch of their own.
+   Invitations by email (2026-10-19, owner's choices: Gmail SMTP with an app password, the email is the login):
+   `server user invite <email>`, page `/invite#<token>`, `server user rename` for older logins. Tested in Chrome on the
+   dev stack with `--no-email`; a real Gmail send still to be tried by the owner (needs the app password in `.env`).
 4. Agreed with the owner, for later: automatic backups (nightly `pg_dump` with rotation, a copy off the machine, a
    restore tested regularly) and content migrations as code (when the engine model first changes, a versioned script
    upgrades each entity's current content as a new version authored "migration").

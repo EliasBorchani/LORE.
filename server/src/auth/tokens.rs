@@ -220,11 +220,11 @@ async fn issue_pair(
     })
 }
 
-fn hash_token(token: &str) -> Vec<u8> {
+pub(crate) fn hash_token(token: &str) -> Vec<u8> {
     Sha256::digest(token.as_bytes()).to_vec()
 }
 
-fn random_text(bytes: usize) -> String {
+pub(crate) fn random_text(bytes: usize) -> String {
     let mut buffer = vec![0u8; bytes];
     getrandom::fill(&mut buffer).expect("the system random source is available");
     URL_SAFE_NO_PAD.encode(buffer)

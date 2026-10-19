@@ -9,6 +9,7 @@ use axum::response::Response;
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
 
+use super::invitations::{self, Invitation};
 use super::tokens::{self, TokenPair};
 use super::{AuthConfig, CurrentUser, Role, password, users};
 use crate::error::AppError;
@@ -94,6 +95,36 @@ pub async fn logout(
 ) -> Result<StatusCode, AppError> {
     tokens::logout(&pool, &body.refresh_token).await?;
     Ok(StatusCode::NO_CONTENT)
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct InvitationRequest {
+    token: String,
+}
+
+pub async fn invitation(
+    State(pool): State<PgPool>,
+    Json(body): Json<InvitationRequest>,
+) -> Result<Json<Invitation>, AppError> {
+    Ok(Json(invitations::find(&pool, &body.token).await?))
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct AcceptRequest {
+    token: String,
+    password: String,
+}
+
+pub async fn accept_invitation(
+    State(pool): State<PgPool>,
+    State(config): State<Arc<AuthConfig>>,
+    Json(body): Json<AcceptRequest>,
+) -> Result<Json<TokenPair>, AppError> {
+    Ok(Json(
+        invitations::accept(&pool, &config, &body.token, &body.password).await?,
+    ))
 }
 
 #[derive(Serialize)]

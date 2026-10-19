@@ -13,6 +13,8 @@ pub enum AppError {
     Forbidden(String),
     /// The record changed on the server since the client's copy; holds the server's current record.
     Conflict(Value),
+    /// Something with that name exists already (an account for an invited email).
+    AlreadyExists(String),
     /// Seconds to wait before trying again.
     TooManyRequests(u64),
     Database(sqlx::Error),
@@ -45,6 +47,7 @@ impl IntoResponse for AppError {
                 Json(json!({ "error": "changed on the server: take the current record", "current": current })),
             )
                 .into_response(),
+            AppError::AlreadyExists(message) => (StatusCode::CONFLICT, error_body(&message)).into_response(),
             AppError::TooManyRequests(seconds) => (
                 StatusCode::TOO_MANY_REQUESTS,
                 [(RETRY_AFTER, HeaderValue::from(seconds))],

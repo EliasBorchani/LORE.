@@ -7,6 +7,7 @@ import { AccountScreen } from './screens/AccountScreen'
 import { EntityEditorScreen } from './screens/EntityEditorScreen'
 import { CatalogListScreen, CatalogScreen, EntityScreen } from './screens/CatalogScreens'
 import { HomeScreen } from './screens/HomeScreen'
+import { InviteScreen } from './screens/InviteScreen'
 import { LoginScreen } from './screens/LoginScreen'
 import { AbilitiesTab } from './screens/sheet/AbilitiesTab'
 import { BreakdownScreen } from './screens/sheet/BreakdownScreen'
@@ -25,6 +26,7 @@ applyTheme(savedTheme())
 
 const router = createBrowserRouter([
   { path: '/login', element: <LoginScreen /> },
+  { path: '/invite', element: <InviteScreen /> },
   {
     element: <Shell />,
     children: [
@@ -61,7 +63,7 @@ const router = createBrowserRouter([
 
 // A session that cannot be refreshed any more (expired, revoked) goes back to the login page.
 api.onSignedOut = () => {
-  if (window.location.pathname !== '/login') void router.navigate('/login', { state: { from: window.location.pathname } })
+  if (!['/login', '/invite'].includes(window.location.pathname)) void router.navigate('/login', { state: { from: window.location.pathname } })
 }
 
 createRoot(document.getElementById('root')!).render(

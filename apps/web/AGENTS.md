@@ -20,6 +20,8 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
 - Dev: Vite proxies `/api/*` to the server on `localhost:8080`, so the browser sees one origin (no CORS). The access
   token stays in memory, the refresh token in `localStorage` (PoC trade-off, httpOnly cookie later); a 401 refreshes
   once and retries.
+- Invitations (`src/screens/InviteScreen.tsx`, outside the login guard): `/invite#<token>` shows the invited email,
+  asks for the password twice and opens the session; the login is the email.
 - The sheet (`src/sheet/SheetContext.tsx`) loads `/characters/{id}` and `/characters/{id}/catalog`, runs `SheetEngine`
   in the page and applies toggles one by one (`setToggleChoice`, `setToggle`, `setToggleValue`).
 - **Play state rule (owner):** the build stores the default toggles (`activeToggles`); at the table, toggles, damage,
