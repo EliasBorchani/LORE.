@@ -105,7 +105,7 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    makes the first commit (the owner commits once the whole PoC works).
 2. Then, in PRD order: the rest of search (facets, tags, glossary, full text in descriptions, Catalog model
    "Search"; names and ids are done); later sharing characters inside the group (MVP+).
-3. Deploy on a Hetzner VPS (owner's choice, 2026-10-19), following `docs/deploy.md`: `compose.prod.yaml`, Caddy
+3. Deploy on an OVHcloud VPS with a DuckDNS address (owner's choice, 2026-10-19), following `docs/deploy.md`: `compose.prod.yaml`, Caddy
    (HTTPS, web app, `/api`), `deploy/import-content.sh`, `deploy/backup.sh`. Tested locally as a full stack with
    `localhost`; not deployed yet. Still missing: login limits per address, core sections in a batch of their own.
 4. Agreed with the owner, for later: automatic backups (nightly `pg_dump` with rotation, a copy off the machine, a

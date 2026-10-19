@@ -9,40 +9,47 @@ One server runs everything with Docker Compose (`compose.prod.yaml`):
 Sheets are computed on each player's device, so the server needs little: 2 vCPU and 4 GB of RAM are plenty. The
 4 GB are for building the images on the server (Rust and the Kotlin engine); running needs much less.
 
-## 1. Create the server (Hetzner Cloud, about €5 a month)
+## 1. Create the server (OVHcloud VPS, about €5–7 a month)
 
-1. In the Hetzner Cloud console, create a server:
-   - Location: Falkenstein, Nuremberg or Helsinki (EU).
-   - Image: Ubuntu 24.04.
-   - Type: **CX22** (2 vCPU, 4 GB, x86) or **CAX11** (2 vCPU, 4 GB, ARM, a bit cheaper). Both work: the images are
-     built on the server itself.
-   - SSH key: paste your public key (`~/.ssh/id_ed25519_perso.pub`). No password login.
-   - Backups: optional (+20 %), a daily copy of the whole disk, kept 7 days.
-2. Create a firewall (Firewalls → Create) and apply it to the server. Inbound: TCP 22 (SSH), TCP 80, TCP 443, UDP 443
-   (HTTP/3). Nothing else.
-3. Note the server's IPv4 (and IPv6) address.
+1. On ovhcloud.com, order a **VPS**:
+   - Model: the smallest (VPS-1, about 4 vCPU, 8 GB). Builds need about 4 GB; running needs much less.
+   - Location: a data centre in France (Gravelines, Roubaix or Strasbourg).
+   - Image: **Ubuntu 24.04**.
+   - SSH key: paste your public key (`pbcopy < ~/.ssh/id_ed25519_perso.pub` on your Mac). No password login.
+2. OVH emails you when the server is ready (a few minutes), with its **IPv4 address** (four numbers such as
+   `51.75.12.34`). The user is `ubuntu`.
 
-## 2. Point a domain to it
+## 2. Point the domain to it (DuckDNS)
 
-At your domain registrar (or DNS provider), add an `A` record `lore.your-domain.tld` → the IPv4 address, and an
-`AAAA` record → the IPv6 address. Caddy can only get the certificate once this name resolves to the server
-(`dig +short lore.your-domain.tld` shows the address).
+On duckdns.org, logged in: in the line of your subdomain, type the server's IPv4 address in "current ip" and click
+"update ip". The address never changes, so this is done once (no update script needed).
+
+Check from your Mac: `dig +short <your name>.duckdns.org` shows the server's address. Caddy can only get the HTTPS
+certificate once it does.
 
 ## 3. Prepare the server
 
 ```sh
-ssh -i ~/.ssh/id_ed25519_perso root@<server address>
+ssh -i ~/.ssh/id_ed25519_perso ubuntu@<server address>
 
 # Security updates installed automatically, Docker from its official repository.
-apt update && apt -y upgrade && apt -y install unattended-upgrades rsync git
-curl -fsSL https://get.docker.com | sh
+sudo apt update && sudo apt -y upgrade && sudo apt -y install unattended-upgrades rsync git ufw
+curl -fsSL https://get.docker.com | sudo sh
 
-# A user to run LORE., allowed to use Docker.
-adduser --disabled-password --gecos "" lore
-usermod -aG docker lore
-mkdir -p /home/lore/.ssh && cp ~/.ssh/authorized_keys /home/lore/.ssh/ && chown -R lore:lore /home/lore/.ssh
-mkdir -p /srv/lore && chown lore:lore /srv/lore
+# Firewall: SSH, HTTP and HTTPS (and HTTP/3) in, everything else blocked.
+sudo ufw allow OpenSSH && sudo ufw allow 80/tcp && sudo ufw allow 443/tcp && sudo ufw allow 443/udp
+sudo ufw --force enable
+
+# A user to run LORE., allowed to use Docker, reachable with the same SSH key.
+sudo adduser --disabled-password --gecos "" lore
+sudo usermod -aG docker lore
+sudo mkdir -p /home/lore/.ssh && sudo cp ~/.ssh/authorized_keys /home/lore/.ssh/
+sudo chown -R lore:lore /home/lore/.ssh
+sudo mkdir -p /srv/lore && sudo chown lore:lore /srv/lore
 ```
+
+Docker can open ports past `ufw`, but only Caddy publishes any (80 and 443, allowed anyway): the server and the
+database stay unreachable from outside.
 
 From now on, connect as `lore`: `ssh -i ~/.ssh/id_ed25519_perso lore@<server address>`.
 
@@ -73,7 +80,7 @@ nano .env
 
 - `POSTGRES_PASSWORD`: a long random value (`openssl rand -base64 32`).
 - `JWT_SECRET`: `openssl rand -base64 48`. Changing it later logs everyone out.
-- `LORE_DOMAIN`: `lore.your-domain.tld`.
+- `LORE_DOMAIN`: your address, for example `my-group.duckdns.org`.
 - `DATABASE_URL`: not used in production (it is for tests on a development machine).
 - `BACKUP_REMOTE`: see step 8.
 
@@ -88,7 +95,7 @@ The first build takes 10 to 20 minutes (Rust server, Kotlin engine, web app). Th
 ```sh
 docker compose -f compose.prod.yaml ps                       # three services "Up"
 docker compose -f compose.prod.yaml logs web | grep -i certificate   # "certificate obtained successfully"
-curl https://lore.your-domain.tld/api/health                 # ok
+curl https://<your domain>/api/health                        # ok
 ```
 
 ## 7. Content and accounts
@@ -117,10 +124,10 @@ crontab -e
 ```
 
 Every night, `deploy/backup.sh` writes a full export (`exports/<date>/`, history included), keeps the 14 newest, and
-copies them off the machine when `BACKUP_REMOTE` is set. A cheap place for that copy: a Hetzner Storage Box (about
-€3–4 a month for 1 TB). Give the `lore` user's key (`ssh-keygen -t ed25519`, then add it to the box) and set, for
-example, `BACKUP_REMOTE=u123456@u123456.your-storagebox.de:lore` (the box's SSH port is 23: add
-`Host u123456.your-storagebox.de` / `Port 23` to `~/.ssh/config`).
+copies them off the machine when `BACKUP_REMOTE` is set (any machine reachable with SSH and rsync: a storage box,
+another server, a NAS at home). Give the `lore` user a key (`ssh-keygen -t ed25519`), allow it on that machine, and
+set for example `BACKUP_REMOTE=user@backup-host:lore`. Until then, OVH's automated backup option keeps copies of the
+whole disk.
 
 Check once by hand: `deploy/backup.sh`, then `ls exports/`.
 
