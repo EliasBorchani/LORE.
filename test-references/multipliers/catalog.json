@@ -1,0 +1,342 @@
+{
+  "version": "case-multipliers",
+  "bonusTypes": [
+    {
+      "id": "enhancement",
+      "stacks": false
+    },
+    {
+      "id": "morale",
+      "stacks": false
+    },
+    {
+      "id": "luck",
+      "stacks": false
+    },
+    {
+      "id": "competence",
+      "stacks": false
+    },
+    {
+      "id": "size",
+      "stacks": false
+    },
+    {
+      "id": "resistance",
+      "stacks": false
+    },
+    {
+      "id": "natural_armor",
+      "stacks": false
+    },
+    {
+      "id": "untyped",
+      "stacks": true
+    },
+    {
+      "id": "dodge",
+      "stacks": true
+    }
+  ],
+  "statistics": [
+    {
+      "key": "ability.str.score",
+      "base": "@ability.str.base"
+    },
+    {
+      "key": "ability.str.mod",
+      "base": "floor((@ability.str.score - 10) / 2)"
+    },
+    {
+      "key": "ability.dex.score",
+      "base": "@ability.dex.base"
+    },
+    {
+      "key": "ability.dex.mod",
+      "base": "floor((@ability.dex.score - 10) / 2)"
+    },
+    {
+      "key": "ability.con.score",
+      "base": "@ability.con.base"
+    },
+    {
+      "key": "ability.con.mod",
+      "base": "floor((@ability.con.score - 10) / 2)"
+    },
+    {
+      "key": "ability.int.score",
+      "base": "@ability.int.base"
+    },
+    {
+      "key": "ability.int.mod",
+      "base": "floor((@ability.int.score - 10) / 2)"
+    },
+    {
+      "key": "ability.wis.score",
+      "base": "@ability.wis.base"
+    },
+    {
+      "key": "ability.wis.mod",
+      "base": "floor((@ability.wis.score - 10) / 2)"
+    },
+    {
+      "key": "ability.cha.score",
+      "base": "@ability.cha.base"
+    },
+    {
+      "key": "ability.cha.mod",
+      "base": "floor((@ability.cha.score - 10) / 2)"
+    },
+    {
+      "key": "level",
+      "base": "level()"
+    },
+    {
+      "key": "level_from_xp",
+      "base": "floor((1 + isqrt(1 + 8 * @xp / 1000)) / 2)"
+    },
+    {
+      "key": "bab",
+      "base": "@progression.bab"
+    },
+    {
+      "key": "save.fort",
+      "components": [
+        "progression.fort",
+        "ability.con.mod"
+      ]
+    },
+    {
+      "key": "save.ref",
+      "components": [
+        "progression.ref",
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "save.will",
+      "components": [
+        "progression.will",
+        "ability.wis.mod"
+      ]
+    },
+    {
+      "key": "hp.base",
+      "base": "3 / 4 * @hit_dice.total"
+    },
+    {
+      "key": "hp.max",
+      "base": "@hp.base + @ability.con.mod * level()"
+    },
+    {
+      "key": "weapon.attack",
+      "base": 0
+    },
+    {
+      "key": "weapon.damage",
+      "base": 0
+    },
+    {
+      "key": "attack.melee",
+      "components": [
+        "bab",
+        "ability.str.mod",
+        "weapon.attack"
+      ]
+    },
+    {
+      "key": "damage.melee",
+      "components": [
+        "damage.melee.weapon",
+        "damage.melee.ability"
+      ]
+    },
+    {
+      "key": "damage.melee.weapon",
+      "base": "@weapon.damage"
+    },
+    {
+      "key": "damage.melee.ability",
+      "base": "@ability.str.mod"
+    },
+    {
+      "key": "ac.armor",
+      "base": 0
+    },
+    {
+      "key": "ac.natural",
+      "base": 0
+    },
+    {
+      "key": "ac.dex_bonus",
+      "base": "@ability.dex.mod"
+    },
+    {
+      "key": "ac.total",
+      "base": "10 + @ac.armor + @ac.natural + @ac.dex_bonus"
+    },
+    {
+      "key": "spell.x",
+      "base": 10
+    },
+    {
+      "key": "spell.y",
+      "base": 420
+    },
+    {
+      "key": "spell.z",
+      "base": 10
+    },
+    {
+      "key": "spell.w",
+      "base": 7
+    }
+  ],
+  "entities": [
+    {
+      "id": "class.fighter",
+      "type": "class",
+      "name": {
+        "en": "Fighter"
+      },
+      "hitDie": 10
+    },
+    {
+      "id": "feat.double_a",
+      "type": "feat",
+      "name": {
+        "en": "Double A"
+      },
+      "effects": [
+        {
+          "target": "spell.x",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "additive"
+        }
+      ]
+    },
+    {
+      "id": "feat.double_b",
+      "type": "feat",
+      "name": {
+        "en": "Double B"
+      },
+      "effects": [
+        {
+          "target": "spell.x",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "additive"
+        }
+      ]
+    },
+    {
+      "id": "feat.double_c",
+      "type": "feat",
+      "name": {
+        "en": "Double C"
+      },
+      "effects": [
+        {
+          "target": "spell.x",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative"
+        },
+        {
+          "target": "spell.z",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "additive"
+        }
+      ]
+    },
+    {
+      "id": "feat.empower",
+      "type": "feat",
+      "name": {
+        "en": "Empower"
+      },
+      "effects": [
+        {
+          "target": "spell.y",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "exclusive: metamagic_amplify"
+        }
+      ]
+    },
+    {
+      "id": "feat.superspell",
+      "type": "feat",
+      "name": {
+        "en": "Superspell"
+      },
+      "effects": [
+        {
+          "target": "spell.y",
+          "op": "multiply",
+          "value": 4,
+          "multMode": "exclusive: metamagic_amplify"
+        },
+        {
+          "target": "spell.z",
+          "op": "multiply",
+          "value": 4,
+          "multMode": "exclusive: metamagic_amplify"
+        }
+      ]
+    },
+    {
+      "id": "feat.primum",
+      "type": "feat",
+      "name": {
+        "en": "Primum"
+      },
+      "effects": [
+        {
+          "target": "spell.y",
+          "op": "multiply",
+          "value": 3,
+          "multMode": "multiplicative"
+        }
+      ]
+    },
+    {
+      "id": "feat.half",
+      "type": "feat",
+      "name": {
+        "en": "Half"
+      },
+      "effects": [
+        {
+          "target": "spell.w",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.fighter",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0
+    }
+  ],
+  "progressionRules": {
+    "epicAfterLevel": 20,
+    "epicPerLevel": {
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5
+    }
+  },
+  "relations": []
+}

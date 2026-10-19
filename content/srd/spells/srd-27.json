@@ -1,0 +1,691 @@
+{
+  "entities": [
+    {
+      "id": "spell.arcane_mark",
+      "type": "spell",
+      "name": {
+        "fr": "Signature magique",
+        "en": "Arcane Mark"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Quelques traits de lumière, et l’objet porte à jamais le sceau de son propriétaire. Pierre, métal ou bois : la marque s’y grave sans une égratignure.\n\nEn jeu\n• Inscrit une rune personnelle de six caractères au plus, visible ou invisible, sur n’importe quelle matière, sans l’abîmer.\n• Une marque invisible se révèle à détection de la magie, détection de l’invisibilité, vision lucide et autres effets de vision ; lecture de la magie en lit les mots.\n• Ne peut pas être dissipée ; son auteur ou effacement peut l’ôter.\n• Sur une créature vivante, elle s’efface en un mois environ.\n• Préalable obligatoire à invocation instantanée sur un objet."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "0 m",
+        "effect": "1 rune personnelle dans un carré de 30 cm de côté",
+        "duration": "permanente",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.silence",
+      "type": "spell",
+      "name": {
+        "fr": "Silence",
+        "en": "Silence"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le monde se tait d’un coup : pas un souffle, pas un cri, pas une syllabe. Les mages adverses ouvrent la bouche… et rien ne vient.\n\nEn jeu\n• Aucun son dans une émanation de 6 m de rayon, ni dedans ni à travers : impossible de lancer un sort à composante verbale.\n• Lancé sur un point, la zone reste fixe ; lancé sur une créature ou un objet porté, elle le suit (jet de Volonté et résistance à la magie pour l’éviter).\n• Protège contre les attaques sonores et les effets fondés sur la parole.\n• Dure 1 minute par niveau (peut être terminé à volonté)."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "émanation de 6 m de rayon centrée sur une créature, un objet ou un point",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule ou aucun (objet)",
+        "spellResistance": "oui ou non (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.simulacrum",
+      "type": "spell",
+      "name": {
+        "fr": "Simulacre",
+        "en": "Simulacrum"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Une silhouette de neige modelée à la main prend vie, prend un visage, prend une voix. Elle ressemble à l’original à s’y méprendre… mais n’en a que la moitié de la force.\n\nEn jeu\n• Crée un double de neige ou de glace d’une créature, avec la moitié de ses niveaux ou DV (points de vie, dons, degrés, pouvoirs).\n• Impossible de copier une créature ayant plus de DV que le double du niveau de lanceur.\n• Test de Déguisement à l’incantation ; un proche de l’original perce la ruse par Détection opposée ou Psychologie DD 20.\n• Toujours sous le contrôle de son créateur, sans lien télépathique ; ne progresse jamais.\n• Réparation : 1 jour et 100 po par point de vie, dans un laboratoire. Détruit, il fond.\n• Coût : poudre de rubis de 100 po par DV et 100 PX par DV (1 000 PX au moins). Incantation de 12 heures."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G, M, PX",
+        "castingTime": "12 heures",
+        "range": "0 m",
+        "effect": "1 double",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.false_life",
+      "type": "spell",
+      "name": {
+        "fr": "Simulacre de vie",
+        "en": "False Life"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Le lanceur emprunte un peu de vigueur à la mort elle-même. Un souffle de vie froide l’enveloppe et encaisse les premiers coups à sa place.\n\nEn jeu\n• Gagne 1d10 points de vie temporaires + 1 par niveau de lanceur (+10 au plus).\n• Dure 1 heure par niveau, ou jusqu’à ce que ces points soient perdus."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 heure/niveau ou jusqu’à utilisation"
+      },
+      "effects": [
+        {
+          "target": "hp.temporary",
+          "op": "dice",
+          "value": "1d10",
+          "condition": "active('toggle.false_life')"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "min(@spell.caster_level, 10)",
+          "condition": "active('toggle.false_life')"
+        }
+      ]
+    },
+    {
+      "id": "spell.cure_serious_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins importants",
+        "en": "Cure Serious Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une vague d’énergie positive balaie les entailles profondes : les os se ressoudent, le souffle revient.\n\nEn jeu\n• Rend 3d8 points de vie + 1 par niveau de lanceur (+15 au plus).\n• Sur un mort-vivant, inflige autant de dégâts (jet de Volonté pour la moitié, résistance à la magie applicable)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "3d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_cure_serious_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins importants de groupe",
+        "en": "Cure Serious Wounds, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une lumière chaude jaillit des mains du lanceur et court d’allié en allié, refermant les plaies sur toute la ligne de front.\n\nEn jeu\n• Chaque cible choisie récupère 3d8 points de vie + 1 par niveau de lanceur (+35 au plus).\n• Jusqu’à 1 créature par niveau, toutes à 9 m ou moins les unes des autres.\n• Les morts-vivants visés subissent autant de dégâts (jet de Volonté pour la moitié)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "3d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 35)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.cure_critical_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins intensifs",
+        "en": "Cure Critical Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Même aux portes de la mort, un contact suffit : la chair se recoud, le sang reflue, le blessé se relève.\n\nEn jeu\n• Rend 4d8 points de vie + 1 par niveau de lanceur (+20 au plus).\n• Sur un mort-vivant, inflige autant de dégâts (jet de Volonté pour la moitié, résistance à la magie applicable)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "4d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_cure_critical_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins intensifs de groupe",
+        "en": "Cure Critical Wounds, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un torrent de vie déferle sur le champ de bataille : les mourants rouvrent les yeux, les morts-vivants se consument.\n\nEn jeu\n• Chaque cible choisie récupère 4d8 points de vie + 1 par niveau de lanceur (+40 au plus).\n• Jusqu’à 1 créature par niveau, toutes à 9 m ou moins les unes des autres.\n• Les morts-vivants visés subissent autant de dégâts (jet de Volonté pour la moitié)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "4d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 40)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.cure_light_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins légers",
+        "en": "Cure Light Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une main posée sur la blessure, un éclat d’énergie positive, et la chair se referme. Les morts-vivants, eux, n’apprécient pas du tout.\n\nEn jeu\n• Rend 1d8 points de vie + 1 par niveau de lanceur (+5 au plus).\n• Inflige autant de dégâts à un mort-vivant (jet de Volonté pour la moitié)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)",
+        "subschool": "guérison"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 5)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_cure_light_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins légers de groupe",
+        "en": "Cure Light Wounds, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un geste large, et une pluie de lumière tiède tombe sur les compagnons : les égratignures disparaissent d’un coup.\n\nEn jeu\n• Chaque cible choisie récupère 1d8 points de vie + 1 par niveau de lanceur (+25 au plus).\n• Jusqu’à 1 créature par niveau, toutes à 9 m ou moins les unes des autres.\n• Les morts-vivants visés subissent autant de dégâts (jet de Volonté pour la moitié)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 25)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.cure_moderate_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins modérés",
+        "en": "Cure Moderate Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le contact brûle un instant, puis apaise : les coupures se ferment et la douleur reflue.\n\nEn jeu\n• Rend 2d8 points de vie + 1 par niveau de lanceur (+10 au plus).\n• Sur un mort-vivant, inflige autant de dégâts (jet de Volonté pour la moitié, résistance à la magie applicable)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "2d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 10)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_cure_moderate_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins modérés de groupe",
+        "en": "Cure Moderate Wounds, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "L’énergie positive se répand comme une onde dans le groupe, et chacun sent ses forces revenir.\n\nEn jeu\n• Chaque cible choisie récupère 2d8 points de vie + 1 par niveau de lanceur (+30 au plus).\n• Jusqu’à 1 créature par niveau, toutes à 9 m ou moins les unes des autres.\n• Les morts-vivants visés subissent autant de dégâts (jet de Volonté pour la moitié)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "2d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 30)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.cure_minor_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Soins superficiels",
+        "en": "Cure Minor Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une étincelle de vie, à peine de quoi arrêter un saignement. Parfois, c’est exactement ce qu’il faut.\n\nEn jeu\n• Rend 1 point de vie (stabilise un mourant).\n• Inflige 1 point de dégâts à un mort-vivant (jet de Volonté pour l’annuler)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": 1,
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.sleep",
+      "type": "spell",
+      "name": {
+        "fr": "Sommeil",
+        "en": "Sleep"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une poignée de sable des rêves jetée au vent. Les plus faibles tombent d’abord, sans même lâcher leur arme.\n\nEn jeu\n• Endort jusqu’à 4 DV de créatures, les plus faibles en premier, puis les plus proches du centre ; les DV restants qui ne suffisent pas pour la cible suivante sont perdus.\n• Les dormeurs sont sans défense ; une gifle ou un coup les réveille (action simple), le bruit ne suffit pas.\n• Sans effet sur les créatures inconscientes, les morts-vivants et les créatures artificielles."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "créatures vivantes dans un rayonnement de 3 m de rayon",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.deep_slumber",
+      "type": "spell",
+      "name": {
+        "fr": "Sommeil profond",
+        "en": "Deep Slumber"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une lourde torpeur tombe sur l’escouade adverse. Même les vétérans bâillent, vacillent, puis s’effondrent.\n\nEn jeu\n• Comme sommeil, mais endort jusqu’à 10 DV de créatures, les plus faibles en premier.\n• Rayonnement de 3 m de rayon, portée courte ; dure 1 minute par niveau.\n• Sans effet sur les créatures inconscientes, les morts-vivants et les créatures artificielles."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "créatures vivantes dans un rayonnement de 3 m de rayon",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dream",
+      "type": "spell",
+      "name": {
+        "fr": "Songe",
+        "en": "Dream"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Une voix familière murmure dans la nuit, à l’autre bout du monde. Au réveil, le dormeur se souvient de chaque mot.\n\nEn jeu\n• Le lanceur, ou un messager qu’il touche, entre en transe et porte un message de longueur libre dans les rêves d’une créature nommée sans ambiguïté.\n• Communication à sens unique : pas de réponse, et le messager n’apprend rien.\n• Si la cible est éveillée, le messager peut attendre qu’elle s’endorme ; dérangé, il perd le sort.\n• En transe, le messager est sans défense et rate tous ses jets de sauvegarde.\n• Sans effet sur les créatures qui ne dorment ni ne rêvent (elfes, pas demi-elfes)."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "fantasme",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 minute",
+        "range": "illimitée",
+        "target": "créature vivante touchée",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ghost_sound",
+      "type": "spell",
+      "name": {
+        "fr": "Son imaginaire",
+        "en": "Ghost Sound"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Des bruits de pas dans le couloir vide, une troupe qui charge derrière la colline : l’oreille croit tout ce qu’on lui donne.\n\nEn jeu\n• Crée des sons choisis à l’incantation, de la voix d’une personne au vacarme d’une troupe (jusqu’à 4 humains par niveau, 20 au plus).\n• Ceux qui interagissent avec le son ont droit à un jet de Volonté pour le reconnaître comme illusoire.\n• Renforce nettement image silencieuse."
+      },
+      "spell": {
+        "school": "Illusion",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "sons illusoires",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non",
+        "subschool": "chimère"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wish",
+      "type": "spell",
+      "name": {
+        "fr": "Souhait",
+        "en": "Wish"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Quelques mots prononcés avec soin, et la réalité se plie. Le plus puissant des sorts profanes… pour qui sait formuler sa demande.\n\nEn jeu\n• Reproduit un sort d’ensorceleur/magicien du 8e niveau au plus (7e d’une école interdite), ou un autre sort du 6e au plus (5e d’une école interdite).\n• Annule de nombreux effets néfastes (quête, aliénation mentale…).\n• Crée un objet précieux, même magique, de 25 000 po au plus. Créer ou améliorer un objet magique coûte en plus le double de son coût de fabrication en PX.\n• Accorde un bonus inné de +1 à une caractéristique ; 2 à 5 souhaits consécutifs donnent +2 à +5 (+5 au plus, non cumulable).\n• Soigne 1 créature par niveau d’un même mal, ramène un mort comme résurrection, déplace des créatures vers un autre plan, ou refait un jet du dernier round.\n• Autres effets possibles au jugement du MD, souvent à double tranchant.\n• Les sorts reproduits gardent jet de sauvegarde et résistance à la magie, avec le DD d’un sort du 9e niveau ; une composante de plus de 10 000 po reste à fournir.\n• Coût : 5 000 PX, ou le coût en PX du sort reproduit s’il est plus élevé."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, PX",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "target": "voir description",
+        "duration": "voir description",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.limited_wish",
+      "type": "spell",
+      "name": {
+        "fr": "Souhait limité",
+        "en": "Limited Wish"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Un souhait à la mesure d’un mortel : moins grandiose, mais capable de tordre le destin au bon moment.\n\nEn jeu\n• Reproduit un sort d’ensorceleur/magicien du 6e niveau au plus (5e d’une école interdite), ou un autre sort du 5e au plus (4e d’une école interdite).\n• Annule de nombreux effets néfastes (quête, aliénation mentale…).\n• Ou tout effet de puissance comparable (toucher à coup sûr à la prochaine attaque, –7 au prochain jet de sauvegarde d’une cible).\n• Les sorts reproduits gardent leur jet de sauvegarde et leur résistance à la magie, avec le DD d’un sort du 7e niveau.\n• Coût : 300 PX, ou le coût en PX du sort reproduit s’il est plus élevé ; une composante de 1 000 po ou plus reste nécessaire."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G, PX",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "target": "voir description",
+        "duration": "voir description",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.invisibility_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère d’invisibilité",
+        "en": "Invisibility Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un voile se referme autour du groupe, et tous disparaissent ensemble. Restez groupés : un pas de trop et vous voilà exposé.\n\nEn jeu\n• Comme invisibilité, mais rend invisibles toutes les créatures à 3 m ou moins du sujet ; la sphère suit le sujet.\n• Les créatures affectées se voient entre elles. Qui sort de la sphère redevient visible ; qui y entre après l’incantation ne devient pas invisible.\n• Une créature affectée qui attaque redevient visible seule ; si le sujet attaque, le sort prend fin pour tous.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle ou contact",
+        "area": "sphère de 3 m de rayon autour de la créature ou de l’objet touché",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "entities": [
+    {
+      "id": "class.thaumaturgist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Thaumaturge",
+        "en": "Thaumaturgist"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "spellcasting",
+        "summoning"
+      ],
+      "description": {
+        "fr": "Le thaumaturge ne prie pas les puissances des autres plans : il traite avec elles. Cercle tracé à la craie, encens qui brûle de travers, nom secret prononcé trois fois, et voilà un ange, un démon ou un élémentaire qui écoute son offre. Là où un autre lanceur de sorts aurait payé le prix fort, lui négocie, flatte, marchande, et repart souvent avec un allié de l’au-delà à moitié prix. Ses créatures convoquées frappent plus fort, restent plus longtemps, et finissent parfois par le suivre pour de bon.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : don École renforcée (invocation) ; pouvoir lancer allié d’outreplan.\n• Aucune formation aux armes ni aux armures en plus.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (plans), Connaissances (religion), Diplomatie, Langue, Profession, Psychologie.\n• +1 niveau de lanceur de sorts aux niveaux 1, 2, 3, 4 et 5, pour une classe de lanceur de sorts qu’il avait déjà (sorts par jour, sorts connus et niveau de lanceur ; pas les autres aptitudes de cette classe).\n• Aptitudes : science de l’appel d’allié (1) ; amélioration des créatures convoquées (2) ; convocation à durée étendue (3) ; invocation prévoyante (4) ; compagnon d’armes planaire (5)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.thaumaturgist_improved_ally",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de l’appel d’allié",
+        "en": "Improved ally"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thaumaturgist"
+      ],
+      "description": {
+        "fr": "Le thaumaturge connaît les usages des autres plans : la bonne formule de politesse, le bon cadeau, le bon moment pour se taire. Les créatures qu’il appelle à son service le prennent pour un des leurs, et leurs exigences s’en ressentent.\n\nEn jeu\n• Quand il lance un sort d’allié d’outreplan (simple, majeur ou suprême), un test de Diplomatie peut faire baisser le tarif.\n• Créature rendue serviable : elle ne demande que la moitié de son paiement normal (tâche compatible avec sa nature).\n• Ne marche que si lui et la créature partagent au moins un trait d’alignement (loi, chaos, bien ou mal).\n• Un seul allié au rabais à la fois ; d’autres restent possibles au tarif normal."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.thaumaturgist_augment_summoning",
+      "type": "class_power",
+      "name": {
+        "fr": "Amélioration des créatures convoquées",
+        "en": "Augment summoning"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thaumaturgist"
+      ],
+      "description": {
+        "fr": "Chez le thaumaturge, même un simple loup convoqué arrive les muscles gonflés et l’œil brillant.\n\nEn jeu\n• Gagne le don Amélioration des créatures convoquées : les créatures qu’il convoque ont +4 en Force et +4 en Constitution."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.thaumaturgist_extended_summoning",
+      "type": "class_power",
+      "name": {
+        "fr": "Convocation à durée étendue",
+        "en": "Extended summoning"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thaumaturgist"
+      ],
+      "description": {
+        "fr": "Les liens que tisse le thaumaturge tiennent deux fois plus longtemps que ceux des autres : ses créatures convoquées ne se dissipent pas au premier coup d’œil.\n\nEn jeu\n• Ses sorts de convocation (sous-école) durent deux fois plus longtemps, comme avec Extension de durée, sans changer leur niveau.\n• Se cumule avec le don Extension de durée."
+      },
+      "effects": [],
+      "note": "Durée doublée des sorts de convocation : pas encore dans le modèle (dépend de la sous-école du sort)."
+    },
+    {
+      "id": "power.thaumaturgist_contingent_conjuration",
+      "type": "class_power",
+      "name": {
+        "fr": "Invocation prévoyante",
+        "en": "Contingent conjuration"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thaumaturgist"
+      ],
+      "description": {
+        "fr": "Le thaumaturge prépare ses alliés comme d’autres préparent une embuscade : un mot, un geste, une situation précise, et la créature surgit d’elle-même.\n\nEn jeu\n• Peut préparer un sort de convocation ou d’appel qui se déclenche tout seul dans une situation choisie, comme avec le sort prévoyance.\n• Le sort est lancé d’avance et reste en attente ; une fois la condition remplie, il part sans que le thaumaturge ait son mot à dire.\n• Condition claire, même large ; trop tordue, elle risque de rater au moment voulu.\n• Une seule invocation prévoyante active à la fois."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.thaumaturgist_planar_cohort",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon d’armes planaire",
+        "en": "Planar cohort"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thaumaturgist"
+      ],
+      "description": {
+        "fr": "Certains alliés de l’au-delà finissent par rester. Pas pour l’or, mais parce que la cause du thaumaturge est aussi la leur.\n\nEn jeu\n• N’importe quel sort d’allié d’outreplan peut faire venir une créature qui reste comme compagnon d’armes, fidèle tant que leur cause commune tient.\n• Coût : celui du sort (PX compris), plus une offrande de 1 000 po × les DV de la créature ; science de l’appel d’allié ne réduit pas ce prix.\n• La créature ne peut pas avoir plus de DV que lui, et son niveau global effectif ne dépasse pas son niveau de personnage − 2.\n• Un seul compagnon d’armes planaire à la fois ; il peut remplacer celui du don Prestige."
+      },
+      "effects": [],
+      "note": "Compagnon d’armes planaire : pas encore dans le modèle."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.thaumaturgist",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.thaumaturgist_improved_ally"
+      ]
+    },
+    {
+      "classId": "class.thaumaturgist",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.thaumaturgist_augment_summoning"
+      ]
+    },
+    {
+      "classId": "class.thaumaturgist",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.thaumaturgist_extended_summoning"
+      ]
+    },
+    {
+      "classId": "class.thaumaturgist",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.thaumaturgist_contingent_conjuration"
+      ]
+    },
+    {
+      "classId": "class.thaumaturgist",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.thaumaturgist_planar_cohort"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.thaumaturgist",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "power.thaumaturgist_augment_summoning",
+      "relation": "grants",
+      "to": "feat.augment_summoning"
+    }
+  ]
+}

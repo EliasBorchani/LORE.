@@ -1,0 +1,208 @@
+{
+  "entities": [
+    {
+      "id": "feat.craft_wondrous_item",
+      "type": "feat",
+      "name": {
+        "fr": "Création d’objets merveilleux",
+        "en": "Craft Wondrous Item"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "magic",
+        "creation"
+      ],
+      "description": {
+        "fr": "Bottes qui murmurent au vent, capes qui boivent l’ombre, amulettes qui battent comme un cœur : tout ce qui n’entre dans aucune autre case naît sur l’établi de cet artisan. Il coud, grave et tisse la magie dans les choses de tous les jours.\n\nEn jeu\n• Condition : niveau 3 de lanceur de sorts.\n• Permet de créer tout objet merveilleux dont le personnage remplit les conditions.\n• Fabrication : 1 jour par tranche de 1 000 po du prix de base.\n• Coût : la moitié du prix de base en matières premières, plus 1/25 du prix de base en PX.\n• Certains objets ont un coût en plus (indiqué dans leur description), à payer en plus du prix de base.\n• Réparer un objet merveilleux cassé : même procédure, temps, PX et matières premières divisés par deux."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 3 de lanceur de sorts."
+    },
+    {
+      "id": "feat.craft_wand",
+      "type": "feat",
+      "name": {
+        "fr": "Création de baguettes magiques",
+        "en": "Craft Wand"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "magic",
+        "creation"
+      ],
+      "description": {
+        "fr": "Un fin morceau de bois, une nuit de patience, et un sort enfermé cinquante fois dedans. Le créateur de baguettes met sa magie en réserve pour les jours où chaque seconde compte.\n\nEn jeu\n• Condition : niveau 5 de lanceur de sorts.\n• Permet de créer une baguette d’un sort que le personnage connaît, du 4e niveau au plus.\n• Prix de base : 750 po × niveau de lanceur de sorts × niveau du sort (un sort du niveau 0 compte pour ½).\n• Fabrication : 1 jour par tranche de 1 000 po du prix de base.\n• Coût : la moitié du prix de base en matières premières, plus 1/25 du prix de base en PX.\n• Une baguette neuve a 50 charges.\n• Sort avec composante matérielle coûteuse ou coût en PX : 50 fois ce coût en plus."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 5 de lanceur de sorts."
+    },
+    {
+      "id": "feat.craft_staff",
+      "type": "feat",
+      "name": {
+        "fr": "Création de bâtons magiques",
+        "en": "Craft Staff"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "magic",
+        "creation"
+      ],
+      "description": {
+        "fr": "Un bâton de mage n’est pas une simple canne : c’est une bibliothèque de sorts taillée dans le bois le plus dur. Seuls les lanceurs aguerris savent y graver plusieurs pouvoirs sans que l’ensemble ne se fende.\n\nEn jeu\n• Condition : niveau 12 de lanceur de sorts.\n• Permet de créer tout bâton dont le personnage remplit les conditions.\n• Fabrication : 1 jour par tranche de 1 000 po du prix de base.\n• Coût : la moitié du prix de base en matières premières, plus 1/25 du prix de base en PX.\n• Un bâton neuf a 50 charges.\n• Certains bâtons ont un coût en plus (composantes matérielles ou PX), à payer en plus du prix de base."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 12 de lanceur de sorts."
+    },
+    {
+      "id": "feat.craft_rod",
+      "type": "feat",
+      "name": {
+        "fr": "Création de sceptres magiques",
+        "en": "Craft Rod"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "magic",
+        "creation"
+      ],
+      "description": {
+        "fr": "Le sceptre est l’arme des puissants : court, lourd, chargé d’un pouvoir qui ne s’épuise pas. Le forger demande une main sûre et une magie déjà mûre.\n\nEn jeu\n• Condition : niveau 9 de lanceur de sorts.\n• Permet de créer tout sceptre dont le personnage remplit les conditions.\n• Fabrication : 1 jour par tranche de 1 000 po du prix de base.\n• Coût : la moitié du prix de base en matières premières, plus 1/25 du prix de base en PX.\n• Certains sceptres ont un coût en plus (composantes matérielles ou PX), à payer en plus du prix de base."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 9 de lanceur de sorts."
+    },
+    {
+      "id": "feat.scribe_scroll",
+      "type": "feat",
+      "name": {
+        "fr": "Écriture de parchemins",
+        "en": "Scribe Scroll"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "magic",
+        "creation"
+      ],
+      "description": {
+        "fr": "Encre de seiche, plume taillée, et un sort couché mot pour mot sur le vélin. Le parchemin attend son heure dans un étui, prêt à être lu à voix haute une seule fois.\n\nEn jeu\n• Condition : niveau 1 de lanceur de sorts.\n• Permet d’écrire un parchemin de tout sort que le personnage connaît.\n• Prix de base : 25 po × niveau de lanceur de sorts × niveau du sort (un sort du niveau 0 compte pour ½).\n• Fabrication : 1 jour par tranche de 1 000 po du prix de base.\n• Coût : la moitié du prix de base en matières premières, plus 1/25 du prix de base en PX.\n• Sort avec composante matérielle coûteuse ou coût en PX : ce coût en plus.\n• Le magicien reçoit ce don au niveau 1."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 1 de lanceur de sorts."
+    },
+    {
+      "id": "feat.brew_potion",
+      "type": "feat",
+      "name": {
+        "fr": "Préparation de potions",
+        "en": "Brew Potion"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "magic",
+        "creation"
+      ],
+      "description": {
+        "fr": "Un chaudron qui frémit, une odeur d’herbes et de métal chaud : au matin, une fiole tiède contient un sort entier, prêt à être bu par n’importe qui.\n\nEn jeu\n• Condition : niveau 3 de lanceur de sorts.\n• Permet de créer une potion d’un sort que le personnage connaît, du 3e niveau au plus, qui cible une ou plusieurs créatures.\n• Préparation : 1 jour.\n• Le personnage choisit le niveau de lanceur de sorts de la potion : entre le minimum pour lancer le sort et son propre niveau.\n• Prix de base : 50 po × niveau de lanceur de sorts × niveau du sort (un sort du niveau 0 compte pour ½).\n• Coût : la moitié du prix de base en matières premières, plus 1/25 du prix de base en PX.\n• Les choix du sort sont faits à la préparation ; celui qui boit la potion en est la cible.\n• Sort avec composante matérielle coûteuse ou coût en PX : ce coût en plus."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 3 de lanceur de sorts."
+    },
+    {
+      "id": "feat.improved_natural_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Arme naturelle supérieure",
+        "en": "Improved Natural Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "natural_attack"
+      ],
+      "description": {
+        "fr": "Griffes plus longues, crocs plus épais, cornes plus lourdes : la bête frappe comme si elle avait grandi d’une taille. Ce qui égratignait déchire, ce qui déchirait broie.\n\nEn jeu\n• Condition : une arme naturelle, bonus de base à l’attaque +4.\n• Une attaque naturelle choisie inflige des dégâts d’un cran plus haut, comme pour une créature d’une taille de plus : 1d2, 1d3, 1d4, 1d6, 1d8, 2d6, 3d6, 4d6, 6d6, 8d6, 12d6.\n• Une arme naturelle à 1d10 suit : 1d10, 2d8, 3d8, 4d8, 6d8, 8d8, 12d8."
+      },
+      "prerequisite": "@bab >= 4",
+      "note": "Condition non vérifiée par la fiche : avoir une arme naturelle. Arme naturelle choisie et dés de dégâts des armes naturelles : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.improved_natural_armor",
+      "type": "feat",
+      "name": {
+        "fr": "Armure naturelle supérieure",
+        "en": "Improved Natural Armor"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "defense"
+      ],
+      "description": {
+        "fr": "Écailles qui s’épaississent, cuir qui se tanne, chitine qui durcit couche après couche : la créature se fait elle-même son armure, et chaque année la rend plus dure.\n\nEn jeu\n• Condition : armure naturelle, Constitution 13.\n• +1 au bonus d’armure naturelle.\n• Spécial : peut être pris plusieurs fois ; chaque fois, +1 de plus."
+      },
+      "prerequisite": "@ability.con.score >= 13",
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "count('feat.improved_natural_armor')",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : avoir une armure naturelle. Bonus sans type sur ac.natural pour qu’il s’ajoute à l’armure naturelle de la créature (et pas qu’il la remplace)."
+    },
+    {
+      "id": "feat.flyby_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque en vol",
+        "en": "Flyby Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "flight",
+        "movement"
+      ],
+      "description": {
+        "fr": "Une ombre passe, une serre s’abat, et le prédateur est déjà reparti dans le ciel avant que sa proie n’ait levé son arme. Le vol devient une arme à part entière.\n\nEn jeu\n• Condition : une vitesse de vol.\n• En vol, la créature peut faire une action de mouvement (attaque en piqué comprise) et une action simple à n’importe quel moment de ce déplacement.\n• Pas de seconde action de mouvement dans un round où elle utilise ce don.\n• Normal : l’action simple a lieu avant ou après le déplacement, jamais pendant."
+      },
+      "note": "Condition non vérifiée par la fiche : vitesse de vol."
+    },
+    {
+      "id": "feat.ability_focus",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque spéciale renforcée",
+        "en": "Ability Focus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "natural_attack"
+      ],
+      "description": {
+        "fr": "Le venin devient plus noir, le souffle plus brûlant, le regard plus lourd : la créature a poussé l’un de ses pouvoirs au-delà de ce que sa race connaît d’habitude.\n\nEn jeu\n• Condition : une attaque spéciale.\n• +2 au DD des jets de sauvegarde contre une attaque spéciale choisie.\n• Spécial : peut être pris plusieurs fois, pour une attaque spéciale différente à chaque fois (les effets ne se cumulent pas sur la même)."
+      },
+      "note": "Condition non vérifiée par la fiche : avoir une attaque spéciale. Attaque spéciale choisie et DD des attaques spéciales : pas encore dans le modèle."
+    }
+  ],
+  "relations": []
+}

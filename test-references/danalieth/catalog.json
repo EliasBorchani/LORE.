@@ -1,0 +1,4104 @@
+{
+  "version": "batch-1-v5",
+  "bonusTypes": [
+    {
+      "id": "enhancement",
+      "stacks": false
+    },
+    {
+      "id": "morale",
+      "stacks": false
+    },
+    {
+      "id": "luck",
+      "stacks": false
+    },
+    {
+      "id": "insight",
+      "stacks": false
+    },
+    {
+      "id": "deflection",
+      "stacks": false
+    },
+    {
+      "id": "natural_armor",
+      "stacks": false
+    },
+    {
+      "id": "competence",
+      "stacks": false
+    },
+    {
+      "id": "circumstance",
+      "stacks": false
+    },
+    {
+      "id": "sacred",
+      "stacks": false
+    },
+    {
+      "id": "profane",
+      "stacks": false
+    },
+    {
+      "id": "racial",
+      "stacks": false
+    },
+    {
+      "id": "size",
+      "stacks": false
+    },
+    {
+      "id": "resistance",
+      "stacks": false
+    },
+    {
+      "id": "inherent",
+      "stacks": false
+    },
+    {
+      "id": "ioun",
+      "stacks": false
+    },
+    {
+      "id": "nature",
+      "stacks": false
+    },
+    {
+      "id": "untyped",
+      "stacks": true
+    },
+    {
+      "id": "dodge",
+      "stacks": true
+    },
+    {
+      "id": "template",
+      "stacks": true
+    }
+  ],
+  "damageTypes": [
+    {
+      "id": "acid"
+    },
+    {
+      "id": "cold"
+    },
+    {
+      "id": "electricity"
+    },
+    {
+      "id": "fire"
+    },
+    {
+      "id": "sonic"
+    },
+    {
+      "id": "force"
+    },
+    {
+      "id": "bludgeoning"
+    },
+    {
+      "id": "piercing"
+    },
+    {
+      "id": "slashing"
+    },
+    {
+      "id": "bludgeoning_fire",
+      "parts": [
+        "bludgeoning",
+        "fire"
+      ]
+    }
+  ],
+  "statistics": [
+    {
+      "key": "ability.str.score",
+      "base": "@ability.str.base"
+    },
+    {
+      "key": "ability.str.mod",
+      "base": "floor((@ability.str.score - 10) / 2)"
+    },
+    {
+      "key": "ability.dex.score",
+      "base": "@ability.dex.base"
+    },
+    {
+      "key": "ability.dex.mod",
+      "base": "floor((@ability.dex.score - 10) / 2)"
+    },
+    {
+      "key": "ability.con.score",
+      "base": "@ability.con.base"
+    },
+    {
+      "key": "ability.con.mod",
+      "base": "floor((@ability.con.score - 10) / 2)"
+    },
+    {
+      "key": "ability.int.score",
+      "base": "@ability.int.base"
+    },
+    {
+      "key": "ability.int.mod",
+      "base": "floor((@ability.int.score - 10) / 2)"
+    },
+    {
+      "key": "ability.wis.score",
+      "base": "@ability.wis.base"
+    },
+    {
+      "key": "ability.wis.mod",
+      "base": "floor((@ability.wis.score - 10) / 2)"
+    },
+    {
+      "key": "ability.cha.score",
+      "base": "@ability.cha.base"
+    },
+    {
+      "key": "ability.cha.mod",
+      "base": "floor((@ability.cha.score - 10) / 2)"
+    },
+    {
+      "key": "level",
+      "base": "level()"
+    },
+    {
+      "key": "level_from_xp",
+      "base": "floor((1 + isqrt(1 + 8 * @xp / 1000)) / 2)"
+    },
+    {
+      "key": "bab.classes",
+      "base": "@progression.bab"
+    },
+    {
+      "key": "bab",
+      "base": "@bab.classes"
+    },
+    {
+      "key": "save.fort",
+      "components": [
+        "progression.fort",
+        "ability.con.mod"
+      ]
+    },
+    {
+      "key": "save.ref",
+      "components": [
+        "progression.ref",
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "save.will",
+      "components": [
+        "progression.will",
+        "ability.wis.mod"
+      ]
+    },
+    {
+      "key": "hp.base",
+      "base": "3 / 4 * @hit_dice.total"
+    },
+    {
+      "key": "hp.max",
+      "base": "@hp.base + @ability.con.mod * level()"
+    },
+    {
+      "key": "weapon.attack",
+      "base": 0
+    },
+    {
+      "key": "attack.melee",
+      "components": [
+        "bab",
+        "ability.str.mod",
+        "weapon.attack"
+      ]
+    },
+    {
+      "key": "attack.ranged",
+      "components": [
+        "bab",
+        "ability.dex.mod",
+        "weapon.attack"
+      ]
+    },
+    {
+      "key": "damage.melee",
+      "components": [
+        "damage.melee.weapon",
+        "damage.melee.ability"
+      ]
+    },
+    {
+      "key": "damage.melee.weapon",
+      "base": "@weapon.damage"
+    },
+    {
+      "key": "damage.melee.ability",
+      "base": "@ability.str.mod"
+    },
+    {
+      "key": "ac.dex_bonus",
+      "base": "@ability.dex.mod"
+    },
+    {
+      "key": "ac.armor",
+      "base": 0
+    },
+    {
+      "key": "ac.natural",
+      "base": 0
+    },
+    {
+      "key": "ac.shield",
+      "base": 0
+    },
+    {
+      "key": "ac.total",
+      "base": "10 + @ac.armor + @ac.shield + @ac.natural + @ac.dex_bonus"
+    },
+    {
+      "key": "caster_level.class[*]",
+      "base": 0
+    },
+    {
+      "key": "caster_level.wizard",
+      "base": "level('class.wizard') + @spellcasting.advances[class.wizard] + @caster_level.arcane + @caster_level.class[class.wizard]"
+    },
+    {
+      "key": "caster_level.sorcerer",
+      "base": "level('class.sorcerer') + @spellcasting.advances[class.sorcerer] + @caster_level.arcane + @caster_level.class[class.sorcerer]"
+    },
+    {
+      "key": "size",
+      "base": "'medium'"
+    },
+    {
+      "key": "size.steps",
+      "base": "if(@size == 'fine', -4, if(@size == 'diminutive', -3, if(@size == 'tiny', -2, if(@size == 'small', -1, if(@size == 'large', 1, if(@size == 'huge', 2, if(@size == 'gargantuan', 3, if(@size == 'colossal', 4, 0))))))))"
+    },
+    {
+      "key": "weapon.size_steps",
+      "base": "@size.steps"
+    },
+    {
+      "key": "weapon.damage",
+      "diceSteps": "@weapon.size_steps"
+    },
+    {
+      "key": "unarmed.damage",
+      "diceSteps": "@size.steps"
+    },
+    {
+      "key": "initiative",
+      "components": [
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "feat_slots.general",
+      "base": "1 + floor(min(level(), 20) / 3)"
+    },
+    {
+      "key": "feat_slots.epic",
+      "base": "max(0, floor(level() / 3) - 6)"
+    }
+  ],
+  "targetGroups": [
+    {
+      "key": "ability.all.score",
+      "members": [
+        "ability.str.score",
+        "ability.dex.score",
+        "ability.con.score",
+        "ability.int.score",
+        "ability.wis.score",
+        "ability.cha.score"
+      ]
+    },
+    {
+      "key": "save.all",
+      "members": [
+        "save.fort",
+        "save.ref",
+        "save.will"
+      ]
+    },
+    {
+      "key": "attack.all",
+      "members": [
+        "attack.melee",
+        "attack.ranged"
+      ]
+    },
+    {
+      "key": "damage.all",
+      "members": [
+        "damage.melee"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "class.warblade",
+      "type": "class",
+      "hitDie": 12,
+      "name": {
+        "fr": "Maître des lames",
+        "en": "Warblade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "melee",
+        "maneuvers"
+      ],
+      "description": {
+        "fr": "Guerrier initiateur de manœuvres martiales ; d12, BBA élevé, Vigueur forte."
+      },
+      "status": "draft",
+      "note": "Classe de base de Danalieth (niveaux 1-20)."
+    },
+    {
+      "id": "class.wizard",
+      "type": "class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Magicien",
+        "en": "Wizard"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "arcane",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Lanceur de sorts profanes préparés, d4."
+      },
+      "status": "draft",
+      "note": "Mode de sorts : free slots (règle de campagne) ou prepared ? Voir Questions.",
+      "spellcasting": {
+        "ability": "int",
+        "kind": "arcane",
+        "mode": "prepared"
+      }
+    },
+    {
+      "id": "class.sorcerer",
+      "type": "class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Ensorceleur",
+        "en": "Sorcerer"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "arcane",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Lanceur de sorts profanes spontanés, d4."
+      },
+      "status": "draft",
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      }
+    },
+    {
+      "id": "class.archmage",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Archimage",
+        "en": "Archmage"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "arcane",
+        "epic-friendly"
+      ],
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 15 and @skill.spellcraft.ranks >= 15 and has('feat.skill_focus_spellcraft') and @feats.spell_focus.schools >= 2 and @spellcasting.arcane.max_level >= 7",
+      "description": {
+        "fr": "Classe de prestige des maîtres des arcanes ; chaque niveau donne un pouvoir de Haute arcane."
+      },
+      "status": "to confirm",
+      "note": "SRD. Spell Focus in two schools: Danalieth has abjuration only, to check. Five schools of 5th-level spells: checked by hand."
+    },
+    {
+      "id": "class.sevenfold_veil",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Initié du voile septuple",
+        "en": "Initiate of the Sevenfold Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "arcane",
+        "abjuration"
+      ],
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 12 and @skill.knowledge_nature.ranks >= 4 and @skill.spellcraft.ranks >= 12 and has('feat.spell_focus_abjuration') and has('feat.greater_spell_focus_abjuration') and has('feat.skill_focus_spellcraft')",
+      "description": {
+        "fr": "Abjurateur qui tisse des voiles colorés. Dé de vie d4 ; 2 + Int points de compétence. Conditions : Connaissances (mystères) 12 rangs, Connaissances (nature) 4 rangs, Art de la magie 12 rangs, École renforcée et École supérieure (abjuration), Talent (Art de la magie), savoir lancer cinq sorts d'abjuration dont deux du 4e niveau ou plus."
+      },
+      "status": "draft",
+      "note": "Source : dndtools.net. Condition « cinq sorts d'abjuration » vérifiée à la main."
+    },
+    {
+      "id": "class.ultimate_magus",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Mage ultime",
+        "en": "Ultimate Magus"
+      },
+      "provenance": "official + team",
+      "source": "Complete Mage + Équipe",
+      "labels": [
+        "arcane",
+        "dual casting"
+      ],
+      "description": {
+        "fr": "Combine magie préparée et spontanée, et utilise l'une pour renforcer l'autre. Dé de vie d4 ; 2 + Int points de compétence. Compétences de classe : Concentration, Artisanat, Décryptage, Connaissances (toutes), Profession, Art de la magie, Utilisation d'objets magiques."
+      },
+      "status": "draft",
+      "note": "Niveaux 1-10 : table du livre (Complete Mage). Niveaux 11-20 : extension de l'équipe."
+    },
+    {
+      "id": "class.vt_grip_of_death",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Émissaire de Von Tarkhein : Poigne de la mort",
+        "en": "Emissary of Von Tarkhein: Grip of Death"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "death",
+        "melee",
+        "custom"
+      ],
+      "description": {
+        "fr": "Voie martiale de l'émissaire : emprise sur la mort, résilience d'outre-tombe, régénération."
+      },
+      "status": "draft",
+      "note": "Classe épique : BBA et sauvegardes +½ par niveau."
+    },
+    {
+      "id": "class.vt_will_of_death",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Émissaire de Von Tarkhein : Volonté de la mort",
+        "en": "Emissary of Von Tarkhein: Will of Death"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "death",
+        "arcane",
+        "custom"
+      ],
+      "description": {
+        "fr": "Voie arcanique de l'émissaire : sorts épiques et secrets des arcanes."
+      },
+      "effects": [
+        {
+          "target": "caster_level.class[{choice}]",
+          "op": "add",
+          "value": "if(level('class.vt_will_of_death') >= 10, 15, if(level('class.vt_will_of_death') >= 5, 6, 3))",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Remplacement : 3, puis 6, puis 15 | One class, chosen by the player"
+        }
+      ],
+      "status": "draft",
+      "note": "Classe épique : BBA et sauvegardes +½ par niveau. Danalieth : 3 niveaux."
+    },
+    {
+      "id": "template.demon",
+      "type": "template",
+      "name": {
+        "fr": "Démon",
+        "en": "Demon"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "template",
+        "fiend"
+      ],
+      "description": {
+        "fr": "Archétype démoniaque."
+      },
+      "effects": [
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "template",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Archétype de l'équipe. Bonus de caractéristiques repris de la fiche (onglet Danalieth abilities)."
+    },
+    {
+      "id": "template.vampire",
+      "type": "template",
+      "name": {
+        "fr": "Vampire",
+        "en": "Vampire"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "template",
+        "undead"
+      ],
+      "description": {
+        "fr": "Archétype vampirique, avec règles maison (durée, critique, forme de chauve-souris)."
+      },
+      "effects": [
+        {
+          "target": "weapon.threat_range",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "scope": "item",
+          "status": "to confirm",
+          "note": "Fiche : « 3 vampire »"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 8,
+          "bonusType": "template",
+          "status": "draft"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 6,
+          "bonusType": "template",
+          "status": "draft"
+        },
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "template",
+          "status": "draft"
+        },
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "template",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Archétype de l'équipe. Bonus de caractéristiques repris de la fiche (onglet Danalieth abilities)."
+    },
+    {
+      "id": "template.dragon",
+      "type": "template",
+      "name": {
+        "fr": "Dragon",
+        "en": "Dragon"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "template",
+        "dragon"
+      ],
+      "description": {
+        "fr": "Archétype draconique."
+      },
+      "effects": [
+        {
+          "target": "ability.all.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "template",
+          "status": "draft",
+          "note": "Les six caractéristiques"
+        }
+      ],
+      "status": "draft",
+      "note": "Archétype de l'équipe. Bonus de caractéristiques repris de la fiche (onglet Danalieth abilities)."
+    },
+    {
+      "id": "feat.spell_focus_abjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (abjuration)",
+        "en": "Spell Focus (abjuration)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "+1 au DD des sorts d'abjuration."
+      },
+      "effects": [
+        {
+          "target": "dc.school[abjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.greater_spell_focus_abjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (abjuration)",
+        "en": "Greater Spell Focus (abjuration)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "magic",
+        "DC"
+      ],
+      "prerequisite": "has('feat.spell_focus_abjuration')",
+      "description": {
+        "fr": "+1 supplémentaire au DD des sorts d'abjuration."
+      },
+      "effects": [
+        {
+          "target": "dc.school[abjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.skill_focus_spellcraft",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Art de la magie)",
+        "en": "Skill Focus (Spellcraft)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "+3 en Art de la magie."
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.power_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque en puissance",
+        "en": "Power Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "melee"
+      ],
+      "prerequisite": "@ability.str.score >= 13",
+      "description": {
+        "fr": "Échange un malus à l'attaque contre un bonus aux dégâts (double à deux mains)."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "-@toggle.power_attack.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.power_attack')",
+          "status": "draft",
+          "note": "Valeur choisie en début de tour"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@toggle.power_attack.value * 2",
+          "bonusType": "untyped",
+          "condition": "active('toggle.power_attack')",
+          "status": "draft",
+          "note": "×2 à deux mains"
+        }
+      ],
+      "status": "draft",
+      "note": "Interrupteur avec valeur choisie par le joueur en début de tour."
+    },
+    {
+      "id": "feat.combat_expertise",
+      "type": "feat",
+      "name": {
+        "fr": "Expertise du combat",
+        "en": "Combat Expertise"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "melee",
+        "defense"
+      ],
+      "prerequisite": "@ability.int.score >= 13",
+      "description": {
+        "fr": "Échange jusqu'à 5 points d'attaque contre la même valeur en CA (esquive)."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "-@toggle.combat_expertise.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.combat_expertise')",
+          "status": "draft",
+          "note": "Valeur choisie en début de tour, max 5"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "@toggle.combat_expertise.value",
+          "bonusType": "dodge",
+          "condition": "active('toggle.combat_expertise')",
+          "status": "draft",
+          "note": "Valeur choisie en début de tour, max 5"
+        }
+      ],
+      "status": "draft",
+      "note": "Interrupteur avec valeur choisie par le joueur en début de tour."
+    },
+    {
+      "id": "feat.empower_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Extension d'effet",
+        "en": "Empower Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic"
+      ],
+      "description": {
+        "fr": "Effets numériques ×1,5 ; +2 niveaux d'emplacement. Non cumulable avec Empower, Intensify et Superspell : seul le plus fort s'applique."
+      },
+      "effects": [
+        {
+          "target": "spell.numeric",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "exclusive: metamagic_amplify",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Numeric effects, as in 3.5 (Force of Colossus +12 on the sheet)"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.quicken_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation rapide",
+        "en": "Quicken Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic"
+      ],
+      "description": {
+        "fr": "Sort lancé par action rapide ; +4 niveaux."
+      },
+      "effects": [
+        {
+          "target": "spell.action",
+          "op": "set",
+          "value": "'swift'",
+          "layer": "final",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.extend_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de durée",
+        "en": "Extend Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic"
+      ],
+      "description": {
+        "fr": "Durée ×2 ; +1 niveau."
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.persistent_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort persistant",
+        "en": "Persistent Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic"
+      ],
+      "description": {
+        "fr": "Durée portée à 24 heures ; +6 niveaux."
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "set",
+          "value": 14400,
+          "layer": "final",
+          "scope": "spell",
+          "status": "draft",
+          "note": "24 h = 14 400 rounds"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 6,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "to confirm"
+        }
+      ],
+      "status": "to confirm",
+      "note": "Coût +6 d'après le livre ; à confirmer pour votre table."
+    },
+    {
+      "id": "feat.intensify_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Intensification",
+        "en": "Intensify Spell"
+      },
+      "provenance": "official",
+      "source": "Epic (SRD)",
+      "labels": [
+        "metamagic",
+        "epic"
+      ],
+      "description": {
+        "fr": "Effets numériques ×2 ; +6 niveaux d'emplacement (version de la table). Non cumulable avec Empower, Intensify et Superspell : seul le plus fort s'applique."
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "exclusive: metamagic_amplify",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Seul le plus fort du groupe s'applique"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 6,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.superspell",
+      "type": "feat",
+      "name": {
+        "fr": "Superspell",
+        "en": "Superspell"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "metamagic",
+        "custom"
+      ],
+      "description": {
+        "fr": "Effets numériques ×4 (y compris les buffs : Force du taureau, Peau d'écorce...) ; +9 niveaux d'emplacement. Non cumulable avec Empower, Intensify et Superspell : seul le plus fort s'applique."
+      },
+      "effects": [
+        {
+          "target": "spell.numeric",
+          "op": "multiply",
+          "value": 4,
+          "multMode": "exclusive: metamagic_amplify",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Seul le plus fort du groupe s'applique"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 9,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.improved_metamagic",
+      "type": "feat",
+      "name": {
+        "fr": "Métamagie améliorée",
+        "en": "Improved Metamagic"
+      },
+      "provenance": "official",
+      "source": "Epic (SRD)",
+      "labels": [
+        "metamagic",
+        "epic"
+      ],
+      "description": {
+        "fr": "Réduit de 1 le coût de chaque don de métamagie (minimum +1)."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost_per_modifier",
+          "op": "add",
+          "value": -1,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Minimum +1 par modificateur"
+        }
+      ],
+      "status": "draft",
+      "note": "Peut être pris plusieurs fois dans le SRD épique."
+    },
+    {
+      "id": "feat.improved_spell_capacity",
+      "type": "feat",
+      "name": {
+        "fr": "Capacité de sort améliorée",
+        "en": "Improved Spell Capacity"
+      },
+      "provenance": "official",
+      "source": "Epic (SRD)",
+      "labels": [
+        "epic",
+        "slots"
+      ],
+      "description": {
+        "fr": "Un emplacement d'un niveau au-dessus du maximum. Cumulable (×12 pour Danalieth)."
+      },
+      "effects": [
+        {
+          "target": "slots.above_max[{choice}]",
+          "op": "add",
+          "value": "count('feat.improved_spell_capacity')",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Un emplacement au-dessus du maximum, par prise (×12)"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.spell_improvement",
+      "type": "feat",
+      "name": {
+        "fr": "Amélioration du niveau de lanceur",
+        "en": "Spell improvement"
+      },
+      "provenance": "to confirm",
+      "source": "to confirm",
+      "labels": [
+        "epic",
+        "caster level"
+      ],
+      "description": {
+        "fr": "+4 au niveau de lanceur par prise, sans dépasser le niveau de personnage. Cumulable ; sert aux multiclassés pour rattraper leur niveau de lanceur."
+      },
+      "effects": [
+        {
+          "target": "caster_level.class[{choice}]",
+          "op": "add",
+          "value": "4 * count('feat.spell_improvement')",
+          "bonusType": "untyped",
+          "status": "to confirm",
+          "note": "Par prise ; ce don ne peut pas faire dépasser le niveau de personnage | One class, chosen by the player"
+        }
+      ],
+      "status": "draft",
+      "note": "Danalieth : 5 prises."
+    },
+    {
+      "id": "feat.continuum_comprehension",
+      "type": "feat",
+      "name": {
+        "fr": "Compréhension du continuum",
+        "en": "Continuum Comprehension"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "skill",
+        "story"
+      ],
+      "description": {
+        "fr": "+2 en Art de la magie. Obtenu quand le groupe a altéré le monde devant les elfes en lançant 1200 niveaux de sorts."
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.warblade_battle_clarity",
+      "type": "class_power",
+      "name": {
+        "fr": "Clarté du combat",
+        "en": "Battle Clarity"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "warblade"
+      ],
+      "description": {
+        "fr": "Ajoute le modificateur d'Intelligence aux jets de Réflexes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "@ability.int.mod",
+          "bonusType": "untyped",
+          "status": "to confirm",
+          "note": "Plafond ?"
+        }
+      ],
+      "status": "to confirm",
+      "note": "Plafond par niveau de classe dans le livre ; règle maison sans plafond ?"
+    },
+    {
+      "id": "power.warblade_battle_cunning",
+      "type": "class_power",
+      "name": {
+        "fr": "Ruse du combat",
+        "en": "Battle Cunning"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords + Équipe",
+      "labels": [
+        "warblade"
+      ],
+      "description": {
+        "fr": "Ajoute le modificateur d'Intelligence aux dégâts (règle maison : toujours, pas seulement contre un adversaire pris au dépourvu)."
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@ability.int.mod",
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "to confirm"
+    },
+    {
+      "id": "power.warblade_battle_skill",
+      "type": "class_power",
+      "name": {
+        "fr": "Talent du combat",
+        "en": "Battle Skill"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "warblade"
+      ],
+      "description": {
+        "fr": "Ajoute le modificateur d'Intelligence aux tests opposés (bousculade, croc-en-jambe...)."
+      },
+      "effects": [
+        {
+          "target": "check.opposed",
+          "op": "add",
+          "value": "@ability.int.mod",
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.archmage_mastery_of_shaping",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise de la forme",
+        "en": "Mastery of Shaping"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Peut créer des espaces non affectés dans les cônes, cylindres, émanations, étendues et rayonnements."
+      },
+      "status": "draft",
+      "note": "Description seule."
+    },
+    {
+      "id": "power.archmage_mastery_of_elements",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des énergies",
+        "en": "Mastery of Elements"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Change le type d'énergie d'un sort (acide, électricité, feu, froid, son)."
+      },
+      "status": "draft",
+      "note": "Description seule."
+    },
+    {
+      "id": "power.archmage_mastery_of_counterspelling",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des contresorts",
+        "en": "Mastery of Counterspelling"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Un sort contré est renvoyé au lieu d'être dissipé."
+      },
+      "status": "draft",
+      "note": "Description seule."
+    },
+    {
+      "id": "power.archmage_arcane_reach",
+      "type": "class_power",
+      "name": {
+        "fr": "Portée profane",
+        "en": "Arcane Reach"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Les sorts de contact peuvent être lancés à 9 m."
+      },
+      "effects": [
+        {
+          "target": "spell.range",
+          "op": "set",
+          "value": 9,
+          "layer": "final",
+          "condition": "@spell.range_kind == 'touch'",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Effet sur spell.range (set 9 m) quand la portée est contact."
+    },
+    {
+      "id": "power.archmage_spell_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Puissance des sorts",
+        "en": "Spell Power"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "+1 niveau de lanceur de sorts."
+      },
+      "effects": [
+        {
+          "target": "caster_level.arcane",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.archmage_spell_like_ability",
+      "type": "class_power",
+      "name": {
+        "fr": "Pouvoir magique",
+        "en": "Spell-Like Ability"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Un sort profane préparé en permanence devient un pouvoir magique, utilisable deux fois par jour.",
+        "en": "One arcane spell becomes a permanent spell-like ability, usable twice per day."
+      },
+      "status": "draft",
+      "note": "Description only. Which spell is not recorded yet."
+    },
+    {
+      "id": "power.ultimate_magus_caster_level",
+      "type": "class_power",
+      "name": {
+        "fr": "Progression du mage ultime",
+        "en": "Ultimate Magus caster level"
+      },
+      "provenance": "official",
+      "source": "Complete Mage",
+      "labels": [
+        "ultimate magus"
+      ],
+      "description": {
+        "fr": "Fiche : niveau de lanceur +7 ; « Augmented 9 »."
+      },
+      "effects": [
+        {
+          "target": "caster_level.arcane",
+          "op": "add",
+          "value": 7,
+          "bonusType": "untyped",
+          "status": "to confirm"
+        }
+      ],
+      "status": "draft",
+      "note": "Not a class feature in the book: the sheet's +7 is Arcane Spell Power at level 18. No longer granted."
+    },
+    {
+      "id": "power.vt_grip_of_death",
+      "type": "class_power",
+      "name": {
+        "fr": "Emprise de la mort",
+        "en": "Grip of Death"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "death",
+        "aura"
+      ],
+      "description": {
+        "fr": "Après 1 round d'activation (action libre), aura de 20 m : l'émissaire redirige sur lui 5 % des dégâts subis par ses alliés (10 % au niveau 2, 15 % au niveau 3). Cumulatif avec d'autres effets."
+      },
+      "effects": [
+        {
+          "target": "aura.damage_redirect_pct",
+          "op": "add",
+          "value": "if(level('class.vt_grip_of_death') >= 10, 15, if(level('class.vt_grip_of_death') >= 6, 10, 5))",
+          "bonusType": "untyped",
+          "condition": "active('toggle.vt_grip_of_death')",
+          "status": "draft",
+          "note": "Cumulatif avec d'autres effets"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.vt_beyond_grave_resilience",
+      "type": "class_power",
+      "name": {
+        "fr": "Résilience d'outre-tombe",
+        "en": "Beyond-the-Grave Resilience"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "death",
+        "hit points"
+      ],
+      "description": {
+        "fr": "+500 points de vie au niveau 1, 1000 au niveau 2, 2000 au total au niveau 3."
+      },
+      "effects": [
+        {
+          "target": "hp.max",
+          "op": "add",
+          "value": "if(level('class.vt_grip_of_death') >= 7, 2000, if(level('class.vt_grip_of_death') >= 4, 1000, 500))",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Paliers niveau 1 / 4 / 7 de la classe"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.vt_master_of_death",
+      "type": "class_power",
+      "name": {
+        "fr": "Maître de la mort",
+        "en": "Master of Death"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "death",
+        "regeneration"
+      ],
+      "description": {
+        "fr": "Quand Emprise de la mort est active : régénération de 5 % du total de points de vie par round (10 %, puis 15 %)."
+      },
+      "effects": [
+        {
+          "target": "hp.regeneration",
+          "op": "add",
+          "value": "floor(@hp.max * if(level('class.vt_grip_of_death') >= 8, 15, if(level('class.vt_grip_of_death') >= 5, 10, 5)) / 100)",
+          "bonusType": "untyped",
+          "condition": "active('toggle.vt_grip_of_death')",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.vt_arcane_secret_spellcraft",
+      "type": "class_power",
+      "name": {
+        "fr": "Secret des arcanes : Art de la magie",
+        "en": "Arcane Secret: Spellcraft"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "arcane"
+      ],
+      "description": {
+        "fr": "Bonus en Art de la magie : +5, puis +10, puis +20."
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": "if(level('class.vt_will_of_death') >= 7, 20, if(level('class.vt_will_of_death') >= 4, 10, 5))",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Remplacement : 5, puis 10, puis 20"
+        }
+      ],
+      "status": "draft",
+      "note": "Remplacement (+20 au maximum), d'après votre réponse « je crois »."
+    },
+    {
+      "id": "power.vt_mortis_incantatum",
+      "type": "class_power",
+      "name": {
+        "fr": "Mortis incantatum",
+        "en": "Mortis Incantatum"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "arcane",
+        "spell modifier"
+      ],
+      "description": {
+        "fr": "Le sort gagne +10 niveau de lanceur pour passer la RM et +10 au DD ; la cible subit un malus à ses défenses égal à 1/4 du niveau du sort."
+      },
+      "effects": [
+        {
+          "target": "spell.caster_level_vs_sr",
+          "op": "add",
+          "value": 10,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.dc",
+          "op": "add",
+          "value": 10,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Modificateur de sort (variante), sans coût d'emplacement."
+    },
+    {
+      "id": "power.vt_primum_incantatum",
+      "type": "class_power",
+      "name": {
+        "fr": "Primum incantatum",
+        "en": "Primum Incantatum"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "arcane",
+        "spell modifier"
+      ],
+      "description": {
+        "fr": "Dégâts du sort ×3, soins ×2, durée et zone ×2."
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "multiply",
+          "value": 3,
+          "multMode": "multiplicative",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.healing",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.duration",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.area.radius",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Multiplicatif : se cumule avec la métamagie (Superspell ×4 puis ×3 = ×12)."
+    },
+    {
+      "id": "power.vt_infinitum_incantatum",
+      "type": "class_power",
+      "name": {
+        "fr": "Infinitum incantatum",
+        "en": "Infinitum Incantatum"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "arcane"
+      ],
+      "description": {
+        "fr": "Lance un d10 : sur 8 ou moins, le sort lancé n'est pas consommé."
+      },
+      "status": "draft",
+      "note": "Description seule (règle de table)."
+    },
+    {
+      "id": "power.vt_epic_spell",
+      "type": "class_power",
+      "name": {
+        "fr": "Sort épique (Volonté de la mort)",
+        "en": "Epic spell (Will of Death)"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "epic spell"
+      ],
+      "description": {
+        "fr": "Un emplacement de sort supplémentaire d'un niveau au-dessus du maximum, aux niveaux 1, 3, 5, 8 et 10."
+      },
+      "effects": [
+        {
+          "target": "slots.above_max[{choice}]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Par niveau qui l'accorde (1, 3, 5, 8, 10)"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.vampire_bat_form",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme de chauve-souris",
+        "en": "Bat form"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "vampire",
+        "form"
+      ],
+      "description": {
+        "fr": "Forme de chauve-souris : enchaînement (50 % des dégâts) et +180 m de déplacement."
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "add",
+          "value": 180,
+          "bonusType": "untyped",
+          "condition": "active('toggle.bat_form')",
+          "status": "to confirm"
+        }
+      ],
+      "status": "to confirm",
+      "note": "180 m de vol ou de déplacement au sol ?"
+    },
+    {
+      "id": "power.vampire_house_rules",
+      "type": "class_power",
+      "name": {
+        "fr": "Règles du vampire",
+        "en": "Vampire house rules"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "vampire"
+      ],
+      "description": {
+        "fr": "Durée : niveau/3 + 3 ; bonus de critique (zone de critique +2 ou +3 ?)."
+      },
+      "status": "to confirm",
+      "note": "Fiche : « bonus critique (-2) » et lame « 3 vampire »."
+    },
+    {
+      "id": "spell.bulls_strength",
+      "type": "spell",
+      "name": {
+        "fr": "Force du taureau",
+        "en": "Bull's Strength"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "transmutation",
+        "buff"
+      ],
+      "description": {
+        "fr": "+4 d'altération en Force."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.bulls_strength')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 16"
+        }
+      ],
+      "status": "draft",
+      "note": "16 sur la fiche = +4 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.bears_endurance",
+      "type": "spell",
+      "name": {
+        "fr": "Endurance de l'ours",
+        "en": "Bear's Endurance"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "transmutation",
+        "buff"
+      ],
+      "description": {
+        "fr": "+4 d'altération en Constitution."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.bears_endurance')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 16"
+        }
+      ],
+      "status": "draft",
+      "note": "16 sur la fiche = +4 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.foxs_cunning",
+      "type": "spell",
+      "name": {
+        "fr": "Ruse du renard",
+        "en": "Fox's Cunning"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "transmutation",
+        "buff"
+      ],
+      "description": {
+        "fr": "+4 d'altération en Intelligence."
+      },
+      "effects": [
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.foxs_cunning')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 16"
+        }
+      ],
+      "status": "draft",
+      "note": "16 sur la fiche = +4 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.divine_favor",
+      "type": "spell",
+      "name": {
+        "fr": "Faveur divine",
+        "en": "Divine Favor"
+      },
+      "provenance": "official",
+      "source": "SRD (regles-donjons-dragons.com/page794.html)",
+      "labels": [
+        "evocation",
+        "buff"
+      ],
+      "description": {
+        "fr": "Bonus de chance de +1 aux jets d'attaque et de dégâts par tranche de 3 niveaux de lanceur (minimum +1, maximum +6). Ne s'applique pas aux dégâts des sorts."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(min(floor(@spell.caster_level / 3), 6), 1)",
+          "bonusType": "luck",
+          "condition": "active('toggle.divine_favor')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 24"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "max(min(floor(@spell.caster_level / 3), 6), 1)",
+          "bonusType": "luck",
+          "condition": "active('toggle.divine_favor')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 24"
+        }
+      ],
+      "status": "draft",
+      "note": "+24 = +6 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.barkskin",
+      "type": "spell",
+      "name": {
+        "fr": "Peau d'écorce",
+        "en": "Barkskin"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "transmutation",
+        "defense"
+      ],
+      "description": {
+        "fr": "Bonus d'altération à l'armure naturelle : +2, +1 par 3 niveaux au-delà du 3e (max +5)."
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "min(2 + floor(max(@spell.caster_level - 3, 0) / 3), 5)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.barkskin')",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Fiche : 20 = 5 × 4 avec Superspell, cohérent."
+    },
+    {
+      "id": "spell.protection_from_evil",
+      "type": "spell",
+      "name": {
+        "fr": "Protection contre le Mal",
+        "en": "Protection from Evil"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "abjuration",
+        "defense"
+      ],
+      "description": {
+        "fr": "+2 de parade à la CA et +2 de résistance aux sauvegardes contre les créatures maléfiques."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "deflection",
+          "condition": "active('toggle.protection_from_evil')",
+          "status": "draft",
+          "note": "SRD ; fourni par l'Armure céleste"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "status": "draft",
+          "note": "Situationnel",
+          "situation": "situation.vs_evil"
+        }
+      ],
+      "status": "draft",
+      "note": "SRD (+2), fourni par l'Armure céleste."
+    },
+    {
+      "id": "spell.force_of_colossus",
+      "type": "spell",
+      "name": {
+        "fr": "Force du colosse",
+        "en": "Force of the Colossus"
+      },
+      "provenance": "official",
+      "source": "to confirm (Spell Compendium ?)",
+      "labels": [
+        "buff",
+        "strength"
+      ],
+      "description": {
+        "fr": "Bonus de taille (+8 Force, +4 Constitution) ; l'arme passe à la taille G (épée à deux mains : 3d6). Règle de table : se cumule avec Taille de géant, et Danalieth le lance avec Empower (12 et 6)."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 8,
+          "bonusType": "untyped",
+          "condition": "active('toggle.force_of_colossus')",
+          "status": "draft",
+          "note": "Bonus de taille, cumulé avec Taille de géant par accord du MJ ; 12 avec Empower"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "condition": "active('toggle.force_of_colossus')",
+          "status": "draft",
+          "note": "Idem ; 6 avec Empower"
+        },
+        {
+          "target": "weapon.size_steps",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "condition": "active('toggle.force_of_colossus')",
+          "status": "draft",
+          "note": "Arme d’une taille au-dessus (épée à deux mains 2d6 → 3d6, « Arme 10 » sur la fiche)"
+        }
+      ],
+      "status": "draft",
+      "note": "Accord du MJ."
+    },
+    {
+      "id": "spell.force_of_nature",
+      "type": "spell",
+      "name": {
+        "fr": "Force de la nature",
+        "en": "Force of Nature"
+      },
+      "provenance": "official",
+      "source": "to confirm (Spell Compendium ?)",
+      "labels": [
+        "buff"
+      ],
+      "description": {
+        "fr": "+4 en Force, Dextérité et Constitution (16 avec Superspell)."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "nature",
+          "condition": "active('toggle.force_of_nature')",
+          "status": "to confirm",
+          "note": "16 avec Superspell"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "nature",
+          "condition": "active('toggle.force_of_nature')",
+          "status": "to confirm",
+          "note": "16 avec Superspell"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "nature",
+          "condition": "active('toggle.force_of_nature')",
+          "status": "to confirm",
+          "note": "16 avec Superspell"
+        }
+      ],
+      "status": "to confirm",
+      "note": "Officiel. Valeurs de base déduites de la fiche (÷ 4)."
+    },
+    {
+      "id": "spell.giant_size",
+      "type": "spell",
+      "name": {
+        "fr": "Taille de géant",
+        "en": "Giant Size"
+      },
+      "provenance": "official",
+      "source": "to confirm (Spell Compendium ?)",
+      "labels": [
+        "buff",
+        "size"
+      ],
+      "description": {
+        "fr": "Taille C (colossale) : bonus de taille correspondants, +32 en Force et +16 en Constitution. Règle de table : au niveau épique, le personnage gagne les attributs colossaux sans changer réellement de taille."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 32,
+          "bonusType": "size",
+          "condition": "active('toggle.giant_size')",
+          "status": "draft",
+          "note": "Taille C ; pas de Superspell"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 16,
+          "bonusType": "size",
+          "condition": "active('toggle.giant_size')",
+          "status": "draft",
+          "note": "Taille C ; pas de Superspell"
+        }
+      ],
+      "status": "draft",
+      "note": "Accord du MJ. Pas de Superspell sur ce sort."
+    },
+    {
+      "id": "spell.moonbow",
+      "type": "spell",
+      "name": {
+        "fr": "Moonbow",
+        "en": "Moonbow"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "evocation",
+        "electricity",
+        "damage",
+        "rays"
+      ],
+      "description": {
+        "fr": "Évocation 9 : trois rayons de 20d6 dégâts d'électricité."
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3 × 20d6 electricity",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Trois rayons"
+        }
+      ],
+      "status": "draft",
+      "note": "Liste de sorts (magicien/ensorceleur 9 ?) dans Relations."
+    },
+    {
+      "id": "spell.meteorite",
+      "type": "spell",
+      "name": {
+        "fr": "Météorite",
+        "en": "Meteorite"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "evocation",
+        "fire",
+        "bludgeoning",
+        "damage",
+        "area"
+      ],
+      "description": {
+        "fr": "Évocation 9 : 15 × 8d6 dégâts, moitié contondants, moitié feu, dans un rayon de 12 m. Pas de jet de sauvegarde."
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "15 × 8d6 bludgeoning_fire",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Rayon 12 m, pas de sauvegarde"
+        },
+        {
+          "target": "spell.area.radius",
+          "op": "set",
+          "value": 12,
+          "layer": "base",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.save",
+          "op": "set",
+          "value": "'none'",
+          "layer": "base",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "spell.heal_single",
+      "type": "spell",
+      "name": {
+        "fr": "Soin monocible (nom provisoire)",
+        "en": "Single-target heal (working name)"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "conjuration",
+        "healing"
+      ],
+      "description": {
+        "fr": "Invocation (guérison), comparable à Guérison suprême de groupe mais sur une seule cible : 15 PV par niveau de lanceur, maximum 375."
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(15 * @spell.caster_level, 375)",
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "to confirm",
+      "note": "Nom définitif et niveau du sort ?"
+    },
+    {
+      "id": "spell.heal_over_time",
+      "type": "spell",
+      "name": {
+        "fr": "Soin sur la durée",
+        "en": "Heal over time"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "conjuration",
+        "healing"
+      ],
+      "description": {
+        "fr": "Rend 40 PV par round pendant 1 round par niveau, maximum 30 rounds."
+      },
+      "effects": [
+        {
+          "target": "spell.healing_per_round",
+          "op": "add",
+          "value": 40,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.duration",
+          "op": "set",
+          "value": "min(@spell.caster_level, 30)",
+          "layer": "base",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "to confirm",
+      "note": "Nom, école et niveau du sort ?"
+    },
+    {
+      "id": "item.blade_of_destruction",
+      "type": "item",
+      "name": {
+        "fr": "Lame de destruction",
+        "en": "Blade of Destruction"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "weapon",
+        "critical"
+      ],
+      "description": {
+        "fr": "Arme +12 (épée à deux mains), critique 13-20 (base 19-20, +3 de l'arme, +3 du vampire), ×8 (×2 contre les immunisés). Sur un critique, on peut renoncer au multiplicateur pour : indomptabilité, lien de sang, ou Vigueur DD 10+2 par utilisation et −2 Constitution, critique automatique pendant 1 attaque."
+      },
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": 12,
+          "bonusType": "enhancement",
+          "scope": "item",
+          "status": "draft"
+        },
+        {
+          "target": "weapon.damage",
+          "op": "add",
+          "value": 12,
+          "bonusType": "enhancement",
+          "scope": "item",
+          "status": "draft"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "scope": "item",
+          "status": "draft",
+          "note": "19-20 de base, +3 arme, +3 vampire = 13-20"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 8,
+          "layer": "base",
+          "scope": "item",
+          "status": "draft"
+        },
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d6",
+          "scope": "item",
+          "status": "draft",
+          "note": "Base dice of the weapon; Force of Colossus moves them one size up (3d6)",
+          "layer": "base"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive",
+          "status": "draft",
+          "note": "Two-handed: Strength x1.5 on damage"
+        }
+      ],
+      "status": "draft",
+      "note": "13-20 confirmé (14-20 sur la fiche était une erreur)."
+    },
+    {
+      "id": "item.celestial_armor",
+      "type": "item",
+      "name": {
+        "fr": "Armure céleste",
+        "en": "Celestial Armor"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "armor"
+      ],
+      "description": {
+        "fr": "Harnois +12 (20 en CA), Dextérité max 10, vol, immunité à la coercition."
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 20,
+          "layer": "base",
+          "status": "draft",
+          "note": "Harnois 8 + 12"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 10,
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "item.cloak_of_resistance_12",
+      "type": "item",
+      "name": {
+        "fr": "Cape de résistance +12",
+        "en": "Cloak of Resistance +12"
+      },
+      "provenance": "official",
+      "source": "SRD (épique)",
+      "labels": [
+        "cloak",
+        "saves"
+      ],
+      "description": {
+        "fr": "+12 de résistance à tous les jets de sauvegarde."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 12,
+          "bonusType": "resistance",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "item.trinket_vampirism",
+      "type": "item",
+      "name": {
+        "fr": "Breloque de vampirisme",
+        "en": "Vampirism trinket"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "trinket",
+        "healing"
+      ],
+      "description": {
+        "fr": "Soigne de la moitié des dégâts infligés, maximum la moitié des PV du personnage. Temps de recharge : 1d4−1."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "item.trinket_critical",
+      "type": "item",
+      "name": {
+        "fr": "Breloque critique",
+        "en": "Critical trinket"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "trinket",
+        "critical"
+      ],
+      "description": {
+        "fr": "−4 sur le dé de critique (zone de critique +4) et +4 au multiplicateur de critique. Temps de recharge : 1d4+1."
+      },
+      "effects": [
+        {
+          "target": "weapon.threat_range",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "scope": "item",
+          "status": "draft"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "scope": "item",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "spell.divine_power",
+      "type": "spell",
+      "name": {
+        "fr": "Puissance divine",
+        "en": "Divine Power"
+      },
+      "provenance": "official",
+      "source": "SRD + Équipe",
+      "labels": [
+        "evocation",
+        "buff",
+        "attack"
+      ],
+      "description": {
+        "fr": "Règle maison : le BBA devient égal au niveau de personnage jusqu'au niveau 20, puis +0,75 par niveau au-delà (49 au niveau 59). +6 d'altération en Force (ne se cumule pas avec Force du taureau) et 1 PV temporaire par niveau."
+      },
+      "effects": [
+        {
+          "target": "bab",
+          "op": "set",
+          "value": "if(level() <= 20, level(), 20 + floor(0.75 * (level() - 20)))",
+          "layer": "base",
+          "condition": "active('toggle.divine_power')",
+          "status": "draft",
+          "note": "Règle maison ; 49 au niveau 59"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 6,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.divine_power')",
+          "status": "draft",
+          "note": "Ne se cumule pas avec Force du taureau (+16)"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "level()",
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_power')",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "spell.spell_resistance",
+      "type": "spell",
+      "name": {
+        "fr": "Résistance à la magie",
+        "en": "Spell Resistance"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "abjuration",
+        "defense"
+      ],
+      "description": {
+        "fr": "RM égale à 12 + niveau de lanceur (72 avec niveau de lanceur 60)."
+      },
+      "effects": [
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": "12 + @spell.caster_level",
+          "layer": "base",
+          "condition": "active('toggle.spell_resistance')",
+          "status": "draft",
+          "note": "72 avec niveau de lanceur 60"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.warblade_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny Dodge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "warblade",
+        "defense"
+      ],
+      "description": {
+        "fr": "Ne peut pas être pris au dépourvu."
+      },
+      "status": "draft",
+      "note": "« Unflooded » sur la fiche."
+    },
+    {
+      "id": "power.ultimate_magus_augmented_casting_superior",
+      "type": "class_power",
+      "name": {
+        "fr": "Incantation augmentée supérieure",
+        "en": "Augmented Casting, Superior"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "ultimate magus",
+        "spells"
+      ],
+      "description": {
+        "fr": "Comme Incantation augmentée, sans limite d'utilisation. Le sort sacrifié peut être remplacé par 2 sorts du niveau inférieur, 4 de deux niveaux en dessous ou 8 de trois niveaux en dessous ; les sacrifices se combinent (8 sorts du niveau 1 valent un sort du niveau 4)."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "race.danalieth",
+      "type": "race",
+      "name": {
+        "fr": "Race personnalisée",
+        "en": "Custom race"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "race"
+      ],
+      "description": {
+        "fr": "+2 Intelligence, −2 Charisme."
+      },
+      "effects": [
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "status": "draft"
+        },
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "racial",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Nom de la race à compléter."
+    },
+    {
+      "id": "item.tomes",
+      "type": "item",
+      "name": {
+        "fr": "Tomes (+5)",
+        "en": "Tomes (+5)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "tome",
+        "inherent"
+      ],
+      "description": {
+        "fr": "+5 inhérent en Force, Constitution, Intelligence et Charisme."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 5,
+          "bonusType": "inherent",
+          "status": "draft"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 5,
+          "bonusType": "inherent",
+          "status": "draft"
+        },
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": 5,
+          "bonusType": "inherent",
+          "status": "draft"
+        },
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 5,
+          "bonusType": "inherent",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Regroupés ; un tome par caractéristique dans le catalogue final."
+    },
+    {
+      "id": "item.ioun_stones",
+      "type": "item",
+      "name": {
+        "fr": "Pierres ioun",
+        "en": "Ioun stones"
+      },
+      "provenance": "official",
+      "source": "SRD + Équipe",
+      "labels": [
+        "ioun"
+      ],
+      "description": {
+        "fr": "Pierres ioun standard. Règle de table : leur bonus d'altération se cumule avec l'altération normale, il devient donc son propre type (ioun)."
+      },
+      "effects": [
+        {
+          "target": "ability.all.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "ioun",
+          "status": "draft",
+          "note": "Type ioun : se cumule avec l'altération"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.ultimate_magus_arcane_spell_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Puissance des sorts profanes",
+        "en": "Arcane Spell Power"
+      },
+      "provenance": "official",
+      "source": "Complete Mage",
+      "labels": [
+        "ultimate magus",
+        "caster level"
+      ],
+      "description": {
+        "fr": "+1 au niveau de lanceur de tous les sorts profanes au niveau 1, puis +1 aux niveaux 4, 7 et 10 (+4). Extension de l'équipe : +5, +6, +7, +8 aux niveaux 12, 15, 18 et 20."
+      },
+      "effects": [
+        {
+          "target": "caster_level.arcane",
+          "op": "add",
+          "value": "if(level('class.ultimate_magus') >= 20, 8, if(level('class.ultimate_magus') >= 18, 7, if(level('class.ultimate_magus') >= 15, 6, if(level('class.ultimate_magus') >= 12, 5, if(level('class.ultimate_magus') >= 10, 4, if(level('class.ultimate_magus') >= 7, 3, if(level('class.ultimate_magus') >= 4, 2, 1)))))))",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Livre : 1, 4, 7, 10 ; équipe : 12, 15, 18, 20"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "power.ultimate_magus_augmented_casting",
+      "type": "class_power",
+      "name": {
+        "fr": "Incantation augmentée",
+        "en": "Augmented Casting"
+      },
+      "provenance": "official",
+      "source": "Complete Mage",
+      "labels": [
+        "ultimate magus",
+        "spells"
+      ],
+      "usesPerDay": "3 + floor(level('class.ultimate_magus') / 2)",
+      "description": {
+        "fr": "Dès le niveau 3 : sacrifier un sort ou un emplacement d'une classe pour appliquer un don de métamagie connu à un sort d'une autre classe profane. Niveau du sort augmenté ≤ ½ niveau de classe ; niveau de l'emplacement sacrifié ≥ ajustement du don ; impossible sur un sort déjà modifié par la métamagie."
+      },
+      "status": "draft",
+      "note": "Remplacé par la version supérieure au niveau 20 (sans limite)."
+    },
+    {
+      "id": "power.ultimate_magus_expanded_knowledge",
+      "type": "class_power",
+      "name": {
+        "fr": "Connaissance des sorts étendue",
+        "en": "Expanded Spell Knowledge"
+      },
+      "provenance": "official",
+      "source": "Complete Mage",
+      "labels": [
+        "ultimate magus",
+        "spells"
+      ],
+      "description": {
+        "fr": "Aux niveaux 2, 4, 6, 8 et 10 : ajoute un sort du grimoire aux sorts connus d'une classe spontanée, même d'un niveau qu'elle ne peut pas encore lancer (niveau maximal : 1, 2, 3, 4 puis 5)."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.ultimate_magus_bonus_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire (métamagie)",
+        "en": "Bonus Feat (metamagic)"
+      },
+      "provenance": "official",
+      "source": "Complete Mage",
+      "labels": [
+        "ultimate magus",
+        "metamagic"
+      ],
+      "description": {
+        "fr": "Un don de métamagie supplémentaire dont le personnage remplit les conditions (niveaux 5 et 9 ; 13, 16 et 19 avec l'extension)."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.vt_will_of_death_saves",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance de l'émissaire",
+        "en": "Emissary's resilience"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "death",
+        "saves"
+      ],
+      "description": {
+        "fr": "Bonus aux trois jets de sauvegarde, ajouté pour retrouver les valeurs jouées à la table."
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 3.5,
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Valeur fixe pour retrouver la fiche ; à revoir si la classe progresse"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 3.5,
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Valeur fixe pour retrouver la fiche ; à revoir si la classe progresse"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 3.5,
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Valeur fixe pour retrouver la fiche ; à revoir si la classe progresse"
+        }
+      ],
+      "status": "draft",
+      "note": "Corrige l'ancienne erreur de calcul : 1,5 (règle épique) + 3,5 = 5 pour 3 niveaux."
+    },
+    {
+      "id": "power.sv_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection",
+        "en": "Warding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "defense"
+      ],
+      "usesPerDay": "floor((level('class.sevenfold_veil') + 1) / 2)",
+      "description": {
+        "fr": "Crée une barrière portant un voile connu : personnelle (1 min/niveau), de zone (1 min/niveau) ou mur (10 min/niveau). DD 18 + modificateur de la caractéristique de lanceur ; niveau de lanceur profane. 1/jour, puis 2, 3 et 4/jour aux niveaux 3, 5 et 7."
+      },
+      "effects": [
+        {
+          "target": "dc.warding",
+          "op": "set",
+          "value": "18 + @casting_ability.mod",
+          "layer": "base",
+          "status": "draft",
+          "note": "Caractéristique principale de lanceur"
+        }
+      ],
+      "status": "draft",
+      "note": "Les « wards » de la fiche."
+    },
+    {
+      "id": "power.sv_veil_red",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile rouge",
+        "en": "Red veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "veil"
+      ],
+      "description": {
+        "fr": "Bloque les attaques à distance non magiques. Le traverser inflige 20 dégâts de feu (Réflexes ½). Détruit par cône de froid. Obtenu au niveau 1."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_orange",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile orange",
+        "en": "Orange veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "veil"
+      ],
+      "description": {
+        "fr": "Bloque les attaques à distance magiques (rayons, projectiles). Le traverser inflige 40 dégâts d'acide (Réflexes ½). Détruit par bourrasque. Obtenu au niveau 2."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_yellow",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile jaune",
+        "en": "Yellow veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "veil"
+      ],
+      "description": {
+        "fr": "Bloque gaz, nuages et pétrification ; immunité au poison venu de l'extérieur. Le traverser inflige 80 dégâts d'électricité (Réflexes ½). Détruit par désintégration. Obtenu au niveau 3."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_green",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile vert",
+        "en": "Green veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "veil"
+      ],
+      "description": {
+        "fr": "Bloque les souffles. Le traverser : Vigueur ou mort (réussite : 1d6 Constitution) ; effet de poison. Détruit par passe-muraille. Obtenu au niveau 4."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_blue",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile bleu",
+        "en": "Blue veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "veil"
+      ],
+      "description": {
+        "fr": "Bloque divinations et effets mentaux. Le traverser : Vigueur ou pétrification. Détruit par projectile magique. Obtenu au niveau 5."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_indigo",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile indigo",
+        "en": "Indigo veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "veil"
+      ],
+      "description": {
+        "fr": "Bloque sorts et pouvoirs magiques. Le traverser : Volonté ou confusion (comme aliénation mentale). Annulé par lumière du jour. Obtenu au niveau 6."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_violet",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile violet",
+        "en": "Violet veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "veil"
+      ],
+      "description": {
+        "fr": "Désintègre objets et effets qui le traversent ; créatures : Volonté ou changement de plan aléatoire. Détruit par dissipation de la magie. Obtenu au niveau 7."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_unimpeachable_abjuration",
+      "type": "class_power",
+      "name": {
+        "fr": "Abjuration inébranlable",
+        "en": "Unimpeachable Abjuration"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "dispel"
+      ],
+      "description": {
+        "fr": "Ajoute le niveau de classe au DD pour dissiper ses abjurations."
+      },
+      "effects": [
+        {
+          "target": "dc.dispel_own_abjuration",
+          "op": "add",
+          "value": "level('class.sevenfold_veil')",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "+7 pour Danalieth"
+        }
+      ],
+      "status": "draft",
+      "note": "Fiche : « DD dissipation +7 »."
+    },
+    {
+      "id": "power.sv_unanswerable_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe imparable",
+        "en": "Unanswerable Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "dispel"
+      ],
+      "description": {
+        "fr": "+2 aux tests de niveau de lanceur pour contrer ou dissiper les abjurations (+4 au niveau 6)."
+      },
+      "effects": [
+        {
+          "target": "check.dispel_abjuration",
+          "op": "add",
+          "value": "if(level('class.sevenfold_veil') >= 6, 4, 2)",
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Fiche : « DD pour dissiper −4 »."
+    },
+    {
+      "id": "power.sv_reactive_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection réactive",
+        "en": "Reactive Warding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "defense"
+      ],
+      "description": {
+        "fr": "Lève une protection par action immédiate pendant l'action d'un adversaire."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_double_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Double protection",
+        "en": "Double Warding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "defense"
+      ],
+      "description": {
+        "fr": "Deux voiles pour une seule utilisation ; le moins puissant est à l'extérieur."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_kaleidoscopic_doom",
+      "type": "class_power",
+      "name": {
+        "fr": "Fatalité kaléidoscopique",
+        "en": "Kaleidoscopic Doom"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "sevenfold veil",
+        "dispel"
+      ],
+      "usesPerDay": 1,
+      "description": {
+        "fr": "Action simple, une créature à 18 m : dissipation suprême ciblée ; pour chaque sort dissipé, un voile (du rouge vers le violet) l'affecte comme si elle l'avait traversé. Équivaut à un sort du 9e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "bonus_type.ioun",
+      "type": "bonus_type",
+      "name": {
+        "fr": "Ioun",
+        "en": "Ioun"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "bonus type"
+      ],
+      "description": {
+        "fr": "Type des bonus des pierres ioun. Se cumule avec l'altération ; deux bonus ioun sur la même valeur ne se cumulent pas."
+      },
+      "status": "draft",
+      "note": "stacks = false"
+    },
+    {
+      "id": "bonus_type.template",
+      "type": "bonus_type",
+      "name": {
+        "fr": "Archétype",
+        "en": "Template"
+      },
+      "provenance": "team",
+      "source": "Équipe",
+      "labels": [
+        "bonus type"
+      ],
+      "description": {
+        "fr": "Bonus de caractéristiques des archétypes (Démon, Vampire, Dragon). Se cumulent entre eux."
+      },
+      "status": "draft",
+      "note": "stacks = true ; sinon Int 2 + 4 + 2 ne s'additionneraient pas"
+    },
+    {
+      "id": "stance.danalieth_attack_stance",
+      "type": "stance",
+      "name": {
+        "fr": "Posture de Danalieth (à identifier)",
+        "en": "Danalieth's stance (to identify)"
+      },
+      "provenance": "to confirm",
+      "source": "Book of Nine Swords ?",
+      "labels": [
+        "stance"
+      ],
+      "description": {
+        "fr": "+10 à l'attaque d'après la fiche (« Stance crit »)."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 10,
+          "bonusType": "untyped",
+          "condition": "active('toggle.stance.danalieth_attack_stance')",
+          "status": "to confirm"
+        }
+      ],
+      "status": "to complete",
+      "note": "Which stance gives +10 attack?"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 1,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_grip_of_death"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 2,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_beyond_grave_resilience"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 3,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_master_of_death"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 4,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_beyond_grave_resilience"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 5,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_master_of_death"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 6,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_grip_of_death"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 7,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_beyond_grave_resilience"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 8,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_master_of_death"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 9,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau | Grants text: bonus feat"
+    },
+    {
+      "classId": "class.vt_grip_of_death",
+      "level": 10,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_grip_of_death"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 1,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_epic_spell"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau | Grants text: caster level 3; power.vt_epic_spell"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 2,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_arcane_secret_spellcraft"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau | Grants text: power.vt_arcane_secret_spellcraft (+5)"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 3,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_epic_spell",
+        "power.vt_mortis_incantatum"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 4,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_arcane_secret_spellcraft"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau | Grants text: power.vt_arcane_secret_spellcraft (+10)"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 5,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_epic_spell"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau | Grants text: caster level 6 (replaces 3); power.vt_epic_spell"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 6,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_primum_incantatum"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 7,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_arcane_secret_spellcraft"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau | Grants text: power.vt_arcane_secret_spellcraft (+20)"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 8,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_epic_spell"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau"
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 9,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau",
+      "grants": []
+    },
+    {
+      "classId": "class.vt_will_of_death",
+      "level": 10,
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5,
+      "grants": [
+        "power.vt_epic_spell",
+        "power.vt_infinitum_incantatum"
+      ],
+      "status": "draft",
+      "note": "Classe épique : +½ par niveau | Grants text: caster level 15 (replaces 6); power.vt_epic_spell; power.vt_infinitum_incantatum"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier | Grants text: maneuvers; weapon aptitude"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.warblade_battle_clarity",
+        "power.warblade_uncanny_dodge"
+      ],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier | Grants text: bonus feat"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier | Grants text: battle ardor"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier | Grants text: bonus feat; improved uncanny dodge"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.warblade_battle_cunning"
+      ],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier | Grants text: bonus feat"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.warblade_battle_skill"
+      ],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier | Grants text: bonus feat"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.warblade",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "status": "to confirm",
+      "note": "Capacités d'après le livre, à vérifier | Grants text: battle mastery"
+    },
+    {
+      "classId": "class.warblade",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "status": "draft",
+      "grants": []
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.ultimate_magus_arcane_spell_power"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: power.ultimate_magus_arcane_spell_power (+1); spellcasting: +1 level of lowest-caster-level arcane class"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.ultimate_magus_expanded_knowledge"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: power.ultimate_magus_expanded_knowledge (1st); spellcasting: +1 prepared and +1 spontaneous"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.ultimate_magus_augmented_casting"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: power.ultimate_magus_augmented_casting; spellcasting: +1 prepared and +1 spontaneous"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: arcane spell power +2; expanded knowledge (2nd); spellcasting: +1 level of lowest-caster-level arcane class"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.ultimate_magus_bonus_feat"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: power.ultimate_magus_bonus_feat; spellcasting: +1 prepared and +1 spontaneous"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: expanded knowledge (3rd); spellcasting: +1 prepared and +1 spontaneous"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: arcane spell power +3; spellcasting: +1 level of lowest-caster-level arcane class"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: expanded knowledge (4th); spellcasting: +1 prepared and +1 spontaneous"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.ultimate_magus_bonus_feat"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: power.ultimate_magus_bonus_feat; spellcasting: +1 prepared and +1 spontaneous"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 de personnage : BBA et sauvegardes suivent la règle épique (+½). | Grants text: arcane spell power +4; expanded knowledge (5th); spellcasting: +1 prepared and +1 spontaneous"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 11,
+      "grants": [],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: spellcasting +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 12,
+      "grants": [],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: arcane spell power +5; spellcasting +1 / +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 13,
+      "grants": [
+        "power.ultimate_magus_bonus_feat"
+      ],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: power.ultimate_magus_bonus_feat; spellcasting +1 / +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 14,
+      "grants": [],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: spellcasting +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 15,
+      "grants": [],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: arcane spell power +6; spellcasting +1 / +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 16,
+      "grants": [
+        "power.ultimate_magus_bonus_feat"
+      ],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: power.ultimate_magus_bonus_feat; spellcasting +1 / +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 17,
+      "grants": [],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: spellcasting +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 18,
+      "grants": [],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: arcane spell power +7; spellcasting +1 / +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 19,
+      "grants": [
+        "power.ultimate_magus_bonus_feat"
+      ],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: power.ultimate_magus_bonus_feat; spellcasting +1 / +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.ultimate_magus",
+      "level": 20,
+      "grants": [
+        "power.ultimate_magus_augmented_casting_superior"
+      ],
+      "status": "draft",
+      "note": "Extension de l'équipe. BBA et sauvegardes : règle épique (+½) | Grants text: arcane spell power +8; power.ultimate_magus_augmented_casting_superior; spellcasting +1 / +1 (+1 = lowest-caster-level class, +1 / +1 = both)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.sv_warding",
+        "power.sv_unimpeachable_abjuration",
+        "power.sv_veil_red"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_warding (1/day); power.sv_unimpeachable_abjuration; power.sv_veil_red; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.sv_unanswerable_strike",
+        "power.sv_veil_orange"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_unanswerable_strike (+2); power.sv_veil_orange; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.sv_veil_yellow"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: warding 2/day; power.sv_veil_yellow; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.sv_reactive_warding",
+        "power.sv_veil_green"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_reactive_warding; power.sv_veil_green; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.sv_veil_blue"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: warding 3/day; power.sv_veil_blue; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.sv_double_warding",
+        "power.sv_veil_indigo"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: unanswerable strike +4; power.sv_double_warding; power.sv_veil_indigo; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.sv_kaleidoscopic_doom",
+        "power.sv_veil_violet"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_kaleidoscopic_doom; power.sv_veil_violet; warding 4/day; spellcasting +1 existing arcane class (chosen)"
+    }
+  ],
+  "progressionRules": {
+    "epicAfterLevel": 20,
+    "epicPerLevel": {
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5
+    }
+  },
+  "rules": [
+    {
+      "id": "rule.epic",
+      "appliesTo": "each level after 20",
+      "text": "Règle maison : BBA et sauvegardes +½ par niveau épique, additionnés en fractions, arrondis une fois",
+      "note": "Retrouvé sur la fiche : total 39 / 29 / 35 / 29"
+    },
+    {
+      "id": "rule.hit_points",
+      "appliesTo": "each level",
+      "text": "Points de vie par niveau = ¾ du dé de vie (d12 → 9, d4 → 3)",
+      "note": "Retrouvé sur la fiche : 297 PV de base"
+    },
+    {
+      "id": "rule.experience",
+      "appliesTo": "level n",
+      "text": "XP requis = n × (n − 1) / 2 × 1000",
+      "note": "1 718 250 XP → niveau 59"
+    },
+    {
+      "id": "rule.epic_progression",
+      "formula": "Each class level gained at character level > 20 gives +0.5 BAB and +0.5 to each save, whatever the class table says. Fractions are summed across classes and rounded down once."
+    },
+    {
+      "id": "rule.hit_points",
+      "formula": "Per level: 3/4 of the hit die (d12 -> 9, d4 -> 3)."
+    },
+    {
+      "id": "rule.experience",
+      "formula": "XP needed for level n = n * (n - 1) / 2 * 1000"
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_mastery_of_shaping",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_mastery_of_elements",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_mastery_of_counterspelling",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_arcane_reach",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_spell_power",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "template.vampire",
+      "relation": "grants",
+      "to": "power.vampire_bat_form"
+    },
+    {
+      "from": "template.vampire",
+      "relation": "grants",
+      "to": "power.vampire_house_rules"
+    },
+    {
+      "from": "feat.greater_spell_focus_abjuration",
+      "relation": "requires",
+      "to": "feat.spell_focus_abjuration"
+    },
+    {
+      "from": "spell.bulls_strength",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "level": 2,
+      "note": "SRD"
+    },
+    {
+      "from": "spell.bulls_strength",
+      "relation": "on_spell_list",
+      "to": "class.sorcerer",
+      "level": 2,
+      "note": "SRD"
+    },
+    {
+      "from": "spell.bears_endurance",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "level": 2,
+      "note": "SRD"
+    },
+    {
+      "from": "spell.foxs_cunning",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "level": 2,
+      "note": "SRD"
+    },
+    {
+      "from": "spell.barkskin",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "note": "to confirm : sort de druide/rôdeur dans le SRD, pas de magicien"
+    },
+    {
+      "from": "spell.divine_favor",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "note": "to confirm : sort de prêtre/paladin dans le SRD"
+    },
+    {
+      "from": "spell.protection_from_evil",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "level": 1,
+      "note": "SRD"
+    },
+    {
+      "from": "class.ultimate_magus",
+      "relation": "grants",
+      "to": "power.ultimate_magus_augmented_casting_superior",
+      "level": 20,
+      "note": "Extension de l'équipe"
+    },
+    {
+      "from": "class.warblade",
+      "relation": "grants",
+      "to": "power.warblade_uncanny_dodge",
+      "level": 2
+    },
+    {
+      "from": "spell.divine_power",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "note": "to confirm : sort de prêtre dans le SRD"
+    },
+    {
+      "from": "spell.spell_resistance",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "note": "to confirm : sort de prêtre dans le SRD"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_warding"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_unimpeachable_abjuration"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_unanswerable_strike"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_reactive_warding"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_double_warding"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_kaleidoscopic_doom"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_red"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_orange"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_yellow"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_green"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_blue"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_indigo"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_violet"
+    },
+    {
+      "from": "spell.moonbow",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "level": 9,
+      "note": "to confirm : liste supposée"
+    },
+    {
+      "from": "spell.moonbow",
+      "relation": "on_spell_list",
+      "to": "class.sorcerer",
+      "level": 9,
+      "note": "to confirm : liste supposée"
+    },
+    {
+      "from": "spell.meteorite",
+      "relation": "on_spell_list",
+      "to": "class.wizard",
+      "level": 9,
+      "note": "to confirm : liste supposée"
+    },
+    {
+      "from": "spell.meteorite",
+      "relation": "on_spell_list",
+      "to": "class.sorcerer",
+      "level": 9,
+      "note": "to confirm : liste supposée"
+    },
+    {
+      "from": "class.vt_will_of_death",
+      "relation": "grants",
+      "to": "power.vt_will_of_death_saves",
+      "level": 1,
+      "note": "Added for the golden test: nothing granted this power"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_spell_like_ability",
+      "note": "High arcana option, one per archmage level"
+    }
+  ],
+  "diceSteps": {
+    "up": {
+      "1": "1d2",
+      "1d2": "1d3",
+      "1d3": "1d4",
+      "1d4": "1d6",
+      "1d6": "1d8",
+      "1d8": "2d6",
+      "2d6": "3d6",
+      "3d6": "4d6",
+      "4d6": "6d6",
+      "6d6": "8d6",
+      "8d6": "12d6",
+      "1d10": "2d8",
+      "2d8": "3d8",
+      "3d8": "4d8",
+      "4d8": "6d8",
+      "6d8": "8d8",
+      "8d8": "12d8",
+      "1d12": "3d6",
+      "2d4": "2d6",
+      "2d10": "4d8"
+    },
+    "down": {
+      "1": "0",
+      "1d2": "1",
+      "1d3": "1d2",
+      "1d4": "1d3",
+      "1d6": "1d4",
+      "1d8": "1d6",
+      "1d10": "1d8",
+      "1d12": "1d10",
+      "2d4": "1d6",
+      "2d6": "1d10",
+      "2d8": "2d6",
+      "2d10": "2d8",
+      "3d6": "2d6",
+      "3d8": "2d8",
+      "4d6": "3d6",
+      "4d8": "3d8",
+      "6d6": "4d6",
+      "6d8": "4d8",
+      "8d6": "6d6",
+      "8d8": "6d8",
+      "12d6": "8d6",
+      "12d8": "8d8"
+    }
+  }
+}

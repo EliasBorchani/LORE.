@@ -1,0 +1,543 @@
+{
+  "entities": [
+    {
+      "id": "race.human",
+      "type": "race",
+      "name": {
+        "fr": "Humain",
+        "en": "Human"
+      },
+      "provenance": "official",
+      "labels": [
+        "race",
+        "medium"
+      ],
+      "description": {
+        "fr": "Ils n’ont ni les siècles des elfes ni la patience de la pierre. Ce qu’ils ont, c’est l’urgence. Une vie trop courte pour attendre les pousse à tout essayer, partout, tout de suite : bâtir un royaume en une génération, apprendre trois métiers, traverser la carte pour voir ce qu’il y a derrière. On les sous-estime toujours. C’est leur arme préférée.\n\nEn jeu\n• Taille M, déplacement 9 m.\n• Un don de plus au niveau 1.\n• 4 points de compétence de plus au niveau 1, puis 1 de plus à chaque niveau.\n• Langue d’office : commun. Langues supplémentaires : toutes, sauf les langues secrètes.\n• Classe de prédilection : la plus haute de ses classes."
+      },
+      "effects": [
+        {
+          "target": "size",
+          "op": "set",
+          "value": "'medium'"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 9
+        },
+        {
+          "target": "feat_slots.general",
+          "op": "add",
+          "value": 1
+        },
+        {
+          "target": "skill_points.total",
+          "op": "add",
+          "value": "level() + 3"
+        }
+      ],
+      "note": "Budgets de construction : feat_slots.general et skill_points.total n'ont pas encore de valeur de base (à venir avec l'éditeur de construction)."
+    },
+    {
+      "id": "race.half_elf",
+      "type": "race",
+      "name": {
+        "fr": "Demi-elfe",
+        "en": "Half-elf"
+      },
+      "provenance": "official",
+      "labels": [
+        "race",
+        "medium"
+      ],
+      "description": {
+        "fr": "Trop humains pour les forêts, trop elfes pour les villes : les demi-elfes ont appris très tôt à se faire une place partout où on ne leur en gardait pas. De ce double exil ils ont tiré un talent rare, celui de comprendre tout le monde. Ils lisent une salle d’un regard, trouvent le mot qui désarme et repartent avant qu’on ait pensé à leur demander d’où ils viennent.\n\nEn jeu\n• Taille M, déplacement 9 m, vision nocturne.\n• Insensible au sommeil magique ; +2 aux sauvegardes contre les enchantements.\n• +1 en Détection, Fouille et Perception auditive.\n• +2 en Diplomatie et Renseignements.\n• Sang elfique : compte comme un elfe pour tout ce qui dépend de la race.\n• Langues d’office : commun et elfe. Langues supplémentaires : toutes, sauf les langues secrètes.\n• Classe de prédilection : la plus haute de ses classes."
+      },
+      "effects": [
+        {
+          "target": "size",
+          "op": "set",
+          "value": "'medium'"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 9
+        },
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.vs_enchantment"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 1,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 1,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 1,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        }
+      ],
+      "note": "Immunité au sommeil et sang elfique : pas encore d’effet dans le modèle."
+    },
+    {
+      "id": "race.half_orc",
+      "type": "race",
+      "name": {
+        "fr": "Demi-orque",
+        "en": "Half-orc"
+      },
+      "provenance": "official",
+      "labels": [
+        "race",
+        "medium"
+      ],
+      "description": {
+        "fr": "On les attend brutes, on les découvre survivants. Nés entre deux peuples qui se méfient d’eux, les demi-orques ont grandi en encaissant, et ils frappent en conséquence. Leur force n’est pas une légende de taverne : c’est un argument. Ceux qui prennent le temps de les écouter découvrent une loyauté sans détour, et une rancune qui l’est tout autant.\n\nEn jeu\n• +2 Force, −2 Intelligence, −2 Charisme.\n• Taille M, déplacement 9 m, vision dans le noir à 18 m.\n• Sang orque : compte comme un orque pour tout ce qui dépend de la race.\n• Langues d’office : commun et orque. Au choix : abyssal, draconien, géant, gnoll, gobelin.\n• Classe de prédilection : barbare."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "size",
+          "op": "set",
+          "value": "'medium'"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 9
+        },
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        }
+      ]
+    },
+    {
+      "id": "race.elf",
+      "type": "race",
+      "name": {
+        "fr": "Elfe",
+        "en": "Elf"
+      },
+      "provenance": "official",
+      "labels": [
+        "race",
+        "medium"
+      ],
+      "description": {
+        "fr": "Un elfe a le temps. Le temps de regarder une forêt pousser, d’apprendre un sort pendant un demi-siècle, de laisser une rancune mûrir comme un vin. De cette patience vient une grâce que les autres prennent pour de la froideur : chaque geste est juste, chaque flèche part au bon moment. Ils voient dans la pénombre, ne dorment pas comme nous, et remarquent toujours la porte que tout le monde a manquée.\n\nEn jeu\n• +2 Dextérité, −2 Constitution.\n• Taille M, déplacement 9 m, vision nocturne.\n• Insensible au sommeil magique ; +2 aux sauvegardes contre les enchantements.\n• Formé à l’épée longue, à la rapière, à l’arc long et à l’arc court (composites compris).\n• +2 en Détection, Fouille et Perception auditive ; test de Fouille automatique à moins de 1,50 m d’une porte secrète.\n• Langues d’office : commun et elfe. Au choix : draconien, gnoll, gnome, gobelin, orque, sylvestre.\n• Classe de prédilection : magicien."
+      },
+      "effects": [
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "size",
+          "op": "set",
+          "value": "'medium'"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 9
+        },
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.vs_enchantment"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        }
+      ],
+      "note": "Immunité au sommeil, maniement des armes et fouille automatique : pas encore d’effet dans le modèle."
+    },
+    {
+      "id": "race.gnome",
+      "type": "race",
+      "name": {
+        "fr": "Gnome",
+        "en": "Gnome"
+      },
+      "provenance": "official",
+      "labels": [
+        "race",
+        "small"
+      ],
+      "description": {
+        "fr": "Petits, oui. Inoffensifs, jamais. Les gnomes abordent le monde comme une énigme amusante : on la démonte, on la recompose, et on y ajoute un ressort de trop pour voir ce qui se passe. Leur magie est faite d’illusions et de lumières dansantes, leurs terriers parlent avec les blaireaux, et leur rire précède souvent de peu une explosion parfaitement maîtrisée. Les géants ont appris à s’en méfier.\n\nEn jeu\n• +2 Constitution, −2 Force.\n• Taille P : +1 à la CA et à l’attaque, +4 en Discrétion ; armes plus petites et charge réduite.\n• Déplacement 6 m, vision nocturne.\n• Le marteau-piolet gnome compte comme une arme de guerre.\n• +2 aux sauvegardes contre les illusions ; +1 au DD de ses propres sorts d’illusion.\n• +1 à l’attaque contre kobolds et gobelinoïdes ; +4 en esquive contre les géants.\n• +2 en Perception auditive et en Artisanat (alchimie).\n• Une fois par jour : parler avec les animaux fouisseurs. Avec 10 ou plus en Charisme, aussi lumières dansantes, prestidigitation et son imaginaire.\n• Langues d’office : commun et gnome. Au choix : draconien, elfe, géant, gobelin, nain, orque.\n• Classe de prédilection : barde."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "size",
+          "op": "set",
+          "value": "'small'"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "size"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "size"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 4,
+          "bonusType": "size"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 6
+        },
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.vs_illusion"
+        },
+        {
+          "target": "dc.school[illusion]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "racial",
+          "situation": "situation.vs_kobolds_goblinoids"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "situation": "situation.vs_giants"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.craft[alchemy]",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        }
+      ],
+      "note": "Pouvoirs magiques, arme familière et charge réduite : pas encore d’effet dans le modèle."
+    },
+    {
+      "id": "race.halfling",
+      "type": "race",
+      "name": {
+        "fr": "Halfelin",
+        "en": "Halfling"
+      },
+      "provenance": "official",
+      "labels": [
+        "race",
+        "small"
+      ],
+      "description": {
+        "fr": "Personne ne voit venir un halfelin. C’est tout le principe. Ils traversent le monde à hauteur de ceinture, le pas léger et la poche bien garnie, avec une chance insolente qui fait enrager les dés. Quand la peur fige les autres, eux haussent les épaules et lancent une pierre, en plein dans l’œil. Ils aiment le confort, les bons repas et les histoires, surtout celles qu’ils n’auraient jamais dû vivre.\n\nEn jeu\n• +2 Dextérité, −2 Force.\n• Taille P : +1 à la CA et à l’attaque, +4 en Discrétion ; armes plus petites et charge réduite.\n• Déplacement 6 m.\n• +2 en Déplacement silencieux, Escalade, Saut et Perception auditive.\n• +1 à toutes les sauvegardes, et +2 de moral contre la terreur.\n• +1 à l’attaque avec les armes de jet et la fronde.\n• Langues d’office : commun et halfelin. Au choix : elfe, gnome, gobelin, nain, orque.\n• Classe de prédilection : roublard."
+      },
+      "effects": [
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "size",
+          "op": "set",
+          "value": "'small'"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "size"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "size"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 4,
+          "bonusType": "size"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 6
+        },
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "racial"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "situation": "situation.vs_fear"
+        },
+        {
+          "target": "attack.ranged",
+          "op": "add",
+          "value": 1,
+          "bonusType": "racial",
+          "situation": "situation.thrown_or_sling"
+        }
+      ]
+    },
+    {
+      "id": "race.dwarf",
+      "type": "race",
+      "name": {
+        "fr": "Nain",
+        "en": "Dwarf"
+      },
+      "provenance": "official",
+      "labels": [
+        "race",
+        "medium"
+      ],
+      "description": {
+        "fr": "Un nain ne recule pas, il prend appui. Taillés pour la montagne et forgés par elle, ils marchent sous des tonnes d’armure comme d’autres en chemise, lisent la roche comme un livre et gardent la mémoire de chaque affront sur des générations. Le poison les fait sourire, la magie les agace, et les géants ont appris, à leurs dépens, qu’il est très difficile de frapper quelque chose d’aussi bas et d’aussi têtu.\n\nEn jeu\n• +2 Constitution, −2 Charisme.\n• Taille M, déplacement 6 m, même en armure ou avec une charge intermédiaire ou lourde ; vision dans le noir à 18 m.\n• Connaissance de la pierre : +2 en Fouille face à une maçonnerie inhabituelle, test automatique à moins de 3 m.\n• La hache de guerre naine et l’urgrosh nain comptent comme des armes de guerre.\n• Stabilité : +4 pour résister à une bousculade ou un croc-en-jambe, debout sur le sol.\n• +2 aux sauvegardes contre le poison, et contre les sorts et pouvoirs magiques.\n• +1 à l’attaque contre orques et gobelinoïdes ; +4 en esquive contre les géants.\n• +2 en Estimation et en Artisanat quand il s’agit de pierre ou de métal.\n• Langues d’office : commun et nain. Au choix : commun des Profondeurs, géant, gnome, gobelin, orque, terreux.\n• Classe de prédilection : guerrier."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "racial"
+        },
+        {
+          "target": "size",
+          "op": "set",
+          "value": "'medium'"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 6
+        },
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        },
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.unusual_stonework"
+        },
+        {
+          "target": "check.resist_bull_rush_trip",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.standing_on_ground"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.vs_poison"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.vs_spells"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "racial",
+          "situation": "situation.vs_orcs_goblinoids"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "situation": "situation.vs_giants"
+        },
+        {
+          "target": "skill.appraise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.stone_or_metal"
+        },
+        {
+          "target": "skill.craft[*]",
+          "op": "add",
+          "value": 2,
+          "bonusType": "racial",
+          "situation": "situation.stone_or_metal"
+        }
+      ],
+      "note": "Armes familières, vitesse non réduite par l’armure et fouille automatique : pas encore d’effet dans le modèle."
+    }
+  ]
+}

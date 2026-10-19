@@ -1,0 +1,263 @@
+{
+  "entities": [
+    {
+      "id": "feat.whirlwind_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque en rotation",
+        "en": "Whirlwind Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un pas, un pivot, et la lame dessine un cercle d’acier autour de lui. Ceux qui pensaient l’encercler découvrent trop tard qu’ils se tenaient tous à portée du même geste.\n\nEn jeu\n• Condition : Intelligence 13, Dextérité 13, Expertise du combat, Esquive, Souplesse du serpent, Attaque éclair, bonus de base à l’attaque +4.\n• Pendant une attaque à outrance, il peut renoncer à ses attaques habituelles pour porter une seule attaque de corps à corps, à son meilleur bonus d’attaque, contre chaque adversaire qu’il menace.\n• Il perd alors toutes ses attaques en plus, quelle qu’en soit l’origine (Enchaînement, rapidité…)."
+      },
+      "prerequisite": "@ability.int.score >= 13 and @ability.dex.score >= 13 and has('feat.combat_expertise') and has('feat.dodge') and has('feat.mobility') and has('feat.spring_attack') and @bab >= 4",
+      "note": "Attaque spéciale décrite dans le texte ; aucun nombre de la fiche ne change."
+    },
+    {
+      "id": "feat.combat_reflexes",
+      "type": "feat",
+      "name": {
+        "fr": "Attaques réflexes",
+        "en": "Combat Reflexes"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il voit la garde qui s’ouvre, le pied qui recule, le sort qu’on murmure trop près de lui. Et il frappe, encore et encore, avant même que l’ennemi comprenne son erreur.\n\nEn jeu\n• Il peut porter, à chaque round, autant d’attaques d’opportunité en plus que son modificateur de Dextérité (si positif).\n• Toujours une seule attaque d’opportunité par occasion.\n• Il peut porter des attaques d’opportunité même pris au dépourvu.\n• Normal : une seule attaque d’opportunité par round, et aucune quand on est pris au dépourvu.\n• Opportunisme (roublard) reste limité à une fois par round.\n• Un moine peut le prendre comme don supplémentaire au niveau 2."
+      },
+      "note": "Nombre d’attaques d’opportunité par round : pas encore une statistique de la fiche."
+    },
+    {
+      "id": "feat.self_sufficient",
+      "type": "feat",
+      "name": {
+        "fr": "Autonome",
+        "en": "Self-Sufficient"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Loin des villes et des temples, il sait recoudre une plaie, trouver de l’eau et lire le ciel. La nature ne lui fait pas de cadeau, mais elle ne le prend plus par surprise.\n\nEn jeu\n• +2 aux tests de Premiers secours et de Survie."
+      },
+      "effects": [
+        {
+          "target": "skill.heal",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.spirited_charge",
+      "type": "feat",
+      "name": {
+        "fr": "Charge dévastatrice",
+        "en": "Spirited Charge"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "mounted"
+      ],
+      "description": {
+        "fr": "Le cavalier et sa monture ne font plus qu’un projectile lancé au galop. Tout le poids de la bête passe dans la pointe, et ce qui se trouve au bout ne s’en relève pas toujours.\n\nEn jeu\n• Condition : 1 rang en Équitation, Combat monté, Attaque au galop.\n• Lors d’une charge à dos de monture, ses dégâts sont doublés avec une arme de corps à corps, triplés avec une lance d’arçon.\n• Comme pour tout multiplicateur, les dés en plus (attaque sournoise…) ne sont pas multipliés."
+      },
+      "prerequisite": "has('feat.mounted_combat') and has('feat.ride_by_attack')",
+      "note": "Condition non vérifiée par la fiche : 1 rang en Équitation. Dégâts multipliés en charge montée : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.two_weapon_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Combat à deux armes",
+        "en": "Two-Weapon Fighting"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Une lame pour frapper, une autre pour frapper encore. Là où d’autres s’emmêlent les poignets, il a appris à faire danser ses deux armes sur le même rythme.\n\nEn jeu\n• Condition : Dextérité 15.\n• Combat à deux armes : malus de la main principale −2 de moins, malus de la main secondaire −6 de moins.\n• Normal : −6 à la main principale et −10 à la main secondaire (−4 / −8 si l’arme secondaire est légère).\n• Avec le don : −4 / −4, ou −2 / −2 si l’arme secondaire est légère.\n• Un rôdeur de niveau 2 qui choisit ce style de combat, en armure légère ou sans armure, se bat comme s’il avait ce don."
+      },
+      "prerequisite": "@ability.dex.score >= 15",
+      "note": "Combat à deux armes : une seule arme maniée dans le modèle pour l’instant ; les malus ne sont pas calculés."
+    },
+    {
+      "id": "feat.blind_fight",
+      "type": "feat",
+      "name": {
+        "fr": "Combat en aveugle",
+        "en": "Blind-Fight"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Les yeux bandés, il entend le cuir qui grince et sent l’air qui bouge. L’ennemi invisible croit avoir l’avantage ; il vient surtout de se rapprocher d’une lame qui le cherche.\n\nEn jeu\n• Au corps à corps, quand il rate à cause du camouflage, il relance une fois les chances de rater.\n• Au corps à corps, l’invisibilité d’un ennemi ne lui sert à rien : pas de +2 à l’attaque pour lui, et le personnage conserve son bonus de Dextérité à la CA. À distance, l’ennemi invisible garde ses avantages.\n• Dans le noir ou par mauvaise visibilité, il se déplace à 75 % de sa vitesse au lieu de 50 %.\n• Inutile contre une créature sous clignotement."
+      },
+      "note": "Effets décrits dans le texte ; aucun nombre de la fiche ne change."
+    },
+    {
+      "id": "feat.mounted_combat",
+      "type": "feat",
+      "name": {
+        "fr": "Combat monté",
+        "en": "Mounted Combat"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "mounted"
+      ],
+      "description": {
+        "fr": "Un coup d’éperon, un écart au bon moment : la lance ennemie glisse sur le flanc du cheval au lieu de s’y planter. Pour ce cavalier, protéger sa monture est un réflexe.\n\nEn jeu\n• Condition : 1 rang en Équitation.\n• Une fois par round, quand sa monture est touchée, il peut faire un test d’Équitation (réaction, pas une action) : si le résultat dépasse le jet d’attaque, le coup est annulé."
+      },
+      "note": "Condition non vérifiée par la fiche : 1 rang en Équitation."
+    },
+    {
+      "id": "feat.stunning_fist",
+      "type": "feat",
+      "name": {
+        "fr": "Coup étourdissant",
+        "en": "Stunning Fist"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Un seul point, frappé au bon endroit avec le bon souffle. Le corps de l’adversaire oublie un instant comment bouger, et cet instant suffit.\n\nEn jeu\n• Condition : Dextérité 13, Sagesse 13, Science du combat à mains nues, bonus de base à l’attaque +8 (un moine peut le prendre au niveau 1 sans ces conditions).\n• Il annonce le coup avant le jet d’attaque ; s’il rate, l’utilisation est perdue.\n• Si son attaque à mains nues touche, la cible subit les dégâts et doit réussir un jet de Vigueur (DD 10 + ½ niveau global + modificateur de Sagesse) ou être étourdie 1 round, jusqu’au début de son prochain tour.\n• Étourdie : elle ne peut pas agir, perd son bonus de Dextérité à la CA et subit −2 à la CA.\n• Utilisations : ¼ du niveau global par jour, une par round au plus. Un moine en a autant que son niveau de moine + ¼ de ses niveaux dans les autres classes.\n• Sans effet sur les créatures artificielles, morts-vivants, plantes, vases, créatures intangibles et créatures immunisées contre les coups critiques."
+      },
+      "prerequisite": "(@ability.dex.score >= 13 and @ability.wis.score >= 13 and has('feat.improved_unarmed_strike') and @bab >= 8) or level('class.monk') >= 1",
+      "usesPerDay": "level('class.monk') + floor((level() - level('class.monk')) / 4)",
+      "note": "DD du jet de Vigueur : pas encore une statistique de la fiche (10 + ½ niveau global + modificateur de Sagesse)."
+    },
+    {
+      "id": "feat.run",
+      "type": "feat",
+      "name": {
+        "fr": "Course",
+        "en": "Run"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il a appris à courir longtemps, vite, et sans baisser sa garde. Quand les autres s’essoufflent, il est déjà loin, ou déjà sur eux.\n\nEn jeu\n• Quand il court, il va à 5 fois sa vitesse (armure légère ou aucune, charge légère) ou à 4 fois sa vitesse (armure intermédiaire ou lourde, charge intermédiaire ou lourde).\n• +4 aux tests de Saut après une course d’élan.\n• Il garde son bonus de Dextérité à la CA pendant qu’il court.\n• Normal : course à 4 fois la vitesse (3 fois en armure lourde ou charge lourde), et perte du bonus de Dextérité à la CA."
+      },
+      "effects": [
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.running_jump"
+        }
+      ],
+      "note": "Vitesse de course : pas encore une statistique de la fiche."
+    },
+    {
+      "id": "feat.two_weapon_defense",
+      "type": "feat",
+      "name": {
+        "fr": "Défense à deux armes",
+        "en": "Two-Weapon Defense"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "two_weapon",
+        "defense"
+      ],
+      "description": {
+        "fr": "Sa seconde lame ne sert pas qu’à frapper : elle croise, dévie, ferme la porte aux coups adverses. Le voir combattre, c’est voir un mur d’acier qui bouge.\n\nEn jeu\n• Condition : Combat à deux armes.\n• Quand il tient une arme double ou deux armes (pas d’armes naturelles ni d’attaques à mains nues), il gagne un bonus de bouclier de +1 à la CA.\n• Ce bonus passe à +2 quand il combat sur la défensive ou se met en défense totale."
+      },
+      "prerequisite": "has('feat.two_weapon_fighting')",
+      "note": "Bonus de bouclier : le catalogue n’a pas encore ce type de bonus, donc pas d’effet sur la CA (il ne doit pas se cumuler avec un vrai bouclier). Le site omet la condition Combat à deux armes du SRD."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.whirlwind_attack",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.whirlwind_attack",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.whirlwind_attack",
+      "relation": "requires",
+      "to": "feat.mobility"
+    },
+    {
+      "from": "feat.whirlwind_attack",
+      "relation": "requires",
+      "to": "feat.spring_attack"
+    },
+    {
+      "from": "feat.spirited_charge",
+      "relation": "requires",
+      "to": "feat.mounted_combat"
+    },
+    {
+      "from": "feat.spirited_charge",
+      "relation": "requires",
+      "to": "feat.ride_by_attack"
+    },
+    {
+      "from": "feat.stunning_fist",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.two_weapon_defense",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    }
+  ]
+}

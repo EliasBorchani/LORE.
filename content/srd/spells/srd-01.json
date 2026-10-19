@@ -1,0 +1,660 @@
+{
+  "entities": [
+    {
+      "id": "spell.tiny_hut",
+      "type": "spell",
+      "name": {
+        "fr": "Abri",
+        "en": "Tiny Hut"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une bulle de force se referme autour du campement, opaque au-dehors, claire au-dedans. Dehors la tempête hurle ; dedans, on dort au sec.\n\nEn jeu\n• Dôme de force immobile de 6 m de rayon, centré sur le lanceur ; jusqu’à 9 créatures de taille M en plus de lui, qui entrent et sortent librement.\n• Le sort prend fin dès que le lanceur quitte l’abri.\n• Intérieur tempéré à 20 °C tant qu’il fait entre −15 °C et 35 °C dehors ; au-delà, l’écart se reporte degré pour degré.\n• Protège de la pluie, de la neige et du vent ; détruit par un vent de force ouragan (120 km/h ou plus).\n• Vu de dehors, opaque : les occupants ont un camouflage total. Projectiles, armes et la plupart des sorts le traversent.\n• Lumière intérieure faible, allumée ou éteinte à volonté."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "effect": "sphère de 6 m de rayon centrée sur le lanceur",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.energy_drain",
+      "type": "spell",
+      "name": {
+        "fr": "Absorption d’énergie",
+        "en": "Energy Drain"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un rayon noir qui ne blesse pas la chair mais vide la vie de sa substance. Ceux qu’il touche se réveillent plus faibles, et parfois pour toujours.\n\nEn jeu\n• Rayon : attaque de contact à distance.\n• La cible gagne 2d4 niveaux négatifs ; une créature qui a autant de niveaux négatifs que de DV meurt.\n• Après 24 heures, un jet de Vigueur par niveau négatif : réussi, le niveau négatif disparaît ; raté, il disparaît aussi mais la cible perd un niveau pour de bon.\n• Un mort-vivant touché gagne à la place 2d4 × 5 points de vie temporaires pendant 1 heure."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.keen_edge",
+      "type": "spell",
+      "name": {
+        "fr": "Affûtage",
+        "en": "Keen Edge"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le fil de la lame devient si fin qu’il trouve tout seul le défaut de l’armure.\n\nEn jeu\n• Double la zone de critique possible d’une arme tranchante ou perforante (20 → 19–20, 19–20 → 17–20, 18–20 → 15–20).\n• Ou 50 projectiles qui se touchent ; chacun perd l’effet une fois tiré, qu’il touche ou non. Les shuriken comptent comme des projectiles.\n• Ne se cumule pas avec les autres effets qui augmentent la zone de critique (Science du critique, arme acérée).\n• Sans effet sur les armes naturelles."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 arme ou 50 projectiles en contact",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.enlarge_person",
+      "type": "spell",
+      "name": {
+        "fr": "Agrandissement",
+        "en": "Enlarge Person"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les coutures craquent, le plafond se rapproche : l’humanoïde visé gagne une tête, puis une autre. Plus fort, plus lent à esquiver, il remplit soudain le couloir.\n\nEn jeu\n• Un humanoïde gagne une catégorie de taille (taille ×2, poids ×8).\n• +2 de taille en Force, −2 de taille en Dextérité (1 au moins), −1 à l’attaque et à la CA.\n• Une créature de taille G occupe 3 m et a une allonge de 3 m ; la vitesse ne change pas.\n• Équipement agrandi avec elle : ses armes infligent les dégâts de la taille supérieure ; un objet lâché reprend sa taille.\n• Faute de place, la cible grandit au maximum possible et peut tenter un test de Force pour briser ce qui l’enferme.\n• Ne se cumule pas avec un autre effet qui augmente la taille. Contre et dissipe Rapetissement. Peut être rendu permanent."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature humanoïde",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "size",
+          "condition": "active('toggle.enlarge_person')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "size",
+          "condition": "active('toggle.enlarge_person')"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": -1,
+          "bonusType": "size",
+          "condition": "active('toggle.enlarge_person')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -1,
+          "bonusType": "size",
+          "condition": "active('toggle.enlarge_person')"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_enlarge_person",
+      "type": "spell",
+      "name": {
+        "fr": "Agrandissement de groupe",
+        "en": "Enlarge Person, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Toute l’escouade prend d’un coup une tête de plus. Les portes deviennent étroites, les ennemis petits.\n\nEn jeu\n• Comme Agrandissement, sur un humanoïde par niveau, tous à 9 m au plus les uns des autres.\n• +2 de taille en Force, −2 de taille en Dextérité, −1 à l’attaque et à la CA, une catégorie de taille en plus."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature humanoïde/niveau, toutes à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "size",
+          "condition": "active('toggle.mass_enlarge_person')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "size",
+          "condition": "active('toggle.mass_enlarge_person')"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": -1,
+          "bonusType": "size",
+          "condition": "active('toggle.mass_enlarge_person')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -1,
+          "bonusType": "size",
+          "condition": "active('toggle.mass_enlarge_person')"
+        }
+      ]
+    },
+    {
+      "id": "spell.aid",
+      "type": "spell",
+      "name": {
+        "fr": "Aide",
+        "en": "Aid"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une main sur l’épaule et un souffle de confiance divine : le cœur bat plus fort, la peur recule, et le corps encaisse un peu plus.\n\nEn jeu\n• +1 de moral à l’attaque.\n• +1 de moral aux jets de sauvegarde contre la terreur.\n• 1d8 points de vie temporaires + 1 par niveau de lanceur (+10 au plus)."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.aid')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "situation": "situation.vs_fear",
+          "condition": "active('toggle.aid')"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "dice",
+          "value": "1d8",
+          "condition": "active('toggle.aid')"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "min(@spell.caster_level, 10)",
+          "condition": "active('toggle.aid')"
+        }
+      ]
+    },
+    {
+      "id": "spell.alarm",
+      "type": "spell",
+      "name": {
+        "fr": "Alarme",
+        "en": "Alarm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un fil invisible tendu autour du camp. Que quelque chose le franchisse, et le lanceur le saura, même au fond de son sommeil.\n\nEn jeu\n• Toute créature de taille TP ou plus qui entre dans la zone ou la touche sans dire le mot de passe déclenche l’alarme.\n• Alarme mentale : seul le lanceur l’entend, même endormi ou sous Silence, s’il est à 1,5 km au plus.\n• Alarme sonore : une cloche pendant 1 round, audible à 18 m (moins 3 m par porte, 6 m par mur épais), jusqu’à 54 m au calme.\n• Les créatures éthérées ou astrales ne la déclenchent pas."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "émanation de 6 m de rayon",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.insanity",
+      "type": "spell",
+      "name": {
+        "fr": "Aliénation mentale",
+        "en": "Insanity"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une fêlure dans l’esprit, que rien de simple ne recolle. La victime ne sait plus jamais vraiment ce qu’elle fait.\n\nEn jeu\n• La cible est confuse en permanence (comme le sort Confusion).\n• Délivrance des malédictions n’y fait rien ; seuls Guérison suprême, Miracle, Restauration suprême, Souhait limité ou Souhait la soignent."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.undetectable_alignment",
+      "type": "spell",
+      "name": {
+        "fr": "Alignement indétectable",
+        "en": "Undetectable Alignment"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un voile sur l’âme : ni regard sacré ni divination ne savent plus de quel côté elle penche.\n\nEn jeu\n• Cache l’alignement de la créature ou de l’objet ciblé à toutes les divinations pendant 24 heures."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature ou 1 objet",
+        "duration": "24 heures",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.lesser_planar_ally",
+      "type": "spell",
+      "name": {
+        "fr": "Allié d’outreplan",
+        "en": "Lesser Planar Ally"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une prière, un nom murmuré, et une silhouette venue d’ailleurs s’avance. Elle aidera, mais elle sait compter.\n\nEn jeu\n• Appelle un élémentaire ou un Extérieur de 6 DV au plus, envoyé par la divinité du lanceur (ou un être de même alignement).\n• On marchande un service contre un paiement versé d’avance ; la négociation prend au moins 1 round.\n• Tarif par DV : 100 po pour une tâche de 1 minute/niveau, 500 po pour 1 heure/niveau, 1 000 po pour 1 jour/niveau ; moitié prix sans danger ou si la tâche sert ses idéaux.\n• Une créature appelée meurt vraiment si elle est tuée ; elle refuse les missions suicidaires.\n• Le sort prend le type (Bien, Mal, Loi, Chaos, Air, Eau, Feu, Terre) de la créature appelée.\n• Coût : 100 PX."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 élémentaire ou Extérieur appelé de 6 DV au plus",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.planar_ally",
+      "type": "spell",
+      "name": {
+        "fr": "Allié majeur d’outreplan",
+        "en": "Planar Ally"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "L’appel porte plus loin et des alliés plus puissants y répondent, prêts à combattre pour une juste rétribution.\n\nEn jeu\n• Appelle 1 ou 2 élémentaires ou Extérieurs de même sorte (12 DV au total au plus, à 9 m au plus les uns des autres), envoyés par la divinité du lanceur (ou un être de même alignement).\n• On marchande un service contre un paiement versé d’avance ; la négociation prend au moins 1 round.\n• Tarif par DV : 100 po pour une tâche de 1 minute/niveau, 500 po pour 1 heure/niveau, 1 000 po pour 1 jour/niveau ; moitié prix sans danger ou si la tâche sert ses idéaux.\n• Une créature appelée meurt vraiment si elle est tuée ; elle refuse les missions suicidaires.\n• Le sort prend le type (Bien, Mal, Loi, Chaos, Air, Eau, Feu, Terre) de la créature appelée.\n• Coût : 250 PX."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou 2 élémentaires ou Extérieurs appelés, 12 DV au total",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_planar_ally",
+      "type": "spell",
+      "name": {
+        "fr": "Allié suprême d’outreplan",
+        "en": "Greater Planar Ally"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le ciel s’ouvre pour de vrais champions des plans. Leur aide est immense, leur prix aussi.\n\nEn jeu\n• Appelle jusqu’à 3 élémentaires ou Extérieurs de même sorte (18 DV au total au plus, à 9 m au plus les uns des autres), envoyés par la divinité du lanceur (ou un être de même alignement).\n• On marchande un service contre un paiement versé d’avance ; la négociation prend au moins 1 round.\n• Tarif par DV : 100 po pour une tâche de 1 minute/niveau, 500 po pour 1 heure/niveau, 1 000 po pour 1 jour/niveau ; moitié prix sans danger ou si la tâche sert ses idéaux.\n• Une créature appelée meurt vraiment si elle est tuée ; elle refuse les missions suicidaires.\n• Le sort prend le type (Bien, Mal, Loi, Chaos, Air, Eau, Feu, Terre) de la créature appelée.\n• Coût : 500 PX."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "jusqu’à 3 élémentaires ou Extérieurs appelés, 18 DV au total",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.analyze_dweomer",
+      "type": "spell",
+      "name": {
+        "fr": "Analyse d’enchantement",
+        "en": "Analyze Dweomer"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "À travers la lentille de rubis, la magie se défait en fils colorés. Chacun raconte qui l’a tissé et ce qu’il fait.\n\nEn jeu\n• Une créature ou un objet par niveau ; chaque round, une action libre révèle un sort ou pouvoir actif.\n• Objet magique : ses fonctions, comment l’activer, ses charges restantes. Sort actif : sa nature, ses effets, son niveau de lanceur.\n• Un objet tenu peut faire un jet de Volonté si son porteur le veut : réussi, rien n’est appris et l’objet est à l’abri de ce sort pendant 24 heures.\n• Sans effet sur les artefacts.\n• Focaliseur : lentille de rubis ou de saphir sertie d’or, 1 500 po au moins."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature ou 1 objet/niveau",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.doom",
+      "type": "spell",
+      "name": {
+        "fr": "Anathème",
+        "en": "Doom"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un doigt pointé, un mot de malheur, et la confiance de la cible s’effrite. Elle sent que la journée va mal finir.\n\nEn jeu\n• La cible est secouée : −2 aux jets d’attaque, de sauvegarde, de compétence et de caractéristique.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dimensional_anchor",
+      "type": "spell",
+      "name": {
+        "fr": "Ancre dimensionnelle",
+        "en": "Dimensional Anchor"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un rayon vert cloue la cible à ce monde. Plus de porte qui s’ouvre, plus de pas de côté entre les plans.\n\nEn jeu\n• Rayon : attaque de contact à distance.\n• La cible ne peut plus se déplacer de façon extradimensionnelle : Téléportation, Porte dimensionnelle, Changement de plan, Clignotement, Forme éthérée, Projection astrale, Traversée des ombres, Portail, Dédale, cercles de téléportation et pouvoirs semblables.\n• Ne gêne pas une créature déjà dans le plan Astral ou Éthéré, ni les perceptions ou attaques extradimensionnelles, ni le départ d’une créature convoquée."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rayon",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animate_objects",
+      "type": "spell",
+      "name": {
+        "fr": "Animation d’objets",
+        "en": "Animate Objects"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La chaise se cabre, la table charge, les rideaux cherchent une gorge. Tout le mobilier se range du côté du lanceur.\n\nEn jeu\n• Anime un objet non magique de taille P par niveau, qui attaque les cibles choisies.\n• Un objet M compte pour 2, G pour 4, TG pour 8, Gig pour 16, C pour 32.\n• Changer de cible : une action de mouvement.\n• Pas d’objet porté ou tenu par une créature. Peut être rendu permanent."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 objet de taille P/niveau (voir description)",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animate_dead",
+      "type": "spell",
+      "name": {
+        "fr": "Animation des morts",
+        "en": "Animate Dead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une pierre noire glissée entre des dents mortes, et le cadavre se relève, docile. Squelette ou zombi, il obéira jusqu’à sa destruction.\n\nEn jeu\n• Crée des squelettes ou des zombis : 2 DV par niveau de lanceur au plus par incantation (double sous Profanation).\n• Le lanceur contrôle au plus 4 DV de morts-vivants par niveau ; au-delà, il choisit lesquels lui échappent. Ceux contrôlés par intimidation de prêtre ne comptent pas.\n• Squelette : il faut une ossature intacte. Zombi : un corps presque intact. Leurs profils dépendent de la taille, pas des pouvoirs d’origine.\n• Un mort-vivant détruit ne peut plus être animé ainsi.\n• Composante : un onyx noir de 25 po par DV, placé dans chaque cadavre."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 ou plusieurs cadavres touchés",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animate_plants",
+      "type": "spell",
+      "name": {
+        "fr": "Animation des plantes",
+        "en": "Animate Plants"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les racines s’arrachent du sol, les branches deviennent des fouets. La forêt entière prend parti.\n\nEn jeu\n• Anime une plante de taille G par tranche de 3 niveaux (TG compte pour 2, Gig pour 4, C pour 8), avec le profil d’un objet animé ; 1 round/niveau.\n• Les plantes M ou moins n’ont pas de solidité. Pas de créature végétale ni de matière végétale morte.\n• Changer de cible : une action de mouvement.\n• Variante : toutes les plantes à portée enchevêtrent comme le sort Enchevêtrement, pendant 1 heure/niveau ; la résistance à la magie ne s’applique pas."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 plante de taille G/3 niveaux ou toutes les plantes à portée",
+        "duration": "1 round/niveau ou 1 heure/niveau (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.temporal_stasis",
+      "type": "spell",
+      "name": {
+        "fr": "Animation suspendue",
+        "en": "Temporal Stasis"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "D’un toucher, le temps s’arrête pour une seule créature. Elle reste là, figée hors du monde, jusqu’à ce qu’on vienne la libérer.\n\nEn jeu\n• Attaque de contact au corps à corps.\n• La cible entre en stase : elle ne vieillit pas, ses fonctions s’arrêtent, rien ne peut l’atteindre.\n• Dure jusqu’à une Délivrance ou une Dissipation de la magie réussie.\n• Composante : poudre de diamant, d’émeraude, de rubis et de saphir, 5 000 po au moins."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "permanente",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.undeath_to_death",
+      "type": "spell",
+      "name": {
+        "fr": "Annihilation de mort-vivant",
+        "en": "Undeath to Death"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une onde de lumière morne roule sur le champ de bataille, et les morts qui marchaient retombent en poussière.\n\nEn jeu\n• Détruit 1d4 DV de morts-vivants par niveau de lanceur (20d4 au plus) dans un rayonnement de 12 m de rayon.\n• Seuls les morts-vivants de 8 DV ou moins sont touchés, les plus faibles d’abord (à égalité, les plus proches du centre) ; les DV qui ne suffisent pas pour le suivant sont perdus.\n• Chaque mort-vivant visé résiste par un jet de Volonté réussi.\n• Composante : poudre d’un diamant de 500 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "plusieurs morts-vivants dans un rayonnement de 12 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    }
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "entities": [
+    {
+      "id": "item.backpack",
+      "type": "item",
+      "name": {
+        "fr": "Sac à dos (vide)",
+        "en": "Backpack (empty)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "2 po",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Toile épaisse, sangles de cuir usées par les routes : le compagnon fidèle de tout aventurier, qui finit toujours plus lourd qu’au départ.\n\nEn jeu\n• Contenant : environ 30 litres (1 pied cube) de matériel.\n• Plusieurs poches et des sangles pour accrocher une paillasse ou une corde.\n• Version pour personnage de taille P : pèse le quart et contient le quart."
+      }
+    },
+    {
+      "id": "item.barrel",
+      "type": "item",
+      "name": {
+        "fr": "Tonneau (vide)",
+        "en": "Barrel (empty)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "2 po",
+        "weight": "15 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Douelles cerclées de fer, odeur de vin ou de saumure : on y range les provisions d’un voyage, ou parfois quelqu’un qui ne voulait pas être trouvé.\n\nEn jeu\n• Contenant : environ 300 litres (10 pieds cubes), liquides ou marchandises."
+      }
+    },
+    {
+      "id": "item.basket",
+      "type": "item",
+      "name": {
+        "fr": "Panier (vide)",
+        "en": "Basket (empty)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "4 pa",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Osier tressé à la main, anse solide : de quoi rapporter les herbes du marché ou les champignons d’une forêt douteuse.\n\nEn jeu\n• Contenant : environ 60 litres (2 pieds cubes)."
+      }
+    },
+    {
+      "id": "item.bedroll",
+      "type": "item",
+      "name": {
+        "fr": "Paillasse",
+        "en": "Bedroll"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "item": {
+        "cost": "1 pa",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une couverture roulée et un peu de paille cousue : peu de chose, mais c’est la différence entre une nuit à la belle étoile et une nuit sur les cailloux.\n\nEn jeu\n• Se roule et s’attache sous le sac à dos.\n• Version pour personnage de taille P : pèse le quart."
+      }
+    },
+    {
+      "id": "item.bell",
+      "type": "item",
+      "name": {
+        "fr": "Cloche",
+        "en": "Bell"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "item": {
+        "cost": "1 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une petite cloche de bronze au son clair. Suspendue à un fil tendu devant le camp, elle veille mieux qu’un garde endormi.\n\nEn jeu\n• Aucun effet chiffré : sert d’alarme, de signal ou d’appel, selon l’idée du joueur."
+      }
+    },
+    {
+      "id": "item.belt_pouch",
+      "type": "item",
+      "name": {
+        "fr": "Sacoche de ceinture",
+        "en": "Belt pouch (empty)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "1 po",
+        "weight": "0,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une bourse de cuir à rabat, cousue à la ceinture, pour les pièces, les composantes et les petits secrets qu’on veut garder sous la main.\n\nEn jeu\n• Contenant : environ 6 litres (1/5 de pied cube).\n• Version pour personnage de taille P : pèse le quart et contient le quart."
+      }
+    },
+    {
+      "id": "item.block_and_tackle",
+      "type": "item",
+      "name": {
+        "fr": "Palan",
+        "en": "Block and tackle"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "item": {
+        "cost": "5 po",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Poulies, crochets et corde : la mécanique simple qui permet à deux bras ordinaires de soulever une herse, un coffre ou un compagnon tombé au fond d’un puits.\n\nEn jeu\n• Aide à hisser des charges bien plus lourdes que ce que l’on soulève à la main ; le MD fixe la charge selon la situation.\n• Doit être fixé à un point solide (poutre, branche, piton)."
+      },
+      "note": "Le gain de levage n’est pas modélisé."
+    },
+    {
+      "id": "item.bucket",
+      "type": "item",
+      "name": {
+        "fr": "Seau (vide)",
+        "en": "Bucket (empty)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "5 pa",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un seau de bois cerclé, à anse de corde. Rien de héroïque, jusqu’au jour où l’auberge prend feu.\n\nEn jeu\n• Contenant : environ 30 litres (1 pied cube)."
+      }
+    },
+    {
+      "id": "item.bullseye_lantern",
+      "type": "item",
+      "name": {
+        "fr": "Lanterne sourde",
+        "en": "Lantern, bullseye"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "light_source"
+      ],
+      "item": {
+        "cost": "12 po",
+        "weight": "1,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une lanterne à volet unique et à miroir poli qui projette un faisceau étroit : on voit loin devant, et l’on reste dans l’ombre.\n\nEn jeu\n• Lumière vive dans un cône de 18 m, faible jusqu’à 36 m.\n• Brûle 6 heures avec un demi-litre d’huile (une flasque d’huile).\n• Se tient d’une main."
+      }
+    },
+    {
+      "id": "item.caltrops",
+      "type": "item",
+      "name": {
+        "fr": "Chausse-trappes",
+        "en": "Caltrops"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "trap"
+      ],
+      "item": {
+        "cost": "1 po",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Des étoiles de fer à quatre pointes, dont l’une se dresse toujours vers le ciel. Semées derrière soi, elles transforment une poursuite en boitillement.\n\nEn jeu\n• Un sac couvre un carré de 1,5 m.\n• Une créature qui entre dans la zone (ou y combat un round) subit une attaque à +0 contre sa CA, sans compter armure, bouclier ni parade (bonus de déviation) ; des chaussures ou des bottes lui donnent +2 à la CA contre elles.\n• Touchée : 1 point de dégâts, et sa vitesse est réduite de moitié jusqu’à 24 heures de repos, un test de Premiers secours DD 15 ou un sort de soins.\n• Une créature qui charge ou court doit s’arrêter dès qu’elle est touchée ; en marchant prudemment (demi-vitesse), on évite la zone."
+      }
+    },
+    {
+      "id": "item.candle",
+      "type": "item",
+      "name": {
+        "fr": "Bougie",
+        "en": "Candle"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "light_source",
+        "consumable"
+      ],
+      "item": {
+        "cost": "1 pc"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une simple chandelle de suif dont la flamme vacille au moindre souffle : assez pour lire une carte, jamais assez pour se sentir en sécurité.\n\nEn jeu\n• Lumière faible dans un rayon de 1,5 m.\n• Brûle 1 heure."
+      }
+    },
+    {
+      "id": "item.canvas",
+      "type": "item",
+      "name": {
+        "fr": "Toile (le m²)",
+        "en": "Canvas (sq. yd.)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "item": {
+        "cost": "1 pa",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une toile épaisse et cirée, vendue au mètre carré, pour une tente de fortune, une bâche de chariot ou une voile de rechange.\n\nEn jeu\n• Aucun effet chiffré : abri, bâche ou emballage selon les besoins."
+      }
+    },
+    {
+      "id": "item.chain",
+      "type": "item",
+      "name": {
+        "fr": "Chaîne, 3 m",
+        "en": "Chain (10 ft.)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "item": {
+        "cost": "30 po",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Trois mètres de maillons de fer forgé, lourds et froids : pour fermer une porte, entraver un prisonnier ou amarrer ce qui ne doit pas partir.\n\nEn jeu\n• Solidité 10, 5 points de résistance.\n• Se brise avec un test de Force DD 26."
+      }
+    },
+    {
+      "id": "item.chalk",
+      "type": "item",
+      "name": {
+        "fr": "Craie, morceau",
+        "en": "Chalk, 1 piece"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "writing",
+        "consumable"
+      ],
+      "item": {
+        "cost": "1 pc"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un bâton de craie blanche, l’allié discret de l’explorateur : une flèche sur un mur et le labyrinthe devient un chemin.\n\nEn jeu\n• Sert à marquer les murs et le sol ; aucun effet chiffré."
+      }
+    },
+    {
+      "id": "item.chest",
+      "type": "item",
+      "name": {
+        "fr": "Coffre, vide",
+        "en": "Chest (empty)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "2 po",
+        "weight": "12,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un coffre de bois bardé de fer, à charnières solides, qu’on peut fermer d’un cadenas. Les trésors aiment y dormir ; les mimiques aussi.\n\nEn jeu\n• Contenant : environ 60 litres (2 pieds cubes).\n• Se ferme avec un cadenas (vendu à part)."
+      }
+    },
+    {
+      "id": "item.clay_jug",
+      "type": "item",
+      "name": {
+        "fr": "Jarre en terre cuite",
+        "en": "Jug, clay"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "3 pc",
+        "weight": "4,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une jarre de terre cuite à large panse, fermée d’un bouchon, pour l’eau, l’huile ou le vin du soir.\n\nEn jeu\n• Contient environ 4 litres de liquide.\n• Vendue avec son bouchon."
+      }
+    },
+    {
+      "id": "item.clay_pitcher",
+      "type": "item",
+      "name": {
+        "fr": "Cruche en terre cuite",
+        "en": "Pitcher, clay"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "item": {
+        "cost": "2 pc",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une cruche ventrue en terre cuite, à bec verseur, qui passe de main en main autour du feu de camp.\n\nEn jeu\n• Contient environ 2 litres de liquide."
+      }
+    }
+  ]
+}

@@ -1,0 +1,542 @@
+{
+  "entities": [
+    {
+      "id": "class.blackguard",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chevalier noir",
+        "en": "Blackguard"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Là où le paladin a juré de protéger, le chevalier noir a juré de détruire. Champion des puissances infernales, il porte une armure noircie, chevauche une monture aux yeux de braise et frappe d’abord ceux qui croient encore au bien. Il a pactisé avec un fiélon, il commande aux morts et sa simple présence sape le courage de ses ennemis. Certains sont des paladins tombés, rongés par ce qu’ils ont perdu ; d’autres n’ont jamais connu la lumière et n’en veulent pas. Tous ont fait le même choix : la puissance, quel qu’en soit le prix.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : alignement mauvais ; bonus de base à l’attaque +6 ; 5 rangs en Discrétion et 2 rangs en Connaissances (religion) ; dons Attaque en puissance, Enchaînement et Science de la destruction ; avoir eu un contact pacifique avec un Extérieur mauvais (appelé par lui ou par un autre).\n• Formé aux armes courantes et de guerre, à toutes les armures et aux boucliers (sauf le pavois).\n• Sorts divins préparés de sa propre liste, basés sur la Sagesse, du niveau 1 au niveau 4 ; niveau de lanceur : son niveau de chevalier noir.\n• Aptitudes : aura de Mal, détection du Bien, sorts et utilisation du poison (1) ; bénédiction impie et châtiment du Bien (2) ; aura de désespoir et intimidation des morts-vivants (3) ; attaque sournoise (4) ; serviteur fiélon (5) ; attaque sournoise et châtiment du Bien plus forts aux niveaux 5, 7 et 10.\n• Un paladin déchu qui devient chevalier noir gagne des pouvoirs en plus selon son niveau de paladin (voir « Paladin déchu »)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.blackguard_aura_of_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de Mal",
+        "en": "Aura of evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Les prêtres frissonnent en le croisant : autour du chevalier noir, le mal est si dense qu’on le sent presque sans sort.\n\nEn jeu\n• Aura de Mal puissante (détection du Mal), d’une force égale à son niveau de chevalier noir plus son niveau de prêtre."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.blackguard_detect_good",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Bien",
+        "en": "Detect good"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Il repère la bonté comme un loup repère l’agneau.\n\nEn jeu\n• À volonté, détection du Bien comme le sort (pouvoir magique)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.blackguard_poison_use",
+      "type": "class_power",
+      "name": {
+        "fr": "Utilisation du poison",
+        "en": "Poison use"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Enduire une lame de venin est pour lui un geste aussi naturel que l’aiguiser.\n\nEn jeu\n• Ne risque jamais de s’empoisonner par accident en appliquant du poison sur une arme."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.blackguard_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de chevalier noir",
+        "en": "Blackguard spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Son pacte paie en sorts : de quoi blesser, effrayer, appeler des fiélons et parfois panser ses propres plaies.\n\nEn jeu\n• Sorts divins de la liste du chevalier noir, du niveau 1 au niveau 4, préparés chaque jour comme un prêtre.\n• Caractéristique : Sagesse. Il faut au moins 10 + niveau du sort en Sagesse pour le préparer ou le lancer. DD : 10 + niveau du sort + modificateur de Sagesse.\n• Sorts par jour selon le niveau de chevalier noir ; un « 0 » dans la table veut dire seulement les sorts en bonus d’une Sagesse élevée.\n• Ne convertit pas ses sorts en soins ou en blessures. Les convocations de monstres n’appellent que des créatures mauvaises.\n• Niveau de lanceur : son niveau de chevalier noir."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.blackguard_dark_blessing",
+      "type": "class_power",
+      "name": {
+        "fr": "Bénédiction impie",
+        "en": "Dark blessing"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Les puissances qu’il sert veillent sur leur investissement.\n\nEn jeu\n• Ajoute son bonus de Charisme (s’il est positif) à tous ses jets de sauvegarde."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.blackguard_smite_good",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment du Bien",
+        "en": "Smite good"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Le chevalier noir choisit sa cible parmi les justes, et sa lame tombe avec toute la haine de son maître.\n\nEn jeu\n• Une fois par jour au niveau 2, puis une fois de plus aux niveaux 5 et 10 (et plus pour un paladin déchu).\n• Une attaque au corps à corps contre une créature bonne : ajoute son bonus de Charisme (s’il est positif) au jet d’attaque et son niveau de chevalier noir aux dégâts.\n• Si la cible n’est pas bonne, l’utilisation est perdue sans effet."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.blackguard_smite_good')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.blackguard')",
+          "condition": "active('toggle.blackguard_smite_good')"
+        }
+      ],
+      "usesPerDay": "1 + if(level('class.blackguard') >= 5, 1, 0) + if(level('class.blackguard') >= 10, 1, 0) + if(level('class.paladin') >= 9, 3, if(level('class.paladin') >= 5, 2, if(level('class.paladin') >= 1, 1, 0)))"
+    },
+    {
+      "id": "power.blackguard_aura_of_despair",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de désespoir",
+        "en": "Aura of despair"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Ses ennemis sentent leurs certitudes fondre à son approche.\n\nEn jeu\n• Les ennemis à 3 m ou moins ont un malus de moral de −2 à tous leurs jets de sauvegarde."
+      },
+      "effects": [],
+      "note": "Malus des ennemis : rien sur la fiche du chevalier noir."
+    },
+    {
+      "id": "power.blackguard_command_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Intimidation des morts-vivants",
+        "en": "Command undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Les morts reconnaissent en lui un maître et plient le genou.\n\nEn jeu\n• Intimide ou contrôle les morts-vivants comme un prêtre mauvais de 2 niveaux de moins que son niveau de chevalier noir.\n• Utilisations par jour : 3 + modificateur de Charisme."
+      },
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": "level('class.blackguard') - 2"
+        }
+      ],
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "power.blackguard_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Il n’a aucun honneur à perdre : un ennemi distrait est un ennemi mort.\n\nEn jeu\n• +1d6 aux dégâts au niveau 4, +2d6 au niveau 7, +3d6 au niveau 10, aux mêmes conditions que l’attaque sournoise du roublard.\n• Se cumule avec l’attaque sournoise d’autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor((level('class.blackguard') - 1) / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.blackguard_fiendish_servant",
+      "type": "class_power",
+      "name": {
+        "fr": "Serviteur fiélon",
+        "en": "Fiendish servant"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Au niveau 5, son pacte lui envoie un compagnon : un animal corrompu par le sang des Abysses, rusé, loyal et cruel.\n\nEn jeu\n• Appelle un chat, une chauve-souris, un cheval, un corbeau, un crapaud, un poney ou un rat sanguinaire fiélon ; un seul à la fois ; s’il meurt, il faut attendre un an et un jour pour en appeler un autre, qui arrive avec tous les pouvoirs du niveau actuel.\n• Selon le niveau global du chevalier noir (12 ou moins / 13–15 / 16–18 / 19–20) : +2/+4/+6/+8 DV, +1/+3/+5/+7 d’armure naturelle, +1/+2/+3/+4 en Force, Intelligence 6/7/8/9.\n• Toujours : esquive extraordinaire, lien empathique (1,5 km), transfert d’effet magique (sorts lancés sur lui-même, à 1,5 m), meilleur jet de sauvegarde de base des deux.\n• Parle avec lui (13), +2 aux attaques, sauvegardes et tests quand le maître est menacé (16), résistance à la magie = niveau de chevalier noir + 5 (19)."
+      },
+      "effects": [],
+      "note": "Le serviteur fiélon n’a pas encore de fiche ; seulement dans le texte."
+    },
+    {
+      "id": "power.blackguard_fallen_paladin",
+      "type": "class_power",
+      "name": {
+        "fr": "Paladin déchu",
+        "en": "Fallen paladin"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blackguard"
+      ],
+      "description": {
+        "fr": "Le serment brisé laisse des traces. Le paladin qui a tout renié apporte au chevalier noir les restes pervertis de ses anciens dons.\n\nEn jeu\n• Selon son niveau de paladin : 1–2 : +1 châtiment du Bien par jour ; 3–4 : imposition des mains sur lui-même et son serviteur seulement (niveau × bonus de Charisme par jour) ; 5–6 : +1d6 d’attaque sournoise et +2 châtiments par jour ; 7–8 : convocation de monstres I une fois par jour (créatures mauvaises seulement, niveau de lanceur = 2 × niveau de chevalier noir) ; 9–10 : un écuyer squelette ou zombi de taille M en plus du serviteur fiélon, avec les mêmes pouvoirs, et +3 châtiments par jour.\n• Chaque palier inclut les précédents ; les châtiments en plus remplacent ceux du palier d’avant.\n• 11 et plus : peut échanger ses niveaux de paladin contre des niveaux de chevalier noir, sans changer de niveau global ; il perd alors les pouvoirs des paliers qu’il quitte."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "1d6",
+          "condition": "level('class.blackguard') >= 1 and level('class.paladin') >= 5"
+        },
+        {
+          "target": "lay_on_hands.self_hp",
+          "op": "add",
+          "value": "level('class.blackguard') * max(0, @ability.cha.mod)",
+          "condition": "level('class.paladin') >= 3"
+        }
+      ],
+      "note": "Seuls l’attaque sournoise, les châtiments en plus et les points de l’imposition des mains sont calculés ; la convocation, l’écuyer et l’échange de niveaux restent dans le texte. Rien ne vérifie que le paladin est bien déchu."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.blackguard",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.blackguard_aura_of_evil",
+        "power.blackguard_detect_good",
+        "power.blackguard_poison_use",
+        "power.blackguard_spells",
+        "power.blackguard_fallen_paladin"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.blackguard_dark_blessing",
+        "power.blackguard_smite_good"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.blackguard_aura_of_despair",
+        "power.blackguard_command_undead"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.blackguard_sneak_attack"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.blackguard_fiendish_servant"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.blackguard",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.blackguard",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

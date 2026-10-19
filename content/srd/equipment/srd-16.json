@@ -1,0 +1,224 @@
+{
+  "entities": [
+    {
+      "id": "item.light_horse",
+      "type": "item",
+      "name": {
+        "fr": "Cheval, Cheval léger",
+        "en": "Horse, light"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "description": {
+        "fr": "Un cheval de voyage, rapide et endurant, qui avale les lieues sans se plaindre, mais que le fracas de l’acier fait vite paniquer.\n\nEn jeu\n• Monture de taille G, vitesse 18 m ; porte un cavalier de taille M.\n• Non dressé au combat : au milieu d’une bataille, le diriger demande un test d’Équitation (DD 20, action de mouvement) à chaque round.\n• Ne peut pas attaquer tant qu’il porte un cavalier."
+      },
+      "item": {
+        "cost": "75 po"
+      },
+      "note": "Monture : profil de créature, charge transportable et dressage non modélisés."
+    },
+    {
+      "id": "item.light_warhorse",
+      "type": "item",
+      "name": {
+        "fr": "Cheval, Destrier léger",
+        "en": "Warhorse, light"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "description": {
+        "fr": "Un cheval léger élevé pour la guerre : il garde son calme sous les flèches et frappe des sabots quand son cavalier le lui demande.\n\nEn jeu\n• Monture de taille G, vitesse 18 m ; porte un cavalier de taille M.\n• Dressé au combat : se dirige en bataille sans test d’Équitation ; pour qu’il attaque pendant que vous attaquez, test d’Équitation DD 10 (Combattre avec une monture, action libre)."
+      },
+      "item": {
+        "cost": "150 po"
+      },
+      "note": "Monture : profil de créature, charge transportable et dressage non modélisés."
+    },
+    {
+      "id": "item.military_saddle",
+      "type": "item",
+      "name": {
+        "fr": "Selle, De guerre",
+        "en": "Saddle, military"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "description": {
+        "fr": "Une selle haute de l’arçon au troussequin, qui cale le cavalier comme dans un étau : on n’en tombe pas, même assommé.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests d’Équitation pour rester en selle.\n• Cavalier assommé : 75 % de chances de ne pas tomber (contre 50 % sur une selle d’équitation)."
+      },
+      "item": {
+        "cost": "20 po",
+        "weight": "15 kg"
+      },
+      "effects": [
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.staying_in_saddle"
+        }
+      ],
+      "note": "Le bonus ne vaut que pour rester en selle : compté comme situation, jamais dans le total."
+    },
+    {
+      "id": "item.pack_saddle",
+      "type": "item",
+      "name": {
+        "fr": "Selle, De bât",
+        "en": "Saddle, pack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "description": {
+        "fr": "Une selle sans siège, toute en sangles et en crochets, faite pour transformer un animal en convoi.\n\nEn jeu\n• Porte du matériel, pas de cavalier.\n• Accepte jusqu’à la charge maximale de l’animal."
+      },
+      "item": {
+        "cost": "5 po",
+        "weight": "7,5 kg"
+      }
+    },
+    {
+      "id": "item.pony",
+      "type": "item",
+      "name": {
+        "fr": "Cheval, Poney",
+        "en": "Pony"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "description": {
+        "fr": "Un petit cheval robuste et têtu, monture idéale des gnomes et des halfelins, qui préfère la route au champ de bataille.\n\nEn jeu\n• Monture de taille M, vitesse 12 m ; porte un cavalier de taille P (gnome, halfelin).\n• Non dressé au combat : au milieu d’une bataille, le diriger demande un test d’Équitation (DD 20, action de mouvement) à chaque round.\n• Ne peut pas attaquer tant qu’il porte un cavalier."
+      },
+      "item": {
+        "cost": "30 po"
+      },
+      "note": "Monture : profil de créature, charge transportable et dressage non modélisés."
+    },
+    {
+      "id": "item.riding_dog",
+      "type": "item",
+      "name": {
+        "fr": "Chien de selle",
+        "en": "Dog, riding"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "description": {
+        "fr": "Un grand chien musclé, dressé à porter un petit cavalier, qui ne recule pas plus qu’un destrier devant la mêlée.\n\nEn jeu\n• Monture de taille M, vitesse 12 m ; porte un humanoïde de taille P.\n• Dressé au combat : se dirige en bataille sans test d’Équitation ; pour qu’il attaque pendant que vous attaquez, test d’Équitation DD 10 (Combattre avec une monture, action libre).\n• Une chute depuis son dos ne cause aucun dégât."
+      },
+      "item": {
+        "cost": "150 po"
+      },
+      "note": "Monture : profil de créature, charge transportable et dressage non modélisés."
+    },
+    {
+      "id": "item.riding_saddle",
+      "type": "item",
+      "name": {
+        "fr": "Selle, D’équitation",
+        "en": "Saddle, riding"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "description": {
+        "fr": "La selle de tous les jours, en cuir patiné, pour les longues chevauchées comme pour les courses en ville.\n\nEn jeu\n• Accueille un cavalier.\n• Cavalier assommé : une chance sur deux de ne pas tomber."
+      },
+      "item": {
+        "cost": "10 po",
+        "weight": "12,5 kg"
+      }
+    },
+    {
+      "id": "item.saddlebags",
+      "type": "item",
+      "name": {
+        "fr": "Fontes",
+        "en": "Saddlebags"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount_gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Deux sacoches de cuir jetées de part et d’autre de la croupe, où tiennent les provisions et les petits trésors du voyage.\n\nEn jeu\n• Se fixent sur la monture, derrière la selle.\n• Même une monture portant une barde peut transporter ses fontes en plus de son cavalier."
+      },
+      "item": {
+        "cost": "4 po",
+        "weight": "4 kg"
+      }
+    },
+    {
+      "id": "item.stabling",
+      "type": "item",
+      "name": {
+        "fr": "Écurie (pour une journée)",
+        "en": "Stabling (per day)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "description": {
+        "fr": "Une stalle propre, du foin frais et un palefrenier qui veille : de quoi retrouver sa monture reposée au matin.\n\nEn jeu\n• Couvre un jour complet : l’animal est logé, nourri et soigné."
+      },
+      "item": {
+        "cost": "5 pa"
+      }
+    },
+    {
+      "id": "item.warpony",
+      "type": "item",
+      "name": {
+        "fr": "Cheval, Poney de guerre",
+        "en": "Warpony"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "description": {
+        "fr": "Un poney trapu dressé pour la mêlée, qui charge sans broncher sous ses petits cavaliers.\n\nEn jeu\n• Monture de taille M, vitesse 12 m ; porte un cavalier de taille P (gnome, halfelin).\n• Dressé au combat : se dirige en bataille sans test d’Équitation ; pour qu’il attaque pendant que vous attaquez, test d’Équitation DD 10 (Combattre avec une monture, action libre)."
+      },
+      "item": {
+        "cost": "100 po"
+      },
+      "note": "Monture : profil de créature, charge transportable et dressage non modélisés."
+    }
+  ]
+}

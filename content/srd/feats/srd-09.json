@@ -1,0 +1,292 @@
+{
+  "entities": [
+    {
+      "id": "feat.far_shot",
+      "type": "feat",
+      "name": {
+        "fr": "Tir de loin",
+        "en": "Far Shot"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Là où les autres archers voient une silhouette floue, lui voit une cible. Il a appris à lire le vent, à lever la pointe juste ce qu’il faut, et ses traits filent bien au-delà de ce que l’arme semblait promettre.\n\nEn jeu\n• Condition : Tir à bout portant.\n• Arme à projectiles (arc, arbalète, fronde) : facteur de portée multiplié par 1,5.\n• Arme de jet : facteur de portée multiplié par 2.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.point_blank_shot')",
+      "note": "Facteur de portée des armes : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.precise_shot",
+      "type": "feat",
+      "name": {
+        "fr": "Tir de précision",
+        "en": "Precise Shot"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Deux lames s’entrechoquent, des corps tournent, l’allié est à un pas de l’ennemi : il tire quand même, et la flèche trouve l’interstice. Il ne vise pas la mêlée, il vise l’homme.\n\nEn jeu\n• Condition : Tir à bout portant.\n• Tirer ou lancer une arme sur un adversaire engagé au corps à corps ne donne plus le malus de −4 à l’attaque.\n• Normal : −4 à l’attaque à distance contre une cible engagée en mêlée.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.point_blank_shot')",
+      "note": "Supprime un malus de situation que la fiche ne compte pas."
+    },
+    {
+      "id": "feat.shot_on_the_run",
+      "type": "feat",
+      "name": {
+        "fr": "Tir en mouvement",
+        "en": "Shot on the Run"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il ne s’arrête jamais pour tirer. Il surgit derrière un pilier, décoche, et il a déjà disparu derrière le suivant avant que la corde ait fini de vibrer.\n\nEn jeu\n• Condition : Dextérité 13, Esquive, Souplesse du serpent, Tir à bout portant, bonus de base à l’attaque +4.\n• Action d’attaque simple à distance : il peut couper son déplacement en deux, une partie avant le tir et l’autre après, sans dépasser sa vitesse sur l’ensemble du round.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.dodge') and has('feat.mobility') and has('feat.point_blank_shot') and @bab >= 4"
+    },
+    {
+      "id": "feat.mounted_archery",
+      "type": "feat",
+      "name": {
+        "fr": "Tir monté",
+        "en": "Mounted Archery"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged",
+        "mounted"
+      ],
+      "description": {
+        "fr": "Le galop secoue tout, sauf ses bras. Il épouse le rythme de la bête, lâche la flèche entre deux foulées, et le cheval devient une plateforme de tir comme une autre.\n\nEn jeu\n• Condition : 1 degré de maîtrise en Équitation, Combat monté.\n• Tirer en selle ne coûte que la moitié du malus habituel : −2 (normalement −4) si la monture se déplace deux fois dans le round, −4 (normalement −8) si elle court.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.mounted_combat')",
+      "note": "Condition non vérifiée par la fiche : 1 degré de maîtrise en Équitation. Malus de tir en selle : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.rapid_shot",
+      "type": "feat",
+      "name": {
+        "fr": "Tir rapide",
+        "en": "Rapid Shot"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Une flèche encochée pendant que la précédente vole encore. Ses gestes sont si rapides que le carquois semble se vider tout seul ; la précision en souffre un peu, l’ennemi beaucoup plus.\n\nEn jeu\n• Condition : Dextérité 13, Tir à bout portant.\n• Attaque à outrance à distance : un tir de plus, porté avec son meilleur bonus de base à l’attaque.\n• Ce round-là, chaque attaque (le tir en plus compris) prend −2.\n• Rôdeur de niveau 2 ayant choisi le style de combat à distance : il profite du don sans en remplir les conditions, tant qu’il porte une armure légère ou aucune armure.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.point_blank_shot')",
+      "effects": [
+        {
+          "target": "attack.ranged",
+          "op": "add",
+          "value": -2,
+          "bonusType": "untyped",
+          "condition": "active('toggle.rapid_shot')"
+        }
+      ],
+      "note": "Interrupteur : à activer pendant une attaque à outrance à distance. L’attaque supplémentaire n’est pas comptée par la fiche."
+    },
+    {
+      "id": "feat.alertness",
+      "type": "feat",
+      "name": {
+        "fr": "Vigilance",
+        "en": "Alertness"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Un craquement de branche, un reflet sur une lame, une respiration retenue derrière une porte : rien ne lui échappe. Ses compagnons dorment mieux quand c’est lui qui monte la garde.\n\nEn jeu\n• +2 aux tests de Détection et de Perception auditive.\n• Le maître d’un familier en profite tant que le familier est à portée de main."
+      },
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.great_fortitude",
+      "type": "feat",
+      "name": {
+        "fr": "Vigueur surhumaine",
+        "en": "Great Fortitude"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Poisons, maladies, fatigue des longues marches : son corps encaisse ce qui en terrasserait d’autres. On le dit taillé dans le chêne ; il dit juste qu’il a l’habitude.\n\nEn jeu\n• +2 aux jets de Vigueur."
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.iron_will",
+      "type": "feat",
+      "name": {
+        "fr": "Volonté de fer",
+        "en": "Iron Will"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Les murmures des enchanteurs glissent sur lui comme la pluie sur la pierre. Son esprit est une forteresse, et il n’en ouvre la porte à personne.\n\nEn jeu\n• +2 aux jets de Volonté."
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.acrobatic",
+      "type": "feat",
+      "name": {
+        "fr": "Voltigeur",
+        "en": "Acrobatic"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il roule, bondit, retombe sur ses pieds comme un chat. Les toits sont ses routes, les poutres ses passerelles, et les gardes s’essoufflent bien avant lui.\n\nEn jeu\n• +2 aux tests d’Acrobaties et de Saut."
+      },
+      "effects": [
+        {
+          "target": "skill.tumble",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.heighten_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Augmentation d’intensité",
+        "en": "Heighten Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Un sort mineur, gonflé de puissance jusqu’à devenir quelque chose d’autre. Ce n’est pas une illusion de force : le sort monte vraiment de niveau, et les protections qui l’auraient arrêté cèdent devant lui.\n\nEn jeu\n• Le lanceur choisit de combien de niveaux il hausse le sort, sans dépasser le 9e niveau.\n• Le sort prend un emplacement de ce nouveau niveau.\n• Le sort est vraiment de ce niveau, ce qu’aucun autre don de métamagie ne fait : son DD de sauvegarde, sa capacité à percer un globe d’invulnérabilité partielle et tout effet lié au niveau en tiennent compte."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Coût variable (nombre de niveaux choisi au lancement) : la fiche compte +1. La hausse réelle du niveau du sort (DD) n’est pas encore dans le modèle."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.far_shot",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.precise_shot",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.shot_on_the_run",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.shot_on_the_run",
+      "relation": "requires",
+      "to": "feat.mobility"
+    },
+    {
+      "from": "feat.shot_on_the_run",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.mounted_archery",
+      "relation": "requires",
+      "to": "feat.mounted_combat"
+    },
+    {
+      "from": "feat.rapid_shot",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    }
+  ]
+}

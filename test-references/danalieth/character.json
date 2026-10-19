@@ -1,0 +1,763 @@
+{
+  "id": "char.danalieth",
+  "name": "Danalieth",
+  "xp": 1718250,
+  "assumptions": [
+    "Level order assumed: Warblade 1-20, Wizard 21-23, Sorcerer 24, Ultimate Magus 1-10 (25-34), Sevenfold Veil (35-41), Archmage (42-46), Ultimate Magus 11-20 (47-56), Will of Death (57-59).",
+    "Feat placement assumed: 7 general slots (1-18), 2 Warblade bonus slots, 3 Ultimate Magus metamagic bonus slots, 13 epic slots (21-57). 4 Improved Spell Capacity sit in bonus slots whose restriction they break (flagged). The sheet counts 28 feats; this file holds the 29 feats the sheet lists.",
+    "Ultimate Magus single-class levels advance the Sorcerer (lowest caster level); Sevenfold Veil and Archmage advance the Wizard.",
+    "Templates recorded as gained at level 21 (date unknown; does not change the level-59 sheet).",
+    "Skill ranks not recorded yet (Spellcraft 99 on the sheet).",
+    "All active buff spells are cast as Wizard (the sheet's spell resistance uses Wizard 60).",
+    "Spell Improvement and Will of Death caster levels go to the Wizard (owner, 2026-10-15).",
+    "High arcana picks (owner, 2026-10-15): Arcane Reach, Mastery of Counterspelling, Mastery of Elements, Mastery of Shaping, Spell-Like Ability; the level of each pick is assumed in that order (42-46)."
+  ],
+  "race": "race.danalieth",
+  "baseAbilities": {
+    "str": 18,
+    "dex": 16,
+    "con": 16,
+    "int": 18,
+    "wis": 12,
+    "cha": 12
+  },
+  "levels": [
+    {
+      "level": 1,
+      "classId": "class.warblade",
+      "classLevel": 1,
+      "feats": [
+        {
+          "id": "feat.skill_focus_spellcraft",
+          "slot": "general"
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "classId": "class.warblade",
+      "classLevel": 2
+    },
+    {
+      "level": 3,
+      "classId": "class.warblade",
+      "classLevel": 3,
+      "feats": [
+        {
+          "id": "feat.spell_focus_abjuration",
+          "slot": "general"
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "classId": "class.warblade",
+      "classLevel": 4,
+      "abilityIncrease": "int"
+    },
+    {
+      "level": 5,
+      "classId": "class.warblade",
+      "classLevel": 5,
+      "feats": [
+        {
+          "id": "feat.power_attack",
+          "slot": "warblade_bonus"
+        }
+      ]
+    },
+    {
+      "level": 6,
+      "classId": "class.warblade",
+      "classLevel": 6,
+      "feats": [
+        {
+          "id": "feat.greater_spell_focus_abjuration",
+          "slot": "general"
+        }
+      ]
+    },
+    {
+      "level": 7,
+      "classId": "class.warblade",
+      "classLevel": 7
+    },
+    {
+      "level": 8,
+      "classId": "class.warblade",
+      "classLevel": 8,
+      "abilityIncrease": "int"
+    },
+    {
+      "level": 9,
+      "classId": "class.warblade",
+      "classLevel": 9,
+      "feats": [
+        {
+          "id": "feat.empower_spell",
+          "slot": "general"
+        },
+        {
+          "id": "feat.combat_expertise",
+          "slot": "warblade_bonus"
+        }
+      ]
+    },
+    {
+      "level": 10,
+      "classId": "class.warblade",
+      "classLevel": 10
+    },
+    {
+      "level": 11,
+      "classId": "class.warblade",
+      "classLevel": 11
+    },
+    {
+      "level": 12,
+      "classId": "class.warblade",
+      "classLevel": 12,
+      "feats": [
+        {
+          "id": "feat.extend_spell",
+          "slot": "general"
+        }
+      ],
+      "abilityIncrease": "int"
+    },
+    {
+      "level": 13,
+      "classId": "class.warblade",
+      "classLevel": 13,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "warblade_bonus",
+          "flag": "slot restriction not met: real placement unknown"
+        }
+      ]
+    },
+    {
+      "level": 14,
+      "classId": "class.warblade",
+      "classLevel": 14
+    },
+    {
+      "level": 15,
+      "classId": "class.warblade",
+      "classLevel": 15,
+      "feats": [
+        {
+          "id": "feat.quicken_spell",
+          "slot": "general"
+        }
+      ]
+    },
+    {
+      "level": 16,
+      "classId": "class.warblade",
+      "classLevel": 16,
+      "abilityIncrease": "int"
+    },
+    {
+      "level": 17,
+      "classId": "class.warblade",
+      "classLevel": 17,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "warblade_bonus",
+          "flag": "slot restriction not met: real placement unknown"
+        }
+      ]
+    },
+    {
+      "level": 18,
+      "classId": "class.warblade",
+      "classLevel": 18,
+      "feats": [
+        {
+          "id": "feat.persistent_spell",
+          "slot": "general"
+        }
+      ]
+    },
+    {
+      "level": 19,
+      "classId": "class.warblade",
+      "classLevel": 19
+    },
+    {
+      "level": 20,
+      "classId": "class.warblade",
+      "classLevel": 20,
+      "abilityIncrease": "int"
+    },
+    {
+      "level": 21,
+      "classId": "class.wizard",
+      "classLevel": 1,
+      "feats": [
+        {
+          "id": "feat.spell_improvement",
+          "slot": "epic"
+        }
+      ],
+      "gained": [
+        "template.demon",
+        "template.vampire",
+        "template.dragon"
+      ]
+    },
+    {
+      "level": 22,
+      "classId": "class.wizard",
+      "classLevel": 2
+    },
+    {
+      "level": 23,
+      "classId": "class.wizard",
+      "classLevel": 3
+    },
+    {
+      "level": 24,
+      "classId": "class.sorcerer",
+      "classLevel": 1,
+      "feats": [
+        {
+          "id": "feat.spell_improvement",
+          "slot": "epic"
+        }
+      ],
+      "abilityIncrease": "int"
+    },
+    {
+      "level": 25,
+      "classId": "class.ultimate_magus",
+      "classLevel": 1,
+      "spellcastingAdvances": [
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 26,
+      "classId": "class.ultimate_magus",
+      "classLevel": 2,
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 27,
+      "classId": "class.ultimate_magus",
+      "classLevel": 3,
+      "feats": [
+        {
+          "id": "feat.spell_improvement",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 28,
+      "classId": "class.ultimate_magus",
+      "classLevel": 4,
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 29,
+      "classId": "class.ultimate_magus",
+      "classLevel": 5,
+      "feats": [
+        {
+          "id": "feat.intensify_spell",
+          "slot": "metamagic_bonus"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 30,
+      "classId": "class.ultimate_magus",
+      "classLevel": 6,
+      "feats": [
+        {
+          "id": "feat.spell_improvement",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 31,
+      "classId": "class.ultimate_magus",
+      "classLevel": 7,
+      "spellcastingAdvances": [
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 32,
+      "classId": "class.ultimate_magus",
+      "classLevel": 8,
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 33,
+      "classId": "class.ultimate_magus",
+      "classLevel": 9,
+      "feats": [
+        {
+          "id": "feat.superspell",
+          "slot": "metamagic_bonus"
+        },
+        {
+          "id": "feat.spell_improvement",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 34,
+      "classId": "class.ultimate_magus",
+      "classLevel": 10,
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 35,
+      "classId": "class.sevenfold_veil",
+      "classLevel": 1,
+      "spellcastingAdvances": [
+        "class.wizard"
+      ]
+    },
+    {
+      "level": 36,
+      "classId": "class.sevenfold_veil",
+      "classLevel": 2,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ],
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.wizard"
+      ]
+    },
+    {
+      "level": 37,
+      "classId": "class.sevenfold_veil",
+      "classLevel": 3,
+      "spellcastingAdvances": [
+        "class.wizard"
+      ]
+    },
+    {
+      "level": 38,
+      "classId": "class.sevenfold_veil",
+      "classLevel": 4,
+      "spellcastingAdvances": [
+        "class.wizard"
+      ]
+    },
+    {
+      "level": 39,
+      "classId": "class.sevenfold_veil",
+      "classLevel": 5,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard"
+      ]
+    },
+    {
+      "level": 40,
+      "classId": "class.sevenfold_veil",
+      "classLevel": 6,
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.wizard"
+      ]
+    },
+    {
+      "level": 41,
+      "classId": "class.sevenfold_veil",
+      "classLevel": 7,
+      "spellcastingAdvances": [
+        "class.wizard"
+      ]
+    },
+    {
+      "level": 42,
+      "classId": "class.archmage",
+      "classLevel": 1,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard"
+      ],
+      "gained": [
+        "power.archmage_arcane_reach"
+      ]
+    },
+    {
+      "level": 43,
+      "classId": "class.archmage",
+      "classLevel": 2,
+      "spellcastingAdvances": [
+        "class.wizard"
+      ],
+      "gained": [
+        "power.archmage_mastery_of_counterspelling"
+      ]
+    },
+    {
+      "level": 44,
+      "classId": "class.archmage",
+      "classLevel": 3,
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.wizard"
+      ],
+      "gained": [
+        "power.archmage_mastery_of_elements"
+      ]
+    },
+    {
+      "level": 45,
+      "classId": "class.archmage",
+      "classLevel": 4,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard"
+      ],
+      "gained": [
+        "power.archmage_mastery_of_shaping"
+      ]
+    },
+    {
+      "level": 46,
+      "classId": "class.archmage",
+      "classLevel": 5,
+      "spellcastingAdvances": [
+        "class.wizard"
+      ],
+      "gained": [
+        "power.archmage_spell_like_ability"
+      ]
+    },
+    {
+      "level": 47,
+      "classId": "class.ultimate_magus",
+      "classLevel": 11,
+      "spellcastingAdvances": [
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 48,
+      "classId": "class.ultimate_magus",
+      "classLevel": 12,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ],
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 49,
+      "classId": "class.ultimate_magus",
+      "classLevel": 13,
+      "feats": [
+        {
+          "id": "feat.improved_metamagic",
+          "slot": "metamagic_bonus"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 50,
+      "classId": "class.ultimate_magus",
+      "classLevel": 14,
+      "spellcastingAdvances": [
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 51,
+      "classId": "class.ultimate_magus",
+      "classLevel": 15,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 52,
+      "classId": "class.ultimate_magus",
+      "classLevel": 16,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "metamagic_bonus",
+          "flag": "slot restriction not met: real placement unknown"
+        }
+      ],
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 53,
+      "classId": "class.ultimate_magus",
+      "classLevel": 17,
+      "spellcastingAdvances": [
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 54,
+      "classId": "class.ultimate_magus",
+      "classLevel": 18,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 55,
+      "classId": "class.ultimate_magus",
+      "classLevel": 19,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "metamagic_bonus",
+          "flag": "slot restriction not met: real placement unknown"
+        }
+      ],
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 56,
+      "classId": "class.ultimate_magus",
+      "classLevel": 20,
+      "abilityIncrease": "int",
+      "spellcastingAdvances": [
+        "class.wizard",
+        "class.sorcerer"
+      ]
+    },
+    {
+      "level": 57,
+      "classId": "class.vt_will_of_death",
+      "classLevel": 1,
+      "feats": [
+        {
+          "id": "feat.improved_spell_capacity",
+          "slot": "epic"
+        }
+      ]
+    },
+    {
+      "level": 58,
+      "classId": "class.vt_will_of_death",
+      "classLevel": 2
+    },
+    {
+      "level": 59,
+      "classId": "class.vt_will_of_death",
+      "classLevel": 3,
+      "gained": [
+        "feat.continuum_comprehension"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item.blade_of_destruction",
+      "equipped": true
+    },
+    {
+      "id": "item.celestial_armor",
+      "equipped": true
+    },
+    {
+      "id": "item.cloak_of_resistance_12",
+      "equipped": true
+    },
+    {
+      "id": "item.trinket_vampirism",
+      "equipped": true
+    },
+    {
+      "id": "item.trinket_critical",
+      "equipped": true
+    },
+    {
+      "id": "item.tomes",
+      "equipped": true
+    },
+    {
+      "id": "item.ioun_stones",
+      "equipped": true
+    }
+  ],
+  "spellcasting": {
+    "class.wizard": {
+      "mode": "free_slots"
+    },
+    "class.sorcerer": {
+      "mode": "free_slots"
+    }
+  },
+  "activeToggles": [
+    {
+      "toggle": "toggle.divine_power",
+      "spell": "spell.divine_power",
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.divine_favor",
+      "spell": "spell.divine_favor",
+      "metamagic": [
+        "feat.superspell"
+      ],
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.bulls_strength",
+      "spell": "spell.bulls_strength",
+      "metamagic": [
+        "feat.superspell"
+      ],
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.bears_endurance",
+      "spell": "spell.bears_endurance",
+      "metamagic": [
+        "feat.superspell"
+      ],
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.foxs_cunning",
+      "spell": "spell.foxs_cunning",
+      "metamagic": [
+        "feat.superspell"
+      ],
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.force_of_nature",
+      "spell": "spell.force_of_nature",
+      "metamagic": [
+        "feat.superspell"
+      ],
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.giant_size",
+      "spell": "spell.giant_size",
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.force_of_colossus",
+      "spell": "spell.force_of_colossus",
+      "metamagic": [
+        "feat.empower_spell"
+      ],
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.barkskin",
+      "spell": "spell.barkskin",
+      "metamagic": [
+        "feat.superspell"
+      ],
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.spell_resistance",
+      "spell": "spell.spell_resistance",
+      "casterClass": "class.wizard"
+    },
+    {
+      "toggle": "toggle.stance.danalieth_attack_stance",
+      "entity": "stance.danalieth_attack_stance"
+    }
+  ],
+  "choices": {
+    "feat.spell_improvement": "class.wizard",
+    "class.vt_will_of_death": "class.wizard",
+    "feat.improved_spell_capacity": "class.wizard",
+    "power.vt_epic_spell": "class.wizard"
+  }
+}

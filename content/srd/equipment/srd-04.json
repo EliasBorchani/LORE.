@@ -1,0 +1,876 @@
+{
+  "entities": [
+    {
+      "id": "item.short_sword",
+      "type": "item",
+      "name": {
+        "fr": "Épée courte",
+        "en": "Short sword"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "10 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "19–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une lame courte et droite, faite pour les ruelles, les tunnels et les corps-à-corps où l’on n’a pas la place d’armer un grand coup. Elle frappe d’estoc, vite, entre deux plaques ou deux côtes.\n\nEn jeu\n• Arme de guerre légère : elle se manie dans la main secondaire avec un malus réduit en combat à deux armes.\n• Arme légère : elle profite d’Attaque en finesse."
+      }
+    },
+    {
+      "id": "item.shortbow",
+      "type": "item",
+      "name": {
+        "fr": "Arc court",
+        "en": "Shortbow"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "ranged"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "30 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×3",
+        "range": "18 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Un arc de bois et de corne, assez court pour tirer à cheval ou depuis un fourré. Moins puissant que l’arc long, il reste l’ami fidèle des éclaireurs et des cavaliers.\n\nEn jeu\n• Arme de guerre à distance ; il faut les deux mains pour tirer.\n• Utilisable à cheval.\n• Tire des flèches (munitions vendues à part).\n• Un malus de Force s’applique aux dégâts, mais pas un bonus (sauf arc composite)."
+      }
+    },
+    {
+      "id": "item.shortspear",
+      "type": "item",
+      "name": {
+        "fr": "Épieu",
+        "en": "Shortspear"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "one_handed",
+        "thrown"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "1 po",
+        "weight": "1,5 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "range": "6 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une hampe courte coiffée d’une pointe de fer, assez légère pour être tenue d’une main derrière un bouclier ou lancée au dernier moment.\n\nEn jeu\n• Arme courante à une main.\n• Peut être lancée."
+      }
+    },
+    {
+      "id": "item.shuriken",
+      "type": "item",
+      "name": {
+        "fr": "Shuriken (5)",
+        "en": "Shuriken (5)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged",
+        "monk"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "1 po",
+        "weight": "250 g",
+        "damage": "1d2",
+        "damageSmall": "1",
+        "critical": "×2",
+        "range": "3 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d2",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Des étoiles de métal plates aux branches aiguisées, lancées par poignées depuis la manche. Elles piquent plus qu’elles ne blessent, mais un moine en fait pleuvoir une volée.\n\nEn jeu\n• Arme exotique de jet, vendue par lot de 5.\n• Arme de moine : le moine peut l’utiliser avec ses attaques de déluge de coups.\n• Ne sert pas au corps à corps.\n• Se gère comme une flèche plutôt que comme une arme de jet : on le sort de son étui comme une munition, ses versions de maître ou magiques suivent les règles des munitions, et il se perd ou se récupère comme elles après le tir."
+      }
+    },
+    {
+      "id": "item.siangham",
+      "type": "item",
+      "name": {
+        "fr": "Siangham",
+        "en": "Siangham"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "light",
+        "monk"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "3 po",
+        "weight": "500 g",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une tige de fer pointue tenue dans le poing, discrète et rapide, que les moines plantent entre deux coups de pied.\n\nEn jeu\n• Arme exotique légère.\n• Arme de moine : le moine peut l’utiliser avec ses attaques de déluge de coups."
+      }
+    },
+    {
+      "id": "item.sickle",
+      "type": "item",
+      "name": {
+        "fr": "Serpe",
+        "en": "Sickle"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "light"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "6 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une lame recourbée héritée des moissons, que les druides et les paysans révoltés savent tourner contre une cheville aussi bien que contre un épi.\n\nEn jeu\n• Arme courante légère.\n• Permet de tenter un croc-en-jambe ; en cas d’échec, on peut lâcher la serpe pour ne pas être renversé à son tour."
+      }
+    },
+    {
+      "id": "item.sling",
+      "type": "item",
+      "name": {
+        "fr": "Fronde",
+        "en": "Sling"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "ranged"
+      ],
+      "item": {
+        "slot": "weapon",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "range": "15 m",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une simple lanière de cuir qui, d’un tour de poignet, envoie une bille de plomb fracasser un crâne à bonne distance. L’arme des bergers, des gamins et des tueurs de géants.\n\nEn jeu\n• Arme courante à distance.\n• La Force compte aux dégâts, bonus comme malus, exactement comme pour une arme de jet.\n• Une main suffit pour tirer ; recharger prend une action de mouvement, les deux mains, et provoque une attaque d’opportunité.\n• Tire des billes de plomb ; à défaut, une pierre ramassée fait −1 à l’attaque et les dégâts d’une fronde d’une taille de moins."
+      },
+      "note": "Le bonus de Force aux dégâts de la fronde n’est pas calculé par le modèle (dégâts à distance)."
+    },
+    {
+      "id": "item.sling_bullets",
+      "type": "item",
+      "name": {
+        "fr": "Billes (10)",
+        "en": "Sling bullets (10)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "ammunition"
+      ],
+      "item": {
+        "cost": "1 pa",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Des billes de plomb coulées en série, lourdes pour leur taille, rangées dans une bourse de cuir.\n\nEn jeu\n• Munitions de fronde, par 10.\n• Une bille qui touche sa cible est détruite ; une bille qui la manque a une chance sur deux d’être retrouvée."
+      }
+    },
+    {
+      "id": "item.spear",
+      "type": "item",
+      "name": {
+        "fr": "Lance",
+        "en": "Spear"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "two_handed",
+        "thrown"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "2 po",
+        "weight": "3 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "range": "6 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une longue hampe de frêne à pointe de fer, l’arme la plus ancienne des champs de bataille. Plantée en terre face à une charge, elle arrête net chevaux et monstres.\n\nEn jeu\n• Arme courante à deux mains.\n• Peut être lancée.\n• Avec une action préparée pour recevoir une charge, un coup qui touche le chargeur inflige le double des dégâts."
+      }
+    },
+    {
+      "id": "item.spiked_chain",
+      "type": "item",
+      "name": {
+        "fr": "Chaîne cloutée",
+        "en": "Spiked chain"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "reach"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "25 po",
+        "weight": "5 kg",
+        "damage": "2d4",
+        "damageSmall": "1d6",
+        "critical": "×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une chaîne de deux mètres hérissée de pointes, qu’un maître fait tournoyer autour de lui comme un essaim de lames. Rien n’approche sans saigner.\n\nEn jeu\n• Arme exotique à deux mains et à allonge (3 m), qui peut aussi frapper un ennemi adjacent.\n• Permet de tenter un croc-en-jambe ; en cas d’échec, on peut lâcher la chaîne pour ne pas être renversé à son tour.\n• +2 au jet opposé pour désarmer (y compris pour résister au désarmement).\n• Profite d’Attaque en finesse, bien qu’elle ne soit pas légère."
+      }
+    },
+    {
+      "id": "item.spiked_gauntlet",
+      "type": "item",
+      "name": {
+        "fr": "Gantelet clouté",
+        "en": "Spiked gauntlet"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "light"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "5 po",
+        "weight": "500 g",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Un gantelet de fer hérissé de pointes : le poing devient une arme, et la main reste libre de saisir.\n\nEn jeu\n• Arme courante légère, vendue à l’unité.\n• Un coup de gantelet clouté est une attaque armée.\n• On ne peut pas être désarmé d’un gantelet clouté."
+      }
+    },
+    {
+      "id": "item.throwing_axe",
+      "type": "item",
+      "name": {
+        "fr": "Hache de lancer",
+        "en": "Throwing axe"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light",
+        "thrown"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "8 po",
+        "weight": "2 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "range": "3 m",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une petite hache équilibrée pour tournoyer dans l’air et se planter dans un bouclier ou une poitrine, avant la mêlée.\n\nEn jeu\n• Arme de guerre légère.\n• Peut être lancée."
+      }
+    },
+    {
+      "id": "item.trident",
+      "type": "item",
+      "name": {
+        "fr": "Trident",
+        "en": "Trident"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed",
+        "thrown"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "15 po",
+        "weight": "2 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×2",
+        "range": "3 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Trois pointes de fer sur une hampe, l’arme des pêcheurs, des gladiateurs et des peuples de la mer.\n\nEn jeu\n• Arme de guerre à une main.\n• Peut être lancé.\n• Avec une action préparée pour recevoir une charge, un coup qui touche le chargeur inflige le double des dégâts."
+      }
+    },
+    {
+      "id": "item.two_bladed_sword",
+      "type": "item",
+      "name": {
+        "fr": "Double-lame",
+        "en": "Two-bladed sword"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "100 po",
+        "weight": "5 kg",
+        "damage": "1d8/1d8",
+        "damageSmall": "1d6/1d6",
+        "critical": "19–20/×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Deux longues lames montées aux deux bouts d’une même poignée : une arme de danseur, qui ne laisse jamais de répit entre deux coups.\n\nEn jeu\n• Arme exotique double à deux mains.\n• Ses deux lames permettent le combat à deux armes, avec les malus calculés comme pour une arme à une main et une arme légère dans la main secondaire.\n• Tenue d’une seule main, elle perd ce statut : une seule lame frappe pendant le round."
+      },
+      "note": "Le combat avec les deux têtes n’est pas modélisé : le bonus de Force ×1,5 vaut pour une seule tête."
+    },
+    {
+      "id": "item.unarmed_strike",
+      "type": "item",
+      "name": {
+        "fr": "Attaque à mains nues",
+        "en": "Unarmed strike"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "unarmed",
+        "nonlethal",
+        "monk"
+      ],
+      "item": {
+        "slot": "weapon",
+        "damage": "1d3",
+        "damageSmall": "1d2",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d3",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Le poing, le pied, le coude, le genou : l’arme qu’on ne peut jamais vous prendre. Chez un moine, elle devient plus dangereuse qu’une épée.\n\nEn jeu\n• Arme courante, toujours disponible.\n• Inflige des dégâts non létaux ; des dégâts létaux sont possibles avec −4 à l’attaque.\n• Sans Science du combat à mains nues, frapper un adversaire armé provoque une attaque d’opportunité de sa part.\n• Le modificateur de Force s’applique aux dégâts.\n• Toujours une arme légère : elle profite d’Attaque en finesse.\n• Un moine, ou un personnage avec Science du combat à mains nues, choisit librement des dégâts létaux ou non létaux, sans malus et sans provoquer d’attaque d’opportunité ; le moine utilise ses propres dégâts à mains nues.\n• Les effets qui améliorent les dégâts des armes s’appliquent aussi à ces coups."
+      }
+    },
+    {
+      "id": "item.warhammer",
+      "type": "item",
+      "name": {
+        "fr": "Marteau de guerre",
+        "en": "Warhammer"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "12 po",
+        "weight": "2,5 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une tête de fer massive d’un côté, un bec de l’autre : le marteau qui défonce les heaumes et fait plier les cuirasses.\n\nEn jeu\n• Arme de guerre à une main."
+      }
+    },
+    {
+      "id": "item.whip",
+      "type": "item",
+      "name": {
+        "fr": "Fouet",
+        "en": "Whip"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed",
+        "reach",
+        "nonlethal"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "1 po",
+        "weight": "1 kg",
+        "damage": "1d3",
+        "damageSmall": "1d2",
+        "critical": "×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d3",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une longue lanière de cuir tressé qui claque à quatre mètres et demi. Elle ne tranche pas la chair protégée, mais elle arrache une arme ou fauche une cheville en un éclair.\n\nEn jeu\n• Arme exotique à une main, allonge de 4,5 m ; elle peut toucher un ennemi adjacent, mais ne menace aucune case.\n• Attaquer avec le fouet provoque une attaque d’opportunité, comme une arme à distance.\n• Dégâts non létaux, sans effet sur une créature avec un bonus d’armure d’au moins +1 ou d’armure naturelle d’au moins +3.\n• Permet de tenter un croc-en-jambe ; en cas d’échec, on peut lâcher le fouet pour ne pas être renversé à son tour.\n• +2 au jet opposé pour désarmer (y compris pour résister au désarmement).\n• Profite d’Attaque en finesse, bien qu’il ne soit pas léger."
+      }
+    }
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "entities": [
+    {
+      "id": "spell.permanent_image",
+      "type": "spell",
+      "name": { "fr": "Image permanente", "en": "Permanent Image" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Une fontaine qui chante pour toujours dans un hall vide, un gardien de pierre qui sent le soufre. Le mirage ne s’éteint plus jamais.\n\nEn jeu\n• Illusion avec image, son, odeur et chaleur, qui ne prend jamais fin.\n• Taille : un cube de 6 m d’arête + un cube de 3 m d’arête par niveau.\n• Le lanceur peut la déplacer dans la portée en se concentrant ; sinon elle reste immobile.\n• Qui interagit avec elle a droit à un jet de Volonté pour la percer à jour.\n• Composante matérielle : poudre de jade d’une valeur de 100 po."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "chimère d’un cube de 6 m + 1 cube de 3 m/niveau",
+        "duration": "permanente (T)",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.persistent_image",
+      "type": "spell",
+      "name": { "fr": "Image prédéterminée", "en": "Persistent Image" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Une petite pièce de théâtre réglée d’avance : les acteurs entrent, parlent, se battent et saluent, pendant que l’auteur est déjà loin.\n\nEn jeu\n• Illusion avec image, son, odeur et chaleur, qui suit un scénario fixé à l’incantation, sans concentration.\n• Elle peut parler de façon intelligible.\n• Taille : 4 cubes de 3 m d’arête + 1 cube par niveau.\n• Dure 1 minute par niveau ; jet de Volonté pour la percer à jour en cas d’interaction."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "chimère de 4 cubes de 3 m + 1 cube/niveau",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.programmed_image",
+      "type": "spell",
+      "name": { "fr": "Image programmée", "en": "Programmed Image" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Un piège de lumière et de bruit qui dort dans un couloir. Il attend son signal, puis joue sa scène à la perfection.\n\nEn jeu\n• Illusion avec image, son, odeur et chaleur, qui peut parler ; elle attend sans limite de temps qu’une condition choisie à l’incantation se produise.\n• La condition doit se voir, s’entendre, se sentir ou se toucher (pas d’alignement ni de qualité invisible).\n• Une fois déclenchée, elle dure 1 round par niveau.\n• Taille : un cube de 6 m d’arête + un cube de 3 m d’arête par niveau.\n• Composante matérielle : poudre de jade d’une valeur de 25 po."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "chimère d’un cube de 6 m + 1 cube de 3 m/niveau",
+        "duration": "permanente jusqu’au déclenchement, puis 1 round/niveau",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.silent_image",
+      "type": "spell",
+      "name": { "fr": "Image silencieuse", "en": "Silent Image" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Un pont sur le gouffre, un mur au milieu du couloir, un dragon qui ne rugit pas. Tout ce qu’on peut voir, sans un bruit.\n\nEn jeu\n• Image visuelle d’un objet, d’une créature ou d’une force, sans son, odeur ni chaleur. Le lanceur peut l’animer en se concentrant.\n• Taille : 4 cubes de 3 m d’arête + 1 cube par niveau.\n• Qui interagit avec l’image a droit à un jet de Volonté."
+      },
+      "spell": {
+        "school": "Illusion",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "image visuelle de 4 cubes de 3 m + 1 cube/niveau",
+        "duration": "concentration",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non",
+        "subschool": "chimère"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hold_animal",
+      "type": "spell",
+      "name": { "fr": "Immobilisation d’animal", "en": "Hold Animal" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Un mot ferme, un regard, et le loup en pleine course se fige comme une statue de bois.\n\nEn jeu\n• Un animal rate son jet de Volonté : il est paralysé, conscient mais incapable d’agir.\n• À chacun de ses tours, il peut retenter le jet par une action complexe (sans attaque d’opportunité).\n• Dure 1 round par niveau ; un animal volant tombe, un animal nageur peut se noyer."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 animal",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hold_monster",
+      "type": "spell",
+      "name": { "fr": "Immobilisation de monstre", "en": "Hold Monster" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Ogre, dragon ou démon : peu importe la forme, la volonté se brise et le corps refuse d’obéir.\n\nEn jeu\n• Une créature vivante qui rate son jet de Volonté est paralysée, consciente mais sans pouvoir agir ni parler.\n• À chacun de ses tours, elle peut retenter le jet par une action complexe (sans attaque d’opportunité).\n• Dure 1 round par niveau ; une créature volante tombe, une créature qui nage peut se noyer."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mass_hold_monster",
+      "type": "spell",
+      "name": { "fr": "Immobilisation de monstre de groupe", "en": "Hold Monster, Mass" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Toute une horde s’arrête net, figée en plein élan, comme si le temps avait oublié de la faire avancer.\n\nEn jeu\n• Paralyse autant de créatures vivantes que voulu, à moins de 9 m les unes des autres, si elles ratent leur jet de Volonté.\n• Chacune peut retenter le jet à son tour par une action complexe.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 ou plusieurs créatures, à moins de 9 m les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.halt_undead",
+      "type": "spell",
+      "name": { "fr": "Immobilisation de morts-vivants", "en": "Halt Undead" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Les os cessent de claquer, les griffes restent en l’air. Les morts se souviennent soudain qu’ils devraient être immobiles.\n\nEn jeu\n• Fige jusqu’à 3 morts-vivants, à moins de 9 m les uns des autres, pendant 1 round par niveau.\n• Les morts-vivants sans intelligence n’ont pas de jet de sauvegarde ; les autres font un jet de Volonté.\n• Le sort cesse pour un mort-vivant dès qu’il est attaqué ou blessé."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "jusqu’à 3 morts-vivants, à moins de 9 m les uns des autres",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hold_person",
+      "type": "spell",
+      "name": { "fr": "Immobilisation de personnes", "en": "Hold Person" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Le bandit lève son épée… et ne la baisse jamais. Il voit tout, entend tout, mais son corps lui a fermé la porte.\n\nEn jeu\n• Un humanoïde qui rate son jet de Volonté est paralysé : conscient, mais sans pouvoir agir ni parler.\n• À chacun de ses tours, il peut retenter le jet par une action complexe (sans attaque d’opportunité).\n• Dure 1 round par niveau ; une créature volante tombe, un nageur peut se noyer."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 humanoïde",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mass_hold_person",
+      "type": "spell",
+      "name": { "fr": "Immobilisation de personnes de groupe", "en": "Hold Person, Mass" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Une rangée entière de gardes devient une galerie de statues, chacune figée dans sa propre grimace.\n\nEn jeu\n• Paralyse autant d’humanoïdes que voulu, à moins de 9 m les uns des autres, s’ils ratent leur jet de Volonté.\n• Chacun peut retenter le jet à son tour par une action complexe.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 ou plusieurs humanoïdes, à moins de 9 m les uns des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.spell_immunity",
+      "type": "spell",
+      "name": { "fr": "Immunité contre les sorts", "en": "Spell Immunity" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Le nom d’un sort, gravé dans la peau comme une interdiction. Quand il frappe, il glisse et se perd.\n\nEn jeu\n• Le sujet devient immunisé contre 1 sort précis par tranche de 4 niveaux de lanceur ; chaque sort choisi est du 4e niveau au plus.\n• Agit comme une résistance à la magie impossible à vaincre : sans effet contre les sorts qui ignorent la résistance à la magie.\n• Protège aussi des pouvoirs magiques et des objets qui reproduisent ce sort, pas des pouvoirs surnaturels ou extraordinaires ni des sorts voisins.\n• Une seule immunité contre les sorts (normale ou suprême) à la fois.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_spell_immunity",
+      "type": "spell",
+      "name": { "fr": "Immunité contre les sorts suprême", "en": "Spell Immunity, Greater" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "La même interdiction, gravée plus profond : même les grandes magies se brisent sur elle.\n\nEn jeu\n• Comme immunité contre les sorts, mais chaque sort choisi peut aller jusqu’au 8e niveau.\n• 1 sort par tranche de 4 niveaux de lanceur ; dure 10 minutes par niveau.\n• Une seule immunité contre les sorts (normale ou suprême) à la fois."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.implosion",
+      "type": "spell",
+      "name": { "fr": "Implosion", "en": "Implosion" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une note grave, trop grave pour l’oreille, et le corps visé se replie sur lui-même comme une feuille froissée.\n\nEn jeu\n• Chaque round de concentration (4 rounds au plus), une créature différente fait un jet de Vigueur ou meurt.\n• Une même créature ne peut être visée qu’une fois par incantation.\n• La mort est instantanée et ne peut pas être dissipée.\n• Sans effet sur les créatures intangibles ou à l’état gazeux."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature tangible/round",
+        "duration": "concentration (jusqu’à 4 rounds)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bane",
+      "type": "spell",
+      "name": { "fr": "Imprécation", "en": "Bane" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Une malédiction murmurée qui s’insinue dans les rangs ennemis : les mains tremblent, les cœurs hésitent.\n\nEn jeu\n• Chaque ennemi à 15 m ou moins qui rate son jet de Volonté subit un malus de moral de −1 aux jets d’attaque et aux jets de sauvegarde contre la terreur.\n• Dure 1 minute par niveau.\n• Contre et dissipe bénédiction."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental", "terreur"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "15 m",
+        "area": "tous les ennemis à 15 m ou moins",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.command",
+      "type": "spell",
+      "name": { "fr": "Injonction", "en": "Command" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Un seul mot, prononcé avec assez d’autorité pour que le corps obéisse avant que l’esprit ne proteste.\n\nEn jeu\n• Une créature vivante qui rate son jet de Volonté exécute un ordre d’un mot pendant 1 round, à son tour.\n• Approche : elle vient vers le lanceur, sans rien faire d’autre.\n• Lâche : elle lâche ce qu’elle tient et ne peut rien ramasser avant son tour suivant.\n• Tombe : elle se jette à terre et y reste 1 round (elle peut agir, avec les malus habituels).\n• Fuis : elle s’éloigne du lanceur au plus vite, sans rien faire d’autre.\n• Halte : elle ne fait rien pendant 1 round, sans être sans défense.\n• Si elle ne peut pas obéir à son tour, le sort échoue."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["langage", "mental"],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "1 round",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_command",
+      "type": "spell",
+      "name": { "fr": "Injonction suprême", "en": "Command, Greater" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Le même mot, mais lancé comme un ordre de général à toute une compagnie, qui obéit encore et encore.\n\nEn jeu\n• Comme injonction, sur 1 créature par niveau, toutes à moins de 9 m les unes des autres et avec le même ordre.\n• Dure 1 round par niveau.\n• À partir du 2e round, chaque cible retente son jet de Volonté à son tour ; si elle réussit, elle est libérée."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["langage", "mental"],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à moins de 9 m les unes des autres",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.forbiddance",
+      "type": "spell",
+      "name": { "fr": "Interdiction", "en": "Forbiddance" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Un sanctuaire scellé pour toujours : nul ne s’y téléporte, nul ne s’y invite, et ceux qui ne partagent pas la foi du lieu le paient dans leur chair.\n\nEn jeu\n• Zone permanente : bloque tout déplacement planaire ou instantané (téléportation, porte dimensionnelle, plans Astral et Éthéré) et toute convocation.\n• Même alignement que le lanceur : entrée libre, mais jamais par téléportation ou voyage planaire.\n• Alignement différent sur un axe (Loi/Chaos ou Bien/Mal) : 6d6 dégâts en entrant ; Volonté pour la moitié ; la résistance à la magie s’applique.\n• Alignement différent sur les deux axes : 12d6 dégâts ; Volonté pour la moitié.\n• Un mot de passe choisi à l’incantation évite les dégâts.\n• Les créatures déjà dans la zone ne sont pas affectées, sauf si elles sortent puis reviennent.\n• Seul un lanceur de niveau au moins égal peut le dissiper ; deux interdictions ne se chevauchent pas.\n• Composante matérielle : 1 500 po + 1 500 po par cube de 18 m (avec mot de passe : 1 000 po + 1 000 po par cube en plus)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M, FD",
+        "castingTime": "6 rounds",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "1 cube de 18 m/niveau (F)",
+        "duration": "permanente",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "6d6", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.reverse_gravity",
+      "type": "spell",
+      "name": { "fr": "Inversion de la gravité", "en": "Reverse Gravity" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le sol lâche prise et le ciel devient le fond du puits. Tout ce qui n’est pas attaché tombe… vers le haut.\n\nEn jeu\n• Dans la zone, créatures et objets tombent vers le haut et atteignent le sommet en 1 round.\n• Ceux qui heurtent un plafond subissent les dégâts de chute normaux ; les autres flottent en haut de la zone.\n• À la fin du sort (1 round par niveau), tout retombe avec les dégâts de chute habituels.\n• Un jet de Réflexes permet de s’agripper s’il y a une prise ; les créatures qui volent ou lévitent ne sont pas gênées.\n• Zone : un cube de 3 m d’arête par tranche de 2 niveaux."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "1 cube de 3 m/2 niveaux (F)",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.invisibility",
+      "type": "spell",
+      "name": { "fr": "Invisibilité", "en": "Invisibility" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Un pas de côté hors du regard du monde. On est toujours là, on respire, on fait du bruit… mais plus personne ne vous voit.\n\nEn jeu\n• Le sujet (le lanceur, une créature ou un objet de 50 kg par niveau au plus) et son équipement deviennent invisibles, même pour la vision dans le noir.\n• Un objet posé redevient visible ; une lumière portée reste visible.\n• Le sort cesse si le sujet attaque : frapper un ennemi, ou lancer un sort qui vise un ennemi ou l’englobe dans sa zone.\n• Ouvrir une porte, convoquer des monstres ou nuire indirectement ne compte pas comme une attaque.\n• L’invisibilité ne rend pas silencieux ; le sujet peut être repéré par le bruit ou les traces.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle ou contact",
+        "target": "le lanceur ou 1 créature ou 1 objet de 50 kg/niveau au plus",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif) ou Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif) ou oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mass_invisibility",
+      "type": "spell",
+      "name": { "fr": "Invisibilité de groupe", "en": "Invisibility, Mass" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Toute une armée s’efface du paysage. Il ne reste que le bruit des bottes et l’herbe qui se couche.\n\nEn jeu\n• Comme invisibilité, sur autant de créatures que voulu, toutes à moins de 54 m les unes des autres.\n• Les sujets ne se voient pas entre eux.\n• Tout le groupe redevient visible dès que l’un d’eux attaque.\n• Une créature qui s’éloigne à plus de 54 m des autres redevient visible (avec deux sujets seulement : celui qui s’éloigne réapparaît, ou les deux s’ils s’éloignent ensemble).\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "créatures à moins de 54 m les unes des autres",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    }
+  ]
+}

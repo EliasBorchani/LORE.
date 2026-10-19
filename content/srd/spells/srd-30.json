@@ -1,0 +1,577 @@
+{
+  "entities": [
+    {
+      "id": "spell.transmute_metal_to_wood",
+      "type": "spell",
+      "name": {
+        "fr": "Transmutation du métal en bois",
+        "en": "Transmute Metal to Wood"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "D’un geste, l’acier devient chêne. Les épées se mettent à grincer comme des branches, les cuirasses à sentir la sève.\n\nEn jeu\n• Tout le métal non magique dans un rayon de 12 m devient du bois, y compris les armes et armures portées.\n• Un objet magique entièrement en métal a une résistance à la magie de 20 + niveau de lanceur de son créateur ; les artefacts sont immunisés.\n• Arme changée : −2 aux jets d’attaque et de dégâts, et elle se brise sur un 1 ou un 2 naturel à l’attaque.\n• Armure changée : −2 à son bonus de CA, puis −1 de plus chaque fois qu’elle est touchée par un 19 ou un 20 naturel.\n• Effet définitif : seuls souhait limité, souhait ou miracle rendent le métal."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "tous les objets métalliques dans un rayonnement de 12 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (objet) (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shadow_walk",
+      "type": "spell",
+      "name": {
+        "fr": "Traversée des ombres",
+        "en": "Shadow Walk"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "On entre dans une ombre épaisse et l’on court sur la lisière d’un autre monde, où les lieues filent sous les pieds comme des pas.\n\nEn jeu\n• Ne se lance que dans une zone d’ombre épaisse ; emmène jusqu’à 1 créature touchée par niveau (qui se tiennent toutes).\n• Déplacement d’environ 75 km/h à la frontière du plan de l’Ombre ; le paysage traversé reste flou, inutile pour espionner.\n• À l’arrivée, on ressort à 1d10 × 30 m de la destination visée, dans une direction horizontale au hasard ; si c’est dans un solide, vers l’espace libre le plus proche, mais fatigué.\n• Permet aussi de gagner un plan voisin du plan de l’Ombre (1d4 heures de transit).\n• Un compagnon abandonné dans l’Ombre a 50 % de chances de revenir seul au plan Matériel.\n• Une créature réticente a droit à un jet de Volonté pour annuler."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "jusqu’à 1 créature touchée/niveau",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.earthquake",
+      "type": "spell",
+      "name": {
+        "fr": "Tremblement de terre",
+        "en": "Earthquake"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le sol se cabre comme une bête qu’on réveille. Les murs tombent, les falaises glissent, et la terre s’ouvre pour avaler les imprudents.\n\nEn jeu\n• Secousse de 1 round dans un rayon de 24 m : sur la terre ferme, personne ne peut attaquer ni se déplacer.\n• Lancer un sort pendant la secousse : test de Concentration DD 20 + niveau du sort.\n• Grotte ou tunnel : le plafond s’effondre, 8d6 dégâts (Réflexes DD 15, moitié) ; sous une haute voûte, même ceux hors de la zone peuvent être touchés.\n• Falaise : éboulement aussi long que la falaise est haute, 8d6 dégâts (Réflexes DD 15, moitié).\n• Terrain dégagé : Réflexes DD 15 ou tomber à terre ; 25 % de chances de tomber dans une fissure (Réflexes DD 20 pour l’éviter), qui se referme et tue à la fin du sort.\n• Bâtiment : 100 dégâts à la structure (la solidité ne compte pas) ; les occupants subissent 8d6 contondants (Réflexes DD 15, moitié) et restent ensevelis.\n• Enseveli : 1d6 dégâts non létaux par minute ; inconscient, test de Constitution DD 15 ou 1d6 dégâts létaux par minute.\n• Lac, marais, rivière : l’eau s’écoule par le fond ; un marais devient sables mouvants (Réflexes DD 15) et l’eau revient d’un coup à la fin."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "étendue de 24 m de rayon (F)",
+        "duration": "1 round",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "8d6 bludgeoning",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.waves_of_exhaustion",
+      "type": "spell",
+      "name": {
+        "fr": "Vagues d'épuisement",
+        "en": "Waves of Exhaustion"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un souffle gris jaillit des mains du lanceur, et tous ceux qu’il touche sentent leurs jambes devenir de plomb.\n\nEn jeu\n• Cône de 18 m : toutes les créatures dans la zone sont épuisées, sans jet de sauvegarde.\n• Épuisé : −6 en Force et en Dextérité, vitesse réduite de moitié, ni course ni charge.\n• Sans effet sur une créature déjà épuisée."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "rayonnement en forme de cône",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.waves_of_fatigue",
+      "type": "spell",
+      "name": {
+        "fr": "Vagues de fatigue",
+        "en": "Waves of Fatigue"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une vague d’énergie négative balaie le terrain ; les guerriers soupirent comme après une nuit sans sommeil.\n\nEn jeu\n• Cône de 9 m : toutes les créatures dans la zone sont fatiguées, sans jet de sauvegarde.\n• Fatigué : −2 en Force et en Dextérité, ni course ni charge.\n• Sans effet sur une créature déjà fatiguée."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "area": "rayonnement en forme de cône",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.whispering_wind",
+      "type": "spell",
+      "name": {
+        "fr": "Vent de murmures",
+        "en": "Whispering Wind"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "On confie quelques mots à la brise, et elle s’en va les porter par-delà les collines, jusqu’à l’oreille voulue.\n\nEn jeu\n• Une brise porte un message de 25 mots au plus (ou des sons pendant 1 round, ou juste un léger frisson d’air) vers un lieu connu à 1,5 km par niveau.\n• Elle suit un chemin praticable (pas à travers les murs) à 1,5 à 9 km/h, au choix.\n• Arrivée, elle délivre son message même sans personne pour l’entendre, puis se dissipe.\n• Ne peut pas lancer de sort, prononcer de mot de commande ni activer d’effet magique."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "air"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "1,5 km/niveau",
+        "area": "étendue de 3 m de rayon",
+        "duration": "1 heure/niveau ou jusqu’à destination",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wind_walk",
+      "type": "spell",
+      "name": {
+        "fr": "Vent divin",
+        "en": "Wind Walk"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les corps se font brume, puis nuage, et la petite troupe s’envole à la vitesse d’une tempête.\n\nEn jeu\n• Le lanceur et 1 créature touchée par 3 niveaux deviennent des nuages qui volent, chacun agissant librement.\n• Sous cette forme, mêmes règles que forme gazeuse (RD 10/magie, ni attaque ni sort, immunités).\n• Vitesse au choix de 3 m (manœuvrabilité parfaite) à 180 m par round (manœuvrabilité médiocre).\n• Translucides mais pas invisibles ; vêtus de blanc, 80 % de chances de passer pour un nuage.\n• Chacun peut reprendre sa forme puis redevenir nuage ; chaque changement prend 5 rounds. Le lanceur peut finir le sort pour tous ou pour certains.\n• Dernière minute : descente de 18 m par round (180 m en tout), plus vite si on le souhaite."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "air"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts et 1 créature touchée/3 niveaux",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun et Volonté, annule (inoffensif)",
+        "spellResistance": "non et oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ventriloquism",
+      "type": "spell",
+      "name": {
+        "fr": "Ventriloquie",
+        "en": "Ventriloquism"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Une voix sort de la bouche de la statue, du fond du tonneau, de derrière le garde. Personne ne regarde le vrai coupable.\n\nEn jeu\n• La voix du lanceur (ou tout son qu’il peut produire) semble venir d’un autre endroit à portée, dans toute langue qu’il parle.\n• Qui interagit avec l’illusion a droit à un jet de Volonté ; s’il réussit, il sait que le son est faux, mais l’entend toujours."
+      },
+      "spell": {
+        "school": "Illusion",
+        "components": "V, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "sons intelligibles, le plus souvent des paroles",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non",
+        "subschool": "chimère"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.giant_vermin",
+      "type": "spell",
+      "name": {
+        "fr": "Vermine géante",
+        "en": "Giant Vermin"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le mille-pattes s’allonge, le scorpion enfle jusqu’à la taille d’un cheval. Ils ne mordent pas la main qui les a grandis.\n\nEn jeu\n• Change des vermines ordinaires d’une même espèce, à 9 m les unes des autres, en vermines géantes.\n• Nombre et taille selon le niveau de lanceur : 9–13 : 3 mille-pattes M, 2 araignées M ou 1 scorpion M ; 14–19 : 4 mille-pattes G, 3 araignées G ou 2 scorpions G ; 20 et plus : 6 mille-pattes TG, 4 araignées TG ou 3 scorpions TG.\n• Elles n’attaquent jamais le lanceur et obéissent à des ordres très simples (« Attaquez », « Défendez-moi »).\n• Sans ordre, elles attaquent ce qui les entoure."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 3 vermines à 9 m ou moins les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dimensional_lock",
+      "type": "spell",
+      "name": {
+        "fr": "Verrou dimensionnel",
+        "en": "Dimensional Lock"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une lueur émeraude se pose sur l’air et le fige. Ici, plus personne n’entre ni ne sort par les chemins de traverse.\n\nEn jeu\n• Rayon de 6 m pendant 1 jour par niveau : aucun déplacement extradimensionnel n’y entre ni n’en sort.\n• Bloque téléportation, porte dimensionnelle, changement de plan, forme éthérée, clignotement, traversée des ombres, portail, projection astrale, dédale et pouvoirs semblables.\n• Ne gêne pas une créature déjà sur le plan Astral ou Éthéré, ni les perceptions ou attaques extradimensionnelles.\n• N’empêche pas une créature convoquée de repartir à la fin de sa convocation."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "émanation de 6 m de rayon centrée sur un point",
+        "duration": "1 jour/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.arcane_lock",
+      "type": "spell",
+      "name": {
+        "fr": "Verrou du mage",
+        "en": "Arcane Lock"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un peu de poudre d’or sur la serrure, un mot, et la porte refuse désormais tout le monde sauf son nouveau maître.\n\nEn jeu\n• Ferme magiquement une porte, un coffre ou un portail (jusqu’à 3 m² par niveau), pour toujours.\n• Le lanceur passe librement ; les autres ont besoin de dissipation de la magie, ou de déblocage, qui le suspend 10 minutes.\n• +10 au DD pour enfoncer ou briser l’objet.\n• Composante matérielle : poudre d’or valant 25 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "porte, coffre ou portail touché, jusqu’à 3 m²/niveau",
+        "duration": "permanente",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hold_portal",
+      "type": "spell",
+      "name": {
+        "fr": "Verrouillage",
+        "en": "Hold Portal"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un mot sec, et la porte se ferme comme si une main invisible tenait le verrou.\n\nEn jeu\n• Bloque une porte, fenêtre, grille ou herse (bois, métal ou pierre, jusqu’à 2 m² par niveau) comme un verrou solide.\n• +5 au DD pour l’enfoncer.\n• Déblocage ou dissipation de la magie y met fin."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "une porte, fenêtre ou grille, jusqu’à 2 m²/niveau",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.darkvision",
+      "type": "spell",
+      "name": {
+        "fr": "Vision dans le noir",
+        "en": "Darkvision"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le noir devient gris, puis net : les formes se dessinent en noir et blanc là où il n’y avait que la nuit.\n\nEn jeu\n• Vision dans le noir à 18 m pendant 1 heure par niveau (en noir et blanc).\n• Ne perce pas les ténèbres magiques.\n• Peut être rendu permanent avec permanence.\n• Composante matérielle : une pincée de carotte séchée ou une agate."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18,
+          "condition": "active('toggle.darkvision')"
+        }
+      ]
+    },
+    {
+      "id": "spell.true_seeing",
+      "type": "spell",
+      "name": {
+        "fr": "Vision lucide",
+        "en": "True Seeing"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les masques tombent, les ombres s’éclaircissent, l’invisible prend forme. Pour quelques minutes, le monde ne peut plus mentir.\n\nEn jeu\n• Pendant 1 minute par niveau, jusqu’à 36 m : voit dans le noir (même magique), les créatures et objets invisibles, les vraies formes sous métamorphose, et à travers les illusions.\n• Repère les portes secrètes cachées par magie et la vraie place des créatures sous flou ou déplacement.\n• Voit aussi dans le plan Éthéré (pas dans les espaces extradimensionnels).\n• Ne voit pas à travers les murs, ne réduit pas le camouflage (brouillard…), ne perce pas un déguisement normal ni une créature cachée.\n• Ne se cumule avec aucun autre sort ou objet de vision.\n• Composante matérielle : onguent valant 250 po."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.arcane_sight",
+      "type": "spell",
+      "name": {
+        "fr": "Vision magique",
+        "en": "Arcane Sight"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les yeux du lanceur s’allument d’un bleu froid, et la magie du monde se met à briller pour lui seul.\n\nEn jeu\n• Voit les auras magiques à 36 m, sans se concentrer : position et puissance de chacune.\n• Test d’Art de la magie pour l’école d’une aura en vue : DD 15 + niveau du sort (15 + moitié du niveau de lanceur hors sort).\n• Action simple sur une créature à 36 m : sait si elle lance des sorts ou a des pouvoirs magiques (profanes ou divins) et la puissance du plus fort.\n• Dure 1 minute par niveau ; peut être rendu permanent avec permanence."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_arcane_sight",
+      "type": "spell",
+      "name": {
+        "fr": "Vision magique suprême",
+        "en": "Arcane Sight, Greater"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le regard bleu se fait plus perçant encore : chaque enchantement posé sur un être se lit comme une étiquette.\n\nEn jeu\n• Comme vision magique, et révèle en plus les sorts et effets actifs sur une créature ou un objet observé.\n• N’identifie pas les objets magiques.\n• Ne peut pas être rendu permanent."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.vision",
+      "type": "spell",
+      "name": {
+        "fr": "Vision mystique",
+        "en": "Vision"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une question, un battement de cils, et les réponses affluent d’un coup, au prix d’un peu de soi-même.\n\nEn jeu\n• Comme mythes et légendes, mais la réponse vient tout de suite.\n• Test de niveau de lanceur : 1d20 + niveau de lanceur (+25 au plus).\n• DD 20 si le sujet est là ou en main ; DD 25 avec des informations détaillées (réponse partielle) ; DD 30 sur de simples rumeurs (réponse vague).\n• Coût : 100 PX."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M, PX",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.transport_via_plants",
+      "type": "spell",
+      "name": {
+        "fr": "Voie végétale",
+        "en": "Transport via Plants"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "On entre dans un chêne au bord du village et l’on ressort d’un autre, à l’autre bout du royaume, des feuilles dans les cheveux.\n\nEn jeu\n• Entre dans une plante vivante de taille M ou plus et ressort d’une plante de la même espèce, à n’importe quelle distance.\n• Sans destination précise, il suffit d’une direction et d’une distance : le sort mène au plus près.\n• Si la plante visée précisément est morte, le sort échoue et l’on ressort de la plante de départ.\n• Emporte ce qu’on peut porter, plus 1 créature consentante de taille M par 3 niveaux (G = 2 M, TG = 2 G…), tous en contact.\n• Pas à travers des créatures végétales (sylvaniens, tertres errants).\n• Si la plante occupée est détruite, tous ceux qui sont dedans meurent."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "illimitée",
+        "target": "le jeteur de sorts, des objets touchés ou des créatures consentantes touchées",
+        "duration": "1 round",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.veil",
+      "type": "spell",
+      "name": {
+        "fr": "Voile",
+        "en": "Veil"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un groupe de mercenaires entre en ville… et tout le monde voit passer une troupe de pèlerins, de la sandale à l’odeur d’encens.\n\nEn jeu\n• Change l’apparence d’une ou plusieurs créatures à 9 m les unes des autres, en ce que veut le lanceur.\n• L’illusion trompe la vue, le toucher et l’odorat ; dure tant qu’il se concentre, plus 1 heure par niveau.\n• Copier une personne précise : test de Déguisement avec +10.\n• Une créature réticente a droit à Volonté et à sa résistance à la magie.\n• Qui interagit avec l’illusion a droit à Volonté pour la percer (la résistance à la magie n’aide pas)."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "1 ou plusieurs créatures à 9 m ou moins les unes des autres",
+        "duration": "concentration + 1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui (voir description)"
+      },
+      "effects": [
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.veil')"
+        }
+      ]
+    },
+    {
+      "id": "spell.fly",
+      "type": "spell",
+      "name": {
+        "fr": "Vol",
+        "en": "Fly"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les pieds quittent le sol, puis la tête suit. Voler devient aussi naturel que marcher.\n\nEn jeu\n• Vitesse de vol 18 m (12 m en armure intermédiaire ou lourde, ou en charge intermédiaire ou lourde), manœuvrabilité bonne, pendant 1 minute par niveau.\n• Monter se fait à demi-vitesse, descendre à double vitesse ; peut charger mais pas courir.\n• Attaquer et lancer des sorts en vol se fait normalement ; on ne soulève pas plus que sa charge maximale plus son armure.\n• À la fin du sort en l’air : descente de 18 m par round pendant 1d6 rounds ; si le sol n’est pas atteint, chute (1d6 par 3 m restants).\n• Une dissipation fait tomber aussi ; une zone d’antimagie, non."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    }
+  ]
+}

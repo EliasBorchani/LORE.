@@ -1,0 +1,673 @@
+{
+  "entities": [
+    {
+      "id": "spell.gaseous_form",
+      "type": "spell",
+      "name": {
+        "fr": "Etat gazeux",
+        "en": "Gaseous Form"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La chair se défait en brume pâle, l’équipement avec elle. On ne frappe plus, on ne lance plus rien : on passe sous les portes.\n\nEn jeu\n• La cible devient une brume translucide : réduction des dégâts 10/magie, immunité au poison et aux coups critiques.\n• Son armure et son armure naturelle ne comptent plus ; taille, Dextérité, parade et armure de force restent.\n• Pas d’attaque, pas de sort à composantes V, G ou M (sauf métamagie qui les supprime) ; pouvoirs surnaturels perdus, sort de contact en attente dissipé.\n• Vol à 3 m, manœuvrabilité parfaite, mais pas de course ; se glisse par n’importe quelle fente, le vent la pousse, aucun liquide ne la laisse entrer.\n• Ne peut ni manipuler ni activer d’objet. 2 minutes par niveau, révocable."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature tangible et consentante touchée",
+        "duration": "2 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.awaken",
+      "type": "spell",
+      "name": {
+        "fr": "Eveil",
+        "en": "Awaken"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une journée entière de chants et de murmures, et un regard s’allume là où il n’y avait que de l’instinct. L’arbre ou la bête se réveille, et il a des choses à dire.\n\nEn jeu\n• 24 heures d’incantation, 250 PX.\n• Le lanceur doit réussir un jet de Volonté, DD 10 + DV de l’animal (pour un arbre : les DV qu’il aura une fois animé), sinon rien ne se passe.\n• Animal : Int 3d6, Cha +1d3, +2 DV, devient créature magique ; ne peut plus servir de compagnon animal, familier ou destrier.\n• Arbre : statistiques d’un objet animé, Int, Sag et Cha à 3d6, sens comparables à ceux d’un humain.\n• La créature est amicale et parle une langue du lanceur, plus une par point de bonus d’Intelligence."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD, PX",
+        "castingTime": "24 heures",
+        "range": "contact",
+        "target": "animal ou arbre touché",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.slay_living",
+      "type": "spell",
+      "name": {
+        "fr": "Exécution",
+        "en": "Slay Living"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une main froide se pose sur le cœur, et le cœur hésite. S’il tient bon, il en garde quand même la marque.\n\nEn jeu\n• Attaque de contact au corps à corps contre une créature vivante.\n• Jet de Vigueur raté : la cible meurt.\n• Jet réussi : elle subit 3d6 + 1 par niveau de lanceur dégâts (qui peuvent suffire à la tuer)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mort"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.demand",
+      "type": "spell",
+      "name": {
+        "fr": "Exigence",
+        "en": "Demand"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une voix surgit dans l’esprit d’un être lointain, et elle n’apporte pas une nouvelle : elle donne un ordre.\n\nEn jeu\n• Comme communication à distance (message de 25 mots au plus, réponse brève immédiate), avec une suggestion incluse dans le message.\n• Jet de Volonté réussi : la suggestion échoue, mais le message passe.\n• Comprise même avec Int 1 ; une demande impossible échoue d’office."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "10 minutes",
+        "range": "voir description",
+        "target": "une créature",
+        "duration": "1 round",
+        "savingThrow": "Volonté, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sunburst",
+      "type": "spell",
+      "name": {
+        "fr": "Explosion de lumière",
+        "en": "Sunburst"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un soleil naît en silence au milieu des ennemis et les brûle de sa clarté. Les créatures de la nuit n’y survivent pas toujours.\n\nEn jeu\n• Rayonnement de 24 m : 6d6 dégâts et cécité permanente ; jet de Réflexes pour la moitié et garder la vue.\n• Morts-vivants, vases et moisissures : 1d6 par niveau de lanceur (25d6 au plus), Réflexes pour la moitié.\n• Un mort-vivant détruit par la lumière du jour (vampire…) meurt s’il rate son jet.\n• Dégâts doublés contre les créatures sensibles à la lumière du soleil.\n• Dissipe les sorts d’obscurité du 8e niveau ou moins dans la zone."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "lumière"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "rayonnement de 24 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "6d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.quench",
+      "type": "spell",
+      "name": {
+        "fr": "Extinction des feux",
+        "en": "Quench"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une vague de fraîcheur traverse la zone et les flammes se couchent d’un coup, comme soufflées par une main géante.\n\nEn jeu\n• Éteint tous les feux normaux dans un cube de 6 m d’arête par niveau.\n• Sorts de feu dans la zone : test de dissipation 1d20 + niveau de lanceur (+15 au plus) contre DD 11 + niveau du lanceur adverse.\n• Créatures du feu (élémentaires) dans la zone : 1d6 par niveau (15d6 au plus), sans jet de sauvegarde.\n• Sur un objet magique de feu : il perd ses pouvoirs de feu pendant 1d4 heures (Volonté annule, artefacts immunisés)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "1 cube de 6 m d’arête/niveau (F) ou 1 objet magique lié au feu",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (objet)",
+        "spellResistance": "non ou oui (objet)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.fabricate",
+      "type": "spell",
+      "name": {
+        "fr": "Fabrication",
+        "en": "Fabricate"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Quelques gestes précis, et la matière brute s’assemble d’elle-même comme sous les mains d’un maître artisan invisible. Ce qui aurait pris des semaines à l’atelier tient en quelques instants.\n\nEn jeu\n• Change des matériaux bruts en objets finis (bois en pont, laine en habits) : 0,3 m³ par niveau, ou 30 dm³ par niveau pour du minerai.\n• Un objet délicat (bijou, arme, verre) demande un test d’Artisanat adapté.\n• Ni créature vivante, ni objet magique. La qualité suit celle des matériaux.\n• Incantation : 1 round par 0,3 m³ (ou 30 dm³ de minerai)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "voir description",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 0,3 m³/niveau (voir description)",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.stone_shape",
+      "type": "spell",
+      "name": {
+        "fr": "Façonnage de la pierre",
+        "en": "Stone Shape"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La roche devient tendre comme l’argile sous les doigts. Une porte apparaît dans le mur, ou disparaît.\n\nEn jeu\n• Modèle 0,3 m³ + 30 dm³ par niveau de pierre touchée.\n• Ouvre un passage, bloque une porte, crée une arme ou un objet grossier ; aucun détail fin.\n• Un objet à pièces mobiles a 30 % de chances de ne pas marcher."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "pierre ou objet en pierre touché, jusqu’à 0,3 m³ + 30 dm³/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wood_shape",
+      "type": "spell",
+      "name": {
+        "fr": "Façonnage du bois",
+        "en": "Wood Shape"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le bois suit la volonté comme s’il avait toujours voulu prendre cette forme. Une poutre devient bâton, un tronc devient porte.\n\nEn jeu\n• Modèle 0,3 m³ + 30 dm³ par niveau de bois touché.\n• Ouvre un passage, coince une porte, crée une arme ou un objet grossier ; aucun détail fin.\n• Un objet à pièces mobiles a 30 % de chances de ne pas marcher.\n• Objet tenu par une créature : jet de Volonté et résistance à la magie."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "morceau de bois touché, jusqu’à 0,3 m³ + 30 dm³/niveau",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.touch_of_fatigue",
+      "type": "spell",
+      "name": {
+        "fr": "Fatigue",
+        "en": "Touch of Fatigue"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une paume chargée d’ombre effleure l’adversaire, et ses jambes se mettent soudain à peser comme du plomb.\n\nEn jeu\n• Attaque de contact au corps à corps : la cible est fatiguée pendant 1 round par niveau (Vigueur annule).\n• Sans effet sur une créature déjà fatiguée ; la fatigue s’arrête avec le sort."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.seeming",
+      "type": "spell",
+      "name": {
+        "fr": "Faux-semblant",
+        "en": "Seeming"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Toute la troupe change de visage d’un seul geste. Marchands, gardes ou pèlerins : on choisit le rôle, l’illusion fait le costume.\n\nEn jeu\n• Comme déguisement, sur 1 personne par 2 niveaux, toutes à 9 m au plus les unes des autres.\n• Dure 12 heures (révocable) ; une cible qui meurt reprend son apparence.\n• Cible non consentante : jet de Volonté et résistance à la magie.\n• Qui interagit avec l’illusion a droit à un jet de Volonté pour la percer."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 personne/2 niveaux, toutes à 9 m au plus les unes des autres",
+        "duration": "12 heures (T)",
+        "savingThrow": "Volonté, annule ou Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "oui ou non (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.divine_favor",
+      "type": "spell",
+      "name": {
+        "fr": "Faveur divine",
+        "en": "Divine Favor"
+      },
+      "provenance": "official",
+      "source": "SRD (regles-donjons-dragons.com/page794.html)",
+      "labels": [
+        "spell",
+        "évocation",
+        "buff"
+      ],
+      "description": {
+        "fr": "Une lueur sacrée enveloppe le bras qui frappe. La main guidée par son dieu trouve la faille plus souvent, et plus fort.\n\nEn jeu\n• +1 de chance à l’attaque et aux dégâts par tranche de 3 niveaux de lanceur (+1 au moins, +6 au plus).\n• Ne s’applique pas aux dégâts des sorts. Dure 1 minute, sur soi seulement."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(min(floor(@spell.caster_level / 3), 6), 1)",
+          "bonusType": "luck",
+          "condition": "active('toggle.divine_favor')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 24"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "max(min(floor(@spell.caster_level / 3), 6), 1)",
+          "bonusType": "luck",
+          "condition": "active('toggle.divine_favor')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 24"
+        }
+      ],
+      "status": "draft",
+      "note": "+24 = +6 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.heroes_feast",
+      "type": "spell",
+      "name": {
+        "fr": "Festin des héros",
+        "en": "Heroes' Feast"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une table surgit, chargée de mets fumants et d’un nectar doré. Une heure de banquet, et la compagnie se relève prête à affronter n’importe quoi.\n\nEn jeu\n• Repas d’1 heure pour 1 convive par niveau ; interrompu, il ne donne rien.\n• Guérit maladies, écœurement et nausée ; immunité au poison et à la terreur pendant 12 heures.\n• 1d8 + 1 par 2 niveaux (+10 au plus) points de vie temporaires.\n• +1 de moral à l’attaque et aux jets de Volonté pendant 12 heures."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "festin pour 1 créature/niveau",
+        "duration": "1 heure + 12 heures (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.heroes_feast')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.heroes_feast')"
+        }
+      ]
+    },
+    {
+      "id": "spell.feather_fall",
+      "type": "spell",
+      "name": {
+        "fr": "Feuille morte",
+        "en": "Feather Fall"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La chute s’arrête net et devient une descente de plume. Le sort part avant même que l’on ait compris qu’on tombait.\n\nEn jeu\n• Action libre, même hors de son tour (compte comme l’incantation rapide du round).\n• Les cibles tombent à 18 m par round et n’ont aucun dégât à l’arrivée ; si le sort finit avant, la chute reprend normalement.\n• Une créature ou un objet de taille M ou moins par niveau (une taille G compte pour deux), à 6 m au plus les uns des autres.\n• Rocher lâché sur quelqu’un : moitié des dégâts. Sans effet sur une arme, une charge ou une créature volante."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action libre",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 objet ou créature de taille M ou moins/niveau",
+        "duration": "jusqu’à l’atterrissage ou 1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.continual_flame",
+      "type": "spell",
+      "name": {
+        "fr": "Flamme éternelle",
+        "en": "Continual Flame"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une flamme sans chaleur s’allume sur l’objet et ne s’éteindra plus jamais. Le vent n’y peut rien, l’eau non plus.\n\nEn jeu\n• Éclaire comme une torche, sans chaleur ni consommation d’air ; on peut la couvrir, pas l’éteindre.\n• Permanente. Poussière de rubis à 50 po.\n• Contre et dissipe les sorts d’obscurité de niveau inférieur ou égal."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "lumière"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché",
+        "effect": "flamme illusoire magique",
+        "duration": "permanente",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.produce_flame",
+      "type": "spell",
+      "name": {
+        "fr": "Flammes",
+        "en": "Produce Flame"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une flamme dansante s’allume au creux de la paume sans la brûler. On peut la plaquer sur un ennemi ou la lui lancer, une autre repousse aussitôt.\n\nEn jeu\n• Attaque de contact au corps à corps ou à distance (jusqu’à 36 m, sans malus de portée) : 1d6 + 1 par niveau de lanceur (+5 au plus) dégâts de feu.\n• Chaque attaque retire 1 minute à la durée (1 minute par niveau).\n• Éclaire comme une torche. Ne marche pas sous l’eau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "0 m",
+        "effect": "flammes dans la paume du lanceur",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 fire",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 5)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.insect_plague",
+      "type": "spell",
+      "name": {
+        "fr": "Fléau d'insectes",
+        "en": "Insect Plague"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le ciel s’assombrit d’un bourdonnement furieux. Des nuées de criquets s’abattent et dévorent tout ce qui se trouve dessous.\n\nEn jeu\n• 1 nuée de criquets par tranche de 3 niveaux (6 au plus), chacune adjacente à une autre.\n• Les nuées attaquent les créatures dans leur espace et ne bougent pas.\n• 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "1 nuée de criquets/3 niveaux, adjacentes",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.acid_arrow",
+      "type": "spell",
+      "name": {
+        "fr": "Flèche acide",
+        "en": "Acid Arrow"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un trait vert et fumant file vers la cible et s’y accroche. L’acide ronge encore longtemps après l’impact.\n\nEn jeu\n• Attaque de contact à distance : 2d4 dégâts d’acide.\n• Puis 2d4 de plus à chaque round suivant : 1 round par tranche de 3 niveaux (6 rounds au plus au niveau 18).\n• Pas d’éclaboussure."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "acide"
+        ],
+        "components": "V, G, M, F",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "1 flèche d’acide",
+        "duration": "1 round + 1 round/3 niveaux",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d4 acid",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.flame_arrow",
+      "type": "spell",
+      "name": {
+        "fr": "Flèches enflammées",
+        "en": "Flame Arrow"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les pointes rougeoient comme des braises. Chaque tir laisse une traînée de feu derrière lui.\n\nEn jeu\n• Jusqu’à 50 munitions (flèches, carreaux, shuriken, billes) infligent +1d6 dégâts de feu.\n• Elles enflamment les objets inflammables, pas les créatures.\n• 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "50 projectiles en contact",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.blight",
+      "type": "spell",
+      "name": {
+        "fr": "Flétrissement végétal",
+        "en": "Blight"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "La sève tourne à la poussière. L’arbre se dessèche en un instant, et les créatures végétales se recroquevillent de douleur.\n\nEn jeu\n• Créature végétale : 1d6 par niveau (15d6 au plus), Vigueur pour la moitié.\n• Plante ordinaire : elle meurt sans jet de sauvegarde.\n• Le sol et les plantes voisines ne sont pas touchés."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "plante ou créature végétale touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, 1/2 dégâts (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6",
+          "scope": "spell"
+        }
+      ]
+    }
+  ]
+}

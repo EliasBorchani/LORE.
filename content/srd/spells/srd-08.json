@@ -1,0 +1,599 @@
+{
+  "entities": [
+    {
+      "id": "spell.shadow_conjuration",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d’ombres",
+        "en": "Shadow Conjuration"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le lanceur tire sur l’étoffe du plan de l’Ombre et en taille une créature, une flamme ou un mur. Tant qu’on y croit, l’ombre mord aussi fort que le vrai.\n\nEn jeu\n• Imite un sort d’invocation (convocation ou création) d’ensorceleur/magicien de niveau 3 au plus.\n• Qui interagit avec l’effet fait un jet de Volonté : en cas de réussite, il n’en subit que 20 % (dégâts au cinquième, effets au cinquième ou 20 % de chances de fonctionner).\n• Les créatures d’ombre ont 1/5 des points de vie normaux ; contre qui ne croit pas, leurs dégâts et leurs bonus à la CA tombent au cinquième, et leurs pouvoirs sans dégâts n’ont que 20 % de chances de marcher.\n• Le DD des jets du sort imité se calcule avec le niveau de convocation d’ombres (4), pas celui du sort imité ; la résistance à la magie suit le sort imité."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "effect": "voir description",
+        "duration": "voir description",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction) ; variable",
+        "spellResistance": "oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_shadow_conjuration",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d’ombres suprême",
+        "en": "Greater Shadow Conjuration"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "L’ombre devient presque chair. Même ceux qui voient à travers l’illusion sentent encore sa morsure.\n\nEn jeu\n• Comme convocation d’ombres, mais imite un sort d’invocation (convocation ou création) d’ensorceleur/magicien de niveau 6 au plus.\n• Contre qui réussit son jet de Volonté, l’effet garde 60 % de sa force (dégâts, points de vie, chances de fonctionner) au lieu de 20 %.\n• Le DD des jets se calcule avec le niveau de ce sort (7)."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "effect": "voir description",
+        "duration": "voir description",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction) ; variable",
+        "spellResistance": "oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_i",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres I",
+        "en": "Summon Monster I"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un cercle de lumière au sol, et une créature venue d’un autre plan se tient prête à obéir.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 1 ; elle apparaît où le lanceur veut et agit tout de suite, à son tour.\n• Elle attaque les ennemis du lanceur ; s’ils parlent une même langue, il peut lui donner d’autres ordres.\n• Elle disparaît à la fin du sort ou si elle tombe à 0 point de vie ; elle ne peut ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 créature convoquée",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non",
+        "subschool": "convocation"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_ii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres II",
+        "en": "Summon Monster II"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un portail claque comme une porte au vent, et une silhouette massive s’avance, prête à servir.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 2, ou 1d3 créatures de niveau 1 (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_iii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres III",
+        "en": "Summon Monster III"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le cercle s’embrase, l’air se déchire, et quelque chose de bien plus grand que prévu passe la tête.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 3, ou 1d3 créatures de niveau 2, ou 1d4 + 1 de niveau 1 (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_iv",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres IV",
+        "en": "Summon Monster IV"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une meute ou un champion : l’autre côté répond à l’appel avec ce qu’il a de meilleur.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 4, ou 1d3 créatures de niveau 3, ou 1d4 + 1 d’un niveau plus bas (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_v",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres V",
+        "en": "Summon Monster V"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Les plans tremblent un instant ; ce qui en sort a déjà vu bien des champs de bataille.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 5, ou 1d3 créatures de niveau 4, ou 1d4 + 1 d’un niveau plus bas (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_vi",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres VI",
+        "en": "Summon Monster VI"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "L’appel porte loin, jusqu’à des créatures que les mortels préfèrent ne jamais croiser.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 6, ou 1d3 créatures de niveau 5, ou 1d4 + 1 d’un niveau plus bas (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_vii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres VII",
+        "en": "Summon Monster VII"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un nom prononcé à voix basse, et un allié redoutable franchit le voile des plans.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 7, ou 1d3 créatures de niveau 6, ou 1d4 + 1 d’un niveau plus bas (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_viii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres VIII",
+        "en": "Summon Monster VIII"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le sol se fissure de lumière : un être d’une puissance rare répond à la convocation.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 8, ou 1d3 créatures de niveau 7, ou 1d4 + 1 d’un niveau plus bas (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_monster_ix",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monstres IX",
+        "en": "Summon Monster IX"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "L’appel ultime : les plans eux-mêmes envoient ce qu’ils ont de plus terrible.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 9, ou 1d3 créatures de niveau 8, ou 1d4 + 1 d’un niveau plus bas (toutes de la même sorte).\n• Les créatures arrivent à 9 m au plus les unes des autres, agissent tout de suite et suivent les ordres du lanceur.\n• Elles disparaissent à la fin du sort ou si elles tombent à 0 point de vie ; elles ne peuvent ni convoquer, ni se téléporter, ni changer de plan.\n• Convoquer une créature Bien, Mal, Loi, Chaos, d’air, d’eau, de feu ou de terre donne au sort ce registre.\n• Impossible de convoquer une créature là où elle ne peut pas survivre (les créatures aquatiques demandent de l’eau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.antiplant_shell",
+      "type": "spell",
+      "name": {
+        "fr": "Coquille antiplantes",
+        "en": "Antiplant Shell"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une bulle invisible repousse lianes, racines et arbres éveillés. La forêt peut gronder, elle ne passe pas.\n\nEn jeu\n• Émanation de 3 m de rayon centrée sur le lanceur, qui bouge avec lui, pendant 10 minutes par niveau.\n• Les plantes animées et les créatures végétales ne peuvent pas franchir la barrière ni attaquer ceux qui sont dedans.\n• Forcer la barrière contre une créature qu’elle bloque met fin au sort."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon centrée sur le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.antilife_shell",
+      "type": "spell",
+      "name": {
+        "fr": "Coquille antivie",
+        "en": "Antilife Shell"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un dôme invisible que rien de vivant ne peut franchir. Les morts et les êtres d’ailleurs, eux, passent sans même ralentir.\n\nEn jeu\n• Émanation de 3 m de rayon centrée sur le lanceur, qui bouge avec lui, pendant 10 minutes par niveau.\n• Bloque les animaux, aberrations, dragons, fées, géants, humanoïdes, humanoïdes monstrueux, créatures magiques, plantes, vases et vermine.\n• Les créatures artificielles, élémentaires, Extérieurs et morts-vivants passent librement.\n• Forcer la barrière contre une créature qu’elle bloque met fin au sort."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon centrée sur le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animate_rope",
+      "type": "spell",
+      "name": {
+        "fr": "Corde animée",
+        "en": "Animate Rope"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La corde se dresse comme un serpent et obéit : elle s’enroule, se noue, ligote l’imprudent.\n\nEn jeu\n• Anime une corde (ou un objet semblable) de 15 m + 1,50 m par niveau au plus, pendant 1 round par niveau.\n• Un ordre par round, par une action de mouvement : s’enrouler, se nouer, faire une boucle, attacher, ou l’inverse.\n• Elle ne saisit que ce qui est à 30 cm d’elle : pour viser plus loin, il faut la lancer (attaque de contact à distance, facteur de portée 3 m).\n• La corde ne blesse pas : elle fait trébucher ou enchevêtre une créature (jet de Réflexes pour l’éviter). Enchevêtrée, celle-ci doit réussir Concentration DD 15 pour lancer un sort et se libère avec Évasion DD 20.\n• Corde typique (2,5 cm de diamètre) : 2 points de vie, CA 10, rompue par un test de Force DD 23 ; longueur divisée par 2 à chaque doublement du diamètre (et l’inverse).\n• +2 aux tests de Maîtrise des cordes avec elle ; n’anime pas un objet tenu ou porté par une créature."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 corde de 15 m + 1,50 m/niveau au plus",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.rope_trick",
+      "type": "spell",
+      "name": {
+        "fr": "Corde enchantée",
+        "en": "Rope Trick"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La corde se dresse toute seule et grimpe vers le vide. En haut, une petite pièce cachée hors du monde, parfaite pour souffler un peu.\n\nEn jeu\n• Une corde de 1,50 m à 9 m se dresse ; son bout mène à un espace extradimensionnel pour 8 créatures au plus, de toute taille.\n• On grimpe un par un ; une fois dedans, on peut remonter la corde. Ni les sorts ni les effets de zone ne passent l’entrée, dans un sens comme dans l’autre.\n• Une fenêtre invisible de 0,90 m × 1,50 m permet de voir dehors.\n• Dure 1 heure par niveau ; à la fin, tout ce qui est dedans retombe."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 corde de 1,50 m à 9 m",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.iron_body",
+      "type": "spell",
+      "name": {
+        "fr": "Corps de fer",
+        "en": "Iron Body"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau se ternit, puis luit, puis sonne sous les coups. Pendant quelques minutes, le lanceur devient une statue vivante de fer.\n\nEn jeu\n• Réduction des dégâts 15/adamantium ; moitié des dégâts d’acide et de feu.\n• Immunisé contre cécité, surdité, coups critiques, affaiblissement de caractéristique, maladie, noyade, électricité, poison, étourdissement et tout ce qui vise la respiration ou le corps.\n• +6 d’altération en Force, −6 en Dextérité (minimum 1), vitesse divisée par 2.\n• Échec des sorts profanes 50 %, malus d’armure aux tests −8 ; poids ×10 ; ne peut pas boire ni jouer d’un instrument à vent.\n• Ses coups à mains nues infligent 1d6 (taille M) ou 1d4 (taille P) et comptent comme armés ; il subit les effets qui touchent les golems de fer.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 6,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.iron_body')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": -6,
+          "condition": "active('toggle.iron_body')"
+        },
+        {
+          "target": "speed.land",
+          "op": "multiply",
+          "value": 0.5,
+          "multMode": "multiplicative",
+          "condition": "active('toggle.iron_body')"
+        }
+      ]
+    },
+    {
+      "id": "spell.color_spray",
+      "type": "spell",
+      "name": {
+        "fr": "Couleurs dansantes",
+        "en": "Color Spray"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un éventail de couleurs éclate de la main tendue. Les faibles s’effondrent, les autres titubent, éblouis.\n\nEn jeu\n• Cône de 4,50 m ; jet de Volonté pour annuler.\n• 2 DV ou moins : inconscient, aveuglé et étourdi 2d4 rounds, puis aveuglé et étourdi 1d4 rounds, puis étourdi 1 round (seuls les vivants perdent connaissance).\n• 3 ou 4 DV : aveuglé et étourdi 1d4 rounds, puis étourdi 1 round.\n• 5 DV ou plus : étourdi 1 round. Les créatures aveugles ou sans yeux ne sont pas touchées."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "mirage",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "4,50 m",
+        "area": "cône de 4,50 m",
+        "duration": "instantanée (voir description)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.true_strike",
+      "type": "spell",
+      "name": {
+        "fr": "Coup au but",
+        "en": "True Strike"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un instant de clarté parfaite : le lanceur voit le chemin du coup avant même de lever le bras.\n\nEn jeu\n• +20 d’intuition à la prochaine attaque, faite avant la fin du round suivant.\n• Cette attaque ignore les chances de rater dues au camouflage."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, F",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 20,
+          "bonusType": "insight",
+          "condition": "active('toggle.true_strike')"
+        }
+      ]
+    },
+    {
+      "id": "spell.orders_wrath",
+      "type": "spell",
+      "name": {
+        "fr": "Courroux de l’ordre",
+        "en": "Order's Wrath"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une grille d’énergie parfaite s’abat sur la mêlée. Ceux qui vivent selon la règle n’y sentent qu’une brise ; les autres sont broyés.\n\nEn jeu\n• Cube de 9 m ; touche seulement les créatures non loyales.\n• Chaotiques : 1d8 par 2 niveaux (5d8 au plus) et hébétées 1 round ; Extérieurs chaotiques : 1d6 par niveau (10d6 au plus).\n• Volonté réussi : moitié des dégâts, pas d’hébétement.\n• Neutres : moitié des dégâts et pas d’hébétement ; un jet de Volonté réussi réduit au quart."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "loi"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "créatures non loyales dans un cube de 9 m d’arête",
+        "duration": "instantanée (1 round)",
+        "savingThrow": "Volonté, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.phantom_steed",
+      "type": "spell",
+      "name": {
+        "fr": "Coursier fantôme",
+        "en": "Phantom Steed"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un grand cheval noir aux sabots de brume, qui ne fait aucun bruit. Plus le lanceur est puissant, moins le sol compte pour lui.\n\nEn jeu\n• Cheval de taille G que seul le lanceur (ou la personne choisie) peut monter : CA 18, 7 points de vie + 1 par niveau ; il ne combat pas, et les animaux l’évitent et refusent de l’attaquer. Il disparaît à 0 point de vie.\n• Vitesse 6 m par niveau (72 m au plus) ; porte son cavalier plus 5 kg par niveau.\n• Niveau 8 : traverse sable, boue et marais sans ralentir. Niveau 10 : marche sur l’eau à volonté.\n• Niveau 12 : marche dans les airs à volonté, 1 round à la fois. Niveau 14 : vole à sa vitesse (manœuvrabilité moyenne).\n• Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "0 m",
+        "effect": "1 équidé quasi réel",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

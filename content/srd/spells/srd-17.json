@@ -1,0 +1,587 @@
+{
+  "entities": [
+    {
+      "id": "spell.hide_from_animals",
+      "type": "spell",
+      "name": {
+        "fr": "Invisibilité pour les animaux",
+        "en": "Hide from Animals"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le loup renifle, le faucon scrute, l’ours tend l’oreille : rien. Pour les bêtes, les voyageurs protégés ne sont que du vent.\n\nEn jeu\n• Jusqu’à 1 créature par niveau devient indétectable pour les animaux : ni vue, ni ouïe, ni odorat, ni perception des vibrations, ni vision aveugle.\n• Les animaux agissent comme si les sujets n’existaient pas.\n• Si un sujet touche un animal ou attaque qui que ce soit (sorts compris), le sort prend fin pour tous les sujets.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 créature touchée/niveau",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hide_from_undead",
+      "type": "spell",
+      "name": {
+        "fr": "invisibilité pour les morts-vivants",
+        "en": "Hide from Undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un voile de vie éteinte recouvre les vivants. Les morts passent à côté sans lever leurs orbites vides.\n\nEn jeu\n• Jusqu’à 1 créature par niveau devient indétectable pour les morts-vivants, quels que soient leurs sens.\n• Les morts-vivants sans intelligence sont affectés d’office ; les intelligents ont droit à un jet de Volonté pour annuler.\n• Un mort-vivant intelligent qui soupçonne une présence invisible peut chercher et frapper au hasard.\n• Le sort prend fin pour tous les sujets si l’un d’eux renvoie ou intimide un mort-vivant, en touche un, ou attaque qui que ce soit (sorts compris).\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 créature touchée/niveau",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif) (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_invisibility",
+      "type": "spell",
+      "name": {
+        "fr": "Invisibilité suprême",
+        "en": "Invisibility, Greater"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Frapper, lancer un sort, frapper encore : la silhouette ne réapparaît jamais. Seules les blessures trahissent son passage.\n\nEn jeu\n• Comme invisibilité, mais le sujet reste invisible même s’il attaque.\n• Invisible : +2 aux jets d’attaque et la cible perd son bonus de Dextérité à la CA ; 50 % de chances de rater pour qui devine la bonne case.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts ou la créature touchée",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.instant_summons",
+      "type": "spell",
+      "name": {
+        "fr": "Invocation instantanée",
+        "en": "Instant Summons"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un saphir brisé, un mot prononcé, et l’épée oubliée à l’autre bout du monde retombe dans la paume de son maître.\n\nEn jeu\n• Prépare un objet de 5 kg au plus (1,80 m au plus de long) déjà marqué par signature magique.\n• Le nom de l’objet est gravé, invisible, sur un saphir d’au moins 1 000 po.\n• Briser le saphir en disant le mot de commande fait apparaître l’objet dans la main, même depuis un autre plan.\n• Si une autre créature tient l’objet, rien n’arrive, mais le jeteur apprend vaguement qui le possède et où.\n• Seul le jeteur peut utiliser la gemme ; l’effet attend sans limite de temps."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "target": "1 objet de 5 kg au plus, 1,80 m au plus de long",
+        "duration": "permanente jusqu’à utilisation",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.flame_blade",
+      "type": "spell",
+      "name": {
+        "fr": "Lame de feu",
+        "en": "Flame Blade"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une lame de flamme vive jaillit du poing serré, légère comme une plume et brûlante comme une forge.\n\nEn jeu\n• Lame de 90 cm maniée comme un cimeterre ; chaque coup est une attaque de contact au corps à corps.\n• Inflige 1d8 de feu + 1 par 2 niveaux de lanceur (+10 au plus).\n• Le modificateur de Force ne s’ajoute pas aux dégâts.\n• Peut enflammer les matières combustibles. Ne fonctionne pas sous l’eau.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "0 m",
+        "effect": "flamme en forme d’épée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8 fire",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(floor(@spell.caster_level / 2), 10)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.read_magic",
+      "type": "spell",
+      "name": {
+        "fr": "Lecture de la magie",
+        "en": "Read Magic"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les runes cessent de danser et se laissent lire. Parchemins, grimoires, inscriptions sur les lames : tout devient clair.\n\nEn jeu\n• Permet de lire les écritures magiques (parchemins, livres de sorts) ; une fois lues, elles le restent.\n• Ne déclenche pas la magie du texte (sauf parchemin maudit). Vitesse : une page (250 mots) par minute.\n• Art de la magie pour identifier un glyphe de garde (DD 13), un glyphe de garde suprême (DD 16) ou un symbole (DD 10 + niveau du sort).\n• Permanence possible."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.slow",
+      "type": "spell",
+      "name": {
+        "fr": "Lenteur",
+        "en": "Slow"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le temps s’épaissit comme de la mélasse autour des ennemis. Chaque geste leur coûte, chaque pas traîne.\n\nEn jeu\n• Jusqu’à 1 créature par niveau, toutes à 9 m au plus les unes des autres.\n• Une seule action de mouvement ou simple par tour, pas d’action complexe.\n• –1 à la CA, aux jets d’attaque et aux jets de Réflexes.\n• Vitesse divisée par deux (ce qui réduit aussi les sauts).\n• Plusieurs lenteurs ne se cumulent pas. Contre et dissipe rapidité.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.false_vision",
+      "type": "spell",
+      "name": {
+        "fr": "Leurre",
+        "en": "False Vision"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Les yeux lointains du devin croient voir une pièce vide, une forêt tranquille… exactement ce que vous avez choisi de leur montrer.\n\nEn jeu\n• Toute scrutation qui observe la zone (12 m de rayon) voit une fausse image choisie par le jeteur, comme image accomplie.\n• En se concentrant, le jeteur peut changer l’image à volonté ; sinon elle reste figée.\n• Composante matérielle : jade d’au moins 250 po réduit en poudre.\n• Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "area": "émanation de 12 m de rayon",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.levitate",
+      "type": "spell",
+      "name": {
+        "fr": "Lévitation",
+        "en": "Levitate"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les pieds quittent le sol, doucement. On monte, on descend, on flotte : le monde vu d’en haut, sans ailes.\n\nEn jeu\n• Le jeteur, une créature consentante ou un objet libre (50 kg par niveau au plus) monte ou descend de 6 m par round, sur ordre mental (action de mouvement).\n• Aucun déplacement horizontal, sauf en se tirant le long d’un mur ou d’un plafond (en général à demi-vitesse).\n• En attaquant, malus de –1 à la première attaque, –2 à la suivante… jusqu’à –5 ; un round complet à se stabiliser ramène à –1.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "personnelle ou courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "le jeteur de sorts, 1 créature consentante ou 1 objet (50 kg/niveau au plus)",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.freedom_of_movement",
+      "type": "spell",
+      "name": {
+        "fr": "Liberté de mouvement",
+        "en": "Freedom of Movement"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Les toiles glissent, les chaînes lâchent prise, l’eau s’écarte. Rien ne retient bien longtemps celui qui porte ce sort.\n\nEn jeu\n• Le sujet se déplace et combat normalement malgré les effets qui entravent : lenteur, paralysie, toile d’araignée, brouillard dense…\n• Réussit automatiquement les tests de lutte pour résister à une lutte et les tests de lutte ou d’Évasion pour s’échapper d’une lutte ou d’une immobilisation.\n• Sous l’eau, se déplace et frappe normalement au corps à corps, même avec des armes tranchantes ou contondantes (pas d’arme lancée).\n• Ne permet pas de respirer sous l’eau.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle ou contact",
+        "target": "le jeteur de sorts ou créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.telepathic_bond",
+      "type": "spell",
+      "name": {
+        "fr": "Lien télépathique",
+        "en": "Telepathic Bond"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Plus besoin de crier dans la mêlée : les pensées du groupe circulent d’un esprit à l’autre, quelle que soit la distance.\n\nEn jeu\n• Relie le jeteur et 1 créature consentante par 3 niveaux (Intelligence 3 ou plus), tous à 9 m au plus au moment du sort.\n• Les membres communiquent par télépathie, même sans langue commune, à n’importe quelle distance sur le même plan.\n• Le jeteur peut choisir de ne pas faire partie du lien (à l’incantation).\n• Permanence possible, mais pour 2 créatures seulement à chaque fois.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "le jeteur de sorts et 1 créature consentante/3 niveaux, à 9 m au plus les uns des autres",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.locate_object",
+      "type": "spell",
+      "name": {
+        "fr": "Localisation d'objet",
+        "en": "Locate Object"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une petite traction invisible, comme un fil tendu vers ce qu’on a perdu. Il suffit de suivre.\n\nEn jeu\n• Indique la direction d’un objet connu ou bien visualisé, ou de l’objet le plus proche d’un type général (escalier, épée, joyau…).\n• Un objet précis doit avoir été vu de ses propres yeux (pas par divination).\n• Portée : 120 m + 12 m par niveau autour du jeteur.\n• Bloqué par une fine couche de plomb ; ne trouve pas les créatures ; trompé par antidétection et métamorphose universelle.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "cercle de 120 m + 12 m/niveau de rayon, centré sur le jeteur de sorts",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.locate_creature",
+      "type": "spell",
+      "name": {
+        "fr": "Localisation de créature",
+        "en": "Locate Creature"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "On tourne lentement sur soi-même, et soudain un frisson indique la direction : elle est par là, et elle bouge.\n\nEn jeu\n• Comme localisation d’objet, mais trouve une créature connue ou une créature d’une espèce précise (pas un type général comme « humanoïde »).\n• Indique la direction et, si elle bouge, le sens de son déplacement.\n• Il faut avoir déjà vu de près (9 m au plus) un individu de l’espèce cherchée.\n• Bloqué par l’eau courante ; trompé par antidétection, double illusoire et métamorphose.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "cercle de 120 m + 12 m/niveau de rayon, centré sur le jeteur de sorts",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.discern_location",
+      "type": "spell",
+      "name": {
+        "fr": "Localisation suprême",
+        "en": "Discern Location"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Ni murs, ni plans, ni illusions ne cachent rien à ce regard. Le sort donne l’adresse exacte, jusqu’au monde où elle se trouve.\n\nEn jeu\n• Révèle le lieu exact d’une créature ou d’un objet : bâtiment, ville, région, pays, continent et plan.\n• Seuls esprit impénétrable ou l’intervention d’un dieu l’arrêtent ; il ignore les protections habituelles contre la scrutation.\n• Pour une créature : l’avoir déjà vue ou avoir un objet lui ayant appartenu. Pour un objet : l’avoir déjà touché.\n• Incantation de 10 minutes, portée illimitée."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "illimitée",
+        "target": "1 créature ou 1 objet",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.rainbow_pattern",
+      "type": "spell",
+      "name": {
+        "fr": "Lueur d'arc en ciel",
+        "en": "Rainbow Pattern"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un tourbillon de couleurs danse dans l’air, et les regards s’y accrochent. Où il va, la foule fascinée le suit.\n\nEn jeu\n• Fascine jusqu’à 24 DV de créatures dans un rayon de 6 m, les plus faibles en premier, puis les plus proches du centre.\n• Par une action libre, le jeteur déplace la lueur de 9 m par round ; les victimes la suivent pour rester dedans.\n• Une victime entraînée vers un danger (feu, falaise…) a droit à un nouveau jet de sauvegarde.\n• Prend fin pour une créature qui perd la lueur de vue. Sans effet sur les créatures aveugles.\n• Les bardes ont besoin de la composante verbale ; les ensorceleurs et magiciens s’en passent.\n• Dure le temps de la concentration + 1 round par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "mirage",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V (barde uniquement), G, M, F",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "lueurs multicolores sur 6 m de rayon",
+        "duration": "concentration + 1 round/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.faerie_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Lueur féerique",
+        "en": "Faerie Fire"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une pâle lumière bleue, verte ou violette dessine les contours des cibles. Impossible de se fondre dans l’ombre.\n\nEn jeu\n• Les créatures et objets dans un rayon de 1,50 m brillent comme des bougies.\n• Ils perdent le camouflage dû à l’obscurité (sauf ténèbres de niveau 2 ou plus), à déplacement, flou ou invisibilité.\n• Ne blesse personne, sans effet spécial sur les morts-vivants ou créatures sensibles à la lumière.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "lumière"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "créatures et objets dans un rayonnement de 1,50 m de rayon",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hypnotic_pattern",
+      "type": "spell",
+      "name": {
+        "fr": "Lueurs hypnotiques",
+        "en": "Hypnotic Pattern"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Des volutes de couleurs ondulent et se tordent. Les yeux s’y perdent, et les mains oublient leurs armes.\n\nEn jeu\n• Fascine 2d4 DV + 1 par niveau de lanceur (+10 au plus) de créatures dans un rayon de 3 m, les plus faibles en premier, puis les plus proches du centre.\n• Les DV en trop sont perdus. Sans effet sur les créatures aveugles.\n• Les bardes ont besoin de la composante verbale ; les ensorceleurs et magiciens s’en passent.\n• Dure le temps de la concentration + 2 rounds."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "mirage",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V (barde uniquement), G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "lueurs multicolores sur 3 m de rayon",
+        "duration": "concentration + 2 rounds",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.light",
+      "type": "spell",
+      "name": {
+        "fr": "Lumière",
+        "en": "Light"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une pierre, une dague, le bout d’un bâton : l’objet touché brille comme une torche, sans fumée et sans flamme.\n\nEn jeu\n• L’objet éclaire comme une torche (lumière vive sur 6 m, faible jusqu’à 12 m). La lumière suit l’objet s’il bouge.\n• Éteinte tant qu’elle se trouve dans une zone de ténèbres magiques.\n• Contre et dissipe un sort d’obscurité de niveau égal ou inférieur.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non",
+        "descriptors": [
+          "lumière"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.searing_light",
+      "type": "spell",
+      "name": {
+        "fr": "Lumière brûlante",
+        "en": "Searing Light"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un éclat de soleil concentré jaillit de la paume. Les morts-vivants le craignent, et ceux qui fuient le jour plus encore.\n\nEn jeu\n• Rayon : attaque de contact à distance.\n• 1d8 par 2 niveaux de lanceur (5d8 au plus).\n• Mort-vivant : 1d6 par niveau (10d6 au plus) ; mort-vivant sensible à la lumière du jour (vampire…) : 1d8 par niveau (10d8 au plus).\n• Créature artificielle ou objet : 1d6 par 2 niveaux (5d6 au plus)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.daylight",
+      "type": "spell",
+      "name": {
+        "fr": "Lumière du jour",
+        "en": "Daylight"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un plein soleil de midi enfermé dans un caillou, une lame ou un bouclier. La nuit recule, et ce qui s’y cache aussi.\n\nEn jeu\n• L’objet touché éclaire vivement sur 18 m, puis faiblement sur 18 m de plus.\n• Les créatures gênées par la lumière vive en subissent les effets ; ce n’est pas un vrai soleil pour celles que le jour détruit (vampires).\n• Couvrir l’objet bloque la lumière.\n• Face à des ténèbres magiques, les deux effets s’annulent là où ils se chevauchent (l’éclairage naturel revient). Contre et dissipe les sorts d’obscurité de niveau égal ou inférieur.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "lumière"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

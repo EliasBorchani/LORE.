@@ -1,0 +1,450 @@
+{
+  "entities": [
+    {
+      "id": "spell.dancing_lights",
+      "type": "spell",
+      "name": { "fr": "Lumières dansantes", "en": "Dancing Lights" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Des feux follets obéissants : quatre lueurs qui flottent, tournent aux angles des couloirs et font croire à toute une troupe de porteurs de torches.\n\nEn jeu\n• Au choix : jusqu’à 4 lumières (comme des torches ou des lanternes, qui éclairent autant), 4 globes lumineux, ou une forme vaguement humaine lumineuse.\n• Les lumières restent à 3 m au plus les unes des autres et se déplacent de 30 m par round, sans concentration.\n• Une lumière qui sort de la portée (mesurée depuis le lanceur) s’éteint.\n• Peut être rendu permanent avec permanence."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "jusqu’à 4 lumières dans un rayon de 3 m",
+        "duration": "1 minute (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non",
+        "descriptors": ["lumière"]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shadow_evocation",
+      "type": "spell",
+      "name": { "fr": "Magie des ombres", "en": "Shadow Evocation" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "De l’ombre pétrie en forme d’éclair ou de boule de feu : presque aussi réelle que l’original, tant qu’on y croit.\n\nEn jeu\n• Imite une évocation d’ensorceleur ou de magicien de niveau 4 au plus (version de mage pour les sorts à plusieurs niveaux).\n• Qui réussit son jet de Volonté (en cas d’interaction) ne subit que 20 % des dégâts ; un effet spécial n’a que 20 % de chances de jouer, à un cinquième de sa force.\n• Un sort imité sans dégâts reste sans effet sur qui l’a démasqué.\n• Les jets de sauvegarde du sort imité utilisent le DD d’un sort de niveau 5.\n• Les objets réussissent toujours leur jet de Volonté."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "effect": "voir description",
+        "duration": "voir description",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_shadow_evocation",
+      "type": "spell",
+      "name": { "fr": "Magie des ombres suprêmes", "en": "Greater Shadow Evocation" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Des ombres si denses qu’elles brûlent presque autant que le vrai feu, même pour qui n’est pas dupe.\n\nEn jeu\n• Comme magie des ombres, mais imite une évocation d’ensorceleur ou de magicien de niveau 7 au plus.\n• Qui démasque l’illusion subit quand même 60 % des dégâts ; un effet spécial a 60 % de chances de jouer, à 60 % de sa force.\n• Les jets de sauvegarde du sort imité utilisent le DD d’un sort de niveau 8."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "effect": "voir description",
+        "duration": "voir description",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.crushing_hand",
+      "type": "spell",
+      "name": { "fr": "Main broyeuse", "en": "Crushing Hand" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une main de force grande comme une porte de château, qui bloque, pousse, saisit… et serre jusqu’à faire craquer les os.\n\nEn jeu\n• Main de taille G : CA 20, autant de points de vie que le maximum du lanceur, mêmes jets de sauvegarde que lui.\n• Peut s’interposer (comme main interposée : abri, +4 à la CA contre la cible), bousculer avec +18, ou agripper.\n• Bonus de lutte : niveau de lanceur + modificateur de la caractéristique de lanceur + 12 (Force 35) + 4 (taille G).\n• Chaque test de lutte gagné inflige 2d6 + 12 points de dégâts contondants.\n• Changer de cible demande une action de mouvement.\n• Composante matérielle profane : une coquille d’œuf ; focaliseur profane : un gant en peau de serpent."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["force"],
+        "components": "V, G, M, F/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "main de 3 m de long",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "2d6 bludgeoning", "scope": "spell" },
+        { "target": "spell.damage", "op": "add", "value": 12, "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.shepherds_hand",
+      "type": "spell",
+      "name": { "fr": "Main du berger", "en": "Shepherd's Hand" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une main fantôme part battre la campagne, retrouve la personne décrite et lui fait signe de la suivre. Elle guide, elle n’oblige pas.\n\nEn jeu\n• Le lanceur décrit l’apparence de la personne cherchée (race, sexe, aspect ; pas le niveau, l’alignement ni la classe).\n• La main cherche dans un rayon de 7,5 km et trouve la créature correspondante la plus proche ; plus elle est loin, plus la recherche prend de temps.\n• Elle la guide par le chemin le plus court, en flottant 3 m devant elle, à sa vitesse (72 m par round au plus).\n• Rien ne force la créature à suivre ; si elle refuse, la main ne cherche personne d’autre.\n• Après 4 heures sans résultat, la main revient signaler l’échec et disparaît.\n• Invisible sauf pour le lanceur et la cible, sans forme physique, elle ne peut rien faire d’autre."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "7,5 km",
+        "effect": "main spectrale",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "note": "Not an SRD 3.5 spell: the source site lists it (Clr 3); English name is our translation.",
+      "effects": []
+    },
+    {
+      "id": "spell.forceful_hand",
+      "type": "spell",
+      "name": { "fr": "Main impérieuse", "en": "Forceful Hand" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une paume de force géante se plaque contre l’ennemi et le repousse, encore et encore, aussi loin qu’il le faut.\n\nEn jeu\n• Comme main interposée (main de taille G, CA 20, points de vie du lanceur au maximum).\n• La main bouscule la cible avec +14 (Force 27 : +8, taille G : +4, charge : +2) et la suit pour la repousser au plus loin.\n• Une créature très forte ne peut pas la contourner, mais peut la repousser vers le lanceur en gagnant une bousculade contre elle.\n• Changer de cible demande une action de mouvement."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["force"],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "main de 3 m de long",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.interposing_hand",
+      "type": "spell",
+      "name": { "fr": "Main interposée", "en": "Interposing Hand" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une grande main flottante se glisse entre le lanceur et son adversaire, et rien ne la trompe : ni l’ombre, ni l’invisibilité, ni les feintes.\n\nEn jeu\n• Main de taille G : CA 20, autant de points de vie que le maximum du lanceur, mêmes jets de sauvegarde que lui.\n• Elle donne un abri au lanceur : +4 à la CA contre l’adversaire choisi seulement.\n• Une créature de moins d’une tonne qui pousse contre elle avance à demi-vitesse.\n• Détruite par désintégration ou dissipation de la magie ; bloquée par un mur de force ou une zone d’antimagie.\n• Changer de cible demande une action de mouvement."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["force"],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "main de 3 m de long",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.burning_hands",
+      "type": "spell",
+      "name": { "fr": "Mains brûlantes", "en": "Burning Hands" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Les pouces se touchent, les doigts s’écartent, et un éventail de flammes rugit devant le lanceur.\n\nEn jeu\n• Cône de 4,50 m : 1d4 points de dégâts de feu par niveau de lanceur (5d4 au plus).\n• Jet de Réflexes pour la moitié.\n• Tissu, papier et bois sec touchés prennent feu ; les éteindre demande une action complexe."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["feu"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "4,50 m",
+        "area": "cône de 4,50 m",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "(min(@spell.caster_level, 5))d4 fire", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.spectral_hand",
+      "type": "spell",
+      "name": { "fr": "Main spectrale", "en": "Spectral Hand" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Un peu de sa propre vie prend la forme d’une main pâle qui file vers l’ennemi et porte les sorts de contact à sa place.\n\nEn jeu\n• Le lanceur perd 1d4 points de vie, rendus à la fin du sort ou si la main est dissipée, mais pas si elle est détruite.\n• Il peut lancer par la main tout sort de contact de niveau 4 au plus, avec +2 à l’attaque de contact au corps à corps.\n• La main est intangible, a l’esquive extraordinaire, les bonus de sauvegarde du lanceur, une CA de 22 + son modificateur d’Intelligence et autant de points de vie que ceux perdus.\n• Si elle sort de la portée ou de la vue du lanceur, elle revient près de lui."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "1 main spectrale",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bestow_curse",
+      "type": "spell",
+      "name": { "fr": "Malédiction", "en": "Bestow Curse" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Un doigt pointé, un mot amer, et le sort de la victime s’assombrit pour de bon.\n\nEn jeu\n• Au choix : −6 à une caractéristique (1 au minimum), ou −4 aux jets d’attaque, de sauvegarde, de caractéristique et de compétence, ou 50 % de chances par tour de ne rien faire.\n• Le MD peut accepter une autre malédiction de force comparable.\n• Jet de Volonté pour annuler ; dure jusqu’à ce qu’on la lève.\n• Ne peut pas être dissipée ; annulation d’enchantement, délivrance des malédictions, miracle, souhait et souhait limité la lèvent."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "permanente",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.curse_water",
+      "type": "spell",
+      "name": { "fr": "Malédiction de l'eau", "en": "Curse Water" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Une prière inversée au-dessus d’une flasque, et l’eau claire devient un poison pour les âmes pures.\n\nEn jeu\n• Change une flasque d’eau (un demi-litre) en eau maudite.\n• L’eau maudite blesse les Extérieurs bons comme l’eau bénite blesse les morts-vivants et les Extérieurs mauvais.\n• Composante matérielle : 2,5 kg de poudre d’argent (25 po)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": ["Mal"],
+        "components": "V, G, M",
+        "castingTime": "1 minute",
+        "range": "contact",
+        "target": "flasque d’eau touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mage_hand",
+      "type": "spell",
+      "name": { "fr": "Manipulation à distance", "en": "Mage Hand" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Une main invisible pour les tâches délicates : tourner une clé, attraper une bourse, déplacer une pièce d’échecs à distance.\n\nEn jeu\n• Déplace un objet non magique de 2,5 kg au plus, de 4,50 m par action de mouvement.\n• L’objet ne doit être ni porté ni tenu par quelqu’un.\n• Le sort cesse si l’objet sort de la portée."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "objet non magique de 2,5 kg au plus, ni porté ni tenu",
+        "duration": "concentration",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sculpt_sound",
+      "type": "spell",
+      "name": { "fr": "Manipulation des sons", "en": "Sculpt Sound" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Des arbres qui chantent, une troupe qui marche sans un bruit, un mage qui grogne comme un cochon : le son devient pâte à modeler.\n\nEn jeu\n• Change, crée ou fait taire les sons d’1 créature ou objet par niveau, tous à 9 m au plus les uns des autres.\n• Tous les sujets sont changés de la même façon, choisie une fois pour toutes.\n• Impossible de produire des mots que le lanceur ne connaît pas (un mot de commande inconnu, par exemple).\n• Un lanceur dont la voix est trop changée ne peut plus lancer de sorts à composante verbale.\n• Dure 1 heure par niveau ; jet de Volonté pour annuler."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature ou 1 objet/niveau, à 9 m au plus les uns des autres",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magnificent_mansion",
+      "type": "spell",
+      "name": { "fr": "Manoir somptueux", "en": "Magnificent Mansion" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Un rideau de lumière à peine visible, et derrière : marbre, feu de cheminée, banquet servi et domestiques en livrée. Le meilleur bivouac du multivers.\n\nEn jeu\n• Demeure extradimensionnelle de 3 cubes de 3 m d’arête par niveau, dont le joueur dessine le plan.\n• Une seule entrée (2,40 m × 1,20 m), que seules les créatures désignées franchissent ; elle se ferme et devient invisible quand le lanceur entre, qui peut la rouvrir de l’intérieur à volonté.\n• Banquet de neuf plats pour 12 convives par niveau, 2 serviteurs visibles par niveau (comme serviteur invisible).\n• Rien de l’extérieur n’y entre, rien n’en sort, sauf par la porte.\n• Dure 2 heures par niveau.\n• Focaliseurs : portail en ivoire miniature, morceau de marbre poli et petite cuillère en argent (5 po chacun)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "manoir extradimensionnel de 3 cubes de 3 m/niveau (F)",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.cloak_of_chaos",
+      "type": "spell",
+      "name": { "fr": "Manteau du chaos", "en": "Cloak of Chaos" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Un tourbillon de couleurs changeantes enveloppe les alliés : les coups glissent, la Loi recule, et qui frappe trop fort repart l’esprit en vrac.\n\nEn jeu\n• 1 créature par niveau dans un rayon de 6 m : +4 de parade à la CA et +4 de résistance aux jets de sauvegarde.\n• Résistance à la magie 25 contre les sorts loyaux et ceux des créatures loyales.\n• Bloque possession et influence mentale, comme protection contre la Loi.\n• Une créature loyale qui touche un sujet au corps à corps est confuse 1 round (Volonté pour annuler, DD de ce sort).\n• Dure 1 round par niveau.\n• Focaliseur : petit reliquaire d’au moins 500 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": ["Chaos"],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "target": "1 créature/niveau dans un rayonnement de 6 m centré sur le lanceur",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        { "target": "ac.total", "op": "add", "value": 4, "bonusType": "deflection", "condition": "active('toggle.cloak_of_chaos')" },
+        { "target": "save.all", "op": "add", "value": 4, "bonusType": "resistance", "condition": "active('toggle.cloak_of_chaos')" },
+        { "target": "spell_resistance", "op": "set", "value": 25, "layer": "base", "condition": "active('toggle.cloak_of_chaos')", "situation": "situation.vs_law" }
+      ]
+    },
+    {
+      "id": "spell.air_walk",
+      "type": "spell",
+      "name": { "fr": "Marche dans les airs", "en": "Air Walk" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le vide devient un sentier : on monte vers les nuages comme on gravit une colline, sous le regard incrédule des oiseaux.\n\nEn jeu\n• Le sujet (taille Gig au plus) marche dans l’air comme sur le sol ; pour monter ou descendre, pente de 45° au plus et demi-vitesse.\n• À la fin de son tour, un vent fort (35 km/h et plus) le déporte de 1,50 m par tranche de 8 km/h de vent ; une tempête peut le gêner davantage.\n• À la fin du sort ou s’il est dissipé, le sujet descend de 18 m par round pendant 1d6 rounds, puis tombe (1d6 par 3 m restants).\n• S’il est annulé (antimagie), le sujet tombe aussitôt.\n• Dure 10 minutes par niveau ; une monture peut être dressée à l’utiliser (une semaine, Dressage DD 25)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": ["air"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée (taille Gig au plus)",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.water_walk",
+      "type": "spell",
+      "name": { "fr": "Marche sur l'onde", "en": "Water Walk" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Rivière, marais, sables mouvants ou lave : les pieds se posent à un doigt de la surface, et la troupe traverse à sec.\n\nEn jeu\n• 1 créature touchée par niveau marche, court et charge sur tout liquide comme sur la terre ferme (neige, boue, huile, lave…).\n• La chaleur de la lave fait toujours ses dégâts.\n• Un sujet immergé remonte de 18 m par round jusqu’à la surface.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": ["eau"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 créature touchée/niveau",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mark_of_justice",
+      "type": "spell",
+      "name": { "fr": "Marque de la justice", "en": "Mark of Justice" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Un signe tracé sur la peau, discret et patient : il ne fait rien… tant que le coupable ne recommence pas.\n\nEn jeu\n• Le lanceur choisit l’acte interdit ; si le sujet le commet, il subit une malédiction (comme le sort malédiction).\n• 10 minutes d’incantation : seulement sur un sujet consentant ou immobilisé.\n• Ne peut pas être dissipée ; annulation d’enchantement, délivrance des malédictions (lanceur de niveau au moins égal), miracle, souhait ou souhait limité la lèvent, activée ou non."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "permanente (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.chaos_hammer",
+      "type": "spell",
+      "name": { "fr": "Marteau du chaos", "en": "Chaos Hammer" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une explosion multicolore qui rebondit dans tous les sens et ne frappe que ceux qui aiment l’ordre.\n\nEn jeu\n• Rayonnement de 6 m de rayon : les créatures loyales subissent 1d8 par 2 niveaux de lanceur (5d8 au plus) et sont ralenties 1d6 rounds.\n• Les Extérieurs loyaux subissent 1d6 par niveau (10d6 au plus).\n• Jet de Volonté : demi-dégâts et pas de ralentissement.\n• Les créatures neutres subissent la moitié (le quart avec un jet de Volonté réussi) et ne sont pas ralenties ; les créatures chaotiques ne sont pas touchées."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["Chaos"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "rayonnement de 6 m de rayon",
+        "duration": "instantanée (1d6 rounds ; voir description)",
+        "savingThrow": "Volonté, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "(min(floor(@spell.caster_level / 2), 5))d8", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.eyebite",
+      "type": "spell",
+      "name": { "fr": "Mauvais oeil", "en": "Eyebite" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Un regard chargé de malveillance, et la cible tremble, frissonne ou s’effondre, selon sa robustesse.\n\nEn jeu\n• Chaque round, vise 1 créature vivante (action de mouvement après le premier round) ; jet de Vigueur pour annuler.\n• Effets selon les DV de la cible, cumulés : malade (−2 aux attaques, dégâts d’arme, sauvegardes, tests de compétence et de caractéristique) pour 10 minutes par niveau, quel que soit le nombre de DV.\n• 9 DV ou moins : aussi paniquée 1d4 rounds puis secouée 10 minutes par niveau (s’il revoit le lanceur, la panique le reprend).\n• 4 DV ou moins : aussi plongée dans un coma de 10 minutes par niveau, qu’on ne peut lever qu’en dissipant l’effet (les elfes n’y échappent pas).\n• L’état malade résiste à guérison des maladies et à guérison suprême, mais délivrance des malédictions le lève.\n• Dure 1 round par 3 niveaux."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": ["Mal"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "1 round/3 niveaux (voir description)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "entities": [
+    {
+      "id": "item.shovel",
+      "type": "item",
+      "name": {
+        "fr": "Pelle",
+        "en": "Shovel or spade"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une lame de fer large au bout d’un manche de frêne : de quoi creuser une tranchée, enterrer un trésor ou un compagnon trop curieux.\n\nEn jeu\n• Sert à creuser, déblayer et dégager un passage ; usage improvisé en combat au choix du MJ."
+      },
+      "item": {
+        "cost": "2 po",
+        "weight": "4 kg"
+      }
+    },
+    {
+      "id": "item.signal_whistle",
+      "type": "item",
+      "name": {
+        "fr": "Sifflet",
+        "en": "Whistle, signal"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un sifflet de métal au son aigu et perçant, qui traverse le vacarme d’une bataille ou le vent d’un col.\n\nEn jeu\n• Permet d’émettre un signal convenu, audible de loin par les alliés (et par tout ce qui rôde)."
+      },
+      "item": {
+        "cost": "8 pa"
+      }
+    },
+    {
+      "id": "item.signet_ring",
+      "type": "item",
+      "name": {
+        "fr": "Chevalière",
+        "en": "Signet ring"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un anneau gravé aux armes d’une maison ou d’un sceau personnel, que l’on presse dans la cire chaude pour authentifier un message.\n\nEn jeu\n• Chaque chevalière est unique : son sceau prouve l’origine d’une lettre ou d’un document.\n• Imiter ce sceau relève de la Contrefaçon."
+      },
+      "item": {
+        "cost": "5 po"
+      }
+    },
+    {
+      "id": "item.silk_rope",
+      "type": "item",
+      "name": {
+        "fr": "Corde en soie, 15 m",
+        "en": "Silk rope (50 ft.)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "climbing"
+      ],
+      "description": {
+        "fr": "Quinze mètres de soie tressée, légère, souple et étonnamment solide : la corde que les monte-en-l’air rêvent d’avoir à l’épaule.\n\nEn jeu\n• Bonus de circonstances de +2 aux tests de Maîtrise des cordes faits avec cette corde.\n• Solide malgré sa finesse : 4 points de résistance, et il faut réussir un test de Force DD 24 pour la briser."
+      },
+      "item": {
+        "cost": "10 po",
+        "weight": "2,5 kg"
+      },
+      "effects": [
+        {
+          "target": "skill.use_rope",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.using_silk_rope"
+        }
+      ],
+      "note": "Le bonus de Maîtrise des cordes ne compte que si le personnage utilise cette corde : il reste situationnel."
+    },
+    {
+      "id": "item.sledge",
+      "type": "item",
+      "name": {
+        "fr": "Masse",
+        "en": "Sledge"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une lourde masse à deux mains, faite pour enfoncer des pieux, fendre la pierre ou forcer une porte récalcitrante.\n\nEn jeu\n• Outil pour enfoncer, casser ou démolir ; usage improvisé en combat au choix du MJ."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "5 kg"
+      }
+    },
+    {
+      "id": "item.soap",
+      "type": "item",
+      "name": {
+        "fr": "Savon, 1 livre",
+        "en": "Soap (per lb.)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un pain de savon gras et parfumé à la cendre, le luxe discret de ceux qui reviennent des égouts.\n\nEn jeu\n• Vendu à la livre ; utile pour se laver, graisser une serrure ou faire glisser un anneau coincé."
+      },
+      "item": {
+        "cost": "5 pa",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.spyglass",
+      "type": "item",
+      "name": {
+        "fr": "Longue-vue",
+        "en": "Spyglass"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un tube de cuivre et de verre poli qui rapproche l’horizon : le trésor des capitaines et des éclaireurs.\n\nEn jeu\n• Les objets observés paraissent deux fois plus grands (grossissement ×2)."
+      },
+      "item": {
+        "cost": "1000 po",
+        "weight": "500 g"
+      },
+      "note": "L’effet sur les tests de Détection selon la distance n’est pas modélisé."
+    },
+    {
+      "id": "item.steel_mirror",
+      "type": "item",
+      "name": {
+        "fr": "Petit miroir en acier",
+        "en": "Mirror, small steel"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un petit miroir d’acier poli, assez solide pour survivre à un sac d’aventurier.\n\nEn jeu\n• Permet de regarder au coin d’un mur sans s’exposer, d’envoyer un signal au soleil ou d’éviter le regard direct d’une méduse (au choix du MJ)."
+      },
+      "item": {
+        "cost": "10 po",
+        "weight": "250 g"
+      }
+    },
+    {
+      "id": "item.tent",
+      "type": "item",
+      "name": {
+        "fr": "Tente",
+        "en": "Tent"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une toile tendue sur des piquets, juste assez grande pour deux dormeurs et leurs bottes humides.\n\nEn jeu\n• Abri pour deux personnes de taille M contre la pluie et le vent."
+      },
+      "item": {
+        "cost": "10 po",
+        "weight": "10 kg"
+      }
+    },
+    {
+      "id": "item.torch",
+      "type": "item",
+      "name": {
+        "fr": "Torche",
+        "en": "Torch"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "light_source",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Un bâton de bois enroulé de chiffons trempés dans la résine : la flamme vacillante qui accompagne chaque première descente en donjon.\n\nEn jeu\n• Lumière vive dans un rayon de 6 m, faible jusqu’à 12 m.\n• Brûle pendant 1 heure.\n• En combat, se manie d’une main comme une arme improvisée : elle cogne comme un gantelet à la taille de son porteur et brûle pour 1 point de dégâts de feu en plus."
+      },
+      "item": {
+        "cost": "1 pc",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.trail_rations",
+      "type": "item",
+      "name": {
+        "fr": "Rations de survie (par jour)",
+        "en": "Trail rations (per day)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Viande séchée, fruits secs, biscuits durs et fromage : une journée de nourriture qui ne pourrit pas, à défaut d’être bonne.\n\nEn jeu\n• Nourrit une personne pendant une journée."
+      },
+      "item": {
+        "cost": "5 pa",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.vial",
+      "type": "item",
+      "name": {
+        "fr": "Fiole pour encre ou potion",
+        "en": "Vial, ink or potion"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Une petite fiole de verre bouchée, à peine plus longue qu’un doigt, où l’on garde encre, potion ou poison.\n\nEn jeu\n• Contient environ 3 cl de liquide."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "50 g"
+      }
+    },
+    {
+      "id": "item.waterskin",
+      "type": "item",
+      "name": {
+        "fr": "Outre",
+        "en": "Waterskin"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Une poche de cuir cousu et goudronné, qui garde l’eau fraîche (ou presque) au fil des longues marches.\n\nEn jeu\n• Contient environ 2 litres de liquide."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "2 kg"
+      }
+    },
+    {
+      "id": "item.whetstone",
+      "type": "item",
+      "name": {
+        "fr": "Pierre à aiguiser",
+        "en": "Whetstone"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une pierre grise et lisse qui rend son fil à la lame, au son lent des veillées de bivouac.\n\nEn jeu\n• Sert à affûter et entretenir les armes tranchantes ; aucun bonus en jeu."
+      },
+      "item": {
+        "cost": "2 pc",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.winter_blanket",
+      "type": "item",
+      "name": {
+        "fr": "Couverture d’hiver",
+        "en": "Winter blanket"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une épaisse couverture de laine, lourde et chaude, qui fait la différence entre une nuit froide et une nuit mortelle.\n\nEn jeu\n• Garde au chaud un dormeur par temps froid ; pas de bonus chiffré aux jets de sauvegarde."
+      },
+      "item": {
+        "cost": "5 pa",
+        "weight": "1,5 kg"
+      }
+    }
+  ]
+}

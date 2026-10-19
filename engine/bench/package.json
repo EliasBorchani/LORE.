@@ -1,0 +1,27 @@
+{
+  "name": "engine-bench",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "engine": "cd .. && ./gradlew :engine:jsBrowserProductionLibraryDistribution -q",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "size": "node scripts/size.mjs",
+    "bench": "node scripts/bench.mjs"
+  },
+  "dependencies": {
+    "dnd-engine": "file:../core/build/dist/js/productionLibrary",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3",
+    "vite": "8.3.4"
+  }
+}

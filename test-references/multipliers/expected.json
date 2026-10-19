@@ -1,0 +1,31 @@
+{
+  "character": "char.multipliers",
+  "atLevel": 1,
+  "note": "Multiplier modes: exclusive groups, additive, multiplicative.",
+  "values": [
+    {
+      "stat": "spell.x",
+      "value": 60,
+      "status": "verified",
+      "how": "x2 and x2 additive give x3, then x2 multiplicative: x6"
+    },
+    {
+      "stat": "spell.y",
+      "value": 5040,
+      "status": "verified",
+      "how": "Empower x1.5 loses to Superspell x4 (same group), then Primum x3: x12"
+    },
+    {
+      "stat": "spell.z",
+      "value": 50,
+      "status": "verified",
+      "how": "the exclusive winner joins the additive ones: x4 and x2 give x5"
+    },
+    {
+      "stat": "spell.w",
+      "value": 10,
+      "status": "verified",
+      "how": "7 x 1.5 = 10.5, rounded down once"
+    }
+  ]
+}

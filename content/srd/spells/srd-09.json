@@ -1,0 +1,625 @@
+{
+  "entities": [
+    {
+      "id": "spell.create_water",
+      "type": "spell",
+      "name": {
+        "fr": "Création d’eau",
+        "en": "Create Water"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un geste, et l’air se condense en eau claire. Les gourdes vides ne font plus peur à personne.\n\nEn jeu\n• Crée jusqu’à 8 litres d’eau potable par niveau de lanceur.\n• L’eau apparaît dans un récipient ou tombe en fine pluie sur une zone jusqu’à trois fois plus large.\n• Impossible de la faire apparaître à l’intérieur d’une créature."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "eau"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "jusqu’à 8 litres d’eau/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.create_undead",
+      "type": "spell",
+      "name": {
+        "fr": "Création de mort-vivant",
+        "en": "Create Undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "De la terre de tombe, une onyx noire, une heure de murmures, et le cadavre se relève avec faim. Mieux vaut avoir prévu de quoi le tenir en laisse.\n\nEn jeu\n• Le niveau de lanceur fixe le pire mort-vivant possible : goule jusqu’au niveau 11, blême de 12 à 14, momie de 15 à 17, mohrg à partir de 18.\n• On peut choisir un mort-vivant plus faible que ce que le niveau permet.\n• Se lance seulement de nuit.\n• La créature n’obéit pas d’office : il faut la contrôler par un autre moyen (par exemple contrôle des morts-vivants).\n• Composante : une onyx noire d’au moins 50 po par DV du mort-vivant, plus terre de tombe et eau saumâtre.\n• Sort du Mal."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 heure",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 cadavre",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.create_greater_undead",
+      "type": "spell",
+      "name": {
+        "fr": "Création de mort-vivant dominant",
+        "en": "Create Greater Undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Cette fois, ce n’est plus un corps qui se relève mais une ombre qui refuse de partir. Le froid s’installe dans la pièce et n’en ressort plus.\n\nEn jeu\n• Comme création de mort-vivant, avec des créatures plus fortes.\n• Selon le niveau de lanceur : ombre jusqu’au niveau 15, âme-en-peine à 16–17, spectre à 18–19, dévoreur à partir de 20.\n• Se lance seulement de nuit ; le mort-vivant n’est pas contrôlé d’office.\n• Composante : une onyx noire d’au moins 50 po par DV du mort-vivant.\n• Sort du Mal."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 heure",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 cadavre",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.create_food_and_water",
+      "type": "spell",
+      "name": {
+        "fr": "Création de nourriture et d’eau",
+        "en": "Create Food and Water"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Pain sans goût, eau sans défaut : personne n’écrira de chanson sur ce repas, mais tout le monde finira l’assiette.\n\nEn jeu\n• Nourrit 3 humains ou 1 cheval pendant une journée par niveau de lanceur.\n• La nourriture se gâte au bout de 24 heures (purification de nourriture et d’eau ajoute 24 heures).\n• L’eau, elle, ne se gâte pas."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "nourriture et eau pour 3 humains ou 1 cheval/niveau pendant 1 jour",
+        "duration": "24 heures (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.major_creation",
+      "type": "spell",
+      "name": {
+        "fr": "Création majeure",
+        "en": "Major Creation"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une poutre, une enclume, une clé de fer : la matière obéit, au moins pour un temps. Plus elle est rare, plus vite elle s’efface.\n\nEn jeu\n• Comme création mineure (30 dm³ par niveau de lanceur), mais aussi pierre, cristal et métal.\n• Durée selon la matière : végétal 2 h/niveau ; pierre, cristal ou métal commun 1 h/niveau ; métal précieux 20 min/niveau ; gemme 10 min/niveau ; métal rare (adamantium, argent alchimique, mithral) 1 round/niveau.\n• Pas de fer froid.\n• Un objet créé ne sert pas de composante matérielle : le sort qui l’utilise échoue."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "objet non magique de 30 dm³/niveau",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.minor_creation",
+      "type": "spell",
+      "name": {
+        "fr": "Création mineure",
+        "en": "Minor Creation"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une corde qui manquait, une échelle qu’on n’avait pas : il suffit d’un bout de bois et d’un peu de volonté.\n\nEn jeu\n• Crée un objet non magique en matière végétale (bois, corde, tissu…) de 30 dm³ par niveau de lanceur au plus.\n• Dure 1 heure par niveau.\n• Un objet complexe demande le test d’Artisanat adapté.\n• Un objet créé ne sert pas de composante matérielle : le sort qui l’utilise échoue."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 minute",
+        "range": "0 m",
+        "effect": "objet non magique en matière végétale de 30 dm³/niveau",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shout",
+      "type": "spell",
+      "name": {
+        "fr": "Cri",
+        "en": "Shout"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un seul cri, et l’air devant soi devient un mur de bruit. Les vitres éclatent, les oreilles sifflent pour longtemps.\n\nEn jeu\n• Cône de 9 m : 5d6 dégâts de son et surdité pendant 2d6 rounds.\n• Jet de Vigueur réussi : moitié des dégâts et pas de surdité.\n• Objets fragiles et créatures cristallines : 1d6 par niveau de lanceur (15d6 au plus), Vigueur pour moitié ; un objet tenu est protégé par un jet de Réflexes.\n• Aucun effet dans une zone de silence."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel ou Réflexes, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "5d6 sonic",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.greater_shout",
+      "type": "spell",
+      "name": {
+        "fr": "Cri suprême",
+        "en": "Greater Shout"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le cri devient tempête : la pierre se fend, les guerriers lâchent leur arme pour se tenir la tête.\n\nEn jeu\n• Cône de 18 m : 10d6 dégâts de son, étourdi 1 round et sourd pendant 4d6 rounds.\n• Jet de Vigueur réussi : pas d’étourdissement, moitié des dégâts et de la durée de surdité.\n• Objets fragiles et créatures cristallines : 1d6 par niveau de lanceur (20d6 au plus) ; un objet tenu est protégé par un jet de Réflexes.\n• Focaliseur : un petit cor en métal ou en ivoire."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel ou Réflexes, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "10d6 sonic",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.animal_growth",
+      "type": "spell",
+      "name": {
+        "fr": "Croissance animale",
+        "en": "Animal Growth"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le loup devient grand comme un cheval, l’ours comme une maison. Les bêtes alliées prennent soudain toute la place sur le champ de bataille.\n\nEn jeu\n• Jusqu’à 1 animal par 2 niveaux de lanceur, à 9 m au plus les uns des autres, pendant 1 minute par niveau.\n• Chaque animal grandit d’une catégorie de taille : +8 en Force, +4 en Constitution, −2 en Dextérité (bonus et malus de taille), +2 en armure naturelle.\n• Gagne une réduction des dégâts de 10/magie et +4 de résistance aux jets de sauvegarde ; les modificateurs de taille à l’attaque, à la CA et aux dégâts changent (pas la vitesse).\n• Ne se cumule pas avec un autre effet qui augmente la taille ; ne donne aucun contrôle sur l’animal.\n• Sans place pour grandir, l’animal grandit au maximum possible et peut faire un test de Force pour forcer le passage.\n• Un animal non consentant a droit à un jet de Vigueur."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "jusqu’à 1 animal/2 niveaux, à 9 m au plus les uns des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.spike_growth",
+      "type": "spell",
+      "name": {
+        "fr": "Croissance d’épines",
+        "en": "Spike Growth"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Sous l’herbe tendre, des milliers d’épines invisibles attendent. Chaque pas coûte du sang, et la course devient boiterie.\n\nEn jeu\n• Zone : un carré de 6 m de côté par niveau de lanceur, pendant 1 heure par niveau.\n• 1d4 dégâts perforants par tranche de 1,50 m parcourue dans la zone.\n• Une créature blessée fait un jet de Réflexes ou sa vitesse est réduite de moitié pendant 24 heures (ou jusqu’à un sort de soins, ou 10 minutes de soins et un test de Premiers secours contre le DD du sort).\n• Piège magique : seul un personnage doté de la recherche des pièges les repère (Fouille DD 25 + niveau du sort) ; Désamorçage impossible.\n• Impossible sur l’eau, la glace, la neige épaisse, le sable ou la roche nue."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "un carré de 6 m de côté/niveau",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Réflexes, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d4 piercing",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.plant_growth",
+      "type": "spell",
+      "name": {
+        "fr": "Croissance végétale",
+        "en": "Plant Growth"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les ronces montent, les lianes s’enlacent, et la clairière devient jungle en un instant. Ou bien, plus calmement, les champs donnent une moisson généreuse.\n\nEn jeu\n• Jungle : à portée longue, la végétation d’un cercle de 30 m de rayon (ou demi-cercle de 45 m, ou quart de cercle de 60 m) devient impénétrable ; vitesse réduite à 1,50 m (3 m pour les créatures de taille G ou plus).\n• Les plantes de la zone peuvent être exclues au choix du lanceur.\n• Récoltes : dans un rayon de 800 m, les plantes produisent un tiers de plus pendant un an.\n• Annule rapetissement végétal ; aucun effet sur les créatures végétales."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "target": "voir description",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.whirlwind",
+      "type": "spell",
+      "name": {
+        "fr": "Cyclone",
+        "en": "Whirlwind"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une colonne de vent hurlante surgit et se promène où on le lui dit. Tout ce qu’elle attrape tourne, monte, et retombe beaucoup plus loin.\n\nEn jeu\n• Cyclone de 9 m de haut, 3 m de large à la base et 9 m au sommet, qui se déplace de 18 m par round ; le diriger demande une action simple.\n• Une créature de taille G ou plus petite qu’il touche fait un jet de Réflexes ou subit 3d6 dégâts.\n• Une créature de taille M ou plus petite qui rate un second jet de Réflexes est aspirée : 1d8 dégâts par round, éjectable quand le lanceur le veut.\n• S’il sort de la portée, il erre au hasard 1d3 rounds puis se dissipe."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "air"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "cyclone de 9 m de haut, 3 m de large à la base et 9 m au sommet",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Réflexes, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.irresistible_dance",
+      "type": "spell",
+      "name": {
+        "fr": "Danse irrésistible",
+        "en": "Irresistible Dance"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un toucher, et les pieds de la cible partent tout seuls. Elle virevolte, ridicule et sans défense, pendant que ses ennemis prennent leur temps.\n\nEn jeu\n• Contact, aucun jet de sauvegarde (seulement la résistance à la magie).\n• Danse pendant 1d4 + 1 rounds sans rien pouvoir faire d’autre.\n• −4 à la CA, −10 aux jets de Réflexes, pas de bonus de bouclier.\n• Provoque une attaque d’opportunité à chacun de ses tours."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "1d4+1 rounds",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.feeblemind",
+      "type": "spell",
+      "name": {
+        "fr": "Débilité",
+        "en": "Feeblemind"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un éclair vert dans le regard, puis plus rien derrière. Le grand mage ennemi fixe ses mains comme s’il les découvrait.\n\nEn jeu\n• Raté le jet de Volonté : Intelligence et Charisme tombent à 1.\n• Plus de sorts, plus de compétences d’Intelligence ou de Charisme, plus de vraie parole ; la cible reconnaît encore ses amis.\n• Les lanceurs de sorts profanes ont −4 au jet de sauvegarde.\n• Dure jusqu’à guérison suprême, souhait limité, miracle ou souhait."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.knock",
+      "type": "spell",
+      "name": {
+        "fr": "Déblocage",
+        "en": "Knock"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un coup sec et sonore, et serrures, verrous et barres cèdent ensemble. Aucune porte ne reste fermée bien longtemps.\n\nEn jeu\n• Ouvre une porte, un coffre ou une boîte (1 m² par niveau de lanceur au plus) : coincés, fermés à clé, barrés ou verrouillés par magie ; aussi menottes, chaînes et passages secrets.\n• Défait jusqu’à 2 fermetures par lancer.\n• Verrou du mage : seulement neutralisé pendant 10 minutes.\n• Ne relève pas une herse et n’a aucun effet sur les cordes, lianes et autres plantes."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 porte, coffre ou boîte de 1 m²/niveau au plus",
+        "duration": "instantanée (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shocking_grasp",
+      "type": "spell",
+      "name": {
+        "fr": "Décharge électrique",
+        "en": "Shocking Grasp"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Des étincelles dansent au bout des doigts, prêtes à sauter. Une armure de plaques n’a jamais semblé aussi mauvaise idée.\n\nEn jeu\n• Attaque de contact au corps à corps : 1d6 dégâts d’électricité par niveau de lanceur (5d6 au plus).\n• +3 à l’attaque contre une cible en armure de métal (ou faite surtout de métal).\n• La charge peut être gardée tant qu’on ne touche rien."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature ou objet touché",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 5))d6 electricity",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.dictum",
+      "type": "spell",
+      "name": {
+        "fr": "Décret",
+        "en": "Dictum"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un mot de loi pure, et le chaos plie le genou. Plus l’auditeur est faible, plus la sentence est lourde.\n\nEn jeu\n• Touche les créatures non loyales dans un rayon de 12 m autour du lanceur, selon leurs DV comparés au niveau de lanceur (effets cumulés, sans jet de sauvegarde).\n• DV égaux au niveau : sourd 1d4 rounds.\n• Jusqu’au niveau −1 : en plus, ralenti 2d4 rounds.\n• Jusqu’au niveau −5 : en plus, paralysé 1d10 minutes.\n• Jusqu’au niveau −10 : tué (mort-vivant détruit).\n• Plus de DV que le niveau de lanceur : aucun effet.\n• Sur son plan d’origine, le lanceur renvoie aussi les créatures extraplanaires non loyales vers leur plan, sauf jet de Volonté réussi (à −4) ; pas de retour avant 24 heures."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "Loi",
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "12 m",
+        "area": "créatures non loyales dans une étendue de 12 m de rayon centrée sur le lanceur",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.maze",
+      "type": "spell",
+      "name": {
+        "fr": "Dédale",
+        "en": "Maze"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La cible disparaît dans un labyrinthe de force hors du monde. Les esprits vifs trouvent la sortie vite ; les autres reviennent dix minutes plus tard, l’air perdu.\n\nEn jeu\n• La cible est envoyée dans un labyrinthe extradimensionnel, sans jet de sauvegarde ni résistance à la magie.\n• À chaque round, action complexe : test d’Intelligence DD 20 pour sortir.\n• Si elle n’essaie pas, elle revient au bout de 10 minutes.\n• Les déplacements instantanés ne la font pas sortir ; les minotaures ne sont pas affectés."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.guards_and_wards",
+      "type": "spell",
+      "name": {
+        "fr": "Défense magique",
+        "en": "Guards and Wards"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Brouillard dans les couloirs, toiles dans les escaliers, portes qui n’existent plus : la forteresse se défend toute seule.\n\nEn jeu\n• Protège jusqu’à 20 m² par niveau de lanceur, sur 6 m de haut, pendant 2 heures par niveau ; le lanceur doit être sur place.\n• Brouillard dans les couloirs (vue limitée à 1,50 m).\n• Verrou du mage sur toutes les portes ; toiles d’araignée dans les escaliers.\n• À chaque embranchement, un intrus a 50 % de chances de croire qu’il va dans la direction opposée (pas de jet, résistance à la magie).\n• 1 porte par niveau cachée par une illusion de mur (Volonté pour la percer si on interagit).\n• Un effet en plus au choix : lumières dansantes, bouche magique, nuage puant, bourrasque ou suggestion.\n• Dissipation sur un effet ne retire que cet effet ; disjonction retire tout."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M, F",
+        "castingTime": "30 minutes",
+        "range": "n’importe où dans la zone défendue",
+        "area": "jusqu’à 20 m²/niveau (F)",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.disguise_self",
+      "type": "spell",
+      "name": {
+        "fr": "Déguisement",
+        "en": "Disguise Self"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un autre visage, d’autres habits, une autre silhouette. On entre dans la pièce en étant quelqu’un d’autre.\n\nEn jeu\n• Change l’apparence du lanceur et de son équipement (même type de corps, ±30 cm de taille).\n• Ne trompe ni le toucher ni l’ouïe : un faux casque ne se sent pas sous la main.\n• +10 au test de Déguisement. Qui interagit avec l’illusion a droit à un jet de Volonté."
+      },
+      "spell": {
+        "school": "Illusion",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non",
+        "subschool": "hallucination"
+      },
+      "effects": [
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.disguise_self')"
+        }
+      ]
+    }
+  ]
+}

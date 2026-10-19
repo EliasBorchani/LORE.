@@ -1,0 +1,69 @@
+{
+  "character": "char.level-60",
+  "atLevel": 60,
+  "note": "Worked example 2 (1d6 per 3 caster levels) and a class progression past the written table, to level 60.",
+  "values": [
+    {
+      "stat": "level",
+      "value": 60,
+      "status": "verified",
+      "how": "60 records"
+    },
+    {
+      "stat": "level_from_xp",
+      "value": 60,
+      "status": "verified",
+      "how": "level 60 needs 60 x 59 / 2 x 1000 = 1 770 000"
+    },
+    {
+      "stat": "bab",
+      "value": 30,
+      "status": "verified",
+      "how": "table 10 at wizard 20, + 40 epic levels x 1/2"
+    },
+    {
+      "stat": "save.fort",
+      "value": 28,
+      "status": "verified",
+      "how": "table 6 + 20 + Con mod 2"
+    },
+    {
+      "stat": "save.ref",
+      "value": 26,
+      "status": "verified",
+      "how": "table 6 + 20"
+    },
+    {
+      "stat": "save.will",
+      "value": 32,
+      "status": "verified",
+      "how": "table 12 + 20"
+    },
+    {
+      "stat": "hp.base",
+      "value": 180,
+      "status": "verified",
+      "how": "60 x 4 x 3/4"
+    },
+    {
+      "stat": "hp.max",
+      "value": 300,
+      "status": "verified",
+      "how": "180 + Con mod 2 x 60"
+    },
+    {
+      "stat": "caster_level.arcane",
+      "value": 60,
+      "status": "verified",
+      "how": "wizard level"
+    },
+    {
+      "stat": "spell.storm_lance.damage",
+      "dice": "20d6 electricity",
+      "flat": 0,
+      "averageFloor": 70,
+      "status": "verified",
+      "how": "floor(60 / 3) = 20 dice, average 20 x 3.5"
+    }
+  ]
+}

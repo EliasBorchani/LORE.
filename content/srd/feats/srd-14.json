@@ -1,0 +1,61 @@
+{
+  "entities": [
+    {
+      "id": "feat.improved_stunning_fist",
+      "type": "feat",
+      "name": {
+        "fr": "Science du coup étourdissant",
+        "en": "Improved Stunning Fist"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Le coup part d’un point précis, juste sous les côtes, et l’onde fait le reste. Les maîtres de ce niveau ne frappent plus le corps : ils frappent le souffle, et même les colosses oublient un instant comment tenir debout.\n\nEn jeu\n• Condition : Dextérité 19, Sagesse 19, Science du combat à mains nues, Coup étourdissant, don épique (niveau 21 ou plus).\n• Une cible frappée par son Coup étourdissant doit réussir un jet de Vigueur dont le DD gagne +2.\n• Don cumulable : chaque nouvelle prise ajoute encore +2 à ce DD."
+      },
+      "prerequisite": "level() >= 21 and @ability.dex.score >= 19 and @ability.wis.score >= 19 and has('feat.improved_unarmed_strike') and has('feat.stunning_fist')",
+      "effects": [
+        {
+          "target": "dc.stunning_fist",
+          "op": "add",
+          "value": "2 * count('feat.improved_stunning_fist')",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.familiar_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort de familier",
+        "en": "Familiar Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Des années à partager ses pensées avec son maître ont laissé des traces : le familier a fini par apprendre un de ses sorts, à sa manière, d’un battement d’ailes ou d’un regard trop fixe. Petit, mais plus du tout inoffensif.\n\nEn jeu\n• Condition : Intelligence 25 (magicien) ou Charisme 25 (ensorceleur), c’est-à-dire 25 dans la caractéristique qui sert à lancer les sorts d’une classe profane ; don épique (niveau 21 ou plus).\n• Un sort connu du personnage, du 8e niveau au maximum, devient un pouvoir magique de son familier : 1 utilisation par jour, au niveau de lanceur de sorts du maître.\n• Interdit : un sort qui coûte des PX ou une composante matérielle de plus de 1 po.\n• Don cumulable : à chaque prise, le familier gagne un autre sort de ce type, ou 1 utilisation quotidienne de plus d’un sort qu’il a déjà."
+      },
+      "prerequisite": "level() >= 21 and (@ability.int.score >= 25 or @ability.cha.score >= 25)",
+      "note": "Condition non vérifiée par la fiche : la valeur 25 doit être celle de la caractéristique de lancement d’une classe de magie profane (seul « Int 25 ou Cha 25 » est vérifié). Sort choisi et pouvoirs du familier : pas encore dans le modèle."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.improved_stunning_fist",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.improved_stunning_fist",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    }
+  ]
+}

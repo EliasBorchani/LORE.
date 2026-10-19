@@ -1,0 +1,355 @@
+{
+  "entities": [
+    {
+      "id": "class.fighter",
+      "type": "class",
+      "name": {
+        "fr": "Guerrier",
+        "en": "Fighter"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial"
+      ],
+      "description": {
+        "fr": "Pas de magie, pas de prière, pas de chanson. Le guerrier a une arme, une armure, et des milliers d’heures d’entraînement. Chevalier en armure de plaque, mercenaire à la hache, archer de la garde : tous ont appris la même leçon, que le combat se gagne par la technique avant de se gagner par la force. Plus que n’importe qui, il choisit ses talents, un par un, et devient la meilleure version de l’arme qu’il a décidé d’être.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé à toutes les armes courantes et de guerre, à toutes les armures et à tous les boucliers, pavois compris.\n• Aptitude : un don supplémentaire au niveau 1, puis à chaque niveau pair."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.fighter') - 20) / 2))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.fighter_bonus_feats",
+      "type": "class_power",
+      "name": {
+        "fr": "Dons supplémentaires",
+        "en": "Bonus feats"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fighter"
+      ],
+      "description": {
+        "fr": "Là où d’autres apprennent des sorts, le guerrier apprend des bottes, des parades et des feintes. C’est sa seule aptitude de classe, et elle suffit.\n\nEn jeu\n• Un don supplémentaire au niveau 1, puis aux niveaux 2, 4, 6 et ainsi de suite à chaque niveau pair (11 au niveau 20).\n• À choisir parmi les dons de guerrier (marqués comme tels) ; les conditions restent nécessaires.\n• Ces dons s’ajoutent aux dons gagnés par le niveau."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.fighter_bonus",
+          "op": "add",
+          "value": "1 + floor(level('class.fighter') / 2)"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.fighter",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.fighter_bonus_feats"
+      ]
+    },
+    {
+      "classId": "class.fighter",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.fighter",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.fighter",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.fighter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

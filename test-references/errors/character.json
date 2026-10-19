@@ -1,0 +1,31 @@
+{
+  "id": "char.errors",
+  "name": "Errors",
+  "xp": 0,
+  "baseAbilities": {
+    "str": 10,
+    "dex": 10,
+    "con": 10,
+    "int": 10,
+    "wis": 10,
+    "cha": 10
+  },
+  "levels": [
+    {
+      "level": 1,
+      "classId": "class.fighter",
+      "classLevel": 1,
+      "feats": [
+        {
+          "id": "feat.cleave"
+        },
+        {
+          "id": "feat.typo"
+        },
+        {
+          "id": "feat.fine"
+        }
+      ]
+    }
+  ]
+}

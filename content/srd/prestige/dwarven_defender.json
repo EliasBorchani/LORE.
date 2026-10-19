@@ -1,0 +1,395 @@
+{
+  "entities": [
+    {
+      "id": "class.dwarven_defender",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Protecteur nain",
+        "en": "Dwarven defender"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Il y a des guerriers qui avancent, et il y a le protecteur nain, qui reste. Couvert de fer de la barbe aux bottes, bouclier planté devant lui, il se dresse dans le couloir, sur le pont ou devant la porte du trésor, et fait une promesse simple : personne ne passe. Les géants frappent, les orcs hurlent, les pièges claquent ; lui se contente de serrer les dents, de caler ses pieds dans la pierre et d’attendre que l’ennemi se lasse avant lui. Il se lasse rarement.\n\nEn jeu\n• Dé de vie : d12. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : nain ; alignement loyal ; bonus de base à l’attaque +7 ; dons Endurance, Esquive et Robustesse.\n• Formé aux armes courantes et de guerre, à toutes les armures et à tous les boucliers, pavois compris.\n• Compétences de classe : Artisanat, Détection, Perception auditive, Psychologie.\n• Aptitudes : bonus à la CA et position défensive (1/jour) au niveau 1 ; esquive instinctive (2) ; position défensive 2/jour (3) ; sens des pièges +1 (4) ; position défensive 3/jour (5) ; esquive instinctive supérieure et réduction des dégâts 3/– (6) ; position défensive 4/jour (7) ; défense mobile et sens des pièges +2 (8) ; position défensive 5/jour (9) ; réduction des dégâts 6/– (10)."
+      },
+      "hitDie": 12,
+      "skillPoints": 2,
+      "note": "Conditions d’accès : pas encore en formule (race, alignement, rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.dwarven_defender_ac_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à la CA",
+        "en": "AC bonus"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dwarven_defender"
+      ],
+      "description": {
+        "fr": "Le protecteur nain ne recule pas : il pivote, baisse l’épaule, place le bouclier au bon endroit. Avec l’expérience, les coups glissent de plus en plus souvent sur lui.\n\nEn jeu\n• Bonus d’esquive à la CA : +1 aux niveaux 1 à 3, +2 aux niveaux 4 à 6, +3 aux niveaux 7 à 9, +4 au niveau 10."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor((level('class.dwarven_defender') + 2) / 3)",
+          "bonusType": "dodge"
+        }
+      ]
+    },
+    {
+      "id": "power.dwarven_defender_defensive_stance",
+      "type": "class_power",
+      "name": {
+        "fr": "Position défensive",
+        "en": "Defensive stance"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dwarven_defender"
+      ],
+      "description": {
+        "fr": "Le protecteur nain s’ancre au sol comme une colonne de granit. Plus fort, plus coriace, presque impossible à toucher, il devient un mur vivant, au prix de sa mobilité.\n\nEn jeu\n• Aucune action, mais seulement pendant son tour.\n• +2 en Force, +4 en Constitution, +2 de résistance à tous les jets de sauvegarde, +4 d’esquive à la CA.\n• Immobile tant qu’elle dure : aucun déplacement, donc ni Déplacement silencieux ni Saut (la défense mobile permet un pas).\n• Durée : 3 rounds + modificateur de Constitution (celui de la position). Il peut l’arrêter plus tôt.\n• Ensuite : essoufflé, −2 en Force jusqu’à la fin de la rencontre.\n• Utilisations : 1 par jour au niveau 1, puis une de plus aux niveaux 3, 5, 7 et 9 (5 au niveau 9)."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.dwarven_defender_defensive_stance')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.dwarven_defender_defensive_stance')"
+        },
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "condition": "active('toggle.dwarven_defender_defensive_stance')"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "condition": "active('toggle.dwarven_defender_defensive_stance')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "condition": "active('toggle.dwarven_defender_defensive_stance')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "condition": "active('toggle.dwarven_defender_defensive_stance')"
+        },
+        {
+          "target": "defensive_stance.duration",
+          "op": "set",
+          "value": "3 + @ability.con.mod",
+          "condition": "active('toggle.dwarven_defender_defensive_stance')"
+        }
+      ],
+      "usesPerDay": "ceil(level('class.dwarven_defender') / 2)",
+      "note": "Essoufflement après la position (−2 en Force) et immobilité : pas encore dans le modèle."
+    },
+    {
+      "id": "power.dwarven_defender_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dwarven_defender"
+      ],
+      "description": {
+        "fr": "Une pointe de lame dans l’ombre, un carreau venu de nulle part : le protecteur nain a déjà le bouclier levé.\n\nEn jeu\n• Garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible (pas s’il est immobilisé).\n• S’il a déjà cette aptitude par une autre classe, il obtient l’esquive instinctive supérieure à la place."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dwarven_defender_trap_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens des pièges",
+        "en": "Trap sense"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dwarven_defender"
+      ],
+      "description": {
+        "fr": "Des générations de mineurs lui ont légué une méfiance instinctive pour la dalle qui sonne creux et le plafond qui grince.\n\nEn jeu\n• Contre les pièges : +1 aux jets de Réflexes et +1 d’esquive à la CA au niveau 4, +2 au niveau 8.\n• Se cumule avec le sens des pièges des autres classes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "floor(level('class.dwarven_defender') / 4)",
+          "situation": "situation.vs_traps"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor(level('class.dwarven_defender') / 4)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_traps"
+        }
+      ]
+    },
+    {
+      "id": "power.dwarven_defender_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dwarven_defender"
+      ],
+      "description": {
+        "fr": "Le prendre à revers ? Autant contourner une montagne : le protecteur nain fait face de tous les côtés à la fois.\n\nEn jeu\n• Ne peut plus être pris en tenaille.\n• Un roublard ne peut lui porter d’attaque sournoise en tenaille qu’avec au moins 4 niveaux de roublard de plus que ses niveaux de protecteur nain.\n• Les niveaux des classes qui donnent l’esquive instinctive s’additionnent pour ce calcul ; s’il avait déjà l’esquive instinctive, il gagne celle-ci dès le niveau 2."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dwarven_defender_damage_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction des dégâts",
+        "en": "Damage reduction"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dwarven_defender"
+      ],
+      "description": {
+        "fr": "Peau tannée, os de pierre, armure cabossée : les coups qui feraient tomber un humain ne font que l’agacer.\n\nEn jeu\n• Réduction des dégâts 3/– au niveau 6, 6/– au niveau 10.\n• S’applique à chaque coup ; peut ramener les dégâts à 0, pas en dessous."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": "if(level('class.dwarven_defender') >= 10, 6, if(level('class.dwarven_defender') >= 6, 3, 0))"
+        }
+      ]
+    },
+    {
+      "id": "power.dwarven_defender_mobile_defense",
+      "type": "class_power",
+      "name": {
+        "fr": "Défense mobile",
+        "en": "Mobile defense"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dwarven_defender"
+      ],
+      "description": {
+        "fr": "Un mur qui avance d’un pas, c’est toujours un mur. Le protecteur nain apprend à suivre la bataille sans quitter sa posture.\n\nEn jeu\n• En position défensive, peut faire un pas de placement de 1,50 m par round sans perdre la position."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.dwarven_defender",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.dwarven_defender_ac_bonus",
+        "power.dwarven_defender_defensive_stance"
+      ]
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.dwarven_defender_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.dwarven_defender_trap_sense"
+      ]
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.dwarven_defender_improved_uncanny_dodge",
+        "power.dwarven_defender_damage_reduction"
+      ]
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.dwarven_defender_mobile_defense"
+      ]
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.dwarven_defender",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.dwarven_defender",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.dwarven_defender",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    }
+  ]
+}

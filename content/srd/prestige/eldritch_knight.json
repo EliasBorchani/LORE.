@@ -1,0 +1,213 @@
+{
+  "entities": [
+    {
+      "id": "class.eldritch_knight",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Champion occultiste",
+        "en": "Eldritch Knight"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Il a passé des années penché sur des grimoires, puis des années en salle d’armes, et refuse de choisir entre les deux. Le champion occultiste entre dans la mêlée l’épée dans une main et une formule sur les lèvres : il fend un bouclier, recule d’un pas, et le couloir s’embrase. Moins savant qu’un magicien pur, moins blindé qu’un guerrier pur, il a sur l’un et l’autre un avantage décisif : on ne sait jamais ce qu’il va faire ensuite.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : formé au maniement de toutes les armes de guerre ; capable de lancer des sorts profanes du 3e niveau.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (noblesse et royauté), Décryptage, Équitation, Natation, Psychologie, Saut.\n• Sorts : +1 niveau de lanceur de sorts profanes aux niveaux 2 à 10, pour une classe profane déjà capable de lancer des sorts du 3e niveau (sorts par jour, sorts connus et niveau de lanceur ; pas les autres aptitudes de cette classe).\n• Aptitude : un don supplémentaire de guerrier au niveau 1."
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.eldritch_knight_bonus_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire",
+        "en": "Bonus feat"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eldritch_knight"
+      ],
+      "description": {
+        "fr": "Avant d’apprendre à mêler l’acier et les sorts, le champion occultiste affûte son geste martial : sa première leçon se donne une lame à la main.\n\nEn jeu\n• Un don supplémentaire au niveau 1, pris dans la liste des dons supplémentaires du guerrier.\n• Le don garde toutes ses conditions : Spécialisation martiale exige toujours 4 niveaux de guerrier.\n• Ce don s’ajoute aux dons gagnés par le niveau."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.eldritch_knight_bonus",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "power.eldritch_knight_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eldritch_knight"
+      ],
+      "description": {
+        "fr": "À partir du deuxième niveau, chaque passe d’armes nourrit aussi la magie : le champion occultiste continue de progresser dans l’art profane qu’il pratiquait déjà.\n\nEn jeu\n• Aux niveaux 2 à 10 : +1 niveau effectif de lanceur de sorts dans une classe profane qui lance déjà des sorts du 3e niveau (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour, les sorts connus et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres aptitudes de la classe (familier, dons gratuits du magicien, etc.).\n• Pas de progression au niveau 1."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.eldritch_knight",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.eldritch_knight_bonus_feat"
+      ]
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.eldritch_knight_spells"
+      ]
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.eldritch_knight",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.eldritch_knight",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

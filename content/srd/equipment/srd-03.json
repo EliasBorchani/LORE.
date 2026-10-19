@@ -1,0 +1,944 @@
+{
+  "entities": [
+    {
+      "id": "item.longbow",
+      "type": "item",
+      "name": {
+        "fr": "Arc long",
+        "en": "Longbow"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "ranged"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "75 po",
+        "weight": "1,5 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "range": "30 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Un arc de la taille d’un homme, en if ou en frêne, qui envoie une flèche à travers tout un champ de bataille. L’arme des archers de métier et des gardes-frontière elfes.\n\nEn jeu\n• Arme de guerre à distance ; tire des flèches (munitions). Un arc se bande toujours à deux mains.\n• Le bonus de Force ne s’ajoute pas aux dégâts ; un malus de Force, lui, s’applique (il faut un arc composite pour profiter de sa Force).\n• Inutilisable en selle : pour tirer à cheval, il faut un arc long composite."
+      }
+    },
+    {
+      "id": "item.longspear",
+      "type": "item",
+      "name": {
+        "fr": "Pique",
+        "en": "Longspear"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "two_handed",
+        "reach"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "5 po",
+        "weight": "4,5 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une hampe interminable terminée par une pointe d’acier : tenue en rang serré, elle garde les cavaliers et les charges à distance respectueuse.\n\nEn jeu\n• Arme courante à deux mains, à allonge : atteint une cible à 3 m, jamais une cible au contact.\n• Plantée face à une charge (action préparée), elle double ses dégâts si elle touche l’assaillant."
+      }
+    },
+    {
+      "id": "item.longsword",
+      "type": "item",
+      "name": {
+        "fr": "Épée longue",
+        "en": "Longsword"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "15 po",
+        "weight": "2 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "19–20/×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "La lame droite des chevaliers et des aventuriers : polyvalente, fiable, bienvenue partout, du tournoi à la crypte.\n\nEn jeu\n• Arme de guerre à une main.\n• Tenue à deux mains, elle ajoute 1,5 × le bonus de Force aux dégâts."
+      }
+    },
+    {
+      "id": "item.masterwork_weapon",
+      "type": "item",
+      "name": {
+        "fr": "Arme de maître",
+        "en": "Masterwork weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "masterwork",
+        "weapon"
+      ],
+      "item": {
+        "cost": "+300 po"
+      },
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": 1,
+          "bonusType": "enhancement",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une arme sortie des mains d’un maître armurier : équilibre parfait, fil impeccable, chaque geste tombe juste. C’est aussi la base obligatoire de toute arme magique.\n\nEn jeu\n• Bonus d’altération de +1 aux jets d’attaque (pas aux dégâts) ; ne se cumule pas avec le bonus d’altération d’une arme magique.\n• Le surcoût s’ajoute au prix de l’arme de base ; une arme double paie le surcoût pour chaque extrémité.\n• Munitions de maître : 6 po pièce ; le bonus ne s’applique qu’au tir de cette munition.\n• Toute arme magique est d’abord une arme de maître."
+      },
+      "note": "Le bonus s’applique à l’arme maniée ; pour une arme double ou des munitions, le modèle ne distingue pas les extrémités ni les projectiles."
+    },
+    {
+      "id": "item.morningstar",
+      "type": "item",
+      "name": {
+        "fr": "Morgenstern",
+        "en": "Morningstar"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "one_handed"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "8 po",
+        "weight": "3 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×2",
+        "damageType": "Contondant et perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une boule de fer hérissée de pointes au bout d’un manche solide : elle écrase et elle perce, et les deux à la fois quand elle tombe bien.\n\nEn jeu\n• Arme courante à une main.\n• Dégâts contondants et perforants à la fois : tous les dégâts sont des deux types, et une créature doit être immunisée contre les deux pour les ignorer."
+      }
+    },
+    {
+      "id": "item.net",
+      "type": "item",
+      "name": {
+        "fr": "Filet",
+        "en": "Net"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "20 po",
+        "weight": "3 kg",
+        "range": "3 m"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Des mailles lestées qui s’ouvrent en vol et retombent sur la proie. Une arme de gladiateur et de chasseur, qui gagne les combats sans verser de sang.\n\nEn jeu\n• Arme exotique de jet ; malus de –4 pour qui ne la maîtrise pas.\n• Attaque de contact à distance ; portée maximale de 3 m, sans facteur de portée.\n• Cible touchée : enchevêtrée (–2 aux jets d’attaque, –4 en Dextérité, vitesse divisée par deux, ni charge ni course) ; si le lanceur garde en main la corde de traîne et remporte un test de Force opposé, la cible ne peut s’éloigner au-delà de sa longueur.\n• Sorts : test de Concentration DD 15 pour lancer un sort quand on est enchevêtré.\n• Se dégager : Évasion DD 20 (action complexe) ou briser le filet par un test de Force DD 25 (action complexe) ; le filet a 5 pv.\n• Ne fonctionne que contre une créature dont la taille est à une catégorie près de celle du lanceur.\n• Après usage, il faut 2 rounds pour le replier (4 sans la maîtrise) ; lancé non replié, malus de –4 à l’attaque."
+      },
+      "note": "L’état enchevêtré n’est pas modélisé : appliquer ses malus à la main."
+    },
+    {
+      "id": "item.nunchaku",
+      "type": "item",
+      "name": {
+        "fr": "Nunchaku",
+        "en": "Nunchaku"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "light",
+        "monk"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "2 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Deux courts bâtons reliés par une chaîne ou une corde, qui tournoient plus vite que l’œil ne suit. Une arme de moine, venue des fléaux à grain.\n\nEn jeu\n• Arme exotique légère.\n• Arme de moine : le moine peut s’en servir avec son déluge de coups.\n• Désarmement : +2 au jet d’attaque opposé d’un désarmement, y compris pour garder son arme si la tentative échoue."
+      }
+    },
+    {
+      "id": "item.orc_double_axe",
+      "type": "item",
+      "name": {
+        "fr": "Hache double orque",
+        "en": "Orc double axe"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "60 po",
+        "weight": "7,5 kg",
+        "damage": "1d8/1d8",
+        "damageSmall": "1d6/1d6",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Deux lourdes lames en croissant aux deux bouts d’un même manche : une arme de berserker orque, qui ne connaît ni la défense ni la mesure.\n\nEn jeu\n• Arme exotique à deux mains, arme double.\n• On peut frapper avec les deux extrémités comme avec deux armes (pénalités habituelles, l’une des extrémités comptant comme arme légère).\n• Maniée à une main, elle perd son statut d’arme double : une seule extrémité sert pendant le round."
+      },
+      "note": "Le combat avec les deux extrémités n’est pas modélisé : la feuille compte une seule extrémité tenue à deux mains."
+    },
+    {
+      "id": "item.punching_dagger",
+      "type": "item",
+      "name": {
+        "fr": "Dague coup-de-poing",
+        "en": "Punching dagger"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "light"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "2 po",
+        "weight": "500 g",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×3",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une lame triangulaire montée sur une poignée transversale, qui frappe dans l’axe du poing. On l’appelle aussi « katar » ; elle ne pardonne pas les coups bien placés.\n\nEn jeu\n• Arme courante légère."
+      }
+    },
+    {
+      "id": "item.quarterstaff",
+      "type": "item",
+      "name": {
+        "fr": "Bâton",
+        "en": "Quarterstaff"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "two_handed",
+        "double",
+        "monk"
+      ],
+      "item": {
+        "slot": "weapon",
+        "weight": "2 kg",
+        "damage": "1d6/1d6",
+        "damageSmall": "1d4/1d4",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Deux mètres de bois dur ferré aux deux bouts : le compagnon du voyageur, du pèlerin et du mage, qui sert de canne jusqu’au jour où il sert d’arme.\n\nEn jeu\n• Arme courante à deux mains, arme double.\n• On peut frapper avec les deux extrémités comme avec deux armes (pénalités habituelles, l’une des extrémités comptant comme arme légère).\n• Arme de moine : le moine peut s’en servir avec son déluge de coups.\n• Manié à une main, il perd son statut d’arme double : une seule extrémité sert pendant le round."
+      },
+      "note": "Le combat avec les deux extrémités n’est pas modélisé : la feuille compte une seule extrémité tenue à deux mains."
+    },
+    {
+      "id": "item.ranseur",
+      "type": "item",
+      "name": {
+        "fr": "Corsèque",
+        "en": "Ranseur"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed",
+        "reach"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "10 po",
+        "weight": "6 kg",
+        "damage": "2d4",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une longue hampe portant une pointe centrale flanquée de deux crocs recourbés, faits pour accrocher la lame d’en face et l’arracher des mains.\n\nEn jeu\n• Arme de guerre à deux mains, à allonge : atteint une cible à 3 m, jamais une cible au contact.\n• Désarmement : +2 au jet d’attaque opposé d’un désarmement, y compris pour garder son arme si la tentative échoue."
+      }
+    },
+    {
+      "id": "item.rapier",
+      "type": "item",
+      "name": {
+        "fr": "Rapière",
+        "en": "Rapier"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "20 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "18–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Fine, rapide, mortelle entre des mains habiles : une arme de duelliste plus que de champ de bataille, qui cherche la faille au lieu de forcer la garde.\n\nEn jeu\n• Arme de guerre à une main.\n• Compatible avec le don Attaque en finesse comme une arme légère, si elle est faite pour la taille du porteur.\n• La saisir à deux mains n’apporte pas 1,5 × le bonus de Force aux dégâts."
+      }
+    },
+    {
+      "id": "item.repeating_crossbow_bolts",
+      "type": "item",
+      "name": {
+        "fr": "Carreaux (5)",
+        "en": "Repeating crossbow bolts (5)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "ammunition"
+      ],
+      "item": {
+        "cost": "1 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un boîtier de cinq carreaux, taillé pour glisser d’un coup dans le magasin d’une arbalète à répétition.\n\nEn jeu\n• Munitions des arbalètes à répétition, légère comme lourde.\n• Changer de boîtier : action complexe qui provoque des attaques d’opportunité, à deux mains.\n• Un carreau qui touche est détruit ; un carreau qui manque a 50 % de chances d’être perdu."
+      }
+    },
+    {
+      "id": "item.repeating_heavy_crossbow",
+      "type": "item",
+      "name": {
+        "fr": "Arbalète lourde à répétition",
+        "en": "Repeating heavy crossbow"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "400 po",
+        "weight": "6 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "19–20/×2",
+        "range": "36 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une lourde arbalète surmontée d’un magasin de cinq carreaux et d’un levier de rechargement : un mécanisme d’horloger pour qui préfère tirer vite que tirer peu.\n\nEn jeu\n• Arme exotique à distance ; malus de –4 pour qui ne la maîtrise pas.\n• Un coup de levier (action libre) remet un carreau en place tant que le magasin n’est pas vide : on tire à chaque attaque du round.\n• Changer le boîtier de 5 carreaux : action complexe qui provoque des attaques d’opportunité.\n• Le levier et le changement de boîtier demandent les deux mains ; tirée d’une main, elle suit la règle de l’arbalète lourde (–4 à l’attaque, plus les malus du combat à deux armes avec une arbalète dans chaque main).\n• Le bonus de Force ne s’ajoute pas aux dégâts."
+      },
+      "note": "Les munitions restantes dans le magasin ne sont pas suivies."
+    },
+    {
+      "id": "item.repeating_light_crossbow",
+      "type": "item",
+      "name": {
+        "fr": "Arbalète légère à répétition",
+        "en": "Repeating light crossbow"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "250 po",
+        "weight": "3 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "19–20/×2",
+        "range": "24 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une arbalète légère munie d’un magasin de cinq carreaux et d’un levier : une rafale de traits pour qui sait la manier.\n\nEn jeu\n• Arme exotique à distance ; malus de –4 pour qui ne la maîtrise pas.\n• Un coup de levier (action libre) remet un carreau en place tant que le magasin n’est pas vide : on tire à chaque attaque du round.\n• Changer le boîtier de 5 carreaux : action complexe qui provoque des attaques d’opportunité.\n• Le levier et le changement de boîtier demandent les deux mains ; tirée d’une main, elle suit la règle de l’arbalète légère (–2 à l’attaque, plus les malus du combat à deux armes avec une arbalète dans chaque main).\n• Le bonus de Force ne s’ajoute pas aux dégâts."
+      },
+      "note": "Les munitions restantes dans le magasin ne sont pas suivies."
+    },
+    {
+      "id": "item.sai",
+      "type": "item",
+      "name": {
+        "fr": "Sai",
+        "en": "Sai"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "light",
+        "monk"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "1 po",
+        "weight": "500 g",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "damageType": "Contondant",
+        "range": "3 m"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Un trident de fer sans tranchant : la dent centrale frappe, les deux branches latérales attrapent la lame adverse et la tordent hors de la main.\n\nEn jeu\n• Arme exotique légère ; peut aussi être lancée.\n• Dégâts contondants, malgré sa pointe.\n• Arme de moine : le moine peut s’en servir avec son déluge de coups.\n• Désarmement : +4 au jet d’attaque opposé d’un désarmement, y compris pour garder son arme si la tentative échoue."
+      },
+      "note": "Facteur de portée de 3 m d’après le SRD 3.5 anglais (absent de la table du site)."
+    },
+    {
+      "id": "item.sap",
+      "type": "item",
+      "name": {
+        "fr": "Matraque",
+        "en": "Sap"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light",
+        "nonlethal"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "1 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Un sac de cuir lesté de plomb ou de sable : un seul coup derrière l’oreille, et la sentinelle s’endort sans un bruit. L’arme de ceux qui veulent des réponses.\n\nEn jeu\n• Arme de guerre légère.\n• Inflige des dégâts non létaux ; pour infliger des dégâts létaux, malus de –4 à l’attaque."
+      }
+    },
+    {
+      "id": "item.scimitar",
+      "type": "item",
+      "name": {
+        "fr": "Cimeterre",
+        "en": "Scimitar"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "15 po",
+        "weight": "2 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "18–20/×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une lame courbe qui tranche en passant, née chez les cavaliers du désert : sa courbure fait glisser le fil sur la chair et ouvre de larges entailles.\n\nEn jeu\n• Arme de guerre à une main.\n• Tenue à deux mains, elle ajoute 1,5 × le bonus de Force aux dégâts."
+      }
+    },
+    {
+      "id": "item.scythe",
+      "type": "item",
+      "name": {
+        "fr": "Faux",
+        "en": "Scythe"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed"
+      ],
+      "item": {
+        "slot": "weapon",
+        "cost": "18 po",
+        "weight": "5 kg",
+        "damage": "2d4",
+        "damageSmall": "1d6",
+        "critical": "×4",
+        "damageType": "Perforant ou tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 4,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "L’outil du moissonneur devenu arme de guerre : une longue lame courbe qui fauche les hommes comme les blés et laisse des blessures terribles.\n\nEn jeu\n• Arme de guerre à deux mains.\n• Croc-en-jambe : permet de faire un croc-en-jambe avec l’arme ; en cas d’échec, on peut la lâcher pour éviter d’être renversé à son tour.\n• Dégâts perforants ou tranchants, au choix du porteur."
+      }
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "entities": [
+    {
+      "id": "feat.magical_aptitude",
+      "type": "feat",
+      "name": {
+        "fr": "Affinité magique",
+        "en": "Magical Aptitude"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Certains n’ont jamais ouvert un grimoire et pourtant les runes leur parlent : une baguette inconnue se réveille entre leurs doigts, une formule griffonnée prend sens au premier regard.\n\nEn jeu\n• +2 aux tests d’Art de la magie et d’Utilisation des objets magiques."
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.use_magic_device",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.augment_summoning",
+      "type": "feat",
+      "name": {
+        "fr": "Amélioration des créatures convoquées",
+        "en": "Augment Summoning"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Ce qui répond à son appel n’arrive jamais seul : la magie de l’invocateur coule encore dans les veines de la créature, qui frappe plus fort et tient plus longtemps que ses semblables.\n\nEn jeu\n• Condition : École renforcée (invocation).\n• Chaque créature convoquée par un sort de convocation (summon) gagne un bonus d’altération de +4 en Force et en Constitution pendant toute la durée du sort."
+      },
+      "prerequisite": "has('feat.spell_focus_conjuration')",
+      "note": "Le bonus vaut pour les créatures convoquées, pas pour la fiche du personnage."
+    },
+    {
+      "id": "feat.weapon_focus",
+      "type": "feat",
+      "name": {
+        "fr": "Arme de prédilection",
+        "en": "Weapon Focus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Une seule arme, des milliers d’heures. Son poids, son équilibre, sa façon de mordre : tout est devenu instinct, et chaque coup part un peu plus juste que celui d’un autre.\n\nEn jeu\n• Condition : bonus de base à l’attaque de +1, maniement de l’arme choisie.\n• +1 aux jets d’attaque avec l’arme choisie (une arme précise, ou les attaques à mains nues, ou la lutte, ou les rayons pour un lanceur de sorts).\n• Peut être pris plusieurs fois, pour une arme différente à chaque fois.\n• Ouvre la voie à Spécialisation martiale pour la même arme."
+      },
+      "prerequisite": "@bab >= 1",
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "item"
+        }
+      ],
+      "note": "Arme choisie : pas encore dans le modèle ; le bonus s’applique à l’arme maniée. Maniement de l’arme : condition non vérifiée par la fiche."
+    },
+    {
+      "id": "feat.greater_weapon_focus",
+      "type": "feat",
+      "name": {
+        "fr": "Arme de prédilection supérieure",
+        "en": "Greater Weapon Focus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Au-delà de l’habitude vient la fusion : l’arme n’est plus tenue, elle est portée comme un membre. Les vétérans la reconnaissent au premier échange, et rarement de bon cœur.\n\nEn jeu\n• Condition : Arme de prédilection pour l’arme choisie, guerrier de niveau 8, maniement de l’arme choisie.\n• +1 aux jets d’attaque avec l’arme choisie, qui s’ajoute à celui d’Arme de prédilection (+2 au total).\n• Peut être pris plusieurs fois, pour une arme différente à chaque fois.\n• Ouvre la voie à Spécialisation martiale supérieure pour la même arme."
+      },
+      "prerequisite": "has('feat.weapon_focus') and level('class.fighter') >= 8",
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "item"
+        }
+      ],
+      "note": "Arme choisie : pas encore dans le modèle ; le bonus s’applique à l’arme maniée. Maniement de l’arme : condition non vérifiée par la fiche."
+    },
+    {
+      "id": "feat.quick_draw",
+      "type": "feat",
+      "name": {
+        "fr": "Arme en main",
+        "en": "Quick Draw"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "ranged"
+      ],
+      "description": {
+        "fr": "On ne la voit jamais dégainer. La lame est au fourreau, puis elle est là, déjà levée, comme si elle n’avait jamais quitté sa main.\n\nEn jeu\n• Condition : bonus de base à l’attaque de +1.\n• Dégainer une arme est une action libre ; dégainer une arme dissimulée (Escamotage) est une action de mouvement.\n• Armes de jet : il peut lancer autant d’attaques par round que son bonus de base à l’attaque le permet, puisqu’il en reprend une en main à chaque fois.\n• Normal : dégainer demande une action de mouvement (ou se fait pendant un déplacement avec un bonus de base à l’attaque de +1 ou plus) ; une arme dissimulée demande une action simple."
+      },
+      "prerequisite": "@bab >= 1"
+    },
+    {
+      "id": "feat.athletic",
+      "type": "feat",
+      "name": {
+        "fr": "Athlétisme",
+        "en": "Athletic"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill",
+        "movement"
+      ],
+      "description": {
+        "fr": "Falaises, rivières en crue, remparts glissants : son corps a appris à vaincre le terrain avant même que son esprit ne s’en inquiète.\n\nEn jeu\n• +2 aux tests d’Escalade et de Natation."
+      },
+      "effects": [
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.swim",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.ride_by_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque au galop",
+        "en": "Ride-By Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "mounted"
+      ],
+      "description": {
+        "fr": "Le cavalier fond sur l’ennemi, frappe sans ralentir et file déjà plus loin, laissant derrière lui un adversaire qui n’a pas eu le temps de lever son arme.\n\nEn jeu\n• Condition : 1 degré de maîtrise en Équitation, Combat monté.\n• Pendant une charge montée, le personnage peut continuer son mouvement en ligne droite après l’attaque, sans dépasser le double de la vitesse de sa monture.\n• Ce mouvement ne provoque pas d’attaque d’opportunité de la part de la cible de la charge."
+      },
+      "prerequisite": "has('feat.mounted_combat')",
+      "note": "Condition non vérifiée par la fiche : 1 degré de maîtrise en Équitation."
+    },
+    {
+      "id": "feat.spring_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque éclair",
+        "en": "Spring Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il entre, frappe, ressort. Le temps que l’adversaire se retourne, il n’y a plus qu’un courant d’air et une entaille fraîche.\n\nEn jeu\n• Condition : Dextérité 13, Esquive, Souplesse du serpent, bonus de base à l’attaque de +4.\n• Lors d’une action d’attaque au corps à corps, le personnage peut se déplacer avant et après l’attaque, sans dépasser sa vitesse de déplacement au total.\n• Il doit parcourir au moins 1,5 m avant et 1,5 m après l’attaque.\n• Ce déplacement ne provoque pas d’attaque d’opportunité de la part de la cible (les autres créatures, si).\n• Impossible en armure lourde."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.dodge') and has('feat.mobility') and @bab >= 4"
+    },
+    {
+      "id": "feat.weapon_finesse",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque en finesse",
+        "en": "Weapon Finesse"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "La force brute, c’est pour les autres. Lui vise les jointures, les gorges, les défauts de l’armure, et sa lame légère trouve toujours le chemin.\n\nEn jeu\n• Condition : bonus de base à l’attaque de +1.\n• Avec une arme légère, une rapière, un fouet ou une chaîne cloutée adaptés à sa taille, le personnage peut utiliser son modificateur de Dextérité au lieu de celui de Force pour l’attaque.\n• Le malus d’armure aux tests d’un bouclier s’applique alors aux jets d’attaque.\n• Les armes naturelles comptent comme des armes légères.\n• Sur la fiche : interrupteur pour une arme compatible ; il remplace la Force par la Dextérité aux attaques au corps à corps si c’est mieux."
+      },
+      "prerequisite": "@bab >= 1",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "max(0, @ability.dex.mod - @ability.str.mod)",
+          "bonusType": "untyped",
+          "condition": "active('toggle.weapon_finesse')"
+        }
+      ],
+      "note": "Armes compatibles et malus de bouclier : pas encore dans le modèle ; l’interrupteur dit que l’arme maniée est compatible."
+    },
+    {
+      "id": "feat.power_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque en puissance",
+        "en": "Power Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il renonce à la précision pour tout mettre dans l’impact. Le coup est plus lent, plus lisible, mais celui qui ne l’esquive pas s’en souviendra longtemps.\n\nEn jeu\n• Condition : Force 13.\n• À son tour, avant d’attaquer, le personnage choisit un nombre au plus égal à son bonus de base à l’attaque : malus aux jets d’attaque au corps à corps, bonus égal aux jets de dégâts au corps à corps, jusqu’à son prochain tour.\n• Avec une arme à deux mains (ou une arme à une main tenue à deux mains), le bonus aux dégâts est doublé.\n• Une arme légère ne reçoit pas le bonus aux dégâts (sauf attaque à mains nues ou arme naturelle), mais subit le malus.\n• Une seule tête d’une arme double utilisée seule compte comme une arme à deux mains.\n• Sur la fiche : le bonus est compté à deux mains."
+      },
+      "prerequisite": "@ability.str.score >= 13",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "-@toggle.power_attack.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.power_attack')",
+          "status": "draft",
+          "note": "Valeur choisie en début de tour"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@toggle.power_attack.value * 2",
+          "bonusType": "untyped",
+          "condition": "active('toggle.power_attack')",
+          "status": "draft",
+          "note": "×2 à deux mains"
+        }
+      ],
+      "note": "Interrupteur avec valeur choisie par le joueur en début de tour.",
+      "status": "draft"
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.augment_summoning",
+      "relation": "requires",
+      "to": "feat.spell_focus_conjuration"
+    },
+    {
+      "from": "feat.greater_weapon_focus",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.ride_by_attack",
+      "relation": "requires",
+      "to": "feat.mounted_combat"
+    },
+    {
+      "from": "feat.spring_attack",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.spring_attack",
+      "relation": "requires",
+      "to": "feat.mobility"
+    }
+  ]
+}

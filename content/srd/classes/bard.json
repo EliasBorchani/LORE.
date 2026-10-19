@@ -1,0 +1,1093 @@
+{
+  "entities": [
+    {
+      "id": "class.bard",
+      "type": "class",
+      "name": {
+        "fr": "Barde",
+        "en": "Bard"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "arcane",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Là où il passe, on se souvient. Le barde collectionne les chansons, les secrets et les dettes, et il sait exactement lesquels ressortir au bon moment. Quelques notes lui suffisent pour redonner du courage à des soldats brisés, fasciner une foule ou retourner une salle hostile. Sa magie tient dans sa voix, son arme dans ses mains, et sa mémoire contient plus de légendes que toutes les bibliothèques du royaume. On le prend pour un saltimbanque ; c’est une erreur qu’on ne fait qu’une fois.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tout sauf loyal. Un barde devenu loyal ne progresse plus dans la classe mais garde ses pouvoirs.\n• Formé aux armes courantes, à l’épée longue, à la rapière, à la matraque, à l’épée courte, à l’arc court et au fouet ; aux armures légères et aux boucliers (sauf le pavois).\n• Lance ses sorts de barde en armure légère sans risque d’échec ; en armure intermédiaire, lourde ou avec un bouclier, le risque habituel s’applique.\n• Sorts profanes spontanés, basés sur le Charisme, du niveau 0 au niveau 6.\n• Aptitudes : musique de barde, savoir bardique, contre-chant, fascination et inspiration vaillante au niveau 1 ; inspiration talentueuse (3) ; suggestion (6) ; inspiration héroïque (9) ; chant de liberté (12) ; inspiration intrépide (15) ; suggestion de groupe (18)."
+      },
+      "hitDie": 6,
+      "skillPoints": 6,
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.bard') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.bard_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de barde",
+        "en": "Bard spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Chaque sort du barde est une chanson, un vers ou une note tenue. Il ne prépare rien : son répertoire est dans sa tête, et il puise dedans au fil de la journée.\n\nEn jeu\n• Sorts profanes de la liste du barde, lancés sans préparation.\n• Caractéristique : Charisme. Il faut au moins 10 + niveau du sort en Charisme pour l’apprendre ou le lancer. DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour et sorts connus selon le niveau de barde ; sorts en bonus grâce à un Charisme élevé (pas pour les sorts connus).\n• Commence avec quatre tours de magie (niveau 0).\n• Aux niveaux 5, 8, 11 et ainsi de suite tous les 3 niveaux, peut échanger un sort connu contre un autre de même niveau, au moins 2 niveaux sous son plus haut niveau de sort.\n• Tous ses sorts ont une composante verbale : chant, poème ou musique."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bard_bardic_knowledge",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir bardique",
+        "en": "Bardic knowledge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Un nom sur une épée, un blason à demi effacé, une vieille rumeur de village : le barde a toujours entendu une histoire là-dessus.\n\nEn jeu\n• Test de savoir bardique : 1d20 + niveau de barde + modificateur d’Intelligence, +2 avec 5 rangs ou plus en Connaissances (histoire).\n• Sur les objets légendaires, les personnes notables et les lieux connus ; ne révèle jamais les pouvoirs précis d’un objet.\n• Ni « faire 10 » ni « faire 20 »."
+      },
+      "effects": [
+        {
+          "target": "check.bardic_knowledge",
+          "op": "add",
+          "value": "level('class.bard') + @ability.int.mod"
+        }
+      ],
+      "note": "+2 avec 5 rangs en Connaissances (histoire) : les rangs ne sont pas encore dans le modèle."
+    },
+    {
+      "id": "power.bard_bardic_music",
+      "type": "class_power",
+      "name": {
+        "fr": "Musique de barde",
+        "en": "Bardic music"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Le cœur de l’art du barde. Chant, sifflement, luth ou tambour, peu importe l’instrument : ce qui compte, c’est l’effet sur ceux qui écoutent.\n\nEn jeu\n• Une utilisation par jour et par niveau de barde.\n• Chaque chanson demande un niveau de barde et un nombre de rangs en Représentation.\n• Lancer une chanson : action simple. Certaines demandent de la concentration chaque round.\n• Pendant qu’il joue : pas de sorts, pas d’objets à fin d’incantation, à potentiel magique ou à mot de commande.\n• Un barde sourd a 20 % de risque d’échec ; l’utilisation est perdue quand même."
+      },
+      "effects": [],
+      "usesPerDay": "level('class.bard')"
+    },
+    {
+      "id": "power.bard_countersong",
+      "type": "class_power",
+      "name": {
+        "fr": "Contre-chant",
+        "en": "Countersong"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Une mélodie qui s’oppose à une autre. Quand un sort de son ou de parole frappe le groupe, le barde chante plus fort.\n\nEn jeu\n• Demande 3 rangs en Représentation ; dure jusqu’à 10 rounds.\n• Chaque round : test de Représentation. Les créatures à 9 m ou moins (lui compris) peuvent prendre ce résultat à la place de leur jet de sauvegarde contre une attaque magique de son ou de langage.\n• Une créature déjà affectée par un tel effet a droit à un nouveau jet, avec le résultat du barde.\n• Sans effet contre ce qui n’autorise pas de jet de sauvegarde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bard_fascinate",
+      "type": "class_power",
+      "name": {
+        "fr": "Fascination",
+        "en": "Fascinate"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Le temps s’arrête, la salle se tait, et plus personne ne pense à se battre. Tant que le barde joue, ses auditeurs n’entendent que lui.\n\nEn jeu\n• Demande 3 rangs en Représentation. Cibles à 27 m ou moins, qui le voient et l’entendent ; impossible en plein combat.\n• Une créature au niveau 1, une de plus tous les 3 niveaux (2 au niveau 4, 3 au niveau 7…).\n• Jet de Volonté contre son test de Représentation ; en cas de réussite, pas de nouvel essai pendant 24 heures.\n• Les fascinés restent assis à écouter, jusqu’à 1 round par niveau du barde, avec −4 aux tests réactifs (Détection, Perception auditive).\n• Une menace possible relance le test ; une menace évidente rompt l’effet. Effet mental, enchantement (charme)."
+      },
+      "effects": [
+        {
+          "target": "bard.fascinate_targets",
+          "op": "set",
+          "value": "1 + floor((level('class.bard') - 1) / 3)"
+        }
+      ]
+    },
+    {
+      "id": "power.bard_inspire_courage",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration vaillante",
+        "en": "Inspire courage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Le chant qui fait tenir la ligne. Ceux qui l’entendent frappent plus fort, visent plus juste et cessent d’avoir peur.\n\nEn jeu\n• Demande 3 rangs en Représentation. Pour tous les alliés qui l’entendent, lui compris ; dure tant qu’ils l’entendent, puis 5 rounds.\n• Bonus de moral aux jets d’attaque et de dégâts des armes, et aux sauvegardes contre le charme et la terreur : +1, puis +2 au niveau 8, +3 au niveau 14, +4 au niveau 20.\n• Effet mental."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "1 + max(0, floor((level('class.bard') - 2) / 6))",
+          "bonusType": "morale",
+          "condition": "active('toggle.bard_inspire_courage')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "1 + max(0, floor((level('class.bard') - 2) / 6))",
+          "bonusType": "morale",
+          "condition": "active('toggle.bard_inspire_courage')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "1 + max(0, floor((level('class.bard') - 2) / 6))",
+          "bonusType": "morale",
+          "condition": "active('toggle.bard_inspire_courage')",
+          "situation": "situation.vs_charm_or_fear"
+        }
+      ]
+    },
+    {
+      "id": "power.bard_inspire_competence",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration talentueuse",
+        "en": "Inspire competence"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Un air d’encouragement, un rythme sur lequel caler ses gestes : l’allié réussit ce qu’il n’aurait jamais tenté seul.\n\nEn jeu\n• Demande 6 rangs en Représentation. Un allié à 9 m ou moins, qui le voit et l’entend ; pas sur lui-même.\n• +2 d’aptitude aux tests d’une compétence choisie, tant que le barde se concentre (2 minutes au plus).\n• Seulement si la musique peut aider (pas pour se déplacer en silence !). Effet mental."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bard_suggestion",
+      "type": "class_power",
+      "name": {
+        "fr": "Suggestion",
+        "en": "Suggestion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Une phrase glissée entre deux couplets, et la créature fascinée trouve soudain l’idée excellente.\n\nEn jeu\n• Demande 9 rangs en Représentation et le niveau 6.\n• Une suggestion, comme le sort, à une créature qu’il fascine ; ne rompt pas la fascination et ne coûte pas d’utilisation de musique.\n• Jet de Volonté pour l’annuler : DD 10 + moitié du niveau de barde + modificateur de Charisme.\n• Effet mental de langage, enchantement (coercition)."
+      },
+      "effects": [
+        {
+          "target": "dc.bard_suggestion",
+          "op": "set",
+          "value": "10 + floor(level('class.bard') / 2) + @ability.cha.mod"
+        }
+      ]
+    },
+    {
+      "id": "power.bard_inspire_greatness",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration héroïque",
+        "en": "Inspire greatness"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Le chant des héros. L’allié inspiré se tient plus droit, frappe plus juste et encaisse comme quelqu’un de bien plus aguerri.\n\nEn jeu\n• Demande 12 rangs en Représentation et le niveau 9. Un allié à 9 m ou moins (ou lui-même), un de plus tous les 3 niveaux (2 au niveau 12, 3 au 15, 4 au 18).\n• Dure tant qu’il l’entend, puis 5 rounds.\n• 2 dés de vie de bonus (d10) et les points de vie temporaires correspondants, comptés à la moyenne : 11 + 2 × modificateur de Constitution.\n• +2 d’aptitude à l’attaque, +1 d’aptitude aux jets de Vigueur.\n• Les dés de vie de bonus comptent pour les effets basés sur les dés de vie. Effet mental."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "competence",
+          "condition": "active('toggle.bard_inspire_greatness')"
+        },
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 1,
+          "bonusType": "competence",
+          "condition": "active('toggle.bard_inspire_greatness')"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "11 + 2 * @ability.con.mod",
+          "condition": "active('toggle.bard_inspire_greatness')"
+        },
+        {
+          "target": "bard.inspire_greatness_targets",
+          "op": "set",
+          "value": "1 + floor((level('class.bard') - 9) / 3)"
+        }
+      ]
+    },
+    {
+      "id": "power.bard_song_of_freedom",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de liberté",
+        "en": "Song of freedom"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Une minute de musique ininterrompue, et les chaînes invisibles cèdent : malédictions, charmes et métamorphoses se défont.\n\nEn jeu\n• Demande 15 rangs en Représentation et le niveau 12.\n• Comme le sort annulation d’enchantement, avec le niveau de barde comme niveau de lanceur.\n• Une cible à 9 m ou moins ; pas sur lui-même. Une minute de concentration sans interruption."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bard_inspire_heroics",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration intrépide",
+        "en": "Inspire heroics"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Quand tout semble perdu, le barde chante pour ceux qui restent debout. Ils deviennent impossibles à faire plier.\n\nEn jeu\n• Demande 18 rangs en Représentation et le niveau 15. Un allié à 9 m ou moins (ou lui-même), un de plus tous les 3 niveaux.\n• L’allié doit l’entendre un round complet ; dure tant qu’il l’entend, puis 5 rounds.\n• +4 de moral à tous les jets de sauvegarde et +4 d’esquive à la CA. Effet mental."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "morale",
+          "condition": "active('toggle.bard_inspire_heroics')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "condition": "active('toggle.bard_inspire_heroics')"
+        },
+        {
+          "target": "bard.inspire_heroics_targets",
+          "op": "set",
+          "value": "1 + floor((level('class.bard') - 15) / 3)"
+        }
+      ]
+    },
+    {
+      "id": "power.bard_mass_suggestion",
+      "type": "class_power",
+      "name": {
+        "fr": "Suggestion de groupe",
+        "en": "Mass suggestion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bard"
+      ],
+      "description": {
+        "fr": "Toute la salle fascinée reçoit la même idée au même moment. Personne ne se demande d’où elle vient.\n\nEn jeu\n• Demande 21 rangs en Représentation et le niveau 18.\n• Comme suggestion, mais sur toutes les créatures qu’il fascine.\n• Effet mental de langage, enchantement (coercition)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.bard",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.bard_spells",
+        "power.bard_bardic_music",
+        "power.bard_bardic_knowledge",
+        "power.bard_countersong",
+        "power.bard_fascinate",
+        "power.bard_inspire_courage"
+      ],
+      "spellsPerDay": [
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        5,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.bard_inspire_competence"
+      ],
+      "spellsPerDay": [
+        3,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        2,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        3,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.bard_suggestion"
+      ],
+      "spellsPerDay": [
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        3,
+        2,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        3,
+        3,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.bard_inspire_greatness"
+      ],
+      "spellsPerDay": [
+        3,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        3,
+        3,
+        2,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        4,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 11,
+      "bab": 8,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        3,
+        3,
+        3,
+        1,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 12,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 8,
+      "grants": [
+        "power.bard_song_of_freedom"
+      ],
+      "spellsPerDay": [
+        3,
+        3,
+        3,
+        3,
+        2,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 13,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        3,
+        3,
+        3,
+        3,
+        2,
+        0,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        4,
+        4,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 14,
+      "bab": 10,
+      "fort": 4,
+      "ref": 9,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        3,
+        3,
+        3,
+        3,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 15,
+      "bab": 11,
+      "fort": 5,
+      "ref": 9,
+      "will": 9,
+      "grants": [
+        "power.bard_inspire_heroics"
+      ],
+      "spellsPerDay": [
+        4,
+        4,
+        3,
+        3,
+        3,
+        2,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        4,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 16,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        0
+      ],
+      "spellsKnown": [
+        6,
+        5,
+        4,
+        4,
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 17,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        1
+      ],
+      "spellsKnown": [
+        6,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 18,
+      "bab": 13,
+      "fort": 6,
+      "ref": 11,
+      "will": 11,
+      "grants": [
+        "power.bard_mass_suggestion"
+      ],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2
+      ],
+      "spellsKnown": [
+        6,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 19,
+      "bab": 14,
+      "fort": 6,
+      "ref": 11,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "spellsKnown": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "classId": "class.bard",
+      "level": 20,
+      "bab": 15,
+      "fort": 6,
+      "ref": 12,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "spellsKnown": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        5,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.bard",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "item.longsword"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "item.rapier"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "item.sap"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "item.short_sword"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "item.shortbow"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "item.whip"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.bard",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.bard",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.bard",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.bard",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.bard",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.bard",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.bard",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

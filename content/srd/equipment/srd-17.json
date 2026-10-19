@@ -1,0 +1,230 @@
+{
+  "entities": [
+    {
+      "id": "item.carriage",
+      "type": "item",
+      "name": {
+        "fr": "Carriole",
+        "en": "Carriage"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "100 po",
+        "weight": "300 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Rideaux tirés, banquettes rembourrées et lanternes de cuivre : la carriole promène nobles et marchands aisés à l’abri de la boue et des regards.\n\nEn jeu\n• Véhicule fermé à quatre roues : quatre passagers dans l’habitacle, plus deux cochers à l’avant\n• Tirée par deux chevaux ou autres bêtes de somme (non fournis) ; le harnais est compris"
+      }
+    },
+    {
+      "id": "item.cart",
+      "type": "item",
+      "name": {
+        "fr": "Charrette",
+        "en": "Cart"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "15 po",
+        "weight": "100 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Deux roues, un plateau de planches et un cheval patient : la charrette du paysan qui va au marché, ou du héros qui ramène son butin.\n\nEn jeu\n• Véhicule à deux roues tiré par une seule bête de somme (non fournie) ; le harnais est compris"
+      }
+    },
+    {
+      "id": "item.galley",
+      "type": "item",
+      "name": {
+        "fr": "Trirème",
+        "en": "Galley"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "30 000 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Trois mâts, cent quarante rames qui frappent l’eau en cadence et un équipage qui fait trembler les ports : la trirème est une ville flottante qui ne quitte jamais la côte des yeux.\n\nEn jeu\n• Environ 40 m de long et 6 m de large ; équipage de 200 personnes, 70 rames de chaque bord\n• Transporte jusqu’à 150 tonnes de marchandises ou 250 soldats\n• Navigation côtière uniquement : elle ne peut pas affronter la haute mer\n• Vitesse : 6 km par heure, à la voile comme à la rame\n• Option : éperon et trois châteaux pour machines de guerre (avant, arrière et milieu) pour 8 000 po de plus"
+      }
+    },
+    {
+      "id": "item.keelboat",
+      "type": "item",
+      "name": {
+        "fr": "Bateau à fond plat",
+        "en": "Keelboat"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "3 000 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Large, lourd et sans prétention, le bateau à fond plat se glisse là où les navires de mer raclent le fond, et ne craint pas pour autant de prendre le large.\n\nEn jeu\n• 15 à 22,5 m de long, 4,5 à 6 m de large ; un mât à voile carrée et quelques rames\n• Équipage de 8 à 15 marins ; transporte 40 à 50 tonnes de marchandises ou 100 soldats\n• Peu de tirant d’eau : à l’aise sur les rivières, et capable de traversées en mer\n• Vitesse : 1,5 km par heure"
+      }
+    },
+    {
+      "id": "item.longship",
+      "type": "item",
+      "name": {
+        "fr": "Drakkar",
+        "en": "Longship"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "10 000 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Proue sculptée, boucliers alignés le long du bord et quarante rames qui battent comme un cœur : le drakkar fond sur les côtes avant que les guetteurs n’aient fini de crier.\n\nEn jeu\n• Environ 22,5 m de long ; 40 rames, un mât à voile carrée, équipage de 50\n• Transporte 50 tonnes de marchandises ou 120 soldats\n• Peut naviguer en haute mer\n• Vitesse : 4,5 km par heure, à la voile comme à la rame"
+      }
+    },
+    {
+      "id": "item.oar",
+      "type": "item",
+      "name": {
+        "fr": "Rame",
+        "en": "Oar"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "2 po",
+        "weight": "5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une longue pièce de frêne au manche poli par les paumes : sans elle, une barque n’est qu’une coque qui dérive.\n\nEn jeu\n• Rame de rechange pour une barque ou un navire"
+      }
+    },
+    {
+      "id": "item.rowboat",
+      "type": "item",
+      "name": {
+        "fr": "Barque",
+        "en": "Rowboat"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "50 po",
+        "weight": "50 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une coque de planches, deux bancs et assez de place pour quelques amis et un coffre : la barque mène au navire ancré, à l’îlot du lac ou à la grotte marine.\n\nEn jeu\n• 2,5 à 3,5 m de long ; porte deux ou trois passagers de taille M\n• Vitesse : 2,25 km par heure"
+      }
+    },
+    {
+      "id": "item.sailing_ship",
+      "type": "item",
+      "name": {
+        "fr": "Navire de haute mer",
+        "en": "Sailing ship"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "10 000 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Deux mâts gréés de voiles carrées, une cale profonde et un équipage qui n’a pas vu la terre depuis des semaines : le navire de haute mer relie les continents.\n\nEn jeu\n• 22,5 à 27 m de long, 6 m de large ; équipage de 20 marins\n• Transporte 150 tonnes de marchandises\n• Conçu pour la haute mer\n• Vitesse : 3 km par heure"
+      }
+    },
+    {
+      "id": "item.sled",
+      "type": "item",
+      "name": {
+        "fr": "Traîneau",
+        "en": "Sled"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "20 po",
+        "weight": "150 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Des patins de bois ferré à la place des roues : là où la neige engloutit les chariots, le traîneau glisse.\n\nEn jeu\n• Chariot sur patins, fait pour la neige et la glace\n• Tiré en général par deux chevaux ou autres bêtes de somme (non fournis) ; le harnais est compris"
+      }
+    },
+    {
+      "id": "item.wagon",
+      "type": "item",
+      "name": {
+        "fr": "Chariot",
+        "en": "Wagon"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "35 po",
+        "weight": "200 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Quatre grosses roues cerclées de fer, des ridelles hautes et un plateau qui gémit sous la charge : le chariot est le cheval de trait des caravanes.\n\nEn jeu\n• Véhicule ouvert à quatre roues, fait pour les lourdes cargaisons\n• Tiré par deux chevaux ou autres bêtes de somme (non fournis) ; le harnais est compris"
+      }
+    },
+    {
+      "id": "item.warship",
+      "type": "item",
+      "name": {
+        "fr": "Vaisseau de guerre",
+        "en": "Warship"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "vehicle"
+      ],
+      "item": {
+        "cost": "25 000 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Long, fin et hérissé de rameurs, le vaisseau de guerre ne transporte rien d’autre que des soldats et de mauvaises nouvelles pour la flotte adverse.\n\nEn jeu\n• 30 m de long ; un mât et des rames, 60 à 80 rameurs\n• Embarque 160 soldats, mais seulement pour de courts trajets : rien n’est prévu pour les nourrir longtemps\n• Pas de cale : ne sert pas au transport de marchandises\n• Navigation côtière uniquement\n• Vitesse : 3,75 km par heure, à la voile comme à la rame"
+      }
+    }
+  ]
+}

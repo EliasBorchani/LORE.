@@ -1,0 +1,239 @@
+{
+  "entities": [
+    {
+      "id": "class.horizon_walker",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Arpenteur d’horizon",
+        "en": "Horizon walker"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "explorer"
+      ],
+      "hitDie": 8,
+      "skillPoints": 4,
+      "description": {
+        "fr": "Il n’a jamais su rester derrière une colline sans aller voir ce qu’il y avait de l’autre côté. L’arpenteur d’horizon a dormi dans le sable brûlant, traversé des marais où l’eau ment, escaladé des pics où l’air se fait rare, puis, un jour, il a franchi la frontière du monde lui-même. Chaque paysage qu’il a apprivoisé lui a laissé un cadeau : une oreille plus fine, un pas plus léger, et l’art de frapper les bêtes qui y vivent. Pour lui, aucun lieu n’est étranger très longtemps.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : 8 rangs en Connaissances (géographie) ; don Endurance.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Pas de progression de sorts.\n• Aptitudes : maîtrise de terrain, un nouveau terrain à chaque niveau (1 à 5) ; maîtrise de terrain planaire, un nouveau terrain ordinaire ou planaire à chaque niveau (6 à 10)."
+      },
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.horizon_walker_terrain_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise de terrain",
+        "en": "Terrain mastery"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "horizon_walker"
+      ],
+      "description": {
+        "fr": "Chaque région parcourue laisse une trace dans le corps de l’arpenteur : il sait où poser le pied, où écouter, où frapper les créatures qui y règnent. Et ce savoir le suit partout, même loin du terrain qui le lui a appris.\n\nEn jeu\n• Un terrain maîtrisé à chaque niveau de 1 à 5 (5 au niveau 5).\n• Contre les créatures dont l’environnement est un terrain maîtrisé : +1 d’intuition aux jets d’attaque et de dégâts.\n• Les bonus valent partout, même hors du terrain.\n• Aquatique : +4 d’aptitude en Natation, ou +3 m de vitesse de nage s’il en a une.\n• Collines : +4 d’aptitude en Perception auditive.\n• Déserts : jamais fatigué ; l’épuisement devient une simple fatigue.\n• Forêts : +4 d’aptitude en Discrétion.\n• Marécages : +4 d’aptitude en Déplacement silencieux.\n• Montagnes : +4 d’aptitude en Escalade, ou +3 m de vitesse d’escalade s’il en a une.\n• Plaines : +4 d’aptitude en Détection.\n• Souterrains : vision dans le noir à 18 m (36 m s’il l’a déjà)."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "insight",
+          "situation": "situation.vs_mastered_terrain"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "insight",
+          "situation": "situation.vs_mastered_terrain"
+        }
+      ],
+      "note": "Bonus montré : +1 contre les créatures d’un terrain maîtrisé (un bonus d’intuition, donc plusieurs terrains ne s’additionnent pas). Le nombre de terrains (un par niveau de classe), leur choix et leurs bonus de compétence, de vitesse ou de vision ne sont pas encore dans le modèle."
+    },
+    {
+      "id": "power.horizon_walker_planar_terrain_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise de terrain planaire",
+        "en": "Planar terrain mastery"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "horizon_walker"
+      ],
+      "description": {
+        "fr": "Après les déserts et les montagnes, l’arpenteur part vers des horizons plus étranges : des plans de feu, de glace ou de vide, où même la gravité a ses humeurs. Il y apprend à survivre, puis à prospérer.\n\nEn jeu\n• De 6 à 10, à chaque niveau : un terrain planaire ou un terrain ordinaire de plus.\n• Comme la maîtrise de terrain : +1 d’intuition aux jets d’attaque et de dégâts contre les créatures natives du terrain (élémentaires et Extérieurs du sous-type indiqué).\n• Changeant (Limbes, plan de l’Ombre) : comme porte dimensionnelle, une fois tous les 1d4 rounds, niveau de lanceur = niveau global.\n• Aligné : pour la magie, il a l’alignement du plan ; il ignore les malus d’alignement du plan et les sorts qui frappent l’alignement opposé (ténèbres maudites…).\n• Caverneux : perception des vibrations à 9 m (Terre).\n• Ardent : résistance au feu 20 (Feu).\n• Glacé : résistance au froid 20 (Froid).\n• Sans gravité : +9 m de vitesse de vol sur les plans sans gravité ou à gravité subjective (plan Astral, Air, plan Éthéré).\n• Le MD peut créer d’autres terrains planaires."
+      },
+      "effects": [],
+      "note": "Le +1 d’intuition est porté par la maîtrise de terrain. Les terrains planaires choisis et leurs effets (résistances, vitesse de vol, perception des vibrations) ne sont pas encore dans le modèle."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.horizon_walker",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.horizon_walker_terrain_mastery"
+      ]
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": []
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.horizon_walker_planar_terrain_mastery"
+      ]
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.horizon_walker",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.horizon_walker",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

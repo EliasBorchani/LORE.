@@ -1,0 +1,278 @@
+{
+  "entities": [
+    {
+      "id": "item.artisans_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Tenue d’artisan",
+        "en": "Artisan’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "1 po",
+        "weight": "2 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Chemise solide, pantalon ou jupe tenus par une cordelette, souliers usés et parfois un tablier de cuir aux poches lourdes d’outils : l’habit de ceux qui fabriquent le monde à la main.\n\nEn jeu\n• Vêtement de travail : chemise, pantalon ou jupe, chaussures, couvre-chef au choix.\n• Une ceinture ou un tablier peut s’y ajouter pour garder ses outils sous la main.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    },
+    {
+      "id": "item.clerics_vestments",
+      "type": "item",
+      "name": {
+        "fr": "Tenue sacerdotale",
+        "en": "Cleric’s vestments"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "5 po",
+        "weight": "3 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Étoles brodées, aubes et symboles cousus de fil d’or : ces habits parlent au nom du dieu avant même que le prêtre n’ouvre la bouche.\n\nEn jeu\n• Habits de culte, pour les offices et les rites ; peu pratiques sur la route ou au combat.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    },
+    {
+      "id": "item.cold_weather_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Tenue polaire",
+        "en": "Cold weather outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "8 po",
+        "weight": "3,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Laine épaisse, cape lourde, bonnet enfoncé jusqu’aux oreilles et bottes doublées : la tenue qui sépare le voyageur des neiges du cadavre gelé au bord du chemin.\n\nEn jeu\n• Comprend manteau et bonnet de laine, chemise de lin, lourde cape, pantalon ou jupe épais et bottes.\n• +5 de circonstance aux jets de Vigueur contre l’exposition au froid.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 5,
+          "bonusType": "circumstance",
+          "situation": "situation.vs_cold"
+        }
+      ]
+    },
+    {
+      "id": "item.courtiers_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Habit de cour",
+        "en": "Courtier’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "30 po",
+        "weight": "3 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Coupe dernier cri, tissus fins et broderies discrètes : à la cour, on juge d’abord l’habit, ensuite la personne.\n\nEn jeu\n• Qui tente d’influencer nobles et courtisans en vêtements ordinaires subit −2 aux tests de compétence basés sur le Charisme.\n• Il faut y ajouter des bijoux (50 po de plus) ; sans eux, on passe pour un roturier égaré parmi les grands."
+      },
+      "note": "Le malus de −2 frappe qui ne porte pas cette tenue à la cour : un malus lié à un objet absent n’est pas modélisé."
+    },
+    {
+      "id": "item.entertainers_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Costume d’artiste",
+        "en": "Entertainer’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "3 po",
+        "weight": "2 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Paillettes, grelots et rubans de toutes les couleurs : on se moque du clown, jusqu’à ce qu’il bondisse d’une poutre à l’autre sans perdre un grelot.\n\nEn jeu\n• Tenue de scène tape-à-l’œil, coupée pour le mouvement : danse, numéros d’agilité ou sortie précipitée quand le public se fâche.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    },
+    {
+      "id": "item.explorers_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Tenue d’explorateur",
+        "en": "Explorer’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "10 po",
+        "weight": "4 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Bottes épaisses, cuir, gants, cape aux poches innombrables et chapeau à large bord : l’équipement de ceux qui partent sans savoir s’ils trouveront un désert, un marais ou une crypte.\n\nEn jeu\n• Bottes solides, chausses ou jupe de cuir (ou tunique de cuir sur jupe de toile), ceinture, chemise, gants et cape, plus quelques accessoires (écharpe, chapeau).\n• Poches à foison pour le petit matériel.\n• Aucun bonus contre le froid : c’est le rôle de la tenue polaire.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    },
+    {
+      "id": "item.monks_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Habit de moine",
+        "en": "Monk’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "5 po",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Sandales, pantalon et chemise amples serrés par de longues écharpes : rien qui ne gêne le geste, et des replis où dormir une arme.\n\nEn jeu\n• Étoffe solide et coupe ample, pensées pour bouger sans entrave.\n• Des poches cachées dans les plis peuvent recevoir de petites armes.\n• Dénouées, les écharpes font de courtes cordes.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    },
+    {
+      "id": "item.nobles_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Habit de noble",
+        "en": "Noble’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "75 po",
+        "weight": "5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Brocart, broderies d’or et pierres serties dans l’étoffe : un luxe qui ne cherche pas à se faire oublier.\n\nEn jeu\n• Pour passer pour un noble, il faut aussi une chevalière et des bijoux d’au moins 100 po (réels ou bien imités)."
+      }
+    },
+    {
+      "id": "item.peasants_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Habit de paysan",
+        "en": "Peasant’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "1 pa",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Chemise ample, haut-de-chausses ou jupe, pieds enveloppés de chiffons : l’habit de la plupart des gens du royaume.\n\nEn jeu\n• Vêtement le plus simple qui soit ; des bandes de tissu tiennent lieu de chaussures.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    },
+    {
+      "id": "item.royal_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Toilette royale",
+        "en": "Royal outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "200 po",
+        "weight": "7,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Or, pierreries, soie et hermine en abondance : une toilette faite pour qu’une salle entière se taise à votre entrée.\n\nEn jeu\n• Les vêtements seuls : sceptre, couronne et autres insignes du pouvoir sont à part."
+      }
+    },
+    {
+      "id": "item.scholars_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Habit d’érudit",
+        "en": "Scholar’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "5 po",
+        "weight": "3 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Robe, ceinture, bonnet et souliers souples, souvent tachés d’encre : l’habit de ceux qui passent leurs nuits sur les grimoires.\n\nEn jeu\n• Comprend robe, ceinture, bonnet, chaussures souples et parfois une cape.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    },
+    {
+      "id": "item.travelers_outfit",
+      "type": "item",
+      "name": {
+        "fr": "Tenue de voyage",
+        "en": "Traveler’s outfit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "clothing"
+      ],
+      "item": {
+        "slot": "body",
+        "cost": "1 po",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Bottes, laine solide, ceinturon et ample cape à capuche : de quoi avaler les lieues sous la pluie comme sous le vent.\n\nEn jeu\n• Comprend bottes, jupe ou haut-de-chausses de laine, ceinturon, chemise et ample cape à capuche.\n• Peut servir de tenue de départ : chaque personnage commence avec une tenue d’une valeur de 10 po au plus."
+      }
+    }
+  ]
+}

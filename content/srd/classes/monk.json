@@ -1,0 +1,894 @@
+{
+  "entities": [
+    {
+      "id": "class.monk",
+      "type": "class",
+      "name": {
+        "fr": "Moine",
+        "en": "Monk"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Au monastère, on lui a appris que le corps est une arme, et que l’esprit est la main qui la tient. Le moine se bat pieds nus, sans armure, et il n’en a pas besoin : il esquive les flèches, brise les lames du tranchant de la main et franchit en trois pas la distance qu’un cheval mettrait dix secondes à couvrir. Chaque année de discipline lui retire une faiblesse. Les poisons, les maladies, puis l’âge lui-même finissent par renoncer.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : loyal (bon, neutre ou mauvais). Un moine qui ne l’est plus ne progresse plus dans la classe mais garde ses pouvoirs.\n• Formé à l’arbalète légère et lourde, au bâton, à la dague, au gourdin, à la fronde, à la hachette, à la javeline, au kama, au nunchaku, au saï, au shuriken et au siangham ; ni armure ni bouclier.\n• En armure, avec un bouclier ou une charge intermédiaire ou lourde, il perd son bonus à la CA, son déplacement accéléré et son déluge de coups.\n• Multiclassage : un moine qui prend une autre classe ne peut plus revenir au moine.\n• Aptitudes : bonus à la CA, combat à mains nues, déluge de coups et don supplémentaire (1) ; esquive totale et don supplémentaire (2) ; déplacement accéléré et sérénité (3) ; frappe ki et chute ralentie (4) ; pureté physique (5) ; don supplémentaire (6) ; plénitude physique (7) ; esquive extraordinaire (9) ; corps de diamant et déluge supérieur (11) ; pas chassé (12) ; âme de diamant (13) ; paume vibratoire (15) ; éternelle jeunesse et langue du soleil et de la lune (17) ; désertion de l’âme (19) ; perfection de l’être (20)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.monk') - 20) / 5))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Perte des aptitudes en armure ou chargé : l’équipement porté n’est pas encore dans le modèle, les bonus s’appliquent toujours."
+    },
+    {
+      "id": "power.monk_ac_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à la CA",
+        "en": "AC bonus"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le moine ne pare pas : il n’est simplement plus là quand le coup arrive. Sa vigilance le protège mieux qu’une cotte de mailles, même pris par surprise.\n\nEn jeu\n• Ajoute son bonus de Sagesse (s’il est positif) à sa CA, plus +1 par tranche de 5 niveaux de moine.\n• Ces bonus comptent aussi contre les attaques de contact et quand il est pris au dépourvu.\n• Perdus en armure, avec un bouclier, avec une charge intermédiaire ou lourde, ou s’il est immobilisé."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "max(0, @ability.wis.mod) + floor(level('class.monk') / 5)"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_unarmed_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Combat à mains nues",
+        "en": "Unarmed strike"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le poing, le coude, le genou, le talon : pour le moine, tout est une arme, et aucune ne peut lui être retirée.\n\nEn jeu\n• Ses coups à mains nues ne provoquent pas d’attaque d’opportunité et peuvent infliger des dégâts normaux ou non létaux, sans malus.\n• Il frappe avec n’importe quelle partie du corps, même les mains pleines : pas d’attaque en main non directrice.\n• Dégâts (taille M) : 1d6, puis 1d8 (4), 1d10 (8), 2d6 (12), 2d8 (16), 2d10 (20). Taille P : 1d4 à 2d8 ; taille G : 1d8 à 4d8.\n• Ses mains comptent comme des armes naturelles et manufacturées pour les sorts et effets qui les améliorent.\n• Don supplémentaire : Science du combat à mains nues."
+      },
+      "effects": [
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "condition": "level('class.monk') >= 1 and level('class.monk') < 4"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "condition": "level('class.monk') >= 4 and level('class.monk') < 8"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "condition": "level('class.monk') >= 8 and level('class.monk') < 12"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base",
+          "condition": "level('class.monk') >= 12 and level('class.monk') < 16"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d8",
+          "layer": "base",
+          "condition": "level('class.monk') >= 16 and level('class.monk') < 20"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d10",
+          "layer": "base",
+          "condition": "level('class.monk') >= 20"
+        }
+      ],
+      "note": "Dégâts écrits pour la taille M ; la fiche les adapte à la taille du personnage."
+    },
+    {
+      "id": "power.monk_flurry_of_blows",
+      "type": "class_power",
+      "name": {
+        "fr": "Déluge de coups",
+        "en": "Flurry of blows"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Une seconde, trois coups, et l’adversaire n’a vu que le premier. Le déluge sacrifie un peu de précision pour beaucoup de vitesse.\n\nEn jeu\n• Lors d’une attaque à outrance, une attaque supplémentaire à son meilleur bonus ; toutes ses attaques du round subissent alors −2, puis −1 (niveau 5), puis aucun malus (niveau 9).\n• Seulement à mains nues ou avec les armes spéciales du moine (kama, nunchaku, saï, shuriken, siangham).\n• Pas en armure, avec un bouclier ou une charge intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "if(level('class.monk') >= 9, 0, if(level('class.monk') >= 5, -1, -2))",
+          "condition": "active('toggle.monk_flurry_of_blows')"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_bonus_feats",
+      "type": "class_power",
+      "name": {
+        "fr": "Dons supplémentaires",
+        "en": "Bonus feats"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Chaque monastère enseigne ses propres techniques ; le moine les apprend sans passer par le chemin habituel.\n\nEn jeu\n• Niveau 1 : Science de la lutte ou Coup étourdissant.\n• Niveau 2 : Attaques réflexes ou Parade de projectiles.\n• Niveau 6 : Science du croc-en-jambe ou Science du désarmement.\n• Il n’a pas besoin d’en remplir les conditions."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.monk_bonus",
+          "op": "add",
+          "value": "if(level('class.monk') >= 6, 3, if(level('class.monk') >= 2, 2, 1))"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Une boule de feu éclate ; quand la fumée se dissipe, le moine est à trois pas de là, sans une brûlure.\n\nEn jeu\n• Contre un effet qui permet un jet de Réflexes pour moitié dégâts, ne subit aucun dégât s’il réussit.\n• Seulement en armure légère ou sans armure, et s’il n’est pas sans défense."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.monk_fast_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Déplacement accéléré",
+        "en": "Fast movement"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le moine court comme d’autres respirent, sans effort apparent, et laisse les cavaliers derrière lui.\n\nEn jeu\n• Vitesse de déplacement : +3 m au niveau 3, puis +3 m tous les 3 niveaux (+18 m au niveau 18).\n• Perdu en armure ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": "3 * floor(level('class.monk') / 3)"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_still_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Sérénité",
+        "en": "Still mind"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Une voix lui souffle d’obéir. Le moine l’écoute, sourit, et continue à respirer lentement.\n\nEn jeu\n• +2 aux jets de sauvegarde contre les sorts et effets de l’école des enchantements."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_enchantment"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_ki_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe ki",
+        "en": "Ki strike"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "L’énergie intérieure du moine passe dans ses poings, et ce qui ne craignait pas l’acier craint désormais sa main.\n\nEn jeu\n• Ses attaques à mains nues comptent comme magiques pour passer la réduction des dégâts.\n• Au niveau 10, elles comptent aussi comme loyales ; au niveau 16, comme de l’adamantium (mais pas pour la solidité des objets)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.monk_slow_fall",
+      "type": "class_power",
+      "name": {
+        "fr": "Chute ralentie",
+        "en": "Slow fall"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Une main sur le mur, un pied sur une corniche : le moine ne tombe pas, il descend vite.\n\nEn jeu\n• Si un mur est à portée de bras, il ignore une partie de la chute : 6 m au niveau 4, puis 3 m de plus tous les 2 niveaux (27 m au niveau 18), et toute la hauteur au niveau 20."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.monk_purity_of_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Pureté physique",
+        "en": "Purity of body"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le corps du moine est un temple bien tenu, et les fièvres n’y trouvent plus d’entrée.\n\nEn jeu\n• Immunisé contre toutes les maladies, sauf les maladies surnaturelles et magiques."
+      },
+      "effects": [],
+      "note": "Immunité : pas encore dans le modèle."
+    },
+    {
+      "id": "power.monk_wholeness_of_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Plénitude physique",
+        "en": "Wholeness of body"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le moine ferme les yeux, ralentit son souffle, et la plaie se referme sous ses doigts.\n\nEn jeu\n• Soigne ses propres blessures : jusqu’à 2 points de vie par niveau de moine chaque jour, répartis comme il veut.\n• Action simple."
+      },
+      "effects": [
+        {
+          "target": "wholeness_of_body.hp",
+          "op": "add",
+          "value": "2 * level('class.monk')"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_improved_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive extraordinaire",
+        "en": "Improved evasion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Même quand il ne peut pas tout éviter, il en évite la plus grande partie.\n\nEn jeu\n• Comme esquive totale, et il ne subit que la moitié des dégâts même s’il rate son jet de Réflexes."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.monk_diamond_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Corps de diamant",
+        "en": "Diamond body"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le venin du serpent coule sur lui comme de l’eau sur une pierre.\n\nEn jeu\n• Immunisé contre tous les poisons."
+      },
+      "effects": [],
+      "note": "Immunité : pas encore dans le modèle."
+    },
+    {
+      "id": "power.monk_greater_flurry",
+      "type": "class_power",
+      "name": {
+        "fr": "Déluge supérieur",
+        "en": "Greater flurry"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Au déluge s’ajoute un coup de plus, si rapide qu’il semble venir de nulle part.\n\nEn jeu\n• Lors d’un déluge de coups, une seconde attaque supplémentaire à son meilleur bonus."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.monk_abundant_step",
+      "type": "class_power",
+      "name": {
+        "fr": "Pas chassé",
+        "en": "Abundant step"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Il fait un pas, et il est ailleurs : derrière la porte, de l’autre côté du gouffre, dans le dos de l’ennemi.\n\nEn jeu\n• Une fois par jour, se téléporte comme le sort porte dimensionnelle.\n• Niveau de lanceur : la moitié de son niveau de moine."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.monk_diamond_soul",
+      "type": "class_power",
+      "name": {
+        "fr": "Âme de diamant",
+        "en": "Diamond soul"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Les sorts glissent sur son esprit comme la pluie sur un rocher poli.\n\nEn jeu\n• Résistance à la magie : 10 + niveau de moine."
+      },
+      "effects": [
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": "10 + level('class.monk')",
+          "layer": "base"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_quivering_palm",
+      "type": "class_power",
+      "name": {
+        "fr": "Paume vibratoire",
+        "en": "Quivering palm"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Une main posée sur la poitrine, presque doucement. L’ennemi ne sent rien. Pas encore.\n\nEn jeu\n• Une fois par semaine, une attaque à mains nues qui touche et inflige des dégâts installe des vibrations mortelles.\n• Dans les jours qui suivent (au plus un par niveau de moine), le moine peut y mettre fin d’une pensée : la cible réussit un jet de Vigueur (DD 10 + moitié du niveau de moine + modificateur de Sagesse) ou meurt.\n• Seulement contre une créature vivante qui peut subir des coups critiques et de niveau inférieur ou égal au sien."
+      },
+      "effects": [
+        {
+          "target": "dc.quivering_palm",
+          "op": "add",
+          "value": "10 + floor(level('class.monk') / 2) + @ability.wis.mod"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_timeless_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Éternelle jeunesse",
+        "en": "Timeless body"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le temps a fini par perdre patience avec lui.\n\nEn jeu\n• Ne subit plus les malus de l’âge et est immunisé contre le vieillissement magique.\n• Garde les malus déjà subis, gagne toujours les bonus de l’âge et meurt quand son heure vient."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.monk_tongue_of_the_sun_and_moon",
+      "type": "class_power",
+      "name": {
+        "fr": "Langue du soleil et de la lune",
+        "en": "Tongue of the sun and moon"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le monde entier finit par parler sa langue, ou plutôt, il finit par parler celle du monde.\n\nEn jeu\n• Peut parler avec toute créature vivante."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.monk_empty_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Désertion de l’âme",
+        "en": "Empty body"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le moine laisse son corps glisser hors du monde, et les épées traversent une brume.\n\nEn jeu\n• Devient éthéré comme avec le sort forme éthérée, pendant un round par niveau de moine chaque jour, répartis comme il veut.\n• Action de mouvement."
+      },
+      "effects": [
+        {
+          "target": "empty_body.rounds",
+          "op": "add",
+          "value": "level('class.monk')"
+        }
+      ]
+    },
+    {
+      "id": "power.monk_perfect_self",
+      "type": "class_power",
+      "name": {
+        "fr": "Perfection de l’être",
+        "en": "Perfect self"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "monk"
+      ],
+      "description": {
+        "fr": "Le moine a franchi la dernière porte. Il n’est plus tout à fait de ce monde, et le monde le sait.\n\nEn jeu\n• Devient un Extérieur : les sorts qui ne visent que les humanoïdes, comme charme-personne, ne l’affectent plus.\n• Réduction des dégâts 10/magie."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.magic",
+          "op": "add",
+          "value": 10
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.monk",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.monk_ac_bonus",
+        "power.monk_unarmed_strike",
+        "power.monk_flurry_of_blows",
+        "power.monk_bonus_feats"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.monk_evasion"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.monk_fast_movement",
+        "power.monk_still_mind"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.monk_ki_strike",
+        "power.monk_slow_fall"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.monk_purity_of_body"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.monk",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.monk_wholeness_of_body"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.monk",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.monk_improved_evasion"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 7,
+      "will": 7,
+      "grants": []
+    },
+    {
+      "classId": "class.monk",
+      "level": 11,
+      "bab": 8,
+      "fort": 7,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.monk_diamond_body",
+        "power.monk_greater_flurry"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 12,
+      "bab": 9,
+      "fort": 8,
+      "ref": 8,
+      "will": 8,
+      "grants": [
+        "power.monk_abundant_step"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 13,
+      "bab": 9,
+      "fort": 8,
+      "ref": 8,
+      "will": 8,
+      "grants": [
+        "power.monk_diamond_soul"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 14,
+      "bab": 10,
+      "fort": 9,
+      "ref": 9,
+      "will": 9,
+      "grants": []
+    },
+    {
+      "classId": "class.monk",
+      "level": 15,
+      "bab": 11,
+      "fort": 9,
+      "ref": 9,
+      "will": 9,
+      "grants": [
+        "power.monk_quivering_palm"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 16,
+      "bab": 12,
+      "fort": 10,
+      "ref": 10,
+      "will": 10,
+      "grants": []
+    },
+    {
+      "classId": "class.monk",
+      "level": 17,
+      "bab": 12,
+      "fort": 10,
+      "ref": 10,
+      "will": 10,
+      "grants": [
+        "power.monk_timeless_body",
+        "power.monk_tongue_of_the_sun_and_moon"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 18,
+      "bab": 13,
+      "fort": 11,
+      "ref": 11,
+      "will": 11,
+      "grants": []
+    },
+    {
+      "classId": "class.monk",
+      "level": 19,
+      "bab": 14,
+      "fort": 11,
+      "ref": 11,
+      "will": 11,
+      "grants": [
+        "power.monk_empty_body"
+      ]
+    },
+    {
+      "classId": "class.monk",
+      "level": 20,
+      "bab": 15,
+      "fort": 12,
+      "ref": 12,
+      "will": 12,
+      "grants": [
+        "power.monk_perfect_self"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.monk",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.club"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.light_crossbow"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.heavy_crossbow"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.dagger"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.handaxe"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.javelin"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.kama"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.nunchaku"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.quarterstaff"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.sai"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.shuriken"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.siangham"
+    },
+    {
+      "from": "class.monk",
+      "relation": "proficiency",
+      "to": "item.sling"
+    },
+    {
+      "from": "class.monk",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.monk",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.monk",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "power.monk_unarmed_strike",
+      "relation": "grants",
+      "to": "feat.improved_unarmed_strike"
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "entities": [
+    {
+      "id": "feat.combat_expertise",
+      "type": "feat",
+      "name": {
+        "fr": "Expertise du combat",
+        "en": "Combat Expertise"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "defense"
+      ],
+      "description": {
+        "fr": "La lame ne sert pas qu’à frapper. Le bretteur avisé recule d’un demi-pas, garde haute, et laisse l’adversaire s’épuiser contre un mur d’acier : chaque coup qu’il renonce à porter devient une parade de plus.\n\nEn jeu\n• Condition : Intelligence 13.\n• Lors d’une attaque ou d’une attaque à outrance au corps à corps, choisir une valeur de 1 à 5, sans dépasser le bonus de base à l’attaque.\n• Cette valeur est un malus aux jets d’attaque et un bonus d’esquive à la CA jusqu’au début du tour suivant.\n• Normal : combattre sur la défensive donne seulement −4 à l’attaque et +2 d’esquive à la CA."
+      },
+      "prerequisite": "@ability.int.score >= 13",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "-@toggle.combat_expertise.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.combat_expertise')",
+          "status": "draft",
+          "note": "Valeur choisie en début de tour, max 5"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "@toggle.combat_expertise.value",
+          "bonusType": "dodge",
+          "condition": "active('toggle.combat_expertise')",
+          "status": "draft",
+          "note": "Valeur choisie en début de tour, max 5"
+        }
+      ],
+      "status": "draft",
+      "note": "Interrupteur avec valeur choisie par le joueur en début de tour."
+    },
+    {
+      "id": "feat.manyshot",
+      "type": "feat",
+      "name": {
+        "fr": "Feu nourri",
+        "en": "Manyshot"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Deux flèches encochées d’un seul geste, puis trois, puis quatre : l’archer chevronné ne tire plus, il déverse. La corde chante une seule fois et la cible reçoit une volée entière.\n\nEn jeu\n• Condition : Dextérité 17, Tir à bout portant, Tir rapide, bonus de base à l’attaque +6.\n• Action simple, avec un arc : tirer deux flèches sur une seule cible à 9 m ou moins, avec un seul jet d’attaque à −4 pour les deux.\n• Bonus de base à l’attaque +11 : trois flèches à −6 ; +16 : quatre flèches à −8.\n• Chaque flèche inflige ses dégâts normaux ; réduction des dégâts et résistances s’appliquent à chacune.\n• Les dégâts de précision (attaque sournoise…) ne comptent qu’une fois ; sur un critique, une seule flèche inflige les dégâts critiques.\n• Un rôdeur de niveau 6 au style de combat à distance, en armure légère ou sans armure, en profite sans les conditions."
+      },
+      "prerequisite": "@ability.dex.score >= 17 and has('feat.point_blank_shot') and has('feat.rapid_shot') and @bab >= 6",
+      "effects": [
+        {
+          "target": "attack.ranged",
+          "op": "add",
+          "value": "-2 * @toggle.manyshot.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.manyshot')"
+        }
+      ],
+      "note": "Interrupteur : la valeur choisie est le nombre de flèches (2 à 4, selon le bonus de base à l’attaque) ; malus de −2 par flèche. Les dégâts par flèche ne sont pas multipliés sur la fiche."
+    },
+    {
+      "id": "feat.investigator",
+      "type": "feat",
+      "name": {
+        "fr": "Fin limier",
+        "en": "Investigator"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Une miette sur un rebord, une rumeur dans une taverne, un registre mal tenu : là où les autres ne voient que du bruit, le fin limier tire un fil, puis un autre, jusqu’à tenir toute la pelote.\n\nEn jeu\n• +2 aux tests de Fouille et de Renseignements."
+      },
+      "effects": [
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.deceitful",
+      "type": "feat",
+      "name": {
+        "fr": "Fourberie",
+        "en": "Deceitful"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Un sceau imité au trait près, un visage d’emprunt porté avec naturel : pour le fourbe, le mensonge est un artisanat, et il soigne ses finitions.\n\nEn jeu\n• +2 aux tests de Contrefaçon et de Déguisement."
+      },
+      "effects": [
+        {
+          "target": "skill.forgery",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.animal_affinity",
+      "type": "feat",
+      "name": {
+        "fr": "Fraternité animale",
+        "en": "Animal Affinity"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill",
+        "mounted"
+      ],
+      "description": {
+        "fr": "Les chevaux se calment sous sa main, les chiens viennent lui renifler les doigts : les bêtes reconnaissent en lui l’un des leurs, et lui obéissent sans se faire prier.\n\nEn jeu\n• +2 aux tests de Dressage et d’Équitation."
+      },
+      "effects": [
+        {
+          "target": "skill.handle_animal",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.agile",
+      "type": "feat",
+      "name": {
+        "fr": "Funambule",
+        "en": "Agile"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill",
+        "movement"
+      ],
+      "description": {
+        "fr": "Une poutre étroite au-dessus du vide, une corde qui serre les poignets : le funambule trouve son équilibre partout et se glisse hors de toute étreinte comme l’eau entre les doigts.\n\nEn jeu\n• +2 aux tests d’Équilibre et d’Évasion."
+      },
+      "effects": [
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.escape_artist",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.natural_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation animale",
+        "en": "Natural Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le loup lève le museau et hurle une incantation ; l’ours trace un signe de sa patte griffue. Le druide n’a plus besoin de sa forme humaine pour que la nature lui réponde.\n\nEn jeu\n• Condition : Sagesse 13, aptitude forme animale.\n• Sous forme animale, le personnage peut accomplir les composantes verbales et gestuelles de ses sorts.\n• Il peut utiliser les composantes matérielles et focaliseurs qu’il porte, même fondus dans sa nouvelle forme.\n• Ne permet ni de parler, ni d’utiliser des objets magiques qu’un animal ne pourrait pas manier."
+      },
+      "prerequisite": "@ability.wis.score >= 13 and has('power.druid_wild_shape')"
+    },
+    {
+      "id": "feat.snatch_arrows",
+      "type": "feat",
+      "name": {
+        "fr": "Interception de projectiles",
+        "en": "Snatch Arrows"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "unarmed",
+        "defense"
+      ],
+      "description": {
+        "fr": "La flèche file vers sa gorge… et s’arrête net, prise au vol entre deux doigts. Un instant plus tard, la javeline qui la suivait repart déjà vers son lanceur.\n\nEn jeu\n• Condition : Dextérité 15, Parade de projectiles, Science du combat à mains nues.\n• En utilisant Parade de projectiles, le personnage attrape le projectile au lieu de le dévier.\n• Une arme de jet attrapée (lance, hache de lancer…) peut être relancée aussitôt, même hors de son tour, ou gardée.\n• Il faut au moins une main libre."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and has('feat.deflect_arrows') and has('feat.improved_unarmed_strike')"
+    },
+    {
+      "id": "feat.combat_casting",
+      "type": "feat",
+      "name": {
+        "fr": "Magie de guerre",
+        "en": "Combat Casting"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Les lames sifflent autour de lui, une poigne de fer lui serre le bras : peu importe. Le mage de bataille a appris à incanter dans le fracas, et sa voix ne tremble pas.\n\nEn jeu\n• +4 aux tests de Concentration pour lancer un sort sur la défensive, ou en étant agrippé ou immobilisé."
+      },
+      "effects": [
+        {
+          "target": "skill.concentration",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.casting_defensively_or_grappled"
+        }
+      ]
+    },
+    {
+      "id": "feat.spell_mastery",
+      "type": "feat",
+      "name": {
+        "fr": "Maîtrise des sorts",
+        "en": "Spell Mastery"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Certaines formules, le magicien les a recopiées tant de fois qu’elles se sont gravées en lui. Grimoire perdu, brûlé ou volé : ces sorts-là, il les prépare encore de mémoire.\n\nEn jeu\n• Condition : magicien de niveau 1.\n• Chaque fois que ce don est pris, choisir un nombre de sorts de magicien connus égal au modificateur d’Intelligence.\n• Ces sorts se préparent sans grimoire.\n• Normal : un magicien a besoin de son grimoire pour préparer ses sorts, sauf lecture de la magie.\n• Peut être pris plusieurs fois."
+      },
+      "prerequisite": "level('class.wizard') >= 1",
+      "note": "Sorts maîtrisés : pas encore dans le modèle."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.manyshot",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.manyshot",
+      "relation": "requires",
+      "to": "feat.rapid_shot"
+    },
+    {
+      "from": "feat.snatch_arrows",
+      "relation": "requires",
+      "to": "feat.deflect_arrows"
+    },
+    {
+      "from": "feat.snatch_arrows",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    }
+  ]
+}

@@ -1,0 +1,631 @@
+{
+  "entities": [
+    {
+      "id": "class.barbarian",
+      "type": "class",
+      "name": {
+        "fr": "Barbare",
+        "en": "Barbarian"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial"
+      ],
+      "description": {
+        "fr": "Certains combattent avec méthode. Le barbare, lui, combat avec tout ce qu’il a. Venu des steppes, des glaces ou des forêts que les cartes laissent en blanc, il ne connaît ni les manuels d’escrime ni les bonnes manières, mais il sait une chose que les chevaliers oublient : la colère est une ressource. Quand la rage le prend, il devient plus fort, plus dur, plus difficile à abattre, et ceux qui se tenaient entre lui et sa cible découvrent qu’ils auraient dû choisir un autre endroit.\n\nEn jeu\n• Dé de vie : d12. Points de compétence : 4 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tout sauf loyal. Un barbare devenu loyal perd sa rage et ne progresse plus dans la classe ; il garde ses autres aptitudes.\n• Formé aux armes courantes et de guerre, aux boucliers (sauf le pavois), aux armures légères et intermédiaires.\n• Compétences de classe : Artisanat, Dressage, Équitation, Escalade, Intimidation, Natation, Perception auditive, Saut, Survie.\n• Aptitudes : déplacement accéléré, illettrisme et rage au niveau 1 ; esquive instinctive (2) ; sens des pièges (3) ; esquive instinctive supérieure (5) ; réduction des dégâts (7) ; rage de grand berserker (11) ; volonté indomptable (14) ; rage sans fatigue (17) ; rage de maître berserker (20)."
+      },
+      "hitDie": 12,
+      "skillPoints": 4,
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.barbarian') - 20) / 4))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.barbarian_fast_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Déplacement accéléré",
+        "en": "Fast movement"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Le barbare couvre le terrain plus vite que quiconque : il a appris à courir là où les autres marchent.\n\nEn jeu\n• +3 m à la vitesse de déplacement au sol, sauf en armure lourde ou avec une charge lourde."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 3
+        }
+      ],
+      "note": "Condition armure lourde ou charge lourde : pas encore dans le modèle, le bonus s’applique toujours."
+    },
+    {
+      "id": "power.barbarian_illiteracy",
+      "type": "class_power",
+      "name": {
+        "fr": "Illettrisme",
+        "en": "Illiteracy"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Les livres, c’est pour les autres. Le barbare commence sa carrière sans savoir lire ni écrire.\n\nEn jeu\n• Ne sait ni lire ni écrire au départ.\n• 2 points de compétence suffisent pour apprendre à lire et écrire toutes les langues qu’il parle.\n• Un niveau dans une autre classe lui apprend aussitôt à lire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.barbarian_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage de berserker",
+        "en": "Rage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Un grondement, puis plus rien de civilisé. La rage transforme le barbare en tempête : plus fort, plus endurant, insensible à la peur, et parfaitement indifférent à sa propre défense.\n\nEn jeu\n• Aucune action, pendant son tour ; une seule fois par rencontre.\n• +4 en Force, +4 en Constitution, +2 de moral aux jets de Volonté, −2 à la CA.\n• Durée : 3 rounds + modificateur de Constitution (celui de la rage). Il peut l’arrêter plus tôt.\n• Pendant la rage : pas de compétences de Dextérité, d’Intelligence ou de Charisme (sauf Équilibre, Équitation, Évasion et Intimidation), pas de Concentration, pas de sorts, pas d’objets à mot de commande, à potentiel magique ou à fin d’incantation, pas d’Expertise du combat ni de dons de création ou de métamagie.\n• Ensuite : fatigué jusqu’à la fin de la rencontre (−2 en Force et en Dextérité, ni charge ni course).\n• Utilisations : 1 par jour au niveau 1, une de plus tous les 4 niveaux (6 au niveau 20)."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.barbarian_rage') and not has('power.barbarian_greater_rage')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.barbarian_rage') and not has('power.barbarian_greater_rage')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.barbarian_rage') and not has('power.barbarian_greater_rage')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.barbarian_rage')"
+        },
+        {
+          "target": "rage.duration",
+          "op": "set",
+          "value": "3 + @ability.con.mod",
+          "condition": "active('toggle.barbarian_rage')"
+        }
+      ],
+      "usesPerDay": "1 + floor(level('class.barbarian') / 4)",
+      "note": "Fatigue après la rage : l’état fatigué n’est pas encore dans le modèle."
+    },
+    {
+      "id": "power.barbarian_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Le danger, il le sent avant de le voir. Même surpris, le barbare ne baisse jamais complètement sa garde.\n\nEn jeu\n• Garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible (pas s’il est immobilisé).\n• S’il a déjà cette aptitude par une autre classe, il obtient l’esquive instinctive supérieure à la place."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.barbarian_trap_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens des pièges",
+        "en": "Trap sense"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Un fil trop tendu, une dalle trop propre : le barbare a l’instinct de ce qui va mal tourner.\n\nEn jeu\n• Contre les pièges : +1 aux jets de Réflexes et +1 d’esquive à la CA au niveau 3, puis +1 tous les 3 niveaux (+6 au niveau 18).\n• Se cumule avec le sens des pièges des autres classes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "floor(level('class.barbarian') / 3)",
+          "situation": "situation.vs_traps"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor(level('class.barbarian') / 3)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_traps"
+        }
+      ]
+    },
+    {
+      "id": "power.barbarian_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Encercler un barbare ne sert à rien : il fait face à tout le monde à la fois.\n\nEn jeu\n• Ne peut plus être pris en tenaille.\n• Un roublard ne peut lui porter d’attaque sournoise en tenaille qu’avec au moins 4 niveaux de roublard de plus que ses niveaux de barbare.\n• Les niveaux des classes qui donnent l’esquive instinctive s’additionnent pour ce calcul."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.barbarian_damage_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction des dégâts",
+        "en": "Damage reduction"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Cicatrices sur cicatrices : à force d’encaisser, le barbare ne sent plus les coups ordinaires.\n\nEn jeu\n• Réduction des dégâts 1/– au niveau 7, puis +1 aux niveaux 10, 13, 16 et 19 (5/– au niveau 19).\n• S’applique aux armes et aux attaques naturelles ; peut ramener les dégâts à 0, pas en dessous."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": "max(0, floor((level('class.barbarian') - 4) / 3))"
+        }
+      ]
+    },
+    {
+      "id": "power.barbarian_greater_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage de grand berserker",
+        "en": "Greater rage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "La rage monte d’un cran. Ce n’est plus une colère, c’est une force de la nature.\n\nEn jeu\n• Pendant la rage : +6 en Force et en Constitution, +3 de moral aux jets de Volonté (au lieu de +4, +4 et +2). La CA reste à −2."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.barbarian_rage') and not has('power.barbarian_mighty_rage')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.barbarian_rage') and not has('power.barbarian_mighty_rage')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 3,
+          "bonusType": "morale",
+          "condition": "active('toggle.barbarian_rage') and not has('power.barbarian_mighty_rage')"
+        }
+      ]
+    },
+    {
+      "id": "power.barbarian_indomitable_will",
+      "type": "class_power",
+      "name": {
+        "fr": "Volonté indomptable",
+        "en": "Indomitable will"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "En pleine rage, on ne lui dicte rien. Charmes et ordres glissent sur lui sans trouver prise.\n\nEn jeu\n• Pendant la rage : +4 aux jets de Volonté contre les sorts d’enchantement. Se cumule avec le bonus de moral de la rage."
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.barbarian_rage')",
+          "situation": "situation.vs_enchantment"
+        }
+      ]
+    },
+    {
+      "id": "power.barbarian_tireless_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage sans fatigue",
+        "en": "Tireless rage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "La tempête passe, le barbare reste debout. Plus d’épuisement après la rage.\n\nEn jeu\n• N’est plus fatigué à la fin de sa rage."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.barbarian_mighty_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage de maître berserker",
+        "en": "Mighty rage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "barbarian"
+      ],
+      "description": {
+        "fr": "Le sommet. Ceux qui ont vu un maître berserker enragé en parlent encore à voix basse.\n\nEn jeu\n• Pendant la rage : +8 en Force et en Constitution, +4 de moral aux jets de Volonté. La CA reste à −2."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 8,
+          "condition": "active('toggle.barbarian_rage')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 8,
+          "condition": "active('toggle.barbarian_rage')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 4,
+          "bonusType": "morale",
+          "condition": "active('toggle.barbarian_rage')"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.barbarian",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.barbarian_fast_movement",
+        "power.barbarian_illiteracy",
+        "power.barbarian_rage"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.barbarian_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.barbarian_trap_sense"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.barbarian_improved_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.barbarian_damage_reduction"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.barbarian_greater_rage"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.barbarian_indomitable_will"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.barbarian_tireless_rage"
+      ]
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.barbarian_mighty_rage"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.barbarian",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

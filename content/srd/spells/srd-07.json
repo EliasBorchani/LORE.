@@ -1,0 +1,664 @@
+{
+  "entities": [
+    {
+      "id": "spell.contagion",
+      "type": "spell",
+      "name": {
+        "fr": "Contagion",
+        "en": "Contagion"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une main frôle la peau, et la victime sent déjà la fièvre lui brûler les veines. Le mal choisi par le lanceur se déclare dans l’instant.\n\nEn jeu\n• Attaque de contact au corps à corps ; le lanceur choisit la maladie, dont les effets commencent aussitôt (Vigueur, annule ; DD du sort).\n• Maladies : bouille-crâne (DD 12, 1d4 Int), croupissure (DD 16, 1d4 For, risque de cécité), fièvre des marais (DD 12, 1d3 Dex et 1d3 Con), fièvre gloussante (DD 16, 1d6 Sag), mal rouge (DD 15, 1d6 For), mort vaseuse (DD 14, 1d4 Con), tremblote (DD 13, 1d8 Dex).\n• Les jets de sauvegarde suivants contre la maladie utilisent le DD de la maladie, pas celui du sort.\n• Croupissure : chaque perte de 2 points de Force ou plus impose un nouveau jet (DD 16), sinon cécité définitive."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.lesser_planar_binding",
+      "type": "spell",
+      "name": {
+        "fr": "Contrat",
+        "en": "Planar Binding, Lesser"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un nom prononcé dans le bon cercle, et une créature d’un autre plan se retrouve prisonnière, prête à négocier sa liberté.\n\nEn jeu\n• Appelle un élémentaire ou un Extérieur de 6 DV au plus, piégé dans un cercle magique tourné vers l’intérieur (à préparer avant).\n• Jet de Volonté pour ignorer l’appel ; s’il échoue, la créature arrive dans le piège sans test de résistance à la magie.\n• Évasion, une tentative par jour pour chaque moyen : résistance à la magie, déplacement dimensionnel, ou test de Charisme DD 15 + ½ niveau de lanceur + modificateur de Charisme du lanceur. Libre, elle fuit ou attaque.\n• Une ancre dimensionnelle sur le cercle bloque la fuite par déplacement dimensionnel ; un diagramme d’appel renforce le piège (voir cercle magique contre le Mal).\n• Service : test de Charisme opposé ; le lanceur gagne de +0 à +6 selon la récompense et la nature du service. Durée du service : 1 jour par niveau au plus (ou une tâche précise). Un refus permet de réessayer 24 heures plus tard. Sur un 1 naturel au test du lanceur, la créature se libère.\n• Une tâche absurde ou contraire à sa nature est refusée d’office. Le sort prend le registre (Bien, Mal, eau…) de la créature appelée."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 élémentaire ou Extérieur de 6 DV au plus",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "non et oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.planar_binding",
+      "type": "spell",
+      "name": {
+        "fr": "Contrat intermédiaire",
+        "en": "Planar Binding"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le même pacte risqué, en plus grand : plusieurs êtres d’outre-plan enfermés à la fois, chacun à convaincre.\n\nEn jeu\n• Appelle jusqu’à 3 élémentaires ou Extérieurs du même type, 12 DV au total, à 9 m au plus les uns des autres ; chacun fait son jet et tente de s’évader séparément.\n• Jet de Volonté pour ignorer l’appel ; s’il échoue, la créature arrive dans le piège sans test de résistance à la magie.\n• Évasion, une tentative par jour pour chaque moyen : résistance à la magie, déplacement dimensionnel, ou test de Charisme DD 15 + ½ niveau de lanceur + modificateur de Charisme du lanceur. Libre, elle fuit ou attaque.\n• Une ancre dimensionnelle sur le cercle bloque la fuite par déplacement dimensionnel ; un diagramme d’appel renforce le piège (voir cercle magique contre le Mal).\n• Service : test de Charisme opposé ; le lanceur gagne de +0 à +6 selon la récompense et la nature du service. Durée du service : 1 jour par niveau au plus (ou une tâche précise). Un refus permet de réessayer 24 heures plus tard. Sur un 1 naturel au test du lanceur, la créature se libère.\n• Une tâche absurde ou contraire à sa nature est refusée d’office. Le sort prend le registre (Bien, Mal, eau…) de la créature appelée."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 3 élémentaires ou Extérieurs (12 DV au total), à 9 m au plus les uns des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "non et oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_planar_binding",
+      "type": "spell",
+      "name": {
+        "fr": "Contrat suprême",
+        "en": "Planar Binding, Greater"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des puissances d’un autre plan tirées hors de chez elles et retenues de force. Le marché qui suit peut changer le cours d’une campagne.\n\nEn jeu\n• Appelle jusqu’à 3 élémentaires ou Extérieurs du même type, 18 DV au total, à 9 m au plus les uns des autres ; chacun fait son jet et tente de s’évader séparément.\n• Jet de Volonté pour ignorer l’appel ; s’il échoue, la créature arrive dans le piège sans test de résistance à la magie.\n• Évasion, une tentative par jour pour chaque moyen : résistance à la magie, déplacement dimensionnel, ou test de Charisme DD 15 + ½ niveau de lanceur + modificateur de Charisme du lanceur. Libre, elle fuit ou attaque.\n• Une ancre dimensionnelle sur le cercle bloque la fuite par déplacement dimensionnel ; un diagramme d’appel renforce le piège (voir cercle magique contre le Mal).\n• Service : test de Charisme opposé ; le lanceur gagne de +0 à +6 selon la récompense et la nature du service. Durée du service : 1 jour par niveau au plus (ou une tâche précise). Un refus permet de réessayer 24 heures plus tard. Sur un 1 naturel au test du lanceur, la créature se libère.\n• Une tâche absurde ou contraire à sa nature est refusée d’office. Le sort prend le registre (Bien, Mal, eau…) de la créature appelée."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 3 élémentaires ou Extérieurs (18 DV au total), à 9 m au plus les uns des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "non et oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.control_water",
+      "type": "spell",
+      "name": {
+        "fr": "Contrôle de l'eau",
+        "en": "Control Water"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lac recule comme une marée pressée, ou monte en muraille liquide. L’eau obéit, au moins pour un temps.\n\nEn jeu\n• Volume : 3 m/niveau × 3 m/niveau × 60 cm/niveau ; on peut doubler une dimension horizontale en divisant l’autre par deux.\n• Abaissement des eaux : le niveau baisse de 60 cm par niveau de lanceur (jamais sous 2–3 cm). Sur une grande étendue, crée un tourbillon qui aspire et peut couler les bateaux.\n• Contre un élémentaire de l’Eau ou une créature faite d’eau, l’abaissement agit comme lenteur (Volonté, annule).\n• Élévation des eaux : le niveau monte de 60 cm par niveau ; les bateaux glissent le long de la bosse d’eau, risque d’inondation près des rives.\n• Dure 10 minutes par niveau (100 rounds par niveau)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "eau"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "eau dans un volume de 3 m/niveau × 3 m/niveau × 60 cm/niveau (F)",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "100 * @spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.control_undead",
+      "type": "spell",
+      "name": {
+        "fr": "Contrôle des morts-vivants",
+        "en": "Control Undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Les morts relèvent la tête et attendent les ordres. Pour quelques minutes, la horde change de maître.\n\nEn jeu\n• Contrôle jusqu’à 2 DV de morts-vivants par niveau de lanceur, à 9 m au plus les uns des autres (Volonté, annule).\n• Ordres oraux, sans télépathie, compris dans toute langue. Si le lanceur ne peut pas parler (silence…), les morts-vivants ne l’attaquent pas pour autant.\n• Dure 1 minute par niveau (10 rounds par niveau). Ensuite ils reprennent leur comportement ; les intelligents s’en souviennent."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 2 DV de morts-vivants/niveau, à 9 m au plus les uns des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "10 * @spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.command_undead",
+      "type": "spell",
+      "name": {
+        "fr": "Contrôle mineur des morts-vivants",
+        "en": "Command Undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un squelette qui baisse son arme, une goule soudain conciliante. Un seul mort-vivant, mais pour des jours entiers.\n\nEn jeu\n• Un mort-vivant intelligent devient amical et n’attaque pas le lanceur pendant le sort (Volonté, annule) ; pour lui faire faire ce qu’il ne veut pas, test de Charisme opposé (un seul essai). Il refuse les ordres suicidaires.\n• Un mort-vivant sans intelligence n’a pas de jet : il suit des ordres simples (viens, va, combats, reste), même nuisibles pour lui.\n• Il doit comprendre le lanceur (pas de télépathie).\n• Toute menace du lanceur ou de ses alliés contre lui met fin au sort.\n• Dure 1 jour par niveau."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 mort-vivant",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "14400 * @spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.control_plants",
+      "type": "spell",
+      "name": {
+        "fr": "Contrôle des plantes",
+        "en": "Control Plants"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les ronces se figent, le sylvanien écoute. Le monde végétal prend ses ordres d’une autre voix.\n\nEn jeu\n• Contrôle jusqu’à 2 DV de créatures végétales par niveau de lanceur, à 9 m au plus les unes des autres (Volonté, annule ; pas de résistance à la magie).\n• Ordres oraux, compris dans toute langue. Si le lanceur ne peut pas parler (silence…), les plantes ne l’attaquent pas pour autant.\n• Les ordres suicidaires ou destructeurs pour elles sont ignorés.\n• Dure 1 minute par niveau (10 rounds par niveau)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 2 DV de créatures végétales/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "10 * @spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.control_winds",
+      "type": "spell",
+      "name": {
+        "fr": "Contrôle des vents",
+        "en": "Control Winds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lanceur lève la main, et la brise devient tempête, ou la tempête retombe en souffle. Le ciel tourne autour de lui.\n\nEn jeu\n• Zone : cylindre de 12 m de rayon par niveau et 12 m de haut, centré sur un point à portée ; on peut la réduire par tranches de 3 m.\n• Change la force du vent d’un cran (léger, modéré, fort, violent, tempête, ouragan, tornade) tous les 3 niveaux de lanceur, vers le haut ou vers le bas.\n• Direction ou forme au choix : vers l’extérieur, vers le centre (puis vers le haut), en tourbillon, ou en rafale dans un seul sens.\n• Option : un œil calme de 12 m de rayon au centre.\n• Les effets du vent sur les créatures suivent la table des vents (Vigueur pour certains effets).\n• Dure 10 minutes par niveau (100 rounds par niveau)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "air"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "12 m/niveau",
+        "area": "cylindre de 12 m/niveau de rayon et 12 m de haut",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Vigueur, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "100 * @spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.control_weather",
+      "type": "spell",
+      "name": {
+        "fr": "Contrôle du climat",
+        "en": "Control Weather"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les nuages s’amassent ou se dispersent sur des kilomètres à la ronde. La saison reste la même, mais le temps qu’il fait n’appartient plus qu’au lanceur.\n\nEn jeu\n• Incantation de 10 minutes, puis 10 minutes de plus avant que le temps choisi s’installe.\n• Zone : 3 km de rayon autour du lanceur. Durée : 4d12 heures.\n• Le temps doit convenir à la saison et au climat ; le lanceur fixe la tendance (vent, pluie, neige…), pas le détail (où tombe la foudre, trajet d’une tornade).\n• Changer le temps choisi : une action simple, effet 10 minutes plus tard. Peut aussi dissiper un climat, naturel ou non.\n• Deux conditions incompatibles (brouillard épais et grand vent) ne peuvent pas coexister.\n• Lancé par un druide : durée doublée et rayon de 4,5 km."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "10 minutes (voir description)",
+        "range": "3 km",
+        "area": "cercle de 3 km de rayon centré sur le jeteur de sorts (voir description)",
+        "duration": "4d12 heures (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.summon_natures_ally_i",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 1",
+        "en": "Summon Nature's Ally I"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un cri dans la nature, et une bête sauvage surgit à côté du lanceur, prête à défendre son nouvel allié.\n\nEn jeu\n• Convoque 1 créature de la liste de niveau 1 (animaux et créatures naturelles). Elle apparaît où le lanceur veut et agit tout de suite, à son tour.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 créature convoquée",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_ii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 2",
+        "en": "Summon Nature's Ally II"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La forêt répond à l’appel : un fauve, ou une petite meute, accourt pour se battre aux côtés du lanceur.\n\nEn jeu\n• Convoque 1 créature de niveau 2, ou 1d3 créatures identiques de niveau 1, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_iii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 3",
+        "en": "Summon Nature's Ally III"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Crocs, griffes et ailes : la nature envoie ses champions, seul ou en groupe.\n\nEn jeu\n• Convoque 1 créature de niveau 3, ou 1d3 créatures identiques de niveau 2, ou 1d4+1 créatures identiques de niveau inférieur, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_iv",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 4",
+        "en": "Summon Nature's Ally IV"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des bêtes géantes et des élémentaires sortent des fourrés ou des flots pour rejoindre la mêlée.\n\nEn jeu\n• Convoque 1 créature de niveau 4, ou 1d3 créatures identiques de niveau 3, ou 1d4+1 créatures identiques de niveau inférieur, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_v",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 5",
+        "en": "Summon Nature's Ally V"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le monde sauvage envoie des créatures redoutables, capables de renverser un combat à elles seules.\n\nEn jeu\n• Convoque 1 créature de niveau 5, ou 1d3 créatures identiques de niveau 4, ou 1d4+1 créatures identiques de niveau inférieur, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_vi",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 6",
+        "en": "Summon Nature's Ally VI"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des géants de la nature répondent à l’appel, assez forts pour faire reculer une armée.\n\nEn jeu\n• Convoque 1 créature de niveau 6, ou 1d3 créatures identiques de niveau 5, ou 1d4+1 créatures identiques de niveau inférieur, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_vii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 7",
+        "en": "Summon Nature's Ally VII"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le sol tremble sous les pas de ce qui arrive : la nature déchaîne ses plus grandes bêtes.\n\nEn jeu\n• Convoque 1 créature de niveau 7, ou 1d3 créatures identiques de niveau 6, ou 1d4+1 créatures identiques de niveau inférieur, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_viii",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 8",
+        "en": "Summon Nature's Ally VIII"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Les fauves antiques et les grands élémentaires obéissent à la voix du lanceur, le temps d’une bataille.\n\nEn jeu\n• Convoque 1 créature de niveau 8, ou 1d3 créatures identiques de niveau 7, ou 1d4+1 créatures identiques de niveau inférieur, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_natures_ally_ix",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d'alliés naturels 9",
+        "en": "Summon Nature's Ally IX"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le sommet de l’appel sauvage : les créatures les plus puissantes du monde naturel accourent pour combattre.\n\nEn jeu\n• Convoque 1 créature de niveau 9, ou 1d3 créatures identiques de niveau 8, ou 1d4+1 créatures identiques de niveau inférieur, à 9 m au plus les unes des autres. Elles agissent tout de suite, au tour du lanceur.\n• Elles attaquent les ennemis du lanceur ; s’il peut leur parler, il choisit leurs cibles ou leur donne d’autres ordres.\n• Une créature convoquée ne peut pas convoquer, ni se téléporter ou changer de plan. Elle ne peut pas apparaître dans un milieu qui ne lui convient pas (les créatures aquatiques demandent de l’eau).\n• Le sort prend le registre de la créature appelée (Bien, Mal, Loi, Chaos, air, eau, feu, terre).\n• Dure 1 round par niveau de lanceur (T)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 ou plusieurs créatures convoquées, à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_instrument",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation d’instrument",
+        "en": "Summon Instrument"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le luth oublié à l’auberge ? Un claquement de doigts et il est là, accordé, prêt à jouer.\n\nEn jeu\n• Fait apparaître un instrument de musique portable au choix, dans les mains du lanceur ou à ses pieds.\n• Un seul instrument par sort, ordinaire pour son type ; seul le lanceur peut en jouer.\n• Impossible pour un instrument qu’on ne peut pas tenir à deux mains (harpe, orgue…).\n• Disparaît à la fin du sort (1 minute par niveau)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "0 m",
+        "effect": "1 instrument portable",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non",
+        "subschool": "convocation"
+      },
+      "effects": []
+    }
+  ]
+}

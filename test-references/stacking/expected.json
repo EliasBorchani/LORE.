@@ -1,0 +1,19 @@
+{
+  "character": "char.stacking",
+  "atLevel": 1,
+  "note": "Stacking rules: highest of a non-stacking type, stacking types and penalties sum, same source counts once.",
+  "values": [
+    {
+      "stat": "save.fort",
+      "value": 9,
+      "status": "verified",
+      "how": "table 2 + enhancement 6 (4 does not stack) + untyped 2 + 3 + penalties -2 -3 + luck 1 (Bless on two toggles is one source)"
+    },
+    {
+      "stat": "ac.total",
+      "value": 13,
+      "status": "verified",
+      "how": "10 + dodge 2 (Bless) + dodge 1: dodge stacks"
+    }
+  ]
+}

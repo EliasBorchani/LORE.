@@ -1,0 +1,653 @@
+{
+  "entities": [
+    {
+      "id": "class.wizard",
+      "type": "class",
+      "name": {
+        "fr": "Magicien",
+        "en": "Wizard"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "arcane",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Le magicien a appris la magie comme on apprend une langue morte : par des nuits de lecture, des pages recopiées à la chandelle et des sourcils roussis. Rien ne lui a été donné. Tout ce qu’il sait tient dans son grimoire, qu’il protège mieux que sa vie, car sans lui il n’est qu’un érudit fatigué. Mais avec lui, et une nuit de sommeil, il peut préparer exactement le sort qu’il faut, contre exactement l’ennemi qu’il attend.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé au bâton, à la dague, au gourdin, à l’arbalète légère et à l’arbalète lourde ; ni armure ni bouclier (ils font échouer les sorts à composante gestuelle).\n• Sorts profanes préparés depuis son grimoire, basés sur l’Intelligence, du niveau 0 au niveau 9.\n• Aptitudes : appel de familier et écriture de parchemins (1) ; un don supplémentaire aux niveaux 5, 10, 15 et 20."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "int",
+        "kind": "arcane",
+        "mode": "prepared"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.wizard') - 20) / 5))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.wizard_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de magicien",
+        "en": "Wizard spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wizard"
+      ],
+      "description": {
+        "fr": "Chaque matin, une heure d’étude : le magicien grave dans sa mémoire les formules du jour, prêtes à être libérées d’un mot et d’un geste. Une fois lancée, la formule s’efface jusqu’au lendemain.\n\nEn jeu\n• Sorts profanes de la liste des ensorceleurs et magiciens, préparés chaque jour depuis son grimoire.\n• Caractéristique : Intelligence. Il faut au moins 10 + niveau du sort en Intelligence pour le préparer ou le lancer. DD : 10 + niveau du sort + modificateur d’Intelligence.\n• Sorts par jour selon le niveau de magicien ; sorts en bonus grâce à une Intelligence élevée.\n• Préparer demande 8 heures de repos puis 1 heure d’étude ; il peut laisser des emplacements libres et les remplir plus tard (15 minutes ou plus).\n• Grimoire : au niveau 1, tous les tours de magie (sauf ceux des écoles interdites) et 3 sorts du 1er niveau, plus un par point de modificateur d’Intelligence ; 2 nouveaux sorts à chaque niveau ; il peut en recopier d’autres.\n• Spécialisation (facultative) : un sort de plus par niveau, de son école ; au moins deux écoles interdites (une seule pour la divination), qu’il ne peut ni apprendre ni lancer."
+      },
+      "effects": [],
+      "note": "Spécialisation et écoles interdites : pas encore dans le modèle."
+    },
+    {
+      "id": "power.wizard_summon_familiar",
+      "type": "class_power",
+      "name": {
+        "fr": "Appel de familier",
+        "en": "Summon familiar"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wizard"
+      ],
+      "description": {
+        "fr": "Un chat aux yeux trop intelligents, un corbeau qui répond quand on lui parle : le familier est un petit animal lié à l’âme du lanceur de sorts. Il l’espionne pour lui, porte ses sorts et partage ses pensées.\n\nEn jeu\n• Rituel de 24 heures et 100 po : chat, chauve-souris, corbeau, crapaud, faucon, furet, hibou, lézard, rat, serpent (Très Petit) ou belette.\n• Le maître gagne un bonus selon l’animal (par exemple +3 PV avec le crapaud, +2 en Discrétion avec le chat) et la vigilance quand le familier est à portée de bras.\n• Le familier gagne en armure naturelle et en Intelligence avec le niveau du maître, et des pouvoirs : lien télépathique, transfert d’effet magique, esquive extraordinaire (1) ; conduit pour sorts de contact (3) ; parler avec le maître (5) ; parler aux animaux de son espèce (7) ; résistance à la magie (11) ; scrutation (13).\n• Les niveaux de magicien et d’ensorceleur s’additionnent pour le familier.\n• S’il meurt, le maître rate un jet de Vigueur DD 15 ou perd 200 PX par niveau ; un nouveau familier demande un an et un jour."
+      },
+      "effects": [
+        {
+          "target": "familiar.master_level",
+          "op": "add",
+          "value": "level('class.wizard')"
+        }
+      ]
+    },
+    {
+      "id": "power.wizard_scribe_scroll",
+      "type": "class_power",
+      "name": {
+        "fr": "Écriture de parchemins",
+        "en": "Scribe Scroll"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wizard"
+      ],
+      "description": {
+        "fr": "Avant même son premier sort, l’apprenti apprend à coucher la magie sur le papier, pour la libérer plus tard d’une simple lecture.\n\nEn jeu\n• Don supplémentaire : Écriture de parchemins, sans en remplir les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.wizard_bonus_feats",
+      "type": "class_power",
+      "name": {
+        "fr": "Dons supplémentaires",
+        "en": "Bonus feats"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wizard"
+      ],
+      "description": {
+        "fr": "Les années d’étude finissent par payer en tours de main : le magicien perfectionne sa façon de façonner les sorts.\n\nEn jeu\n• Un don supplémentaire aux niveaux 5, 10, 15 et 20 : un don de métamagie, de création d’objets ou Maîtrise des sorts.\n• Ces dons s’ajoutent aux dons gagnés par le niveau ; les conditions restent nécessaires."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.wizard_bonus",
+          "op": "add",
+          "value": "floor(level('class.wizard') / 5)"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.wizard",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.wizard_spells",
+        "power.wizard_summon_familiar",
+        "power.wizard_scribe_scroll"
+      ],
+      "spellsPerDay": [
+        3,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.wizard_bonus_feats"
+      ],
+      "spellsPerDay": [
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 11,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 12,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 13,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 14,
+      "bab": 7,
+      "fort": 4,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 15,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 16,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 17,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 18,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 19,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3
+      ]
+    },
+    {
+      "classId": "class.wizard",
+      "level": 20,
+      "bab": 10,
+      "fort": 6,
+      "ref": 6,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.wizard",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "proficiency",
+      "to": "item.club"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "proficiency",
+      "to": "item.dagger"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "proficiency",
+      "to": "item.heavy_crossbow"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "proficiency",
+      "to": "item.light_crossbow"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "proficiency",
+      "to": "item.quarterstaff"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.wizard",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.wizard_scribe_scroll",
+      "relation": "grants",
+      "to": "feat.scribe_scroll"
+    }
+  ]
+}

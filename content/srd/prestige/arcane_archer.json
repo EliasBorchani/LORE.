@@ -1,0 +1,319 @@
+{
+  "entities": [
+    {
+      "id": "class.arcane_archer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Archer-mage",
+        "en": "Arcane archer"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Dans les forêts elfiques, on raconte qu’une flèche bien tirée est une prière, et qu’une flèche tirée par un archer-mage est une sentence. Mi-guerrier, mi-sorcier, il a passé des années à faire entrer la magie dans le bois, la plume et la pointe : ses traits brillent d’une lueur froide, emportent des sorts jusqu’au bout de leur course, contournent les murs ou les traversent. Quand il bande son arc, mieux vaut ne pas être celui qu’il a déjà vu.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : elfe ou demi-elfe ; bonus de base à l’attaque +6 ; dons Tir à bout portant, Tir de précision et Arme de prédilection (arc long ou arc court) ; capable de lancer des sorts profanes du 1er niveau.\n• Formé aux armes courantes et de guerre, aux boucliers (sauf le pavois), aux armures légères et intermédiaires.\n• Compétences de classe : Artisanat, Déplacement silencieux, Détection, Discrétion, Équitation, Maîtrise des cordes, Perception auditive, Survie.\n• Pas de progression de lanceur de sorts.\n• Aptitudes : flèche magique +1 (1), +2 (3), +3 (5), +4 (7), +5 (9) ; flèche enchantée (2) ; flèche à tête chercheuse (4) ; flèche de phase (6) ; pluie de flèches (8) ; flèche de mort (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle). Race (elfe ou demi-elfe) et capacité à lancer des sorts profanes du 1er niveau : texte seulement."
+    },
+    {
+      "id": "power.arcane_archer_enhance_arrows",
+      "type": "class_power",
+      "name": {
+        "fr": "Flèche magique",
+        "en": "Enhance arrows"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_archer"
+      ],
+      "description": {
+        "fr": "Entre ses doigts, la plus banale des flèches s’éveille. Aucun forgeron, aucun rituel coûteux : c’est sa propre magie qui court le long du fût, et elle s’éteint dès qu’un autre archer la décoche.\n\nEn jeu\n• Toute flèche normale qu’il tire devient magique : bonus d’altération de +1 au niveau 1, puis +1 à chaque niveau impair (+5 au niveau 9).\n• Gratuit (ni or ni XP), mais réservé à ses propres tirs : une de ses flèches tirée par un autre redevient ordinaire.\n• À activer quand il tire à l’arc : le bonus s’ajoute à l’attaque et aux dégâts de l’arme tenue."
+      },
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": "min(5, ceil(level('class.arcane_archer') / 2))",
+          "bonusType": "enhancement",
+          "scope": "item",
+          "condition": "active('toggle.arcane_archer_enhance_arrows')"
+        },
+        {
+          "target": "weapon.damage",
+          "op": "add",
+          "value": "min(5, ceil(level('class.arcane_archer') / 2))",
+          "bonusType": "enhancement",
+          "scope": "item",
+          "condition": "active('toggle.arcane_archer_enhance_arrows')"
+        }
+      ],
+      "note": "Le modèle ne gère qu’une arme tenue et ne distingue pas les flèches : le bonus passe par un toggle à activer quand l’arme est un arc."
+    },
+    {
+      "id": "power.arcane_archer_imbue_arrow",
+      "type": "class_power",
+      "name": {
+        "fr": "Flèche enchantée",
+        "en": "Imbue arrow"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_archer"
+      ],
+      "description": {
+        "fr": "Le sort ne part plus de ses mains mais de la pointe de sa flèche : là où elle frappe, la magie éclate.\n\nEn jeu\n• Pouvoir magique. Place un sort de zone sur une flèche : la zone se centre sur le point d’impact, à la portée de l’arc.\n• Sort + tir : une seule action simple. Flèche non tirée ce round-ci = sort gaspillé.\n• Un sort normalement centré sur le lanceur se centre alors sur l’impact."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.arcane_archer_seeker_arrow",
+      "type": "class_power",
+      "name": {
+        "fr": "Flèche à tête chercheuse",
+        "en": "Seeker arrow"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_archer"
+      ],
+      "description": {
+        "fr": "Une flèche qui tourne aux angles des couloirs : la cible peut se cacher, elle ne peut pas fuir.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour, action simple (tir compris).\n• Vise une cible déjà vue et à portée : la flèche suit les couloirs et tourne aux angles ; il faut un passage totalement bouché pour la retenir.\n• Abri et camouflage de la cible ne comptent pas ; pour le reste, attaque classique."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.arcane_archer_phase_arrow",
+      "type": "class_power",
+      "name": {
+        "fr": "Flèche de phase",
+        "en": "Phase arrow"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_archer"
+      ],
+      "description": {
+        "fr": "Murs, portes, arbres : pour cette flèche, ils n’existent pas. Seule la magie peut lui barrer la route.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour, action simple (tir compris).\n• Vise une cible déjà vue et à portée : la flèche file en ligne droite et passe à travers murs et portes ordinaires ; seule une protection magique la retient.\n• Armure, bouclier, abri et camouflage de la cible ne comptent pas ; pour le reste, attaque classique."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.arcane_archer_hail_of_arrows",
+      "type": "class_power",
+      "name": {
+        "fr": "Pluie de flèches",
+        "en": "Hail of arrows"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_archer"
+      ],
+      "description": {
+        "fr": "Il lève son arc, et le ciel se remplit : chaque ennemi en vue reçoit sa flèche, en même temps.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour, à la place de ses attaques normales.\n• Une flèche par cible à portée, au plus une cible par niveau d’archer-mage.\n• Chaque attaque utilise son meilleur bonus d’attaque ; pas plus d’une flèche par cible."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.arcane_archer_arrow_of_death",
+      "type": "class_power",
+      "name": {
+        "fr": "Flèche de mort",
+        "en": "Arrow of death"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_archer"
+      ],
+      "description": {
+        "fr": "Une seule flèche, noire, fabriquée en une journée entière. Il n’en garde jamais qu’une : il n’en a jamais besoin de deux.\n\nEn jeu\n• Pouvoir magique. Une créature blessée par la flèche fait un jet de Vigueur DD 20 ; en cas d’échec, elle meurt sur le coup.\n• Fabrication : 1 jour. Inutile entre d’autres mains ; magie éteinte après 1 an.\n• Une seule flèche de mort à la fois."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.arcane_archer",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.arcane_archer_enhance_arrows"
+      ]
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.arcane_archer_imbue_arrow"
+      ]
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.arcane_archer_seeker_arrow"
+      ]
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.arcane_archer_phase_arrow"
+      ]
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.arcane_archer_hail_of_arrows"
+      ]
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_archer",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.arcane_archer_arrow_of_death"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.arcane_archer",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    }
+  ]
+}

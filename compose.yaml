@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: dnd
+      POSTGRES_DB: dnd
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set it in .env (see .env.example)}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    # Local only: cargo test uses it. Port 5432 is often taken on dev machines.
+    ports:
+      - "127.0.0.1:5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dnd -d dnd"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  server:
+    build: ./server
+    environment:
+      DATABASE_URL: postgres://dnd:${POSTGRES_PASSWORD}@postgres:5432/dnd
+      JWT_SECRET: ${JWT_SECRET:?set it in .env (see .env.example)}
+      RUST_LOG: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./test-references:/test-references:ro
+      - ./content:/content:ro
+      - ./exports:/exports
+    # Reachable from this machine only until the reverse proxy and TLS exist: tokens must never travel in clear.
+    ports:
+      - "127.0.0.1:8080:8080"
+
+volumes:
+  postgres-data:

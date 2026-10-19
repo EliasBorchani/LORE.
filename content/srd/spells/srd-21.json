@@ -1,0 +1,589 @@
+{
+  "entities": [
+    {
+      "id": "spell.stinking_cloud",
+      "type": "spell",
+      "name": {
+        "fr": "Nuage nauséabond",
+        "en": "Stinking Cloud"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une brume jaunâtre roule au sol et prend à la gorge. Dedans, on ne pense plus à se battre, seulement à ne pas rendre son déjeuner.\n\nEn jeu\n• Nuage de 6 m de rayon et 6 m de haut ; il cache la vue comme un brouillard (camouflage).\n• Toute créature dedans fait un jet de Vigueur ou est nauséeuse tant qu’elle y reste, puis 1d4+1 rounds après en être sortie (jet séparé par créature).\n• Un jet réussi ne protège que ce round : il faut le refaire à chaque round passé dans le nuage.\n• Dure 1 round par niveau. Un vent modéré le chasse en 4 rounds, un vent fort en 1 round.\n• Peut être rendu permanent ; dispersé, il se reforme alors en 10 minutes."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "nuage de 6 m de rayon sur 6 m de haut",
+        "duration": "1 round/niveau",
+        "savingThrow": "Vigueur, annule (voir texte)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.elemental_swarm",
+      "type": "spell",
+      "name": {
+        "fr": "Nuée d'élémentaires",
+        "en": "Elemental Swarm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un portail s’ouvre sur un plan élémentaire et ne se referme pas : il en sort des élémentaires, puis de plus gros, puis le plus terrible de tous.\n\nEn jeu\n• Choix du plan : Air, Eau, Feu ou Terre (lancé via un domaine, seul l’élément du domaine). Le sort prend le registre de cet élément.\n• À la fin de l’incantation : 2d4 élémentaires de taille G. 10 minutes plus tard : 1d4 de taille TG. 10 minutes encore : 1 élémentaire noble.\n• Chaque élémentaire a le maximum de points de vie par DV.\n• Ils obéissent au lanceur sans concentration, ne l’attaquent jamais et restent 10 minutes par niveau ; il peut les renvoyer un par un ou tous."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "descriptors": [
+          "voir texte"
+        ],
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "2 créatures convoquées ou plus, à 9 m au plus l’une de l’autre",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.meteor_swarm",
+      "type": "spell",
+      "name": {
+        "fr": "Nuée de météores",
+        "en": "Meteor Swarm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Quatre astres miniatures jaillissent en traînées d’étincelles et s’écrasent où l’on veut. Le ciel lui-même vient de rendre son verdict.\n\nEn jeu\n• 4 sphères, chacune explose en une étendue de 12 m de rayon : 6d6 dégâts de feu (Réflexes pour la moitié).\n• Viser une créature demande une attaque de contact à distance par sphère. Touchée : 2d6 contondants sans jet, et aucun jet contre le feu de cette sphère.\n• Une sphère ratée explose au coin le plus proche de la case visée. Plusieurs sphères peuvent viser la même cible.\n• Une créature prise dans plusieurs explosions fait un jet par sphère ; la résistance au feu s’applique à chaque sphère séparément."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "4 étendues de 12 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Réflexes, 1/2 dégâts (voir texte)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "6d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.summon_swarm",
+      "type": "spell",
+      "name": {
+        "fr": "Nuée grouillante",
+        "en": "Summon Swarm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le sol se met à grouiller, l’air à bruisser : rats, araignées ou chauves-souris surgissent par centaines et mordent tout ce qui respire.\n\nEn jeu\n• Fait apparaître une nuée de chauves-souris, de rats ou d’araignées (au choix), qui peut partager l’espace d’autres créatures.\n• La nuée attaque toutes les créatures dans sa zone ; s’il n’y en a pas, elle poursuit la plus proche.\n• Le lanceur ne la dirige pas.\n• Dure tant qu’il se concentre, plus 2 rounds."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 nuée de chauves-souris, de rats ou d’araignées",
+        "duration": "concentration + 2 rounds",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.arcane_eye",
+      "type": "spell",
+      "name": {
+        "fr": "Oeil du mage",
+        "en": "Arcane Eye"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un œil invisible flotte devant soi puis file explorer couloirs et salles. On voit tout ce qu’il voit, bien à l’abri derrière une porte close.\n\nEn jeu\n• Crée un capteur invisible qui transmet ce qu’il voit (avec la vision du lanceur).\n• Se déplace de 9 m par round en regardant devant lui, ou 3 m par round s’il examine aussi murs et plafond.\n• Passe par un trou de 2,5 cm mais pas à travers un obstacle solide ; ne quitte jamais le plan.\n• Il faut se concentrer pour recevoir les images. Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "subschool": "scrutation",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "illimitée",
+        "effect": "capteur magique",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.prying_eyes",
+      "type": "spell",
+      "name": {
+        "fr": "Oeil indiscret",
+        "en": "Prying Eyes"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une volée de petits yeux flottants s’égaille dans toutes les directions avec des consignes précises. Ils reviennent raconter ce qu’ils ont vu.\n\nEn jeu\n• Crée 1d4 + niveau de lanceur yeux, qui voient à 36 m (vision normale seulement) ; ils se laissent tromper par les illusions et tâtonnent dans le noir.\n• Chaque œil : taille I, 1 pv, CA 18, vol 9 m (parfaite), +16 en Discrétion, Détection égale au niveau de lanceur (+15 au plus).\n• On leur donne une consigne de 30 mots au plus ; pour faire son rapport, un œil revient dans la main du lanceur et lui rejoue ce qu’il a vu (1 round par heure d’images), puis disparaît.\n• Dure 1 heure par niveau, ou jusqu’au retour de l’œil. Un œil à plus de 1,5 km du lanceur cesse d’exister.\n• Dissipation de la magie détruit un œil (un jet par œil en zone)."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 minute",
+        "range": "1,5 km",
+        "effect": "10 yeux ou plus en lévitation",
+        "duration": "1 heure/niveau (voir texte) (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_prying_eyes",
+      "type": "spell",
+      "name": {
+        "fr": "Oeil indiscret suprême",
+        "en": "Greater Prying Eyes"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les mêmes yeux volants, mais rien ne leur échappe : ni les ténèbres, ni les déguisements, ni les illusions.\n\nEn jeu\n• Comme Oeil indiscret, mais les yeux ont la vision lucide jusqu’à 36 m.\n• Ils avancent à vitesse normale même dans le noir.\n• Détection égale au niveau de lanceur, +25 au plus."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 minute",
+        "range": "1,5 km",
+        "effect": "10 yeux ou plus en lévitation",
+        "duration": "1 heure/niveau (voir texte) (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.find_the_path",
+      "type": "spell",
+      "name": {
+        "fr": "Orientation",
+        "en": "Find the Path"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Gauche, puis droite, puis le troisième escalier : une certitude intérieure guide chaque pas jusqu’au lieu voulu, labyrinthe ou pas.\n\nEn jeu\n• Indique le chemin le plus court vers un lieu (pas une créature ni un objet), sur le même plan.\n• Signale aussi ce qu’il faut faire en route : pièges, mots de passe, embranchements.\n• Sortir d’un labyrinthe magique prend 1 round.\n• Ne protège pas les compagnons et ne prévoit pas les actions des créatures. Dure 10 minutes par niveau ou jusqu’à l’arrivée."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, F",
+        "castingTime": "3 rounds",
+        "range": "personnelle ou contact",
+        "target": "le jeteur de sorts ou créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun ou Volonté, annule (inoffensif)",
+        "spellResistance": "non ou oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.open_close",
+      "type": "spell",
+      "name": {
+        "fr": "Ouverture/fermeture",
+        "en": "Open/Close"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La porte grince, le coffre bâille, la fenêtre claque, et personne n’a bougé de sa chaise.\n\nEn jeu\n• Ouvre ou ferme une porte, un coffre, un sac, une bouteille… de 15 kg au plus.\n• Ne force ni serrure ni barre : seulement ce qui s’ouvre ou se ferme sans effort."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "objet de 15 kg au plus, ou porte",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.secret_page",
+      "type": "spell",
+      "name": {
+        "fr": "Page secrète",
+        "en": "Secret Page"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La carte au trésor devient une recette de soupe, le grimoire un livre de comptes. Seul le bon mot, murmuré par le bon mage, rend au texte son vrai visage.\n\nEn jeu\n• Change le contenu d’une page (0,3 m² au plus) en un autre texte ; dure jusqu’à dissipation.\n• Un mot de commande révèle le vrai texte, un autre le cache à nouveau ; le dire deux fois de suite met fin au sort.\n• Détection de la magie voit une faible aura ; vision lucide voit qu’il y a un texte caché, mais il faut aussi compréhension des langages pour le lire.\n• Effacement détruit la page secrète et son texte. On peut y ajouter runes explosives ou sceau du serpent."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "page touchée (0,3 m² au plus)",
+        "duration": "permanente",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_vestment",
+      "type": "spell",
+      "name": {
+        "fr": "Panoplie magique",
+        "en": "Magic Vestment"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une prière posée sur le métal, et la cotte de mailles brille d’une lueur sacrée. Même une simple robe se met à arrêter les coups.\n\nEn jeu\n• Armure ou bouclier touché : bonus d’altération de +1 par tranche de 4 niveaux de lanceur (+5 au plus, au niveau 20).\n• Des vêtements ordinaires comptent comme une armure à +0, qui reçoit ce bonus.\n• Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "armure ou bouclier touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "add",
+          "value": "min(floor(@spell.caster_level / 4), 5)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.magic_vestment')"
+        }
+      ]
+    },
+    {
+      "id": "spell.word_of_chaos",
+      "type": "spell",
+      "name": {
+        "fr": "Parole du chaos",
+        "en": "Word of Chaos"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un seul mot, prononcé dans la langue du désordre primordial. Ceux qui tiennent à l’ordre l’entendent, et leur esprit se fend.\n\nEn jeu\n• Touche les créatures non chaotiques à 12 m qui l’entendent, sans jet ; les effets s’ajoutent selon leurs DV.\n• DV égaux au niveau de lanceur : assourdi 1d4 rounds. DV jusqu’au niveau − 1 : étourdi 1 round en plus.\n• DV jusqu’au niveau − 5 : confus 1d10 minutes en plus (effet mental). DV jusqu’au niveau − 10 : tué (mort-vivant détruit).\n• Créatures avec plus de DV que le niveau de lanceur : aucun effet.\n• Sur son plan natal, renvoie les créatures extraplanaires non chaotiques de la zone chez elles pour 24 h (Volonté à −4 pour annuler), même si elles n’entendent pas."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "chaos",
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "12 m",
+        "area": "créatures non chaotiques dans une étendue de 12 m de rayon centrée sur le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (voir texte)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.holy_word",
+      "type": "spell",
+      "name": {
+        "fr": "Parole sacrée",
+        "en": "Holy Word"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un mot de lumière pure, dit avec la voix d’un dieu bon. Pour qui ne partage pas cette bonté, c’est un coup de tonnerre dans l’âme.\n\nEn jeu\n• Touche les créatures non bonnes à 12 m qui l’entendent, sans jet ; les effets s’ajoutent selon leurs DV.\n• DV égaux au niveau de lanceur : assourdi 1d4 rounds. DV jusqu’au niveau − 1 : aveuglé 2d4 rounds en plus.\n• DV jusqu’au niveau − 5 : paralysé 1d10 minutes en plus. DV jusqu’au niveau − 10 : tué (mort-vivant détruit).\n• Créatures avec plus de DV que le niveau de lanceur : aucun effet.\n• Sur son plan natal, renvoie les créatures extraplanaires non bonnes de la zone chez elles pour 24 h (Volonté à −4 pour annuler), même si elles n’entendent pas."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "bien",
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "12 m",
+        "area": "créatures non bonnes dans une étendue de 12 m de rayon centrée sur le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (voir texte)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.etherealness",
+      "type": "spell",
+      "name": {
+        "fr": "Passage dans l'éther",
+        "en": "Etherealness"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Main dans la main, le groupe pâlit et traverse le voile. Les murs deviennent brume, et le monde réel continue sans eux.\n\nEn jeu\n• Comme forme éthérée, mais le lanceur emmène 1 créature consentante par tranche de 3 niveaux, qui se tiennent la main au lancement.\n• Dans le plan Éthéré : invisible, intangible et silencieux pour le plan Matériel, on traverse les obstacles mais on ne peut pas agir sur ce qui s’y trouve.\n• Une fois passés, les voyageurs n’ont plus besoin de rester ensemble.\n• Dure 1 minute par niveau ; à la fin, tous reviennent dans le plan Matériel."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts et 1 créature touchée/3 niveaux",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.pass_without_trace",
+      "type": "spell",
+      "name": {
+        "fr": "Passage sans trace",
+        "en": "Pass without Trace"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La boue ne garde pas l’empreinte, la neige reste vierge. Le groupe passe, et la nature fait comme si de rien n’était.\n\nEn jeu\n• 1 créature touchée par niveau ne laisse aucune trace ni odeur, sur tout terrain.\n• Seule la magie permet de suivre les sujets.\n• Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 créature touchée/niveau",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.passwall",
+      "type": "spell",
+      "name": {
+        "fr": "Passe-muraille",
+        "en": "Passwall"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une main posée sur la pierre, et le mur s’ouvre comme un rideau. Derrière, le couloir attendait qu’on le découvre.\n\nEn jeu\n• Ouvre un passage de 1,50 m de large sur 2,40 m de haut dans un mur de bois, plâtre ou pierre (pas de métal).\n• Profondeur : 3 m, +1,50 m par tranche de 3 niveaux au-delà du 9e (7,50 m au plus au niveau 18). Plusieurs sorts percent un mur épais.\n• À la fin du sort, ceux qui sont dedans sont rejetés par la sortie la plus proche ; s’il est dissipé ou renvoyé, par la sortie du fond (ou l’unique sortie d’une alcôve).\n• Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "ouverture de 1,50 m × 2,40 m, 3 m de profondeur + 1,50 m/3 niveaux au-delà du 9e",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.spider_climb",
+      "type": "spell",
+      "name": {
+        "fr": "Pattes d'araignée",
+        "en": "Spider Climb"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les doigts collent à la pierre, les pieds trouvent prise au plafond. On marche aux murs avec la tranquillité d’une araignée.\n\nEn jeu\n• Escalade à 6 m par round sur murs et plafonds, sans test d’Escalade ; il faut avoir les mains libres.\n• Le sujet garde son bonus de Dextérité à la CA en grimpant et ses adversaires n’ont aucun bonus contre lui.\n• Impossible de courir en grimpant.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.barkskin",
+      "type": "spell",
+      "name": {
+        "fr": "Peau d'écorce",
+        "en": "Barkskin"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau brunit, se fendille et durcit comme le tronc d’un vieux chêne. Les lames glissent dessus.\n\nEn jeu\n• Bonus d’altération à l’armure naturelle : +2, puis +1 par tranche de 3 niveaux de lanceur au-delà du 3e (+3 au niveau 6, +5 au plus au niveau 12).\n• S’ajoute à l’armure naturelle du sujet, pas à un autre bonus d’altération à l’armure naturelle.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "min(2 + floor(max(@spell.caster_level - 3, 0) / 3), 5)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.barkskin')",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Fiche : 20 = 5 × 4 avec Superspell, cohérent."
+    },
+    {
+      "id": "spell.stoneskin",
+      "type": "spell",
+      "name": {
+        "fr": "Peau de pierre",
+        "en": "Stoneskin"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "La peau prend le grain et la dureté du granit. Épées et crocs rebondissent, jusqu’à ce que la pierre finisse par s’effriter.\n\nEn jeu\n• Réduction des dégâts 10/adamantium.\n• Le sort s’arrête après avoir absorbé 10 points de dégâts par niveau de lanceur (150 au plus).\n• Dure 10 minutes par niveau ou jusqu’à épuisement.\n• Composante : 250 po de poussière de diamant."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau ou jusqu’à épuisement",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.atonement",
+      "type": "spell",
+      "name": {
+        "fr": "Pénitence",
+        "en": "Atonement"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une heure de prière, d’aveux et de silence, et le poids du passé s’allège. Encore faut-il que le repentir soit sincère.\n\nEn jeu\n• Le sujet doit regretter sincèrement ses fautes ; sinon le sort n’a pas d’effet.\n• Usages : effacer un changement d’alignement magique, rendre ses pouvoirs à un paladin, à un prêtre ou à un druide déchu, ou proposer au sujet l’alignement du lanceur (il reste libre de refuser).\n• Si la faute était volontaire, le lanceur paie 500 PX pour intercéder ; sinon rien. Changer d’alignement ou annuler un changement magique ne coûte pas de PX.\n• Sans effet sur les Extérieurs et les créatures qui ne peuvent changer d’alignement. Incantation : 1 heure."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M, F, FD, PX",
+        "castingTime": "1 heure",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    }
+  ]
+}

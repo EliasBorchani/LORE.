@@ -1,0 +1,521 @@
+{
+  "entities": [
+    {
+      "id": "item.alchemists_lab",
+      "type": "item",
+      "name": {
+        "fr": "Laboratoire d’alchimie",
+        "en": "Alchemist’s lab"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "kit"
+      ],
+      "item": {
+        "cost": "500 po",
+        "weight": "20 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Alambics, cornues, creusets et fioles alignés sur une table tachée de brûlures : de quoi distiller, précipiter et transmuter dans les règles de l’art.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests d’Artisanat (alchimie).\n• Ne réduit pas le coût des objets fabriqués.\n• Sans laboratoire, on peut toujours pratiquer l’alchimie avec un matériel de base, mais sans ce bonus."
+      },
+      "effects": [
+        {
+          "target": "skill.craft",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.craft_alchemy"
+        }
+      ],
+      "note": "Le bonus ne vaut que pour Artisanat (alchimie) : la spécialité d’Artisanat n’est pas modélisée, d’où la situation."
+    },
+    {
+      "id": "item.artisans_tools",
+      "type": "item",
+      "name": {
+        "fr": "Outils d’artisan",
+        "en": "Artisan’s tools"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "5 po",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Marteaux, ciseaux, alênes ou pinces : l’outillage d’un seul métier, choisi à l’achat, usé par les mains qui s’en servent.\n\nEn jeu\n• Prévu pour une spécialité d’Artisanat précise.\n• Sans les outils adaptés, malus de circonstance de −2 aux tests d’Artisanat avec des outils de fortune (certaines tâches deviennent impossibles)."
+      },
+      "note": "Le métier choisi et le malus sans outils ne sont pas modélisés."
+    },
+    {
+      "id": "item.climbers_kit",
+      "type": "item",
+      "name": {
+        "fr": "Matériel d’escalade",
+        "en": "Climber’s kit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "kit",
+        "climbing"
+      ],
+      "item": {
+        "cost": "80 po",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Pitons, crampons, piolet et marteau, le tout tenu par des sangles de cuir : la falaise n’a plus qu’à bien se tenir.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests d’Escalade."
+      },
+      "effects": [
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance"
+        }
+      ]
+    },
+    {
+      "id": "item.disguise_kit",
+      "type": "item",
+      "name": {
+        "fr": "Trousse de déguisement",
+        "en": "Disguise kit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "kit"
+      ],
+      "item": {
+        "cost": "50 po",
+        "weight": "4 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Fards, perruques, postiches et petits flacons de teinture : de quoi devenir quelqu’un d’autre le temps d’une soirée.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests de Déguisement.\n• Contient de quoi servir 10 fois."
+      },
+      "effects": [
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance"
+        }
+      ],
+      "note": "Les 10 utilisations ne sont pas décomptées."
+    },
+    {
+      "id": "item.healers_kit",
+      "type": "item",
+      "name": {
+        "fr": "Trousse de premiers secours",
+        "en": "Healer’s kit"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "kit"
+      ],
+      "item": {
+        "cost": "50 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Bandages propres, onguents, attelles et herbes séchées : ce qui sépare souvent un blessé d’un mort.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests de Premiers secours.\n• Contient de quoi servir 10 fois."
+      },
+      "effects": [
+        {
+          "target": "skill.heal",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance"
+        }
+      ],
+      "note": "Les 10 utilisations ne sont pas décomptées."
+    },
+    {
+      "id": "item.holly_and_mistletoe",
+      "type": "item",
+      "name": {
+        "fr": "Houx et gui",
+        "en": "Holly and mistletoe"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "holy_symbol"
+      ],
+      "item": {},
+      "source": "SRD",
+      "description": {
+        "fr": "Un brin de houx et une touffe de gui cueillis avec respect : la nature elle-même tient lieu de symbole au druide.\n\nEn jeu\n• Focaliseur divin des druides et des rôdeurs : ils n’ont pas besoin de symbole sacré.\n• Sans prix : se cueille, ne s’achète pas."
+      }
+    },
+    {
+      "id": "item.hourglass",
+      "type": "item",
+      "name": {
+        "fr": "Sablier",
+        "en": "Hourglass"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "25 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Deux bulbes de verre et un filet de sable fin : le temps qui passe, rendu visible.\n\nEn jeu\n• Mesure une durée fixe, en général une heure, avant d’être retourné."
+      }
+    },
+    {
+      "id": "item.magnifying_glass",
+      "type": "item",
+      "name": {
+        "fr": "Loupe",
+        "en": "Magnifying glass"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "100 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une lentille de verre polie sertie dans un cerclage de cuivre, qui révèle les défauts d’une gemme comme les détails d’une écriture minuscule.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests d’Estimation sur les objets petits ou très détaillés (gemmes, bijoux).\n• Permet d’allumer un feu sans silex ni amadou en plein soleil : action complexe."
+      },
+      "effects": [
+        {
+          "target": "skill.appraise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.appraise_small_detailed"
+        }
+      ]
+    },
+    {
+      "id": "item.masterwork_artisans_tools",
+      "type": "item",
+      "name": {
+        "fr": "Outils de maître artisan",
+        "en": "Artisan’s tools, masterwork"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "55 po",
+        "weight": "2,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Des outils équilibrés à la perfection pour un seul métier, si bien adaptés qu’ils semblent guider la main.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests d’Artisanat de la spécialité choisie."
+      },
+      "effects": [
+        {
+          "target": "skill.craft",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.chosen_craft"
+        }
+      ],
+      "note": "La spécialité d’Artisanat choisie n’est pas modélisée, d’où la situation."
+    },
+    {
+      "id": "item.masterwork_musical_instrument",
+      "type": "item",
+      "name": {
+        "fr": "Instrument de musique de maître",
+        "en": "Musical instrument, masterwork"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "instrument"
+      ],
+      "item": {
+        "cost": "100 po",
+        "weight": "1,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un luth, une flûte ou une harpe signé d’un luthier renommé, au son si juste qu’il fait taire une taverne.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests de Représentation avec cet instrument."
+      },
+      "effects": [
+        {
+          "target": "skill.perform",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance"
+        }
+      ],
+      "note": "Le type de Représentation (instrument) n’est pas modélisé : le bonus s’applique à toute la compétence."
+    },
+    {
+      "id": "item.masterwork_thieves_tools",
+      "type": "item",
+      "name": {
+        "fr": "Outils de cambrioleur de qualité supérieure",
+        "en": "Thieves’ tools, masterwork"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "100 po",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une trousse roulée de cuir fin : crochets de toutes tailles, tensions, limes et miroirs, chacun ajusté au millimètre.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests de Crochetage et de Désamorçage/sabotage.\n• Remplace les outils de cambrioleur ordinaires."
+      },
+      "effects": [
+        {
+          "target": "skill.disable_device",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance"
+        },
+        {
+          "target": "skill.open_lock",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance"
+        }
+      ]
+    },
+    {
+      "id": "item.masterwork_tool",
+      "type": "item",
+      "name": {
+        "fr": "Outil de qualité supérieure",
+        "en": "Tool, masterwork"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "50 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un outil d’exception, pensé pour une seule tâche et taillé pour l’accomplir mieux que tout autre.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests de la compétence à laquelle il sert.\n• Pour un même test, un seul objet de qualité supérieure compte, même si l’on en utilise plusieurs."
+      },
+      "note": "La compétence concernée dépend de l’outil et n’est pas modélisée : aucun bonus n’est ajouté à la feuille."
+    },
+    {
+      "id": "item.merchants_scale",
+      "type": "item",
+      "name": {
+        "fr": "Balance",
+        "en": "Merchant’s scale"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "2 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Deux plateaux de cuivre, un fléau et une boîte de poids étalonnés : l’arbitre de toutes les transactions en métal précieux.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests d’Estimation sur ce qui se vend au poids (métaux précieux, épices…)."
+      },
+      "effects": [
+        {
+          "target": "skill.appraise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.appraise_by_weight"
+        }
+      ]
+    },
+    {
+      "id": "item.musical_instrument",
+      "type": "item",
+      "name": {
+        "fr": "Instrument de musique courant",
+        "en": "Musical instrument, common"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "instrument"
+      ],
+      "item": {
+        "cost": "5 po",
+        "weight": "1,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un instrument honnête, cabossé par les routes et les auberges, qui suffit à faire danser une place de village.\n\nEn jeu\n• Permet les tests de Représentation qui demandent un instrument.\n• Pas de bonus aux tests."
+      }
+    },
+    {
+      "id": "item.silver_holy_symbol",
+      "type": "item",
+      "name": {
+        "fr": "Symbole sacré en argent",
+        "en": "Holy symbol, silver"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "holy_symbol"
+      ],
+      "item": {
+        "cost": "25 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "L’emblème d’une divinité, ciselé dans l’argent et porté en pendentif, qui brille d’un éclat que n’explique pas la seule lumière.\n\nEn jeu\n• Focaliseur divin : prêtres et paladins le brandissent pour lancer leurs sorts et pour repousser les morts-vivants.\n• Version impie : même usage pour canaliser l’énergie négative (prêtres mauvais, ou neutres qui intimident les morts-vivants)."
+      }
+    },
+    {
+      "id": "item.spell_component_pouch",
+      "type": "item",
+      "name": {
+        "fr": "Sacoche à composantes",
+        "en": "Spell component pouch"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "container"
+      ],
+      "item": {
+        "cost": "5 po",
+        "weight": "1,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une petite sacoche de ceinture à multiples compartiments, pleine de pincées de soufre, de plumes, de toiles d’araignée et de poudres à l’odeur étrange.\n\nEn jeu\n• Tant qu’on la porte, on dispose des composantes matérielles et des focaliseurs ordinaires de ses sorts.\n• Ne remplace pas : une composante ou un focaliseur au coût précisé par le sort, un focaliseur divin, un objet trop encombrant pour y tenir."
+      }
+    },
+    {
+      "id": "item.spellbook",
+      "type": "item",
+      "name": {
+        "fr": "Grimoire (vierge)",
+        "en": "Spellbook, wizard’s (blank)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "writing"
+      ],
+      "item": {
+        "cost": "15 po",
+        "weight": "1,5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un épais volume relié de cuir, aux pages de parchemin vierges qui n’attendent que l’encre d’un magicien.\n\nEn jeu\n• 100 pages.\n• Chaque sort y prend autant de pages que son niveau ; un tour de magie (niveau 0) en prend une."
+      }
+    },
+    {
+      "id": "item.thieves_tools",
+      "type": "item",
+      "name": {
+        "fr": "Outils de cambrioleur",
+        "en": "Thieves’ tools"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "30 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un rouleau de crochets, de limes et de petites pinces, à cacher au fond d’une poche plutôt qu’à montrer au guet.\n\nEn jeu\n• L’outillage normal pour les tests de Crochetage et de Désamorçage/sabotage.\n• Sans eux, on bricole avec ce qu’on trouve : malus de circonstance de −2 à ces tests."
+      },
+      "note": "Le malus sans outils n’est pas modélisé."
+    },
+    {
+      "id": "item.water_clock",
+      "type": "item",
+      "name": {
+        "fr": "Clepsydre",
+        "en": "Water clock"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool"
+      ],
+      "item": {
+        "cost": "1000 po",
+        "weight": "100 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une horloge massive où chaque goutte compte, assez précise pour régler la vie d’un temple ou d’un palais.\n\nEn jeu\n• Ne dérive pas de plus d’une demi-heure en une journée.\n• Ne fonctionne qu’avec un apport d’eau constant et bien réglé.\n• Ne se transporte pas."
+      }
+    },
+    {
+      "id": "item.wooden_holy_symbol",
+      "type": "item",
+      "name": {
+        "fr": "Symbole sacré en bois",
+        "en": "Holy symbol, wooden"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "tool",
+        "holy_symbol"
+      ],
+      "item": {
+        "cost": "1 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un symbole divin sculpté dans le bois, poli par les prières : humble, mais tout aussi efficace que l’argent.\n\nEn jeu\n• Focaliseur divin : prêtres et paladins le brandissent pour lancer leurs sorts et pour repousser les morts-vivants.\n• Version impie : même usage pour canaliser l’énergie négative (prêtres mauvais, ou neutres qui intimident les morts-vivants)."
+      }
+    }
+  ]
+}

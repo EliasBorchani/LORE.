@@ -1,0 +1,695 @@
+{
+  "entities": [
+    {
+      "id": "spell.holy_aura",
+      "type": "spell",
+      "name": {
+        "fr": "Aura sacrée",
+        "en": "Holy Aura"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une lumière dorée enveloppe les alliés comme un manteau de vitrail. Les lames dévient, les malédictions s’émoussent, et le suppôt des ténèbres assez fou pour cogner y laisse la vue.\n\nEn jeu\n• Jusqu’à 1 créature par niveau dans un rayon de 6 m autour du lanceur.\n• +4 de parade à la CA et +4 de résistance à tous les jets de sauvegarde, contre toutes les attaques.\n• Résistance à la magie 25 contre les sorts du Mal et ceux lancés par des créatures mauvaises.\n• Bloque la possession et le contrôle mental, comme protection contre le Mal.\n• Une créature mauvaise qui touche un sujet au corps à corps est aveuglée pour de bon, comme par cécité/surdité (Vigueur, annule, DD de ce sort).\n• Dure 1 round par niveau. Focaliseur : reliquaire d’au moins 500 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Bien"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "target": "1 créature/niveau dans un rayonnement de 6 m de rayon centré sur le lanceur",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "deflection",
+          "condition": "active('toggle.holy_aura')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "resistance",
+          "condition": "active('toggle.holy_aura')"
+        },
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": 25,
+          "layer": "base",
+          "condition": "active('toggle.holy_aura')",
+          "situation": "situation.vs_evil"
+        }
+      ]
+    },
+    {
+      "id": "spell.antipathy",
+      "type": "spell",
+      "name": {
+        "fr": "Aversion",
+        "en": "Antipathy"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un lieu ou un objet se met à suinter un malaise sourd : ceux que le sort vise sentent leur ventre se nouer et n’ont plus qu’une idée en tête : tourner les talons.\n\nEn jeu\n• Vise un objet ou un lieu (jusqu’à un cube de 3 m d’arête par niveau) et une sorte de créatures intelligentes précise (ex. dragons rouges) ou un alignement précis ; un sous-type trop large (« gobelinoïdes ») ne suffit pas.\n• Les créatures visées qui ratent leur jet de Volonté doivent fuir et ne peuvent pas revenir tant que le sort dure.\n• Sur un jet réussi, elles peuvent rester, mais subissent −4 en Dextérité tant qu’elles restent.\n• Dure 2 heures par niveau. Contre et dissipe attirance."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 heure",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 lieu (jusqu’à 1 cube de 3 m d’arête/niveau) ou 1 objet",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "Volonté, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.glibness",
+      "type": "spell",
+      "name": {
+        "fr": "Bagou",
+        "en": "Glibness"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La langue devient d’argent et les mensonges coulent comme du miel. Même l’histoire la plus absurde sonne soudain parfaitement raisonnable.\n\nEn jeu\n• +30 aux tests de Bluff pour faire croire à un mensonge (pas pour feinter, créer une diversion ou passer un message secret).\n• Une divination qui détecte le mensonge ou force la vérité doit réussir un test de niveau de lanceur (1d20 + niveau) contre DD 15 + niveau de lanceur de ce sort, sinon elle échoue.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "non",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 30,
+          "condition": "active('toggle.glibness')",
+          "situation": "situation.convincing_lies"
+        }
+      ]
+    },
+    {
+      "id": "spell.goodberry",
+      "type": "spell",
+      "name": {
+        "fr": "Baie nourricière",
+        "en": "Goodberry"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une poignée de baies sauvages gonflent de sève et de soleil. Une seule cale un estomac pour la journée et referme une égratignure.\n\nEn jeu\n• Rend magiques 2d4 baies fraîches pour 1 jour par niveau.\n• Chaque baie vaut un repas complet pour une créature de taille M et rend 1 point de vie.\n• Pas plus de 8 points de vie rendus par ces baies par période de 24 heures."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "2d4 baies fraîchement cueillies",
+        "duration": "1 jour/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ghoul_touch",
+      "type": "spell",
+      "name": {
+        "fr": "Baiser de la goule",
+        "en": "Ghoul Touch"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "La main se charge d’un froid de tombeau. Celui qu’elle effleure se fige, et une odeur de charnier s’échappe de son corps raidi.\n\nEn jeu\n• Attaque de contact au corps à corps contre un humanoïde vivant : paralysé pendant 1d6 + 2 rounds s’il rate son jet de Vigueur.\n• Le paralysé dégage une puanteur : les créatures à 3 m ou moins (sauf le lanceur) sont fiévreuses (−2 aux jets d’attaque, de dégâts, de sauvegarde et aux tests de compétence et de caractéristique ; Vigueur, annule).\n• Les créatures immunisées contre le poison ignorent l’odeur ; neutralisation du poison retire l’état fiévreux."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "humanoïde vivant touché",
+        "duration": "1d6+2 rounds",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.vampiric_touch",
+      "type": "spell",
+      "name": {
+        "fr": "Baiser du vampire",
+        "en": "Vampiric Touch"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un simple contact, et la vie de l’autre passe d’un corps à l’autre comme du vin qu’on verse. La victime pâlit, le lanceur rougit de santé.\n\nEn jeu\n• Attaque de contact au corps à corps : 1d6 dégâts par tranche de 2 niveaux de lanceur (10d6 au plus).\n• Le lanceur gagne autant de points de vie temporaires que les dégâts infligés, sans dépasser les points de vie de la cible + 10.\n• Les points de vie temporaires disparaissent au bout de 1 heure."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "instantanée / 1 heure (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 10))d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.banishment",
+      "type": "spell",
+      "name": {
+        "fr": "Bannissement",
+        "en": "Banishment"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Les créatures venues d’ailleurs n’ont rien à faire ici, et ce sort le leur rappelle avec fermeté : un claquement, et elles sont renvoyées chez elles.\n\nEn jeu\n• Renvoie dans leur plan d’origine jusqu’à 2 DV de créatures extraplanaires par niveau de lanceur (Volonté, annule).\n• Les cibles doivent être à 9 m ou moins les unes des autres.\n• Chaque objet ou substance que les cibles détestent donne +1 au test pour vaincre leur résistance à la magie et +2 au DD ; un objet rare compte double (+2 et +4)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 ou plusieurs créatures extraplanaires, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.blade_barrier",
+      "type": "spell",
+      "name": {
+        "fr": "Barrière de lames",
+        "en": "Blade Barrier"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Des centaines de lames surgissent du néant et tournoient en un mur hurlant. Le traverser, c’est accepter d’en ressortir en lambeaux.\n\nEn jeu\n• Mur immobile de lames : 6 m de long par niveau, ou anneau de 1,50 m de rayon par tranche de 2 niveaux ; 6 m de haut.\n• Qui traverse le mur subit 1d6 dégâts par niveau de lanceur (15d6 au plus ; Réflexes, 1/2).\n• Une créature dans la zone à l’apparition du mur subit aussi les dégâts, sauf si elle réussit un jet de Réflexes (elle choisit alors de quel côté elle se trouve).\n• Le mur donne un abri (+4 à la CA, +2 aux jets de Réflexes) contre les attaques qui le traversent.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "mur de lames de 6 m de long/niveau ou anneau de 1,50 m de rayon/2 niveaux, 6 m de haut",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Réflexes, 1/2 ou Réflexes, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.spellstaff",
+      "type": "spell",
+      "name": {
+        "fr": "Bâton à sort",
+        "en": "Spellstaff"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un simple bâton de bois devient une réserve de magie : on y glisse un sort, et il attend patiemment son heure.\n\nEn jeu\n• Stocke dans un bâton en bois un sort que le lanceur peut préparer.\n• Ce sort se lance comme s’il était préparé, en plus des sorts du jour.\n• Un seul bâton à sort à la fois, et un seul sort dedans ; les composantes matérielles du sort stocké restent nécessaires.\n• Dure jusqu’à l’utilisation du sort."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "bâton en bois touché",
+        "duration": "permanente jusqu’à utilisation (T)",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.changestaff",
+      "type": "spell",
+      "name": {
+        "fr": "Bâton sylvanien",
+        "en": "Changestaff"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un bâton de chêne planté en terre se met à grandir, à craquer, à s’étirer, jusqu’à devenir un géant d’écorce prêt à défendre son maître.\n\nEn jeu\n• Planter le bâton préparé le transforme en créature de taille TG qui combat comme un sylvanien et obéit au lanceur.\n• Elle ne parle pas aux sylvaniens et ne peut pas animer les arbres.\n• À 0 point de vie ou moins, elle tombe en poussière et le bâton est détruit ; sinon il peut resservir. Elle réapparaît toujours avec tous ses points de vie.\n• Préparer le bâton (chêne, if ou frêne) prend 28 jours. Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "bâton touché",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bless",
+      "type": "spell",
+      "name": {
+        "fr": "Bénédiction",
+        "en": "Bless"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une prière brève, et une bouffée d’assurance traverse les rangs comme un vent de printemps. Les mains se raffermissent sur les armes.\n\nEn jeu\n• Le lanceur et ses alliés dans un rayon de 15 m gagnent +1 de moral aux jets d’attaque.\n• +1 de moral aux jets de sauvegarde contre la terreur.\n• Dure 1 minute par niveau. Contre et dissipe imprécation."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "15 m",
+        "area": "le lanceur et ses alliés dans un rayonnement de 15 m de rayon centré sur lui",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.bless')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.bless')",
+          "situation": "situation.vs_fear"
+        }
+      ]
+    },
+    {
+      "id": "spell.bless_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Bénédiction d’arme",
+        "en": "Bless Weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "L’arme touchée s’illumine d’une lueur pure. Entre les mains d’un juste, elle trouve d’elle-même le défaut de l’armure du mal.\n\nEn jeu\n• L’arme devient d’alignement bon : elle passe la réduction des dégâts qui l’exige (Extérieurs mauvais surtout), et remplace tout autre alignement de l’arme.\n• Contre les créatures mauvaises, elle compte comme une arme +1 pour passer leur réduction des dégâts ou frapper les intangibles, sans vrai bonus d’altération.\n• Contre les créatures mauvaises, toute menace de critique est confirmée d’office (sauf armes déjà acérées, vorpales ou équivalent).\n• Sur un arc, seules les flèches touchées en profitent, pas celles qu’il tire. Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bless_water",
+      "type": "spell",
+      "name": {
+        "fr": "Bénédiction de l’eau",
+        "en": "Bless Water"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Quelques mots sur une flasque, une pincée d’argent, et l’eau claire se charge d’énergie positive : de quoi faire fumer la peau des morts-vivants.\n\nEn jeu\n• Transforme une flasque d’eau (0,5 l) en eau bénite.\n• Composante : 2,5 kg de poudre d’argent (25 po).\n• Rappel : l’eau bénite lancée inflige 2d4 dégâts à un mort-vivant ou un Extérieur mauvais touché de plein fouet."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "Bien"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 minute",
+        "range": "contact",
+        "target": "flasque d’eau touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.lullaby",
+      "type": "spell",
+      "name": {
+        "fr": "Berceuse",
+        "en": "Lullaby"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un murmure doux comme un soir d’été, et les paupières se font lourdes. Les sentinelles bâillent, l’attention s’effiloche.\n\nEn jeu\n• Les créatures vivantes dans un rayon de 3 m qui ratent leur jet de Volonté ont −5 en Détection et en Perception auditive.\n• Elles ont aussi −2 aux jets de sauvegarde contre le sommeil.\n• Dure tant que le lanceur se concentre, puis 1 round par niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "créatures vivantes dans une étendue de 3 m de rayon",
+        "duration": "concentration + 1 round/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.blasphemy",
+      "type": "spell",
+      "name": {
+        "fr": "Blasphème",
+        "en": "Blasphemy"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un mot impie tombe comme un coup de massue. Ceux qui n’appartiennent pas aux ténèbres chancellent, se figent ou s’écroulent, selon leur force.\n\nEn jeu\n• Touche les créatures non mauvaises dans un rayon de 12 m, selon leurs DV, sans jet de sauvegarde ; les effets s’ajoutent.\n• DV égaux au niveau de lanceur : hébétées 1 round. Jusqu’au niveau − 1 : en plus, −2d6 en Force pendant 2d4 rounds.\n• Jusqu’au niveau − 5 : en plus, paralysées 1d10 minutes. Jusqu’au niveau − 10 : en plus, tuées (morts-vivants détruits).\n• Sur son plan d’origine, le lanceur renvoie aussi chez elles les créatures extraplanaires non mauvaises de la zone pour 24 heures (Volonté à −4, annule).\n• Les créatures de plus de DV que le niveau de lanceur ne sont pas affectées."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "Mal",
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "12 m",
+        "area": "créatures non mauvaises dans une étendue de 12 m de rayon centrée sur le lanceur",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.inflict_critical_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Blessure critique",
+        "en": "Inflict Critical Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Les doigts se posent, et l’énergie négative déchire de l’intérieur : os qui craquent, veines qui noircissent.\n\nEn jeu\n• Au contact : 4d8 dégâts + 1 par niveau de lanceur (+20 au plus ; Volonté, 1/2).\n• Soigne d’autant un mort-vivant au lieu de le blesser."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "4d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_inflict_critical_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Blessure critique de groupe",
+        "en": "Inflict Critical Wounds, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une vague d’énergie négative balaie le champ de bataille et ouvre des plaies béantes chez tous ceux qu’elle frappe.\n\nEn jeu\n• Jusqu’à 1 créature par niveau, toutes à 9 m ou moins les unes des autres : 4d8 dégâts + 1 par niveau de lanceur (+40 au plus ; Volonté, 1/2).\n• Soigne d’autant un mort-vivant au lieu de le blesser."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "4d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 40)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.inflict_serious_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Blessure grave",
+        "en": "Inflict Serious Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un toucher glacé, et la chair se fend comme sous un coup de hache invisible.\n\nEn jeu\n• Au contact : 3d8 dégâts + 1 par niveau de lanceur (+15 au plus ; Volonté, 1/2).\n• Soigne d’autant un mort-vivant au lieu de le blesser."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_inflict_serious_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Blessure grave de groupe",
+        "en": "Inflict Serious Wounds, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un souffle d’énergie négative frappe plusieurs ennemis à la fois et creuse en eux de profondes blessures.\n\nEn jeu\n• Jusqu’à 1 créature par niveau, toutes à 9 m ou moins les unes des autres : 3d8 dégâts + 1 par niveau de lanceur (+35 au plus ; Volonté, 1/2).\n• Soigne d’autant un mort-vivant au lieu de le blesser."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 35)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.inflict_light_wounds",
+      "type": "spell",
+      "name": {
+        "fr": "Blessure légère",
+        "en": "Inflict Light Wounds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une paume posée, une ombre qui passe, et la chair se meurtrit. Pour les morts-vivants, c’est au contraire une caresse revigorante.\n\nEn jeu\n• Au contact : 1d8 dégâts + 1 par niveau de lanceur (+5 au plus ; Volonté, 1/2).\n• Soigne d’autant un mort-vivant au lieu de le blesser."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 5)",
+          "scope": "spell"
+        }
+      ]
+    }
+  ]
+}

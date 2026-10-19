@@ -1,0 +1,290 @@
+{
+  "entities": [
+    {
+      "id": "feat.spell_knowledge",
+      "type": "feat",
+      "name": {
+        "fr": "Connaissance magique",
+        "en": "Spell Knowledge"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Les grimoires ordinaires ne suffisent plus. Le mage arrache au tissu du monde des formules que nul maître ne lui a enseignées, et les grave dans sa mémoire comme on taille la pierre.\n\nEn jeu\n• Condition : pouvoir lancer des sorts profanes du plus haut niveau normal (9e niveau pour un magicien ou un ensorceleur).\n• Le personnage apprend deux sorts profanes de plus, de n’importe quels niveaux qu’il peut lancer.\n• Pas d’emplacement de sort en plus : seulement deux sorts connus (ou inscrits au grimoire).\n• Peut être pris plusieurs fois : deux nouveaux sorts à chaque fois."
+      },
+      "note": "Condition non vérifiée par la fiche : sorts profanes du plus haut niveau normal. Les deux sorts appris s’ajoutent à la main dans les sorts connus.",
+      "prerequisite": "level() >= 21"
+    },
+    {
+      "id": "feat.overwhelming_critical",
+      "type": "feat",
+      "name": {
+        "fr": "Critique anéantissant",
+        "en": "Overwhelming Critical"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Quand la lame trouve enfin la faille, elle ne se contente pas de la traverser : elle l’ouvre en grand. Les coups critiques du héros sont des catastrophes pour qui les reçoit.\n\nEn jeu\n• Condition : Force 23, Arme de prédilection, Attaque en puissance, Enchaînement, Science du critique et Succession d’enchaînements (Arme de prédilection et Science du critique avec l’arme choisie).\n• Sur un coup critique avec l’arme choisie : +1d6 points de dégâts si son multiplicateur de critique est ×2, +2d6 s’il est ×3, +3d6 s’il est ×4.\n• Sans effet contre les créatures immunisées contre les coups critiques.\n• Peut être pris plusieurs fois, sans cumul : à chaque fois pour une nouvelle arme."
+      },
+      "prerequisite": "level() >= 21 and @ability.str.score >= 23 and has('feat.weapon_focus') and has('feat.power_attack') and has('feat.cleave') and has('feat.improved_critical') and has('feat.great_cleave')",
+      "note": "Arme choisie : pas encore dans le modèle. Les dés de critique en plus ne sont pas sur la fiche (pas de statistique de dégâts de critique). Le site donne sous ce nom la règle d’Overwhelming Critical du SRD."
+    },
+    {
+      "id": "feat.lasting_inspiration",
+      "type": "feat",
+      "name": {
+        "fr": "Inspiration durable",
+        "en": "Lasting Inspiration"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "La dernière note s’est tue depuis longtemps, mais elle résonne encore dans les cœurs. Les chants du barde laissent une trace qui refuse de s’éteindre.\n\nEn jeu\n• Condition : 25 degrés de maîtrise dans une forme de Représentation, aptitude de classe musique de barde.\n• Musique de barde : la part d’une inspiration qui persiste après la dernière note dure ×10 (inspiration vaillante : 50 rounds au lieu de 5).\n• Une inspiration qui cesse avec la musique n’en profite pas."
+      },
+      "prerequisite": "level() >= 21 and has('power.bard_bardic_music')",
+      "note": "Condition non vérifiée par la fiche : 25 degrés de maîtrise en Représentation. La durée des inspirations n’est pas encore sur la fiche."
+    },
+    {
+      "id": "feat.terrifying_rage",
+      "type": "feat",
+      "name": {
+        "fr": "Rage terrifiante",
+        "en": "Terrifying Rage"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Le cri de guerre du barbare n’est plus un cri : c’est un présage. Quand sa rage éclate, les plus braves reculent et les plus faibles fuient sans demander leur reste.\n\nEn jeu\n• Condition : 25 degrés de maîtrise en Intimidation, rage de berserker 5 fois par jour.\n• À chaque rage, test d’Intimidation ; tout ennemi qui le voit oppose un jet de Volonté.\n• Jet raté, pour 4d6 rounds : paniqué si l’ennemi a moins de DV que le personnage, secoué s’il en a entre autant et deux fois plus.\n• Un ennemi qui a plus du double des DV du personnage n’est pas affecté."
+      },
+      "prerequisite": "level() >= 21 and level('class.barbarian') >= 16",
+      "note": "Condition non vérifiée par la fiche : 25 degrés de maîtrise en Intimidation. Rage 5 fois par jour vérifiée comme barbare niveau 16."
+    },
+    {
+      "id": "feat.planar_turning",
+      "type": "feat",
+      "name": {
+        "fr": "Renvoi planaire",
+        "en": "Planar Turning"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "turning"
+      ],
+      "description": {
+        "fr": "La foi qui chasse les morts fait aussi trembler les créatures d’ailleurs. Démons, anges ou élémentaires : face au symbole sacré du héros, eux aussi plient.\n\nEn jeu\n• Condition : Sagesse 25, Charisme 25, pouvoir de renvoi des morts-vivants.\n• Ses tentatives de renvoi touchent aussi les Extérieurs, traités comme des morts-vivants.\n• Résistance au renvoi d’un Extérieur : la moitié de sa résistance à la magie.\n• Prêtre qui repousse les morts-vivants : Extérieurs mauvais repoussés ou détruits, autres Extérieurs intimidés ou contrôlés.\n• Prêtre qui intimide les morts-vivants : c’est l’inverse (Extérieurs mauvais intimidés ou contrôlés, les autres repoussés ou détruits)."
+      },
+      "prerequisite": "level() >= 21 and @ability.wis.score >= 25 and @ability.cha.score >= 25 and @turn_undead.level >= 1"
+    },
+    {
+      "id": "feat.improved_sneak_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Science de l’attaque sournoise",
+        "en": "Improved Sneak Attack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il connaît chaque artère, chaque tendon, chaque point où la vie se laisse cueillir. Une seconde d’inattention suffit, et la lame va plus loin qu’avant.\n\nEn jeu\n• Condition : attaque sournoise +8d6.\n• +1d6 aux dégâts d’attaque sournoise.\n• Peut être pris plusieurs fois : les dés s’additionnent."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(count('feat.improved_sneak_attack'))d6"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : attaque sournoise +8d6.",
+      "prerequisite": "level() >= 21"
+    },
+    {
+      "id": "feat.improved_spell_capacity",
+      "type": "feat",
+      "name": {
+        "fr": "Capacité de sort améliorée",
+        "en": "Improved Spell Capacity"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "slots",
+        "magic"
+      ],
+      "description": {
+        "fr": "Là où d’autres atteignent le sommet de leur art, le mage épique continue de monter. Son esprit ouvre une case de plus, au-dessus de tout ce que les livres décrivent.\n\nEn jeu\n• Condition : pouvoir lancer des sorts du plus haut niveau normal dans au moins une classe.\n• Un emplacement de sort par jour d’un niveau de plus que le plus haut niveau que le personnage peut lancer (ou plus bas, s’il le veut), pour une classe où il a atteint ce plus haut niveau.\n• Pour y placer un sort, il faut une valeur de caractéristique de lanceur d’au moins 10 + le niveau du sort ; une valeur assez haute donne aussi des sorts en bonus à ce niveau.\n• Sans effet pour une classe qui ne lance pas de sorts.\n• Peut être pris plusieurs fois : chaque fois, un emplacement au niveau suivant."
+      },
+      "effects": [
+        {
+          "target": "slots.above_max[{choice}]",
+          "op": "add",
+          "value": "count('feat.improved_spell_capacity')",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "Un emplacement au-dessus du maximum, par prise (×12)"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.improved_favored_enemy",
+      "type": "feat",
+      "name": {
+        "fr": "Science de l’ennemi juré",
+        "en": "Improved Favored Enemy"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Le rôdeur a traqué tant d’espèces qu’il en a fait une science. Chaque proie lui a appris quelque chose, et toutes paient désormais pour les autres.\n\nEn jeu\n• Condition : au moins cinq ennemis jurés.\n• +1 aux tests de Bluff, Détection, Perception auditive, Psychologie et Survie et aux jets de dégâts contre tous ses ennemis jurés.\n• Peut être pris plusieurs fois : les bonus s’additionnent."
+      },
+      "prerequisite": "level() >= 21 and level('class.ranger') >= 20",
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": "count('feat.improved_favored_enemy')",
+          "bonusType": "untyped",
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": "count('feat.improved_favored_enemy')",
+          "bonusType": "untyped",
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": "count('feat.improved_favored_enemy')",
+          "bonusType": "untyped",
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": "count('feat.improved_favored_enemy')",
+          "bonusType": "untyped",
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": "count('feat.improved_favored_enemy')",
+          "bonusType": "untyped",
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "count('feat.improved_favored_enemy')",
+          "bonusType": "untyped",
+          "situation": "situation.vs_favored_enemy"
+        }
+      ]
+    },
+    {
+      "id": "feat.improved_elemental_wild_shape",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la forme animale élémentaire",
+        "en": "Improved Elemental Wild Shape"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le druide ne se contente plus des quatre grands éléments. Fumée, magma, vapeur, boue : toute matière vivante des plans élémentaires devient une forme qu’il peut revêtir.\n\nEn jeu\n• Condition : Sagesse 25, pouvoir de forme animale élémentaire.\n• Avec sa forme animale, le personnage peut prendre la forme de n’importe quelle créature de type élémentaire (méphite, magmatique…) d’une taille qu’il peut prendre comme animal.\n• Il gagne alors les pouvoirs extraordinaires et surnaturels de cette créature.\n• Normal : la forme animale élémentaire se limite aux quatre élémentaires classiques (Air, Eau, Feu, Terre), de taille P, M ou G."
+      },
+      "prerequisite": "level() >= 21 and @ability.wis.score >= 25 and has('power.druid_elemental_wild_shape')"
+    },
+    {
+      "id": "feat.improved_metamagic",
+      "type": "feat",
+      "name": {
+        "fr": "Métamagie améliorée",
+        "en": "Improved Metamagic"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "metamagic"
+      ],
+      "description": {
+        "fr": "À force de plier les sorts, le mage a appris à le faire sans effort. Ses formules modifiées coûtent moins cher, comme si la magie elle-même lui faisait crédit.\n\nEn jeu\n• Condition : quatre dons de métamagie, 30 degrés de maîtrise en Art de la magie.\n• Chaque don de métamagie appliqué à un sort coûte 1 niveau d’emplacement de moins.\n• Minimum +1 par modificateur : un don qui coûte déjà +1 n’est pas réduit.\n• Peut être pris plusieurs fois : les réductions s’additionnent."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost_per_modifier",
+          "op": "add",
+          "value": -1,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Minimum +1 par modificateur"
+        }
+      ],
+      "status": "draft",
+      "note": "Peut être pris plusieurs fois dans le SRD épique."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.overwhelming_critical",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.overwhelming_critical",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.overwhelming_critical",
+      "relation": "requires",
+      "to": "feat.cleave"
+    },
+    {
+      "from": "feat.overwhelming_critical",
+      "relation": "requires",
+      "to": "feat.improved_critical"
+    },
+    {
+      "from": "feat.overwhelming_critical",
+      "relation": "requires",
+      "to": "feat.great_cleave"
+    }
+  ]
+}

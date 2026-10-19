@@ -1,0 +1,667 @@
+{
+  "entities": [
+    {
+      "id": "spell.teleport",
+      "type": "spell",
+      "name": {
+        "fr": "Téléportation",
+        "en": "Teleport"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un pas, un pli de l’espace, et la poussière d’une autre ville colle déjà aux bottes. Mieux vaut bien connaître l’endroit où l’on compte réapparaître.\n\nEn jeu\n• Transporte le lanceur jusqu’à 150 km par niveau de lanceur, sur le même plan uniquement.\n• Emporte jusqu’à sa charge maximale, plus une créature consentante de taille M (avec son équipement) par tranche de 3 niveaux ; une G compte pour deux M, une TG pour deux G, etc.\n• Tous les passagers doivent former une chaîne de contact jusqu’au lanceur.\n• Jet de 1d100 selon la familiarité du lieu : très familier 01–97 sur place, 98–99 translation, 00 lieu similaire.\n• Soigneusement étudié : 01–94 / 95–97 / 98–99, incident sur 00 ; vu à l’occasion : 01–88 / 89–94 / 95–98, incident 99–00 ; vu une fois : 01–76 / 77–88 / 89–96, incident 97–00.\n• Destination erronée : 1d20+80, lieu similaire sur 81–92, incident sur 93–00.\n• Translation : arrivée décalée de 1d10 × 1d10 % de la distance parcourue, dans une direction aléatoire.\n• Lieu similaire : arrivée dans l’endroit le plus ressemblant à portée ; s’il n’y en a aucun, le sort échoue simplement.\n• Incident : chaque voyageur subit 1d10 dégâts et on relance sur la table (chaque incident ajoute 1d10).\n• Un objet tenu par une autre créature a droit à un jet de Volonté et à la résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "personnelle et contact",
+        "target": "le jeteur de sorts, les créatures consentantes et objets touchés",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (objet)",
+        "spellResistance": "non ou oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.teleport_object",
+      "type": "spell",
+      "name": {
+        "fr": "Téléportation d'objet",
+        "en": "Teleport Object"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le coffre était là, sur la table. Il est désormais à l’autre bout du royaume, ou rangé dans un repli du plan Éthéré.\n\nEn jeu\n• Comme Téléportation, mais pour un seul objet touché : jusqu’à 25 kg et 0,1 m³ par niveau de lanceur.\n• Ni créature ni effet magique (comme la bille d’une boule de feu à retardement) ne peuvent être envoyés.\n• L’objet peut aussi être expédié dans un lieu éloigné du plan Éthéré ; une faible aura marque alors son point de départ.\n• Une dissipation de la magie réussie visant ce point fait revenir l’objet."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 objet touché (25 kg et 0,1 m³/niveau au plus)",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_teleport",
+      "type": "spell",
+      "name": {
+        "fr": "Téléportation suprême",
+        "en": "Greater Teleport"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Pas d’erreur de cap, pas de distance trop grande : on pense au lieu, et on y est.\n\nEn jeu\n• Comme Téléportation, sans limite de distance sur le même plan, et l’arrivée se fait toujours au bon endroit.\n• Le lieu n’a pas besoin d’avoir été vu, mais il faut une description fiable (récit précis ou carte détaillée).\n• Si la description est fausse ou insuffisante, le lanceur disparaît et réapparaît aussitôt à son point de départ.\n• Aucun voyage vers un autre plan."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "personnelle et contact",
+        "target": "le jeteur de sorts, les créatures consentantes et objets touchés",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (objet)",
+        "spellResistance": "non ou oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fire_storm",
+      "type": "spell",
+      "name": {
+        "fr": "Tempête de feu",
+        "en": "Fire Storm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le sol entier s’embrase d’un coup, comme si la terre avait toujours retenu ce feu. Les arbres, eux, peuvent être épargnés.\n\nEn jeu\n• 1d6 dégâts de feu par niveau de lanceur (20d6 au plus) ; Réflexes pour moitié.\n• Zone : deux cubes de 3 m d’arête par niveau, dont la forme est libre.\n• Le lanceur peut épargner la végétation et les créatures végétales."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "2 cubes de 3 m d’arête/niveau (F)",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 20))d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.ice_storm",
+      "type": "spell",
+      "name": {
+        "fr": "Tempête de grêle",
+        "en": "Ice Storm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Des grêlons gros comme le poing tombent d’un ciel qui était clair il y a un instant. Le tambour est assourdissant.\n\nEn jeu\n• 5d6 dégâts à chaque créature dans le cylindre (6 m de rayon, 12 m de haut) : 3d6 contondants et 2d6 de froid, sans jet de sauvegarde.\n• –4 aux tests de Perception auditive dans la zone.\n• Tout déplacement au sol dans la zone se fait à demi-vitesse.\n• Dure 1 round entier ; la grêle disparaît ensuite."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "cylindre (6 m de rayon, 12 m de haut)",
+        "duration": "1 round entier",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6 bludgeoning",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6 cold",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.sleet_storm",
+      "type": "spell",
+      "name": {
+        "fr": "Tempête de neige",
+        "en": "Sleet Storm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un rideau de neige fondue, épais et cinglant, tombe sur le champ de bataille. On n’y voit plus rien, et le sol devient une patinoire.\n\nEn jeu\n• Cylindre de 12 m de rayon et 6 m de haut ; la vision y est bloquée, vision dans le noir comprise.\n• Se déplacer demande un test d’Équilibre DD 10 : réussite, demi-vitesse ; échec, aucun mouvement ce round ; échec de 5 ou plus, chute.\n• Éteint les torches et les petits feux.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "cylindre (12 m de rayon, 6 m de haut)",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.storm_of_vengeance",
+      "type": "spell",
+      "name": {
+        "fr": "Tempête vengeresse",
+        "en": "Storm of Vengeance"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le ciel se ferme, noir et grondant, et chaque round apporte une nouvelle colère : pluie acide, foudre, grêle, puis le déluge.\n\nEn jeu\n• Nuage de 108 m de rayon ; concentration, 10 rounds au plus.\n• Round 1 : chaque créature sous le nuage fait un jet de Vigueur ou reste sourde 1d4 × 10 minutes.\n• Round 2 : pluie acide, 1d6 dégâts d’acide, sans jet de sauvegarde.\n• Round 3 : six éclairs, chacun sur une cible différente, 10d6 dégâts d’électricité (Réflexes pour moitié).\n• Round 4 : grêle, 5d6 dégâts contondants, sans jet de sauvegarde.\n• Rounds 5 à 10 : visibilité réduite à 1,50 m (camouflage, 20 % d’échec) ; au-delà, camouflage total (50 %).\n• Pendant ces rounds : vitesse au quart, attaques à distance impossibles, et lancer un sort demande un test de Concentration (DD de la tempête + niveau du sort).\n• Si la concentration cesse, le sort prend fin."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "nuage de 108 m de rayon",
+        "duration": "concentration (jusqu’à 10 rounds) (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.darkness",
+      "type": "spell",
+      "name": {
+        "fr": "Ténèbres",
+        "en": "Darkness"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un objet ordinaire se met à boire la lumière autour de lui. Les torches brûlent encore, mais n’éclairent plus rien.\n\nEn jeu\n• L’objet touché répand une ombre de 6 m de rayon pendant 10 minutes par niveau.\n• Toute créature dans la zone bénéficie d’un camouflage (20 % d’échec), même face à la vision dans le noir.\n• Les lumières ordinaires et les sorts de lumière de niveau inférieur n’éclairent plus la zone.\n• Couvrir l’objet d’un cache opaque bloque l’effet.\n• Contre et dissipe un sort de lumière de niveau égal ou inférieur."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "obscurité"
+        ],
+        "components": "V, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.unholy_blight",
+      "type": "spell",
+      "name": {
+        "fr": "Ténèbres maudites",
+        "en": "Unholy Blight"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une brume froide et noire s’abat sur la zone, et ceux qui marchent dans la lumière se mettent à grelotter de fièvre.\n\nEn jeu\n• Étendue de 6 m de rayon ; les créatures mauvaises ne sont pas touchées.\n• Créatures bonnes : 1d8 dégâts par 2 niveaux de lanceur (5d8 au plus) et fiévreuses 1d4 rounds ; un jet de Volonté réussi divise les dégâts par deux et évite la fièvre.\n• Extérieurs bons : 1d6 par niveau de lanceur (10d6 au plus) à la place.\n• Créatures neutres : moitié des dégâts, pas de fièvre (quart sur un jet de Volonté réussi).\n• Guérison des maladies et Guérison n’y font rien ; Délivrance des malédictions met fin à la fièvre."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "étendue de 6 m de rayon",
+        "duration": "instantanée (1d4 rounds)",
+        "savingThrow": "Volonté, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.deeper_darkness",
+      "type": "spell",
+      "name": {
+        "fr": "Ténèbres profondes",
+        "en": "Deeper Darkness"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une nuit d’encre qui s’étend loin et qui ne se lève pas au matin.\n\nEn jeu\n• Comme Ténèbres, mais 18 m de rayon et 1 jour par niveau.\n• Là où elle croise Lumière du jour, les deux sorts s’annulent et l’éclairage redevient normal.\n• Contre et dissipe un sort de lumière de niveau égal ou inférieur (dont Lumière du jour)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "obscurité"
+        ],
+        "components": "V, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché",
+        "duration": "1 jour/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.black_tentacles",
+      "type": "spell",
+      "name": {
+        "fr": "Tentacules noires",
+        "en": "Black Tentacles"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le sol se soulève et des dizaines de bras noirs et luisants jaillissent pour saisir tout ce qui passe.\n\nEn jeu\n• Étendue de 6 m de rayon, 1 round par niveau ; les tentacules sont immunisés contre tous les dégâts.\n• Chaque round, ils tentent de saisir chaque créature dans la zone : bonus de lutte = niveau de lanceur + 8 (Force 19, taille G).\n• Une créature saisie subit 1d6 + 4 dégâts contondants à chaque test de lutte réussi, au tour du lanceur.\n• Hors de la lutte, on traverse la zone à demi-vitesse."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "étendue de 6 m de rayon",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 bludgeoning",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": 4,
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.hallucinatory_terrain",
+      "type": "spell",
+      "name": {
+        "fr": "Terrain hallucinatoire",
+        "en": "Hallucinatory Terrain"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "La route devient marais, le ravin devient prairie. Le paysage ment, avec l’odeur et le bruit qui vont avec.\n\nEn jeu\n• Change l’apparence, le son et l’odeur d’un terrain naturel : un cube de 9 m d’arête par niveau.\n• N’affecte ni bâtiments, ni équipement, ni créatures.\n• Dure 2 heures par niveau ; qui interagit avec l’illusion a droit à un jet de Volonté pour la percer."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "1 cube de 9 m d’arête/niveau (F)",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fear",
+      "type": "spell",
+      "name": {
+        "fr": "Terreur",
+        "en": "Fear"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une vague d’effroi invisible balaie l’avant du lanceur. Même les braves sentent leurs jambes trembler.\n\nEn jeu\n• Cône de 9 m : chaque créature vivante qui rate son jet de Volonté est paniquée 1 round par niveau.\n• Sur un jet réussi, elle est seulement secouée 1 round.\n• Une créature paniquée lâche ce qu’elle tient et fuit ; acculée, elle se recroqueville sur place."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "area": "rayonnement en forme de cône",
+        "duration": "1 round/niveau ou 1 round",
+        "savingThrow": "Volonté, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.illusory_script",
+      "type": "spell",
+      "name": {
+        "fr": "Texte illusoire",
+        "en": "Illusory Script"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Pour les bons lecteurs, un message clair ; pour les curieux, des signes étranges qui leur soufflent de partir.\n\nEn jeu\n• Seuls les lecteurs choisis à l’incantation comprennent le texte ; dure 1 jour par niveau.\n• Un lecteur non autorisé fait un jet de Volonté ; s’il échoue, il subit une suggestion choisie par l’auteur, pendant 30 minutes.\n• Vision lucide et Lecture de la magie ou Compréhension des langages ensemble permettent de lire le message.\n• Une dissipation de la magie réussie efface le texte, message compris.\n• Incantation d’au moins 1 minute ; encre d’au moins 50 po."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "fantasme",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 minute ou plus",
+        "range": "contact",
+        "target": "1 objet touché de 5 kg au plus",
+        "duration": "1 jour/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.web",
+      "type": "spell",
+      "name": {
+        "fr": "Toile d'araignée",
+        "en": "Web"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des fils épais et gluants s’étirent d’un mur à l’autre. Tout ce qui passe se retrouve collé, et chaque pas devient une lutte.\n\nEn jeu\n• Étendue de 6 m de rayon, 10 minutes par niveau ; doit s’ancrer à deux points opposés, sinon elle s’effondre.\n• Jet de Réflexes : échec, la créature est enchevêtrée ; se libérer demande 1 round et un test de Force DD 20 ou d’Évasion DD 25.\n• Avancer dans la toile : test de Force ou d’Évasion chaque round, 1,50 m par tranche de 5 points au-dessus de 10.\n• 1,50 m de toile donne un abri, 6 m un abri total.\n• Le feu brûle un carré de 1,50 m par round ; les créatures prises dans les flammes subissent 2d4 dégâts de feu."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "toiles dans une étendue de 6 m de rayon",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "Réflexes, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.imbue_with_spell_ability",
+      "type": "spell",
+      "name": {
+        "fr": "Transfert de sorts",
+        "en": "Imbue with Spell Ability"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur confie une part de sa magie à un compagnon, qui pourra la libérer le moment venu.\n\nEn jeu\n• Transfère des sorts préparés à une créature d’Intelligence 5 et de Sagesse 9 au moins : abjurations, divinations et invocations (guérison) seulement.\n• Selon les DV de la créature : 1 sort de niveau 1 (2 DV ou moins), 2 sorts de niveau 1 (3–4 DV), 2 de niveau 1 et 1 de niveau 2 (5 DV ou plus).\n• Les valeurs du sort dépendent du niveau du lanceur, pas des DV du bénéficiaire.\n• Le lanceur perd un emplacement de niveau 4 tant que les sorts transférés n’ont pas tous été lancés.\n• Le bénéficiaire doit pouvoir fournir les composantes (parler, gestes, matériel)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "permanente jusqu’à utilisation (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.transformation",
+      "type": "spell",
+      "name": {
+        "fr": "Transformation martiale",
+        "en": "Transformation"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les muscles gonflent, le regard se durcit, les formules s’effacent de l’esprit. Le lanceur ne veut plus qu’une chose : se battre.\n\nEn jeu\n• +4 d’altération en Force, Dextérité et Constitution ; +4 d’armure naturelle à la CA ; +5 de compétence aux jets de Vigueur.\n• Bonus de base à l’attaque égal au niveau de personnage (attaques supplémentaires possibles).\n• Maniement de toutes les armes courantes et de guerre.\n• Impossible de lancer des sorts ou d’utiliser des objets à fin d’incantation ou à potentiel magique.\n• Dure 1 round par niveau ; composante matérielle : une potion de Force de taureau, bue pendant l’incantation."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.transformation')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.transformation')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.transformation')"
+        },
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 4,
+          "bonusType": "natural_armor",
+          "condition": "active('toggle.transformation')"
+        },
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 5,
+          "bonusType": "competence",
+          "condition": "active('toggle.transformation')"
+        }
+      ]
+    },
+    {
+      "id": "spell.transmute_mud_to_rock",
+      "type": "spell",
+      "name": {
+        "fr": "Transmutation de la boue en pierre",
+        "en": "Transmute Mud to Rock"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La fange se fige et durcit d’un coup en un grès solide. Ceux qui pataugeaient feraient bien de sauter vite.\n\nEn jeu\n• Change la boue ou les sables mouvants en pierre, pour toujours : jusqu’à deux cubes de 3 m d’arête par niveau.\n• Une créature dans la boue a droit à un jet de Réflexes pour s’en sortir avant d’être prise dans la pierre.\n• Contre et dissipe Transmutation de la pierre en boue."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "jusqu’à 2 cubes de 3 m d’arête/niveau (F)",
+        "duration": "permanente",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.transmute_rock_to_mud",
+      "type": "spell",
+      "name": {
+        "fr": "Transmutation de la pierre en boue",
+        "en": "Transmute Rock to Mud"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La roche se ramollit et coule comme une pâte. Une falaise devient une coulée ; un plafond devient une averse de boue.\n\nEn jeu\n• Change la pierre naturelle non travaillée en boue : jusqu’à deux cubes de 3 m d’arête par niveau, 3 m de profondeur au plus.\n• Les créatures prises s’enlisent : vitesse 1,50 m, –2 à la CA et aux jets d’attaque.\n• Lancé sur un plafond : 8d6 dégâts contondants à ceux qui sont dessous (Réflexes pour moitié).\n• La boue reste jusqu’à Transmutation de la boue en pierre ou une dissipation ; elle sèche en terre en quelques jours.\n• La pierre magique n’est pas affectée."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "jusqu’à 2 cubes de 3 m d’arête/niveau (F)",
+        "duration": "permanente",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "8d6 bludgeoning",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.stone_to_flesh",
+      "type": "spell",
+      "name": {
+        "fr": "Transmutation de la pierre en chair",
+        "en": "Stone to Flesh"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La statue frémit, la pierre se teinte de rose, et le guerrier figé depuis des années reprend son souffle.\n\nEn jeu\n• Rend son état normal à une créature pétrifiée, quelle que soit sa taille, avec son équipement.\n• La créature doit réussir un jet de Vigueur DD 15 pour survivre au choc.\n• Peut aussi changer en chair inerte un cylindre de pierre de 3 m de long et 30 à 90 cm de diamètre."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature pétrifiée ou 1 cylindre de pierre (3 m de long, 30 à 90 cm de diamètre)",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule (objet)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    }
+  ]
+}

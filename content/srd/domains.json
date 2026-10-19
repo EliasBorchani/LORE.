@@ -1,0 +1,429 @@
+{
+  "entities": [
+    {
+      "id": "domain.air",
+      "type": "domain",
+      "name": {
+        "fr": "Air",
+        "en": "Air"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de l’Air écoute le vent comme on écoute une prière. Les tempêtes lui répondent, et les créatures nées de la pierre reculent devant lui.\n\nEn jeu\n• Renvoie ou détruit les créatures de la terre comme un prêtre bon renvoie les morts-vivants ; intimide, contrôle ou soutient les créatures de l’air comme un prêtre mauvais intimide les morts-vivants.\n• Utilisations par jour : 3 + modificateur de Charisme (pouvoir surnaturel, compté à part du renvoi des morts-vivants).\n• Sorts : 1 Brume de dissimulation, 2 Mur de vent, 3 État gazeux, 4 Marche dans les airs, 5 Contrôle des vents, 6 Éclair multiple, 7 Contrôle du climat, 8 Cyclone, 9 Nuée d’élémentaires (air seulement)"
+      },
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "domain.animal",
+      "type": "domain",
+      "name": {
+        "fr": "Faune",
+        "en": "Animal"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre partage la piste des bêtes. Il comprend leurs cris, devine leurs peurs et sait parler au loup avant qu’il ne morde.\n\nEn jeu\n• Peut lancer communication avec les animaux une fois par jour (pouvoir magique).\n• Connaissances (nature) devient une compétence de classe.\n• Sorts : 1 Apaisement des animaux, 2 Immobilisation d’animal, 3 Domination d’animal, 4 Convocation d’alliés naturels IV (animaux seulement), 5 Communion avec la nature, 6 Barrière antivie, 7 Forme animale, 8 Convocation d’alliés naturels VIII (animaux seulement), 9 Métamorphose suprême"
+      },
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.chaos",
+      "type": "domain",
+      "name": {
+        "fr": "Chaos",
+        "en": "Chaos"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Pour ce prêtre, aucune loi n’est sacrée et aucun ordre ne dure. Sa foi se nourrit du changement, et sa magie a le goût de la liberté.\n\nEn jeu\n• Lance ses sorts du Chaos avec un niveau de lanceur augmenté de 1.\n• Sorts : 1 Protection contre la Loi, 2 Fracassement, 3 Cercle magique contre la Loi, 4 Marteau du Chaos, 5 Dissipation de la Loi, 6 Animation d’objets, 7 Parole du Chaos, 8 Manteau du Chaos, 9 Convocation de monstres IX (Chaos seulement)"
+      }
+    },
+    {
+      "id": "domain.death",
+      "type": "domain",
+      "name": {
+        "fr": "Mort",
+        "en": "Death"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre a fait la paix avec la fin de toute chose. Il porte la mort au bout des doigts, et son simple contact peut éteindre une vie.\n\nEn jeu\n• Contact mortel, une fois par jour (pouvoir surnaturel) : attaque de contact au corps à corps ; lancer 1d6 par niveau de prêtre. Si le total atteint les points de vie actuels de la cible, elle meurt (pas de jet de sauvegarde).\n• Sorts : 1 Frayeur, 2 Glas, 3 Animation des morts, 4 Protection contre la mort, 5 Mise à mort, 6 Création de morts-vivants, 7 Destruction, 8 Création de morts-vivants dominants, 9 Plainte d’outre-tombe"
+      },
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.destruction",
+      "type": "domain",
+      "name": {
+        "fr": "Destruction",
+        "en": "Destruction"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre sert un dieu qui défait ce qui est bâti. Sa foi frappe fort, et ce qu’elle touche ne se relève pas.\n\nEn jeu\n• Châtiment, une fois par jour (pouvoir surnaturel) : une attaque au corps à corps avec +4 au jet d’attaque et un bonus aux dégâts égal au niveau de prêtre. À déclarer avant l’attaque.\n• Sorts : 1 Blessure légère, 2 Fracassement, 3 Contagion, 4 Blessure critique, 5 Blessure légère de groupe, 6 Mise à mal, 7 Désintégration, 8 Tremblement de terre, 9 Implosion"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.domain_destruction')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.cleric')",
+          "condition": "active('toggle.domain_destruction')"
+        }
+      ],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.earth",
+      "type": "domain",
+      "name": {
+        "fr": "Terre",
+        "en": "Earth"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre a la patience des montagnes. La roche lui obéit, et les créatures de l’air s’égarent loin de lui.\n\nEn jeu\n• Renvoie ou détruit les créatures de l’air comme un prêtre bon renvoie les morts-vivants ; intimide, contrôle ou soutient les créatures de la terre comme un prêtre mauvais intimide les morts-vivants.\n• Utilisations par jour : 3 + modificateur de Charisme (pouvoir surnaturel, compté à part du renvoi des morts-vivants).\n• Sorts : 1 Pierre magique, 2 Ramollissement de la terre et de la pierre, 3 Façonnage de la pierre, 4 Pierres acérées, 5 Mur de pierre, 6 Peau de pierre, 7 Tremblement de terre, 8 Corps de fer, 9 Nuée d’élémentaires (terre seulement)"
+      },
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "domain.evil",
+      "type": "domain",
+      "name": {
+        "fr": "Mal",
+        "en": "Evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre sert les ténèbres sans honte. Sa foi est une arme contre les justes, et ses prières profanent ce qu’elles touchent.\n\nEn jeu\n• Lance ses sorts du Mal avec un niveau de lanceur augmenté de 1.\n• Sorts : 1 Protection contre le Bien, 2 Profanation, 3 Cercle magique contre le Bien, 4 Fléau impie, 5 Dissipation du Bien, 6 Création de morts-vivants, 7 Blasphème, 8 Aura impie, 9 Convocation de monstres IX (Mal seulement)"
+      }
+    },
+    {
+      "id": "domain.fire",
+      "type": "domain",
+      "name": {
+        "fr": "Feu",
+        "en": "Fire"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre garde la flamme de son dieu. Elle le réchauffe, le protège et dévore ses ennemis, tandis que les créatures de l’eau s’en écartent.\n\nEn jeu\n• Renvoie ou détruit les créatures de l’eau comme un prêtre bon renvoie les morts-vivants ; intimide, contrôle ou soutient les créatures du feu comme un prêtre mauvais intimide les morts-vivants.\n• Utilisations par jour : 3 + modificateur de Charisme (pouvoir surnaturel, compté à part du renvoi des morts-vivants).\n• Sorts : 1 Mains brûlantes, 2 Production de flammes, 3 Résistance aux énergies destructives (froid ou feu), 4 Mur de feu, 5 Bouclier de feu, 6 Graines de feu, 7 Tempête de feu, 8 Nuage incendiaire, 9 Nuée d’élémentaires (feu seulement)"
+      },
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "domain.good",
+      "type": "domain",
+      "name": {
+        "fr": "Bien",
+        "en": "Good"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre porte la lumière des justes. Ses prières protègent les innocents et brûlent ceux qui leur veulent du mal.\n\nEn jeu\n• Lance ses sorts du Bien avec un niveau de lanceur augmenté de 1.\n• Sorts : 1 Protection contre le Mal, 2 Aide, 3 Cercle magique contre le Mal, 4 Châtiment sacré, 5 Dissipation du Mal, 6 Barrière de lames, 7 Mot sacré, 8 Aura sacrée, 9 Convocation de monstres IX (Bien seulement)"
+      }
+    },
+    {
+      "id": "domain.healing",
+      "type": "domain",
+      "name": {
+        "fr": "Guérison",
+        "en": "Healing"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre a juré de refermer les plaies. Entre ses mains, la magie de soin coule plus fort que chez les autres.\n\nEn jeu\n• Lance ses sorts de guérison avec un niveau de lanceur augmenté de 1.\n• Sorts : 1 Soins légers, 2 Soins modérés, 3 Soins importants, 4 Soins intensifs, 5 Soins légers de groupe, 6 Guérison suprême, 7 Régénération, 8 Soins intensifs de groupe, 9 Guérison suprême de groupe"
+      }
+    },
+    {
+      "id": "domain.knowledge",
+      "type": "domain",
+      "name": {
+        "fr": "Connaissance",
+        "en": "Knowledge"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre sert un dieu qui sait tout et ne dit presque rien. Il lit, il cherche, et ses prières lui ouvrent des portes que l’étude seule ne suffit pas à ouvrir.\n\nEn jeu\n• Toutes les compétences Connaissances deviennent des compétences de classe.\n• Lance ses sorts de divination avec un niveau de lanceur augmenté de 1.\n• Sorts : 1 Détection des passages secrets, 2 Détection de pensées, 3 Clairaudience/clairvoyance, 4 Divination, 5 Vision lucide, 6 Orientation, 7 Mythes et légendes, 8 Localisation suprême, 9 Prémonition"
+      }
+    },
+    {
+      "id": "domain.law",
+      "type": "domain",
+      "name": {
+        "fr": "Loi",
+        "en": "Law"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre croit à l’ordre juste et aux serments tenus. Sa foi est une règle, et sa magie impose cette règle au monde.\n\nEn jeu\n• Lance ses sorts de la Loi avec un niveau de lanceur augmenté de 1.\n• Sorts : 1 Protection contre le Chaos, 2 Apaisement, 3 Cercle magique contre le Chaos, 4 Colère de l’ordre, 5 Dissipation du Chaos, 6 Immobilisation de monstre, 7 Décret, 8 Bouclier de la Loi, 9 Convocation de monstres IX (Loi seulement)"
+      }
+    },
+    {
+      "id": "domain.luck",
+      "type": "domain",
+      "name": {
+        "fr": "Chance",
+        "en": "Luck"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre sert un dieu joueur. Le sort lui sourit plus souvent qu’aux autres, et quand il échoue, il a encore une chance de se reprendre.\n\nEn jeu\n• Bonne fortune, une fois par jour (pouvoir extraordinaire) : relance un jet qu’il vient de faire, avant d’en connaître le résultat, et garde le second.\n• Sorts : 1 Bouclier entropique, 2 Aide, 3 Protection contre les énergies destructives, 4 Liberté de mouvement, 5 Délivrance, 6 Double illusoire, 7 Renvoi des sorts, 8 Moment de prescience, 9 Miracle"
+      },
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.magic",
+      "type": "domain",
+      "name": {
+        "fr": "Magie",
+        "en": "Magic"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre voit la magie comme un langage sacré. Il lit les parchemins des mages, manie leurs baguettes, et défait leurs sorts.\n\nEn jeu\n• Utilise les objets à fin d’incantation et à potentiel magique (parchemins, baguettes) comme un magicien de niveau égal à la moitié de son niveau de prêtre (au moins 1). Pour les prêtres-magiciens, ce niveau s’ajoute à celui de magicien.\n• Sorts : 1 Aura magique, 2 Identification, 3 Dissipation de la magie, 4 Transfert de sorts, 5 Résistance à la magie, 6 Zone d’antimagie, 7 Renvoi des sorts, 8 Protection contre les sorts, 9 Disjonction"
+      }
+    },
+    {
+      "id": "domain.plant",
+      "type": "domain",
+      "name": {
+        "fr": "Flore",
+        "en": "Plant"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre parle aux arbres et les arbres lui répondent. Racines, ronces et sèves obéissent à sa prière.\n\nEn jeu\n• Intimide ou contrôle les créatures végétales comme un prêtre mauvais intimide les morts-vivants ; utilisations par jour : 3 + modificateur de Charisme (pouvoir surnaturel).\n• Connaissances (nature) devient une compétence de classe.\n• Sorts : 1 Enchevêtrement, 2 Peau d’écorce, 3 Croissance végétale, 4 Contrôle des plantes, 5 Mur d’épines, 6 Répulsion du bois, 7 Animation des plantes, 8 Domination des plantes, 9 Tertres errants"
+      },
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "domain.protection",
+      "type": "domain",
+      "name": {
+        "fr": "Protection",
+        "en": "Protection"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre est un bouclier vivant. Sa foi s’étend sur ceux qu’il touche et détourne les coups qui leur étaient destinés.\n\nEn jeu\n• Garde protectrice, une fois par jour (pouvoir surnaturel) : la créature touchée gagne, à son prochain jet de sauvegarde, un bonus de résistance égal au niveau de prêtre. Dure 1 heure au plus.\n• Sorts : 1 Sanctuaire, 2 Protection d’autrui, 3 Protection contre les énergies destructives, 4 Immunité contre les sorts, 5 Résistance à la magie, 6 Zone d’antimagie, 7 Répulsion, 8 Esprit impénétrable, 9 Sphère prismatique"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": "level('class.cleric')",
+          "bonusType": "resistance",
+          "condition": "active('toggle.domain_protection')"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "level('class.cleric')",
+          "bonusType": "resistance",
+          "condition": "active('toggle.domain_protection')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": "level('class.cleric')",
+          "bonusType": "resistance",
+          "condition": "active('toggle.domain_protection')"
+        }
+      ],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.strength",
+      "type": "domain",
+      "name": {
+        "fr": "Force",
+        "en": "Strength"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre sert un dieu de la force brute. Le temps d’une prière, ses muscles se gonflent d’une puissance qui ne vient pas de lui.\n\nEn jeu\n• Exploit de force, une fois par jour (pouvoir surnaturel, action libre) : bonus d’altération à la Force égal au niveau de prêtre pendant 1 round.\n• Sorts : 1 Agrandissement, 2 Force de taureau, 3 Habit magique, 4 Immunité contre les sorts, 5 Force du colosse, 6 Peau de pierre, 7 Main agrippeuse, 8 Poing serré, 9 Poigne broyeuse"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": "level('class.cleric')",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.domain_strength')"
+        }
+      ],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.sun",
+      "type": "domain",
+      "name": {
+        "fr": "Soleil",
+        "en": "Sun"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre porte la lumière du jour. Devant lui, l’ombre fond, et les morts-vivants ne se contentent pas de fuir : ils brûlent.\n\nEn jeu\n• Renvoi suprême, une fois par jour (pouvoir surnaturel) : une tentative de renvoi des morts-vivants où ceux qui devraient être renvoyés sont détruits à la place.\n• Sorts : 1 Endurance aux énergies destructives, 2 Métal brûlant, 3 Lumière brûlante, 4 Bouclier de feu, 5 Colonne de feu, 6 Graines de feu, 7 Rayon de soleil, 8 Explosion de lumière, 9 Sphère prismatique"
+      },
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.travel",
+      "type": "domain",
+      "name": {
+        "fr": "Voyage",
+        "en": "Travel"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre est fait pour la route. Rien ne le retient longtemps, ni les chaînes, ni la boue, ni la distance.\n\nEn jeu\n• Liberté de mouvement sur lui-même, pendant un nombre de rounds par jour égal à son niveau de prêtre (pouvoir surnaturel, action libre, rounds pris en plusieurs fois).\n• Survie devient une compétence de classe.\n• Sorts : 1 Repli expéditif, 2 Localisation d’objet, 3 Vol, 4 Porte dimensionnelle, 5 Téléportation, 6 Orientation, 7 Téléportation suprême, 8 Passage dans l’éther, 9 Projection astrale"
+      }
+    },
+    {
+      "id": "domain.trickery",
+      "type": "domain",
+      "name": {
+        "fr": "Duperie",
+        "en": "Trickery"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre sert un dieu menteur. Il sait porter un autre visage, se fondre dans l’ombre et faire croire ce qui l’arrange.\n\nEn jeu\n• Bluff, Déguisement et Discrétion deviennent des compétences de classe.\n• Sorts : 1 Déguisement, 2 Invisibilité, 3 Antidétection, 4 Confusion, 5 Fausse vision, 6 Double illusoire, 7 Écran, 8 Métamorphose universelle, 9 Arrêt du temps"
+      }
+    },
+    {
+      "id": "domain.war",
+      "type": "domain",
+      "name": {
+        "fr": "Guerre",
+        "en": "War"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre est un soldat de son dieu. Il manie l’arme sacrée de son culte comme un guerrier de métier.\n\nEn jeu\n• Maniement d’une arme de guerre gratuit (si besoin) et Arme de prédilection pour l’arme de prédilection de son dieu.\n• Sorts : 1 Arme magique, 2 Arme spirituelle, 3 Habit magique, 4 Force divine, 5 Colonne de feu, 6 Barrière de lames, 7 Mot de pouvoir aveuglant, 8 Mot de pouvoir étourdissant, 9 Mot de pouvoir mortel"
+      }
+    },
+    {
+      "id": "domain.water",
+      "type": "domain",
+      "name": {
+        "fr": "Eau",
+        "en": "Water"
+      },
+      "provenance": "official",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Ce prêtre sert les eaux profondes. Il respire sous les vagues, commande aux marées, et les créatures du feu fuient devant lui.\n\nEn jeu\n• Renvoie ou détruit les créatures du feu comme un prêtre bon renvoie les morts-vivants ; intimide, contrôle ou soutient les créatures de l’eau comme un prêtre mauvais intimide les morts-vivants.\n• Utilisations par jour : 3 + modificateur de Charisme (pouvoir surnaturel, compté à part du renvoi des morts-vivants).\n• Sorts : 1 Brume de dissimulation, 2 Nappe de brouillard, 3 Respiration aquatique, 4 Contrôle de l’eau, 5 Tempête de grêle, 6 Cône de froid, 7 Brouillard acide, 8 Flétrissure, 9 Nuée d’élémentaires (eau seulement)"
+      },
+      "usesPerDay": "3 + @ability.cha.mod"
+    }
+  ],
+  "relations": [
+    {
+      "from": "domain.animal",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "domain.knowledge",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "domain.plant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "domain.travel",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "domain.trickery",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "domain.trickery",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "domain.trickery",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    }
+  ]
+}

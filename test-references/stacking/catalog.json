@@ -1,0 +1,337 @@
+{
+  "version": "case-stacking",
+  "bonusTypes": [
+    {
+      "id": "enhancement",
+      "stacks": false
+    },
+    {
+      "id": "morale",
+      "stacks": false
+    },
+    {
+      "id": "luck",
+      "stacks": false
+    },
+    {
+      "id": "competence",
+      "stacks": false
+    },
+    {
+      "id": "size",
+      "stacks": false
+    },
+    {
+      "id": "resistance",
+      "stacks": false
+    },
+    {
+      "id": "natural_armor",
+      "stacks": false
+    },
+    {
+      "id": "untyped",
+      "stacks": true
+    },
+    {
+      "id": "dodge",
+      "stacks": true
+    }
+  ],
+  "statistics": [
+    {
+      "key": "ability.str.score",
+      "base": "@ability.str.base"
+    },
+    {
+      "key": "ability.str.mod",
+      "base": "floor((@ability.str.score - 10) / 2)"
+    },
+    {
+      "key": "ability.dex.score",
+      "base": "@ability.dex.base"
+    },
+    {
+      "key": "ability.dex.mod",
+      "base": "floor((@ability.dex.score - 10) / 2)"
+    },
+    {
+      "key": "ability.con.score",
+      "base": "@ability.con.base"
+    },
+    {
+      "key": "ability.con.mod",
+      "base": "floor((@ability.con.score - 10) / 2)"
+    },
+    {
+      "key": "ability.int.score",
+      "base": "@ability.int.base"
+    },
+    {
+      "key": "ability.int.mod",
+      "base": "floor((@ability.int.score - 10) / 2)"
+    },
+    {
+      "key": "ability.wis.score",
+      "base": "@ability.wis.base"
+    },
+    {
+      "key": "ability.wis.mod",
+      "base": "floor((@ability.wis.score - 10) / 2)"
+    },
+    {
+      "key": "ability.cha.score",
+      "base": "@ability.cha.base"
+    },
+    {
+      "key": "ability.cha.mod",
+      "base": "floor((@ability.cha.score - 10) / 2)"
+    },
+    {
+      "key": "level",
+      "base": "level()"
+    },
+    {
+      "key": "level_from_xp",
+      "base": "floor((1 + isqrt(1 + 8 * @xp / 1000)) / 2)"
+    },
+    {
+      "key": "bab",
+      "base": "@progression.bab"
+    },
+    {
+      "key": "save.fort",
+      "components": [
+        "progression.fort",
+        "ability.con.mod"
+      ]
+    },
+    {
+      "key": "save.ref",
+      "components": [
+        "progression.ref",
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "save.will",
+      "components": [
+        "progression.will",
+        "ability.wis.mod"
+      ]
+    },
+    {
+      "key": "hp.base",
+      "base": "3 / 4 * @hit_dice.total"
+    },
+    {
+      "key": "hp.max",
+      "base": "@hp.base + @ability.con.mod * level()"
+    },
+    {
+      "key": "weapon.attack",
+      "base": 0
+    },
+    {
+      "key": "weapon.damage",
+      "base": 0
+    },
+    {
+      "key": "attack.melee",
+      "components": [
+        "bab",
+        "ability.str.mod",
+        "weapon.attack"
+      ]
+    },
+    {
+      "key": "damage.melee",
+      "components": [
+        "damage.melee.weapon",
+        "damage.melee.ability"
+      ]
+    },
+    {
+      "key": "damage.melee.weapon",
+      "base": "@weapon.damage"
+    },
+    {
+      "key": "damage.melee.ability",
+      "base": "@ability.str.mod"
+    },
+    {
+      "key": "ac.armor",
+      "base": 0
+    },
+    {
+      "key": "ac.natural",
+      "base": 0
+    },
+    {
+      "key": "ac.dex_bonus",
+      "base": "@ability.dex.mod"
+    },
+    {
+      "key": "ac.total",
+      "base": "10 + @ac.armor + @ac.natural + @ac.dex_bonus"
+    }
+  ],
+  "entities": [
+    {
+      "id": "class.fighter",
+      "type": "class",
+      "name": {
+        "en": "Fighter"
+      },
+      "hitDie": 10
+    },
+    {
+      "id": "item.cloak_a",
+      "type": "item",
+      "name": {
+        "en": "Cloak A"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement"
+        }
+      ]
+    },
+    {
+      "id": "item.cloak_b",
+      "type": "item",
+      "name": {
+        "en": "Cloak B"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 6,
+          "bonusType": "enhancement"
+        }
+      ]
+    },
+    {
+      "id": "feat.a",
+      "type": "feat",
+      "name": {
+        "en": "A"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.b",
+      "type": "feat",
+      "name": {
+        "en": "B"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.curse",
+      "type": "feat",
+      "name": {
+        "en": "Curse"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": -2,
+          "bonusType": "enhancement"
+        }
+      ]
+    },
+    {
+      "id": "feat.curse_again",
+      "type": "feat",
+      "name": {
+        "en": "Curse Again"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": -3,
+          "bonusType": "enhancement"
+        }
+      ]
+    },
+    {
+      "id": "feat.dodge",
+      "type": "feat",
+      "name": {
+        "en": "Dodge"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge"
+        }
+      ]
+    },
+    {
+      "id": "spell.bless",
+      "type": "spell",
+      "name": {
+        "en": "Bless"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 1,
+          "bonusType": "luck",
+          "condition": "active('toggle.bless')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "dodge",
+          "condition": "active('toggle.bless')"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.fighter",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0
+    }
+  ],
+  "progressionRules": {
+    "epicAfterLevel": 20,
+    "epicPerLevel": {
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5
+    }
+  },
+  "relations": []
+}

@@ -1,0 +1,178 @@
+{
+  "entities": [
+    {
+      "id": "class.mystic_theurge",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Théurge mystique",
+        "en": "Mystic Theurge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "divine"
+      ],
+      "description": {
+        "fr": "Le théurge mystique refuse de choisir entre le grimoire et la prière. Il a appris les formules des mages et les invocations des prêtres, et il les mène de front, un sort profane dans une main, un sort divin dans l’autre. Les sages le trouvent dispersé, les dévots le trouvent impie ; lui pense surtout qu’il a deux fois plus de réponses qu’eux quand la situation tourne mal. Il ne manie pas l’épée, ne porte pas d’armure, et n’en a jamais eu besoin.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : 6 rangs en Connaissances (mystères) ; 6 rangs en Connaissances (religion) ; capable de lancer des sorts profanes du 2e niveau et des sorts divins du 2e niveau.\n• Alignement : tous.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (religion), Décryptage, Profession, Psychologie.\n• Sorts : +1 niveau de lanceur de sorts profanes et +1 niveau de lanceur de sorts divins aux niveaux 1 à 10 (une classe de chaque côté, déjà capable de lancer des sorts du 2e niveau ; choisies dans la fiche de niveau).\n• Aucune autre aptitude : tout tient dans la double progression des sorts."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle). Les deux progressions de sorts se choisissent dans le niveau du personnage (spellcasting.advances), une classe profane et une classe divine."
+    },
+    {
+      "id": "power.mystic_theurge_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Lancement de sorts",
+        "en": "Spellcasting"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mystic_theurge"
+      ],
+      "description": {
+        "fr": "Chaque niveau de théurge mystique fait progresser en même temps ses deux magies : celle qu’il a apprise dans les livres et celle qu’il reçoit de sa foi.\n\nEn jeu\n• À chaque niveau : +1 niveau effectif dans une classe profane qui lance déjà des sorts du 2e niveau, et +1 niveau effectif dans une classe divine qui lance déjà des sorts du 2e niveau.\n• Plusieurs classes possibles d’un même côté : une seule profite de ce niveau, au choix du joueur.\n• Gagne les sorts par jour, les sorts connus et le niveau de lanceur de sorts de ces niveaux effectifs.\n• Les autres aptitudes de ces classes restent au niveau atteint (familier, dons bonus, puissance face aux morts-vivants, etc.)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.mystic_theurge",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.mystic_theurge_spells"
+      ]
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.mystic_theurge",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.mystic_theurge",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    }
+  ]
+}

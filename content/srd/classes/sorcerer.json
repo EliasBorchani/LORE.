@@ -1,0 +1,824 @@
+{
+  "entities": [
+    {
+      "id": "class.sorcerer",
+      "type": "class",
+      "name": {
+        "fr": "Ensorceleur",
+        "en": "Sorcerer"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "arcane",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "L’ensorceleur n’a jamais ouvert un grimoire. La magie est dans son sang : un dragon dans l’arbre généalogique, une étoile tombée le soir de sa naissance, personne ne sait vraiment. Elle s’est réveillée un jour, d’abord en étincelles, puis en flammes. Il connaît peu de sorts, mais il les connaît par cœur, et il peut les lancer encore et encore pendant que le magicien cherche sa page.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé aux armes courantes ; ni armure ni bouclier (ils font échouer les sorts à composante gestuelle).\n• Sorts profanes spontanés, basés sur le Charisme, du niveau 0 au niveau 9.\n• Aptitude : appel de familier (1)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.sorcerer') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.sorcerer_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts d’ensorceleur",
+        "en": "Sorcerer spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sorcerer"
+      ],
+      "description": {
+        "fr": "Pas de livre, pas de préparation : l’ensorceleur tend la main et le sort vient. Son répertoire est court, mais il y puise librement tout au long de la journée.\n\nEn jeu\n• Sorts profanes de la liste des ensorceleurs et magiciens, lancés sans préparation.\n• Caractéristique : Charisme. Il faut au moins 10 + niveau du sort en Charisme pour l’apprendre ou le lancer. DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour et sorts connus selon le niveau d’ensorceleur ; sorts en bonus grâce à un Charisme élevé (pas pour les sorts connus).\n• Au niveau 4, puis tous les 2 niveaux pairs, peut échanger un sort connu contre un autre de même niveau, au moins 2 niveaux sous son plus haut niveau de sort.\n• Lance ses sorts avec un don de métamagie, mais l’incantation devient une action complexe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.sorcerer_summon_familiar",
+      "type": "class_power",
+      "name": {
+        "fr": "Appel de familier",
+        "en": "Summon familiar"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sorcerer"
+      ],
+      "description": {
+        "fr": "Un chat aux yeux trop intelligents, un corbeau qui répond quand on lui parle : le familier est un petit animal lié à l’âme du lanceur de sorts. Il l’espionne pour lui, porte ses sorts et partage ses pensées.\n\nEn jeu\n• Rituel de 24 heures et 100 po : chat, chauve-souris, corbeau, crapaud, faucon, furet, hibou, lézard, rat, serpent (Très Petit) ou belette.\n• Le maître gagne un bonus selon l’animal (par exemple +3 PV avec le crapaud, +2 en Discrétion avec le chat) et la vigilance quand le familier est à portée de bras.\n• Le familier gagne en armure naturelle et en Intelligence avec le niveau du maître, et des pouvoirs : lien télépathique, transfert d’effet magique, esquive extraordinaire (1) ; conduit pour sorts de contact (3) ; parler avec le maître (5) ; parler aux animaux de son espèce (7) ; résistance à la magie (11) ; scrutation (13).\n• S’il meurt, le maître rate un jet de Vigueur DD 15 ou perd 200 PX par niveau ; un nouveau familier demande un an et un jour."
+      },
+      "effects": [
+        {
+          "target": "familiar.master_level",
+          "op": "add",
+          "value": "level('class.sorcerer')"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.sorcerer",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.sorcerer_spells",
+        "power.sorcerer_summon_familiar"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        5,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        3,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        7,
+        4,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        7,
+        5,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        8,
+        5,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        8,
+        5,
+        4,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 11,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 12,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 13,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        3,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 14,
+      "bab": 7,
+      "fort": 4,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 15,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 16,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 17,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 18,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 19,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3,
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.sorcerer",
+      "level": 20,
+      "bab": 10,
+      "fort": 6,
+      "ref": 6,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "spellsKnown": [
+        9,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.sorcerer",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.sorcerer",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

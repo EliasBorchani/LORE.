@@ -1,0 +1,551 @@
+{
+  "entities": [
+    {
+      "id": "item.banded_mail",
+      "type": "item",
+      "name": {
+        "fr": "Crevice",
+        "en": "Banded mail"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "heavy_armor"
+      ],
+      "description": {
+        "fr": "Des bandes d’acier rivetées les unes sur les autres, cousues sur un fond de cuir et de mailles : chaque mouvement sonne comme une forge qu’on déplace. Elle encaisse les coups de taille comme un mur.\n\nEn jeu\n• Armure lourde ; gantelets inclus.\n• Malus d’armure aux tests sur Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut, doublé en Natation.\n• Risque d’échec des sorts profanes à composante gestuelle.\n• Ralentit le porteur (vitesse de l’armure) ; en courant, vitesse ×3 au lieu de ×4. Les nains gardent leur vitesse.\n• Enfiler : 4 minutes (1 minute à la hâte, CA et malus d’armure moins bons d’un point) ; ôter : 1 minute. Avec de l’aide, enfiler et ôter prennent deux fois moins de temps.\n• Dormir avec : réveil fatigué (–2 en Force et en Dextérité, ni charge ni course)."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "250 po",
+        "weight": "17,5 kg",
+        "armorBonus": "+6",
+        "maxDex": "+1",
+        "checkPenalty": "–6",
+        "spellFailure": "35 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 6,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 1
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -6
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 35
+        }
+      ],
+      "note": "La réduction de vitesse et la course ×3 ne sont pas encore calculées : elles restent dans le texte."
+    },
+    {
+      "id": "item.breastplate",
+      "type": "item",
+      "name": {
+        "fr": "Cuirasse",
+        "en": "Breastplate"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "medium_armor"
+      ],
+      "description": {
+        "fr": "Une plaque d’acier bombée qui épouse le torse, du col jusqu’à la taille, accompagnée de son casque et de ses jambières. Le choix des officiers qui veulent rester en selle et lisibles sur le champ de bataille.\n\nEn jeu\n• Armure intermédiaire ; casque et jambières inclus.\n• Malus d’armure aux tests sur Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut, doublé en Natation.\n• Risque d’échec des sorts profanes à composante gestuelle.\n• Ralentit le porteur (vitesse de l’armure). Les nains gardent leur vitesse.\n• Enfiler : 4 minutes (1 minute à la hâte, CA et malus d’armure moins bons d’un point) ; ôter : 1 minute. Avec de l’aide, enfiler et ôter prennent deux fois moins de temps.\n• Dormir avec : réveil fatigué (–2 en Force et en Dextérité, ni charge ni course)."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "200 po",
+        "weight": "15 kg",
+        "armorBonus": "+5",
+        "maxDex": "+3",
+        "checkPenalty": "–4",
+        "spellFailure": "25 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 5,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 3
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -4
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 25
+        }
+      ],
+      "note": "La réduction de vitesse n’est pas encore calculée : elle reste dans le texte."
+    },
+    {
+      "id": "item.buckler",
+      "type": "item",
+      "name": {
+        "fr": "Targe",
+        "en": "Buckler"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "shield"
+      ],
+      "description": {
+        "fr": "Un petit disque d’acier sanglé à l’avant-bras, qui laisse la main libre : l’archer le garde sans se gêner, le duelliste l’oppose aux lames d’un revers de poignet.\n\nEn jeu\n• Bouclier fixé à l’avant-bras, main libre : arcs et arbalètes s’utilisent sans malus.\n• Tenir une arme de cette main (arme secondaire ou moitié d’une arme à deux mains) : –1 aux jets d’attaque, cumulable avec le combat à deux armes.\n• Le round où l’on attaque avec une arme tenue de cette main, la targe ne donne pas son bonus à la CA.\n• Pas de coup de bouclier, pas de pointes.\n• Le malus d’armure aux tests et le risque d’échec des sorts s’ajoutent à ceux de l’armure.\n• S’attacher ou s’ôter : une action de mouvement."
+      },
+      "item": {
+        "slot": "shield",
+        "cost": "15 po",
+        "weight": "2,5 kg",
+        "armorBonus": "+1",
+        "checkPenalty": "–1",
+        "spellFailure": "5 %"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 1,
+          "layer": "base"
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -1
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 5
+        }
+      ],
+      "note": "Le –1 aux attaques quand la main du bouclier tient une arme n’est pas calculé."
+    },
+    {
+      "id": "item.chain_shirt",
+      "type": "item",
+      "name": {
+        "fr": "Chemise de mailles",
+        "en": "Chain shirt"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "light_armor"
+      ],
+      "description": {
+        "fr": "Une tunique de mailles fines portée sur un vêtement matelassé, avec un petit casque de fer. Elle protège le buste et laisse les bras libres : l’armure des éclaireurs et des lames rapides.\n\nEn jeu\n• Armure légère ; petit casque en fer inclus.\n• Malus d’armure aux tests sur Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut, doublé en Natation.\n• Risque d’échec des sorts profanes à composante gestuelle ; un barde l’ignore en armure légère.\n• Enfiler : 1 minute (5 rounds à la hâte, CA et malus d’armure moins bons d’un point) ; ôter : 1 minute, deux fois moins avec de l’aide."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "100 po",
+        "weight": "12,5 kg",
+        "armorBonus": "+4",
+        "maxDex": "+4",
+        "checkPenalty": "–2",
+        "spellFailure": "20 %"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 4,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 4
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -2
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "item.chainmail",
+      "type": "item",
+      "name": {
+        "fr": "Cotte de mailles",
+        "en": "Chainmail"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "medium_armor"
+      ],
+      "description": {
+        "fr": "Des milliers d’anneaux entrelacés qui tombent jusqu’aux genoux, sur une couche de tissu rembourré. Lourde aux épaules, elle fait glisser les lames et rassure dans la mêlée.\n\nEn jeu\n• Armure intermédiaire ; gantelets inclus.\n• Malus d’armure aux tests sur Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut, doublé en Natation.\n• Risque d’échec des sorts profanes à composante gestuelle.\n• Ralentit le porteur (vitesse de l’armure). Les nains gardent leur vitesse.\n• Enfiler : 4 minutes (1 minute à la hâte, CA et malus d’armure moins bons d’un point) ; ôter : 1 minute. Avec de l’aide, enfiler et ôter prennent deux fois moins de temps.\n• Dormir avec : réveil fatigué (–2 en Force et en Dextérité, ni charge ni course)."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "150 po",
+        "weight": "20 kg",
+        "armorBonus": "+5",
+        "maxDex": "+2",
+        "checkPenalty": "–5",
+        "spellFailure": "30 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 5,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 2
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -5
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 30
+        }
+      ],
+      "note": "La réduction de vitesse n’est pas encore calculée : elle reste dans le texte."
+    },
+    {
+      "id": "item.full_plate",
+      "type": "item",
+      "name": {
+        "fr": "Harnois",
+        "en": "Full plate"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "heavy_armor"
+      ],
+      "description": {
+        "fr": "Le chef-d’œuvre de l’armurier : plaques articulées de la tête aux pieds, heaume à visière, bottes renforcées et tunique matelassée. Un chevalier en harnois n’entre pas dans une bataille, il la traverse.\n\nEn jeu\n• Armure lourde ; gantelets, bottes épaisses, heaume et tunique rembourrée inclus.\n• Faite sur mesure : l’ajuster à un nouveau porteur demande un maître artisan et 2d4 × 100 po.\n• Malus d’armure aux tests sur Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut, doublé en Natation.\n• Risque d’échec des sorts profanes à composante gestuelle.\n• Ralentit le porteur (vitesse de l’armure) ; en courant, vitesse ×3 au lieu de ×4. Les nains gardent leur vitesse.\n• Enfiler : 4 minutes, et seulement avec de l’aide ; seul, on ne peut que l’enfiler à la hâte (4d4 rounds, CA et malus d’armure moins bons d’un point). Ôter : 1d4+1 minutes, deux fois moins avec de l’aide.\n• Dormir avec : réveil fatigué (–2 en Force et en Dextérité, ni charge ni course)."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "1 500 po",
+        "weight": "25 kg",
+        "armorBonus": "+8",
+        "maxDex": "+1",
+        "checkPenalty": "–6",
+        "spellFailure": "35 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 8,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 1
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -6
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 35
+        }
+      ],
+      "note": "La réduction de vitesse et la course ×3 ne sont pas encore calculées : elles restent dans le texte."
+    },
+    {
+      "id": "item.half_plate",
+      "type": "item",
+      "name": {
+        "fr": "Armure à plaques",
+        "en": "Half-plate"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "heavy_armor"
+      ],
+      "description": {
+        "fr": "Des plaques d’acier façonnées sur le buste et les membres, reliées par de la cotte de mailles. Elle arrête presque tout, mais ne laisse aucune place à l’esquive.\n\nEn jeu\n• Armure lourde ; gantelets inclus.\n• Malus d’armure aux tests sur Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut, doublé en Natation.\n• Risque d’échec des sorts profanes à composante gestuelle.\n• Ralentit le porteur (vitesse de l’armure) ; en courant, vitesse ×3 au lieu de ×4. Les nains gardent leur vitesse.\n• Enfiler : 4 minutes, et seulement avec de l’aide ; seul, on ne peut que l’enfiler à la hâte (4d4 rounds, CA et malus d’armure moins bons d’un point). Ôter : 1d4+1 minutes, deux fois moins avec de l’aide.\n• Dormir avec : réveil fatigué (–2 en Force et en Dextérité, ni charge ni course)."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "600 po",
+        "weight": "25 kg",
+        "armorBonus": "+7",
+        "maxDex": "+0",
+        "checkPenalty": "–7",
+        "spellFailure": "40 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 7,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 0
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -7
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 40
+        }
+      ],
+      "note": "La réduction de vitesse et la course ×3 ne sont pas encore calculées : elles restent dans le texte."
+    },
+    {
+      "id": "item.heavy_steel_shield",
+      "type": "item",
+      "name": {
+        "fr": "Écu en acier",
+        "en": "Heavy steel shield"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "shield"
+      ],
+      "description": {
+        "fr": "Un grand bouclier d’acier sanglé à l’avant-bras et tenu à pleine main. Assez lourd pour encaisser une hache, assez solide pour fracasser une mâchoire.\n\nEn jeu\n• Fixé à l’avant-bras et tenu en main : cette main ne peut rien tenir d’autre.\n• Coup de bouclier : arme de guerre contondante, traitée comme une arme à une main, utilisable comme arme secondaire ; on perd alors son bonus à la CA jusqu’à son prochain tour.\n• Le bonus d’altération d’un écu magique ne s’applique pas au coup de bouclier (il faut l’enchanter aussi comme arme).\n• Bois ou acier : même protection, mais certains sorts n’affectent que l’un des deux (métal chauffé, bois tordu).\n• Peut recevoir des pointes (coup de bouclier perforant).\n• Le malus d’armure aux tests et le risque d’échec des sorts s’ajoutent à ceux de l’armure.\n• Préparer ou détacher : une action de mouvement."
+      },
+      "item": {
+        "slot": "shield",
+        "cost": "20 po",
+        "weight": "7,5 kg",
+        "armorBonus": "+2",
+        "checkPenalty": "–2",
+        "spellFailure": "15 %",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 2,
+          "layer": "base"
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -2
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 15
+        }
+      ],
+      "note": "Le coup de bouclier n’est pas une arme du modèle (une seule arme maniée) : ses dégâts restent dans « item »."
+    },
+    {
+      "id": "item.heavy_wooden_shield",
+      "type": "item",
+      "name": {
+        "fr": "Écu en bois",
+        "en": "Heavy wooden shield"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "shield"
+      ],
+      "description": {
+        "fr": "Un grand bouclier de planches cerclées de fer, porté au bras et serré dans la main. Même protection que son cousin d’acier, plus léger, mais le feu et la magie qui tord le bois en viennent à bout.\n\nEn jeu\n• Fixé à l’avant-bras et tenu en main : cette main ne peut rien tenir d’autre.\n• Coup de bouclier : arme de guerre contondante, traitée comme une arme à une main, utilisable comme arme secondaire ; on perd alors son bonus à la CA jusqu’à son prochain tour.\n• Le bonus d’altération d’un écu magique ne s’applique pas au coup de bouclier (il faut l’enchanter aussi comme arme).\n• Bois ou acier : même protection, mais certains sorts n’affectent que l’un des deux (métal chauffé, bois tordu).\n• Peut recevoir des pointes (coup de bouclier perforant).\n• Le malus d’armure aux tests et le risque d’échec des sorts s’ajoutent à ceux de l’armure.\n• Préparer ou détacher : une action de mouvement."
+      },
+      "item": {
+        "slot": "shield",
+        "cost": "7 po",
+        "weight": "5 kg",
+        "armorBonus": "+2",
+        "checkPenalty": "–2",
+        "spellFailure": "15 %",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 2,
+          "layer": "base"
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -2
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 15
+        }
+      ],
+      "note": "Le coup de bouclier n’est pas une arme du modèle (une seule arme maniée) : ses dégâts restent dans « item »."
+    },
+    {
+      "id": "item.hide",
+      "type": "item",
+      "name": {
+        "fr": "Armure de peau",
+        "en": "Hide armor"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "medium_armor"
+      ],
+      "description": {
+        "fr": "Des peaux de bêtes épaisses, tannées et superposées, qui sentent encore la fumée du camp. Raide et lourde, elle protège bien pour presque rien, et sans un gramme de métal.\n\nEn jeu\n• Armure intermédiaire, sans métal : un druide peut la porter.\n• Malus d’armure aux tests sur Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut, doublé en Natation.\n• Risque d’échec des sorts profanes à composante gestuelle.\n• Ralentit le porteur (vitesse de l’armure). Les nains gardent leur vitesse.\n• Enfiler : 1 minute (5 rounds à la hâte, CA et malus d’armure moins bons d’un point) ; ôter : 1 minute, deux fois moins avec de l’aide.\n• Dormir avec : réveil fatigué (–2 en Force et en Dextérité, ni charge ni course)."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "15 po",
+        "weight": "12,5 kg",
+        "armorBonus": "+3",
+        "maxDex": "+4",
+        "checkPenalty": "–3",
+        "spellFailure": "20 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 3,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 4
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -3
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 20
+        }
+      ],
+      "note": "La réduction de vitesse n’est pas encore calculée : elle reste dans le texte."
+    },
+    {
+      "id": "item.leather",
+      "type": "item",
+      "name": {
+        "fr": "Armure de cuir",
+        "en": "Leather armor"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "armor",
+        "light_armor"
+      ],
+      "description": {
+        "fr": "Un plastron et des épaulières de cuir bouilli dans l’huile, durcis et cousus sur un vêtement souple. Silencieuse et légère, l’armure de ceux qui comptent sur leurs réflexes.\n\nEn jeu\n• Armure légère, sans métal : un druide peut la porter.\n• Aucun malus d’armure aux tests.\n• Risque d’échec des sorts profanes à composante gestuelle ; un barde l’ignore en armure légère.\n• Enfiler : 1 minute (5 rounds à la hâte, CA et malus d’armure moins bons d’un point) ; ôter : 1 minute, deux fois moins avec de l’aide.\n• On peut dormir avec sans être fatigué."
+      },
+      "item": {
+        "slot": "armor",
+        "cost": "10 po",
+        "weight": "7,5 kg",
+        "armorBonus": "+2",
+        "maxDex": "+6",
+        "checkPenalty": "0",
+        "spellFailure": "10 %"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 2,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 6
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 10
+        }
+      ]
+    }
+  ]
+}

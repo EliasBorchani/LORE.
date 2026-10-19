@@ -1,0 +1,354 @@
+{
+  "entities": [
+    {
+      "id": "class.arcane_trickster",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Mystificateur profane",
+        "en": "Arcane Trickster"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "skills"
+      ],
+      "description": {
+        "fr": "Le mystificateur profane a compris très tôt qu’un sort bien placé ouvre plus de portes qu’un pied-de-biche, et qu’une main invisible ne laisse pas d’empreintes. Moitié voleur, moitié magicien, il vide une bourse à l’autre bout de la salle, désamorce un piège sans s’en approcher et frappe là où l’ennemi se croyait à l’abri. Personne ne le voit venir, et c’est exactement ce qu’il cherche : pour lui, la magie n’est pas un art noble, c’est le meilleur outil du métier.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non loyal ; 7 degrés de maîtrise en Décryptage, en Désamorçage/sabotage et en Évasion, 4 en Connaissances (mystères) ; savoir lancer manipulation à distance et au moins un sort profane du 3e niveau ; attaque sournoise d’au moins +2d6.\n• Aucune formation aux armes ni aux armures.\n• +1 niveau de lanceur de sorts profanes à chaque niveau (1 à 10), pour une classe profane qui lance déjà des sorts du 3e niveau : sorts par jour, sorts connus et niveau de lanceur de sorts, sans les autres avantages de cette classe.\n• Aptitudes : prestidigitation à distance (1/jour au niveau 1, 2/jour au niveau 5, 3/jour au niveau 9) ; attaque sournoise (+1d6 au niveau 2, puis +1d6 tous les 2 niveaux) ; attaque imprévisible (1/jour au niveau 3, 2/jour au niveau 7)."
+      },
+      "hitDie": 4,
+      "skillPoints": 4,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.arcane_trickster_ranged_legerdemain",
+      "type": "class_power",
+      "name": {
+        "fr": "Prestidigitation à distance",
+        "en": "Ranged legerdemain"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_trickster"
+      ],
+      "description": {
+        "fr": "Un loquet qui se soulève tout seul, une bourse qui glisse d’une ceinture sans que personne ne s’en approche : le mystificateur travaille avec des doigts que l’on ne voit pas.\n\nEn jeu\n• Crochetage, Désamorçage/sabotage et Escamotage à 9 m au plus.\n• DD du test +5 ; impossible de faire 10.\n• Objet de 2,5 kg au plus ; il faut au moins 1 degré de maîtrise dans la compétence.\n• Un test par utilisation : 1/jour au niveau 1, 2/jour au niveau 5, 3/jour au niveau 9."
+      },
+      "usesPerDay": "1 + floor((level('class.arcane_trickster') - 1) / 4)",
+      "effects": []
+    },
+    {
+      "id": "power.arcane_trickster_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_trickster"
+      ],
+      "description": {
+        "fr": "Entre deux sorts, le mystificateur n’a rien oublié de son ancien métier : il sait toujours où planter la lame.\n\nEn jeu\n• Comme l’attaque sournoise du roublard : +1d6 au niveau 2, puis +1d6 tous les 2 niveaux (+5d6 au niveau 10).\n• S’ajoute à l’attaque sournoise donnée par d’autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor(level('class.arcane_trickster') / 2))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.arcane_trickster_impromptu_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque imprévisible",
+        "en": "Impromptu sneak attack"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "arcane_trickster"
+      ],
+      "description": {
+        "fr": "Un geste de la main, un éclat de lumière au mauvais endroit, et l’adversaire le plus vigilant baisse sa garde une fraction de seconde. C’est assez.\n\nEn jeu\n• Déclare qu’une attaque au corps à corps ou à distance (9 m au plus) est une attaque sournoise ; la cible perd son bonus de Dextérité à la CA contre cette attaque seulement.\n• Contre une créature insensible aux coups critiques : pas de dés en plus, mais elle reste privée de son bonus de Dextérité.\n• 1/jour au niveau 3, 2/jour au niveau 7."
+      },
+      "usesPerDay": "1 + floor((level('class.arcane_trickster') - 3) / 4)",
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.arcane_trickster",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.arcane_trickster_ranged_legerdemain"
+      ]
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.arcane_trickster_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.arcane_trickster_impromptu_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.arcane_trickster",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.arcane_trickster",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

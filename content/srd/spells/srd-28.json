@@ -1,0 +1,629 @@
+{
+  "entities": [
+    {
+      "id": "spell.resilient_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère d’isolement",
+        "en": "Resilient Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une bulle de force parfaite se referme autour de la cible. Elle peut rouler, cogner, crier : rien n’entre, rien ne sort.\n\nEn jeu\n• La cible doit tenir dans la sphère (30 cm de diamètre par niveau) ; Réflexes pour l’éviter.\n• Rien ne traverse la paroi, dans un sens comme dans l’autre, mais le prisonnier respire sans problème.\n• Pour la briser : désintégration, baguette d’annulation, sceptre d’oblitération ou dissipation de la magie ciblée sur elle. L’occupant n’en souffre pas.\n• La sphère peut être roulée, par son occupant ou de l’extérieur.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "sphère de 30 cm de diamètre/niveau, centrée sur une créature",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.flaming_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère de feu",
+        "en": "Flaming Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une boule de flammes grosse comme un tonneau roule à travers la salle en sifflant, à la poursuite de qui le lanceur désigne.\n\nEn jeu\n• Sphère de 1,50 m de diamètre qui se déplace de 9 m par action de mouvement du lanceur, et peut bondir de 9 m.\n• Quand elle entre dans l’espace d’une créature, elle s’arrête pour le round et inflige 2d6 dégâts de feu (Réflexes, annule).\n• Passe par-dessus les obstacles de 1,20 m au plus, allume les matières inflammables, éclaire comme une torche.\n• Sans ordre, elle reste sur place et brûle ; elle disparaît si elle sort de la portée.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "sphère de 1,50 m de diamètre",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.freezing_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère glaciale",
+        "en": "Freezing Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un globe bleuté, froid à brûler les doigts, file vers sa cible et éclate en une gerbe de givre qui fige tout sur place.\n\nEn jeu\n• Explosion de 3 m de rayon : 1d6 dégâts de froid par niveau (15d6 au plus), Réflexes pour la moitié.\n• Les élémentaires de l’Eau subissent 1d8 par niveau à la place (15d8 au plus).\n• Sur de l’eau, gèle 15 cm de profondeur sur 9 m² par niveau (135 m² au plus) pour 1 round par niveau ; un nageur pris dedans se libère par une action complexe et un test de Force ou d’Évasion DD 25.\n• Le lanceur peut garder le globe en main jusqu’à 1 round par niveau et le lancer plus tard (action simple) ; à la fin du délai, il explose sur lui, sans jet de sauvegarde."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "voir description",
+        "duration": "instantanée ou 1 round/niveau (voir description)",
+        "savingThrow": "Réflexes, 1/2 dégâts (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6 cold",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.telekinetic_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère téléguidée",
+        "en": "Telekinetic Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "La bulle de force se referme, puis s’élève doucement : ce qu’elle contient ne pèse presque plus rien, et le lanceur la promène à sa guise.\n\nEn jeu\n• Comme sphère d’isolement, sur plusieurs créatures ou objets à la fois.\n• Tout ce qui est dedans ne pèse plus qu’un seizième de son poids.\n• Le lanceur déplace la sphère de 9 m par round en se concentrant (action simple), jusqu’à 2 500 kg de poids réel, à portée moyenne ; il peut le faire même de l’intérieur.\n• Sans concentration, elle s’arrête ou descend de 18 m par round, sans blesser ses occupants.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "sphère de 30 cm de diamètre/niveau, centrée sur des créatures ou objets",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Réflexes, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.prismatic_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère prismatique",
+        "en": "Prismatic Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Sept voiles de couleur s’enroulent autour du lanceur en un dôme éblouissant. Pour l’atteindre, il faut traverser l’arc-en-ciel, et l’arc-en-ciel mord.\n\nEn jeu\n• Sphère immobile de 3 m de rayon autour du lanceur, aux sept couleurs de mur prismatique, avec les mêmes effets.\n• Les créatures de moins de 8 DV à 6 m ou moins qui la voient sont aveuglées pendant 2d4 × 10 minutes.\n• Le lanceur entre et sort sans risque ; quand il est dedans, rien ne passe, sorts compris.\n• Qui l’attaque ou la traverse subit chaque couleur l’une après l’autre.\n• Posée au sol, seule la moitié haute se forme. Peut être rendue permanente.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "effect": "sphère de 3 m de rayon centrée sur le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.eagles_splendor",
+      "type": "spell",
+      "name": {
+        "fr": "Splendeur de l’aigle",
+        "en": "Eagle's Splendor"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le dos se redresse, le regard s’aiguise, la voix porte : le sujet entre dans la pièce et tout le monde se tourne vers lui.\n\nEn jeu\n• +4 d’altération en Charisme.\n• Pas de sorts en plus pour un lanceur qui dépend du Charisme, mais le DD de ses sorts augmente.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.eagles_splendor')"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_eagles_splendor",
+      "type": "spell",
+      "name": {
+        "fr": "Splendeur de l’aigle de groupe",
+        "en": "Eagle's Splendor, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Toute la compagnie prend soudain des airs de cour royale : chaque mot sonne juste, chaque geste impressionne.\n\nEn jeu\n• +4 d’altération en Charisme pour 1 créature par niveau, à 9 m au plus les unes des autres.\n• Portée courte ; dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.mass_eagles_splendor')"
+        }
+      ]
+    },
+    {
+      "id": "spell.statue",
+      "type": "spell",
+      "name": {
+        "fr": "Statue",
+        "en": "Statue"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau grisonne, se fige, devient granit. Le sujet n’est plus qu’une statue, mais une statue qui voit, qui entend, et qui peut redescendre de son socle quand elle veut.\n\nEn jeu\n• Le sujet et son équipement deviennent de pierre : solidité 8, points de résistance égaux à ses points de vie.\n• Il voit, entend et sent normalement, et n’a plus besoin de manger, boire ni respirer.\n• Il ne ressent que les chocs assez forts pour abîmer la pierre (un éclat = égratignure, un bras cassé = grosse blessure).\n• Pendant la durée, il passe de pierre à chair et inversement par une action libre.\n• Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.virtue",
+      "type": "spell",
+      "name": {
+        "fr": "Stimulant",
+        "en": "Virtue"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une pichenette de vigueur divine : pas grand-chose, mais parfois ce petit rien sépare le debout du par terre.\n\nEn jeu\n• 1 point de vie temporaire pendant 1 minute."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": 1,
+          "condition": "active('toggle.virtue')"
+        }
+      ]
+    },
+    {
+      "id": "spell.suggestion",
+      "type": "spell",
+      "name": {
+        "fr": "Suggestion",
+        "en": "Suggestion"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Quelques mots glissés au bon moment, sur le ton de l’évidence, et l’idée devient la sienne.\n\nEn jeu\n• La cible suit une proposition d’une ou deux phrases, qui doit sembler raisonnable.\n• Une demande clairement suicidaire ou blessante pour elle annule le sort.\n• L’action peut durer tout le sort ou attendre un déclencheur ; le sort finit dès qu’elle est accomplie.\n• Une suggestion très raisonnable peut imposer un malus au jet de sauvegarde (−1, −2…, au choix du MJ).\n• Dure 1 heure par niveau ou jusqu’à accomplissement."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "langage",
+          "mental"
+        ],
+        "components": "V, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "1 heure/niveau ou jusqu’à accomplissement",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mass_suggestion",
+      "type": "spell",
+      "name": {
+        "fr": "Suggestion de groupe",
+        "en": "Suggestion, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une seule idée, lancée à la cantonade, et tout un groupe hoche la tête en même temps.\n\nEn jeu\n• Comme suggestion, sur 1 créature par niveau, toutes à 9 m au plus les unes des autres.\n• La même suggestion vaut pour toutes les cibles.\n• Portée moyenne ; dure 1 heure par niveau ou jusqu’à accomplissement."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "langage",
+          "mental"
+        ],
+        "components": "V, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 heure/niveau ou jusqu’à accomplissement",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_insanity",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole d’aliénation mentale",
+        "en": "Symbol of Insanity"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Des lignes qui ne tiennent pas en place, des angles qui n’existent pas : qui regarde trop longtemps la rune y laisse sa raison.\n\nEn jeu\n• Comme symbole de mort, mais les créatures à 18 m ou moins qui ratent leur jet de Volonté deviennent folles pour toujours (comme aliénation mentale).\n• Pas de limite de points de vie : une fois déclenché, il reste actif 10 minutes par niveau.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 33 pour chacun.\n• Composantes matérielles d’une valeur de 5 000 po."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Volonté, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_stunning",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole d’étourdissement",
+        "en": "Symbol of Stunning"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "La rune claque comme un coup de gong dans le crâne de ceux qui l’approchent ; ils restent là, hébétés, les bras ballants.\n\nEn jeu\n• Comme symbole de mort, mais les créatures à 18 m ou moins qui ratent leur jet de Volonté sont étourdies pendant 1d6 rounds.\n• Affecte jusqu’à 150 points de vie de créatures au total, comme symbole de mort ; actif 10 minutes par niveau une fois déclenché.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 32 pour chacun.\n• Composantes matérielles d’une valeur de 5 000 po."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Volonté, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_pain",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole de douleur",
+        "en": "Symbol of Pain"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une rune tordue qui pulse comme une rage de dents. Approcher, c’est déjà souffrir.\n\nEn jeu\n• Comme symbole de mort, mais les créatures à 18 m ou moins qui ratent leur jet de Vigueur souffrent : −4 aux jets d’attaque, aux tests de compétence et aux tests de caractéristique.\n• La douleur dure encore 1 heure après avoir quitté la zone.\n• Pas de limite de points de vie : une fois déclenché, il reste actif 10 minutes par niveau.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 30 pour chacun.\n• Composantes matérielles d’une valeur de 1 000 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Vigueur, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_weakness",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole de faiblesse",
+        "en": "Symbol of Weakness"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un signe pâle qui aspire la force des muscles : les épées pèsent soudain deux fois plus lourd.\n\nEn jeu\n• Comme symbole de mort, mais les créatures à 18 m ou moins qui ratent leur jet de Vigueur subissent 3d6 points d’affaiblissement temporaire de Force.\n• Pas de limite de points de vie : une fois déclenché, il reste actif 10 minutes par niveau.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 32 pour chacun.\n• Composantes matérielles d’une valeur de 5 000 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Vigueur, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_death",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole de mort",
+        "en": "Symbol of Death"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une rune noire tracée en silence, qui attend. Le jour où quelqu’un la regarde, elle se met à briller, et les plus faibles tombent sans un cri.\n\nEn jeu\n• Une fois déclenchée, tue les créatures à 18 m ou moins qui ratent leur jet de Vigueur, les plus proches d’abord, pour 150 points de vie actuels au total ; celles qui en ont trop sont ignorées.\n• Reste actif 10 minutes par niveau ou jusqu’à avoir tué ses 150 points de vie de créatures.\n• Une créature qui reste dans la zone ne fait qu’un jet ; si elle sort puis revient, elle en refait un.\n• Les conditions de déclenchement sont fixées au tracé et doivent être défensives : un symbole sur une arme ne se déclenche pas en frappant.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas. Le lanceur n’est jamais affecté par ses propres symboles.\n• Lecture de la magie l’identifie (Art de la magie DD 19) ; dissipation de la magie ciblée l’efface, effacement non ; détruire son support le déclenche.\n• Peut être rendu permanent : après avoir atteint sa limite ou été désamorcé, il se rendort 10 minutes puis redevient actif.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 33 pour chacun.\n• Composantes matérielles d’une valeur de 5 000 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mort"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Vigueur, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_persuasion",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole de persuasion",
+        "en": "Symbol of Persuasion"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un sceau élégant, presque accueillant. Qui le voit se sent soudain en confiance avec celui qui l’a tracé.\n\nEn jeu\n• Comme symbole de mort, mais les créatures à 18 m ou moins qui ratent leur jet de Volonté sont charmées par le lanceur (comme charme-personne) pendant 1 heure par niveau.\n• Pas de limite de points de vie : une fois déclenché, il reste actif 10 minutes par niveau.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 31 pour chacun.\n• Composantes matérielles d’une valeur de 5 000 po."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "charme",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Volonté, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_sleep",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole de sommeil",
+        "en": "Symbol of Sleep"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une spirale douce qui berce le regard. Les gardes bâillent, s’assoient… et ne se relèvent plus avant longtemps.\n\nEn jeu\n• Comme symbole de mort, mais les créatures de 10 DV ou moins à 18 m ou moins qui ratent leur jet de Volonté sombrent dans un sommeil profond pendant 3d6 × 10 minutes.\n• Seule la magie peut réveiller les dormeurs.\n• Pas de limite de points de vie : une fois déclenché, il reste actif 10 minutes par niveau.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 30 pour chacun.\n• Composantes matérielles d’une valeur de 1 000 po."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Volonté, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.symbol_of_fear",
+      "type": "spell",
+      "name": {
+        "fr": "Symbole de terreur",
+        "en": "Symbol of Fear"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une rune aux traits griffus qui réveille les pires cauchemars. Les plus braves lâchent leur arme et détalent.\n\nEn jeu\n• Comme symbole de mort, mais les créatures à 18 m ou moins qui ratent leur jet de Volonté sont paniquées pendant 1 round par niveau.\n• Affecte jusqu’à 150 points de vie de créatures au total, comme symbole de mort ; actif 10 minutes par niveau une fois déclenché.\n• Se déclenche quand une créature remplit la condition choisie au tracé (regarder, lire, toucher, franchir…) à 18 m ou moins ; le lanceur peut nommer des créatures épargnées ou un mot de passe.\n• Un symbole caché ou recouvert ne fonctionne pas.\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage/sabotage), DD 31 pour chacun.\n• Composantes matérielles d’une valeur de 1 000 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "0 m (voir description)",
+        "effect": "1 symbole",
+        "duration": "voir description",
+        "spellResistance": "oui",
+        "savingThrow": "Volonté, annule"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.telekinesis",
+      "type": "spell",
+      "name": {
+        "fr": "Télékinésie",
+        "en": "Telekinesis"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un geste de la main, et les objets obéissent : un levier s’abaisse, un adversaire décolle, un tonneau traverse la pièce.\n\nEn jeu\n• Trois usages au choix, sur concentration (jusqu’à 1 round par niveau) sauf la poussée, instantanée.\n• Force continue : une créature ou un objet de 12,5 kg par niveau au plus (187,5 kg au niveau 15), déplacé de 6 m par round, sans sortir de la portée. Volonté ou résistance à la magie pour protéger un objet tenu. Manipulation fine possible (test d’Intelligence).\n• Manœuvres : une par round (bousculade, désarmement, lutte, croc-en-jambe), sans attaque d’opportunité ; niveau de lanceur à la place du bonus de base (désarmement, lutte), modificateur d’Intelligence (magicien) ou de Charisme (ensorceleur) à la place de Force ou Dextérité. Pas de jet de sauvegarde, la résistance à la magie s’applique.\n• Poussée : jusqu’à 1 objet ou créature par niveau (15 au plus), tous à 3 m au plus les uns des autres, 12,5 kg par niveau au total (187,5 kg au plus), projetés jusqu’à 3 m par niveau ; un jet d’attaque par projectile (bonus de base + Intelligence ou Charisme).\n• Dégâts : une arme fait ses dégâts normaux sans bonus de Force (flèche ou carreau : comme une dague) ; un autre objet, de 1 point (mou) à 1d6 (dur) par tranche de 12,5 kg.\n• Une créature projetée a droit à Volonté et à la résistance à la magie ; écrasée contre un mur, elle prend 1d6 (chute de 3 m)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "voir description",
+        "duration": "concentration (jusqu’à 1 round/niveau) ou instantanée (voir description)",
+        "savingThrow": "Volonté, annule (objet) (voir description)",
+        "spellResistance": "oui (objet) (voir description)"
+      },
+      "effects": []
+    }
+  ]
+}

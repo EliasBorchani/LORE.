@@ -1,0 +1,1028 @@
+{
+  "entities": [
+    {
+      "id": "item.greatclub",
+      "type": "item",
+      "name": {
+        "fr": "Massue",
+        "en": "Greatclub"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed"
+      ],
+      "description": {
+        "fr": "Un tronc noueux cerclé de fer, que l’on fait tournoyer à deux mains. Pas d’élégance, pas de tranchant : seulement le poids, et ce qu’il fait aux boucliers.\n\nEn jeu\n• Arme de guerre à deux mains, de corps à corps.\n• Ajoute une fois et demie le modificateur de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "5 po",
+        "weight": "4 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ]
+    },
+    {
+      "id": "item.greatsword",
+      "type": "item",
+      "name": {
+        "fr": "Épée à deux mains",
+        "en": "Greatsword"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed"
+      ],
+      "description": {
+        "fr": "Une lame aussi haute qu’un écuyer, forgée pour ouvrir des brèches dans les rangs ennemis. Chaque moulinet trace un arc d’acier que peu osent franchir.\n\nEn jeu\n• Arme de guerre à deux mains, de corps à corps.\n• Ajoute une fois et demie le modificateur de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "50 po",
+        "weight": "4 kg",
+        "damage": "2d6",
+        "damageSmall": "1d10",
+        "critical": "19–20/×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ]
+    },
+    {
+      "id": "item.guisarme",
+      "type": "item",
+      "name": {
+        "fr": "Guisarme",
+        "en": "Guisarme"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed",
+        "reach"
+      ],
+      "description": {
+        "fr": "Une longue hampe terminée par une lame courbe et un crochet, héritée des serpes de vigneron. Elle tient l’ennemi à distance, puis le fauche par les chevilles.\n\nEn jeu\n• Arme de guerre à deux mains, à allonge : atteint les cibles à 3 m, jamais celles au contact.\n• Croc-en-jambe possible avec l’arme ; si la tentative échoue, lâcher l’arme évite d’être renversé en retour.\n• Ajoute une fois et demie le modificateur de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "9 po",
+        "weight": "6 kg",
+        "damage": "2d4",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Allonge et croc-en-jambe : règles décrites, non calculées."
+    },
+    {
+      "id": "item.halberd",
+      "type": "item",
+      "name": {
+        "fr": "Hallebarde",
+        "en": "Halberd"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed"
+      ],
+      "description": {
+        "fr": "Hache, pique et crochet sur une même hampe : l’arme des gardes qui tiennent un pont contre une charge de cavalerie. Elle pique, elle tranche, elle accroche.\n\nEn jeu\n• Arme de guerre à deux mains, de corps à corps (sans allonge).\n• Dégâts perforants ou tranchants, au choix du porteur.\n• Contre une charge : plantée face à l’assaillant par une action préparée, elle double ses dégâts sur celui qui charge.\n• Croc-en-jambe possible avec l’arme ; si la tentative échoue, lâcher l’arme évite d’être renversé en retour.\n• Ajoute une fois et demie le modificateur de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "10 po",
+        "weight": "6 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "×3",
+        "damageType": "Perforant ou tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Dégâts doublés contre une charge et croc-en-jambe : règles décrites, non calculées."
+    },
+    {
+      "id": "item.hand_crossbow",
+      "type": "item",
+      "name": {
+        "fr": "Arbalète de poing",
+        "en": "Hand crossbow"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Assez petite pour une main, assez discrète pour une manche. Les assassins des cités sous la roche en ont fait une signature : un claquement sec, un carreau empoisonné, plus rien.\n\nEn jeu\n• Arme exotique à distance, tire des carreaux de poing (munitions).\n• Se tire d’une seule main sans pénalité ; la recharger demande les deux mains et une action de mouvement, qui provoque une attaque d’opportunité.\n• Tirer avec une arbalète de poing dans chaque main donne les pénalités du combat à deux armes légères."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "100 po",
+        "weight": "1 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "19–20/×2",
+        "range": "9 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Recharge et combat à deux arbalètes : règles décrites, non calculées."
+    },
+    {
+      "id": "item.handaxe",
+      "type": "item",
+      "name": {
+        "fr": "Hachette",
+        "en": "Handaxe"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light"
+      ],
+      "description": {
+        "fr": "Une hache à une main, légère et vive, aussi utile pour fendre du bois au bivouac que pour ouvrir un casque. Les nains la portent à la ceinture, toujours à portée.\n\nEn jeu\n• Arme de guerre légère, de corps à corps : pénalités réduites en main secondaire, utilisable en lutte et avec Attaque en finesse."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "6 po",
+        "weight": "1,5 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.heavy_crossbow",
+      "type": "item",
+      "name": {
+        "fr": "Arbalète lourde",
+        "en": "Heavy crossbow"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Un arc d’acier que l’on tend à la manivelle. Lente à recharger, mais son carreau traverse une porte de chêne et le soldat caché derrière.\n\nEn jeu\n• Arme courante à distance, tire des carreaux d’arbalète (munitions) ; se tient normalement à deux mains.\n• Recharger demande une action complexe, qui provoque une attaque d’opportunité.\n• Tirer d’une seule main : −4 à l’attaque. Une dans chaque main : pénalités du combat à deux armes à une main, cumulées avec ce −4."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "50 po",
+        "weight": "4 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "19–20/×2",
+        "range": "36 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Recharge et tir à une main : règles décrites, non calculées."
+    },
+    {
+      "id": "item.heavy_flail",
+      "type": "item",
+      "name": {
+        "fr": "Fléau d’armes lourd",
+        "en": "Heavy flail"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed"
+      ],
+      "description": {
+        "fr": "Une lourde boule cloutée au bout d’une chaîne et d’un long manche. Elle contourne les boucliers, s’enroule autour des lames et arrache les armes des poings.\n\nEn jeu\n• Arme de guerre à deux mains, de corps à corps.\n• Désarmement : +2 au jet opposé pour désarmer (y compris pour éviter d’être désarmé après un échec).\n• Croc-en-jambe possible avec l’arme ; si la tentative échoue, lâcher l’arme évite d’être renversé en retour.\n• Ajoute une fois et demie le modificateur de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "15 po",
+        "weight": "5 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "19–20/×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Bonus de désarmement et croc-en-jambe : règles décrites, non calculées."
+    },
+    {
+      "id": "item.heavy_mace",
+      "type": "item",
+      "name": {
+        "fr": "Masse d’armes lourde",
+        "en": "Heavy mace"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Une tête de métal à ailettes au bout d’un manche cerclé, l’arme favorite des prêtres guerriers. Elle se moque des cottes de mailles : ce qu’elle touche, elle l’écrase.\n\nEn jeu\n• Arme courante à une main, de corps à corps ; peut se tenir à deux mains pour une fois et demie le modificateur de Force."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "12 po",
+        "weight": "4 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.heavy_pick",
+      "type": "item",
+      "name": {
+        "fr": "Pic de guerre lourd",
+        "en": "Heavy pick"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Un bec d’acier conçu pour percer les plaques d’armure comme on perce la roche. Rarement fatal du premier coup, effroyable quand il trouve la faille.\n\nEn jeu\n• Arme de guerre à une main, de corps à corps ; peut se tenir à deux mains pour une fois et demie le modificateur de Force."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "8 po",
+        "weight": "3 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×4",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 4,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.javelin",
+      "type": "item",
+      "name": {
+        "fr": "Javeline",
+        "en": "Javelin"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Une lance légère, équilibrée pour le jet, que les tirailleurs portent en faisceau sur le dos. Une volée de javelines avant la mêlée, et la ligne adverse vacille.\n\nEn jeu\n• Arme courante à distance, arme de jet.\n• Au corps à corps, elle compte comme une arme non maîtrisée : −4 à l’attaque."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "1 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "range": "9 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Pénalité au corps à corps : règle décrite, non calculée."
+    },
+    {
+      "id": "item.kama",
+      "type": "item",
+      "name": {
+        "fr": "Kama",
+        "en": "Kama"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "light",
+        "monk"
+      ],
+      "description": {
+        "fr": "Une faucille de paysan devenue arme dans les mains de ceux à qui l’on avait interdit l’épée. Les moines en font une extension de leur propre corps.\n\nEn jeu\n• Arme exotique légère, de corps à corps : pénalités réduites en main secondaire, utilisable en lutte et avec Attaque en finesse.\n• Arme de moine : un moine peut l’utiliser pendant un déluge de coups.\n• Croc-en-jambe possible avec l’arme ; si la tentative échoue, lâcher l’arme évite d’être renversé en retour."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "2 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Déluge de coups et croc-en-jambe : règles décrites, non calculées."
+    },
+    {
+      "id": "item.kukri",
+      "type": "item",
+      "name": {
+        "fr": "Kukri",
+        "en": "Kukri"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light"
+      ],
+      "description": {
+        "fr": "Une lame lourde et recourbée vers l’avant, qui tranche avec la force d’une hache malgré sa petite taille. Les éclaireurs des collines en font un outil, une arme et un serment.\n\nEn jeu\n• Arme de guerre légère, de corps à corps : pénalités réduites en main secondaire, utilisable en lutte et avec Attaque en finesse."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "8 po",
+        "weight": "1 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "18–20/×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.lance",
+      "type": "item",
+      "name": {
+        "fr": "Lance d’arçon",
+        "en": "Lance"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed",
+        "reach"
+      ],
+      "description": {
+        "fr": "Une longue perche de frêne ferrée, faite pour être couchée sous le bras d’un cavalier lancé au galop. Toute la masse du destrier se concentre sur sa pointe.\n\nEn jeu\n• Arme de guerre à deux mains, à allonge : atteint les cibles à 3 m, jamais celles au contact.\n• À cheval, peut se manier d’une seule main.\n• Dégâts doublés lors d’une charge montée."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "10 po",
+        "weight": "5 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Allonge, maniement à une main en selle et dégâts doublés en charge : règles décrites, non calculées."
+    },
+    {
+      "id": "item.light_crossbow",
+      "type": "item",
+      "name": {
+        "fr": "Arbalète légère",
+        "en": "Light crossbow"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Facile à recharger, facile à apprendre : l’arme des milices et des gardes de caravane. Un pied dans l’étrier, un tir de levier, et le carreau est prêt.\n\nEn jeu\n• Arme courante à distance, tire des carreaux d’arbalète (munitions) ; se tient normalement à deux mains.\n• Recharger demande une action de mouvement, qui provoque une attaque d’opportunité.\n• Tirer d’une seule main : −2 à l’attaque. Une dans chaque main : pénalités du combat à deux armes légères, cumulées avec ce −2."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "35 po",
+        "weight": "2 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "19–20/×2",
+        "range": "24 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Recharge et tir à une main : règles décrites, non calculées."
+    },
+    {
+      "id": "item.light_flail",
+      "type": "item",
+      "name": {
+        "fr": "Fléau d’armes léger",
+        "en": "Light flail"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Une boule de fer reliée à son manche par une courte chaîne. Imprévisible pour qui la pare, elle s’enroule autour des armes et les arrache.\n\nEn jeu\n• Arme de guerre à une main, de corps à corps.\n• Désarmement : +2 au jet opposé pour désarmer (y compris pour éviter d’être désarmé après un échec).\n• Croc-en-jambe possible avec l’arme ; si la tentative échoue, lâcher l’arme évite d’être renversé en retour."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "8 po",
+        "weight": "2,5 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Bonus de désarmement et croc-en-jambe : règles décrites, non calculées."
+    },
+    {
+      "id": "item.light_hammer",
+      "type": "item",
+      "name": {
+        "fr": "Marteau léger",
+        "en": "Light hammer"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light",
+        "thrown"
+      ],
+      "description": {
+        "fr": "Un marteau de forgeron au manche court, assez équilibré pour être lancé. Dans les clans nains, on l’offre à l’apprenti le jour où il frappe sa première enclume.\n\nEn jeu\n• Arme de guerre légère, de corps à corps : pénalités réduites en main secondaire, utilisable en lutte et avec Attaque en finesse.\n• Peut aussi être lancée (arme de jet)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "1 po",
+        "weight": "1 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "range": "6 m",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.light_mace",
+      "type": "item",
+      "name": {
+        "fr": "Masse d’armes légère",
+        "en": "Light mace"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "light"
+      ],
+      "description": {
+        "fr": "Une tête de métal sur un manche court : rien de subtil, tout dans l’impact. Assez légère pour la main gauche, assez solide pour fendre un heaume.\n\nEn jeu\n• Arme courante légère, de corps à corps : pénalités réduites en main secondaire, utilisable en lutte et avec Attaque en finesse."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "5 po",
+        "weight": "2 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.light_pick",
+      "type": "item",
+      "name": {
+        "fr": "Pic de guerre léger",
+        "en": "Light pick"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light"
+      ],
+      "description": {
+        "fr": "Un pic de mineur affûté pour la guerre, qui ne pardonne pas quand il frappe au bon endroit. Les nains disent qu’il trouve la faille d’une armure comme il trouve la veine d’un filon.\n\nEn jeu\n• Arme de guerre légère, de corps à corps : pénalités réduites en main secondaire, utilisable en lutte et avec Attaque en finesse."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "4 po",
+        "weight": "1,5 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×4",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 4,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    }
+  ]
+}

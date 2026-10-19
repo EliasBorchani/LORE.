@@ -1,0 +1,76 @@
+{
+  "character": "char.barbarian",
+  "atLevel": 21,
+  "note": "Worked examples 1 (feat with prerequisite), 3 (Power Attack two-handed) and 5 (Rage), with the epic rule.",
+  "values": [
+    {
+      "stat": "ability.str.score",
+      "value": 34,
+      "status": "verified",
+      "how": "26 + Titan Strength 4 + Rage 4 morale"
+    },
+    {
+      "stat": "ability.con.score",
+      "value": 14,
+      "status": "verified",
+      "how": "10 + Rage 4 morale"
+    },
+    {
+      "stat": "bab",
+      "value": 20,
+      "status": "verified",
+      "how": "table 20 at barbarian 20, + 1/2 for level 21 = 20.5, rounded once"
+    },
+    {
+      "stat": "attack.melee",
+      "value": 27,
+      "status": "verified",
+      "how": "BAB 20 + Str mod 12 - Power Attack 5"
+    },
+    {
+      "stat": "damage.melee",
+      "dice": "2d6",
+      "flat": 28,
+      "averageFloor": 35,
+      "status": "verified",
+      "how": "2d6 + Str 12 x 1.5 (two-handed Power Attack) + 5 x 2 = 2d6 + 28, average 35"
+    },
+    {
+      "stat": "save.fort",
+      "value": 14,
+      "status": "verified",
+      "how": "table 12 + 1/2 + Con mod 2 = 14.5"
+    },
+    {
+      "stat": "save.will",
+      "value": 8,
+      "status": "verified",
+      "how": "table 6 + 1/2 + Rage 2 = 8.5"
+    },
+    {
+      "stat": "skill.climb",
+      "value": 14,
+      "status": "verified",
+      "how": "Str mod 12 + 2 competence"
+    },
+    {
+      "stat": "ac.total",
+      "value": 8,
+      "status": "verified",
+      "how": "10 - Rage 2"
+    },
+    {
+      "stat": "hp.base",
+      "value": 189,
+      "status": "verified",
+      "how": "21 x 12 x 3/4"
+    },
+    {
+      "stat": "hp.max",
+      "value": 231,
+      "status": "verified",
+      "how": "189 + Con mod 2 x 21"
+    }
+  ],
+  "prerequisites": []
+}

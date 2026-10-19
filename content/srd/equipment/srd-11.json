@@ -1,0 +1,249 @@
+{
+  "entities": [
+    {
+      "id": "item.acid",
+      "type": "item",
+      "name": {
+        "fr": "Acide (flasque)",
+        "en": "Acid (flask)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "splash",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une flasque de verre épais où dort un liquide verdâtre qui fume au moindre contact de l’air. Lancée au bon endroit, elle ronge cuir, chair et écailles avec la même indifférence.\n\nEn jeu\n• Arme à impact lancée : attaque de contact à distance, facteur de portée 3 m.\n• Coup au but : dégâts d’acide de la flasque ; aspersion : 1 point de dégâts d’acide à chaque créature à 1,5 m du point d’impact.\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "10 po",
+        "weight": "500 g",
+        "damage": "1d6",
+        "range": "3 m",
+        "damageType": "Acide"
+      }
+    },
+    {
+      "id": "item.alchemists_fire",
+      "type": "item",
+      "name": {
+        "fr": "Feu grégeois (flasque)",
+        "en": "Alchemist’s fire (flask)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "splash",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Un liquide poisseux qui s’embrase dès que la flasque éclate, et qui continue de brûler sur la cible comme s’il avait sa propre volonté. Les assiégés l’aiment autant que les assiégeants le redoutent.\n\nEn jeu\n• Arme à impact lancée : attaque de contact à distance, facteur de portée 3 m.\n• Coup au but : dégâts de feu de la flasque ; aspersion : 1 point de dégâts de feu à chaque créature à 1,5 m du point d’impact.\n• Le round suivant, la cible touchée subit encore 1d6 points de dégâts de feu, sauf si elle éteint les flammes avant (action complexe, Réflexes DD 15, +2 en se roulant au sol).\n• Plonger dans l’eau ou éteindre les flammes par magie les étouffe automatiquement.\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "20 po",
+        "weight": "500 g",
+        "damage": "1d6",
+        "range": "3 m",
+        "damageType": "Feu"
+      }
+    },
+    {
+      "id": "item.antitoxin",
+      "type": "item",
+      "name": {
+        "fr": "Antidote (fiole)",
+        "en": "Antitoxin (vial)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une fiole au goût amer de racines et de charbon, que les goûteurs royaux avalent avant chaque banquet. Elle ne guérit rien, mais le corps qui l’a bue se défend mieux.\n\nEn jeu\n• Boire la fiole donne +5 aux jets de Vigueur contre le poison pendant 1 heure (bonus d’alchimie).\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "50 po"
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 5,
+          "bonusType": "untyped",
+          "condition": "active('toggle.antitoxin')",
+          "situation": "situation.vs_poison"
+        }
+      ],
+      "note": "Bonus d’alchimie dans le SRD : ce type de bonus n’existe pas dans le modèle, il est noté sans type. La durée d’une heure n’est pas suivie : couper le toggle à la main."
+    },
+    {
+      "id": "item.everburning_torch",
+      "type": "item",
+      "name": {
+        "fr": "Torche éternelle",
+        "en": "Everburning torch"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "light_source"
+      ],
+      "description": {
+        "fr": "Une torche de bois tout à fait banale, si ce n’est que sa flamme ne vacille jamais et ne réchauffe rien. Un sort de flamme éternelle l’habite pour toujours.\n\nEn jeu\n• Lumière vive dans un rayon de 6 m, faible jusqu’à 12 m.\n• Brûle sans fin et sans chaleur ; ne s’éteint pas faute d’air.\n• Ne se fabrique pas avec Artisanat (alchimie) : c’est un objet enchanté."
+      },
+      "item": {
+        "cost": "110 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.holy_water",
+      "type": "item",
+      "name": {
+        "fr": "Eau bénite (flasque)",
+        "en": "Holy water (flask)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "splash",
+        "consumable"
+      ],
+      "description": {
+        "fr": "De l’eau claire bénie au pied d’un autel, scellée dans une flasque marquée d’un symbole sacré. Pour un mortel, ce n’est que de l’eau ; pour un mort-vivant, c’est un brasier. Les temples des dieux bons la cèdent sans bénéfice : voir le mal reculer leur suffit.\n\nEn jeu\n• Arme à impact lancée : attaque de contact à distance, facteur de portée 3 m.\n• Ne blesse que les morts-vivants et les Extérieurs mauvais : dégâts de la flasque au coup au but, 1 point aux créatures de ce type à 1,5 m du point d’impact.\n• Contre une créature intangible adjacente, il faut verser l’eau sur elle : attaque de contact à distance qui ne provoque pas d’attaque d’opportunité.\n• Ne se fabrique pas avec Artisanat (alchimie) : l’eau est consacrée par le sort bénédiction de l’eau."
+      },
+      "item": {
+        "cost": "25 po",
+        "weight": "500 g",
+        "damage": "2d4",
+        "range": "3 m"
+      }
+    },
+    {
+      "id": "item.smokestick",
+      "type": "item",
+      "name": {
+        "fr": "Bâton fumigène",
+        "en": "Smokestick"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Un bâtonnet de bois imbibé d’une pâte grise qui, une fois allumé, crache une fumée si épaisse qu’on n’y voit plus sa propre main. L’allié favori des voleurs pressés.\n\nEn jeu\n• Allumé, il remplit un cube de 3 m d’arête d’une fumée opaque, qui camoufle comme le sort nappe de brouillard (mais un vent modéré ou plus fort la chasse en 1 round).\n• Il se consume en 1 round, puis la fumée se dissipe d’elle-même.\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "20 po",
+        "weight": "250 g"
+      }
+    },
+    {
+      "id": "item.sunrod",
+      "type": "item",
+      "name": {
+        "fr": "Bâton éclairant",
+        "en": "Sunrod"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "light_source",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une tige de fer d’une trentaine de centimètres, coiffée d’une pointe dorée qui s’embrase d’une lumière blanche au premier choc. Les explorateurs de souterrains en emportent toujours une poignée.\n\nEn jeu\n• Frappée, elle donne une lumière vive dans un rayon de 9 m, faible jusqu’à 18 m.\n• Elle brille 6 heures ; ensuite l’or de la pointe est épuisé et il ne reste qu’un bout de fer sans valeur.\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "2 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.tanglefoot_bag",
+      "type": "item",
+      "name": {
+        "fr": "Sacoche immobilisante",
+        "en": "Tanglefoot bag"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "splash",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une bourse de cuir ronde gorgée d’une colle alchimique qui durcit au contact de l’air. Une fois éclatée sur sa cible, elle transforme le plus vif des duellistes en statue maladroite.\n\nEn jeu\n• Arme à impact lancée : attaque de contact à distance, facteur de portée 3 m. Sans effet sur une créature de taille TG ou plus, ni sous l’eau.\n• La cible touchée est enchevêtrée : –2 aux attaques, –4 en Dextérité, vitesse divisée par deux.\n• Si elle rate un jet de Réflexes DD 15, elle est collée au sol et ne peut plus bouger ; une créature volante qui bat des ailes tombe sur un échec.\n• Se libérer : test de Force DD 17, ou 15 points de dégâts tranchants infligés à la colle (sans jet d’attaque) ; libérée, elle avance à demi-vitesse.\n• Lancer un sort en étant collé demande un test de Concentration DD 15.\n• Après 2d4 rounds, la colle sèche et tombe en miettes ; le solvant universel en vient à bout sur-le-champ.\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "50 po",
+        "weight": "2 kg",
+        "range": "3 m"
+      }
+    },
+    {
+      "id": "item.thunderstone",
+      "type": "item",
+      "name": {
+        "fr": "Pierre à tonnerre",
+        "en": "Thunderstone"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "splash",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Un caillou lisse et lourd qui semble tout à fait inoffensif, jusqu’à ce qu’il heurte quelque chose de dur (ou qu’on le frappe fort) et libère un coup de tonnerre assourdissant.\n\nEn jeu\n• Arme à impact lancée : on vise une case (CA 5) avec une attaque de contact à distance, facteur de portée 6 m ; ratée, la pierre tombe ailleurs.\n• Attaque sonore : toute créature à 3 m ou moins doit réussir un jet de Vigueur DD 15 ou devenir sourde pendant 1 heure.\n• Une créature sourde subit –4 à l’initiative et 20 % de chances de rater ses sorts à composante verbale (le sort est perdu).\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "30 po",
+        "weight": "500 g",
+        "range": "6 m"
+      }
+    },
+    {
+      "id": "item.tindertwig",
+      "type": "item",
+      "name": {
+        "fr": "Allume-feu",
+        "en": "Tindertwig"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "special_substance",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une allumette alchimique : un brin de bois dont la tête s’enflamme quand on la frotte sur une surface rugueuse. Fini le temps perdu à battre le briquet sous la pluie.\n\nEn jeu\n• Allumer une torche avec devient une action simple au lieu d’une action complexe.\n• Allumer un autre feu demande au moins une action simple.\n• Se fabrique avec Artisanat (alchimie)."
+      },
+      "item": {
+        "cost": "1 po"
+      }
+    }
+  ]
+}

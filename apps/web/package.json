@@ -1,0 +1,29 @@
+{
+  "name": "lore-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "engine": "cd .. && ./gradlew :engine:jsBrowserProductionLibraryDistribution -q",
+    "tokens": "node scripts/tokens.mjs",
+    "dev": "npm run tokens && vite",
+    "typecheck": "npm run tokens && tsc --noEmit",
+    "test": "vitest run",
+    "build": "npm run typecheck && vite build",
+    "seed": "node scripts/seed.mjs"
+  },
+  "dependencies": {
+    "dnd-engine": "file:../../engine/core/build/dist/js/productionLibrary",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-router": "8.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "typescript": "6.0.3",
+    "vite": "8.3.4",
+    "vitest": "5.0.3"
+  }
+}

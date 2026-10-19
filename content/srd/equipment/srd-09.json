@@ -1,0 +1,376 @@
+{
+  "entities": [
+    {
+      "id": "item.lock_amazing",
+      "type": "item",
+      "name": {
+        "fr": "Cadenas, Excellent",
+        "en": "Lock, amazing"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un chef-d’œuvre de serrurier aux gorges multiples et aux leurres d’acier, où les crochets se perdent comme dans un labyrinthe. Même les meilleurs cambrioleurs y laissent des heures.\n\nEn jeu\n• Crocheter ce cadenas : test de Crochetage DD 40.\n• Se vend seul : des menottes ou un coffre qui en utilisent un en ajoutent le prix."
+      },
+      "item": {
+        "cost": "150 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.lock_average",
+      "type": "item",
+      "name": {
+        "fr": "Cadenas, Moyen",
+        "en": "Lock, average"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Le cadenas honnête des marchands et des auberges : assez solide pour décourager le voleur pressé, pas assez pour arrêter un vrai professionnel.\n\nEn jeu\n• Crocheter ce cadenas : test de Crochetage DD 25.\n• Se vend seul : des menottes ou un coffre qui en utilisent un en ajoutent le prix."
+      },
+      "item": {
+        "cost": "40 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.lock_good",
+      "type": "item",
+      "name": {
+        "fr": "Cadenas, Bon",
+        "en": "Lock, good"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un mécanisme soigné, aux ressorts serrés et aux goupilles bien ajustées, qui protège les coffres des gens qui ont quelque chose à perdre.\n\nEn jeu\n• Crocheter ce cadenas : test de Crochetage DD 30.\n• Se vend seul : des menottes ou un coffre qui en utilisent un en ajoutent le prix."
+      },
+      "item": {
+        "cost": "80 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.lock_very_simple",
+      "type": "item",
+      "name": {
+        "fr": "Cadenas, Très simple",
+        "en": "Lock, very simple"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un loquet grossier dans un boîtier de fer, plus symbolique qu’efficace : il dit « défense d’entrer » plus qu’il ne l’interdit.\n\nEn jeu\n• Crocheter ce cadenas : test de Crochetage DD 20.\n• Se vend seul : des menottes ou un coffre qui en utilisent un en ajoutent le prix."
+      },
+      "item": {
+        "cost": "20 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.manacles",
+      "type": "item",
+      "name": {
+        "fr": "Menottes",
+        "en": "Manacles"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Deux bracelets de fer reliés par une courte chaîne, pour les prisonniers, les fugitifs et les invités qui n’ont pas envie de rester.\n\nEn jeu\n• Entravent une créature de taille M (même prix pour une taille P, ×10 pour une taille G, ×100 pour une taille TG ; les autres tailles demandent des menottes sur mesure).\n• Se libérer : test d’Évasion DD 30 ; les briser : test de Force DD 26.\n• Solidité 10, 10 points de résistance.\n• Le cadenas se paie à part."
+      },
+      "item": {
+        "cost": "15 po",
+        "weight": "1 kg"
+      }
+    },
+    {
+      "id": "item.map_case",
+      "type": "item",
+      "name": {
+        "fr": "Étui à carte ou à parchemin",
+        "en": "Map or scroll case"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Un tube de cuir ou de bois, fermé d’un capuchon, qui garde roulés et au sec les cartes, les plans et les parchemins précieux.\n\nEn jeu\n• Contient des cartes ou des feuilles roulées et les protège de la pluie et des chocs."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "250 g"
+      }
+    },
+    {
+      "id": "item.masterwork_manacles",
+      "type": "item",
+      "name": {
+        "fr": "Menottes de qualité supérieure",
+        "en": "Manacles, masterwork"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Des fers ajustés au millimètre, sans jeu entre le poignet et le métal : ceux qu’on réserve aux mages renégats et aux évadés récidivistes.\n\nEn jeu\n• Entravent une créature de taille M (mêmes règles de taille que les menottes ordinaires).\n• Se libérer : test d’Évasion DD 35 ; les briser : test de Force DD 28.\n• Solidité 10, 10 points de résistance.\n• Le cadenas se paie à part."
+      },
+      "item": {
+        "cost": "50 po",
+        "weight": "1 kg"
+      }
+    },
+    {
+      "id": "item.miners_pick",
+      "type": "item",
+      "name": {
+        "fr": "Pioche de mineur",
+        "en": "Pick, miner’s"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un lourd fer pointu au bout d’un manche de frêne, fait pour mordre la roche des galeries. Dans un tunnel effondré, il vaut toutes les épées du monde.\n\nEn jeu\n• Creuse la pierre et la terre.\n• En combat : arme improvisée à deux mains (−4 à l’attaque), dégâts perforants d’un pic lourd de sa taille."
+      },
+      "item": {
+        "cost": "3 po",
+        "weight": "5 kg"
+      },
+      "note": "Les dégâts d’arme improvisée ne sont pas dans le modèle : à l’équiper, la feuille ne montre aucune arme."
+    },
+    {
+      "id": "item.oil",
+      "type": "item",
+      "name": {
+        "fr": "Huile, la flasque",
+        "en": "Oil (1-pint flask)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "consumable",
+        "splash",
+        "light_source"
+      ],
+      "description": {
+        "fr": "Une flasque d’huile végétale bouchée, qui nourrit les lampes pendant des heures — ou, munie d’une mèche, devient un projectile enflammé de dernier recours.\n\nEn jeu\n• Fait brûler une lanterne ou une lampe pendant 6 heures.\n• Arme à impact lancée, aux règles du feu grégeois : la cible touchée brûle encore 1d6 points de feu au round suivant, les créatures adjacentes au point d’impact prennent 1 point de feu.\n• Fixer une mèche à la flasque demande une action complexe, et une fois lancée elle n’a que 50 % de chances de s’enflammer.\n• Versée sur un sol lisse, couvre un carré de 1,5 m ; allumée, elle brûle 2 rounds et inflige 1d3 points de dégâts de feu à chaque créature dans la zone."
+      },
+      "item": {
+        "cost": "1 pa",
+        "weight": "500 g",
+        "damage": "1d6",
+        "range": "3 m",
+        "damageType": "Feu"
+      },
+      "note": "Les 50 % de chances de s’enflammer et l’huile répandue au sol ne sont pas dans le modèle."
+    },
+    {
+      "id": "item.paper",
+      "type": "item",
+      "name": {
+        "fr": "Papier, la feuille",
+        "en": "Paper (sheet)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "writing",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une feuille de papier de chiffon, fine et claire, prête à recevoir une lettre, un plan ou une formule.\n\nEn jeu\n• Support d’écriture : lettres, cartes, notes."
+      },
+      "item": {
+        "cost": "4 pa"
+      }
+    },
+    {
+      "id": "item.parchment",
+      "type": "item",
+      "name": {
+        "fr": "Parchemin, la feuille",
+        "en": "Parchment (sheet)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "writing",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une feuille de peau de chèvre ou de mouton, grattée et tendue jusqu’à devenir fine comme une prière. Plus robuste que le papier, elle traverse les siècles.\n\nEn jeu\n• Support d’écriture résistant : lettres, cartes, parchemins de sorts."
+      },
+      "item": {
+        "cost": "2 pa"
+      }
+    },
+    {
+      "id": "item.piton",
+      "type": "item",
+      "name": {
+        "fr": "Piton",
+        "en": "Piton"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "climbing"
+      ],
+      "description": {
+        "fr": "Un clou d’acier percé d’un œil, que l’on enfonce au marteau dans une fissure pour y passer une corde là où la paroi n’offre aucune prise.\n\nEn jeu\n• Crée un point d’ancrage pour une corde dans la roche ou le bois.\n• Se plante avec un marteau ; bruyant à poser."
+      },
+      "item": {
+        "cost": "1 pa",
+        "weight": "250 g"
+      }
+    },
+    {
+      "id": "item.pole",
+      "type": "item",
+      "name": {
+        "fr": "Perche, 3 m",
+        "en": "Pole (10 ft.)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une longue perche de bois de 3 m, l’outil le plus humble et le plus sage de l’aventurier : on tâte le sol avant d’y poser le pied.\n\nEn jeu\n• Tâte le sol, les dalles suspectes, les eaux troubles et les trous jusqu’à 3 m devant soi, sans y poser le pied."
+      },
+      "item": {
+        "cost": "2 pa",
+        "weight": "4 kg"
+      }
+    },
+    {
+      "id": "item.portable_ram",
+      "type": "item",
+      "name": {
+        "fr": "Bélier portable",
+        "en": "Portable ram"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un tronc cerclé de fer, muni de poignées et d’une tête renforcée : la clé universelle des portes qui refusent de s’ouvrir.\n\nEn jeu\n• +2 de circonstance au test de Force pour enfoncer une porte.\n• Un deuxième porteur peut pousser avec vous sans faire de jet : le bonus monte encore de +2."
+      },
+      "item": {
+        "cost": "10 po",
+        "weight": "10 kg"
+      },
+      "note": "Aucune statistique ne porte les tests de Force pour enfoncer une porte : le bonus reste dans le texte."
+    },
+    {
+      "id": "item.sack",
+      "type": "item",
+      "name": {
+        "fr": "Sac (vide)",
+        "en": "Sack (empty)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Un grand sac de toile grossière, fermé par un cordon, qui avale le butin, les provisions et parfois un petit animal récalcitrant.\n\nEn jeu\n• Contient environ 30 litres, soit une quinzaine de kilos d’objets."
+      },
+      "item": {
+        "cost": "1 pa",
+        "weight": "250 g"
+      }
+    },
+    {
+      "id": "item.sealing_wax",
+      "type": "item",
+      "name": {
+        "fr": "Cire à cacheter",
+        "en": "Sealing wax"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "writing",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Un bâton de cire rouge que l’on fait fondre à la flamme pour sceller une lettre et y apposer son cachet.\n\nEn jeu\n• Ferme une lettre ou un parchemin ; un sceau brisé montre qu’on l’a ouvert."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.sewing_needle",
+      "type": "item",
+      "name": {
+        "fr": "Aiguille à coudre",
+        "en": "Sewing needle"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une fine aiguille d’acier et un peu de fil, pour repriser une cape déchirée au coin du feu.\n\nEn jeu\n• Répare les vêtements, les sacs et le cuir souple."
+      },
+      "item": {
+        "cost": "5 pa"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1616 @@
+{
+  "entities": [
+    {
+      "id": "feat.spell_focus_abjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (abjuration)",
+        "en": "Spell Focus (abjuration)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts d’abjuration.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[abjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.greater_spell_focus_abjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (abjuration)",
+        "en": "Greater Spell Focus (abjuration)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts d’abjuration de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (abjuration).\n• +1 de plus au DD des jets de sauvegarde contre les sorts d’abjuration (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_abjuration')",
+      "effects": [
+        {
+          "target": "dc.school[abjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.spell_focus_conjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (invocation)",
+        "en": "Spell Focus (conjuration)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts d’invocation.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[conjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_focus_conjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (invocation)",
+        "en": "Greater Spell Focus (conjuration)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts d’invocation de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (invocation).\n• +1 de plus au DD des jets de sauvegarde contre les sorts d’invocation (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_conjuration')",
+      "effects": [
+        {
+          "target": "dc.school[conjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.spell_focus_divination",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (divination)",
+        "en": "Spell Focus (divination)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts de divination.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[divination]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_focus_divination",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (divination)",
+        "en": "Greater Spell Focus (divination)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts de divination de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (divination).\n• +1 de plus au DD des jets de sauvegarde contre les sorts de divination (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_divination')",
+      "effects": [
+        {
+          "target": "dc.school[divination]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.spell_focus_enchantment",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (enchantement)",
+        "en": "Spell Focus (enchantment)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts d’enchantement.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[enchantment]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_focus_enchantment",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (enchantement)",
+        "en": "Greater Spell Focus (enchantment)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts d’enchantement de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (enchantement).\n• +1 de plus au DD des jets de sauvegarde contre les sorts d’enchantement (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_enchantment')",
+      "effects": [
+        {
+          "target": "dc.school[enchantment]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.spell_focus_evocation",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (évocation)",
+        "en": "Spell Focus (evocation)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts d’évocation.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[evocation]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_focus_evocation",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (évocation)",
+        "en": "Greater Spell Focus (evocation)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts d’évocation de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (évocation).\n• +1 de plus au DD des jets de sauvegarde contre les sorts d’évocation (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_evocation')",
+      "effects": [
+        {
+          "target": "dc.school[evocation]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.spell_focus_illusion",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (illusion)",
+        "en": "Spell Focus (illusion)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts d’illusion.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[illusion]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_focus_illusion",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (illusion)",
+        "en": "Greater Spell Focus (illusion)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts d’illusion de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (illusion).\n• +1 de plus au DD des jets de sauvegarde contre les sorts d’illusion (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_illusion')",
+      "effects": [
+        {
+          "target": "dc.school[illusion]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.spell_focus_necromancy",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (nécromancie)",
+        "en": "Spell Focus (necromancy)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts de nécromancie.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[necromancy]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_focus_necromancy",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (nécromancie)",
+        "en": "Greater Spell Focus (necromancy)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts de nécromancie de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (nécromancie).\n• +1 de plus au DD des jets de sauvegarde contre les sorts de nécromancie (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_necromancy')",
+      "effects": [
+        {
+          "target": "dc.school[necromancy]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.spell_focus_transmutation",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée (transmutation)",
+        "en": "Spell Focus (transmutation)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Certains mages touchent à tout. D’autres choisissent une école et n’en sortent plus : ils en connaissent chaque formule par cœur, chaque geste au millimètre, et leurs sorts y mordent plus profond que ceux des autres.\n\nEn jeu\n• +1 au DD des jets de sauvegarde contre les sorts de transmutation.\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "effects": [
+        {
+          "target": "dc.school[transmutation]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "feats.spell_focus.schools",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_focus_transmutation",
+      "type": "feat",
+      "name": {
+        "fr": "École supérieure (transmutation)",
+        "en": "Greater Spell Focus (transmutation)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Des années plus tard, la spécialité est devenue une signature : les sorts de transmutation de ce lanceur se reconnaissent de loin, et on leur résiste encore moins bien qu’avant.\n\nEn jeu\n• Condition : École renforcée (transmutation).\n• +1 de plus au DD des jets de sauvegarde contre les sorts de transmutation (+2 au total avec École renforcée).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "has('feat.spell_focus_transmutation')",
+      "effects": [
+        {
+          "target": "dc.school[transmutation]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_craft",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Artisanat)",
+        "en": "Skill Focus (Craft)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Artisanat.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.craft",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_handle_animal",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Dressage)",
+        "en": "Skill Focus (Handle Animal)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Dressage.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.handle_animal",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_ride",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Équitation)",
+        "en": "Skill Focus (Ride)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Équitation.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_climb",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Escalade)",
+        "en": "Skill Focus (Climb)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Escalade.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_intimidate",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Intimidation)",
+        "en": "Skill Focus (Intimidate)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Intimidation.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_swim",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Natation)",
+        "en": "Skill Focus (Swim)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Natation.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.swim",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_listen",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Perception auditive)",
+        "en": "Skill Focus (Listen)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Perception auditive.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_jump",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Saut)",
+        "en": "Skill Focus (Jump)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Saut.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_survival",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Survie)",
+        "en": "Skill Focus (Survival)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Survie.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_tumble",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Acrobaties)",
+        "en": "Skill Focus (Tumble)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Acrobaties.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.tumble",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_spellcraft",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Art de la magie)",
+        "en": "Skill Focus (Spellcraft)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Art de la magie.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.skill_focus_bluff",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Bluff)",
+        "en": "Skill Focus (Bluff)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Bluff.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_concentration",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Concentration)",
+        "en": "Skill Focus (Concentration)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Concentration.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.concentration",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_decipher_script",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Décryptage)",
+        "en": "Skill Focus (Decipher Script)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Décryptage.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.decipher_script",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_disguise",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Déguisement)",
+        "en": "Skill Focus (Disguise)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Déguisement.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_move_silently",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Déplacement silencieux)",
+        "en": "Skill Focus (Move Silently)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Déplacement silencieux.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_diplomacy",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Diplomatie)",
+        "en": "Skill Focus (Diplomacy)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Diplomatie.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_hide",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Discrétion)",
+        "en": "Skill Focus (Hide)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Discrétion.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_balance",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Équilibre)",
+        "en": "Skill Focus (Balance)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Équilibre.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_sleight_of_hand",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Escamotage)",
+        "en": "Skill Focus (Sleight of Hand)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Escamotage.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.sleight_of_hand",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_appraise",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Estimation)",
+        "en": "Skill Focus (Appraise)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Estimation.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.appraise",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_escape_artist",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Évasion)",
+        "en": "Skill Focus (Escape Artist)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Évasion.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.escape_artist",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_profession",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Profession)",
+        "en": "Skill Focus (Profession)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Profession.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.profession",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_sense_motive",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Psychologie)",
+        "en": "Skill Focus (Sense Motive)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Psychologie.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_gather_information",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Renseignements)",
+        "en": "Skill Focus (Gather Information)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Renseignements.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_perform",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Représentation)",
+        "en": "Skill Focus (Perform)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Représentation.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.perform",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_use_magic_device",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Utilisation d’objets magiques)",
+        "en": "Skill Focus (Use Magic Device)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests d’Utilisation d’objets magiques.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.use_magic_device",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_heal",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Premiers secours)",
+        "en": "Skill Focus (Heal)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Premiers secours.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.heal",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_spot",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Détection)",
+        "en": "Skill Focus (Spot)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Détection.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_search",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Fouille)",
+        "en": "Skill Focus (Search)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Fouille.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_disable_device",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Désamorçage/sabotage)",
+        "en": "Skill Focus (Disable Device)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Désamorçage/sabotage.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.disable_device",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_forgery",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Contrefaçon)",
+        "en": "Skill Focus (Forgery)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Contrefaçon.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.forgery",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_open_lock",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Crochetage)",
+        "en": "Skill Focus (Open Lock)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Crochetage.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.open_lock",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_use_rope",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Maîtrise des cordes)",
+        "en": "Skill Focus (Use Rope)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Maîtrise des cordes.\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.use_rope",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_arcana",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (mystères))",
+        "en": "Skill Focus (Knowledge (arcana))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (mystères).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_arcana",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_architecture",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (architecture et ingénierie))",
+        "en": "Skill Focus (Knowledge (architecture and engineering))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (architecture et ingénierie).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_architecture",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_dungeoneering",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (exploration souterraine))",
+        "en": "Skill Focus (Knowledge (dungeoneering))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (exploration souterraine).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_dungeoneering",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_geography",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (géographie))",
+        "en": "Skill Focus (Knowledge (geography))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (géographie).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_geography",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_history",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (histoire))",
+        "en": "Skill Focus (Knowledge (history))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (histoire).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_history",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_local",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (folklore local))",
+        "en": "Skill Focus (Knowledge (local))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (folklore local).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_local",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_nature",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (nature))",
+        "en": "Skill Focus (Knowledge (nature))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (nature).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_nature",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_nobility",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (noblesse et royauté))",
+        "en": "Skill Focus (Knowledge (nobility and royalty))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (noblesse et royauté).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_nobility",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_planes",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (plans))",
+        "en": "Skill Focus (Knowledge (the planes))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (plans).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_planes",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.skill_focus_knowledge_religion",
+      "type": "feat",
+      "name": {
+        "fr": "Talent (Connaissances (religion))",
+        "en": "Skill Focus (Knowledge (religion))"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Tout le monde sait un peu de tout. Ce personnage, lui, a un domaine où il n’a presque pas d’égal, et il le sait.\n\nEn jeu\n• +3 aux tests de Connaissances (religion).\n• Un don par compétence : il peut être pris pour plusieurs compétences."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_religion",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.greater_spell_focus_abjuration",
+      "relation": "requires",
+      "to": "feat.spell_focus_abjuration"
+    },
+    {
+      "from": "feat.greater_spell_focus_conjuration",
+      "relation": "requires",
+      "to": "feat.spell_focus_conjuration"
+    },
+    {
+      "from": "feat.greater_spell_focus_divination",
+      "relation": "requires",
+      "to": "feat.spell_focus_divination"
+    },
+    {
+      "from": "feat.greater_spell_focus_enchantment",
+      "relation": "requires",
+      "to": "feat.spell_focus_enchantment"
+    },
+    {
+      "from": "feat.greater_spell_focus_evocation",
+      "relation": "requires",
+      "to": "feat.spell_focus_evocation"
+    },
+    {
+      "from": "feat.greater_spell_focus_illusion",
+      "relation": "requires",
+      "to": "feat.spell_focus_illusion"
+    },
+    {
+      "from": "feat.greater_spell_focus_necromancy",
+      "relation": "requires",
+      "to": "feat.spell_focus_necromancy"
+    },
+    {
+      "from": "feat.greater_spell_focus_transmutation",
+      "relation": "requires",
+      "to": "feat.spell_focus_transmutation"
+    }
+  ]
+}

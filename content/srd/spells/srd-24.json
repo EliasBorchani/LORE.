@@ -1,0 +1,456 @@
+{
+  "entities": [
+    {
+      "id": "spell.delay_poison",
+      "type": "spell",
+      "name": { "fr": "Ralentissement du poison", "en": "Delay Poison" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Le venin se fige dans les veines comme un serpent qui s’endort. Il n’a pas disparu : il attend simplement son heure.\n\nEn jeu\n• La cible ignore tout poison pendant 1 heure par niveau, celui déjà présent comme ceux reçus pendant le sort.\n• Le poison n’est pas neutralisé : il reprend son effet à la fin du sort.\n• Ne soigne pas les dégâts déjà infligés par le poison."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.soften_earth_and_stone",
+      "type": "spell",
+      "name": { "fr": "Ramollissement de la terre et de la pierre", "en": "Soften Earth and Stone" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le sol soupire et cède : la roche devient glaise, la terre devient bourbier. De quoi creuser une sortie ou enliser une charge.\n\nEn jeu\n• Ramollit 1 carré de 3 m de côté par niveau de terre ou de pierre naturelle, sur 30 cm à 1,20 m de profondeur.\n• Terre humide → boue : jet de Réflexes ou immobilisé 1d2 rounds (ni déplacement, ni attaque, ni sort) ; en cas de réussite, moitié de la vitesse, sans courir ni charger.\n• Terre sèche → sable meuble : vitesse divisée par deux, sans courir ni charger.\n• Roche → argile : ne gêne pas le déplacement mais se creuse facilement ; sur une paroi ou un plafond, provoque un petit éboulement.\n• Sans effet sur la pierre travaillée, magique ou enchantée, ni sur les créatures de terre ou de pierre."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": ["terre"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "1 carré de 3 m de côté/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.reduce_person",
+      "type": "spell",
+      "name": { "fr": "Rapetissement", "en": "Reduce Person" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Un claquement de doigts et le colosse tient dans une botte. Plus petit, plus vif, plus difficile à toucher, mais nettement moins costaud.\n\nEn jeu\n• Un humanoïde perd une catégorie de taille (moitié de la hauteur, poids divisé par 8) pendant 1 minute par niveau.\n• +2 de taille en Dextérité, −2 de taille en Force (minimum 1), +1 de taille à l’attaque et à la CA.\n• L’équipement rapetisse aussi et inflige moins de dégâts ; un objet lâché reprend sa taille normale.\n• Ne se cumule pas avec d’autres effets de réduction ; contre et dissipe Agrandissement."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature humanoïde",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "ability.dex.score", "op": "add", "value": 2, "bonusType": "size", "condition": "active('toggle.reduce_person')" },
+        { "target": "ability.str.score", "op": "add", "value": -2, "bonusType": "size", "condition": "active('toggle.reduce_person')" },
+        { "target": "attack.all", "op": "add", "value": 1, "bonusType": "size", "condition": "active('toggle.reduce_person')" },
+        { "target": "ac.total", "op": "add", "value": 1, "bonusType": "size", "condition": "active('toggle.reduce_person')" }
+      ]
+    },
+    {
+      "id": "spell.reduce_animal",
+      "type": "spell",
+      "name": { "fr": "Rapetissement d’animal", "en": "Reduce Animal" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "L’ours devient ourson, le cheval tient dans une écurie de poupée. Pratique pour passer inaperçu ou franchir un tunnel étroit.\n\nEn jeu\n• Un animal consentant de taille P à TG perd une catégorie de taille pendant 1 heure par niveau.\n• Mêmes effets que Rapetissement : +2 Dex, −2 For, +1 à l’attaque et à la CA (bonus de taille).\n• Les dégâts de ses attaques naturelles baissent selon sa nouvelle taille."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 animal consentant de taille P, M, G ou TG",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mass_reduce_person",
+      "type": "spell",
+      "name": { "fr": "Rapetissement de groupe", "en": "Reduce Person, Mass" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Toute l’escouade rétrécit d’un coup, prête à se glisser par une meurtrière ou à esquiver sous les jambes des géants.\n\nEn jeu\n• Comme Rapetissement, sur 1 humanoïde par niveau, tous à 9 m ou moins les uns des autres.\n• Chaque cible : une catégorie de taille en moins, +2 Dex, −2 For (minimum 1), +1 à l’attaque et à la CA (bonus de taille), pendant 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 humanoïde/niveau, tous à 9 m ou moins les uns des autres",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "ability.dex.score", "op": "add", "value": 2, "bonusType": "size", "condition": "active('toggle.mass_reduce_person')" },
+        { "target": "ability.str.score", "op": "add", "value": -2, "bonusType": "size", "condition": "active('toggle.mass_reduce_person')" },
+        { "target": "attack.all", "op": "add", "value": 1, "bonusType": "size", "condition": "active('toggle.mass_reduce_person')" },
+        { "target": "ac.total", "op": "add", "value": 1, "bonusType": "size", "condition": "active('toggle.mass_reduce_person')" }
+      ]
+    },
+    {
+      "id": "spell.raise_dead",
+      "type": "spell",
+      "name": { "fr": "Rappel à la vie", "en": "Raise Dead" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Un diamant se brise, un souffle revient dans une poitrine immobile. Le retour coûte cher, en or comme en expérience.\n\nEn jeu\n• Ramène à la vie une créature morte depuis 1 jour par niveau au plus, si son âme est libre et d’accord.\n• Le revenant perd un niveau (ou 1 DV) ; au niveau 1, il perd 2 points de Constitution à la place (impossible si sa Con tomberait à 0).\n• Il revient avec autant de PV que ses DV actuels ; une caractéristique tombée à 0 remonte à 1 ; poisons et maladies naturelles sont soignés.\n• Sorts préparés : 50 % de chances de garder chacun ; lanceurs spontanés : 50 % de perdre chaque emplacement inutilisé.\n• Le corps doit être entier. Inefficace sur les morts-vivants, créatures artificielles, élémentaires, Extérieurs, morts de vieillesse ou tués par un effet de mort.\n• Composante matérielle : diamant d’au moins 5 000 po."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, M, FD",
+        "castingTime": "1 minute",
+        "range": "contact",
+        "target": "créature morte touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.haste",
+      "type": "spell",
+      "name": { "fr": "Rapidité", "en": "Haste" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le temps ralentit pour tout le monde sauf pour vous. Les lames frappent une fois de plus, les jambes avalent le terrain.\n\nEn jeu\n• Jusqu’à 1 créature par niveau, à 9 m ou moins les unes des autres, pendant 1 round par niveau.\n• Lors d’une attaque à outrance : une attaque de plus au bonus de base maximal (ne se cumule pas avec une arme de rapidité ; pas d’action en plus).\n• +1 aux jets d’attaque, +1 d’esquive à la CA et aux jets de Réflexes (perdu quand on perd son bonus de Dex à la CA).\n• +9 m d’altération à tous les modes de déplacement, au plus le double de la vitesse normale.\n• Ne se cumule pas avec d’autres Rapidité ; contre et dissipe Lenteur."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "1 round/niveau",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        { "target": "attack.all", "op": "add", "value": 1, "condition": "active('toggle.haste')" },
+        { "target": "ac.total", "op": "add", "value": 1, "bonusType": "dodge", "condition": "active('toggle.haste')" },
+        { "target": "save.ref", "op": "add", "value": 1, "bonusType": "dodge", "condition": "active('toggle.haste')" },
+        { "target": "speed.land", "op": "add", "value": 9, "bonusType": "enhancement", "condition": "active('toggle.haste')" }
+      ]
+    },
+    {
+      "id": "spell.status",
+      "type": "spell",
+      "name": { "fr": "Rapport", "en": "Status" },
+      "provenance": "official",
+      "labels": ["spell", "divination"],
+      "description": {
+        "fr": "Un fil invisible relie chaque compagnon au lanceur. Quand l’un d’eux tombe, loin dans les couloirs, on le sent aussitôt.\n\nEn jeu\n• Lie 1 créature vivante touchée par tranche de 3 niveaux, pendant 1 heure par niveau.\n• Le lanceur connaît en permanence la direction, la distance et l’état de chaque cible (indemne, blessée, inconsciente, mourante, empoisonnée, confuse…).\n• Fonctionne à toute distance sur le même plan ; une cible qui change de plan n’envoie plus rien."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 créature vivante touchée/3 niveaux",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ray_of_enfeeblement",
+      "type": "spell",
+      "name": { "fr": "Rayon d’affaiblissement", "en": "Ray of Enfeeblement" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Un trait pâle file vers la cible, et ses bras deviennent soudain lourds comme du plomb. L’épée pèse, le bouclier tombe.\n\nEn jeu\n• Attaque de contact à distance ; aucun jet de sauvegarde.\n• Malus de Force de 1d6 + 1 par tranche de 2 niveaux (+5 au plus), pendant 1 minute par niveau.\n• La Force de la cible ne descend jamais sous 1."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.scorching_ray",
+      "type": "spell",
+      "name": { "fr": "Rayon ardent", "en": "Scorching Ray" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Des traits de flamme jaillissent des doigts, un, deux, puis trois, et chacun laisse une odeur de chair roussie.\n\nEn jeu\n• 1 rayon, +1 au niveau 7 et +1 au niveau 11 (3 rayons au plus).\n• Chaque rayon demande une attaque de contact à distance et inflige 4d6 points de dégâts de feu.\n• Tous les rayons partent en même temps, vers des cibles à 9 m ou moins les unes des autres."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["feu"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un ou plusieurs rayons",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "4d6 fire", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.ray_of_exhaustion",
+      "type": "spell",
+      "name": { "fr": "Rayon d’épuisement", "en": "Ray of Exhaustion" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Un rayon d’encre aspire toute l’énergie de la cible. Ses jambes flanchent, son souffle devient court.\n\nEn jeu\n• Attaque de contact à distance : la cible est épuisée pendant 1 minute par niveau.\n• Jet de Vigueur réussi : seulement fatiguée. Une cible déjà fatiguée devient épuisée.\n• Sans effet sur une créature déjà épuisée ; l’effet cesse à la fin du sort, sans repos nécessaire."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Vigueur, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ray_of_frost",
+      "type": "spell",
+      "name": { "fr": "Rayon de givre", "en": "Ray of Frost" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Un filet de glace pique la cible et laisse du givre sur sa peau. Petit, mais toujours disponible.\n\nEn jeu\n• Attaque de contact à distance : 1d3 points de dégâts de froid."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["froid"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "1d3 cold", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.sunbeam",
+      "type": "spell",
+      "name": { "fr": "Rayon de soleil", "en": "Sunbeam" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Midi en plein cœur de la nuit : une colonne de soleil brûle tout ce qu’elle touche, et les vampires la redoutent plus que tout.\n\nEn jeu\n• Pendant 1 round par niveau, une action simple lance une ligne de lumière de 18 m ; 1 rayon par tranche de 3 niveaux (6 au plus, au niveau 18).\n• Chaque créature touchée est aveuglée et subit 4d6 points de dégâts ; Réflexes : pas de cécité et moitié des dégâts.\n• Morts-vivants (et vases, moisissures, limons) : 1d6 par niveau (20d6 au plus), Réflexes pour la moitié.\n• Un mort-vivant vulnérable au soleil (vampire) qui rate son jet est détruit."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["lumière"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "ligne partant du lanceur",
+        "duration": "1 round/niveau ou jusqu’à épuisement des rayons",
+        "savingThrow": "Réflexes, annule (cécité) et 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "4d6", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.polar_ray",
+      "type": "spell",
+      "name": { "fr": "Rayon polaire", "en": "Polar Ray" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Un trait de froid absolu, bleu comme un glacier, qui fige la cible jusqu’au cœur.\n\nEn jeu\n• Attaque de contact à distance ; aucun jet de sauvegarde.\n• 1d6 points de dégâts de froid par niveau de lanceur (25d6 au plus).\n• Focaliseur : un petit cône ou prisme de céramique blanche."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["froid"],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "(min(@spell.caster_level, 25))d6 cold", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.prismatic_spray",
+      "type": "spell",
+      "name": { "fr": "Rayons prismatiques", "en": "Prismatic Spray" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Un éventail d’arc-en-ciel jaillit de la main, et chaque couleur porte un destin différent. On ne sait jamais ce qu’on va tirer.\n\nEn jeu\n• Cône de 18 m. Les créatures de 8 DV ou moins sont aveuglées 2d4 rounds.\n• Chaque créature du cône est frappée par un rayon au hasard (1d8) :\n• 1 rouge : 20 dégâts de feu ; 2 orange : 40 dégâts d’acide ; 3 jaune : 80 dégâts d’électricité (Réflexes, moitié).\n• 4 vert : poison, la cible meurt (Vigueur : 1d6 points de dégâts de Constitution à la place).\n• 5 bleu : pétrification (Vigueur, annule) ; 6 indigo : démence comme Aliénation mentale (Volonté, annule) ; 7 violet : envoyée sur un autre plan (Volonté, annule).\n• 8 : deux rayons, relancer deux fois en ignorant les 8."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "rayonnement en cône",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shrink_item",
+      "type": "spell",
+      "name": { "fr": "Réduction d’objet", "en": "Shrink Item" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Une charrette dans la poche, un feu de camp dans une tabatière. Il suffit de jeter l’objet au sol pour qu’il retrouve sa taille.\n\nEn jeu\n• Réduit un objet non magique (jusqu’à 60 dm³ par niveau) à 1/16 de ses dimensions, soit 4 catégories de taille de moins, pendant 1 jour par niveau.\n• Le lanceur peut aussi lui donner une texture souple comme du tissu.\n• Jeté sur une surface dure avec un mot de commande, l’objet reprend sa taille et le sort prend fin.\n• Rendu permanent, l’objet peut être réduit et rendu à sa taille à volonté, par le lanceur seulement."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 objet touché jusqu’à 60 dm³/niveau",
+        "duration": "1 jour/niveau (voir description)",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shades",
+      "type": "spell",
+      "name": { "fr": "Reflets d’ombre", "en": "Shades" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Les ombres se tissent en créatures et en matière presque réelles. Presque : il suffit de ne pas y croire pour qu’elles pâlissent.\n\nEn jeu\n• Imite n’importe quel sort d’invocation (convocation ou création) d’ensorceleur/magicien de niveau 8 ou moins.\n• Qui croit à l’illusion la subit en entier ; qui interagit avec elle et réussit son jet de Volonté n’en subit que 80 % (dégâts, effets).\n• Les créatures convoquées n’ont que 80 % des PV normaux, qu’on les perce à jour ou non.\n• Fonctionne pour le reste comme Convocation d’ombres."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "duration": "voir description",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.refuge",
+      "type": "spell",
+      "name": { "fr": "Refuge (objet)", "en": "Refuge" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Une statuette offerte à un ami, un mot de passe chuchoté. Le jour où tout va mal, il la brise et rentre à la maison en un clin d’œil.\n\nEn jeu\n• Enchante un objet serti de gemmes (1 500 po au moins), que le lanceur donne à quelqu’un avec un mot de commande.\n• En brisant l’objet et en prononçant le mot (action simple), le porteur est téléporté chez le lanceur avec ce qu’il porte (charge maximale), sur le même plan.\n• Seul un familier qui le touche peut l’accompagner.\n• Variante choisie à l’incantation : briser l’objet fait venir le lanceur à 3 m ou moins du porteur, qu’il le veuille ou non."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": ["téléportation"],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché",
+        "duration": "permanente jusqu’à utilisation",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.secure_shelter",
+      "type": "spell",
+      "name": { "fr": "Refuge (maisonnette)", "en": "Secure Shelter" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Quelques pierres, un peu de chaux, et une petite maison solide se dresse au milieu de la tempête. Le groupe dormira au sec.\n\nEn jeu\n• Crée une maisonnette de 6 m de côté pour 2 heures par niveau : porte, deux fenêtres à volets, cheminée, 8 couchettes, table, tabourets et bureau.\n• Aussi solide qu’une maison de pierre, résiste au feu comme la pierre, insensible aux projectiles normaux (pas aux rochers de géant ni aux engins de siège).\n• Porte et volets fermés par Verrou du mage, cheminée grillagée, Alarme sur les accès (avec son focaliseur).\n• Un Serviteur invisible s’occupe du lanceur tant qu’il reste à l’intérieur (avec ses composantes).\n• Isolé mais pas chauffé."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M, F (voir description)",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "structure de 6 m de côté",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.remove_fear",
+      "type": "spell",
+      "name": { "fr": "Regain d’assurance", "en": "Remove Fear" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Une main sur l’épaule, un mot qui redonne du cœur. La peur recule d’un pas.\n\nEn jeu\n• 1 créature + 1 par tranche de 4 niveaux, à 9 m ou moins les unes des autres.\n• +4 de moral aux jets de sauvegarde contre la terreur pendant 10 minutes.\n• Un effet de terreur déjà présent est réprimé pendant la durée du sort.\n• Contre et dissipe Frayeur."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature + 1 par tranche de 4 niveaux",
+        "duration": "10 minutes",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "entities": [
+    {
+      "id": "feat.trample",
+      "type": "feat",
+      "name": {
+        "fr": "Piétinement",
+        "en": "Trample"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "mounted",
+        "melee"
+      ],
+      "description": {
+        "fr": "Le cavalier ne contourne plus rien : il fonce droit dans la mêlée, et ceux qui restent sur son chemin finissent sous les sabots de sa monture.\n\nEn jeu\n• Condition : 1 rang en Équitation, Combat monté.\n• Quand le personnage tente un renversement à cheval, la cible ne peut pas choisir de s’écarter.\n• Une cible jetée au sol reçoit en plus un coup de sabot de la monture, qui profite du +4 normal pour frapper un adversaire à terre.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.mounted_combat')",
+      "note": "Condition non vérifiée par la fiche : 1 rang en Équitation (rangs pas encore enregistrés)."
+    },
+    {
+      "id": "feat.track",
+      "type": "feat",
+      "name": {
+        "fr": "Pistage",
+        "en": "Track"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Une herbe couchée, une branche cassée, une odeur de cendre froide : là où les autres voient un sentier vide, le pisteur lit l’histoire de ceux qui sont passés avant lui.\n\nEn jeu\n• Un test de Survie permet de trouver une piste ou de la suivre sur 1,5 km ; un nouveau test est demandé quand la piste se complique (elle se divise, d’autres traces la croisent…).\n• En pistant, le personnage avance à la moitié de sa vitesse ; à vitesse normale, il subit −5 au test, et −20 au double de sa vitesse.\n• DD de base selon le sol : très meuble (neige, boue) 5, meuble 10, ferme 15, dur (roche, plancher de pierre) 20 ; il varie ensuite avec le nombre et la taille des créatures, le temps écoulé, la météo et la lumière.\n• Après un échec, nouvel essai possible au bout de 1 heure de recherche (en extérieur) ou 10 minutes (en intérieur).\n• Aucune piste à suivre face à une créature sous passage sans trace.\n• Normal : sans ce don, Survie permet de repérer des traces, mais de ne les suivre que si le DD est de 10 ou moins ; Fouille peut révéler une empreinte, jamais suivre une piste.\n• Le rôdeur l’a d’office."
+      },
+      "note": "Les DD de pistage et leurs modificateurs restent en texte : aucun nombre de la fiche ne change."
+    },
+    {
+      "id": "feat.armor_proficiency_medium",
+      "type": "feat",
+      "name": {
+        "fr": "Port des armures intermédiaires",
+        "en": "Armor Proficiency (Medium)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "proficiency",
+        "defense"
+      ],
+      "description": {
+        "fr": "Une cotte de mailles pèse lourd et serre aux épaules. Celui qui a appris à la porter ne la sent plus : il court, frappe et esquive comme si elle faisait partie de lui.\n\nEn jeu\n• Condition : Port des armures légères.\n• Le personnage est formé aux armures intermédiaires : leur malus d’armure ne s’applique qu’aux tests de compétence qui le subissent normalement (Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion, Saut).\n• Normal : avec une armure à laquelle on n’est pas formé, son malus d’armure frappe aussi les jets d’attaque et tous les tests de compétence liés au mouvement, Équitation comprise.\n• Barbare, druide, guerrier, paladin et prêtre l’ont d’office."
+      },
+      "note": "Condition non vérifiée par la fiche : Port des armures légères, que les classes donnent aussi par leur relation proficiency. Malus d’armure : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.armor_proficiency_light",
+      "type": "feat",
+      "name": {
+        "fr": "Port des armures légères",
+        "en": "Armor Proficiency (Light)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "proficiency",
+        "defense"
+      ],
+      "description": {
+        "fr": "Cuir bouilli, chemise de mailles : rien de bien lourd, mais encore faut-il savoir bouger dedans. Ce don apprend à combattre sans que l’armure ne devienne une gêne.\n\nEn jeu\n• Le personnage est formé aux armures légères : leur malus d’armure ne s’applique qu’aux tests d’Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion et Saut.\n• Normal : avec une armure à laquelle on n’est pas formé, son malus d’armure frappe aussi les jets d’attaque et tous les tests de compétence liés au mouvement, Équitation comprise.\n• Toutes les classes sauf ensorceleur, magicien et moine l’ont d’office."
+      },
+      "note": "Malus d’armure : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.armor_proficiency_heavy",
+      "type": "feat",
+      "name": {
+        "fr": "Port des armures lourdes",
+        "en": "Armor Proficiency (Heavy)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "proficiency",
+        "defense"
+      ],
+      "description": {
+        "fr": "Harnois, clibanion, armure de plates : une forteresse de métal qu’il faut savoir habiter. Le combattant formé y avance sans hésiter, là où d’autres s’y traîneraient.\n\nEn jeu\n• Condition : Port des armures légères, Port des armures intermédiaires.\n• Le personnage est formé aux armures lourdes : leur malus d’armure ne s’applique qu’aux tests de compétence qui le subissent normalement.\n• Normal : avec une armure à laquelle on n’est pas formé, son malus d’armure frappe aussi les jets d’attaque et tous les tests de compétence liés au mouvement, Équitation comprise.\n• Guerrier, paladin et prêtre l’ont d’office."
+      },
+      "note": "Condition non vérifiée par la fiche : Port des armures légères et intermédiaires, que les classes donnent aussi par leur relation proficiency. Malus d’armure : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.leadership",
+      "type": "feat",
+      "name": {
+        "fr": "Prestige",
+        "en": "Leadership"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Une réputation finit par attirer du monde. Un compagnon fidèle d’abord, puis des dizaines de suivants prêts à porter la bannière de celui dont on raconte les exploits.\n\nEn jeu\n• Condition : niveau 6.\n• Valeur de Prestige = niveau du personnage + modificateur de Charisme, modifiée par la réputation (renommée, équité, échecs, compagnons perdus…).\n• Selon cette valeur, le personnage attire un compagnon d’armes (toujours au moins 2 niveaux sous le sien) et un nombre de suivants de niveaux 1 à 6 (table du SRD).\n• Le compagnon d’armes et les suivants sont joués par le MD, qui décide aussi de leur loyauté."
+      },
+      "prerequisite": "level() >= 6",
+      "effects": [
+        {
+          "target": "leadership.score",
+          "op": "add",
+          "value": "level() + @ability.cha.mod",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "La fiche calcule la valeur de Prestige de base ; les modificateurs de réputation, le niveau du compagnon et le nombre de suivants (table) restent en texte."
+    },
+    {
+      "id": "feat.rapid_reload",
+      "type": "feat",
+      "name": {
+        "fr": "Rechargement rapide",
+        "en": "Rapid Reload"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Clic, levier, carreau : un geste mille fois répété. L’arbalète est déjà prête alors que le premier tir n’a pas encore touché.\n\nEn jeu\n• Condition : maniement du type d’arbalète choisi (de poing, légère ou lourde).\n• Recharger ce type d’arbalète ne prend plus qu’une action libre (arbalète de poing ou légère) ou une action de mouvement (arbalète lourde). Le rechargement provoque toujours une attaque d’opportunité.\n• Pour l’arbalète de poing ou légère : autant de tirs en attaque à outrance qu’avec un arc.\n• Normal : une action de mouvement pour recharger une arbalète de poing ou légère, une action complexe pour une arbalète lourde.\n• Se prend plusieurs fois, chaque fois pour un autre type d’arbalète.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "note": "Arbalète choisie : pas encore dans le modèle. Condition non vérifiée par la fiche : maniement de l’arbalète choisie. La fronde du site ne figure pas dans le don SRD."
+    },
+    {
+      "id": "feat.lightning_reflexes",
+      "type": "feat",
+      "name": {
+        "fr": "Réflexes surhumains",
+        "en": "Lightning Reflexes"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Le sol se dérobe, la boule de feu éclate, la lame tombe du plafond : le corps a déjà bougé avant que l’esprit ait compris le danger.\n\nEn jeu\n• +2 aux jets de Réflexes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.toughness",
+      "type": "feat",
+      "name": {
+        "fr": "Robustesse",
+        "en": "Toughness"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Des côtes qui encaissent, une peau qui a connu le fouet et le feu : ce personnage tient debout bien après que les autres sont tombés.\n\nEn jeu\n• +3 points de vie.\n• Peut être pris plusieurs fois : les bonus s’additionnent."
+      },
+      "effects": [
+        {
+          "target": "hp.max",
+          "op": "add",
+          "value": "3 * count('feat.toughness')",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.nimble_fingers",
+      "type": "feat",
+      "name": {
+        "fr": "Savoir-faire mécanique",
+        "en": "Nimble Fingers"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Un ressort tendu, une goupille, un mécanisme d’horloger : ses doigts devinent ce que les yeux ne voient pas, et la serrure cède avec un petit clic satisfait.\n\nEn jeu\n• +2 aux tests de Crochetage et de Désamorçage/sabotage."
+      },
+      "effects": [
+        {
+          "target": "skill.open_lock",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.disable_device",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.trample",
+      "relation": "requires",
+      "to": "feat.mounted_combat"
+    },
+    {
+      "from": "feat.armor_proficiency_medium",
+      "relation": "requires",
+      "to": "feat.armor_proficiency_light"
+    },
+    {
+      "from": "feat.armor_proficiency_heavy",
+      "relation": "requires",
+      "to": "feat.armor_proficiency_light"
+    },
+    {
+      "from": "feat.armor_proficiency_heavy",
+      "relation": "requires",
+      "to": "feat.armor_proficiency_medium"
+    }
+  ]
+}

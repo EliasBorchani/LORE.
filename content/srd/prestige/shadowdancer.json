@@ -1,0 +1,503 @@
+{
+  "entities": [
+    {
+      "id": "class.shadowdancer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître des ombres",
+        "en": "Shadowdancer"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "skills"
+      ],
+      "description": {
+        "fr": "Là où la lumière s’arrête, le maître des ombres commence. Danseur, voleur, espion ou simple amoureux de la nuit, il a appris à traiter l’obscurité comme une alliée : il s’y glisse, s’y cache sous les yeux de ses ennemis et passe d’une ombre à l’autre comme on enjambe une flaque. Une silhouette noire le suit partout, fidèle et silencieuse, et ceux qui le cherchent finissent souvent par se demander s’il était vraiment là.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : 10 rangs en Discrétion, 8 rangs en Déplacement silencieux, 5 rangs en Représentation (danse) ; dons Attaques réflexes, Esquive et Souplesse du serpent.\n• Alignement : tous.\n• Formé à l’arbalète (de poing, légère, lourde), à l’arc court (composite compris), au bâton, à la dague, aux dards, à l’épée courte, au gourdin, à la masse d’armes (légère, lourde), à la matraque, à la morgenstern et à la rapière ; aux armures légères, pas aux boucliers.\n• Compétences de classe : Acrobaties, Bluff, Décryptage, Déguisement, Déplacement silencieux, Détection, Diplomatie, Discrétion, Équilibre, Escamotage, Évasion, Fouille, Maîtrise des cordes, Perception auditive, Profession, Représentation, Saut.\n• Pas de progression de sorts.\n• Aptitudes : discrétion totale (1) ; esquive totale, esquive instinctive et vision dans le noir (2) ; ombres illusoires et compagnon d’ombre (3) ; saut d’ombre (4, distance doublée aux niveaux 6, 8 et 10) ; esquive instinctive supérieure et roulé-boulé (5) ; esprit fuyant (7) ; esquive extraordinaire (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 6,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.shadowdancer_hide_in_plain_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Discrétion totale",
+        "en": "Hide in plain sight"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Un pas de côté vers l’ombre d’un pilier, et le regard de la sentinelle glisse sur lui sans le voir, alors qu’elle le fixait une seconde plus tôt.\n\nEn jeu\n• Peut se cacher (Discrétion) sous les yeux de ceux qui le regardent.\n• Il doit se trouver à 3 m ou moins d’une ombre, qui ne peut pas être la sienne."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.shadowdancer_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Le souffle du dragon emplit la salle ; quand la fumée retombe, le maître des ombres est accroupi dans un coin, intact.\n\nEn jeu\n• Contre un effet qui permet un jet de Réflexes pour moitié dégâts, ne subit aucun dégât s’il réussit.\n• Seulement en armure légère ou sans armure, et s’il n’est pas sans défense."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.shadowdancer_darkvision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision dans le noir",
+        "en": "Darkvision"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "À force de vivre dans la pénombre, ses yeux ont cessé d’en avoir besoin.\n\nEn jeu\n• Vision dans le noir à 18 m, comme sous le sort vision dans le noir, en permanence.\n• S’il voyait déjà plus loin, il garde sa portée."
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        }
+      ]
+    },
+    {
+      "id": "power.shadowdancer_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "On ne surprend pas quelqu’un qui vit dans le noir : il sent la lame avant de la voir.\n\nEn jeu\n• Garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible.\n• Le perd quand même s’il est immobilisé.\n• S’il a déjà esquive instinctive par une autre classe, il gagne esquive instinctive supérieure à la place."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.shadowdancer_shadow_illusion",
+      "type": "class_power",
+      "name": {
+        "fr": "Ombres illusoires",
+        "en": "Shadow illusion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Il tord les ombres autour de lui jusqu’à en faire des formes : un garde de plus dans le couloir, un mur là où s’ouvre une porte.\n\nEn jeu\n• Pouvoir magique : comme le sort image silencieuse.\n• Une fois par jour."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.shadowdancer_summon_shadow",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon d’ombre",
+        "en": "Summon shadow"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Une silhouette noire se détache du sol et ne le quitte plus : une ombre, mais une ombre qui l’aime bien.\n\nEn jeu\n• Appelle une ombre (mort-vivant) qui le suit et lui parle ; elle a son alignement et ne crée pas de rejetons.\n• Personne d’autre ne peut la repousser, l’intimider ou la contrôler.\n• +2 DV au compagnon aux niveaux 6 et 9 (avec l’attaque et les sauvegardes qui vont avec).\n• Si elle est détruite ou renvoyée : jet de Vigueur DD 15, sinon il perd 200 PX par niveau de maître des ombres (100 PX si réussi, jamais sous 0 PX).\n• Pas de nouveau compagnon avant 30 jours."
+      },
+      "effects": [],
+      "note": "Le compagnon d’ombre n’a pas encore de fiche dans le modèle."
+    },
+    {
+      "id": "power.shadowdancer_shadow_jump",
+      "type": "class_power",
+      "name": {
+        "fr": "Saut d’ombre",
+        "en": "Shadow jump"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Il entre dans l’ombre d’une tour et sort de celle d’un arbre, quelques mètres plus loin, sans avoir traversé l’espace entre les deux.\n\nEn jeu\n• Comme porte dimensionnelle, mais d’une ombre à une autre.\n• Distance totale par jour : 6 m au niveau 4, 12 m au niveau 6, 24 m au niveau 8, 48 m au niveau 10.\n• Il peut la répartir en plusieurs sauts ; chaque saut compte pour au moins 3 m, arrondi aux 3 m supérieurs."
+      },
+      "effects": [
+        {
+          "target": "shadow_jump.distance",
+          "op": "set",
+          "value": "if(level('class.shadowdancer') >= 10, 48, if(level('class.shadowdancer') >= 8, 24, if(level('class.shadowdancer') >= 6, 12, 6)))"
+        }
+      ]
+    },
+    {
+      "id": "power.shadowdancer_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Encerclé, il danse entre les lames comme si elles venaient toutes du même côté.\n\nEn jeu\n• Ne peut plus être pris en tenaille, sauf par un roublard d’au moins 4 niveaux de plus que ses niveaux de maître des ombres.\n• Les niveaux des classes qui donnent esquive instinctive s’additionnent pour ce calcul.\n• Gagnée dès le niveau 2 s’il avait déjà esquive instinctive par une autre classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.shadowdancer_defensive_roll",
+      "type": "class_power",
+      "name": {
+        "fr": "Roulé-boulé",
+        "en": "Defensive roll"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Le coup aurait dû le tuer. Il roule avec, et se relève en grimaçant.\n\nEn jeu\n• Une fois par jour, quand une attaque le ferait tomber à 0 PV ou moins (pas un sort ni un pouvoir spécial).\n• Jet de Réflexes (DD = dégâts subis) : s’il réussit, il ne subit que la moitié des dégâts.\n• Impossible s’il est privé de son bonus de Dextérité à la CA."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.shadowdancer_slippery_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit fuyant",
+        "en": "Slippery mind"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Une voix étrangère s’installe dans sa tête ; il la laisse parler, puis s’échappe par une porte qu’elle n’avait pas vue.\n\nEn jeu\n• S’il rate son jet de sauvegarde contre un enchantement, il peut retenter le jet 1 round plus tard.\n• Une seule seconde chance par effet."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.shadowdancer_improved_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive extraordinaire",
+        "en": "Improved evasion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowdancer"
+      ],
+      "description": {
+        "fr": "Même quand l’explosion le rattrape, elle ne trouve qu’un bout de cape.\n\nEn jeu\n• Comme esquive totale : aucun dégât s’il réussit le jet de Réflexes.\n• S’il le rate, il ne subit que la moitié des dégâts.\n• Seulement en armure légère ou sans armure, et s’il n’est pas sans défense."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.shadowdancer",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.shadowdancer_hide_in_plain_sight"
+      ]
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.shadowdancer_evasion",
+        "power.shadowdancer_uncanny_dodge",
+        "power.shadowdancer_darkvision"
+      ]
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.shadowdancer_summon_shadow",
+        "power.shadowdancer_shadow_illusion"
+      ]
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.shadowdancer_shadow_jump"
+      ]
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.shadowdancer_improved_uncanny_dodge",
+        "power.shadowdancer_defensive_roll"
+      ]
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.shadowdancer_slippery_mind"
+      ]
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowdancer",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.shadowdancer_improved_evasion"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.club"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.hand_crossbow"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.light_crossbow"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.heavy_crossbow"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.dagger"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.dart"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.light_mace"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.heavy_mace"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.morningstar"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.quarterstaff"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.rapier"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.sap"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.shortbow"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.composite_shortbow"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "item.short_sword"
+    },
+    {
+      "from": "class.shadowdancer",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    }
+  ]
+}

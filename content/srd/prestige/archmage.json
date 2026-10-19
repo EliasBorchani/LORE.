@@ -1,0 +1,332 @@
+{
+  "entities": [
+    {
+      "id": "class.archmage",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "skillPoints": 2,
+      "name": {
+        "fr": "Archimage",
+        "en": "Archmage"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "epic-friendly"
+      ],
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 15 and @skill.spellcraft.ranks >= 15 and has('feat.skill_focus_spellcraft') and @feats.spell_focus.schools >= 2 and @spellcasting.arcane.max_level >= 7",
+      "description": {
+        "fr": "Il y a les mages qui lancent des sorts, et il y a ceux qui les démontent pour voir comment ils marchent. L’archimage a passé tant d’années penché sur la trame de la magie qu’il a fini par trouver les coutures : il plie une boule de feu autour de ses amis, retourne un sort contre celui qui l’a lancé, change la glace en flammes d’un claquement de doigts. Chacun de ces secrets lui coûte une part de sa puissance brute, qu’il abandonne pour toujours. Il n’a jamais hésité.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : Connaissances (mystères) 15 rangs ; Art de la magie 15 rangs ; Talent (Art de la magie) ; École renforcée dans deux écoles ; savoir lancer des sorts profanes du 7e niveau ; connaître au moins un sort du 5e niveau ou plus dans au moins cinq écoles différentes.\n• Aucune formation aux armes ni aux armures.\n• +1 niveau de lanceur de sorts profanes aux niveaux 1, 2, 3, 4 et 5 (sorts par jour, sorts connus et niveau de lanceur d’une classe profane qui lance déjà des sorts du 7e niveau ; pas les autres avantages de cette classe).\n• Aptitudes : un grand arcane à chaque niveau (1 à 5)."
+      },
+      "status": "to confirm",
+      "note": "SRD. Spell Focus in two schools: Danalieth has abjuration only, to check. Five schools of 5th-level spells: checked by hand."
+    },
+    {
+      "id": "power.archmage_high_arcana",
+      "type": "class_power",
+      "name": {
+        "fr": "Grand arcane",
+        "en": "High arcana"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Chaque secret de la haute magie se paie comptant : l’archimage brûle pour toujours une de ses réserves de sorts, et en échange, la magie lui obéit un peu mieux.\n\nEn jeu\n• Un grand arcane à chaque niveau d’archimage, choisi dans la liste : feu profane, portée profane, maîtrise des contresorts, maîtrise des énergies, maîtrise de la forme, puissance des sorts, pouvoir magique.\n• Chaque grand arcane coûte un emplacement de sort perdu pour toujours, du niveau indiqué par le pouvoir ou plus.\n• Jamais un emplacement du plus haut niveau de sort qu’il peut lancer.\n• Portée profane et pouvoir magique peuvent être choisis plusieurs fois (voir leur description)."
+      },
+      "effects": [],
+      "note": "Le choix est noté dans « gained » du niveau. Emplacements sacrifiés : pas encore dans le modèle."
+    },
+    {
+      "id": "power.archmage_arcane_fire",
+      "type": "class_power",
+      "name": {
+        "fr": "Feu profane",
+        "en": "Arcane Fire"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Pas d’éclair, pas de flamme, pas d’acide : juste de la magie à l’état pur, arrachée à un sort préparé et jetée au visage de l’ennemi.\n\nEn jeu\n• Pouvoir surnaturel. Transforme un sort profane préparé ou un emplacement libre en trait d’énergie pure.\n• Attaque de contact à distance, portée 120 m + 12 m par niveau d’archimage.\n• Dégâts : 1d6 par niveau d’archimage + 1d6 par niveau du sort utilisé.\n• Coût : un emplacement du 9e niveau."
+      },
+      "effects": [],
+      "note": "Dégâts selon le sort utilisé : pas encore dans le modèle."
+    },
+    {
+      "id": "power.archmage_mastery_of_shaping",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise de la forme",
+        "en": "Mastery of Shaping"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "La boule de feu remplit la salle, et pourtant le guerrier au milieu n’a même pas chaud : l’archimage a laissé un trou à sa forme dans le sort.\n\nEn jeu\n• Pour les sorts en cône, cylindre, émanation, étendue ou rayonnement : laisse des zones intactes dans la zone du sort.\n• Chaque zone épargnée mesure au moins un cube de 1,50 m de côté.\n• Les sorts façonnables descendent à 1,50 m au lieu de 3 m.\n• Coût : un emplacement du 6e niveau."
+      },
+      "status": "draft",
+      "note": "Description seule."
+    },
+    {
+      "id": "power.archmage_mastery_of_elements",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des énergies",
+        "en": "Mastery of Elements"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Le démon de feu s’attendait à une boule de flammes. Il reçoit une boule de glace, et il n’aime pas ça.\n\nEn jeu\n• Change le type d’énergie d’un sort profane d’acide, d’électricité, de feu, de froid ou de son en un autre de ces cinq types.\n• Décidé au début de l’incantation ; le temps d’incantation ne change pas.\n• Coût : un emplacement du 8e niveau."
+      },
+      "status": "draft",
+      "note": "Description seule."
+    },
+    {
+      "id": "power.archmage_mastery_of_counterspelling",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des contresorts",
+        "en": "Mastery of Counterspelling"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Contrer un sort, c’est bien. Le renvoyer à l’envoyeur, c’est mieux.\n\nEn jeu\n• Un sort qu’il contre est renvoyé à son lanceur, comme par renvoi des sorts.\n• Si le sort ne peut pas être renvoyé de cette façon, il est simplement contré.\n• Coût : un emplacement du 7e niveau."
+      },
+      "status": "draft",
+      "note": "Description seule."
+    },
+    {
+      "id": "power.archmage_arcane_reach",
+      "type": "class_power",
+      "name": {
+        "fr": "Portée profane",
+        "en": "Arcane Reach"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Pourquoi s’approcher d’un troll pour le toucher ? L’archimage étend la main, et son sort franchit la distance tout seul.\n\nEn jeu\n• Pouvoir surnaturel. Ses sorts de contact atteignent une cible jusqu’à 9 m, avec une attaque de contact à distance.\n• Peut être pris une deuxième fois : portée 18 m.\n• Coût : un emplacement du 7e niveau."
+      },
+      "effects": [
+        {
+          "target": "spell.range",
+          "op": "set",
+          "value": 9,
+          "layer": "final",
+          "condition": "@spell.range_kind == 'touch'",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Effet sur spell.range (set 9 m) quand la portée est contact. Pris deux fois (18 m) : pas encore dans le modèle."
+    },
+    {
+      "id": "power.archmage_spell_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Puissance des sorts",
+        "en": "Spell Power"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Les mêmes mots, les mêmes gestes, mais le sort sort plus loin, plus fort, plus longtemps.\n\nEn jeu\n• +1 niveau de lanceur de sorts pour ce qui dépend du niveau (portée, durée, dégâts…) et pour les tests de niveau de lanceur de sorts.\n• Pas de sorts par jour en plus, pas de sorts plus puissants.\n• Coût : un emplacement du 5e niveau."
+      },
+      "effects": [
+        {
+          "target": "caster_level.arcane",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "L’effet porte sur tout le niveau de lanceur profane ; la limite aux variables des sorts et aux tests de niveau de lanceur n’est pas encore dans le modèle."
+    },
+    {
+      "id": "power.archmage_spell_like_ability",
+      "type": "class_power",
+      "name": {
+        "fr": "Pouvoir magique",
+        "en": "Spell-Like Ability"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "class_power",
+        "archmage",
+        "high arcana"
+      ],
+      "description": {
+        "fr": "Un sort lancé mille fois finit par ne plus avoir besoin de grimoire : il fait partie de l’archimage, comme un réflexe.\n\nEn jeu\n• Un de ses sorts profanes devient un pouvoir magique utilisable deux fois par jour.\n• Plus besoin de composantes ; une composante coûteuse coûte 10 PX par po à chaque utilisation, et un coût en PX reste dû.\n• Coût : un emplacement du 5e niveau, plus un emplacement du niveau du sort (niveau modifié pour un sort avec métamagie).\n• Un emplacement 3 niveaux plus haut que nécessaire donne 4 utilisations par jour ; 6 niveaux plus haut, 6 utilisations.\n• Peut être pris plusieurs fois, pour le même sort (plus d’utilisations) ou un autre.",
+        "en": "One arcane spell becomes a permanent spell-like ability, usable twice per day."
+      },
+      "status": "draft",
+      "note": "Description only. Which spell is not recorded yet."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.archmage",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.archmage_high_arcana"
+      ]
+    },
+    {
+      "classId": "class.archmage",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.archmage",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.archmage",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.archmage",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_mastery_of_shaping",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_mastery_of_elements",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_mastery_of_counterspelling",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_arcane_reach",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_spell_power",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_spell_like_ability",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "choice",
+      "to": "power.archmage_arcane_fire",
+      "note": "High arcana option, one per archmage level"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.archmage",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    }
+  ]
+}

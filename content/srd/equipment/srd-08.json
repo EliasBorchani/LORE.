@@ -1,0 +1,368 @@
+{
+  "entities": [
+    {
+      "id": "item.clay_mug",
+      "type": "item",
+      "name": {
+        "fr": "Chope en terre cuite",
+        "en": "Mug/tankard, clay"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une chope ventrue, ébréchée au bord, qui a connu plus de chansons de taverne que de sobriété.\n\nEn jeu\n• Contient un demi-litre de boisson."
+      },
+      "item": {
+        "cost": "2 pc",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.crowbar",
+      "type": "item",
+      "name": {
+        "fr": "Pied-de-biche",
+        "en": "Crowbar"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Une barre de fer coudée au bout aplati, l’argument préféré des pilleurs de tombes face aux couvercles récalcitrants.\n\nEn jeu\n• Bonus de circonstance de +2 aux tests de Force pour forcer l’ouverture d’une porte ou d’un coffre.\n• En combat : arme improvisée à une main, dégâts contondants d’un gourdin de sa taille (malus de −4 aux jets d’attaque d’une arme improvisée)."
+      },
+      "item": {
+        "cost": "2 po",
+        "weight": "2,5 kg"
+      }
+    },
+    {
+      "id": "item.firewood",
+      "type": "item",
+      "name": {
+        "fr": "Bois de chauffage (pour un jour)",
+        "en": "Firewood (per day)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une brassée de bûches sèches, de quoi tenir un feu de camp de la tombée de la nuit à l’aube.\n\nEn jeu\n• Assez de bois pour un feu d’une journée."
+      },
+      "item": {
+        "cost": "1 pc",
+        "weight": "10 kg"
+      }
+    },
+    {
+      "id": "item.fishhook",
+      "type": "item",
+      "name": {
+        "fr": "Hameçon",
+        "en": "Fishhook"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un petit crochet de métal barbelé, patience et appât non fournis.\n\nEn jeu\n• Avec une ligne et de l’appât, permet de pêcher pour se nourrir (Survie)."
+      },
+      "item": {
+        "cost": "1 pa"
+      }
+    },
+    {
+      "id": "item.fishing_net",
+      "type": "item",
+      "name": {
+        "fr": "Filet de pêche, 2,5 m²",
+        "en": "Fishing net (25 sq. ft.)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un filet de mailles nouées, lesté de petits plombs, qui sent encore la marée.\n\nEn jeu\n• Couvre environ 2,5 m² une fois déployé.\n• Sert à pêcher, pas à combattre : le filet de combat est une arme à part."
+      },
+      "item": {
+        "cost": "4 po",
+        "weight": "2,5 kg"
+      }
+    },
+    {
+      "id": "item.flask",
+      "type": "item",
+      "name": {
+        "fr": "Flasque (vide)",
+        "en": "Flask (empty)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Un flacon trapu bouché de liège, assez solide pour survivre au fond d’un sac de voyage.\n\nEn jeu\n• Contient un demi-litre de liquide."
+      },
+      "item": {
+        "cost": "3 pc",
+        "weight": "2,25 kg"
+      }
+    },
+    {
+      "id": "item.flint_and_steel",
+      "type": "item",
+      "name": {
+        "fr": "Silex et amorce",
+        "en": "Flint and steel"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un éclat de silex et un briquet d’acier : quelques étincelles sur l’amadou, et la nuit recule.\n\nEn jeu\n• Allumer une torche demande une action complexe ; un autre feu prend plus de temps."
+      },
+      "item": {
+        "cost": "1 po"
+      }
+    },
+    {
+      "id": "item.glass_wine_bottle",
+      "type": "item",
+      "name": {
+        "fr": "Bouteille de vin en verre",
+        "en": "Glass wine bottle"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Une bouteille de verre soufflé, sombre et épaisse, digne d’un grand cru.\n\nEn jeu\n• Contient environ trois quarts de litre."
+      },
+      "item": {
+        "cost": "2 po"
+      }
+    },
+    {
+      "id": "item.grappling_hook",
+      "type": "item",
+      "name": {
+        "fr": "Grappin",
+        "en": "Grappling hook"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "climbing"
+      ],
+      "description": {
+        "fr": "Un crochet de fer à trois branches, qu’on lance en espérant entendre le bruit sec d’une prise solide.\n\nEn jeu\n• Le lancer et le faire accrocher demande un test de Maîtrise des cordes, DD 10 + 2 par tranche de 3 m de distance.\n• S’utilise avec une corde (vendue à part)."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "2 kg"
+      }
+    },
+    {
+      "id": "item.hammer",
+      "type": "item",
+      "name": {
+        "fr": "Marteau",
+        "en": "Hammer"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear"
+      ],
+      "description": {
+        "fr": "Un marteau de charpentier au manche patiné, fait pour les pitons et les clous plus que pour les crânes.\n\nEn jeu\n• Sert à enfoncer pitons, clous et piquets.\n• En combat : arme improvisée à une main, dégâts contondants d’un gantelet clouté de sa taille (malus de −4 aux jets d’attaque d’une arme improvisée)."
+      },
+      "item": {
+        "cost": "5 pa",
+        "weight": "1 kg"
+      }
+    },
+    {
+      "id": "item.hempen_rope",
+      "type": "item",
+      "name": {
+        "fr": "Corde en chanvre, 15 m",
+        "en": "Hempen rope (50 ft.)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "climbing"
+      ],
+      "description": {
+        "fr": "Quinze mètres de chanvre tressé, rêche sous les doigts, compagnon fidèle de toute descente en donjon.\n\nEn jeu\n• 2 points de résistance ; un test de Force DD 23 la rompt.\n• Le prix et le poids sont pour une longueur de 15 m."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "5 kg"
+      }
+    },
+    {
+      "id": "item.hooded_lantern",
+      "type": "item",
+      "name": {
+        "fr": "Lanterne à capote",
+        "en": "Lantern, hooded"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "light_source"
+      ],
+      "description": {
+        "fr": "Une lanterne de fer et de verre, munie d’une capote qui protège la flamme du vent et de la pluie.\n\nEn jeu\n• Lumière vive sur 9 m de rayon, lumière faible jusqu’à 18 m.\n• Brûle un demi-litre d’huile en 6 heures.\n• Occupe une main quand on la porte."
+      },
+      "item": {
+        "cost": "7 po",
+        "weight": "1 kg"
+      }
+    },
+    {
+      "id": "item.ink",
+      "type": "item",
+      "name": {
+        "fr": "Encre, la fiole",
+        "en": "Ink (1 oz. vial)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "writing",
+        "consumable"
+      ],
+      "description": {
+        "fr": "Une fiole d’encre noire, épaisse et odorante, dont chaque goutte attend un nom ou un secret.\n\nEn jeu\n• Encre noire ; une autre couleur coûte le double.\n• Nécessaire pour écrire, copier une carte ou un parchemin."
+      },
+      "item": {
+        "cost": "8 po"
+      }
+    },
+    {
+      "id": "item.inkpen",
+      "type": "item",
+      "name": {
+        "fr": "Plume d’écriture",
+        "en": "Inkpen"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "writing"
+      ],
+      "description": {
+        "fr": "Une plume taillée dont la pointe garde l’encre le temps d’une ligne ou deux.\n\nEn jeu\n• Se trempe dans l’encre pour écrire sur une surface plane."
+      },
+      "item": {
+        "cost": "1 pa"
+      }
+    },
+    {
+      "id": "item.iron_pot",
+      "type": "item",
+      "name": {
+        "fr": "Pot en fer",
+        "en": "Pot, iron"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "container"
+      ],
+      "description": {
+        "fr": "Une marmite de fonte noircie par mille feux de camp.\n\nEn jeu\n• Sert à cuisiner sur un feu ; contient environ 4 litres."
+      },
+      "item": {
+        "cost": "5 pa",
+        "weight": "5 kg"
+      }
+    },
+    {
+      "id": "item.ladder",
+      "type": "item",
+      "name": {
+        "fr": "Échelle, 3 m",
+        "en": "Ladder (10 ft.)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "climbing"
+      ],
+      "description": {
+        "fr": "Une simple échelle de bois à barreaux, encombrante mais imbattable pour franchir un mur.\n\nEn jeu\n• Échelle droite de 3 m.\n• Grimper à une échelle ne demande normalement pas de test d’Escalade."
+      },
+      "item": {
+        "cost": "5 pc",
+        "weight": "10 kg"
+      }
+    },
+    {
+      "id": "item.lamp",
+      "type": "item",
+      "name": {
+        "fr": "Lampe",
+        "en": "Lamp, common"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "gear",
+        "light_source"
+      ],
+      "description": {
+        "fr": "Une petite lampe à huile de terre cuite, à la flamme dansante et rassurante.\n\nEn jeu\n• Lumière vive sur 4,5 m de rayon, lumière faible jusqu’à 9 m.\n• Brûle un demi-litre d’huile en 6 heures.\n• Occupe une main quand on la porte."
+      },
+      "item": {
+        "cost": "1 pa",
+        "weight": "500 g"
+      }
+    }
+  ]
+}

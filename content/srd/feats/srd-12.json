@@ -1,0 +1,245 @@
+{
+  "entities": [
+    {
+      "id": "feat.multiattack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaques multiples",
+        "en": "Multiattack"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "natural_attack",
+        "melee"
+      ],
+      "description": {
+        "fr": "Crocs, griffes, queue, cornes : chez la plupart des bêtes, un seul de ces outils frappe juste, les autres suivent au hasard. Celle-ci a appris à faire travailler tout son corps d’un même élan, et chaque morsure arrive aussi précise que la première.\n\nEn jeu\n• Condition : au moins trois armes naturelles.\n• Les attaques naturelles secondaires ne subissent plus qu’un malus de −2 au jet d’attaque.\n• Normal : sans ce don, ces attaques secondaires subissent un malus de −5."
+      },
+      "note": "Condition non vérifiée par la fiche : trois armes naturelles. Attaques naturelles secondaires : pas encore dans le modèle, le malus réduit n’apparaît pas sur la fiche."
+    },
+    {
+      "id": "feat.snatch",
+      "type": "feat",
+      "name": {
+        "fr": "Capture",
+        "en": "Snatch"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "natural_attack",
+        "melee"
+      ],
+      "description": {
+        "fr": "Pour un dragon, un chevalier en armure n’est qu’une proie un peu plus croustillante que les autres. Une griffe se referme, la gueule serre, et le malheureux découvre ce que pèse vraiment une créature de cette taille.\n\nEn jeu\n• Condition : taille Très Grande ou plus.\n• Après un coup de morsure ou de griffe réussi, la créature peut tenter d’engager une lutte comme avec l’étreinte, sans action supplémentaire.\n• Contre une cible plus petite d’au moins trois catégories de taille qu’elle tient, elle inflige chaque round les dégâts de la morsure ou de la griffe, sans jet.\n• Une cible tenue dans la gueule n’a pas de jet de Réflexes contre le souffle de la créature, si elle en a un.\n• Lâcher la cible est une action libre ; la projeter est une action simple : elle vole sur 1d6 × 3 m et subit 1d6 points de dégâts par tranche de 3 m.\n• Projetée en plein vol, la cible subit plutôt les dégâts de chute de la hauteur, s’ils sont plus élevés."
+      },
+      "note": "Condition non vérifiée par la fiche : taille Très Grande ou plus. Lutte et dégâts automatiques : à appliquer à la table."
+    },
+    {
+      "id": "feat.multiweapon_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Combat à plusieurs armes",
+        "en": "Multiweapon Fighting"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "two_weapon",
+        "melee"
+      ],
+      "description": {
+        "fr": "Deux bras, c’est déjà de la jonglerie. Quatre, six, c’est un orage d’acier, à condition que chaque main sache ce que font les autres. Cette créature a trouvé le rythme : ses lames tombent les unes après les autres sans jamais se gêner.\n\nEn jeu\n• Condition : Dextérité 13, au moins trois mains.\n• Quand la créature attaque avec plusieurs armes, le malus de sa main principale baisse de 2 et celui de ses autres mains baisse de 6.\n• Normal : −6 aux attaques de la main principale, −10 à celles des autres mains (une main est toujours la principale).\n• Pour une créature à plus de deux bras, ce don remplace Combat à deux armes."
+      },
+      "prerequisite": "@ability.dex.score >= 13",
+      "note": "Condition non vérifiée par la fiche : au moins trois mains. Combat à plusieurs armes : pas encore dans le modèle (une seule arme maniée)."
+    },
+    {
+      "id": "feat.awesome_blow",
+      "type": "feat",
+      "name": {
+        "fr": "Coup fabuleux",
+        "en": "Awesome Blow"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Le géant ne cherche plus à blesser : il cherche à faire voler. Son poing, sa massue ou sa queue frappe avec une telle masse que l’adversaire quitte le sol, roule sur trois mètres et se relève, s’il se relève, en se demandant ce qui l’a touché.\n\nEn jeu\n• Condition : Force 25, Attaque en puissance, Science de la bousculade, taille Grande ou plus.\n• Action simple : une attaque au corps à corps avec un malus de −4.\n• Si elle touche une créature corporelle plus petite qu’elle, celle-ci fait un jet de Réflexes (DD = dégâts infligés) ; si elle le rate, elle est projetée de 3 m en ligne droite dans la direction choisie par l’attaquant et tombe à terre.\n• La cible ne peut pas finir plus près de l’attaquant que sa case de départ.\n• Si un obstacle l’arrête, la cible et l’obstacle subissent chacun 1d6 points de dégâts, et la cible s’arrête dans la case voisine de l’obstacle."
+      },
+      "prerequisite": "@ability.str.score >= 25 and has('feat.power_attack') and has('feat.improved_bull_rush')",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": -4,
+          "bonusType": "untyped",
+          "condition": "active('toggle.awesome_blow')"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : taille Grande ou plus. Le toggle applique le malus de −4 ; la projection se règle à la table."
+    },
+    {
+      "id": "feat.craft_construct",
+      "type": "feat",
+      "name": {
+        "fr": "Création de créature artificielle",
+        "en": "Craft Construct"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "item_creation",
+        "wizard_bonus",
+        "creation",
+        "magic"
+      ],
+      "description": {
+        "fr": "Argile, fer, chair cousue : l’artisan donne une forme, puis un ordre, et enfin une étincelle. Ce qu’il en tire ne mange pas, ne dort pas, ne doute pas. Il obéit, aussi longtemps que tiennent ses coutures et ses runes.\n\nEn jeu\n• Condition : Création d’armes et d’armures magiques, Création d’objets merveilleux.\n• Permet de fabriquer toute créature artificielle dont on remplit les conditions (voir la créature).\n• Coût : 1 jour par tranche de 1 000 po du prix, des matières premières pour la moitié du prix, et des PX égaux à 1/25 du prix.\n• Une créature artificielle neuve a les points de vie moyens de ses dés de vie.\n• Réparation : jusqu’à 20 points de dégâts par jour de travail, pour 50 po par point rendu."
+      },
+      "prerequisite": "has('feat.craft_magic_arms_and_armor') and has('feat.craft_wondrous_item')"
+    },
+    {
+      "id": "feat.empower_spell_like_ability",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de pouvoir magique",
+        "en": "Empower Spell-Like Ability"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "magic"
+      ],
+      "description": {
+        "fr": "Ce que la créature fait d’instinct, elle a appris à le pousser plus loin. Le même éclair, la même vague de froid, mais nourris d’un surplus de puissance qui laisse l’air vibrant derrière lui.\n\nEn jeu\n• Condition : un pouvoir magique de niveau de lanceur de sorts 6 ou plus.\n• Choisir un pouvoir magique de la créature : 3 fois par jour (ou moins si le pouvoir s’utilise moins souvent), elle peut l’utiliser avec effet étendu.\n• Effet étendu : tous les effets numériques variables du pouvoir sont multipliés par 1,5 ; les jets de sauvegarde et les jets opposés ne changent pas.\n• Seul un pouvoir qui reproduit un sort de niveau au plus égal à (niveau de lanceur ÷ 2, arrondi à l’entier inférieur) − 2 peut être choisi.\n• Peut être pris plusieurs fois, pour un pouvoir magique différent à chaque fois."
+      },
+      "usesPerDay": "3",
+      "note": "Condition non vérifiée par la fiche : niveau de lanceur du pouvoir magique. Pouvoir choisi : pas encore dans le modèle ; 3 utilisations par jour pour chaque pouvoir choisi (pas plus que les utilisations normales du pouvoir)."
+    },
+    {
+      "id": "feat.quicken_spell_like_ability",
+      "type": "feat",
+      "name": {
+        "fr": "Pouvoir magique rapide",
+        "en": "Quicken Spell-Like Ability"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "magic"
+      ],
+      "description": {
+        "fr": "Un battement de cils, un mot à peine formé, et le pouvoir est déjà parti. La créature n’a plus besoin de se concentrer : la magie qui l’habite répond au réflexe, entre deux coups de griffe.\n\nEn jeu\n• Condition : un pouvoir magique de niveau de lanceur de sorts 10 ou plus.\n• Choisir un pouvoir magique de la créature : 3 fois par jour (ou moins si le pouvoir s’utilise moins souvent), elle peut l’utiliser par une action libre qui ne provoque pas d’attaque d’opportunité.\n• La créature peut agir normalement dans le même round, y compris utiliser un autre pouvoir magique, mais un seul pouvoir rapide par round.\n• Seul un pouvoir qui reproduit un sort de niveau au plus égal à (niveau de lanceur ÷ 2, arrondi à l’entier inférieur) − 4 peut être choisi, et pas un sort dont le temps d’incantation dépasse 1 round.\n• Normal : un pouvoir magique demande une action simple et provoque une attaque d’opportunité.\n• Peut être pris plusieurs fois, pour un pouvoir magique différent à chaque fois."
+      },
+      "usesPerDay": "3",
+      "note": "Condition non vérifiée par la fiche : niveau de lanceur du pouvoir magique. Pouvoir choisi : pas encore dans le modèle ; 3 utilisations par jour pour chaque pouvoir choisi (pas plus que les utilisations normales du pouvoir)."
+    },
+    {
+      "id": "feat.wingover",
+      "type": "feat",
+      "name": {
+        "fr": "Virage sur l’aile",
+        "en": "Wingover"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "flight",
+        "movement"
+      ],
+      "description": {
+        "fr": "Une aile se replie, l’autre bat l’air, et la créature pivote sur elle-même en plein ciel. Celui qui croyait l’avoir semée la retrouve face à lui, gueule ouverte.\n\nEn jeu\n• Condition : vitesse de vol.\n• Une fois par round, par une action libre, la créature en vol peut virer jusqu’à 180°, quelle que soit sa manœuvrabilité, en plus de ses virages habituels.\n• Ce virage coûte 3 m de déplacement en vol.\n• Elle ne peut pas prendre d’altitude dans le round où elle fait ce virage, mais peut faire un piqué."
+      },
+      "note": "Condition non vérifiée par la fiche : vitesse de vol."
+    },
+    {
+      "id": "feat.hover",
+      "type": "feat",
+      "name": {
+        "fr": "Vol stationnaire",
+        "en": "Hover"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "monster",
+        "flight",
+        "movement"
+      ],
+      "description": {
+        "fr": "Les ailes battent à contretemps, lourdes et régulières, et la créature reste suspendue sur place. En dessous, la poussière se lève, les torches s’éteignent, et plus personne ne voit grand-chose.\n\nEn jeu\n• Condition : vitesse de vol.\n• En vol, la créature peut s’arrêter sur place par une action de mouvement, puis repartir dans n’importe quelle direction, y compris à la verticale (vers le haut ou le bas) à la moitié de sa vitesse, quelle que soit sa manœuvrabilité.\n• Si elle commence son tour en vol stationnaire, elle peut rester sur place et faire une action complexe : attaque à outrance avec tous ses membres sauf les ailes.\n• Si elle utilise un souffle ou lance un sort, elle perd ses attaques physiques du round.\n• Créature de taille Grande ou plus, à 6 m du sol ou moins, au-dessus de débris légers : elle soulève un nuage de 18 m de rayon qui éteint les flammes non magiques exposées assez petites.\n• Dans le nuage, on voit à 3 m ; de 4,5 m à 6 m, camouflage (20 % de chances de rater) ; à 7,5 m ou plus, camouflage total (50 % de chances de rater, et on ne peut pas localiser la cible à la vue).\n• Lancer un sort dans le nuage demande un test de Concentration (DD 10 + ½ DV de la créature).\n• Normal : sans ce don, une créature en vol doit continuer d’avancer, sauf si sa manœuvrabilité est parfaite."
+      },
+      "note": "Condition non vérifiée par la fiche : vitesse de vol."
+    },
+    {
+      "id": "feat.great_smiting",
+      "type": "feat",
+      "name": {
+        "fr": "Châtiment suprême",
+        "en": "Great Smiting"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il fut un temps où le châtiment n’était qu’un éclat de foi au bout de la lame. Aujourd’hui, c’est une sentence. L’arme s’abat chargée de chaque serment tenu, de chaque année de croisade, et l’impact résonne comme un verdict.\n\nEn jeu\n• Condition : niveau 21, Charisme 25, une aptitude de châtiment (aptitude de classe ou pouvoir accordé d’un domaine).\n• Quand une attaque de châtiment touche, le personnage ajoute deux fois le niveau de classe adéquat aux dégâts au lieu d’une fois.\n• Peut être pris plusieurs fois et les effets se cumulent : deux fois le don triple ce niveau, trois fois le quadruple, et ainsi de suite."
+      },
+      "prerequisite": "level() >= 21 and @ability.cha.score >= 25 and (has('power.paladin_smite_evil') or has('power.blackguard_smite_good') or has('domain.destruction'))",
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "count('feat.great_smiting') * level('class.paladin')",
+          "bonusType": "untyped",
+          "condition": "active('toggle.paladin_smite_evil')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "count('feat.great_smiting') * level('class.blackguard')",
+          "bonusType": "untyped",
+          "condition": "active('toggle.blackguard_smite_good')"
+        }
+      ],
+      "note": "Le bonus s’ajoute au Châtiment du Mal du paladin et au Châtiment du Bien du chevalier noir. Le châtiment du domaine de la Destruction n’a pas encore de toggle : ajouter le niveau de prêtre en plus à la table."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.awesome_blow",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.awesome_blow",
+      "relation": "requires",
+      "to": "feat.improved_bull_rush"
+    },
+    {
+      "from": "feat.craft_construct",
+      "relation": "requires",
+      "to": "feat.craft_magic_arms_and_armor"
+    },
+    {
+      "from": "feat.craft_construct",
+      "relation": "requires",
+      "to": "feat.craft_wondrous_item"
+    }
+  ]
+}

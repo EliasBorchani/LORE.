@@ -1,0 +1,139 @@
+{
+  "entities": [
+    {
+      "id": "class.hierophant",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Hiérophante",
+        "en": "Hierophant"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Il y a les prêtres qui prient, et il y a ceux à qui les dieux répondent avant même la fin de la prière. Le hiérophante a passé toute une vie au service du divin, et cette vie a fini par le transformer : sa magie va plus loin, frappe plus fort, soigne plus pleinement. Il parle aux temples comme on parle à de vieux amis, porte la colère de son dieu jusqu’au bout de ses doigts et peut confier une part de sa grâce à un fidèle pour quelques jours. Peu de mortels atteignent ce rang ; ceux qui y parviennent deviennent des légendes vivantes de leur foi.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : 15 rangs en Connaissances (religion) ; au moins un don de métamagie ; savoir lancer des sorts divins du 7e niveau.\n• Aucune nouvelle formation aux armes ou aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (religion), Diplomatie, Premiers secours, Profession.\n• +1 niveau de lanceur de sorts divins aux niveaux 1, 2, 3, 4 et 5, pour une classe divine qui lance déjà des sorts du 7e niveau. Pas de sorts par jour en plus.\n• Aptitudes : un pouvoir spécial à chaque niveau (1 à 5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle). Le hiérophante augmente le niveau de lanceur de sorts mais pas les sorts par jour : le modèle (spellcasting.advances) ne distingue pas encore les deux."
+    },
+    {
+      "id": "power.hierophant_special_abilities",
+      "type": "class_power",
+      "name": {
+        "fr": "Pouvoirs spéciaux",
+        "en": "Special abilities"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hierophant"
+      ],
+      "description": {
+        "fr": "À chaque pas sur la voie du hiérophante, son dieu lui offre un don choisi : une magie plus puissante, une grâce à partager ou une colère plus terrible.\n\nEn jeu\n• Un pouvoir spécial à chaque niveau de hiérophante, choisi dans la liste ; sauf indication, chacun ne se prend qu’une fois.\n• Don de métamagie : un don de métamagie au lieu d’un pouvoir.\n• Flétrissement d’infidèle (Sur) : ses sorts d’énergie négative (blessure, mise à mal…) sont automatiquement maximisés, sans coût, contre les créatures d’alignement opposé ; un mort-vivant ciblé regagne le maximum. Un hiérophante neutre choisit une fois pour toutes l’alignement opposé (LB, CB, LM ou CM).\n• Soin de la foi (Sur) : ses sorts de guérison sont automatiquement maximisés, sans coût, sur les créatures de son alignement (lui compris).\n• Don du divin (Sur, prêtre requis) : confie une ou plusieurs utilisations de renvoi (ou d’intimidation) des morts-vivants à une créature consentante, de 24 heures à une semaine ; elle renvoie comme un prêtre de niveau égal à celui de hiérophante, avec son propre Charisme. Il perd ces utilisations pendant ce temps.\n• Maîtrise de l’énergie (Sur, prêtre requis) : +4 aux tests de renvoi et aux dégâts de renvoi contre les morts-vivants.\n• Portée divine (Sur) : ses sorts de contact atteignent une cible à 9 m (une attaque de contact à distance remplace celle au corps à corps). Pris une deuxième fois : 18 m.\n• Pouvoir magique : sacrifie pour toujours un emplacement de sort divin pour lancer un de ses sorts 2 fois par jour comme pouvoir magique, sans composante (une composante coûteuse se paie en PX : 10 PX par po). Un emplacement 3 niveaux plus haut donne 4 utilisations, 6 niveaux plus haut 6 utilisations ; un sort métamagique demande un emplacement du niveau modifié. Peut se prendre plusieurs fois.\n• Puissance de la nature (Sur, druide requis) : confie une aptitude de druide (sauf les sorts et le compagnon animal ; la forme animale en partie ou en entier) à une créature consentante, de 24 heures à une semaine. Il en répond devant son dieu.\n• Puissance magique : +1 au niveau de lanceur de sorts pour les effets variables des sorts (portée, dégâts…) et les tests de niveau de lanceur de sorts. Cumulable, peut se prendre plusieurs fois."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.hierophant_special",
+          "op": "add",
+          "value": "level('class.hierophant')"
+        }
+      ],
+      "note": "Choix des pouvoirs spéciaux : pas encore dans le modèle (bonus de renvoi, portée des sorts de contact, niveau de lanceur de sorts partiel et sorts maximisés selon l’alignement viendront avec les choix)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.hierophant",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.hierophant_special_abilities"
+      ]
+    },
+    {
+      "classId": "class.hierophant",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.hierophant",
+      "level": 3,
+      "bab": 1,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.hierophant",
+      "level": 4,
+      "bab": 2,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.hierophant",
+      "level": 5,
+      "bab": 2,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.hierophant",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

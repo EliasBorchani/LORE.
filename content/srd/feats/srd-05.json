@@ -1,0 +1,255 @@
+{
+  "entities": [
+    {
+      "id": "feat.greater_two_weapon_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Maîtrise du combat à deux armes",
+        "en": "Greater Two-Weapon Fighting"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "two_weapon",
+        "melee"
+      ],
+      "description": {
+        "fr": "Les deux lames ne se relaient plus : elles tissent ensemble une même toile d’acier. Là où l’adversaire attend un dernier coup de la main faible, il en vient encore un autre, glissé dans l’ouverture que la main forte vient de créer.\n\nEn jeu\n• Condition : Dextérité 19, Combat à deux armes, Science du combat à deux armes, bonus de base à l’attaque +11.\n• Une troisième attaque avec l’arme secondaire, à −10.\n• Don supplémentaire possible pour un guerrier.\n• Un rôdeur de niveau 11 qui a choisi le style à deux armes l’obtient sans les conditions, tant qu’il porte au plus une armure légère."
+      },
+      "prerequisite": "@ability.dex.score >= 19 and has('feat.two_weapon_fighting') and has('feat.improved_two_weapon_fighting') and @bab >= 11",
+      "note": "Attaque supplémentaire de l’arme secondaire : pas encore dans le modèle (une seule arme maniée)."
+    },
+    {
+      "id": "feat.martial_weapon_proficiency",
+      "type": "feat",
+      "name": {
+        "fr": "Maniement d’une arme de guerre",
+        "en": "Martial Weapon Proficiency"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Épée longue, hache d’armes, arc long : des armes faites pour la guerre, qui demandent un vrai entraînement. Ce personnage a pris le temps d’en apprivoiser une, jusqu’à ce que sa prise devienne naturelle.\n\nEn jeu\n• Le personnage choisit une arme de guerre : il l’utilise sans malus d’attaque.\n• Normal : −4 aux jets d’attaque avec une arme que l’on ne sait pas manier.\n• Barbares, guerriers, paladins et rôdeurs savent déjà manier toutes les armes de guerre.\n• Peut être pris plusieurs fois, pour une nouvelle arme à chaque fois.\n• Un prêtre du domaine de la Guerre l’obtient gratuitement pour l’arme de prédilection de son dieu, si c’est une arme de guerre."
+      },
+      "note": "Arme choisie : pas encore dans le modèle ; le malus de −4 sans formation n’est pas calculé."
+    },
+    {
+      "id": "feat.exotic_weapon_proficiency",
+      "type": "feat",
+      "name": {
+        "fr": "Maniement d’une arme exotique",
+        "en": "Exotic Weapon Proficiency"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Chaîne cloutée, filet, épée bâtarde à une main : ces armes étranges punissent le maladroit qui s’y essaie. Il faut des heures de pratique pour que leur poids et leur équilibre cessent d’être un piège et deviennent un atout.\n\nEn jeu\n• Condition : bonus de base à l’attaque +1 ; Force 13 en plus pour l’épée bâtarde et la hache de guerre naine.\n• Le personnage choisit une arme exotique : il l’utilise sans malus d’attaque.\n• Normal : −4 aux jets d’attaque avec une arme que l’on ne sait pas manier.\n• Peut être pris plusieurs fois, pour une nouvelle arme à chaque fois.\n• Don supplémentaire possible pour un guerrier."
+      },
+      "prerequisite": "@bab >= 1",
+      "note": "Arme choisie : pas encore dans le modèle. Condition non vérifiée par la fiche : Force 13 pour l’épée bâtarde et la hache de guerre naine."
+    },
+    {
+      "id": "feat.simple_weapon_proficiency",
+      "type": "feat",
+      "name": {
+        "fr": "Maniement des armes courantes",
+        "en": "Simple Weapon Proficiency"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Une dague, une masse, une arbalète légère : les armes de tout le monde. Encore faut-il savoir par quel bout les tenir, ce que quelques leçons suffisent à apprendre.\n\nEn jeu\n• Le personnage utilise toutes les armes courantes sans malus d’attaque.\n• Normal : −4 aux jets d’attaque avec une arme que l’on ne sait pas manier.\n• Tous les personnages savent manier les armes courantes, sauf les druides, les magiciens et les moines."
+      },
+      "note": "Le malus de −4 sans formation n’est pas calculé."
+    },
+    {
+      "id": "feat.shield_proficiency",
+      "type": "feat",
+      "name": {
+        "fr": "Maniement des boucliers",
+        "en": "Shield Proficiency"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "proficiency",
+        "defense"
+      ],
+      "description": {
+        "fr": "Un bouclier mal tenu gêne plus qu’il ne protège. Bien tenu, il suit chaque coup, dévie la lame d’un mouvement d’épaule et laisse le bras libre de répondre.\n\nEn jeu\n• Avec tout bouclier autre qu’un pavois, seuls les malus propres au bouclier s’appliquent.\n• Normal : avec un bouclier qu’il ne sait pas manier, il applique le malus d’armure aux tests de ce bouclier à ses jets d’attaque et à ses tests de compétence qui demandent de bouger, Équitation comprise.\n• Barbares, bardes, druides, guerriers, paladins, prêtres et rôdeurs l’ont déjà."
+      },
+      "note": "Les malus sans formation ne sont pas calculés."
+    },
+    {
+      "id": "feat.tower_shield_proficiency",
+      "type": "feat",
+      "name": {
+        "fr": "Maniement du pavois",
+        "en": "Tower Shield Proficiency"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "proficiency",
+        "defense"
+      ],
+      "description": {
+        "fr": "Le pavois est un mur qu’on porte à bout de bras. Il faut une vraie technique pour le planter, le déplacer et s’abriter derrière sans trébucher sur sa propre défense.\n\nEn jeu\n• Condition : Maniement des boucliers.\n• Avec un pavois, seuls les malus propres au pavois s’appliquent.\n• Normal : avec un bouclier qu’il ne sait pas manier, il applique le malus d’armure aux tests de ce bouclier à ses jets d’attaque et à ses tests de compétence qui demandent de bouger, Équitation comprise.\n• Les guerriers l’ont déjà."
+      },
+      "note": "Les malus sans formation ne sont pas calculés."
+    },
+    {
+      "id": "feat.diligent",
+      "type": "feat",
+      "name": {
+        "fr": "Méticuleux",
+        "en": "Diligent"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Rien n’échappe à ce regard patient : la fêlure sous le vernis d’un vase, la lettre mal formée d’un vieux grimoire. Là où les autres survolent, lui vérifie, compare et recommence.\n\nEn jeu\n• +2 aux tests de Décryptage et d’Estimation."
+      },
+      "effects": [
+        {
+          "target": "skill.appraise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.decipher_script",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.negotiator",
+      "type": "feat",
+      "name": {
+        "fr": "Négociation",
+        "en": "Negotiator"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il lit dans un sourire crispé ce que les mots taisent, et trouve toujours la formule qui fait pencher la balance. Avec lui, chaque marché finit par sembler juste… surtout pour lui.\n\nEn jeu\n• +2 aux tests de Diplomatie et de Psychologie."
+      },
+      "effects": [
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.deflect_arrows",
+      "type": "feat",
+      "name": {
+        "fr": "Parade de projectiles",
+        "en": "Deflect Arrows"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "La flèche siffle, la main se lève, et le trait tombe au sol, brisé net. Les témoins jurent qu’ils n’ont rien vu bouger : seul le moine, qui n’a même pas cligné des yeux, sait ce qui s’est passé.\n\nEn jeu\n• Condition : Dextérité 13, Science du combat à mains nues.\n• Une fois par round : une attaque à distance qui le touche est écartée, elle ne fait aucun dégât.\n• Demande une main libre ; le personnage doit voir venir l’attaque et ne pas être pris au dépourvu. Ce geste ne coûte aucune action.\n• Sans effet sur les très gros projectiles (rocher lancé par un géant) ni sur les attaques à distance produites par un sort.\n• Don supplémentaire possible pour un guerrier ; un moine peut le prendre au niveau 2 sans les conditions."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.improved_unarmed_strike')",
+      "note": "Parade une fois par round : décrite, pas calculée."
+    },
+    {
+      "id": "feat.persuasive",
+      "type": "feat",
+      "name": {
+        "fr": "Persuasion",
+        "en": "Persuasive"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Une voix qui sait se faire velours ou acier selon le moment. On le croit quand il ment, on le craint quand il menace, et souvent on ne fait plus la différence.\n\nEn jeu\n• +2 aux tests de Bluff et d’Intimidation."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.greater_two_weapon_fighting",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.greater_two_weapon_fighting",
+      "relation": "requires",
+      "to": "feat.improved_two_weapon_fighting"
+    },
+    {
+      "from": "feat.tower_shield_proficiency",
+      "relation": "requires",
+      "to": "feat.shield_proficiency"
+    },
+    {
+      "from": "feat.deflect_arrows",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    }
+  ]
+}

@@ -1,0 +1,630 @@
+{
+  "entities": [
+    {
+      "id": "spell.lesser_restoration",
+      "type": "spell",
+      "name": {
+        "fr": "Restauration partielle",
+        "en": "Lesser Restoration"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une main posée sur l’épaule, et le corps se souvient de sa vraie force. La lassitude glisse comme un manteau trop lourd.\n\nEn jeu\n• Dissipe un effet magique qui réduit une caractéristique, ou rend 1d4 points d’affaiblissement temporaire à une caractéristique.\n• Supprime la fatigue ; une créature épuisée devient seulement fatiguée.\n• Sans effet sur les diminutions permanentes (absorption) de caractéristique.\n• Incantation de 3 rounds."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "3 rounds",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_restoration",
+      "type": "spell",
+      "name": {
+        "fr": "Restauration suprême",
+        "en": "Greater Restoration"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le grand rite de remise à neuf : l’âme retrouve ce que la mort et les ténèbres lui avaient arraché, et l’esprit reprend ses repères.\n\nEn jeu\n• Supprime tous les niveaux négatifs et rend les niveaux perdus depuis 1 semaine par niveau de lanceur au plus.\n• Annule tous les effets magiques qui réduisent les caractéristiques et soigne tout affaiblissement et toute absorption de caractéristique.\n• Supprime fatigue et épuisement, ainsi que la folie, la confusion et les effets mentaux du même genre.\n• Ne rend pas le niveau (ou les points de Constitution) perdu lors d’un retour à la vie.\n• Coût : 500 PX ; incantation de 10 minutes."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, PX",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.resurrection",
+      "type": "spell",
+      "name": {
+        "fr": "Résurrection",
+        "en": "Resurrection"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une pincée de cendres, une mèche de cheveux suffit : l’âme est rappelée et le corps se refait autour d’elle, prêt au combat.\n\nEn jeu\n• Ramène à la vie une créature morte depuis 10 ans par niveau de lanceur au plus, à partir de n’importe quel reste de son corps.\n• Elle revient avec tous ses points de vie et ses sorts préparés, mais perd un niveau (2 points de Constitution si elle était niveau 1) ; impossible si sa Constitution tombait à 0.\n• Marche sur une victime d’un effet de mort ou d’un mort-vivant détruit ; jamais sur une mort de vieillesse.\n• Sans effet sur les créatures artificielles, élémentaires, Extérieurs et morts-vivants.\n• Composante : diamant d’au moins 10 000 po ; incantation de 10 minutes."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, M, FD",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature morte touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.true_resurrection",
+      "type": "spell",
+      "name": {
+        "fr": "Résurrection suprême",
+        "en": "True Resurrection"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Pas même besoin d’un corps : un nom, un lieu, et le défunt se relève comme s’il n’était jamais tombé.\n\nEn jeu\n• Ramène à la vie une créature morte depuis 10 ans par niveau de lanceur au plus, même sans aucun reste, si on l’identifie clairement (nom, lieu de naissance ou de mort).\n• Elle revient avec tous ses points de vie et ses sorts préparés, sans perte de niveau ni de Constitution.\n• Marche aussi sur les élémentaires et les Extérieurs ; jamais sur les créatures artificielles, les morts-vivants ou une mort de vieillesse.\n• Composante : diamant d’au moins 25 000 po ; incantation de 10 minutes."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, M, FD",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature morte touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.rusting_grasp",
+      "type": "spell",
+      "name": {
+        "fr": "Rouille",
+        "en": "Rusting Grasp"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les doigts laissent des traces orange partout où ils passent ; le fer se boursoufle, s’effrite et tombe en poussière rouge.\n\nEn jeu\n• Un contact ronge un objet en fer non magique (jusqu’à 90 cm autour du point touché) ; les métaux magiques sont immunisés.\n• Attaque de contact contre une armure en fer : elle perd 1d6 points de bonus de CA (pas plus que son bonus).\n• Attaque de contact contre une arme en fer : elle est détruite, mais l’adversaire a droit à une attaque d’opportunité.\n• Contre une créature ferreuse : 3d6 + 1 par niveau de lanceur (+15 au plus) dégâts par contact, une attaque de contact par round pendant 1 round par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 objet ferreux non magique (ou un volume de 90 cm autour du contact) ou 1 créature ferreuse",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.explosive_runes",
+      "type": "spell",
+      "name": {
+        "fr": "Runes explosives",
+        "en": "Explosive Runes"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Quelques signes anodins dans la marge d’un grimoire. Le curieux qui les déchiffre n’aura pas le temps de tourner la page.\n\nEn jeu\n• Les runes explosent dès qu’on les lit : 6d6 dégâts de force, sans jet de sauvegarde, pour toute créature assez proche pour les lire.\n• Les autres créatures à 3 m ou moins : jet de Réflexes pour la moitié ; l’objet porteur subit tous les dégâts (sans jet).\n• Le lanceur et ceux qu’il désigne lisent sans danger ; il peut effacer les runes à volonté.\n• Dissipation de la magie ou effacement les retirent, mais une dissipation ratée les fait exploser.\n• Seul un roublard peut les trouver (Fouille) ou les désamorcer (Désamorçage/sabotage), DD 28."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 objet touché de 5 kg au plus",
+        "duration": "permanente jusqu’à explosion (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "6d6 force",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.foxs_cunning",
+      "type": "spell",
+      "name": {
+        "fr": "Ruse du renard",
+        "en": "Fox's Cunning"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les idées s’alignent, les ruses se devinent avant d’être tendues. L’esprit devient vif et retors comme celui d’un renard.\n\nEn jeu\n• +4 d’altération en Intelligence (tests, compétences et tout ce qui utilise le modificateur).\n• Hausse le DD des sorts basés sur l’Intelligence, mais ne donne ni sorts en plus ni points de compétence.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.foxs_cunning')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 16"
+        }
+      ],
+      "status": "draft",
+      "note": "16 sur la fiche = +4 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.mass_foxs_cunning",
+      "type": "spell",
+      "name": {
+        "fr": "Ruse du renard de groupe",
+        "en": "Fox's Cunning, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un murmure, et toute la bande devient une meute de renards : rusée, attentive, impossible à duper.\n\nEn jeu\n• +4 d’altération en Intelligence pour 1 créature par niveau, à 9 m au plus les unes des autres.\n• Portée courte ; dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.mass_foxs_cunning')"
+        }
+      ]
+    },
+    {
+      "id": "spell.owls_wisdom",
+      "type": "spell",
+      "name": {
+        "fr": "Sagesse du hibou",
+        "en": "Owl's Wisdom"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le regard se pose, calme et perçant. Rien n’échappe à celui qui voit la nuit comme le hibou.\n\nEn jeu\n• +4 d’altération en Sagesse (Volonté, Perception auditive, Détection et tout ce qui utilise le modificateur).\n• Hausse le DD des sorts basés sur la Sagesse, mais ne donne pas de sorts en plus.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.wis.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.owls_wisdom')"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_owls_wisdom",
+      "type": "spell",
+      "name": {
+        "fr": "Sagesse du hibou de groupe",
+        "en": "Owl's Wisdom, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une vague de sérénité traverse le groupe. Chacun voit soudain plus loin, plus clair, plus juste.\n\nEn jeu\n• +4 d’altération en Sagesse pour 1 créature par niveau, à 9 m au plus les unes des autres.\n• Portée courte ; dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.wis.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.mass_owls_wisdom')"
+        }
+      ]
+    },
+    {
+      "id": "spell.hallow",
+      "type": "spell",
+      "name": {
+        "fr": "Sanctification",
+        "en": "Hallow"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un jour et une nuit de prières, d’huiles et d’encens, et la terre elle-même devient sacrée. Le Mal y marche à contrecœur.\n\nEn jeu\n• Rend sacré un lieu de 12 m de rayon ; un seul effet de ce type par lieu.\n• Le lieu est protégé comme par cercle magique contre le Mal.\n• +4 sacré aux tests de Charisme pour repousser les morts-vivants, −4 de malus pour les contrôler (pas pour la version druidique) ; la résistance à la magie n’y fait rien.\n• Les morts enterrés là ne peuvent pas devenir des morts-vivants.\n• Peut lier un sort au lieu pendant 1 an, pour tous, pour les alliés de foi ou d’alignement, ou pour les autres : aide, ancre dimensionnelle, bénédiction, détection de la magie, détection du Mal (ou du Bien), détection du mensonge, dissipation de la magie, don des langues, endurance aux énergies destructives, frayeur, imprécation, liberté de mouvement, lumière du jour, protection contre la mort, protection contre les énergies destructives, regain d’assurance, rejet de l’invisibilité, résistance aux énergies destructives, silence, ténèbres, ténèbres profondes, zone de vérité.\n• Contre sanctification maléfique sans la dissiper.\n• Composantes : 1 000 po + 1 000 po par niveau du sort lié ; incantation de 24 heures."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "Bien"
+        ],
+        "components": "V, G, M, FD",
+        "castingTime": "24 heures",
+        "range": "contact",
+        "area": "émanation de 12 m de rayon à partir du point touché",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.unhallow",
+      "type": "spell",
+      "name": {
+        "fr": "Sanctification maléfique",
+        "en": "Unhallow"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le sol se gorge d’ombre et de sang ancien. Là où il est profané, les justes se sentent étrangers et les morts dorment mal.\n\nEn jeu\n• Profane un lieu de 12 m de rayon ; un seul effet de ce type par lieu.\n• Le lieu est protégé comme par cercle magique contre le Bien.\n• −4 de malus aux tests de Charisme pour repousser les morts-vivants, +4 profane pour les contrôler (pas pour la version druidique) ; la résistance à la magie n’y fait rien.\n• Peut lier un sort au lieu pendant 1 an, pour tous, pour les alliés de foi ou d’alignement, ou pour les autres : aide, ancre dimensionnelle, bénédiction, détection de la magie, détection du Mal (ou du Bien), détection du mensonge, dissipation de la magie, don des langues, endurance aux énergies destructives, frayeur, imprécation, liberté de mouvement, lumière du jour, protection contre la mort, protection contre les énergies destructives, regain d’assurance, rejet de l’invisibilité, résistance aux énergies destructives, silence, ténèbres, ténèbres profondes, zone de vérité.\n• Contre sanctification sans la dissiper.\n• Composantes : 1 000 po + 1 000 po par niveau du sort lié ; incantation de 24 heures."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "24 heures",
+        "range": "contact",
+        "area": "émanation de 12 m de rayon à partir du point touché",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sanctuary",
+      "type": "spell",
+      "name": {
+        "fr": "Sanctuaire",
+        "en": "Sanctuary"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une aura de paix entoure le protégé. Les lames hésitent, les bras retombent : frapper cette créature semble soudain impensable.\n\nEn jeu\n• Qui veut attaquer le protégé ou le viser par un sort doit réussir un jet de Volonté ; en cas d’échec, il perd l’action et ne peut pas le blesser de toute la durée.\n• Ne protège pas des sorts de zone ou à effet.\n• Le protégé peut agir et lancer des sorts non offensifs ; s’il attaque, le sort prend fin.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.private_sanctum",
+      "type": "spell",
+      "name": {
+        "fr": "Sanctuaire secret",
+        "en": "Private Sanctum"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un voile de brume sombre tombe sur la pièce. Dehors, on ne voit rien, on n’entend rien ; dedans, on parle librement.\n\nEn jeu\n• Vue de l’extérieur, la zone est une masse sombre et brumeuse, même pour la vision dans le noir ; aucun son n’en sort.\n• Bloque la Divination (scrutation) et rend ceux de l’intérieur immunisés contre détection de pensées.\n• N’empêche ni d’entrer ni de sortir, ni la télépathie ou les messages magiques.\n• Zone : cube de 9 m d’arête par niveau ; dure 24 heures ; peut être rendu permanent."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "cube de 9 m d’arête/niveau (F)",
+        "duration": "24 heures (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.jump",
+      "type": "spell",
+      "name": {
+        "fr": "Saut",
+        "en": "Jump"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les jambes deviennent ressorts. Un élan, et l’on franchit d’un bond le fossé que les autres contournent.\n\nEn jeu\n• +10 d’altération aux tests de Saut ; +20 au niveau de lanceur 5, +30 (maximum) au niveau 9.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": "if(@spell.caster_level >= 9, 30, if(@spell.caster_level >= 5, 20, 10))",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.jump')"
+        }
+      ]
+    },
+    {
+      "id": "spell.sepia_snake_sigil",
+      "type": "spell",
+      "name": {
+        "fr": "Sceau du serpent",
+        "en": "Sepia Snake Sigil"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Au détour d’une phrase, un serpent d’ambre jaillit de la page. Le lecteur indiscret se retrouve figé dans une bulle dorée.\n\nEn jeu\n• Caché dans un texte d’au moins 25 mots ; se déclenche quand quelqu’un le lit délibérément.\n• Le lecteur fait un jet de Réflexes ; s’il le rate, il est pris dans un champ de force immobile pendant 1d4 jours + 1 jour par niveau (ou jusqu’à ce que le lanceur le libère).\n• Dans la bulle, le prisonnier ne vieillit pas, ne respire pas, ne mange pas, n’a pas conscience du monde, mais peut être blessé ; s’il est mourant, il ne perd plus de pv.\n• Invisible par des moyens normaux ; dissipation de la magie l’efface, effacement aussi en détruisant la page.\n• Composante : poudre d’ambre d’au moins 500 po ; incantation de 10 minutes."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "1 livre ou texte touché",
+        "duration": "permanente ou jusqu’à déclenchement ; puis 1d4 jours + 1 jour/niveau",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.scrying",
+      "type": "spell",
+      "name": {
+        "fr": "Scrutation",
+        "en": "Scrying"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le miroir se trouble, l’eau du bassin frissonne, et une silhouette lointaine apparaît, sans se douter qu’on la regarde.\n\nEn jeu\n• Observe une créature à n’importe quelle distance : on la voit et l’entend, avec 3 m autour d’elle ; le capteur la suit à 45 m par round.\n• Jet de Volonté pour annuler, modifié par ce que le lanceur sait : rien +10, ouï-dire +5, rencontrée 0, bien connue −5.\n• Lien avec la cible : portrait −2, objet lui appartenant −4, partie de son corps −10 ; cible sur un autre plan +5.\n• Sans aucune connaissance ni lien, impossible de l’espionner.\n• Peuvent passer par le capteur, avec 5 % de chances de réussite par niveau : détection de la Loi, du Bien, du Chaos, du Mal et de la magie, don des langues, lecture de la magie, message.\n• Si la cible réussit son jet, nouvel essai sur elle impossible avant 24 heures.\n• Focaliseur : miroir d’argent d’au moins 1 000 po (bassin d’eau bénite de 100 po pour un prêtre, bassin naturel pour un druide) ; incantation d’1 heure ; dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "subschool": "scrutation",
+        "components": "V, G, M/FD, F",
+        "castingTime": "1 heure",
+        "range": "voir description",
+        "effect": "capteur magique",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_scrying",
+      "type": "spell",
+      "name": {
+        "fr": "Scrutation suprême",
+        "en": "Greater Scrying"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Plus besoin de miroir ni de longue préparation : un regard, et l’œil invisible file vers sa proie pour des heures.\n\nEn jeu\n• Comme scrutation, mais lancé en 1 action simple et pour 1 heure par niveau.\n• Peuvent passer par le capteur sans risque d’échec : détection de la Loi, du Bien, du Chaos, du Mal et de la magie, don des langues, lecture de la magie et message."
+      },
+      "spell": {
+        "school": "Divination",
+        "subschool": "scrutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "effect": "capteur magique",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.trap_the_soul",
+      "type": "spell",
+      "name": {
+        "fr": "Séquestration",
+        "en": "Trap the Soul"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un éclat de lumière, un cri étouffé, et il ne reste qu’une gemme qui brille un peu trop fort. Quelqu’un est enfermé dedans.\n\nEn jeu\n• Enferme corps et âme de la cible dans une gemme, sans limite de temps ; briser la gemme libère le prisonnier.\n• Qui libère une puissante créature d’un autre plan peut exiger d’elle un service, s’il le demande tout de suite.\n• Lancé directement : jet de Volonté et résistance à la magie ; si son nom est prononcé, pas de résistance et DD +2 ; en cas d’échec du sort, la gemme se brise.\n• Piège différé : un objet portant le dernier mot de l’incantation ; quand la cible le prend, elle est aspirée sans jet ni résistance.\n• Composante : gemme valant au moins 1 000 po par niveau ou DV de la cible, sinon elle se brise."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, M, (F)",
+        "castingTime": "1 action simple ou voir description",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "permanente (voir description)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.unseen_servant",
+      "type": "spell",
+      "name": {
+        "fr": "Serviteur invisible",
+        "en": "Unseen Servant"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Les tasses se remplissent seules, la porte s’ouvre d’elle-même : un serviteur sans visage s’occupe des corvées.\n\nEn jeu\n• Une force invisible accomplit une tâche simple à la fois, et la répète : porter, ouvrir portes et tiroirs, nettoyer, plier.\n• Force 2 (soulève 10 kg, traîne 50 kg) ; vitesse 4,50 m ; ne réussit aucun test de DD 10 ou plus.\n• Ne peut pas attaquer ; disparaît s’il subit 6 points de dégâts de zone ou s’il sort de la portée.\n• Dure 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 serviteur invisible, sans forme ni intelligence",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

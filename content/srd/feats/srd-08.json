@@ -1,0 +1,324 @@
+{
+  "entities": [
+    {
+      "id": "feat.improved_trip",
+      "type": "feat",
+      "name": {
+        "fr": "Science du croc-en-jambe",
+        "en": "Improved Trip"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un pied glissé derrière une cheville, une épaule qui pousse au bon moment : l’adversaire part en arrière avant d’avoir compris. Et pendant qu’il tombe, la lame est déjà en route.\n\nEn jeu\n• Condition : Intelligence 13, Expertise du combat.\n• Tenter un croc-en-jambe à mains nues ne provoque pas d’attaque d’opportunité.\n• +4 au test de Force pour faire tomber l’adversaire.\n• Croc-en-jambe réussi au corps à corps : attaque de corps à corps gratuite et immédiate contre l’adversaire au sol ; l’attaque dépensée pour le faire tomber est rendue.\n• Normal : un croc-en-jambe à mains nues provoque une attaque d’opportunité.\n• Un moine peut le prendre comme don supplémentaire au niveau 6 sans en remplir les conditions."
+      },
+      "prerequisite": "@ability.int.score >= 13 and has('feat.combat_expertise')",
+      "note": "Le +4 au test de Force de croc-en-jambe n’a pas de statistique sur la fiche."
+    },
+    {
+      "id": "feat.improved_disarm",
+      "type": "feat",
+      "name": {
+        "fr": "Science du désarmement",
+        "en": "Improved Disarm"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un coup sec sur la garde, une torsion du poignet, et l’arme ennemie tinte sur les pavés. Le geste est si sûr qu’on ne trouve jamais l’ouverture pour lui rendre la pareille.\n\nEn jeu\n• Condition : Intelligence 13, Expertise du combat.\n• Tenter de désarmer ne provoque pas d’attaque d’opportunité.\n• L’adversaire ne peut pas tenter de désarmer le personnage en retour s’il échoue.\n• +4 au jet d’attaque opposé pour désarmer.\n• Un moine peut le prendre comme don supplémentaire au niveau 6 sans en remplir les conditions."
+      },
+      "prerequisite": "@ability.int.score >= 13 and has('feat.combat_expertise')",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.disarm"
+        }
+      ]
+    },
+    {
+      "id": "feat.improved_overrun",
+      "type": "feat",
+      "name": {
+        "fr": "Science du renversement",
+        "en": "Improved Overrun"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il ne contourne pas l’obstacle : il passe à travers. Qui se met sur son chemin n’a pas le temps de s’écarter, seulement celui de toucher le sol.\n\nEn jeu\n• Condition : Force 13, Attaque en puissance.\n• La cible d’un renversement ne peut pas choisir de s’écarter : elle doit résister.\n• +4 au test de Force opposé pour renverser la cible.\n• Normal : la cible d’un renversement peut choisir de s’écarter ou de bloquer."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack')",
+      "note": "Le +4 au test de Force de renversement n’a pas de statistique sur la fiche."
+    },
+    {
+      "id": "feat.improved_turning",
+      "type": "feat",
+      "name": {
+        "fr": "Science du renvoi",
+        "en": "Improved Turning"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "turning"
+      ],
+      "description": {
+        "fr": "Sa foi ne vacille plus. Le symbole levé brûle d’une lumière plus dure, et les morts qui la voient sentent qu’en face d’eux se tient quelqu’un de plus puissant que son rang ne le laisse croire.\n\nEn jeu\n• Condition : pouvoir de renvoyer ou d’intimider les morts-vivants.\n• +1 au niveau effectif pour renvoyer ou intimider les morts-vivants."
+      },
+      "prerequisite": "level('class.cleric') >= 1 or level('class.paladin') >= 4 or level('class.blackguard') >= 3",
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "La condition lit 2 : le +1 du don compte déjà dans turn_undead.level, donc 2 = au moins 1 sans le don."
+    },
+    {
+      "id": "feat.improved_precise_shot",
+      "type": "feat",
+      "name": {
+        "fr": "Science du tir de précision",
+        "en": "Improved Precise Shot"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "La flèche trouve l’interstice entre deux créneaux, la fente d’une visière, le cœur d’un nuage de fumée. Pour cet archer, se cacher à moitié revient à ne pas se cacher du tout.\n\nEn jeu\n• Condition : Dextérité 19, Tir à bout portant, Tir de précision, bonus de base à l’attaque +11.\n• Les attaques à distance ignorent le bonus de CA d’un abri partiel et la chance d’échec d’un camouflage partiel. Contre un abri total ou un camouflage total, rien ne change.\n• Tirer ou lancer sur une lutte touche toujours la créature visée.\n• Normal : sur une lutte, on tire au hasard la créature atteinte.\n• Un rôdeur de niveau 11 au style de combat à distance, sans armure ou en armure légère, en a l’effet sans en remplir les conditions."
+      },
+      "prerequisite": "@ability.dex.score >= 19 and has('feat.point_blank_shot') and has('feat.precise_shot') and @bab >= 11"
+    },
+    {
+      "id": "feat.mobility",
+      "type": "feat",
+      "name": {
+        "fr": "Souplesse du serpent",
+        "en": "Mobility"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il traverse la mêlée comme l’eau entre les pierres : une épaule qui s’efface, un pas de côté, et les lames qui le guettaient ne mordent que l’air.\n\nEn jeu\n• Condition : Dextérité 13, Esquive.\n• +4 d’esquive à la CA contre les attaques d’opportunité provoquées en entrant dans une zone contrôlée ou en en sortant.\n• Perdu dans toute situation où le personnage perd son bonus de Dextérité à la CA.\n• Les bonus d’esquive se cumulent entre eux."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.dodge')",
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "situation": "situation.vs_attacks_of_opportunity_moving"
+        }
+      ]
+    },
+    {
+      "id": "feat.weapon_specialization",
+      "type": "feat",
+      "name": {
+        "fr": "Spécialisation martiale",
+        "en": "Weapon Specialization"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Des années d’exercice sur la même arme : il en connaît le poids, l’équilibre, l’angle exact où elle ouvre la chair. Chacun de ses coups porte un peu plus loin que celui d’un autre.\n\nEn jeu\n• Condition : maniement de l’arme choisie, Arme de prédilection pour cette arme, guerrier de niveau 4.\n• +2 aux jets de dégâts avec l’arme choisie (ou les attaques à mains nues, ou la lutte).\n• Peut être pris plusieurs fois, chaque fois pour une nouvelle arme ; les effets ne se cumulent pas sur une même arme."
+      },
+      "prerequisite": "has('feat.weapon_focus') and level('class.fighter') >= 4",
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "item"
+        }
+      ],
+      "note": "Arme choisie : pas encore dans le modèle ; le bonus s’applique à l’arme maniée. Maniement de l’arme non vérifié par la fiche."
+    },
+    {
+      "id": "feat.greater_weapon_specialization",
+      "type": "feat",
+      "name": {
+        "fr": "Spécialisation martiale supérieure",
+        "en": "Greater Weapon Specialization"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Là où d’autres frappent, il exécute. L’arme n’est plus un outil mais le prolongement de sa volonté, et chaque blessure qu’elle ouvre est exactement celle qu’il voulait.\n\nEn jeu\n• Condition : maniement de l’arme choisie, Arme de prédilection, Arme de prédilection supérieure et Spécialisation martiale pour cette arme, guerrier de niveau 12.\n• +2 aux jets de dégâts avec l’arme choisie (ou les attaques à mains nues, ou la lutte), en plus de Spécialisation martiale.\n• Peut être pris plusieurs fois, chaque fois pour une nouvelle arme ; les effets ne se cumulent pas sur une même arme."
+      },
+      "prerequisite": "has('feat.weapon_focus') and has('feat.greater_weapon_focus') and has('feat.weapon_specialization') and level('class.fighter') >= 12",
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "item"
+        }
+      ],
+      "note": "Arme choisie : pas encore dans le modèle ; le bonus s’applique à l’arme maniée. Maniement de l’arme non vérifié par la fiche."
+    },
+    {
+      "id": "feat.great_cleave",
+      "type": "feat",
+      "name": {
+        "fr": "Succession d’enchaînements",
+        "en": "Great Cleave"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un ennemi tombe, la lame continue sa course vers le suivant, puis le suivant encore. Tant qu’il reste quelqu’un debout à portée, le mouvement ne s’arrête pas.\n\nEn jeu\n• Condition : Force 13, Attaque en puissance, Enchaînement, bonus de base à l’attaque +4.\n• Fonctionne comme Enchaînement, mais autant de fois par round que nécessaire : chaque adversaire abattu ouvre une nouvelle attaque contre un autre ennemi à portée."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack') and has('feat.cleave') and @bab >= 4"
+    },
+    {
+      "id": "feat.point_blank_shot",
+      "type": "feat",
+      "name": {
+        "fr": "Tir à bout portant",
+        "en": "Point Blank Shot"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "À courte distance, il ne vise plus : il sait. La corde claque, et le trait se plante là où il regardait, avec toute la force qu’il n’a pas eu le temps de perdre.\n\nEn jeu\n• +1 aux jets d’attaque et de dégâts à distance contre une cible à 9 m ou moins."
+      },
+      "effects": [
+        {
+          "target": "attack.ranged",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "situation": "situation.within_9m"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "situation": "situation.ranged_within_9m"
+        }
+      ],
+      "note": "Pas de statistique de dégâts à distance : le +1 aux dégâts est une ligne conditionnelle sur les dégâts."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.improved_trip",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.improved_disarm",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.improved_overrun",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.improved_precise_shot",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.improved_precise_shot",
+      "relation": "requires",
+      "to": "feat.precise_shot"
+    },
+    {
+      "from": "feat.mobility",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.weapon_specialization",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.greater_weapon_specialization",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.greater_weapon_specialization",
+      "relation": "requires",
+      "to": "feat.greater_weapon_focus"
+    },
+    {
+      "from": "feat.greater_weapon_specialization",
+      "relation": "requires",
+      "to": "feat.weapon_specialization"
+    },
+    {
+      "from": "feat.great_cleave",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.great_cleave",
+      "relation": "requires",
+      "to": "feat.cleave"
+    }
+  ]
+}

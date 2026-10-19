@@ -1,0 +1,291 @@
+{
+  "entities": [
+    {
+      "id": "item.ale_gallon",
+      "type": "item",
+      "name": {
+        "fr": "Bière, le litre",
+        "en": "Ale, gallon"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "7 pc",
+        "weight": "1 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un grand pichet de bière brune, de quoi faire chanter une tablée jusqu’à la dernière chandelle.\n\nEn jeu\n• Boisson de taverne, vendue au volume pour une tablée ou pour la route."
+      }
+    },
+    {
+      "id": "item.ale_mug",
+      "type": "item",
+      "name": {
+        "fr": "Bière, la chope",
+        "en": "Ale, mug"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "4 pc",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une chope mousseuse posée sur le comptoir, le prix d’une rumeur ou d’une amitié d’un soir.\n\nEn jeu\n• Boisson de taverne servie au comptoir, à consommer sur place."
+      }
+    },
+    {
+      "id": "item.banquet",
+      "type": "item",
+      "name": {
+        "fr": "Banquet (par convive)",
+        "en": "Banquet (per person)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "10 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Tables chargées de rôtis, de pâtés et de vins fins : de quoi honorer un hôte ou sceller une alliance.\n\nEn jeu\n• Le prix couvre un convive pour un festin complet.\n• Un bon moyen de gagner les faveurs d’un notable ou de fêter une victoire."
+      }
+    },
+    {
+      "id": "item.bread",
+      "type": "item",
+      "name": {
+        "fr": "Pain, la miche",
+        "en": "Bread, per loaf"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "2 pc",
+        "weight": "250 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une miche à la croûte dorée, l’alliée la plus simple et la plus fidèle du voyageur.\n\nEn jeu\n• Nourriture de base, à emporter en voyage."
+      }
+    },
+    {
+      "id": "item.cheese",
+      "type": "item",
+      "name": {
+        "fr": "Fromage, la portion",
+        "en": "Cheese, hunk of"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "1 pa",
+        "weight": "250 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un morceau de fromage affiné, enveloppé dans un linge, qui supporte bien les longues marches.\n\nEn jeu\n• Nourriture qui se conserve plusieurs jours en route."
+      }
+    },
+    {
+      "id": "item.inn_common",
+      "type": "item",
+      "name": {
+        "fr": "Séjour à l’auberge (par jour), qualité convenable",
+        "en": "Inn stay (per day), common"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "5 pa"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une paillasse sur l’estrade tiède de la salle commune, une couverture rêche, un oreiller, et des voisins qui ronflent poliment.\n\nEn jeu\n• Une nuit pour une personne, dans la salle commune, au chaud et au sec.\n• Repas non compris."
+      }
+    },
+    {
+      "id": "item.inn_good",
+      "type": "item",
+      "name": {
+        "fr": "Séjour à l’auberge (par jour), bonne qualité",
+        "en": "Inn stay (per day), good"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "2 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une chambre à soi, un lit pour soi seul, une porte qui ferme à clé. Le luxe, après des semaines de bivouac.\n\nEn jeu\n• Une nuit pour une personne, dans une chambre individuelle avec le confort de base.\n• Repas non compris."
+      }
+    },
+    {
+      "id": "item.inn_poor",
+      "type": "item",
+      "name": {
+        "fr": "Séjour à l’auberge (par jour), qualité médiocre",
+        "en": "Inn stay (per day), poor"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "2 pa"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Quelques planches au pied d’une cheminée froide, une odeur de bière renversée. Mieux que la pluie, à peine.\n\nEn jeu\n• Une nuit pour une personne, à même le sol de la salle commune.\n• Repas non compris."
+      }
+    },
+    {
+      "id": "item.meals_common",
+      "type": "item",
+      "name": {
+        "fr": "Repas (par jour), qualité convenable",
+        "en": "Meals (per day), common"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "3 pa"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une écuelle de ragoût fumant, du pain du jour et de quoi boire : une journée honnête pour un estomac honnête.\n\nEn jeu\n• Nourriture et boisson pour une personne pendant une journée."
+      }
+    },
+    {
+      "id": "item.meals_good",
+      "type": "item",
+      "name": {
+        "fr": "Repas (par jour), bonne qualité",
+        "en": "Meals (per day), good"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "5 pa"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Viande rôtie, légumes frais, douceurs au miel et un pichet bien rempli : la table des marchands prospères.\n\nEn jeu\n• Nourriture et boisson pour une personne pendant une journée."
+      }
+    },
+    {
+      "id": "item.meals_poor",
+      "type": "item",
+      "name": {
+        "fr": "Repas (par jour), qualité médiocre",
+        "en": "Meals (per day), poor"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "1 pa"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Des racines bouillies, un quignon de pain et de l’eau claire. Ça nourrit, ça ne réjouit pas.\n\nEn jeu\n• Nourriture et boisson pour une personne pendant une journée."
+      }
+    },
+    {
+      "id": "item.meat",
+      "type": "item",
+      "name": {
+        "fr": "Viande, le morceau",
+        "en": "Meat, chunk of"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "3 pa",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un morceau de viande salée ou fumée, dur comme du cuir, mais qui ne trahit jamais un ventre vide.\n\nEn jeu\n• Nourriture qui se conserve plusieurs jours en route."
+      }
+    },
+    {
+      "id": "item.wine_common",
+      "type": "item",
+      "name": {
+        "fr": "Vin, de table (le pichet)",
+        "en": "Wine, common (pitcher)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "2 pa",
+        "weight": "3 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un pichet de vin de table, rouge et rugueux, qui délie les langues aussi bien qu’un sort de charme.\n\nEn jeu\n• Boisson de taverne, servie pour une tablée."
+      }
+    },
+    {
+      "id": "item.wine_fine",
+      "type": "item",
+      "name": {
+        "fr": "Vin, bon cru (la bouteille)",
+        "en": "Wine, fine (bottle)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "food"
+      ],
+      "item": {
+        "cost": "10 po",
+        "weight": "750 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une bouteille d’un cru renommé, cachetée de cire. Un cadeau digne d’un noble, ou d’un dragon amateur de bonnes choses.\n\nEn jeu\n• Boisson de luxe ; fait un présent apprécié des notables."
+      }
+    }
+  ]
+}

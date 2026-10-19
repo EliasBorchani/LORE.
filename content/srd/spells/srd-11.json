@@ -1,0 +1,594 @@
+{
+  "entities": [
+    {
+      "id": "spell.detect_evil",
+      "type": "spell",
+      "name": {
+        "fr": "Détection du mal",
+        "en": "Detect Evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le regard se fait plus lourd, et la noirceur cachée des choses remonte à la surface comme une tache d’encre.\n\nEn jeu\n• Cône de 18 m ; se concentrer plus longtemps en apprend davantage.\n• 1er round : présence ou absence de Mal. 2e round : nombre d’auras et puissance de la plus forte. 3e round : puissance et position de chaque aura.\n• Puissance selon le type et les DV de la créature, ou le niveau de lanceur du sort ou de l’objet ; une aura peut subsister un temps après la disparition de sa source.\n• Un lanceur bon face à une aura écrasante (au moins le double de son niveau) est étourdi 1 round et le sort prend fin.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal ordinaire, une fine feuille de plomb ou 90 cm de bois ou de terre."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.discern_lies",
+      "type": "spell",
+      "name": {
+        "fr": "Détection du mensonge",
+        "en": "Discern Lies"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Chaque parole porte sa couleur. Celles qui sonnent faux laissent un reflet trouble, visible à qui sait regarder.\n\nEn jeu\n• Chaque round, se concentrer sur une créature à portée : on sait si elle ment sciemment.\n• Jusqu’à 1 créature/niveau, toutes à 9 m au plus les unes des autres ; jet de Volonté pour annuler.\n• Ne révèle ni la vérité cachée, ni les erreurs de bonne foi, ni les omissions ou demi-vérités.\n• Concentration, jusqu’à 1 round/niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m au plus les unes des autres",
+        "duration": "concentration, jusqu’à 1 round/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_poison",
+      "type": "spell",
+      "name": {
+        "fr": "Détection du poison",
+        "en": "Detect Poison"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une pincée de soupçon devenue certitude : la coupe, la lame ou la plaie trahit le venin qu’elle porte.\n\nEn jeu\n• Indique si une créature, un objet ou un cube de 1,50 m est empoisonné ou venimeux.\n• Test de Sagesse DD 20 pour identifier le poison ; Artisanat (alchimie) DD 20 permet un second essai.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal ordinaire, une fine feuille de plomb ou 90 cm de bois ou de terre."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature, 1 objet ou 1 cube de 1,50 m d’arête",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.misdirection",
+      "type": "spell",
+      "name": {
+        "fr": "Détection faussée",
+        "en": "Misdirection"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le devin croit lire une aura, il lit celle du voisin. Une simple pierre peut ainsi prêter son innocence à un assassin.\n\nEn jeu\n• La cible (créature ou objet de 3 m au plus) emprunte les auras d’un leurre choisi à portée.\n• Les sorts de détection d’aura (détection de la magie, du Mal, du mensonge…) lus sur la cible donnent les résultats du leurre.\n• Le lanceur de la détection a droit à un jet de Volonté pour lire la vraie aura ; le sort ne trompe pas les autres divinations (augure, détection de pensées…).\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature ou 1 objet de 3 m de côté au plus",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.enthrall",
+      "type": "spell",
+      "name": {
+        "fr": "Discours captivant",
+        "en": "Enthrall"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une voix qui ne laisse personne partir. La foule oublie la pluie, la faim et le voleur qui passe derrière elle.\n\nEn jeu\n• Il faut parler ou chanter 1 round entier ; les créatures qui ratent leur jet de Volonté sont captivées et amicales.\n• Race ou religion opposée : +4 au jet. Créatures de 4 DV ou plus ou de Sagesse 16 ou plus : restent attentives, juste indifférentes, et refont un jet devant tout acte qui leur déplaît.\n• Dure tant que le lanceur parle, 1 heure au plus, puis 1d3 rounds de commentaires ; tout nouvel arrivant fait un jet de Volonté. Le sort cesse si le lanceur fait autre chose que parler ou chanter.\n• Les non-captivés inamicaux ou hostiles peuvent huer : test de Charisme (+2 par allié qui aide) contre celui du lanceur, une seule tentative.\n• Une attaque ou un acte hostile contre un captivé brise le sort : le public devient inamical (hostile pour les 4 DV ou Sagesse 16)."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "charme",
+        "descriptors": [
+          "langage",
+          "mental",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "nombre illimité de créatures",
+        "duration": "jusqu’à 1 heure",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mages_disjunction",
+      "type": "spell",
+      "name": {
+        "fr": "Disjonction",
+        "en": "Mage's Disjunction"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un mot, et la trame même de la magie se déchire. Les sorts s’effilochent, les reliques s’éteignent, et parfois même les dieux le remarquent.\n\nEn jeu\n• Rayonnement de 12 m : chaque sort ou effet magique est dissipé automatiquement (pas de test).\n• Chaque objet magique devient ordinaire, sauf réussite d’un jet de Volonté (un objet tenu prend le meilleur jet, le sien ou celui de son porteur).\n• Les objets du lanceur et ce qu’il touche sont épargnés ; un champ antimagie a 1 % par niveau de lanceur d’être détruit, sinon il protège.\n• Un artefact a 1 % par niveau de lanceur d’être détruit ; dans ce cas, le lanceur doit réussir un jet de Volonté DD 25 ou perdre à jamais la faculté de lancer des sorts (ni souhait ni miracle ne la rendent).\n• Détruire un artefact peut attirer la colère d’un puissant."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "tous les effets et objets magiques dans un rayonnement de 12 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.floating_disk",
+      "type": "spell",
+      "name": {
+        "fr": "Disque flottant",
+        "en": "Floating Disk"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un plateau de force docile qui suit son maître comme un chien fidèle, chargé du butin, des bagages ou du camarade évanoui.\n\nEn jeu\n• Disque de force de 90 cm, à 90 cm du sol, qui porte 50 kg par niveau (ou 8 litres de liquide).\n• Suit le lanceur à sa vitesse, à 1,50 m de lui ; il reste horizontal.\n• Disparaît en fin de durée ou si le lanceur s’éloigne de plus que la portée (ou si l’écart avec le sol dépasse 90 cm) : la charge tombe.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "disque de force de 90 cm de diamètre",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.obscure_object",
+      "type": "spell",
+      "name": {
+        "fr": "Dissimulation d’objet",
+        "en": "Obscure Object"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "L’objet n’a pas disparu, il est seulement devenu introuvable pour la magie qui le cherche.\n\nEn jeu\n• Un objet (50 kg/niveau au plus) échappe à la scrutation et aux boules de cristal : une divination qui le vise échoue, une divination proche ne le voit pas.\n• Dure 8 heures ; jet de Volonté et résistance à la magie si l’objet est tenu par quelqu’un qui refuse."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 objet touché (50 kg/niveau au plus)",
+        "duration": "8 heures (T)",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sequester",
+      "type": "spell",
+      "name": {
+        "fr": "Dissimulation suprême",
+        "en": "Sequester"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Ce qui est caché par ce sort cesse d’exister pour les yeux et pour les devins. Un trésor, un passage, un dormeur oublié du monde.\n\nEn jeu\n• La créature ou l’objet touché (cube de 60 cm d’arête par niveau) devient invisible et indétectable par la divination et par la vue.\n• Reste repérable au toucher ou avec un objet magique adapté.\n• Une créature volontaire tombe dans une animation suspendue (comme morte) pour toute la durée.\n• Dure 1 jour/niveau ; un objet tenu ou magique a droit à un jet de Volonté et à la résistance à la magie."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature consentante ou objet touché (cube de 60 cm d’arête/niveau au plus)",
+        "duration": "1 jour/niveau (T)",
+        "savingThrow": "aucun ou Volonté, annule (objet)",
+        "spellResistance": "non ou oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dispel_magic",
+      "type": "spell",
+      "name": {
+        "fr": "Dissipation de la magie",
+        "en": "Dispel Magic"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un geste sec qui défait les nœuds de la magie. Les sorts s’éteignent comme des chandelles soufflées.\n\nEn jeu\n• Test de dissipation : 1d20 + niveau de lanceur (+10 au plus) contre DD 11 + niveau de lanceur de l’effet.\n• Ciblé : tente chaque sort sur la créature ou l’objet ; un objet magique réussi est réprimé 1d4 rounds.\n• Zone (rayonnement de 6 m) : par créature ou objet, seul le sort de plus haut niveau de lanceur est d’abord tenté, puis le suivant en cas d’échec ; un seul sort dissipé par cible ; les objets magiques ne sont pas touchés.\n• Contresort : un test de dissipation réussi contre le sort adverse l’annule.\n• Sans effet sur les effets instantanés déjà produits ; ses propres sorts sont dissipés automatiquement."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 jeteur de sorts, 1 créature ou 1 objet, ou rayonnement de 6 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_dispel_magic",
+      "type": "spell",
+      "name": {
+        "fr": "Dissipation suprême",
+        "en": "Greater Dispel Magic"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "La même main qui défait la magie, mais plus ferme, plus profonde, capable de dénouer jusqu’aux malédictions.\n\nEn jeu\n• Comme dissipation de la magie, mais le bonus du test de dissipation monte jusqu’à +20.\n• Peut aussi mettre fin aux effets que délivrance des malédictions lève, sur un test réussi.\n• Même portée et même zone (rayonnement de 6 m) que dissipation de la magie."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 jeteur de sorts, 1 créature ou 1 objet, ou rayonnement de 6 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.warp_wood",
+      "type": "spell",
+      "name": {
+        "fr": "Distorsion du bois",
+        "en": "Warp Wood"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le bois se souvient d’avoir été vivant, et se tord comme une branche sous le vent. Les arcs se vrillent, les portes coincent.\n\nEn jeu\n• Tord pour toujours 1 objet de bois de taille P par niveau dans un rayon de 6 m (M = 2, G = 4, TG = 8, Gig = 16, C = 32).\n• Arme de bois tordue : inutilisable (arme à distance) ou −4 aux jets d’attaque (arme de corps à corps).\n• Une porte tordue s’ouvre en force ou se coince ; une coque de bateau prend l’eau.\n• Un objet tenu ou magique a droit à un jet de Volonté et à la résistance à la magie.\n• Peut aussi redresser du bois tordu ; réparation intégrale n’y peut rien. Plusieurs lancers s’additionnent pour un gros objet."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 objet en bois de taille P/niveau dans un rayon de 6 m",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.divination",
+      "type": "spell",
+      "name": {
+        "fr": "Divination",
+        "en": "Divination"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une question posée aux puissances, et une réponse qui revient en énigme, en vers ou en présage. À chacun de la déchiffrer.\n\nEn jeu\n• Donne un conseil utile sur un but, un événement ou une activité de la semaine à venir.\n• Chance de réponse : 70 % + 1 % par niveau de lanceur, 90 % au plus ; en cas d’échec, le lanceur sent que le sort n’a rien donné (sauf magie trompeuse).\n• Plusieurs divinations sur la même question donnent la même réponse.\n• Composante matérielle : encens et offrande d’au moins 25 po."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.finger_of_death",
+      "type": "spell",
+      "name": {
+        "fr": "Doigt de mort",
+        "en": "Finger of Death"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un doigt pointé, un mot glacé, et la vie quitte sa demeure. Les plus coriaces s’en tirent, mais pas indemnes.\n\nEn jeu\n• Une créature vivante à portée meurt si elle rate son jet de Vigueur.\n• Sur un jet réussi : 3d6 dégâts + 1 par niveau de lanceur (+25 au plus), ce qui peut suffire à la tuer."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mort"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 25)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.dominate_person",
+      "type": "spell",
+      "name": {
+        "fr": "Domination",
+        "en": "Dominate Person"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une volonté qui se glisse dans une autre et prend les rênes. La victime obéit, les dents serrées.\n\nEn jeu\n• Contrôle un humanoïde par lien télépathique ; sans langue commune, seulement des ordres simples.\n• Changer d’ordre : action de mouvement. Se concentrer (action simple) donne ses impressions sensorielles.\n• Un ordre contraire à sa nature : nouveau jet de Volonté à +2 ; un ordre suicidaire est ignoré.\n• Portée illimitée sur le même plan ; sans 1 round de concentration par jour, le sujet refait un jet.\n• Psychologie DD 15 révèle qu’il est sous influence ; protection contre le Mal bloque les ordres, pas la domination.\n• Dure 1 jour/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 humanoïde",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dominate_animal",
+      "type": "spell",
+      "name": {
+        "fr": "Domination d’animal",
+        "en": "Dominate Animal"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un regard dans les yeux de la bête, et elle reconnaît un maître. Elle court, mord ou rapporte, comme on le lui demande.\n\nEn jeu\n• Un animal obéit à des ordres simples (« cours », « attaque », « rapporte ») ; les ordres suicidaires sont ignorés, y compris attaquer une créature d’au moins 2 catégories de taille de plus.\n• Lien mental : le lanceur le dirige sans parler, tant qu’il reste à portée.\n• Changer d’ordre : action de mouvement ; concentration seulement pour un acte hors de sa nature.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 animal",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dominate_monster",
+      "type": "spell",
+      "name": {
+        "fr": "Domination universelle",
+        "en": "Dominate Monster"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Dragon, démon ou géant : l’esprit le plus vaste peut porter un collier. Il suffit de serrer assez fort.\n\nEn jeu\n• Comme domination, mais sur n’importe quelle créature, quel que soit son type.\n• Dure 1 jour/niveau ; jet de Volonté pour annuler."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.tongues",
+      "type": "spell",
+      "name": {
+        "fr": "Don des langues",
+        "en": "Tongues"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les mots étrangers perdent leur mystère. Chaque langue sonne soudain familière, du dialecte des marais au parler des anges.\n\nEn jeu\n• La cible parle et comprend toutes les langues des créatures intelligentes (une seule parlée à la fois), et se fait comprendre aussi loin que porte sa voix.\n• Ne donne pas la parole aux créatures qui n’en ont pas ; ne rend personne plus amical.\n• Dure 10 minutes/niveau ; peut être rendu permanent (permanence)."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mislead",
+      "type": "spell",
+      "name": {
+        "fr": "Double illusoire",
+        "en": "Mislead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un sosie s’éloigne d’un pas tranquille pendant que l’original disparaît. Les ennemis suivent le mauvais.\n\nEn jeu\n• Le lanceur devient invisible (comme invisibilité suprême) pendant 1 round/niveau.\n• Un double illusoire apparaît (comme image accomplie), avec son, odeur et toucher ; il ne peut ni combattre ni lancer de sort.\n• Le double se déplace sur concentration, puis 3 rounds de plus ; il continue ensuite sa dernière activité jusqu’à la fin.\n• Qui interagit avec le double a droit à un jet de Volonté pour le percer à jour."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère, hallucination",
+        "components": "G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "le jeteur de sorts",
+        "effect": "1 double illusoire",
+        "duration": "1 round/niveau (T) et concentration + 3 rounds (voir description)",
+        "savingThrow": "aucun ou Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.lightning_bolt",
+      "type": "spell",
+      "name": {
+        "fr": "Éclair",
+        "en": "Lightning Bolt"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un trait de foudre qui jaillit de la main et file droit devant, en emportant tout ce qui se trouve sur sa route.\n\nEn jeu\n• Ligne de 36 m : 1d6 dégâts d’électricité par niveau de lanceur (10d6 au plus), Réflexes pour la moitié.\n• Enflamme les matières combustibles et abîme les objets ; fait fondre les métaux à bas point de fusion.\n• Si l’éclair brise une barrière, il continue au-delà ; sinon il s’arrête comme toute autre ligne."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "36 m",
+        "area": "ligne de 36 m",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d6 electricity",
+          "scope": "spell"
+        }
+      ]
+    }
+  ]
+}

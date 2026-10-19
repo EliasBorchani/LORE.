@@ -1,0 +1,436 @@
+{
+  "entities": [
+    {
+      "id": "item.light_steel_shield",
+      "type": "item",
+      "name": {
+        "fr": "Rondache en acier",
+        "en": "Light steel shield"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "shield"
+      ],
+      "item": {
+        "slot": "shield",
+        "cost": "9 po",
+        "weight": "3 kg",
+        "armorBonus": "+1",
+        "checkPenalty": "–1",
+        "spellFailure": "5 %",
+        "damage": "1d3",
+        "damageSmall": "1d2",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 1,
+          "layer": "base"
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -1
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 5
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Un disque d’acier martelé, sanglé à l’avant-bras, assez léger pour qu’on oublie son poids jusqu’au premier coup qu’il arrête. Il sonne comme une cloche sous les lames et rend parfois la monnaie d’un revers sec.\n\nEn jeu\n• Bouclier léger : la main du bras de bouclier reste assez libre pour tenir un objet, mais pas pour se battre avec une arme.\n• Coup de bouclier : compte comme une arme de guerre légère contondante, portée en attaque secondaire. Celui qui frappe ainsi renonce à son bonus de bouclier à la CA jusqu’à son tour suivant.\n• La magie défensive du bouclier ne rend pas le coup plus mordant : pour un coup de bouclier magique, il faut l’enchanter en plus comme une arme.\n• Bois ou acier, la protection est identique ; seul le matériau change face à certains sorts (Métal brûlant, par exemple)."
+      },
+      "note": "Le coup de bouclier et la perte du bonus à la CA qu’il entraîne ne sont pas modélisés ; utiliser l’arme « coup de bouclier » à part."
+    },
+    {
+      "id": "item.light_wooden_shield",
+      "type": "item",
+      "name": {
+        "fr": "Rondache en bois",
+        "en": "Light wooden shield"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "shield"
+      ],
+      "item": {
+        "slot": "shield",
+        "cost": "3 po",
+        "weight": "2,5 kg",
+        "armorBonus": "+1",
+        "checkPenalty": "–1",
+        "spellFailure": "5 %",
+        "damage": "1d3",
+        "damageSmall": "1d2",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 1,
+          "layer": "base"
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -1
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 5
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Quelques planches cerclées de fer, tendues de cuir et peintes aux couleurs de son porteur. Pas de quoi arrêter un dragon, mais assez pour détourner la pointe qui visait le cœur.\n\nEn jeu\n• Bouclier léger : la main du bras de bouclier reste assez libre pour tenir un objet, mais pas pour se battre avec une arme.\n• Coup de bouclier : compte comme une arme de guerre légère contondante, portée en attaque secondaire. Celui qui frappe ainsi renonce à son bonus de bouclier à la CA jusqu’à son tour suivant.\n• La magie défensive du bouclier ne rend pas le coup plus mordant : pour un coup de bouclier magique, il faut l’enchanter en plus comme une arme.\n• Bois ou acier, la protection est identique ; seul le matériau change face à certains sorts (Distorsion du bois, par exemple)."
+      },
+      "note": "Le coup de bouclier et la perte du bonus à la CA qu’il entraîne ne sont pas modélisés ; utiliser l’arme « coup de bouclier » à part."
+    },
+    {
+      "id": "item.locked_gauntlet",
+      "type": "item",
+      "name": {
+        "fr": "Gantelet d’armes",
+        "en": "Locked gauntlet"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "armor_extra"
+      ],
+      "item": {
+        "cost": "8 po",
+        "weight": "+2,5 kg",
+        "checkPenalty": "Spécial"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un gantelet de fer muni de chaînettes et de lanières qui verrouillent l’arme dans le poing. Ce que la main tient, seule la mort le lui fera lâcher.\n\nEn jeu\n• +10 aux jets faits pour garder son arme face à un désarmement.\n• Verrouiller l’arme dans le poing, ou la libérer, prend une action complexe et provoque une attaque d’opportunité.\n• Main verrouillée : impossible de s’en servir pour une composante gestuelle ou une compétence ; un sort gestuel reste possible avec l’autre main si elle est libre.\n• Le prix vaut pour un seul gantelet. Son poids ne s’ajoute qu’avec une cuirasse, une armure légère ou sans armure ; avec une autre armure, il prend la place d’un des gantelets fournis.\n• Coup de poing ganté : dégâts létaux au lieu de non létaux."
+      },
+      "note": "Le bonus de +10 contre le désarmement n’a pas de statistique dans le modèle."
+    },
+    {
+      "id": "item.masterwork_armor",
+      "type": "item",
+      "name": {
+        "fr": "Armure de maître",
+        "en": "Masterwork armor"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "masterwork",
+        "armor"
+      ],
+      "item": {
+        "cost": "+150 po"
+      },
+      "effects": [
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": 1
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "max",
+          "value": 0
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Rivets alignés au millimètre, plaques ajustées à la morphologie, cuir assoupli à l’huile : l’œuvre d’un maître armurier se porte comme une seconde peau.\n\nEn jeu\n• Option d’une armure ou d’un bouclier : son malus d’armure aux tests diminue de 1 (sans passer au-dessus de 0).\n• Aucun bonus aux jets d’attaque ou de dégâts, pas même pour des pointes d’armure ou de bouclier.\n• Une armure ou un bouclier magique est forcément de maître.\n• La qualité de maître se décide à la forge : impossible de l’ajouter à une pièce ordinaire déjà finie (voir Artisanat)."
+      },
+      "note": "Modélisé comme un objet à part qui réduit le malus d’armure total ; avec une armure et un bouclier de maître, il compte une seule fois."
+    },
+    {
+      "id": "item.padded",
+      "type": "item",
+      "name": {
+        "fr": "Armure matelassée",
+        "en": "Padded armor"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "armor",
+        "light_armor"
+      ],
+      "item": {
+        "slot": "armor",
+        "cost": "5 po",
+        "weight": "5 kg",
+        "armorBonus": "+1",
+        "maxDex": "+8",
+        "checkPenalty": "0",
+        "spellFailure": "5 %"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 1,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 8
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 5
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Plusieurs couches de tissu matelassé et piqué, l’armure du milicien comme du mage prudent. Elle étouffe un coup de bâton, beaucoup moins une épée.\n\nEn jeu\n• Armure légère : ne ralentit pas, et on peut dormir avec sans se réveiller fatigué.\n• Enfiler : 1 minute (5 rounds à la hâte) ; ôter : 1 minute."
+      }
+    },
+    {
+      "id": "item.scale_mail",
+      "type": "item",
+      "name": {
+        "fr": "Armure d’écailles",
+        "en": "Scale mail"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "armor",
+        "medium_armor"
+      ],
+      "item": {
+        "slot": "armor",
+        "cost": "50 po",
+        "weight": "15 kg",
+        "armorBonus": "+4",
+        "maxDex": "+3",
+        "checkPenalty": "–4",
+        "spellFailure": "25 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 4,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 3
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -4
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 25
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une tunique et des jambières de cuir couvertes de petites écailles d’acier qui se chevauchent comme celles d’un poisson. Elle bruisse à chaque pas et brille sous la lune.\n\nEn jeu\n• Armure intermédiaire ; gantelets compris.\n• En course, la vitesse reste multipliée par 4.\n• Dormir avec : réveil fatigué.\n• Enfiler : 4 minutes (1 minute à la hâte) ; ôter : 1 minute. Avec l’aide d’un compagnon, enfiler et ôter prennent moitié moins de temps."
+      }
+    },
+    {
+      "id": "item.shield_spikes",
+      "type": "item",
+      "name": {
+        "fr": "Pointes pour bouclier",
+        "en": "Shield spikes"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "armor_extra"
+      ],
+      "item": {
+        "cost": "+10 po",
+        "weight": "+2,5 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "damageType": "Perforant"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Des pointes d’acier rivées sur la face d’un bouclier : le rempart devient une arme qui mord.\n\nEn jeu\n• Se fixe sur une rondache ou un écu ; une targe ou un pavois ne peut pas en recevoir.\n• Le coup de bouclier devient perforant (arme de guerre) et prend les dégâts de cette ligne ; pour tout le reste, il suit la règle du bouclier porteur.\n• Le bonus d’altération du bouclier ne profite pas aux pointes ; pour des pointes magiques, il faut les enchanter comme une arme distincte."
+      },
+      "note": "Les dégâts du coup de bouclier à pointes sont donnés pour information ; le coup de bouclier n’est pas modélisé comme arme maniée."
+    },
+    {
+      "id": "item.splint_mail",
+      "type": "item",
+      "name": {
+        "fr": "Clibanion",
+        "en": "Splint mail"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "armor",
+        "heavy_armor"
+      ],
+      "item": {
+        "slot": "armor",
+        "cost": "200 po",
+        "weight": "22,5 kg",
+        "armorBonus": "+6",
+        "maxDex": "+0",
+        "checkPenalty": "–7",
+        "spellFailure": "40 %",
+        "speed": "6 m / 4,50 m"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 6,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 0
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -7
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 40
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "De longues bandes de métal verticales rivées sur un fond de cuir et de maille, avec épaulières et genouillères. Le bruit d’un chevalier qui approche, c’est elle.\n\nEn jeu\n• Armure lourde ; gantelets compris.\n• En course, la vitesse n’est multipliée que par 3.\n• Dormir avec : réveil fatigué.\n• Enfiler : 4 minutes (1 minute à la hâte) ; ôter : 1 minute. Avec l’aide d’un compagnon, enfiler et ôter prennent moitié moins de temps."
+      }
+    },
+    {
+      "id": "item.studded_leather",
+      "type": "item",
+      "name": {
+        "fr": "Armure de cuir cloutée",
+        "en": "Studded leather armor"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "armor",
+        "light_armor"
+      ],
+      "item": {
+        "slot": "armor",
+        "cost": "25 po",
+        "weight": "10 kg",
+        "armorBonus": "+3",
+        "maxDex": "+5",
+        "checkPenalty": "–1",
+        "spellFailure": "15 %"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 3,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 5
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -1
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 15
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Un cuir épais et durci, constellé de rivets de métal qui accrochent les lames. Le choix des éclaireurs et des brigands qui veulent rester souples sans aller nus au combat.\n\nEn jeu\n• Armure légère : ne ralentit pas, et on peut dormir avec sans se réveiller fatigué.\n• Enfiler : 1 minute (5 rounds à la hâte) ; ôter : 1 minute."
+      }
+    },
+    {
+      "id": "item.tower_shield",
+      "type": "item",
+      "name": {
+        "fr": "Pavois",
+        "en": "Tower shield"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "shield"
+      ],
+      "item": {
+        "slot": "shield",
+        "cost": "30 po",
+        "weight": "22,5 kg",
+        "armorBonus": "+4",
+        "maxDex": "+2",
+        "checkPenalty": "–10",
+        "spellFailure": "50 %"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 4,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 2
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -10
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 50
+        },
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": -2,
+          "scope": "item"
+        }
+      ],
+      "source": "SRD",
+      "description": {
+        "fr": "Une muraille de bois presque aussi haute que celui qui la porte. Derrière elle, une ligne de soldats devient un rempart ; on y plante ses pieds et on attend que l’orage passe.\n\nEn jeu\n• −2 aux jets d’attaque tant qu’on se bat derrière, tant il est encombrant.\n• On peut s’en faire un abri total en renonçant à toutes ses attaques ; un sort ciblé passe quand même, le lanceur n’a qu’à viser le bouclier.\n• Impossible de frapper avec ; la main qui le porte est entièrement prise.\n• Exige le don Maniement du pavois (Maniement des boucliers ne suffit pas)."
+      },
+      "note": "L’abri total (couvert) n’est pas modélisé ; le −2 à l’attaque est appliqué à l’arme maniée."
+    }
+  ]
+}

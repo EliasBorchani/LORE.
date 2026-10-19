@@ -1,0 +1,599 @@
+{
+  "entities": [
+    {
+      "id": "class.rogue",
+      "type": "class",
+      "name": {
+        "fr": "Roublard",
+        "en": "Rogue"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "skills"
+      ],
+      "description": {
+        "fr": "Une serrure qui cède sans bruit, un piège désamorcé du bout d’une aiguille, une lame qui trouve le défaut de la cuirasse au moment où personne ne regarde : le roublard ne se bat jamais à la loyale, et c’est pour ça qu’il est encore vivant. Voleur, espion, éclaireur ou beau parleur, il sait plus de choses que les autres et les fait mieux, du crochetage à la négociation. Dans un donjon, c’est lui qui passe devant. Dans une taverne, c’est lui qui sait déjà tout.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 8 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé aux armes courantes, à l’arbalète de poing, à la rapière, à la matraque, à l’arc court et à l’épée courte ; aux armures légères, pas aux boucliers.\n• Aptitudes : attaque sournoise et recherche des pièges (1) ; esquive totale (2) ; sens des pièges (3) ; esquive instinctive (4) ; esquive instinctive supérieure (8) ; un pouvoir spécial aux niveaux 10, 13, 16 et 19."
+      },
+      "hitDie": 6,
+      "skillPoints": 8,
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.rogue') - 20) / 4))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.rogue_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rogue"
+      ],
+      "description": {
+        "fr": "Le roublard ne cherche pas à frapper fort. Il cherche à frapper au bon endroit : un rein, une nuque, l’intervalle entre deux plaques.\n\nEn jeu\n• +1d6 aux dégâts au niveau 1, puis +1d6 tous les 2 niveaux (10d6 au niveau 19).\n• Quand la cible est privée de son bonus de Dextérité à la CA (qu’elle en ait un ou non), ou quand il la prend en tenaille.\n• À distance, seulement à 9 m ou moins.\n• Ces dés ne sont pas multipliés par un coup critique.\n• Pas contre une créature immunisée contre les coups critiques, ni contre une cible dont il ne voit pas les points vitaux.\n• Dégâts non létaux seulement avec une arme non létale (matraque, coup à mains nues) ; jamais avec une arme létale, même avec le malus de −4."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(ceil(level('class.rogue') / 2))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.rogue_trapfinding",
+      "type": "class_power",
+      "name": {
+        "fr": "Recherche des pièges",
+        "en": "Trapfinding"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rogue"
+      ],
+      "description": {
+        "fr": "Une dalle légèrement plus propre que les autres, un fil tendu dans la poussière : le roublard voit les pièges que les autres découvrent en marchant dessus.\n\nEn jeu\n• Peut trouver par la Fouille les pièges dont le DD dépasse 20 (pièges magiques compris).\n• Peut désamorcer les pièges magiques avec Désamorçage/sabotage ; s’il bat le DD de 10 ou plus, il peut passer le piège avec ses compagnons sans le désamorcer."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rogue_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rogue"
+      ],
+      "description": {
+        "fr": "La boule de feu remplit le couloir. Le roublard, lui, est déjà à plat ventre dans une alcôve.\n\nEn jeu\n• Contre un effet qui permet un jet de Réflexes pour moitié dégâts, ne subit aucun dégât s’il réussit.\n• Seulement en armure légère ou sans armure, et s’il n’est pas sans défense."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rogue_trap_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens des pièges",
+        "en": "Trap sense"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rogue"
+      ],
+      "description": {
+        "fr": "Un déclic, et le roublard a bougé avant même de comprendre pourquoi.\n\nEn jeu\n• Contre les pièges : bonus aux jets de Réflexes et bonus d’esquive à la CA, +1 au niveau 3 puis +1 tous les 3 niveaux (+6 au niveau 18).\n• Se cumule avec le sens des pièges d’autres classes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "floor(level('class.rogue') / 3)",
+          "situation": "situation.vs_traps"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor(level('class.rogue') / 3)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_traps"
+        }
+      ]
+    },
+    {
+      "id": "power.rogue_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rogue"
+      ],
+      "description": {
+        "fr": "On ne surprend pas un roublard. On essaie, et on le regrette.\n\nEn jeu\n• Garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible.\n• Le perd quand même s’il est immobilisé.\n• S’il a déjà esquive instinctive par une autre classe, il gagne esquive instinctive supérieure à la place."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rogue_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rogue"
+      ],
+      "description": {
+        "fr": "Deux adversaires de part et d’autre, et pourtant aucun angle mort.\n\nEn jeu\n• Ne peut plus être pris en tenaille, sauf par un roublard d’au moins 4 niveaux de plus que lui.\n• Les niveaux des classes qui donnent esquive instinctive s’additionnent pour ce calcul."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rogue_special_abilities",
+      "type": "class_power",
+      "name": {
+        "fr": "Pouvoirs spéciaux",
+        "en": "Special abilities"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rogue"
+      ],
+      "description": {
+        "fr": "Des années de métier finissent par donner des tours que personne d’autre ne connaît.\n\nEn jeu\n• Un pouvoir spécial aux niveaux 10, 13, 16 et 19, chacun au plus une fois (sauf le don) :\n• Attaque handicapante (l’attaque sournoise inflige aussi 2 points de Force), roulé-boulé (une fois par jour, Réflexes pour réduire de moitié un coup qui le tuerait), esquive extraordinaire, opportunisme (une fois par round, une attaque d’opportunité sur un ennemi qu’un allié vient de toucher), talent (choisir 3 + modificateur d’Intelligence compétences : toujours « faire 10 » dessus), esprit fuyant (un second jet contre un enchantement raté) ou un don."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.rogue_special",
+          "op": "add",
+          "value": "if(level('class.rogue') >= 10, 1 + floor((level('class.rogue') - 10) / 3), 0)"
+        }
+      ],
+      "note": "Choix des pouvoirs spéciaux : pas encore dans le modèle."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.rogue",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.rogue_sneak_attack",
+        "power.rogue_trapfinding"
+      ]
+    },
+    {
+      "classId": "class.rogue",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.rogue_evasion"
+      ]
+    },
+    {
+      "classId": "class.rogue",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.rogue_trap_sense"
+      ]
+    },
+    {
+      "classId": "class.rogue",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.rogue_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.rogue",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.rogue_improved_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.rogue",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.rogue_special_abilities"
+      ]
+    },
+    {
+      "classId": "class.rogue",
+      "level": 11,
+      "bab": 8,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 12,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 13,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 14,
+      "bab": 10,
+      "fort": 4,
+      "ref": 9,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 15,
+      "bab": 11,
+      "fort": 5,
+      "ref": 9,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 16,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 17,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 18,
+      "bab": 13,
+      "fort": 6,
+      "ref": 11,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 19,
+      "bab": 14,
+      "fort": 6,
+      "ref": 11,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.rogue",
+      "level": 20,
+      "bab": 15,
+      "fort": 6,
+      "ref": 12,
+      "will": 6,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.forgery"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "proficiency",
+      "to": "item.hand_crossbow"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "proficiency",
+      "to": "item.rapier"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "proficiency",
+      "to": "item.sap"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "proficiency",
+      "to": "item.shortbow"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "proficiency",
+      "to": "item.short_sword"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.rogue",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

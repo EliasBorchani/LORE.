@@ -1,0 +1,668 @@
+{
+  "entities": [
+    {
+      "id": "spell.horrid_wilting",
+      "type": "spell",
+      "name": {
+        "fr": "Flétrissure",
+        "en": "Horrid Wilting"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Toute l’eau des corps s’en va d’un coup. La peau se fendille, les lèvres se craquellent, et il ne reste que des silhouettes desséchées.\n\nEn jeu\n• 1d6 dégâts par niveau de lanceur (20d6 au plus) à chaque créature vivante visée ; jet de Vigueur pour la moitié.\n• Les cibles ne doivent pas être à plus de 18 m les unes des autres.\n• Élémentaires de l’Eau et créatures végétales : 1d8 par niveau (20d8 au plus)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "créatures vivantes, à 18 m au plus les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 20))d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.blur",
+      "type": "spell",
+      "name": {
+        "fr": "Flou",
+        "en": "Blur"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Les contours se brouillent comme une image vue à travers la pluie. Viser juste devient une affaire de chance.\n\nEn jeu\n• Le sujet bénéficie d’un camouflage : 20 % de chances que chaque attaque le rate.\n• Vision lucide perce le flou ; détection de l’invisibilité ne sert à rien contre lui.\n• Sans intérêt contre un adversaire qui ne voit déjà pas le sujet : il subit les pénalités de qui frappe à l’aveugle.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bulls_strength",
+      "type": "spell",
+      "name": {
+        "fr": "Force de taureau",
+        "en": "Bull's Strength"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les épaules s’élargissent, les veines saillent sous la peau. Le bras soulève ce qu’il ne pouvait même pas bouger.\n\nEn jeu\n• +4 d’altération en Force (attaque, dégâts, tests et tout ce qui utilise le modificateur).\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.bulls_strength')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 16"
+        }
+      ],
+      "status": "draft",
+      "note": "16 sur la fiche = +4 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.mass_bulls_strength",
+      "type": "spell",
+      "name": {
+        "fr": "Force de taureau de groupe",
+        "en": "Bull's Strength, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Toute une troupe se redresse d’un même élan, les muscles gonflés comme ceux d’un attelage de bœufs.\n\nEn jeu\n• +4 d’altération en Force pour 1 créature par niveau, à 9 m au plus les unes des autres.\n• Portée courte ; dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.mass_bulls_strength')"
+        }
+      ]
+    },
+    {
+      "id": "spell.righteous_might",
+      "type": "spell",
+      "name": {
+        "fr": "Force de colosse",
+        "en": "Righteous Might"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La foi devient chair : le lanceur grandit jusqu’à toiser ses ennemis, la peau dure comme un bouclier béni.\n\nEn jeu\n• Le lanceur grandit d’une catégorie de taille (taille ×2, poids ×8), avec l’espace et l’allonge de sa nouvelle taille ; vitesse inchangée.\n• +8 de taille en Force, +4 de taille en Constitution, +4 d’altération à l’armure naturelle.\n• Le modificateur de taille à la CA et à l’attaque suit la nouvelle taille (−1 en général).\n• Réduction des dégâts 5/Mal (ou 5/Bien s’il canalise l’énergie négative) ; 10 au niveau 12, 15 au niveau 15.\n• Les armes tenues grandissent et font plus de dégâts ; sans effet cumulé avec une autre magie d’agrandissement.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 8,
+          "bonusType": "size",
+          "condition": "active('toggle.righteous_might')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "size",
+          "condition": "active('toggle.righteous_might')"
+        },
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.righteous_might')"
+        }
+      ]
+    },
+    {
+      "id": "spell.tree_shape",
+      "type": "spell",
+      "name": {
+        "fr": "Forme d'arbre",
+        "en": "Tree Shape"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un tronc noueux de plus dans la forêt. Personne ne remarque qu’il écoute.\n\nEn jeu\n• Le lanceur devient un petit arbre, un buisson ou un tronc mort ; rien ne trahit la ruse, sauf une faible aura de transmutation.\n• Il garde ses sens, ses points de vie et ses jets de sauvegarde ; +10 d’armure naturelle à la CA, mais Dextérité effective 0 et vitesse 0.\n• Immunisé contre les coups critiques ; son équipement se transforme avec lui.\n• Dure 1 heure par niveau ; y mettre fin ne demande qu’une action libre."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 10,
+          "bonusType": "natural_armor",
+          "condition": "active('toggle.tree_shape')"
+        }
+      ]
+    },
+    {
+      "id": "spell.ethereal_jaunt",
+      "type": "spell",
+      "name": {
+        "fr": "Forme éthérée",
+        "en": "Ethereal Jaunt"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le monde pâlit et devient gris. Les murs ne sont plus que de la brume, et personne ne vous voit passer.\n\nEn jeu\n• Le lanceur et son équipement passent dans le plan Éthéré : invisibles, intangibles, déplacement dans toutes les directions (moitié de la vitesse vers le haut ou le bas).\n• Il voit et entend le plan Matériel jusqu’à 18 m, mais ne peut pas l’attaquer ; ses sorts n’affectent que l’Éthéré.\n• Les effets de force et les abjurations du plan Matériel l’atteignent ; les créatures éthérées l’attaquent normalement.\n• S’il réapparaît dans un solide, il est expulsé vers l’espace libre le plus proche : 1d6 dégâts par 1,50 m parcouru.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hideous_laughter",
+      "type": "spell",
+      "name": {
+        "fr": "Fou rire",
+        "en": "Hideous Laughter"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "La meilleure plaisanterie du monde, réservée à une seule personne. Elle ne pourra plus rien faire d’autre que rire.\n\nEn jeu\n• La cible qui rate son jet de Volonté tombe à terre, prise d’un fou rire : elle ne peut pas agir, mais n’est pas sans défense.\n• Les créatures d’un autre type que le lanceur ont +4 au jet ; sans effet sur les créatures d’Intelligence 2 ou moins.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shatter",
+      "type": "spell",
+      "name": {
+        "fr": "Fracassement",
+        "en": "Shatter"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une note aiguë, trop aiguë. Le verre éclate, la porcelaine se fend, et les créatures de cristal tremblent jusqu’au cœur.\n\nEn jeu\n• En zone (1,50 m de rayon) : brise les objets non magiques fragiles (verre, cristal, terre cuite, porcelaine) de 500 g par niveau au plus.\n• Sur un objet : le brise quelle que soit sa matière, s’il pèse 5 kg par niveau au plus (Volonté pour un objet tenu ou magique).\n• Sur une créature cristalline : 1d6 dégâts de son par niveau (10d6 au plus), Vigueur pour la moitié."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "étendue de 1,50 m de rayon, ou 1 objet, ou 1 créature cristalline",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet) ; ou Vigueur, 1/2 dégâts",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d6 sonic",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.cause_fear",
+      "type": "spell",
+      "name": {
+        "fr": "Frayeur",
+        "en": "Cause Fear"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une ombre qui grandit derrière le lanceur, un murmure qui glace le sang. L’ennemi lâche pied.\n\nEn jeu\n• Raté : la cible est effrayée pendant 1d4 rounds. Réussi : secouée pendant 1 round.\n• Créatures de 6 DV ou plus immunisées.\n• Sert à contrer regain d’assurance, et l’annule s’il est déjà actif."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante de 5 DV ou moins",
+        "duration": "1d4 rounds ou 1 round",
+        "savingThrow": "Volonté, partiel",
+        "spellResistance": "oui",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.meld_into_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Fusion dans la pierre",
+        "en": "Meld into Stone"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un pas dans la roche, comme dans l’eau d’un lac. La pierre se referme, et le monde ne voit plus qu’un rocher.\n\nEn jeu\n• Le lanceur entre dans un bloc de pierre assez grand pour lui, avec 50 kg d’équipement au plus (aucun autre être vivant).\n• Il entend dehors mais ne voit rien ; il peut lancer des sorts sur lui-même et sortir quand il veut, par où il est entré.\n• Expulsé (5d6 dégâts) si la pierre devient trop petite, si le sort finit ou est dissipé ; si la pierre est détruite, Vigueur DD 18 ou mort.\n• Façonnage de la pierre : 3d6 dégâts sans l’expulser. Pierre en chair : expulsé avec 5d6 dégâts. Pierre en boue : Vigueur DD 18 ou mort. Passe-muraille : expulsé sans dégâts.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fire_seeds",
+      "type": "spell",
+      "name": {
+        "fr": "Germes de feu",
+        "en": "Fire Seeds"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des glands qui sifflent en volant, des baies de houx qui attendent un mot pour exploser. La forêt a ses propres grenades.\n\nEn jeu\n• Glands : jusqu’à 4, lancés à 30 m au plus (attaque de contact à distance) ; 1d6 dégâts de feu par niveau (20d6 au plus) à répartir entre eux.\n• Gland : la cible touchée subit tout ; les créatures à 3 m ou moins font un jet de Réflexes pour la moitié ; les matières inflammables prennent feu.\n• Baies : jusqu’à 8, posées (lancées à 1,50 m au plus) ; elles explosent sur un mot de commande à 60 m au plus.\n• Chaque baie : 1d8 + 1 par niveau de feu dans 1,50 m de rayon, Réflexes pour la moitié.\n• Dure 10 minutes par niveau ou jusqu’à utilisation."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "jusqu’à 4 glands ou 8 baies de houx",
+        "duration": "10 minutes/niveau ou jusqu’à utilisation",
+        "savingThrow": "aucun ou Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 20))d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.move_earth",
+      "type": "spell",
+      "name": {
+        "fr": "Glissement de terrain",
+        "en": "Move Earth"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La plaine se soulève en vagues paresseuses, comme si la terre respirait. Le temps d’un après-midi, une butte change de place et un fossé disparaît.\n\nEn jeu\n• Déplace terre, argile ou sable (pas la roche) sur un carré de 225 m de côté au plus, 3 m de profondeur.\n• Incantation : 10 minutes par carré de 45 m de côté (4 h 10 pour la zone maximale).\n• Ne creuse pas de tunnels, n’affecte pas directement arbres ni bâtiments, ni les créatures de la terre.\n• Trop lent pour piéger ou ensevelir des créatures."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M",
+        "castingTime": "voir description",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "terre d’un carré de 225 m de côté au plus, 3 m de profondeur (F)",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.lesser_globe_of_invulnerability",
+      "type": "spell",
+      "name": {
+        "fr": "Globe d'invulnérabilité partielle",
+        "en": "Globe of Invulnerability, Lesser"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une bulle qui scintille autour du lanceur. Les petits sorts s’y écrasent comme des mouches sur une vitre.\n\nEn jeu\n• Sphère immobile de 3 m de rayon autour du lanceur : les sorts et effets magiques des niveaux 0 à 3 n’y entrent pas (sorts, pouvoirs magiques, objets).\n• Les effets déjà actifs sont seulement réprimés à l’intérieur, pas dissipés ; on peut lancer des sorts de l’intérieur vers l’extérieur.\n• Chacun entre et sort librement ; dissipation de la magie ciblée peut le détruire, pas en zone.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon centrée sur le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.globe_of_invulnerability",
+      "type": "spell",
+      "name": {
+        "fr": "Globe d'invulnérabilité renforcée",
+        "en": "Globe of Invulnerability"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "La bulle s’épaissit et brille plus fort. Même les sorts sérieux s’y brisent.\n\nEn jeu\n• Comme globe d’invulnérabilité partielle, mais arrête les sorts et effets magiques des niveaux 0 à 4.\n• Sphère de 3 m de rayon autour du lanceur ; dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon centrée sur le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.glyph_of_warding",
+      "type": "spell",
+      "name": {
+        "fr": "Glyphe de garde",
+        "en": "Glyph of Warding"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un symbole presque invisible sur un seuil ou un couvercle. Il attend patiemment la mauvaise personne.\n\nEn jeu\n• Protège un objet ou une zone (0,5 m² par niveau au plus) ; se déclenche quand on y entre ou qu’on ouvre l’objet, selon les conditions fixées (mot de passe, type de créature, alignement…), mais jamais selon la classe, le niveau ou les DV.\n• Glyphe explosif : 1d8 dégâts par 2 niveaux (5d8 au plus) d’acide, de froid, d’électricité, de feu ou de son, sur 1,50 m ; Réflexes pour la moitié, résistance à la magie applicable.\n• Glyphe à sort : contient un sort nuisible de niveau 3 au plus, déclenché sur l’intrus.\n• Fouille et Désamorçage DD 28 (roublard seulement) ; lecture de la magie l’identifie avec Art de la magie DD 13.\n• Un seul glyphe par zone ou objet ; ignore les créatures éthérées ; permanent jusqu’au déclenchement.\n• Composante : encens et poudre de diamant d’une valeur de 200 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "objet touché ou jusqu’à 0,5 m²/niveau",
+        "duration": "permanente jusqu’au déclenchement (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "non (objet) et oui (voir description)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.greater_glyph_of_warding",
+      "type": "spell",
+      "name": {
+        "fr": "Glyphe de garde suprême",
+        "en": "Glyph of Warding, Greater"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le même piège gravé, en bien plus féroce. Celui qui le déclenche s’en souviendra, s’il survit.\n\nEn jeu\n• Comme glyphe de garde, mais l’explosion inflige 1d8 par 2 niveaux (10d8 au plus).\n• Le glyphe à sort peut contenir un sort de niveau 6 au plus.\n• Fouille et Désamorçage DD 31 (roublard seulement).\n• Composante : poudre de diamant d’une valeur de 400 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "objet touché ou jusqu’à 0,5 m²/niveau",
+        "duration": "permanente jusqu’au déclenchement (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "non (objet) et oui (voir description)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 10))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.shillelagh",
+      "type": "spell",
+      "name": {
+        "fr": "Gourdin magique",
+        "en": "Shillelagh"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le vieux bâton de chêne se met à vibrer d’une force sauvage. Entre les bonnes mains, il frappe comme une massue de géant.\n\nEn jeu\n• Un gourdin ou bâton de chêne non magique devient une arme +1 (attaque et dégâts ; les deux bouts d’un bâton).\n• Il inflige les dégâts d’une arme de deux tailles plus grande : 1d8 (P), 2d6 (M), 3d6 (G), +1.\n• Ne fonctionne que dans les mains du lanceur ; dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 gourdin ou bâton de chêne non magique",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.cats_grace",
+      "type": "spell",
+      "name": {
+        "fr": "Grâce féline",
+        "en": "Cat's Grace"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le pas devient souple et silencieux, chaque geste tombe juste. On retombe toujours sur ses pattes.\n\nEn jeu\n• +4 d’altération en Dextérité (CA, Réflexes, attaques à distance et tout ce qui utilise le modificateur).\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.cats_grace')"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_cats_grace",
+      "type": "spell",
+      "name": {
+        "fr": "Grâce féline de groupe",
+        "en": "Cat's Grace, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Toute la compagnie bouge soudain comme une bande de chats : vive, légère, insaisissable.\n\nEn jeu\n• +4 d’altération en Dextérité pour 1 créature par niveau, à 9 m au plus les unes des autres.\n• Portée courte ; dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.mass_cats_grace')"
+        }
+      ]
+    }
+  ]
+}

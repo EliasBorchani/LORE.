@@ -1,0 +1,586 @@
+{
+  "entities": [
+    {
+      "id": "spell.freedom",
+      "type": "spell",
+      "name": {
+        "fr": "Délivrance",
+        "en": "Freedom"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Chaînes, toiles, pierre ou sommeil enchanté : un seul mot, et plus rien ne retient la cible.\n\nEn jeu\n• Libère aussitôt la cible de tout effet magique qui gêne ses mouvements : immobilisation, paralysie, pétrification, lenteur, sommeil, enchevêtrement, toile d’araignée, étourdissement, lutte, animation suspendue…\n• Contre dédale ou emprisonnement : le lanceur doit savoir qui est la victime (nom et passé) et se rendre sur le lieu de sa disparition."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux) ou voir texte",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.remove_paralysis",
+      "type": "spell",
+      "name": {
+        "fr": "Délivrance de la paralysie",
+        "en": "Remove Paralysis"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Les muscles figés se dénouent d’un coup, et les statues vivantes reprennent leur souffle.\n\nEn jeu\n• Délivre jusqu’à 4 créatures de la paralysie, de l’immobilisation et de la lenteur, magiques ou non (toucher de goule, sort de lenteur…).\n• 1 seule cible : libérée d’office. 2 cibles : chacune refait un jet de sauvegarde avec +4 de résistance. 3 ou 4 cibles : nouveau jet avec +2.\n• Les cibles doivent être à 9 m au plus les unes des autres.\n• Ne rend pas les points de caractéristique perdus."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 4 créatures, à 9 m au plus les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.remove_curse",
+      "type": "spell",
+      "name": {
+        "fr": "Délivrance de la malédiction",
+        "en": "Remove Curse"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le poids invisible qui collait à la peau se détache enfin. La malchance cherchera quelqu’un d’autre.\n\nEn jeu\n• Supprime toutes les malédictions qui pèsent sur une créature.\n• Sur un objet maudit, la malédiction reste, mais l’objet peut être retiré et jeté.\n• Certaines malédictions spéciales y échappent, ou ne cèdent qu’à un lanceur d’un niveau assez élevé.\n• Contre et dissipe Malédiction."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature ou objet touché",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.displacement",
+      "type": "spell",
+      "name": {
+        "fr": "Déplacement",
+        "en": "Displacement"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "L’image de la cible flotte un pas à côté d’elle. Les lames tranchent l’air, la vraie silhouette est déjà ailleurs.\n\nEn jeu\n• La cible semble être à 60 cm de sa vraie position : toute attaque contre elle a 50 % de chances de rater, comme avec un camouflage total.\n• Elle peut quand même être ciblée normalement ; Vision lucide révèle sa vraie place.\n• Durée : 1 round par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.crushing_despair",
+      "type": "spell",
+      "name": {
+        "fr": "Désespoir foudroyant",
+        "en": "Crushing Despair"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une vague grise de chagrin balaie le cône. Les bras retombent, les regards se voilent, l’envie de se battre s’éteint.\n\nEn jeu\n• Cône de 9 m : chaque créature qui rate son jet de Volonté subit −2 aux jets d’attaque, de sauvegarde, de dégâts des armes, et aux tests de caractéristique et de compétence.\n• Durée : 1 minute par niveau.\n• Contre et dissipe Espoir."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "area": "rayonnement en forme de cône",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.disintegrate",
+      "type": "spell",
+      "name": {
+        "fr": "Désintégration",
+        "en": "Disintegrate"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un fin rayon vert, et la cible n’est plus qu’un petit tas de poussière fine.\n\nEn jeu\n• Attaque de contact à distance : 2d6 dégâts par niveau de lanceur (40d6 au plus).\n• Jet de Vigueur réussi : seulement 5d6 dégâts (la cible est quand même désintégrée si elle tombe à 0 PV).\n• Une créature réduite à 0 point de vie ou moins est réduite en poussière (son équipement reste).\n• Contre un objet : désintègre un cube de 3 m de côté de matière non vivante. Détruit d’office un effet de force (Mur de force, Main interposée), mais pas Globe d’invulnérabilité ni Zone d’antimagie.\n• Une seule créature ou un seul objet par sort."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel (objet)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(2 * @spell.caster_level, 40))d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.destruction",
+      "type": "spell",
+      "name": {
+        "fr": "Destruction",
+        "en": "Destruction"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un seul mot de jugement, et la cible s’embrase de l’intérieur. Quand les flammes retombent, seul son équipement gît encore au sol.\n\nEn jeu\n• Jet de Vigueur raté : la cible meurt et son corps est consumé.\n• Jet de Vigueur réussi : elle subit quand même 10d6 dégâts.\n• Seuls Résurrection suprême, Miracle, ou un Souhait bien formulé suivi de Résurrection peuvent ramener la victime.\n• Focaliseur : un symbole sacré ou impie d’au moins 500 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mort"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "10d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.disrupt_undead",
+      "type": "spell",
+      "name": {
+        "fr": "Destruction de mort-vivant",
+        "en": "Disrupt Undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une étincelle d’énergie positive, petite mais mordante pour tout ce qui devrait être mort.\n\nEn jeu\n• Rayon : attaque de contact à distance contre un mort-vivant.\n• Inflige 1d6 dégâts au mort-vivant touché. Sans effet sur les vivants."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.see_invisibility",
+      "type": "spell",
+      "name": {
+        "fr": "Détection de l'invisibilité",
+        "en": "See Invisibility"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les silhouettes cachées se dessinent en contours pâles, comme des fantômes dans la brume.\n\nEn jeu\n• Le lanceur voit les créatures et objets invisibles, ainsi que ceux qui sont dans le plan Éthéré ou le plan Astral, sous forme de silhouettes translucides.\n• Ne révèle pas les illusions, ne permet pas de voir à travers les objets et ne dit pas comment la cible est devenue invisible.\n• N’aide pas contre une créature simplement cachée ou camouflée.\n• Durée : 10 minutes par niveau. Peut être rendu permanent (Permanence)."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_animals_or_plants",
+      "type": "spell",
+      "name": {
+        "fr": "Détection de la faune ou de la flore",
+        "en": "Detect Animals or Plants"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "On pense à une bête ou à une herbe précise, et la nature répond où elle se cache.\n\nEn jeu\n• Repère un type précis d’animal ou de plante dans un cône de longue portée ; on peut changer de type à chaque round.\n• 1er round : présence ou absence. 2e round : nombre d’individus et état du plus vigoureux. 3e round : état et position de chacun (hors de vue : direction seulement).\n• États : normal (90 % des PV ou plus, sain), correct (30 à 90 %), faible (moins de 30 %, malade ou gravement blessé), rachitique (0 PV ou moins, mourant ou estropié).\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_law",
+      "type": "spell",
+      "name": {
+        "fr": "Détection de la loi",
+        "en": "Detect Law"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "L’ordre laisse une empreinte, nette et régulière comme un sceau. Ce sort la fait apparaître.\n\nEn jeu\n• 1er round : présence ou absence d’aura loyale dans le cône. 2e round : nombre d’auras loyales et puissance de la plus forte. 3e round : puissance et emplacement de chaque aura.\n• La puissance d’une aura dépend des DV de la créature ou du niveau de lanceur du sort ou de l’objet (faible, modérée, forte, écrasante).\n• Un lanceur chaotique qui perçoit une aura écrasante (DV ou niveau de la source au moins double du sien) est étourdi 1 round et le sort prend fin.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_magic",
+      "type": "spell",
+      "name": {
+        "fr": "Détection de la magie",
+        "en": "Detect Magic"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Le monde se met à briller par endroits : un anneau, une porte, une lame. La magie laisse des traces, et ce sort les rend visibles.\n\nEn jeu\n• 1er round : présence ou absence de magie dans le cône. 2e round : nombre d’auras et puissance de la plus forte. 3e round : puissance et emplacement de chaque aura, avec, pour chaque aura en vue, un test d’Art de la magie (DD 15 + niveau du sort, ou 15 + ½ niveau de lanceur hors sort) pour trouver son école.\n• Puissance : sort actif de niveau 3 ou moins faible, 4–6 modérée, 7–9 forte, 10+ écrasante ; objet de NLS 5 ou moins faible, 6–11 modérée, 12–20 forte, 21+ écrasante (artefact).\n• Une aura forte peut masquer les plus faibles ; une aura dont la source a disparu reste perceptible un temps (plus faible que faible).\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_scrying",
+      "type": "spell",
+      "name": {
+        "fr": "Détection de la scrutation",
+        "en": "Detect Scrying"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un picotement sur la nuque : quelqu’un regarde. Ce sort dit d’où.\n\nEn jeu\n• Pendant 24 heures, le lanceur sait aussitôt si on l’observe par un sort ou effet de scrutation, et voit tout capteur magique à 12 m de lui.\n• Si l’espion est dans la zone, le lanceur sait où il est.\n• Sinon, test de niveau de lanceur opposé : en cas de réussite, il voit l’image de l’espion et connaît sa direction et sa distance.\n• Composantes matérielles : un éclat de miroir et un cornet acoustique miniature en laiton."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "12 m",
+        "area": "émanation de 12 m de rayon centrée sur le jeteur de sorts",
+        "duration": "24 heures",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_thoughts",
+      "type": "spell",
+      "name": {
+        "fr": "Détection de pensées",
+        "en": "Detect Thoughts"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Des murmures sans voix montent des esprits alentour. Il suffit de tendre l’oreille.\n\nEn jeu\n• 1er round : présence ou absence de pensées (Intelligence 1 ou plus). 2e round : nombre d’esprits et Intelligence de chacun. 3e round : pensées de surface de chaque esprit du cône. Une Intelligence animale (1 ou 2) donne des pensées simples.\n• Une créature qui réussit son jet de Volonté garde ses pensées : il faut relancer le sort pour retenter sa chance.\n• Au 2e round, percevoir un esprit d’Intelligence 26 ou plus (et 10 points de plus que le lanceur) étourdit le lanceur 1 round et met fin au sort.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (voir texte)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_snares_and_pits",
+      "type": "spell",
+      "name": {
+        "fr": "Détection des collets et des fosses",
+        "en": "Detect Snares and Pits"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le sol trop plat, la branche trop tendue : la nature trahit les pièges qu’on y cache.\n\nEn jeu\n• Repère fosses, collets, poids prêts à tomber et pièges rudimentaires faits de matériaux naturels, ainsi que certains dangers naturels (sables mouvants, effondrements, rochers prêts à tomber), mais pas une grotte inondable ou un vieux mur fragile.\n• Ne repère ni les pièges mécaniques complexes, ni ceux qui ont été désamorcés, ni les pièges magiques (sauf s’ils reposent sur une fosse, un collet ou un poids).\n• 1er round : présence ou absence. 2e round : nombre et position de chaque piège (hors de vue : direction seulement). Rounds suivants : type général et déclencheur d’un piège examiné.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_undead",
+      "type": "spell",
+      "name": {
+        "fr": "Détection des morts-vivants",
+        "en": "Detect Undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une odeur froide, une lueur blafarde dans le regard : les morts qui marchent ne se cachent plus.\n\nEn jeu\n• 1er round : présence ou absence d’auras de morts-vivants. 2e round : nombre d’auras et puissance de la plus forte. 3e round : puissance et emplacement de chaque aura.\n• La puissance d’une aura dépend des DV du mort-vivant : 1 ou moins faible, 2–4 modérée, 5–10 forte, 11+ écrasante.\n• Un lanceur d’alignement bon qui perçoit une aura écrasante (DV de la source au moins double de son niveau) est étourdi 1 round et le sort prend fin.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_secret_doors",
+      "type": "spell",
+      "name": {
+        "fr": "Détection des passages secrets",
+        "en": "Detect Secret Doors"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les murs n’ont plus de secrets : la fissure qui n’en est pas une, le panneau qui pivote, le bouton caché.\n\nEn jeu\n• 1er round : présence ou absence de passages secrets. 2e round : leur nombre et leur emplacement. 3e round et suivants : le mécanisme d’ouverture d’un passage examiné. Hors de vue : direction seulement.\n• Ne trouve que ce qui a été fait pour rester caché (pas une trappe simplement couverte de caisses).\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.find_traps",
+      "type": "spell",
+      "name": {
+        "fr": "Détection des pièges",
+        "en": "Find Traps"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le regard devient celui d’un vieux crocheteur : chaque dalle suspecte, chaque fil tendu saute aux yeux.\n\nEn jeu\n• Le lanceur peut trouver avec Fouille les pièges de DD supérieur à 20, comme un roublard.\n• Bonus d’intuition à la Fouille pour trouver des pièges : moitié du niveau de lanceur (+10 au plus).\n• Ne donne pas la capacité de désamorcer les pièges.\n• Durée : 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": "min(floor(@spell.caster_level / 2), 10)",
+          "bonusType": "insight",
+          "situation": "situation.vs_traps",
+          "condition": "active('toggle.find_traps')"
+        }
+      ]
+    },
+    {
+      "id": "spell.detect_good",
+      "type": "spell",
+      "name": {
+        "fr": "Détection du bien",
+        "en": "Detect Good"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "La bonté rayonne d’une chaleur douce et claire. Ce sort la rend visible.\n\nEn jeu\n• 1er round : présence ou absence d’aura bonne dans le cône. 2e round : nombre d’auras bonnes et puissance de la plus forte. 3e round : puissance et emplacement de chaque aura.\n• La puissance d’une aura dépend des DV de la créature ou du niveau de lanceur du sort ou de l’objet (faible, modérée, forte, écrasante).\n• Les objets simplement bénéfiques (potion de soins, antidote) n’ont pas d’aura bonne.\n• Un lanceur mauvais qui perçoit une aura écrasante (DV ou niveau de la source au moins double du sien) est étourdi 1 round et le sort prend fin.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.detect_chaos",
+      "type": "spell",
+      "name": {
+        "fr": "Détection du chaos",
+        "en": "Detect Chaos"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le chaos laisse une trace qui tremble et se tord. Ce sort la fait apparaître.\n\nEn jeu\n• 1er round : présence ou absence d’aura chaotique dans le cône. 2e round : nombre d’auras chaotiques et puissance de la plus forte. 3e round : puissance et emplacement de chaque aura.\n• La puissance d’une aura dépend des DV de la créature ou du niveau de lanceur du sort ou de l’objet (faible, modérée, forte, écrasante).\n• Un lanceur loyal qui perçoit une aura écrasante (DV ou niveau de la source au moins double du sien) est étourdi 1 round et le sort prend fin.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, 90 cm de bois ou de terre, ou une mince feuille de plomb."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation en forme de cône",
+        "duration": "concentration, jusqu’à 10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

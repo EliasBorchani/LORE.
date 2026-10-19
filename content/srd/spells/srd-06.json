@@ -1,0 +1,608 @@
+{
+  "entities": [
+    {
+      "id": "spell.mages_faithful_hound",
+      "type": "spell",
+      "name": {
+        "fr": "Chien de garde",
+        "en": "Mage's Faithful Hound"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un molosse fantôme, invisible pour tous sauf son maître, se couche en travers du seuil. Il n’oublie aucun visage et ne dort jamais.\n\nEn jeu\n• Le chien garde le point où il apparaît ; seul le lanceur le voit.\n• Il aboie dès qu’une créature de taille P ou plus approche à 9 m (celles déjà présentes à l’appel sont ignorées tant qu’elles restent dans la zone).\n• Il voit l’invisible et l’éthéré ; il ignore les chimères mais réagit aux ombres.\n• Un intrus à 1,50 m ou moins : une morsure par round, +10 à l’attaque, 2d6 + 3 perforants, comptée comme magique contre la réduction de dégâts.\n• On ne peut pas l’attaquer, seulement le dissiper.\n• Dure 1 heure/niveau ; dès qu’il aboie, il ne reste que 1 round/niveau. Fin immédiate si le lanceur s’éloigne à plus de 30 m."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "chien de garde spectral",
+        "duration": "1 heure/niveau ou jusqu’à activation, puis 1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6 piercing",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": 3,
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.clairaudience_clairvoyance",
+      "type": "spell",
+      "name": {
+        "fr": "Clairaudience/Clairvoyance",
+        "en": "Clairaudience/Clairvoyance"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un œil ou une oreille invisible flotte là-bas, derrière la porte close ou au fond du bois. On y est sans y être.\n\nEn jeu\n• Crée un capteur invisible, fixe mais orientable, dans un lieu connu ou évident (derrière une porte, au milieu d’un bosquet).\n• Au choix à l’incantation : voir ou entendre.\n• Ténèbres magiques : rien ; obscurité naturelle : vision dans un rayon de 3 m autour du capteur.\n• Pas de sens magiques à travers le capteur ; même plan seulement.\n• Dure 1 minute/niveau (renvoi possible)."
+      },
+      "spell": {
+        "school": "Divination",
+        "subschool": "scrutation",
+        "components": "V, G, F/FD",
+        "castingTime": "10 minutes",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "capteur magique",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.blink",
+      "type": "spell",
+      "name": {
+        "fr": "Clignotement",
+        "en": "Blink"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Ici, puis ailleurs, puis ici encore. Le corps saute sans cesse entre le monde et le plan Éthéré, et les coups frappent du vide.\n\nEn jeu\n• Dure 1 round/niveau (renvoi possible).\n• Attaques physiques contre le lanceur : 50 % d’échec (Combat en aveugle n’aide pas) ; 20 % si l’attaque touche aussi l’éthéré ; normal si l’attaquant voit et frappe l’éthéré.\n• Sorts qui le ciblent : 50 % d’échec, sauf si leur lanceur voit l’invisible ou l’éthéré. Sorts de zone : moitié des dégâts (sauf s’ils touchent l’éthéré).\n• Ses propres attaques ont 20 % d’échec, et ses sorts 20 % de chances de se perdre.\n• Il attaque comme une créature invisible : +2 à l’attaque, la cible perd son bonus de Dextérité à la CA.\n• Chutes : moitié des dégâts. Vitesse réduite de 25 %.\n• Peut traverser les solides : à chaque 1,50 m, 50 % de redevenir matériel ; il est alors éjecté vers l’espace libre le plus proche et subit 1d6 par 1,50 m parcouru.\n• Les effets de force et les abjurations l’affectent normalement."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.clone",
+      "type": "spell",
+      "name": {
+        "fr": "Clone",
+        "en": "Clone"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Dans une cuve, un corps grandit en silence, en attendant que son original meure. Ce jour-là, l’âme sait où rentrer.\n\nEn jeu\n• Crée un double inerte à partir d’un morceau de chair de 30 cm de côté (pas de cheveux ni d’ongles), conservé sans pourrir.\n• Le clone mûrit en 2d4 mois en laboratoire.\n• Si l’original est mort (et l’âme libre et consentante), l’âme passe dans le clone : retour à la vie, mêmes souvenirs et personnalité, sans l’équipement.\n• Coût comme une résurrection : perte d’un niveau (ou de 2 points de Constitution au niveau 1) ; échec si la Constitution tomberait à 0 ou si l’original est mort de vieillesse.\n• Un niveau perdu entre le prélèvement et la mort donne un clone d’un niveau de moins. Le vieux corps ne peut plus être ressuscité.\n• Clone achevé avant la mort de l’original : simple chair inerte qui pourrit.\n• Matériel : la chair et des produits pour 1 000 po ; focaliseur : laboratoire de 500 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M, F",
+        "castingTime": "10 minutes",
+        "range": "0 m",
+        "effect": "1 clone",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.secret_chest",
+      "type": "spell",
+      "name": {
+        "fr": "Coffre secret",
+        "en": "Secret Chest"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un coffre précieux s’efface dans la brume éthérée, et revient au claquement de doigts. La meilleure cachette du monde est hors du monde.\n\nEn jeu\n• Envoie dans le plan Éthéré un coffre d’au moins 5 000 po (plus une réplique de 50 po) contenant jusqu’à 30 dm³ par niveau.\n• Le rappeler : action simple de concentration ; il apparaît à côté du lanceur.\n• Une créature vivante dans le coffre : 75 % d’échec du sort.\n• Dure 60 jours ; ensuite, 5 % de chances cumulées par jour de le perdre pour toujours.\n• Réplique détruite : le coffre ne peut plus être rappelé (même par un souhait), seulement retrouvé par une expédition éthérée.\n• Un seul coffre de ce type par personne."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, F",
+        "castingTime": "10 minutes",
+        "range": "voir description",
+        "target": "1 coffre et jusqu’à 30 dm³ d’objets/niveau",
+        "duration": "60 jours ou jusqu’à utilisation",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.snare",
+      "type": "spell",
+      "name": {
+        "fr": "Collet",
+        "en": "Snare"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une simple boucle de liane, posée sur la mousse, se fond dans les feuilles. Le premier qui y pose le pied s’envole par la cheville.\n\nEn jeu\n• Transforme une boucle de corde ou de liane (60 cm + 60 cm/niveau de diamètre) en piège magique.\n• Repérage : Fouille DD 23, et seulement pour qui a la capacité de trouver les pièges (roublard).\n• Se referme sur la première créature qui entre. Sans arbre : elle est enchevêtrée, sans dégâts. Fixé à un arbre souple : la proie est hissée par le membre pris et subit 1d6 dégâts.\n• Se libérer : Évasion ou Force DD 23, action complexe. Le collet a 5 pv et CA 7.\n• Dure jusqu’à ce qu’il se déclenche ou soit brisé ; une proie qui se libère défait le collet et met fin au sort."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "3 rounds",
+        "range": "contact",
+        "target": "boucle de corde non magique de 60 cm + 60 cm/niveau de diamètre",
+        "duration": "jusqu’à déclenchement ou destruction",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 bludgeoning",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.flame_strike",
+      "type": "spell",
+      "name": {
+        "fr": "Colonne de feu",
+        "en": "Flame Strike"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le ciel répond, et une colonne de flammes s’abat droit sur la cible. Le feu brûle la chair, la colère divine brûle tout le reste.\n\nEn jeu\n• Cylindre de 3 m de rayon et 12 m de haut.\n• 1d6 par niveau de lanceur (15d6 au plus), Réflexes pour la moitié.\n• La moitié des dégâts est du feu, l’autre moitié de l’énergie divine : les protections contre le feu ne réduisent que la première moitié."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "cylindre de 3 m de rayon sur 12 m de haut",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.sending",
+      "type": "spell",
+      "name": {
+        "fr": "Communication à distance",
+        "en": "Sending"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Quelques mots lancés au vent arrivent à l’oreille d’un ami, à l’autre bout du monde. Et il a le temps de répondre.\n\nEn jeu\n• Envoie un message de 25 mots au plus à une créature connue, à n’importe quelle distance.\n• Elle reconnaît le lanceur si elle le connaît et peut répondre aussitôt par 25 mots au plus.\n• Même une créature d’Intelligence 1 comprend le message.\n• Autre plan : 5 % de chances que le message se perde."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, M/FD",
+        "castingTime": "10 minutes",
+        "range": "voir description",
+        "target": "1 créature",
+        "duration": "1 round (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.speak_with_animals",
+      "type": "spell",
+      "name": {
+        "fr": "Communication avec les animaux",
+        "en": "Speak with Animals"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le corbeau a vu passer les cavaliers, le renard sait où dort l’ours. Encore faut-il leur poser la question.\n\nEn jeu\n• Le lanceur comprend les animaux et peut leur parler pendant 1 minute/niveau.\n• Le sort ne change pas leur attitude ; les rusés esquivent, les bêtes simples répondent à côté.\n• Un animal amical peut rendre un service."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.speak_with_dead",
+      "type": "spell",
+      "name": {
+        "fr": "Communication avec les morts",
+        "en": "Speak with Dead"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "La mâchoire du cadavre se remet à bouger. Ce n’est pas l’âme qui parle, juste l’écho de ce qu’elle savait.\n\nEn jeu\n• Un cadavre répond à 1 question par 2 niveaux de lanceur, en 1 minute/niveau ; les questions non posées sont perdues.\n• Il ne sait que ce qu’il savait vivant, dans ses propres langues ; réponses brèves, souvent énigmatiques.\n• Alignement différent du lanceur : jet de Volonté (comme vivant) pour refuser.\n• Il faut une bouche ; un corps abîmé donne des réponses partielles.\n• Échec si le cadavre a déjà été interrogé ainsi dans la semaine. Impossible sur un mort-vivant."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "langage"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "3 m",
+        "target": "1 créature morte",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.speak_with_plants",
+      "type": "spell",
+      "name": {
+        "fr": "Communication avec les plantes",
+        "en": "Speak with Plants"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le vieux chêne se souvient du pas de chaque passant. Il parle lentement, mais il n’oublie rien.\n\nEn jeu\n• Le lanceur comprend les plantes et les créatures végétales et peut leur parler pendant 1 minute/niveau.\n• Les plantes ne connaissent que leur environnement immédiat.\n• Le sort ne change pas leur attitude ; une créature végétale amicale peut rendre un service."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.commune",
+      "type": "spell",
+      "name": {
+        "fr": "Communion",
+        "en": "Commune"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Encens, eau bénite, une prière, et la voix du dieu répond. Oui ou non, pas davantage.\n\nEn jeu\n• 1 question par niveau de lanceur, réponse par oui, non ou « inconnu » (cinq mots au plus si un seul mot tromperait).\n• Réponses vraies dans la limite de ce que sait la divinité, qui sert ses propres intérêts.\n• Le sort s’arrête si le lanceur tergiverse.\n• Coût : 100 PX."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.commune_with_nature",
+      "type": "spell",
+      "name": {
+        "fr": "Communion avec la nature",
+        "en": "Commune with Nature"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les racines, les ruisseaux et les bêtes parlent d’une seule voix. En un instant, toute la région se révèle.\n\nEn jeu\n• Le lanceur apprend 3 faits sur la région : terrain, plantes, minéraux, eaux, habitants, animaux, créatures sylvestres, créatures surnaturelles puissantes, état général de la nature.\n• Rayon : 1,5 km/niveau en extérieur, 30 m/niveau sous terre en milieu naturel.\n• Sans effet en ville, dans un donjon ou tout lieu bâti."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.comprehend_languages",
+      "type": "spell",
+      "name": {
+        "fr": "Compréhension des langages",
+        "en": "Comprehend Languages"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les runes inconnues se mettent en ordre, le charabia devient phrase. Comprendre, oui ; répondre, c’est une autre affaire.\n\nEn jeu\n• Le lanceur comprend la langue parlée d’une créature ou un texte écrit qu’il touche, pendant 10 minutes/niveau.\n• Lecture : une page (250 mots) par minute. Ne permet ni de parler ni d’écrire.\n• Révèle qu’un texte est magique sans le rendre lisible ; ne casse pas les codes ni les messages cachés.\n• Peut être rendu permanent."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.cone_of_cold",
+      "type": "spell",
+      "name": {
+        "fr": "Cône de froid",
+        "en": "Cone of Cold"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un souffle d’hiver jaillit de la main tendue. Le givre fige les armures et les cris.\n\nEn jeu\n• Cône de 18 m partant du lanceur.\n• 1d6 de froid par niveau de lanceur (15d6 au plus), Réflexes pour la moitié."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6 cold",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.confusion",
+      "type": "spell",
+      "name": {
+        "fr": "Confusion",
+        "en": "Confusion"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Les idées se brouillent, amis et ennemis se ressemblent. Certains fuient, d’autres frappent n’importe qui, d’autres encore chantonnent.\n\nEn jeu\n• Rayonnement de 4,50 m de rayon, Volonté pour annuler, 1 round/niveau.\n• Chaque round, d100 : 01–10 attaque le lanceur ; 11–20 agit normalement ; 21–50 babille ; 51–70 fuit le lanceur ; 71–100 attaque la créature la plus proche.\n• Une créature confuse attaquée riposte contre son agresseur à son tour suivant.\n• Pas d’attaque d’opportunité contre qui ne l’attaque pas ; les attaquants n’ont aucun avantage."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "toutes les créatures dans un rayonnement de 4,50 m de rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.lesser_confusion",
+      "type": "spell",
+      "name": {
+        "fr": "Confusion mineure",
+        "en": "Lesser Confusion"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un clin d’œil, un mot de travers, et la cible ne sait plus très bien ce qu’elle faisait là.\n\nEn jeu\n• Une créature vivante est confuse pendant 1 round (Volonté pour annuler).\n• Comportement tiré au d100 comme pour Confusion."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "1 round",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.consecrate",
+      "type": "spell",
+      "name": {
+        "fr": "Consécration",
+        "en": "Consecrate"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "De la poudre d’argent et de l’eau bénite, et le sol devient sacré. Les morts n’y marchent plus à leur aise.\n\nEn jeu\n• Émanation de 6 m de rayon pendant 2 heures/niveau.\n• Tests de Charisme pour renvoyer les morts-vivants : +3 sacré. Morts-vivants dans la zone : −1 à l’attaque, aux dégâts et aux sauvegardes.\n• Impossible d’y créer ou d’y convoquer des morts-vivants.\n• Avec un autel ou sanctuaire de la divinité du lanceur : effets doublés (+6, −2).\n• Sur un autel d’une autre divinité : le lieu est maudit et coupé de ce dieu, sans les effets ci-dessus.\n• Contre et dissipe Profanation. Coût : 25 po de poudre d’argent."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "bien"
+        ],
+        "components": "V, G, M, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "émanation de 6 m de rayon",
+        "duration": "2 heures/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.contact_other_plane",
+      "type": "spell",
+      "name": {
+        "fr": "Contact avec les plans",
+        "en": "Contact Other Plane"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "L’esprit quitte le corps et frappe à la porte d’êtres immenses. Ils répondent, parfois juste, parfois en mentant, et l’esprit ne revient pas toujours intact.\n\nEn jeu\n• 1 question par 2 niveaux de lanceur, une par round de concentration ; réponses d’un mot.\n• Plan choisi : élémentaire (test d’Int DD 7), énergie positive/négative (DD 8), Astral (DD 9), demi-dieu (DD 10), dieu mineur (DD 12), dieu intermédiaire (DD 14), dieu majeur (DD 16).\n• Échec au test : Int et Cha tombent à 8 pendant 1 à 5 semaines selon le plan, plus de magie profane, et aucune réponse.\n• Réussite : d100 sur la table du plan ; plus le plan est lointain, plus la réponse est souvent vraie ; sinon « je ne sais pas », mensonge ou réponse au hasard."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V",
+        "castingTime": "10 minutes",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "concentration",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.chill_touch",
+      "type": "spell",
+      "name": {
+        "fr": "Contact glacial",
+        "en": "Chill Touch"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "La main luit d’un bleu de tombe. Chaque contact vole un peu de chaleur, et de force, aux vivants.\n\nEn jeu\n• Jusqu’à 1 attaque de contact au corps à corps par niveau de lanceur.\n• Chaque contact : 1d6 dégâts (sans jet), et 1 point d’affaiblissement temporaire de Force sauf jet de Vigueur.\n• Mort-vivant touché : pas de dégâts, mais il fuit 1d4 rounds + 1/niveau sauf jet de Volonté."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature ou créatures touchées (jusqu’à 1/niveau)",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel ou Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        }
+      ]
+    }
+  ]
+}

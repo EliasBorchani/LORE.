@@ -1,0 +1,628 @@
+{
+  "entities": [
+    {
+      "id": "spell.creeping_doom",
+      "type": "spell",
+      "name": {
+        "fr": "Mort rampante",
+        "en": "Creeping Doom"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le sol se met à grouiller, puis à marcher. Des milliers de mille-pattes déferlent en vagues brunes, et chaque vague a faim.\n\nEn jeu\n• Fait apparaître une nuée de mille-pattes par tranche de 2 niveaux de lanceur (10 nuées au plus).\n• Chaque nuée inflige 2d6 points de dégâts par round, plus son poison, à tout ce qui partage son espace.\n• Les nuées restent sur place ; une action simple les envoie vers une cible à 30 m ou moins du lanceur.\n• Au-delà de 30 m du lanceur, les nuées n’obéissent plus et attaquent sur place jusqu’à son retour.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)/30 m",
+        "effect": "une nuée de mille-pattes/2 niveaux",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.power_word_blind",
+      "type": "spell",
+      "name": {
+        "fr": "Mot de pouvoir aveuglant",
+        "en": "Power Word Blind"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un seul mot, prononcé comme on éteint une bougie. La lumière quitte les yeux de la cible, entendu ou pas.\n\nEn jeu\n• Aveugle une créature au choix, sans jet de sauvegarde ; elle n’a pas besoin d’entendre le mot.\n• 50 pv ou moins : aveugle pour toujours.\n• 51 à 100 pv : aveugle 1d4+1 minutes.\n• 101 à 200 pv : aveugle 1d4+1 rounds.\n• Plus de 200 pv : aucun effet. On compte les points de vie actuels."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature dotée de 200 pv ou moins",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.power_word_stun",
+      "type": "spell",
+      "name": {
+        "fr": "Mot de pouvoir étourdissant",
+        "en": "Power Word Stun"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le mot claque comme un coup de tonnerre dans le crâne de la cible. Elle reste là, figée, le regard vide.\n\nEn jeu\n• Étourdit une créature au choix, sans jet de sauvegarde ; elle n’a pas besoin d’entendre le mot.\n• 50 pv ou moins : étourdie 4d4 rounds.\n• 51 à 100 pv : étourdie 2d4 rounds.\n• 101 à 150 pv : étourdie 1d4 rounds.\n• Plus de 150 pv : aucun effet. On compte les points de vie actuels."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature dotée de 150 pv ou moins",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.power_word_kill",
+      "type": "spell",
+      "name": {
+        "fr": "Mot de pouvoir mortel",
+        "en": "Power Word Kill"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le mot le plus court et le plus redouté du langage des arcanes. Celui qui l’entend, ou pas, s’effondre sans un souffle.\n\nEn jeu\n• Tue net une créature vivante au choix qui a 100 pv ou moins (points de vie actuels).\n• Aucun jet de sauvegarde ; la résistance à la magie s’applique.\n• Plus de 100 pv : aucun effet."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental",
+          "mort"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante dotée de 100 pv ou moins",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.word_of_recall",
+      "type": "spell",
+      "name": {
+        "fr": "Mot de rappel",
+        "en": "Word of Recall"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un mot, et le monde se replie : le lanceur se retrouve chez lui, dans le lieu qu’il a consacré, avec ses compagnons accrochés à son manteau.\n\nEn jeu\n• Téléporte le lanceur dans son sanctuaire, choisi lors de la préparation : un lieu qu’il connaît très bien (zone de 3 m de côté).\n• Aucune limite de distance sur le même plan ; ne permet pas de changer de plan.\n• Emporte ce qu’il peut porter, plus une créature consentante de taille M (avec son équipement) par tranche de 3 niveaux de lanceur.\n• Une créature G compte pour deux M, une TG pour deux G, etc. ; tous doivent se toucher. Trop de passagers : le sort échoue.\n• Les objets d’autrui ne suivent que si leur porteur rate un jet de Volonté (et la résistance à la magie)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "illimitée",
+        "target": "le jeteur de sorts et des objets et créatures consentantes",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (inoffensif, objet)",
+        "spellResistance": "non ou oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.scintillating_pattern",
+      "type": "spell",
+      "name": {
+        "fr": "Motif scintillant",
+        "en": "Scintillating Pattern"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Des spirales de couleurs criardes se tordent dans l’air. Les esprits les plus fragiles s’y noient d’abord, et les autres titubent.\n\nEn jeu\n• Affecte un total de DV égal au niveau de lanceur (20 au plus), les plus faibles d’abord, puis les plus proches du centre.\n• 6 DV ou moins : inconscient 1d4 rounds, puis étourdi 1d4 rounds, puis confus 1d4 rounds.\n• 7 à 12 DV : étourdi 1d4 rounds, puis confus 1d4 rounds.\n• 13 DV ou plus : confus 1d4 rounds.\n• Pas de jet de sauvegarde ; sans effet sur les créatures aveugles. Les non-vivants sont étourdis au lieu d’inconscients.\n• Dure tant que le lanceur se concentre, plus 2 rounds."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "mirage",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "lueurs colorées dans une étendue de 6 m de rayon",
+        "duration": "concentration + 2 rounds",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wall_of_thorns",
+      "type": "spell",
+      "name": {
+        "fr": "Mur d'épines",
+        "en": "Wall of Thorns"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des ronces noires surgissent du sol et s’emmêlent en une muraille vivante de crocs de bois. Chaque pas dedans se paie en lambeaux de chair.\n\nEn jeu\n• Crée un mur de ronces d’un cube de 3 m d’arête par niveau, d’au moins 1,50 m d’épaisseur.\n• Traverser ou être pris dedans inflige 25 points de dégâts par round de mouvement, moins la CA de la créature (sans Dextérité ni esquive).\n• Avancer demande une action complexe et un test de Force DD 20 : 1,50 m par tranche de 5 points au-dessus du DD.\n• Les créatures dans la zone au moment du sort subissent les dégâts comme si elles le traversaient ; rester immobile évite de nouvelles blessures.\n• Le déplacement facilité dans les sous-bois permet de passer sans dégâts, à vitesse normale.\n• Avec une arme tranchante, on taille 30 cm toutes les 10 minutes sans risque. Le feu normal ne fait rien ; le feu magique le consume en 10 minutes.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "mur de ronces de 1 cube de 3 m d’arête/niveau (F)",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wall_of_iron",
+      "type": "spell",
+      "name": {
+        "fr": "Mur de fer",
+        "en": "Wall of Iron"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un pan de fer lisse surgit du néant, soudé à la pierre autour de lui. Et si on le laisse sans appui, il tombe… sur quelqu’un.\n\nEn jeu\n• Crée un mur de fer d’un carré de 1,50 m de côté par niveau, épais de 2,5 cm par tranche de 4 niveaux (on peut doubler la surface en divisant l’épaisseur par deux).\n• Chaque carré de 1,50 m : 30 points de résistance par 2,5 cm d’épaisseur, solidité 10. Le percer d’un coup : Force DD 25, +2 par 2,5 cm.\n• Ne peut pas apparaître là où se trouve une créature ou un objet.\n• Mur non fixé : il bascule d’un côté au hasard, ou du côté voulu avec un test de Force DD 40.\n• Sa chute inflige 10d6 points de dégâts aux créatures de taille G ou moins (Réflexes, annule si elles ont la place de l’éviter) ; les Gig et plus ne sont pas écrasées.\n• Composante matérielle : 50 po de poudre d’or."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "mur de fer d’un carré de 1,50 m de côté/niveau",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "10d6 bludgeoning",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.wall_of_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Mur de feu",
+        "en": "Wall of Fire"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une muraille de feu violet jaillit en grondant. Sa chaleur mord déjà à distance ; la franchir, c’est plonger dans la fournaise.\n\nEn jeu\n• Rideau de flammes de 6 m de long par niveau, ou anneau d’un rayon de 1,50 m par tranche de 2 niveaux ; 6 m de haut dans les deux cas.\n• Traverser le mur : 2d6 + 1 par niveau de lanceur (+20 au plus) dégâts de feu ; dégâts doublés contre les morts-vivants.\n• Côté choisi : 2d4 dégâts de feu à 3 m ou moins, 1d4 entre 3 et 6 m, à l’apparition puis à chaque round.\n• Les créatures là où le mur apparaît subissent les dégâts de la traversée.\n• 20 points de dégâts de froid en 1 round éteignent une section de 1,50 m (10 minutes seulement si le mur est permanent).\n• Dure tant que le lanceur se concentre, plus 1 round par niveau. Compatible avec permanence."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rideau de feu de 6 m/niveau ou anneau de 1,50 m de rayon/2 niveaux ; 6 m de haut",
+        "duration": "concentration + 1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6 fire",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.wall_of_force",
+      "type": "spell",
+      "name": {
+        "fr": "Mur de force",
+        "en": "Wall of Force"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Rien à voir, rien à toucher sinon une paroi parfaitement lisse que ni lame ni sort ne franchit.\n\nEn jeu\n• Mur invisible et immobile d’un carré de 3 m de côté par niveau ; il doit être continu.\n• Insensible aux dégâts et à presque tous les sorts, dissipation de la magie comprise.\n• Désintégration, disjonction, un sceptre d’annulation ou une sphère d’annihilation le détruisent aussitôt.\n• Bloque créatures, sorts et souffles dans les deux sens, même éthérés ; la téléportation passe, les attaques de regard aussi.\n• Dure 1 minute par niveau. Compatible avec permanence."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "mur d’un carré de 3 m de côté/niveau",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wall_of_ice",
+      "type": "spell",
+      "name": {
+        "fr": "Mur de glace",
+        "en": "Wall of Ice"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "L’air gèle d’un coup en une muraille bleutée. Qui la brise reçoit le froid en plein visage.\n\nEn jeu\n• Plan : carré de 3 m de côté par niveau, épais de 2,5 cm par niveau ; 3 points de résistance par 2,5 cm pour chaque carré de 3 m.\n• Le percer d’un coup : Force DD 15 + niveau de lanceur. Passer par une brèche inflige 1d6 + 1 par niveau de lanceur dégâts de froid.\n• Hémisphère : rayon de 90 cm + 30 cm par niveau ; aussi solide que le plan, mais ses brèches ne blessent pas. Une créature enfermée dedans s’échappe sur un jet de Réflexes réussi.\n• Une créature adjacente au mur lors de sa formation peut le briser avec un jet de Réflexes, et le sort échoue.\n• Le feu lui inflige des dégâts entiers ; s’il fond d’un coup, un brouillard reste 10 minutes.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "plan de glace d’un carré de 3 m de côté/niveau, ou hémisphère de 90 cm + 30 cm/niveau de rayon",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Réflexes, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 cold",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "@spell.caster_level",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.wall_of_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Mur de pierre",
+        "en": "Wall of Stone"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La roche se soulève et s’étire selon la volonté du lanceur : rempart, rampe ou pont, elle prend la forme qu’on lui demande.\n\nEn jeu\n• Crée un mur de pierre d’un carré de 1,50 m de côté par niveau, épais de 2,5 cm par tranche de 4 niveaux (surface doublée en divisant l’épaisseur par deux).\n• Forme libre, mais il doit se fondre dans de la roche existante ; une portée de plus de 6 m doit être voûtée, ce qui divise la surface par deux.\n• Chaque carré de 1,50 m : 15 points de résistance par 2,5 cm d’épaisseur, solidité 8. Le percer d’un coup : Force DD 20, +2 par 2,5 cm.\n• Ne peut pas apparaître là où se trouve une créature ou un objet.\n• On peut tenter d’enfermer des créatures ; un jet de Réflexes réussi leur permet d’y échapper."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "mur de pierre d’un carré de 1,50 m de côté/niveau (F)",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wind_wall",
+      "type": "spell",
+      "name": {
+        "fr": "Mur de vent",
+        "en": "Wind Wall"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une colonne de vent hurlant se dresse, invisible. Les flèches y tournoient et retombent, la fumée n’y passe pas.\n\nEn jeu\n• Mur vertical de vent de 3 m de long et 1,50 m de haut par niveau, 60 cm d’épaisseur, de forme libre.\n• Flèches et carreaux sont déviés et ratent toujours ; les autres armes à distance ont 30 % de chances de rater (pas les rochers de géant ni les engins de siège).\n• Les créatures volantes TP ou P ne peuvent pas le franchir ; gaz, souffles gazeux et créatures gazeuses non plus.\n• Les objets non tenus s’envolent ; un objet tenu reste en main sur un jet de Réflexes réussi.\n• Sans effet sur les créatures intangibles. Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "air"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "mur de 3 m de long/niveau et 1,50 m de haut/niveau (F)",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.illusory_wall",
+      "type": "spell",
+      "name": {
+        "fr": "Mur illusoire",
+        "en": "Illusory Wall"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un mur, un sol ou un plafond parfaitement banal… sauf que la main passe au travers. Rien de mieux pour cacher une porte ou une fosse.\n\nEn jeu\n• Crée l’image permanente d’un mur, d’un sol ou d’un plafond de 3 m × 3 m × 30 cm.\n• Les objets et créatures la traversent ; la toucher révèle sa nature, mais l’image reste en place.\n• Qui interagit avec elle a droit à un jet de Volonté pour la percer à jour ; les sens autres que la vue fonctionnent normalement."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "image de 3 m × 3 m × 30 cm",
+        "duration": "permanente",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.prismatic_wall",
+      "type": "spell",
+      "name": {
+        "fr": "Mur prismatique",
+        "en": "Prismatic Wall"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un arc-en-ciel solide, aux couleurs qui ne cessent de danser. Chacune d’elles est un piège, et il faut les franchir toutes.\n\nEn jeu\n• Mur opaque de 1,20 m de long et 60 cm de haut par niveau ; le lanceur peut le traverser sans risque.\n• Les créatures de moins de 8 DV qui le regardent à 6 m ou moins sont aveuglées 2d4 rounds.\n• Rouge : 20 dégâts de feu (Réflexes, 1/2) ; arrête les projectiles non magiques. Annulé par cône de froid.\n• Orange : 40 dégâts d’acide (Réflexes, 1/2) ; arrête les projectiles magiques. Annulé par bourrasque.\n• Jaune : 80 dégâts d’électricité (Réflexes, 1/2) ; arrête poisons, gaz et pétrification. Annulé par désintégration.\n• Vert : poison (Vigueur ou mort ; réussite : 1d6 points de Constitution). Arrête les souffles. Annulé par passe-muraille.\n• Bleu : pétrification (Vigueur, annule) ; arrête la divination et les attaques mentales. Annulé par projectile magique.\n• Indigo : folie comme le sort aliénation mentale (Volonté, annule) ; arrête tous les sorts. Annulé par lumière du jour.\n• Violet : envoie sur un autre plan (Volonté, annule) ; détruit les objets et effets. Annulé par dissipation de la magie.\n• Les couleurs s’annulent une à une dans l’ordre ; disjonction et un sceptre d’annulation le détruisent, une zone d’antimagie ne fait rien.\n• La résistance à la magie permet de passer en réussissant un test contre chaque couleur. Dure 10 minutes par niveau ; compatible avec permanence."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "mur de 1,20 m de long/niveau et 60 cm de haut/niveau",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.legend_lore",
+      "type": "spell",
+      "name": {
+        "fr": "Mythes et légendes",
+        "en": "Legend Lore"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les vieilles histoires reviennent en mémoire, chuchotées par des voix oubliées : ce que l’on raconte d’un héros, d’un lieu ou d’une arme célèbre.\n\nEn jeu\n• Révèle les légendes liées à une personne, un lieu ou un objet important (souvent sous forme d’énigme).\n• Sujet présent ou à portée de main : 1d4 × 10 minutes d’incantation.\n• Informations détaillées seulement : 1d10 jours, résultat moins complet. Simples rumeurs : 2d6 semaines, résultat vague.\n• Pendant l’incantation, seules les activités de routine sont possibles.\n• Rien n’apparaît si le sujet n’a rien de légendaire (en général, il faut un personnage de niveau 11 ou plus, ou ce qui lui est lié).\n• Composantes : encens pour 250 po et quatre bandes d’ivoire de 50 po chacune (focaliseur)."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M, F",
+        "castingTime": "voir description",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fog_cloud",
+      "type": "spell",
+      "name": {
+        "fr": "Nappe de brouillard",
+        "en": "Fog Cloud"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un brouillard laiteux roule sur le sol et avale tout. À deux pas, on ne distingue plus qu’une silhouette ; plus loin, plus rien.\n\nEn jeu\n• Banc de brouillard de 9 m de rayon et 6 m de haut ; la vision (même dans le noir) est limitée à 1,50 m.\n• À 1,50 m : camouflage (20 % de chances de rater). Au-delà : camouflage total (50 %, impossible de voir la cible).\n• Vent modéré (plus de 15 km/h) : dispersé en 4 rounds ; vent fort (plus de 30 km/h) : en 1 round.\n• Ne fonctionne pas sous l’eau. Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "brouillard de 9 m de rayon et 6 m de haut",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.invisibility_purge",
+      "type": "spell",
+      "name": {
+        "fr": "Négation de l'invisibilité",
+        "en": "Invisibility Purge"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Autour du lanceur, une lueur douce chasse tout ce qui se cache. Les invisibles réapparaissent, surpris, dès qu’ils s’approchent.\n\nEn jeu\n• Sphère centrée sur le lanceur, de 1,50 m de rayon par niveau, qui se déplace avec lui.\n• Toute invisibilité y cesse : créatures et objets invisibles redeviennent visibles en y entrant.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.neutralize_poison",
+      "type": "spell",
+      "name": {
+        "fr": "Neutralisation du poison",
+        "en": "Neutralize Poison"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le venin quitte les veines comme l’eau d’une plaie lavée. Pour un moment, aucun poison n’a plus prise.\n\nEn jeu\n• Élimine tout poison d’une créature : ses effets en cours s’arrêtent, sans jet de sauvegarde différé.\n• Ne rend pas ce qui est déjà perdu (points de vie, caractéristiques).\n• La créature est immunisée contre tout poison pendant 10 minutes par niveau.\n• Peut aussi rendre inoffensif le venin d’une créature ou un objet empoisonné (30 dm³ par niveau ; Volonté, annule pour un objet tenu)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature ou objet touché (30 dm³/niveau)",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.incendiary_cloud",
+      "type": "spell",
+      "name": {
+        "fr": "Nuage incendiaire",
+        "en": "Incendiary Cloud"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une fumée noire, piquetée de braises rougeoyantes, avance en roulant. Elle aveugle, elle étouffe, et surtout elle brûle.\n\nEn jeu\n• Nuage de 6 m de rayon et 6 m de haut qui bloque la vue comme une nappe de brouillard.\n• 4d6 dégâts de feu par round à chaque créature à l’intérieur (Réflexes, 1/2).\n• S’éloigne du lanceur de 3 m par round ; en se concentrant, il le déplace jusqu’à 18 m par round.\n• Ce qui sort de la portée disparaît ; le vent le disperse. Impossible sous l’eau. Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "nuage de 6 m de rayon et 6 m de haut",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, 1/2 dégâts (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "4d6 fire",
+          "scope": "spell"
+        }
+      ]
+    }
+  ]
+}

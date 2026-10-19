@@ -1,0 +1,247 @@
+{
+  "entities": [
+    {
+      "id": "item.barding_large",
+      "type": "item",
+      "name": {
+        "fr": "Barde, Créature de grande taille",
+        "en": "Barding, Large creature"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "item": {
+        "cost": "×4",
+        "weight": "×2"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Plaques, mailles et cuir taillés pour un poitrail de cheval : la barde fait d’une monture de taille G un rempart vivant, au prix d’une forge entière de métal.\n\nEn jeu\n• Pour une créature de taille G non humanoïde (cheval, destrier) : coût ×4 et poids ×2 par rapport à l’armure de base\n• Une barde se choisit comme une armure : elle en reprend le bonus d’armure, le bonus de Dextérité maximal, le malus d’armure aux tests et le type (légère, intermédiaire, lourde)\n• Barde intermédiaire ou lourde : la vitesse de la monture baisse (12 m → 9 m, 15 m → 10,5 m, 18 m → 12 m)\n• Barde lourde : la monture ne court qu’à ×3 au lieu de ×4\n• Barde intermédiaire ou lourde : une monture volante reste clouée au sol\n• Équiper ou retirer la barde : cinq fois le temps qu’il faut pour l’armure du même modèle\n• Bardée, la monture ne transporte que son cavalier et des sacoches de selle : il faut une autre bête pour les bagages"
+      },
+      "note": "Barde à combiner avec une armure de la table ; coût, poids et effets sur la monture non calculés."
+    },
+    {
+      "id": "item.barding_medium",
+      "type": "item",
+      "name": {
+        "fr": "Barde, Créature de taille moyenne",
+        "en": "Barding, Medium creature"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "item": {
+        "cost": "×2",
+        "weight": "×1"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une armure ajustée à une monture de taille M, poney de guerre ou chien de selle, pour que le compagnon du petit cavalier ne soit pas le premier à tomber.\n\nEn jeu\n• Pour une monture de taille M (poney, chien de selle) : coût ×2 et poids identique à l’armure de base\n• Une barde se choisit comme une armure : elle en reprend le bonus d’armure, le bonus de Dextérité maximal, le malus d’armure aux tests et le type (légère, intermédiaire, lourde)\n• Barde intermédiaire ou lourde : la vitesse de la monture baisse (12 m → 9 m, 15 m → 10,5 m, 18 m → 12 m)\n• Barde lourde : la monture ne court qu’à ×3 au lieu de ×4\n• Barde intermédiaire ou lourde : une monture volante reste clouée au sol\n• Équiper ou retirer la barde : cinq fois le temps qu’il faut pour l’armure du même modèle\n• Bardée, la monture ne transporte que son cavalier et des sacoches de selle : il faut une autre bête pour les bagages"
+      },
+      "note": "Barde à combiner avec une armure de la table ; coût, poids et effets sur la monture non calculés."
+    },
+    {
+      "id": "item.bit_and_bridle",
+      "type": "item",
+      "name": {
+        "fr": "Mors et bride",
+        "en": "Bit and bridle"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "item": {
+        "cost": "2 po",
+        "weight": "500 g"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Du cuir, une boucle, un morceau de fer entre les dents : c’est tout ce qui sépare une monture docile d’un animal qui fait ce qu’il veut.\n\nEn jeu\n• Harnais de tête pour diriger un cheval, un poney ou une bête de somme\n• Aucun effet chiffré : simple équipement de monture"
+      }
+    },
+    {
+      "id": "item.donkey_or_mule",
+      "type": "item",
+      "name": {
+        "fr": "Âne ou mulet",
+        "en": "Donkey or mule"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "item": {
+        "cost": "8 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Têtus mais sûrs du pied, l’âne et le mulet portent les sacs là où les chevaux refusent d’aller, jusqu’au seuil des catacombes.\n\nEn jeu\n• Animal de bât : porte de lourdes charges sur de longues distances\n• Accepte d’entrer dans des souterrains et lieux dangereux, sans enthousiasme\n• Non dressé au combat : pour le diriger pendant un affrontement, test d’Équitation DD 20 (action de mouvement) à chaque round ; en cas d’échec, le cavalier ne fait rien d’autre ce round-là"
+      },
+      "note": "Les caractéristiques de l’animal ne sont pas dans le catalogue."
+    },
+    {
+      "id": "item.exotic_military_saddle",
+      "type": "item",
+      "name": {
+        "fr": "Selle, spéciale, De guerre",
+        "en": "Saddle, exotic, military"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "item": {
+        "cost": "60 po",
+        "weight": "20 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une selle de guerre à hauts troussequins taillée pour une monture hors du commun, griffon, loup géant ou pire encore.\n\nEn jeu\n• Même modèle qu’une selle de guerre, ajusté à une monture inhabituelle\n• Ses hauts arceaux avant et arrière calent le cavalier : +2 de circonstances aux tests d’Équitation faits pour rester en selle\n• Cavalier inconscient : 75 % de chances de rester en selle au lieu de 50 %"
+      },
+      "effects": [
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.staying_in_saddle"
+        }
+      ],
+      "note": "Bonus situationnel (rester en selle), jamais compté dans le total."
+    },
+    {
+      "id": "item.exotic_pack_saddle",
+      "type": "item",
+      "name": {
+        "fr": "Selle, spéciale, De bât",
+        "en": "Saddle, exotic, pack"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "item": {
+        "cost": "15 po",
+        "weight": "10 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Sangles, crochets et arceaux adaptés à une bête étrange : de quoi faire d’un lézard géant un convoi à lui seul.\n\nEn jeu\n• Pour une monture inhabituelle, sinon identique à une selle de bât\n• Conçue pour le matériel et les vivres, pas pour un cavalier\n• Peut recevoir tout ce que la monture est capable de porter"
+      }
+    },
+    {
+      "id": "item.exotic_riding_saddle",
+      "type": "item",
+      "name": {
+        "fr": "Selle, spéciale, D’équitation",
+        "en": "Saddle, exotic, riding"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "item": {
+        "cost": "30 po",
+        "weight": "15 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une selle ordinaire dans son principe, mais coupée pour un dos qui n’a rien d’un cheval.\n\nEn jeu\n• Pour une monture inhabituelle, sinon identique à une selle d’équitation\n• Si le cavalier perd connaissance, 50 % de chances qu’il reste en selle"
+      }
+    },
+    {
+      "id": "item.feed",
+      "type": "item",
+      "name": {
+        "fr": "Nourriture pour animaux (par jour)",
+        "en": "Feed (per day)"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount_gear"
+      ],
+      "item": {
+        "cost": "5 pc",
+        "weight": "5 kg"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Avoine, grain et fourrage : une ration qui garde une monture en forme bien mieux que l’herbe du bord des routes.\n\nEn jeu\n• Une journée de nourriture pour une monture\n• Chevaux, poneys, ânes et mulets survivent en broutant ; le grain les garde en meilleure forme\n• Un chien de selle a besoin d’un peu de viande dans sa ration"
+      }
+    },
+    {
+      "id": "item.guard_dog",
+      "type": "item",
+      "name": {
+        "fr": "Chien de garde",
+        "en": "Dog, guard"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "item": {
+        "cost": "25 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Oreille fine, flair infaillible et crocs prêts à servir : le chien de garde dort d’un œil devant la porte de son maître.\n\nEn jeu\n• Dressé à garder et à donner l’alerte\n• Suit les pistes au flair\n• Ne sert pas de monture (voir le chien de selle)"
+      },
+      "note": "Les caractéristiques de l’animal ne sont pas dans le catalogue."
+    },
+    {
+      "id": "item.heavy_horse",
+      "type": "item",
+      "name": {
+        "fr": "Cheval, Cheval lourd",
+        "en": "Horse, heavy"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "item": {
+        "cost": "200 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un grand cheval de trait ou de voyage, puissant et endurant, taillé pour tirer et porter plutôt que pour charger.\n\nEn jeu\n• Monture de taille G pour cavalier de taille M (elfe, humain, nain, demi-orque…)\n• Non dressé au combat : pour le diriger pendant un affrontement, test d’Équitation DD 20 (action de mouvement) à chaque round ; en cas d’échec, le cavalier ne fait rien d’autre ce round-là\n• Bête de trait robuste, à l’aise devant un chariot"
+      },
+      "note": "Les caractéristiques de l’animal ne sont pas dans le catalogue."
+    },
+    {
+      "id": "item.heavy_warhorse",
+      "type": "item",
+      "name": {
+        "fr": "Cheval, Destrier lourd",
+        "en": "Warhorse, heavy"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "mount"
+      ],
+      "item": {
+        "cost": "400 po"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un colosse de muscles dressé à la guerre, la monture des chevaliers : il ne bronche pas sous les flèches et frappe de ses sabots aux côtés de son cavalier.\n\nEn jeu\n• Monture de taille G pour cavalier de taille M\n• Dressé au combat : se dirige sans test d’Équitation pendant un affrontement\n• Le faire attaquer tout en attaquant soi-même : test d’Équitation DD 10 (action libre)"
+      },
+      "note": "Les caractéristiques de l’animal ne sont pas dans le catalogue."
+    }
+  ]
+}

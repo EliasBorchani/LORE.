@@ -1,0 +1,955 @@
+{
+  "entities": [
+    {
+      "id": "item.armor_spikes",
+      "type": "item",
+      "name": {
+        "fr": "Pointes pour armure",
+        "en": "Armor spikes"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "light",
+        "armor_extra"
+      ],
+      "description": {
+        "fr": "Une couronne de pointes d’acier rivetées sur l’armure : chaque étreinte devient une morsure de fer.\n\nEn jeu\n• Arme de guerre légère qui se fixe sur une armure ; son prix et son poids viennent s’ajouter à ceux de l’armure.\n• En lutte, chaque test de lutte réussi pour blesser l’adversaire ajoute les dégâts perforants des pointes ; sans la maîtrise de cette arme, −4 aux tests de lutte où on les utilise.\n• Hors lutte, elles servent aussi d’arme légère, en attaque principale ou en attaque de la main non directrice — mais pas en plus d’une autre arme déjà utilisée de cette main.\n• Le bonus d’altération de l’armure ne s’applique pas aux pointes ; elles peuvent être enchantées comme une arme à part entière."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "+50 po",
+        "weight": "+5 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "damageType": "Perforant"
+      },
+      "note": "Les dégâts en lutte et le malus de lutte sans maîtrise ne sont pas modélisés ; pas d’effet d’arme, pour ne pas remplacer l’arme tenue en main."
+    },
+    {
+      "id": "item.arrows",
+      "type": "item",
+      "name": {
+        "fr": "Flèches (20)",
+        "en": "Arrows (20)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "ammunition"
+      ],
+      "description": {
+        "fr": "Vingt traits empennés dans un carquois de cuir, prêts à chanter sous la corde.\n\nEn jeu\n• Munitions de tous les arcs ; le lot de 20 est livré dans un carquois de cuir.\n• Une flèche qui atteint sa cible est perdue ; ratée, elle a une chance sur deux d’être cassée ou introuvable.\n• Au corps à corps, c’est une arme légère improvisée (−4 à l’attaque) qui frappe comme une dague de même taille, critique ×2."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "1,5 kg"
+      }
+    },
+    {
+      "id": "item.bastard_sword",
+      "type": "item",
+      "name": {
+        "fr": "Épée bâtarde",
+        "en": "Bastard sword"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Plus longue qu’une épée ordinaire, plus légère qu’une épée à deux mains : il faut un vrai savoir-faire pour la faire danser d’une seule main.\n\nEn jeu\n• Arme exotique à une main.\n• À deux mains, la maîtrise des armes de guerre suffit pour la manier, et elle ajoute alors 1,5 × le bonus de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "35 po",
+        "weight": "3 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "19–20/×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "La prise à deux mains (Force ×1,5) n’est pas modélisée : la feuille compte la prise à une main."
+    },
+    {
+      "id": "item.battleaxe",
+      "type": "item",
+      "name": {
+        "fr": "Hache d’armes",
+        "en": "Battleaxe"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Une lame en croissant au bout d’un manche de chêne : l’arme des pillards et des gardes de forteresse.\n\nEn jeu\n• Arme de guerre à une main."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "10 po",
+        "weight": "3 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.bolas",
+      "type": "item",
+      "name": {
+        "fr": "Bolas",
+        "en": "Bolas"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged",
+        "nonlethal"
+      ],
+      "description": {
+        "fr": "Deux boules de pierre reliées par une corde tressée : lancées en tournoyant, elles s’enroulent autour des jambes et ramènent la proie au sol.\n\nEn jeu\n• Arme exotique de jet.\n• Inflige des dégâts non létaux.\n• Sert à faire un croc-en-jambe à distance ; si la tentative rate, la cible ne peut pas renverser le lanceur en retour."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "5 po",
+        "weight": "1 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "range": "3 m",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.club",
+      "type": "item",
+      "name": {
+        "fr": "Gourdin",
+        "en": "Club"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "one_handed",
+        "thrown"
+      ],
+      "description": {
+        "fr": "Un bâton noueux, épais au bout, ramassé au bord du chemin. La plus vieille arme du monde, et elle ne coûte rien.\n\nEn jeu\n• Arme courante à une main.\n• Peut être lancée (arme de jet)."
+      },
+      "item": {
+        "slot": "weapon",
+        "weight": "1,5 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×2",
+        "range": "3 m",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.composite_longbow",
+      "type": "item",
+      "name": {
+        "fr": "Arc long composite",
+        "en": "Composite longbow"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Bois, corne et tendons collés en couches : un arc long assez raide pour rendre chaque once de la force du tireur.\n\nEn jeu\n• Arme de guerre à distance ; il faut deux mains pour tirer, mais on peut s’en servir à cheval.\n• Chaque arc est taillé pour une puissance donnée (bonus de Force minimal, +0 pour un arc ordinaire) : le tireur ajoute son bonus de Force aux dégâts, sans dépasser cette puissance.\n• Un tireur dont le bonus de Force est inférieur à la puissance de l’arc le manie mal : −2 à l’attaque.\n• Un malus de Force s’applique toujours aux dégâts, comme pour tout arc.\n• Chaque point de puissance ajoute 100 po au prix de l’arc.\n• Tire des flèches."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "100 po",
+        "weight": "1,5 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×3",
+        "range": "33 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "La puissance de l’arc (plafond de Force aux dégâts, −2 à l’attaque) n’est pas modélisée."
+    },
+    {
+      "id": "item.composite_shortbow",
+      "type": "item",
+      "name": {
+        "fr": "Arc court composite",
+        "en": "Composite shortbow"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Un arc court en corne et en bois collés, assez raide pour rendre la force du tireur ; l’arc des cavaliers des steppes.\n\nEn jeu\n• Arme de guerre à distance ; il faut deux mains pour tirer, mais on peut s’en servir à cheval.\n• Chaque arc est taillé pour une puissance donnée (bonus de Force minimal, +0 pour un arc ordinaire) : le tireur ajoute son bonus de Force aux dégâts, sans dépasser cette puissance.\n• Un tireur dont le bonus de Force est inférieur à la puissance de l’arc le manie mal : −2 à l’attaque.\n• Un malus de Force s’applique toujours aux dégâts, comme pour tout arc.\n• Chaque point de puissance ajoute 75 po au prix de l’arc.\n• Tire des flèches."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "75 po",
+        "weight": "1 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×3",
+        "range": "21 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "La puissance de l’arc (plafond de Force aux dégâts, −2 à l’attaque) n’est pas modélisée."
+    },
+    {
+      "id": "item.crossbow_bolts",
+      "type": "item",
+      "name": {
+        "fr": "Carreaux (10)",
+        "en": "Crossbow bolts (10)"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "ammunition"
+      ],
+      "description": {
+        "fr": "Dix carreaux courts et lourds, à pointe carrée, rangés dans un étui de bois.\n\nEn jeu\n• Munitions des arbalètes légère et lourde ; le lot de 10 est livré dans un étui de bois.\n• Un carreau qui atteint sa cible est perdu ; raté, il a une chance sur deux d’être cassé ou introuvable.\n• Au corps à corps, c’est une arme légère improvisée (−4 à l’attaque) qui frappe comme une dague de même taille, critique ×2."
+      },
+      "item": {
+        "cost": "1 po",
+        "weight": "500 g"
+      }
+    },
+    {
+      "id": "item.dagger",
+      "type": "item",
+      "name": {
+        "fr": "Dague",
+        "en": "Dagger"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "light",
+        "thrown"
+      ],
+      "description": {
+        "fr": "Courte, discrète, utile à table comme dans une ruelle sombre ; elle se cache dans une botte et se lance d’un geste.\n\nEn jeu\n• Arme courante légère ; peut être lancée (arme de jet).\n• Dégâts perforants ou tranchants, au choix à chaque attaque.\n• +2 aux tests d’Escamotage pour dissimuler la dague sur soi."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "2 po",
+        "weight": "500 g",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "19–20/×2",
+        "range": "3 m",
+        "damageType": "Perforant ou tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "skill.sleight_of_hand",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "situation": "situation.conceal_dagger"
+        }
+      ]
+    },
+    {
+      "id": "item.dart",
+      "type": "item",
+      "name": {
+        "fr": "Dard",
+        "en": "Dart"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Une petite pointe lestée et empennée, lancée d’un coup de poignet ; on en cache une poignée dans une manche.\n\nEn jeu\n• Arme courante à distance, lancée (arme de jet)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "5 pa",
+        "weight": "250 g",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "range": "6 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.dire_flail",
+      "type": "item",
+      "name": {
+        "fr": "Fléau double",
+        "en": "Dire flail"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double"
+      ],
+      "description": {
+        "fr": "Deux boules hérissées au bout de chaînes, aux deux extrémités d’un même manche : un ouragan de fer pour qui sait le faire tourner.\n\nEn jeu\n• Arme exotique à deux mains.\n• Arme double : en combat à deux armes, chaque tête porte sa propre attaque, avec les malus habituels calculés comme pour une arme à une main associée à une arme légère.\n• Tenue d’une seule main, elle perd son statut d’arme double : une seule tête sert pendant le round.\n• +2 aux jets opposés de désarmement, qu’on tente de désarmer ou qu’on résiste à la riposte après un échec.\n• Permet les crocs-en-jambe ; si la tentative tourne mal, on lâche l’arme plutôt que de tomber."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "90 po",
+        "weight": "5 kg",
+        "damage": "1d8/1d8",
+        "damageSmall": "1d6/1d6",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Une seule tête est modélisée (1d8) ; le bonus de désarmement et le combat à deux armes ne sont pas calculés."
+    },
+    {
+      "id": "item.dwarven_urgrosh",
+      "type": "item",
+      "name": {
+        "fr": "Urgrosh nain",
+        "en": "Dwarven urgrosh"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double"
+      ],
+      "description": {
+        "fr": "Une tête de hache d’un côté, une pointe de lance de l’autre : l’arme des gardiens des halls nains, aussi bonne pour fendre que pour arrêter une charge.\n\nEn jeu\n• Arme exotique à deux mains ; les nains la manient comme une arme de guerre.\n• Arme double : en combat à deux armes, chaque tête porte sa propre attaque, avec les malus habituels calculés comme pour une arme à une main associée à une arme légère.\n• Tenue d’une seule main, elle perd son statut d’arme double : une seule tête sert pendant le round.\n• Tête de hache tranchante, pointe de lance perforante ; au choix, l’une sert d’arme principale et l’autre de seconde arme.\n• Préparée contre une charge (action préparée), la pointe de lance inflige des dégâts doublés à l’adversaire qui charge."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "50 po",
+        "weight": "6 kg",
+        "damage": "1d8/1d6",
+        "damageSmall": "1d6/1d4",
+        "critical": "×3",
+        "damageType": "Perforant ou tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Seule la tête de hache est modélisée ; la réception de charge, la seconde tête et la maîtrise des nains ne sont pas calculées."
+    },
+    {
+      "id": "item.dwarven_waraxe",
+      "type": "item",
+      "name": {
+        "fr": "Hache de guerre naine",
+        "en": "Dwarven waraxe"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Une hache lourde, à large lame, forgée dans les profondeurs : trop massive pour une main non exercée, terrible dans un poing nain.\n\nEn jeu\n• Arme exotique à une main.\n• À deux mains, n’importe quel guerrier la manie comme une arme de guerre (et ajoute alors 1,5 × son bonus de Force aux dégâts).\n• Les nains la manient comme une arme de guerre, même d’une seule main."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "30 po",
+        "weight": "4 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "La prise à deux mains (Force ×1,5) et la maîtrise des nains ne sont pas modélisées : la feuille compte la prise à une main."
+    },
+    {
+      "id": "item.falchion",
+      "type": "item",
+      "name": {
+        "fr": "Cimeterre à deux mains",
+        "en": "Falchion"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed"
+      ],
+      "description": {
+        "fr": "Une lame lourde et courbe, élargie vers la pointe : chaque coup tombe comme un couperet.\n\nEn jeu\n• Arme de guerre à deux mains.\n• Ajoute 1,5 × le bonus de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "75 po",
+        "weight": "4 kg",
+        "damage": "2d4",
+        "damageSmall": "1d6",
+        "critical": "18–20/×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ]
+    },
+    {
+      "id": "item.gauntlet",
+      "type": "item",
+      "name": {
+        "fr": "Gantelet",
+        "en": "Gauntlet"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "simple",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Un gant de métal articulé : le poing nu devient une masse d’acier.\n\nEn jeu\n• Arme courante, liée aux attaques à mains nues : un poing ganté inflige des dégâts létaux et non plus non létaux.\n• Pour tout le reste, frapper avec un gantelet reste une attaque à mains nues.\n• Vendu à l’unité, pas par paire.\n• Les armures intermédiaires et lourdes en fournissent une paire, la cuirasse exceptée."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "2 po",
+        "weight": "500 g",
+        "damage": "1d3",
+        "damageSmall": "1d2",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d3",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.glaive",
+      "type": "item",
+      "name": {
+        "fr": "Coutille",
+        "en": "Glaive"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed",
+        "reach"
+      ],
+      "description": {
+        "fr": "Une longue lame fixée au bout d’une hampe : de quoi frapper l’ennemi avant qu’il n’arrive au contact.\n\nEn jeu\n• Arme de guerre à deux mains, à allonge : atteint un ennemi à 3 m, mais pas un ennemi au contact.\n• Ajoute 1,5 × le bonus de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "8 po",
+        "weight": "5 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "L’allonge n’est pas modélisée."
+    },
+    {
+      "id": "item.gnome_hooked_hammer",
+      "type": "item",
+      "name": {
+        "fr": "Marteau-piolet gnome",
+        "en": "Gnome hooked hammer"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double"
+      ],
+      "description": {
+        "fr": "Un marteau d’un côté, un pic recourbé de l’autre : un outil de mineur gnome devenu arme de guerre, retors et redoutable.\n\nEn jeu\n• Arme exotique à deux mains ; les gnomes la manient comme une arme de guerre.\n• Arme double : en combat à deux armes, chaque tête porte sa propre attaque, avec les malus habituels calculés comme pour une arme à une main associée à une arme légère.\n• Tenue d’une seule main, elle perd son statut d’arme double : une seule tête sert pendant le round.\n• Tête de marteau contondante, crochet perforant (les premières valeurs du tableau sont celles du marteau) ; au choix, l’une sert d’arme principale et l’autre de seconde arme.\n• Permet les crocs-en-jambe ; si la tentative tourne mal, on lâche l’arme plutôt que de tomber."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "20 po",
+        "weight": "3 kg",
+        "damage": "1d8/1d6",
+        "damageSmall": "1d6/1d4",
+        "critical": "×3/×4",
+        "damageType": "Contondant et perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Seule la tête de marteau est modélisée (×3) ; le crochet (×4), la seconde tête et la maîtrise des gnomes ne sont pas calculés."
+    },
+    {
+      "id": "item.greataxe",
+      "type": "item",
+      "name": {
+        "fr": "Grande hache",
+        "en": "Greataxe"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item",
+        "weapon",
+        "martial",
+        "two_handed"
+      ],
+      "description": {
+        "fr": "Une hache à double tranchant, haute comme un nain : l’arme préférée des barbares, qui ne laisse rien debout derrière elle.\n\nEn jeu\n• Arme de guerre à deux mains.\n• Ajoute 1,5 × le bonus de Force aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "20 po",
+        "weight": "6 kg",
+        "damage": "1d12",
+        "damageSmall": "1d10",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d12",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ]
+    }
+  ]
+}

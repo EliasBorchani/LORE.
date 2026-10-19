@@ -1,0 +1,31 @@
+{
+  "entities": [
+    {
+      "id": "spell.corrupt_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Corruption d’arme",
+        "en": "Corrupt Weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une ombre huileuse coule le long de la lame. Entre les mains d’un serviteur du mal, l’arme cherche d’elle-même la chair des justes.\n\nEn jeu\n• L’inverse de bénédiction d’arme : l’arme devient d’alignement mauvais et passe la réduction des dégâts qui l’exige, en remplaçant tout autre alignement de l’arme.\n• Contre les créatures bonnes, elle compte comme une arme +1 pour passer leur réduction des dégâts ou frapper les intangibles, sans vrai bonus d’altération.\n• Contre les créatures bonnes, toute menace de critique est confirmée d’office (sauf armes déjà acérées, vorpales ou équivalent).\n• Sur un arc, seules les flèches touchées en profitent. Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

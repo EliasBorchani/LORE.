@@ -1,0 +1,318 @@
+{
+  "id": "char.level-60",
+  "name": "Level-60",
+  "xp": 1770000,
+  "baseAbilities": {
+    "str": 10,
+    "dex": 10,
+    "con": 14,
+    "int": 18,
+    "wis": 10,
+    "cha": 10
+  },
+  "levels": [
+    {
+      "level": 1,
+      "classId": "class.wizard",
+      "classLevel": 1,
+      "gained": [
+        "spell.storm_lance"
+      ]
+    },
+    {
+      "level": 2,
+      "classId": "class.wizard",
+      "classLevel": 2
+    },
+    {
+      "level": 3,
+      "classId": "class.wizard",
+      "classLevel": 3
+    },
+    {
+      "level": 4,
+      "classId": "class.wizard",
+      "classLevel": 4
+    },
+    {
+      "level": 5,
+      "classId": "class.wizard",
+      "classLevel": 5
+    },
+    {
+      "level": 6,
+      "classId": "class.wizard",
+      "classLevel": 6
+    },
+    {
+      "level": 7,
+      "classId": "class.wizard",
+      "classLevel": 7
+    },
+    {
+      "level": 8,
+      "classId": "class.wizard",
+      "classLevel": 8
+    },
+    {
+      "level": 9,
+      "classId": "class.wizard",
+      "classLevel": 9
+    },
+    {
+      "level": 10,
+      "classId": "class.wizard",
+      "classLevel": 10
+    },
+    {
+      "level": 11,
+      "classId": "class.wizard",
+      "classLevel": 11
+    },
+    {
+      "level": 12,
+      "classId": "class.wizard",
+      "classLevel": 12
+    },
+    {
+      "level": 13,
+      "classId": "class.wizard",
+      "classLevel": 13
+    },
+    {
+      "level": 14,
+      "classId": "class.wizard",
+      "classLevel": 14
+    },
+    {
+      "level": 15,
+      "classId": "class.wizard",
+      "classLevel": 15
+    },
+    {
+      "level": 16,
+      "classId": "class.wizard",
+      "classLevel": 16
+    },
+    {
+      "level": 17,
+      "classId": "class.wizard",
+      "classLevel": 17
+    },
+    {
+      "level": 18,
+      "classId": "class.wizard",
+      "classLevel": 18
+    },
+    {
+      "level": 19,
+      "classId": "class.wizard",
+      "classLevel": 19
+    },
+    {
+      "level": 20,
+      "classId": "class.wizard",
+      "classLevel": 20
+    },
+    {
+      "level": 21,
+      "classId": "class.wizard",
+      "classLevel": 21
+    },
+    {
+      "level": 22,
+      "classId": "class.wizard",
+      "classLevel": 22
+    },
+    {
+      "level": 23,
+      "classId": "class.wizard",
+      "classLevel": 23
+    },
+    {
+      "level": 24,
+      "classId": "class.wizard",
+      "classLevel": 24
+    },
+    {
+      "level": 25,
+      "classId": "class.wizard",
+      "classLevel": 25
+    },
+    {
+      "level": 26,
+      "classId": "class.wizard",
+      "classLevel": 26
+    },
+    {
+      "level": 27,
+      "classId": "class.wizard",
+      "classLevel": 27
+    },
+    {
+      "level": 28,
+      "classId": "class.wizard",
+      "classLevel": 28
+    },
+    {
+      "level": 29,
+      "classId": "class.wizard",
+      "classLevel": 29
+    },
+    {
+      "level": 30,
+      "classId": "class.wizard",
+      "classLevel": 30
+    },
+    {
+      "level": 31,
+      "classId": "class.wizard",
+      "classLevel": 31
+    },
+    {
+      "level": 32,
+      "classId": "class.wizard",
+      "classLevel": 32
+    },
+    {
+      "level": 33,
+      "classId": "class.wizard",
+      "classLevel": 33
+    },
+    {
+      "level": 34,
+      "classId": "class.wizard",
+      "classLevel": 34
+    },
+    {
+      "level": 35,
+      "classId": "class.wizard",
+      "classLevel": 35
+    },
+    {
+      "level": 36,
+      "classId": "class.wizard",
+      "classLevel": 36
+    },
+    {
+      "level": 37,
+      "classId": "class.wizard",
+      "classLevel": 37
+    },
+    {
+      "level": 38,
+      "classId": "class.wizard",
+      "classLevel": 38
+    },
+    {
+      "level": 39,
+      "classId": "class.wizard",
+      "classLevel": 39
+    },
+    {
+      "level": 40,
+      "classId": "class.wizard",
+      "classLevel": 40
+    },
+    {
+      "level": 41,
+      "classId": "class.wizard",
+      "classLevel": 41
+    },
+    {
+      "level": 42,
+      "classId": "class.wizard",
+      "classLevel": 42
+    },
+    {
+      "level": 43,
+      "classId": "class.wizard",
+      "classLevel": 43
+    },
+    {
+      "level": 44,
+      "classId": "class.wizard",
+      "classLevel": 44
+    },
+    {
+      "level": 45,
+      "classId": "class.wizard",
+      "classLevel": 45
+    },
+    {
+      "level": 46,
+      "classId": "class.wizard",
+      "classLevel": 46
+    },
+    {
+      "level": 47,
+      "classId": "class.wizard",
+      "classLevel": 47
+    },
+    {
+      "level": 48,
+      "classId": "class.wizard",
+      "classLevel": 48
+    },
+    {
+      "level": 49,
+      "classId": "class.wizard",
+      "classLevel": 49
+    },
+    {
+      "level": 50,
+      "classId": "class.wizard",
+      "classLevel": 50
+    },
+    {
+      "level": 51,
+      "classId": "class.wizard",
+      "classLevel": 51
+    },
+    {
+      "level": 52,
+      "classId": "class.wizard",
+      "classLevel": 52
+    },
+    {
+      "level": 53,
+      "classId": "class.wizard",
+      "classLevel": 53
+    },
+    {
+      "level": 54,
+      "classId": "class.wizard",
+      "classLevel": 54
+    },
+    {
+      "level": 55,
+      "classId": "class.wizard",
+      "classLevel": 55
+    },
+    {
+      "level": 56,
+      "classId": "class.wizard",
+      "classLevel": 56
+    },
+    {
+      "level": 57,
+      "classId": "class.wizard",
+      "classLevel": 57
+    },
+    {
+      "level": 58,
+      "classId": "class.wizard",
+      "classLevel": 58
+    },
+    {
+      "level": 59,
+      "classId": "class.wizard",
+      "classLevel": 59
+    },
+    {
+      "level": 60,
+      "classId": "class.wizard",
+      "classLevel": 60
+    }
+  ]
+}

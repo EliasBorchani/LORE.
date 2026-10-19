@@ -1,0 +1,403 @@
+{
+  "entities": [
+    {
+      "id": "class.dragon_disciple",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Disciple draconien",
+        "en": "Dragon disciple"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "martial"
+      ],
+      "description": {
+        "fr": "Quelque part dans sa lignée, un dragon a laissé sa marque, et le disciple draconien a décidé de ne plus faire semblant de l’ignorer. Ensorceleur ou barde le plus souvent, il nourrit ce sang ancien jusqu’à ce qu’il remonte à la surface : des écailles d’abord, puis des crocs et des griffes, un souffle brûlant ou glacé, et un jour des ailes qui se déplient dans son dos. Chaque niveau le rend un peu moins humain et un peu plus terrible, jusqu’à ce que la métamorphose soit complète et qu’il devienne, pour de bon, un enfant de dragon.\n\nEn jeu\n• Dé de vie : d12. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : toute race sauf les dragons (pas déjà demi-dragon) ; 8 rangs en Connaissances (mystères) ; parle le draconique ; lance des sorts profanes sans les préparer ; choisit une variété de dragon au premier niveau, choix définitif.\n• Alignement : tous.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (chacune à part), Détection, Diplomatie, Évasion, Fouille, Langue, Perception auditive, Profession, Renseignement.\n• Pas de progression de lanceur de sorts : la classe donne des sorts en bonus à la place.\n• Aptitudes : armure naturelle et sorts en bonus (1) ; augmentation de caractéristique, griffes et morsure (2) ; souffle (3) ; perception aveugle (5) ; ailes (9) ; apothéose draconienne (10)."
+      },
+      "hitDie": 12,
+      "skillPoints": 2,
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle). Variété de dragon choisie : pas encore dans le modèle (elle fixe le type et la forme du souffle et l’immunité de l’apothéose)."
+    },
+    {
+      "id": "power.dragon_disciple_natural_armor",
+      "type": "class_power",
+      "name": {
+        "fr": "Armure naturelle",
+        "en": "Natural armor increase"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "Sa peau se durcit par plaques, prend la couleur de son ancêtre, et chaque année passée à écouter son sang ajoute une couche à cette cuirasse vivante.\n\nEn jeu\n• Bonus d’armure naturelle : +1 au niveau 1, +2 au niveau 4, +3 au niveau 7, +4 au niveau 10 (apothéose).\n• Ces valeurs se remplacent, elles ne s’additionnent pas.\n• S’ajoute à l’armure naturelle que le personnage a déjà."
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "if(level('class.dragon_disciple') >= 10, 4, if(level('class.dragon_disciple') >= 7, 3, if(level('class.dragon_disciple') >= 4, 2, 1)))",
+          "bonusType": "natural_armor"
+        }
+      ],
+      "note": "Le bonus est typé natural_armor : il ne se cumule pas avec une autre armure naturelle du même type ; en règle, il s’ajoute à l’armure naturelle existante."
+    },
+    {
+      "id": "power.dragon_disciple_bonus_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts en bonus",
+        "en": "Bonus spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "Le sang du dragon est un sang de magie. À mesure qu’il s’éveille, le disciple trouve en lui de quoi lancer quelques sorts de plus chaque jour.\n\nEn jeu\n• Un sort en bonus aux niveaux 1, 2, 4, 5, 6, 8 et 9 (7 au total), comme ceux d’une caractéristique élevée.\n• Pour chacun, le joueur choisit une classe de lanceur de sorts et un niveau de sort qu’il peut déjà lancer. Ce choix est définitif."
+      },
+      "effects": [],
+      "note": "Sorts en bonus (classe et niveau de sort choisis pour chacun) : pas encore dans le modèle ; ils seront des effets sur slots.<classe>[niveau] quand le niveau d’expérience pourra porter ce choix."
+    },
+    {
+      "id": "power.dragon_disciple_ability_boost",
+      "type": "class_power",
+      "name": {
+        "fr": "Augmentation de caractéristique",
+        "en": "Ability boost"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "Le corps du disciple change de l’intérieur : des muscles plus denses, une endurance de bête ancienne, et l’esprit vif et calculateur des grands dragons.\n\nEn jeu\n• Force +2 au niveau 2, encore +2 au niveau 4.\n• Constitution +2 au niveau 6.\n• Intelligence +2 au niveau 8."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": "if(level('class.dragon_disciple') >= 4, 4, if(level('class.dragon_disciple') >= 2, 2, 0))"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": "if(level('class.dragon_disciple') >= 6, 2, 0)"
+        },
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": "if(level('class.dragon_disciple') >= 8, 2, 0)"
+        }
+      ]
+    },
+    {
+      "id": "power.dragon_disciple_claws_and_bite",
+      "type": "class_power",
+      "name": {
+        "fr": "Griffes et morsure",
+        "en": "Claws and bite"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "Ses ongles deviennent des griffes et sa mâchoire s’allonge : le disciple n’a plus besoin d’arme pour déchirer.\n\nEn jeu\n• Deux griffes et une morsure, armes naturelles qu’il sait manier.\n• Dégâts (griffe / morsure) : 1d4 / 1d3 pour une taille P, 1d6 / 1d4 pour une taille M, 1d8 / 1d6 pour une taille G.\n• S’il a déjà des griffes ou une morsure, il garde les dégâts qu’il préfère.\n• Attaque à outrance : morsure au bonus de base maximal, deux griffes à −5 (−2 avec Attaques multiples)."
+      },
+      "effects": [],
+      "note": "Armes naturelles (attaques et dégâts selon la taille) : pas encore dans le modèle, une seule arme maniée pour l’instant."
+    },
+    {
+      "id": "power.dragon_disciple_breath_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Souffle",
+        "en": "Breath weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "Une chaleur, un froid ou une acidité monte dans sa gorge, et le disciple apprend à la cracher comme le faisait son ancêtre.\n\nEn jeu\n• 1 fois par jour.\n• 2d8 dégâts au niveau 3, 4d8 au niveau 7, 6d8 au niveau 10 (apothéose).\n• Type d’énergie et forme selon la variété de dragon choisie : ligne de 1,50 m de large et de haut sur 18 m, ou cône de 9 m.\n• DD du jet de sauvegarde : 10 + niveau de disciple draconien + modificateur de Constitution.\n• Suit les règles du souffle des dragons."
+      },
+      "effects": [
+        {
+          "target": "damage.dragon_disciple_breath",
+          "op": "dice",
+          "value": "(if(level('class.dragon_disciple') >= 10, 6, if(level('class.dragon_disciple') >= 7, 4, 2)))d8"
+        },
+        {
+          "target": "dc.dragon_disciple_breath",
+          "op": "set",
+          "value": "10 + level('class.dragon_disciple') + @ability.con.mod"
+        }
+      ],
+      "usesPerDay": "1",
+      "note": "Type d’énergie et forme du souffle (selon la variété de dragon) : pas encore dans le modèle."
+    },
+    {
+      "id": "power.dragon_disciple_blindsense",
+      "type": "class_power",
+      "name": {
+        "fr": "Perception aveugle",
+        "en": "Blindsense"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "Odeurs, bruits, vibrations de l’air : le disciple perçoit ce qui bouge autour de lui sans avoir besoin de le voir.\n\nEn jeu\n• Portée 9 m au niveau 5, 18 m au niveau 10.\n• Repère sans test de Détection ni de Perception auditive les créatures à portée vers lesquelles il a une ligne d’effet.\n• Une créature qu’il ne voit pas garde un camouflage total contre lui, et il perd son bonus de Dextérité contre elle."
+      },
+      "effects": [
+        {
+          "target": "vision.blindsense",
+          "op": "set",
+          "value": "if(level('class.dragon_disciple') >= 10, 18, 9)"
+        }
+      ]
+    },
+    {
+      "id": "power.dragon_disciple_wings",
+      "type": "class_power",
+      "name": {
+        "fr": "Ailes",
+        "en": "Wings"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "Un matin, deux bosses douloureuses percent entre ses omoplates. Quelques jours plus tard, elles se déploient : des ailes de dragon, assez fortes pour le porter.\n\nEn jeu\n• Vitesse de vol égale à sa vitesse au sol, manœuvrabilité moyenne."
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "set",
+          "value": "@speed.land"
+        }
+      ],
+      "note": "Manœuvrabilité : pas encore dans le modèle."
+    },
+    {
+      "id": "power.dragon_disciple_dragon_apotheosis",
+      "type": "class_power",
+      "name": {
+        "fr": "Apothéose draconienne",
+        "en": "Dragon apotheosis"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dragon_disciple"
+      ],
+      "description": {
+        "fr": "La métamorphose est achevée. Le disciple n’imite plus le dragon : il en est un, à moitié, et son sang ne lui cache plus rien.\n\nEn jeu\n• Gagne l’archétype demi-dragon.\n• Force +4, Charisme +2.\n• Armure naturelle +4 (voir Armure naturelle) et souffle à 6d8 (voir Souffle).\n• Vision nocturne et vision dans le noir à 18 m.\n• Immunité contre le sommeil, la paralysie et le type d’énergie de son souffle."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4
+        },
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 2
+        },
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true"
+        },
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        }
+      ],
+      "note": "Immunités (sommeil, paralysie, énergie du souffle) et le reste de l’archétype demi-dragon (type de créature) : pas encore dans le modèle. L’armure naturelle +4 et le souffle 6d8 sont dans leurs aptitudes."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.dragon_disciple",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.dragon_disciple_natural_armor",
+        "power.dragon_disciple_bonus_spells"
+      ]
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.dragon_disciple_ability_boost",
+        "power.dragon_disciple_claws_and_bite"
+      ]
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.dragon_disciple_breath_weapon"
+      ]
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.dragon_disciple_blindsense"
+      ]
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.dragon_disciple_wings"
+      ]
+    },
+    {
+      "classId": "class.dragon_disciple",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.dragon_disciple_dragon_apotheosis"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.dragon_disciple",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    }
+  ]
+}

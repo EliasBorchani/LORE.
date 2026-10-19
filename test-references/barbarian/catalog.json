@@ -1,0 +1,348 @@
+{
+  "version": "case-barbarian",
+  "bonusTypes": [
+    {
+      "id": "enhancement",
+      "stacks": false
+    },
+    {
+      "id": "morale",
+      "stacks": false
+    },
+    {
+      "id": "luck",
+      "stacks": false
+    },
+    {
+      "id": "competence",
+      "stacks": false
+    },
+    {
+      "id": "size",
+      "stacks": false
+    },
+    {
+      "id": "resistance",
+      "stacks": false
+    },
+    {
+      "id": "natural_armor",
+      "stacks": false
+    },
+    {
+      "id": "untyped",
+      "stacks": true
+    },
+    {
+      "id": "dodge",
+      "stacks": true
+    }
+  ],
+  "statistics": [
+    {
+      "key": "ability.str.score",
+      "base": "@ability.str.base"
+    },
+    {
+      "key": "ability.str.mod",
+      "base": "floor((@ability.str.score - 10) / 2)"
+    },
+    {
+      "key": "ability.dex.score",
+      "base": "@ability.dex.base"
+    },
+    {
+      "key": "ability.dex.mod",
+      "base": "floor((@ability.dex.score - 10) / 2)"
+    },
+    {
+      "key": "ability.con.score",
+      "base": "@ability.con.base"
+    },
+    {
+      "key": "ability.con.mod",
+      "base": "floor((@ability.con.score - 10) / 2)"
+    },
+    {
+      "key": "ability.int.score",
+      "base": "@ability.int.base"
+    },
+    {
+      "key": "ability.int.mod",
+      "base": "floor((@ability.int.score - 10) / 2)"
+    },
+    {
+      "key": "ability.wis.score",
+      "base": "@ability.wis.base"
+    },
+    {
+      "key": "ability.wis.mod",
+      "base": "floor((@ability.wis.score - 10) / 2)"
+    },
+    {
+      "key": "ability.cha.score",
+      "base": "@ability.cha.base"
+    },
+    {
+      "key": "ability.cha.mod",
+      "base": "floor((@ability.cha.score - 10) / 2)"
+    },
+    {
+      "key": "level",
+      "base": "level()"
+    },
+    {
+      "key": "level_from_xp",
+      "base": "floor((1 + isqrt(1 + 8 * @xp / 1000)) / 2)"
+    },
+    {
+      "key": "bab",
+      "base": "@progression.bab"
+    },
+    {
+      "key": "save.fort",
+      "components": [
+        "progression.fort",
+        "ability.con.mod"
+      ]
+    },
+    {
+      "key": "save.ref",
+      "components": [
+        "progression.ref",
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "save.will",
+      "components": [
+        "progression.will",
+        "ability.wis.mod"
+      ]
+    },
+    {
+      "key": "hp.base",
+      "base": "3 / 4 * @hit_dice.total"
+    },
+    {
+      "key": "hp.max",
+      "base": "@hp.base + @ability.con.mod * level()"
+    },
+    {
+      "key": "weapon.attack",
+      "base": 0
+    },
+    {
+      "key": "weapon.damage",
+      "base": 0
+    },
+    {
+      "key": "attack.melee",
+      "components": [
+        "bab",
+        "ability.str.mod",
+        "weapon.attack"
+      ]
+    },
+    {
+      "key": "damage.melee",
+      "components": [
+        "damage.melee.weapon",
+        "damage.melee.ability"
+      ]
+    },
+    {
+      "key": "damage.melee.weapon",
+      "base": "@weapon.damage"
+    },
+    {
+      "key": "damage.melee.ability",
+      "base": "@ability.str.mod"
+    },
+    {
+      "key": "ac.armor",
+      "base": 0
+    },
+    {
+      "key": "ac.natural",
+      "base": 0
+    },
+    {
+      "key": "ac.dex_bonus",
+      "base": "@ability.dex.mod"
+    },
+    {
+      "key": "ac.total",
+      "base": "10 + @ac.armor + @ac.natural + @ac.dex_bonus"
+    },
+    {
+      "key": "skill.climb",
+      "base": "@ability.str.mod"
+    }
+  ],
+  "entities": [
+    {
+      "id": "class.barbarian",
+      "type": "class",
+      "name": {
+        "en": "Barbarian"
+      },
+      "hitDie": 12
+    },
+    {
+      "id": "feat.titan_strength",
+      "type": "feat",
+      "name": {
+        "en": "Titan Strength"
+      },
+      "prerequisite": "@ability.str.score >= 25 and level() >= 21",
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 2,
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "feat.power_attack",
+      "type": "feat",
+      "name": {
+        "en": "Power Attack"
+      },
+      "prerequisite": "@ability.str.score >= 13",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "-@toggle.power_attack.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.power_attack')"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@toggle.power_attack.value * 2",
+          "bonusType": "untyped",
+          "condition": "active('toggle.power_attack')"
+        }
+      ]
+    },
+    {
+      "id": "power.power_attack_two_handed",
+      "type": "class_power",
+      "name": {
+        "en": "Power Attack Two Handed"
+      },
+      "effects": [
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive",
+          "condition": "active('toggle.power_attack')"
+        }
+      ]
+    },
+    {
+      "id": "power.rage",
+      "type": "class_power",
+      "name": {
+        "en": "Rage"
+      },
+      "usesPerDay": "1 + floor(level('class.barbarian') / 4)",
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "morale",
+          "condition": "active('toggle.rage')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "morale",
+          "condition": "active('toggle.rage')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.rage')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "bonusType": "untyped",
+          "condition": "active('toggle.rage')"
+        }
+      ]
+    },
+    {
+      "id": "item.greatsword",
+      "type": "item",
+      "name": {
+        "en": "Greatsword"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.barbarian",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0
+    },
+    {
+      "classId": "class.barbarian",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6
+    }
+  ],
+  "progressionRules": {
+    "epicAfterLevel": 20,
+    "epicPerLevel": {
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5
+    }
+  },
+  "relations": [
+    {
+      "from": "class.barbarian",
+      "relation": "grants",
+      "to": "power.rage",
+      "level": 1
+    },
+    {
+      "from": "feat.power_attack",
+      "relation": "grants",
+      "to": "power.power_attack_two_handed"
+    }
+  ]
+}

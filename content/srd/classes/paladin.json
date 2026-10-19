@@ -1,0 +1,706 @@
+{
+  "entities": [
+    {
+      "id": "class.paladin",
+      "type": "class",
+      "name": {
+        "fr": "Paladin",
+        "en": "Paladin"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Le paladin a prêté un serment, et ce serment le tient debout. Il marche en armure étincelante là où les autres reculent, frappe le mal là où il se cache et pose les mains sur les blessés pour les relever. Sa force ne vient pas de l’entraînement seul : elle vient de sa foi, et elle le quitte le jour où il la trahit. C’est un poids, qu’il porte avec fierté. Certains disent que c’est la classe la plus dure à jouer. Ses compagnons savent surtout que c’est la plus difficile à faire reculer.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : loyal bon, seulement.\n• Formé à toutes les armes courantes et de guerre, à toutes les armures et aux boucliers (sauf le pavois).\n• Code de conduite : respecter l’autorité légitime, agir avec honneur, aider ceux qui en ont besoin, punir ceux qui menacent les innocents ; ne fréquenter sciemment aucun personnage mauvais.\n• Un paladin qui commet volontairement un acte mauvais ou devient non loyal bon perd ses pouvoirs de paladin (et son destrier) jusqu’à sa pénitence ; il ne progresse plus dans la classe.\n• Multiclassage : s’il prend une autre classe, il ne peut plus revenir au paladin.\n• Sorts divins préparés, basés sur la Sagesse, du niveau 1 au niveau 4, à partir du niveau 4 ; niveau de lanceur : la moitié de son niveau de paladin.\n• Aptitudes : aura de Bien, détection du Mal et châtiment du Mal (1) ; grâce divine et imposition des mains (2) ; aura de bravoure et santé divine (3) ; renvoi des morts-vivants et sorts (4) ; destrier (5) ; guérison des maladies (6)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "effects": [
+        {
+          "target": "caster_level.paladin",
+          "op": "add",
+          "value": "if(level('class.paladin') >= 4, floor(level('class.paladin') / 2), 0) - level('class.paladin')"
+        },
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.paladin') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Code de conduite et multiclassage : seulement dans le texte."
+    },
+    {
+      "id": "power.paladin_aura_of_good",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de Bien",
+        "en": "Aura of good"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Ceux qui savent regarder voient autour du paladin une lumière que personne d’autre ne voit.\n\nEn jeu\n• Aura de Bien d’une puissance égale à son niveau de paladin, comme celle d’un prêtre d’un dieu bon (détection du Bien)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.paladin_detect_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Mal",
+        "en": "Detect evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Un sourire trop large, un regard qui fuit : le paladin n’a pas besoin d’indices. Il sent le mal comme on sent la fumée.\n\nEn jeu\n• À volonté, détection du Mal comme le sort, par une action de mouvement."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.paladin_smite_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment du Mal",
+        "en": "Smite evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Le paladin appelle sa foi dans son arme, et le coup qui tombe sur l’ennemi porte tout le poids de son serment.\n\nEn jeu\n• Une fois par jour au niveau 1, puis une fois de plus aux niveaux 5, 10, 15 et 20.\n• Contre une créature mauvaise, ajoute son bonus de Charisme (s’il est positif) au jet d’attaque et son niveau de paladin aux dégâts.\n• Si la cible n’est pas mauvaise, le châtiment est perdu sans effet."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.paladin_smite_evil')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.paladin')",
+          "condition": "active('toggle.paladin_smite_evil')"
+        }
+      ],
+      "usesPerDay": "1 + floor(level('class.paladin') / 5)"
+    },
+    {
+      "id": "power.paladin_divine_grace",
+      "type": "class_power",
+      "name": {
+        "fr": "Grâce divine",
+        "en": "Divine grace"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "La chance n’existe pas pour le paladin : il y a la grâce, et elle le protège.\n\nEn jeu\n• Ajoute son bonus de Charisme (s’il est positif) à tous ses jets de sauvegarde."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.paladin_lay_on_hands",
+      "type": "class_power",
+      "name": {
+        "fr": "Imposition des mains",
+        "en": "Lay on hands"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Une main sur l’épaule du blessé, une prière murmurée, et la chair se referme.\n\nEn jeu\n• Chaque jour, peut soigner un total de points de vie égal à son niveau de paladin × son bonus de Charisme, répartis comme il veut.\n• Soigner est une action simple ; sur lui-même aussi.\n• Peut aussi blesser un mort-vivant : attaque de contact au corps à corps, sans attaque d’opportunité, sans jet de sauvegarde."
+      },
+      "effects": [
+        {
+          "target": "lay_on_hands.hp",
+          "op": "add",
+          "value": "level('class.paladin') * max(0, @ability.cha.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.paladin_aura_of_courage",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de bravoure",
+        "en": "Aura of courage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Là où il se tient, la peur recule. Ses compagnons le sentent et serrent les rangs.\n\nEn jeu\n• Immunisé contre la terreur, magique ou non.\n• Ses alliés à 3 m ou moins gagnent +4 aux jets de sauvegarde contre la terreur, tant qu’il est conscient."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "situation": "situation.vs_fear"
+        }
+      ],
+      "note": "Immunité contre la terreur : pas encore dans le modèle ; le +4 des alliés est montré sur sa propre fiche."
+    },
+    {
+      "id": "power.paladin_divine_health",
+      "type": "class_power",
+      "name": {
+        "fr": "Santé divine",
+        "en": "Divine health"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Le paladin traverse les villages en quarantaine sans craindre de les quitter malade.\n\nEn jeu\n• Immunisé contre toutes les maladies, magiques et surnaturelles comprises (lycanthropie, momie…)."
+      },
+      "effects": [],
+      "note": "Immunité : pas encore dans le modèle."
+    },
+    {
+      "id": "power.paladin_turn_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Renvoi des morts-vivants",
+        "en": "Turn undead"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Le paladin brandit son symbole sacré, et ce qui aurait dû rester dans la tombe recule.\n\nEn jeu\n• Renvoie les morts-vivants comme un prêtre de 3 niveaux de moins que son niveau de paladin.\n• Utilisations par jour : 3 + modificateur de Charisme."
+      },
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": "level('class.paladin') - 3"
+        }
+      ],
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "power.paladin_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de paladin",
+        "en": "Paladin spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Sa prière quotidienne finit par porter des fruits : quelques sorts, modestes mais précieux, pour soigner, protéger et frapper juste.\n\nEn jeu\n• Sorts divins de la liste du paladin, du niveau 1 au niveau 4, préparés chaque jour.\n• Caractéristique : Sagesse. Il faut au moins 10 + niveau du sort en Sagesse pour le préparer ou le lancer. DD : 10 + niveau du sort + modificateur de Sagesse.\n• Sorts par jour selon le niveau de paladin ; un « 0 » dans la table veut dire seulement les sorts en bonus d’une Sagesse élevée.\n• Niveau de lanceur : la moitié de son niveau de paladin."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.paladin_special_mount",
+      "type": "class_power",
+      "name": {
+        "fr": "Destrier",
+        "en": "Special mount"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Un jour, un cheval vient à lui. Plus fort, plus intelligent, plus brave que n’importe quel autre : un compagnon envoyé par les cieux.\n\nEn jeu\n• Une fois par jour, par une action complexe, appelle son destrier céleste (cheval lourd ou poney de guerre) pour 2 heures par niveau de paladin.\n• Le destrier gagne des DV, de l’armure naturelle, de la Force et de l’Intelligence avec le niveau du paladin, et des pouvoirs : lien, esquive extraordinaire, transfert d’effet magique et de jet de sauvegarde (5) ; vitesse supérieure (8) ; commandement des chevaux (11) ; résistance à la magie (15).\n• S’il meurt, un nouveau destrier ne vient qu’après 30 jours ou un niveau de paladin ; jusque-là le paladin a −1 aux jets d’attaque et de dégâts."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.paladin_remove_disease",
+      "type": "class_power",
+      "name": {
+        "fr": "Guérison des maladies",
+        "en": "Remove disease"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "paladin"
+      ],
+      "description": {
+        "fr": "Le paladin pose sa main sur le front brûlant, et la fièvre s’en va.\n\nEn jeu\n• Guérison des maladies comme le sort : 1 fois par semaine au niveau 6, puis une de plus aux niveaux 9, 12, 15 et 18."
+      },
+      "effects": [
+        {
+          "target": "remove_disease.uses_per_week",
+          "op": "add",
+          "value": "floor(level('class.paladin') / 3) - 1"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.paladin",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.paladin_aura_of_good",
+        "power.paladin_detect_evil",
+        "power.paladin_smite_evil"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.paladin_divine_grace",
+        "power.paladin_lay_on_hands"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.paladin_aura_of_courage",
+        "power.paladin_divine_health"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.paladin_turn_undead",
+        "power.paladin_spells"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.paladin_special_mount"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.paladin_remove_disease"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.paladin",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.paladin",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    }
+  ]
+}

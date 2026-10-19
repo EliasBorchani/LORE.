@@ -1,0 +1,57 @@
+{
+  "id": "char.stacking",
+  "name": "Stacking",
+  "xp": 0,
+  "baseAbilities": {
+    "str": 10,
+    "dex": 10,
+    "con": 10,
+    "int": 10,
+    "wis": 10,
+    "cha": 10
+  },
+  "levels": [
+    {
+      "level": 1,
+      "classId": "class.fighter",
+      "classLevel": 1,
+      "feats": [
+        {
+          "id": "feat.a"
+        },
+        {
+          "id": "feat.b"
+        },
+        {
+          "id": "feat.curse"
+        },
+        {
+          "id": "feat.curse_again"
+        },
+        {
+          "id": "feat.dodge"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item.cloak_a",
+      "equipped": true
+    },
+    {
+      "id": "item.cloak_b",
+      "equipped": true
+    }
+  ],
+  "activeToggles": [
+    {
+      "toggle": "toggle.bless",
+      "spell": "spell.bless"
+    },
+    {
+      "toggle": "toggle.bless_again",
+      "spell": "spell.bless"
+    }
+  ]
+}

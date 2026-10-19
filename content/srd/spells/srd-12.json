@@ -1,0 +1,651 @@
+{
+  "entities": [
+    {
+      "id": "spell.chain_lightning",
+      "type": "spell",
+      "name": {
+        "fr": "Eclair multiple",
+        "en": "Chain Lightning"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un premier trait aveuglant frappe, puis se ramifie d’ennemi en ennemi comme une racine de feu blanc. Les alliés, eux, sont soigneusement contournés.\n\nEn jeu\n• Cible principale : 1d6 dégâts d’électricité par niveau de lanceur (20d6 au plus).\n• Puis jusqu’à 1 cible secondaire par niveau (20 au plus), toutes à 9 m au plus de la première : chacune subit la moitié des dés de la cible principale (arrondi à l’inférieur).\n• Jet de Réflexes pour la moitié des dégâts, pour chaque cible.\n• Le lanceur choisit les cibles secondaires et peut en épargner ; aucune créature n’est frappée deux fois."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "1 cible principale + 1 cible secondaire/niveau (à 9 m au plus de la principale)",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 20))d6 electricity",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.screen",
+      "type": "spell",
+      "name": {
+        "fr": "Ecran",
+        "en": "Screen"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le décor ment en silence : sous un voile parfait, tout semble paisible, ordinaire, ennuyeux même. Ce qui s’y trame vraiment reste invisible aux curieux comme aux boules de cristal.\n\nEn jeu\n• Le lanceur fixe à l’incantation ce que les observateurs verront et entendront dans la zone (sons compris) ; rien ne peut être changé ensuite.\n• La scène reste simple : pas de scénario détaillé ni de réactions aux événements.\n• La scrutation magique voit toujours la fausse scène, sans jet de sauvegarde.\n• Un observateur direct n’a droit à un jet de Volonté que s’il interagit avec l’illusion ou a une bonne raison d’en douter ; entrer dans la zone ne suffit pas toujours.\n• Zone : 1 cube de 9 m d’arête par niveau, modelable ; dure 24 heures."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "1 cube de 9 m d’arête/niveau (modelable)",
+        "duration": "24 heures",
+        "savingThrow": "aucun ou Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.erase",
+      "type": "spell",
+      "name": {
+        "fr": "Effacement",
+        "en": "Erase"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un geste de la main et l’encre s’efface, page après page. Même un piège runique peut disparaître… si le lanceur ne tremble pas.\n\nEn jeu\n• Efface l’écriture d’un parchemin magique ou de deux pages ; les symboles et textes illusoires ne sont pas touchés.\n• Écrit ordinaire : effacé d’office si le lanceur est seul à le tenir, sinon 90 % de chances.\n• Écrit magique (à toucher) : test de niveau de lanceur DD 15 (1d20 + niveau) ; un 1 ou un 2 naturel échoue toujours.\n• Rater sur des runes explosives, un glyphe de garde ou un sceau du serpent les déclenche."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 parchemin ou 2 pages",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.scare",
+      "type": "spell",
+      "name": {
+        "fr": "Effroi",
+        "en": "Scare"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un éclat d’os brisé, un murmure glacé, et plusieurs ennemis voient soudain leur propre mort. Les plus aguerris, eux, tiennent bon.\n\nEn jeu\n• Comme Frayeur, mais sur 1 créature vivante par tranche de 3 niveaux, toutes à 9 m au plus les unes des autres.\n• Seules les créatures de moins de 6 DV sont affectées.\n• Échec au jet de Volonté : effrayée pendant 1 round par niveau. Réussite : secouée pendant 1 round."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante/3 niveaux, toutes à 9 m au plus les unes des autres",
+        "duration": "1 round/niveau ou 1 round (voir description)",
+        "savingThrow": "Volonté, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.repel_wood",
+      "type": "spell",
+      "name": {
+        "fr": "Eloignement du bois",
+        "en": "Repel Wood"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une vague invisible balaie le terrain et tout ce qui est en bois recule : flèches, boucliers, lances… et parfois leurs porteurs avec.\n\nEn jeu\n• Ligne de 18 m partant du lanceur ; tout objet en bois dans la ligne est repoussé de 12 m par round jusqu’au bout de la zone.\n• Les objets fixés de plus de 7,5 cm de diamètre résistent ; les plus fins se brisent et leurs éclats sont repoussés. Une lance plantée pour bloquer se brise.\n• Une arme ou un bouclier en bois entraîne son porteur ; lâcher l’objet est libre, sauf un bouclier (action de mouvement).\n• Les objets magiques sont aussi repoussés ; une zone d’antimagie bloque l’effet.\n• Le lanceur peut agir et se déplacer librement ; dure 1 minute par niveau (T)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "ligne de 18 m partant du lanceur",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.repel_metal_or_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Eloignement du métal et de la pierre",
+        "en": "Repel Metal or Stone"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "La terre elle-même rejette le fer et le roc : épées, armures et rochers glissent en arrière comme poussés par un vent puissant.\n\nEn jeu\n• Ligne de 18 m partant du lanceur ; tout objet en métal ou en pierre est repoussé de 12 m par round jusqu’au bout de la zone.\n• Résistent : les objets fixés de plus de 7,5 cm de diamètre et ceux de plus de 250 kg ; les objets fixés plus fins plient ou cassent.\n• Une armure ou une arme en métal entraîne son porteur ; les créatures animées de pierre ou de métal et les petits rochers sont repoussés aussi.\n• Les objets magiques ne sont pas protégés ; une zone d’antimagie bloque l’effet.\n• Le lanceur peut agir et se déplacer librement. Dure 1 round par niveau (T)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "ligne de 18 m partant du lanceur",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.command_plants",
+      "type": "spell",
+      "name": {
+        "fr": "Empire végétal",
+        "en": "Command Plants"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les lianes cessent de serrer, le tréant baisse ses branches : les plantes voient soudain le lanceur comme un vieil ami.\n\nEn jeu\n• Affecte jusqu’à 2 DV par niveau de créatures végétales, toutes à 9 m au plus les unes des autres (Volonté, annule).\n• Elles comprennent le lanceur et leur attitude devient amicale : elles ne l’attaquent pas.\n• Pour leur faire faire ce qu’elles refusent, test de Charisme opposé (une seule tentative) ; jamais d’ordre suicidaire ou nuisible (comme Charme-personne).\n• Dure 1 jour par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 2 DV/niveau de créatures végétales, toutes à 9 m au plus les unes des autres",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.poison",
+      "type": "spell",
+      "name": {
+        "fr": "Empoisonnement",
+        "en": "Poison"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une main qui suinte un venin noir, un simple contact, et le sang de la victime s’épaissit.\n\nEn jeu\n• Attaque de contact au corps à corps.\n• 1d10 points d’affaiblissement temporaire de Constitution tout de suite, puis 1d10 de plus 1 minute plus tard.\n• Chaque dose est annulée par un jet de Vigueur réussi (DD 10 + moitié du niveau de lanceur + modificateur de Sagesse du lanceur)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "instantanée (voir description)",
+        "savingThrow": "Vigueur, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.imprisonment",
+      "type": "spell",
+      "name": {
+        "fr": "Emprisonnement",
+        "en": "Imprisonment"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "D’un geste, la victime disparaît, figée dans une bulle loin sous la terre, hors du temps. Seul un sort précis peut l’en tirer.\n\nEn jeu\n• Attaque de contact ; jet de Volonté pour annuler.\n• La cible est placée en animation suspendue dans une petite sphère au cœur de la terre, jusqu’à ce que Délivrance soit lancé là où elle a disparu.\n• Malus de −4 au jet de sauvegarde si le lanceur connaît son nom et quelques faits de sa vie.\n• Souhait et Miracle ne la libèrent pas mais révèlent où elle est ; Localisation suprême la trouve, pas la scrutation ni Localisation d’objet."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.entangle",
+      "type": "spell",
+      "name": {
+        "fr": "Enchevêtrement",
+        "en": "Entangle"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "L’herbe se tord, les racines jaillissent, les ronces s’enroulent aux chevilles : toute la prairie se change en piège vivant.\n\nEn jeu\n• Toute la végétation dans un rayon de 12 m attrape les créatures dans la zone ou qui y entrent.\n• Échec au jet de Réflexes : enchevêtrée (−2 à l’attaque, −4 en Dextérité) et immobilisée. Réussite : se déplace à demi-vitesse dans la zone.\n• Se libérer : test de Force ou d’Évasion DD 20 (action complexe), puis déplacement à demi-vitesse.\n• Nouveau jet de Réflexes chaque round pour ceux qui s’étaient échappés. Dure 1 minute par niveau (T)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "toute la végétation dans un rayon de 12 m",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Réflexes, partiel (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.area.radius",
+          "op": "add",
+          "value": 12,
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.endure_elements",
+      "type": "spell",
+      "name": {
+        "fr": "Endurance aux énergies destructives",
+        "en": "Endure Elements"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une fine pellicule de confort enveloppe le voyageur : la canicule du désert comme le blizzard des cols ne le touchent plus.\n\nEn jeu\n• La créature touchée et son équipement supportent sans jet de Vigueur des températures de −45 °C à +60 °C.\n• Ne protège pas des dégâts de feu ou de froid, ni de la fumée, du manque d’air ou d’autres dangers.\n• Dure 24 heures."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "24 heures",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bears_endurance",
+      "type": "spell",
+      "name": {
+        "fr": "Endurance de l'ours",
+        "en": "Bear's Endurance"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La vigueur sauvage de l’ours coule dans les veines : le souffle s’allonge, les plaies semblent moins profondes.\n\nEn jeu\n• +4 d’altération en Constitution pendant 1 minute par niveau.\n• Les points de vie gagnés ne sont pas temporaires : ils partent quand le sort finit, mais ne sont pas perdus en premier.\n• Les jets de Vigueur et les tests de Constitution suivent."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.bears_endurance')",
+          "status": "draft",
+          "note": "×4 avec Superspell = 16"
+        }
+      ],
+      "status": "draft",
+      "note": "16 sur la fiche = +4 × 4 (Superspell)."
+    },
+    {
+      "id": "spell.mass_bears_endurance",
+      "type": "spell",
+      "name": {
+        "fr": "Endurance de l'ours de groupe",
+        "en": "Bear's Endurance, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La robustesse de l’ours se répand sur tout un groupe : les épaules se carrent, les souffles s’allongent.\n\nEn jeu\n• Comme Endurance de l’ours, mais sur 1 créature par niveau, toutes à 9 m au plus les unes des autres.\n• +4 d’altération en Constitution pendant 1 minute par niveau (points de vie et jets de Vigueur suivent)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.mass_bears_endurance')"
+        }
+      ]
+    },
+    {
+      "id": "spell.enervation",
+      "type": "spell",
+      "name": {
+        "fr": "Energie négative",
+        "en": "Enervation"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un trait d’ombre file vers la cible et mord directement dans son souffle vital. Les vivants s’affaiblissent ; les morts-vivants, eux, s’en régalent.\n\nEn jeu\n• Attaque de contact à distance : la cible gagne 1d4 niveaux négatifs ; si elle en a autant que de DV, elle meurt.\n• Chaque niveau négatif : −1 aux attaques, jets de sauvegarde, tests de caractéristique et de compétence, et au niveau effectif ; un lanceur perd un sort ou emplacement de son plus haut niveau.\n• Les niveaux négatifs se cumulent ; ils disparaissent au bout de 1 heure par niveau de lanceur (15 heures au plus), sans jamais coûter de vrai niveau.\n• Sur un mort-vivant : 1d4 × 5 points de vie temporaires pendant 1 heure."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon d’énergie négative",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.weird",
+      "type": "spell",
+      "name": {
+        "fr": "Ennemi subconscient",
+        "en": "Weird"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Chaque ennemi affronte sa propre peur, taillée pour lui seul. Autour d’eux, les spectateurs ne voient que des silhouettes troubles qui fondent sur leurs proies.\n\nEn jeu\n• Comme Assassin imaginaire, mais sur autant de créatures que voulu, toutes à 9 m au plus les unes des autres.\n• Jet de Volonté pour percer l’illusion ; en cas d’échec, jet de Vigueur : échec = mort.\n• Vigueur réussie : 3d6 dégâts, étourdie 1 round et 1d4 points d’affaiblissement temporaire de Force."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "fantasme",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "nombre quelconque de créatures, toutes à 9 m au plus les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, dévoile, puis Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.binding",
+      "type": "spell",
+      "name": {
+        "fr": "Entrave",
+        "en": "Binding"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Chaînes de lumière, sommeil sans fin, prison minuscule : un rituel long et coûteux pour enfermer une créature que l’on ne peut ni vaincre ni laisser libre.\n\nEn jeu\n• La cible n’a droit à un jet de Volonté que si ses DV atteignent au moins la moitié du niveau de lanceur (assistants compris).\n• Jusqu’à 6 assistants : +1 niveau de lanceur par Suggestion lancée, + un tiers de leur niveau par Domination (personne, animal ou universelle).\n• Formes au choix : chaînes (1 an par niveau, avec effet d’aversion), sommeil (1 an par niveau), sommeil enchaîné (1 mois par niveau), prison protégée, métamorphose, emprisonnement miniature (ces trois dernières sans limite de durée).\n• Plus la forme est contraignante, plus il est facile d’y résister.\n• Le lanceur peut lever l’entrave quand il veut et fixer des conditions de libération (observables, jamais niveau, classe ou DV) ; une condition donne +2 au DD si un jet est permis.\n• Relancer une forme à durée limitée allonge la peine, mais la cible a un jet de Volonté à la fin de la première durée ; s’il réussit, tout cède.\n• Composante matérielle : opales d’au moins 500 po par DV de la cible."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 minute",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "voir description (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mages_sword",
+      "type": "spell",
+      "name": {
+        "fr": "Epée de force",
+        "en": "Mage's Sword"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une lame de lumière pure apparaît dans l’air et se bat seule, frappant même les fantômes. Elle ne craint ni l’acier ni les coups.\n\nEn jeu\n• Une épée de force attaque une cible à portée chaque round, dès le round du sort ; changer de cible : action simple.\n• Bonus d’attaque : niveau de lanceur + modificateur d’Int ou de Cha + 3 d’altération ; touche les créatures intangibles et éthérées.\n• Dégâts : 4d6 + 3 de force, critique 19–20/×2. Ne prend jamais en tenaille.\n• Résistance à la magie testée au premier coup : si elle tient, l’épée disparaît.\n• CA 13 ; immunisée aux attaques physiques mais détruite par Dissipation de la magie, Désintégration, etc.\n• Dure 1 round par niveau (T) ; revient près du lanceur si elle sort de portée ou de sa vue."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 épée",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "4d6 force",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": 3,
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.holy_sword",
+      "type": "spell",
+      "name": {
+        "fr": "Epée sainte",
+        "en": "Holy Sword"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "La lame s’embrase d’une lumière dorée et chaque coup porte la colère du ciel. Autour du porteur, le Mal recule.\n\nEn jeu\n• L’arme de corps à corps touchée devient une arme sainte +5 : +5 d’altération à l’attaque et aux dégâts, +2d6 contre les créatures mauvaises.\n• Elle émet un cercle magique contre le Mal, recréé par une action libre s’il disparaît.\n• Remplace le bonus et les pouvoirs d’une arme magique ; ne se cumule pas avec Bénédiction d’arme ni autre sort sur l’arme ; sans effet sur un artefact.\n• Une seule épée sainte à la fois ; s’arrête 1 round après que l’arme quitte la main. Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "bien"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "effect": "arme de corps à corps touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.good_hope",
+      "type": "spell",
+      "name": {
+        "fr": "Espoir",
+        "en": "Good Hope"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Quelques mots portés haut, et les cœurs se relèvent. Chacun se bat soudain comme si la victoire était déjà écrite.\n\nEn jeu\n• 1 créature vivante par niveau, toutes à 9 m au plus les unes des autres.\n• +2 de moral aux jets de sauvegarde, aux jets d’attaque, aux tests de caractéristique et de compétence, et aux dégâts des armes.\n• Contre et dissipe Désespoir foudroyant. Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante/niveau, toutes à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.good_hope')"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.good_hope')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.good_hope')"
+        }
+      ]
+    },
+    {
+      "id": "spell.mind_blank",
+      "type": "spell",
+      "name": {
+        "fr": "Esprit impénétrable",
+        "en": "Mind Blank"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un voile parfait tombe sur l’esprit : ni lecture, ni charme, ni œil lointain ne trouvent la moindre prise.\n\nEn jeu\n• Immunité aux effets mentaux et à tout ce qui détecte ou lit pensées et émotions.\n• Immunité aux divinations qui cherchent des informations sur la créature ; la scrutation qui la vise échoue, celle d’une zone ne la voit pas.\n• Bloque même Souhait, Souhait limité et Miracle utilisés pour atteindre son esprit ou la localiser.\n• Dure 24 heures."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "24 heures",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    }
+  ]
+}

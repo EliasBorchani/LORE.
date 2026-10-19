@@ -1,0 +1,446 @@
+{
+  "entities": [
+    {
+      "id": "spell.mnemonic_enhancer",
+      "type": "spell",
+      "name": { "fr": "Mémorisation", "en": "Mnemonic Enhancer" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Dix minutes de concentration, un fil noué autour du doigt, et l’esprit trouve encore de la place pour quelques formules de plus.\n\nEn jeu\n• Au choix, préparer 3 niveaux de sorts en plus (un sort de niveau 0 compte pour ½ niveau), préparés et lancés normalement.\n• Ou bien retrouver un sort de niveau 3 au plus, lancé 1 round avant mémorisation, comme s’il n’avait pas été lancé.\n• Les sorts gagnés ainsi s’effacent s’ils ne sont pas lancés dans les 24 heures.\n• Focaliseur : une plaque d’ivoire d’au moins 50 po."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M, F",
+        "castingTime": "10 minutes",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.message",
+      "type": "spell",
+      "name": { "fr": "Message", "en": "Message" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Un murmure qui traverse la salle et n’arrive qu’aux bonnes oreilles. Les complots n’ont jamais été aussi discrets.\n\nEn jeu\n• Le lanceur désigne 1 créature par niveau ; il leur parle à voix basse à distance, elles répondent de même, les autres n’entendent rien.\n• Le murmure peut contourner les obstacles tant que le trajet reste dans la portée.\n• Bloqué par le silence magique, 30 cm de pierre, 2,5 cm de métal, une feuille de plomb ou 90 cm de bois ou de terre.\n• Transmet les sons, pas le sens : aucune aide pour les langues. On peut lire le murmure sur les lèvres."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature/niveau",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non",
+        "descriptors": ["langage"]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animal_messenger",
+      "type": "spell",
+      "name": { "fr": "Messager animal", "en": "Animal Messenger" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Une miette tendue, un écureuil qui s’approche, et voilà un facteur à quatre pattes qui file vers l’horizon, une lettre nouée au cou.\n\nEn jeu\n• Attire un animal Très Petit, sauvage (ni dressé, ni familier, ni compagnon) avec un peu de sa nourriture favorite.\n• Le lanceur lui montre un lieu qu’il connaît bien ou un repère bien visible ; l’animal y va avec un message ou un petit objet.\n• Arrivé, l’animal attend sur place jusqu’à la fin du sort (1 jour par niveau) et se laisse approcher.\n• Le destinataire n’a aucun moyen spécial de comprendre l’animal ni de lire le message."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 animal de taille TP",
+        "duration": "1 jour/niveau",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.heat_metal",
+      "type": "spell",
+      "name": { "fr": "Métal brûlant", "en": "Heat Metal" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "L’armure rougeoie, l’épée fume dans le poing. Le chevalier découvre que le plus dangereux sur le champ de bataille, c’est son propre acier.\n\nEn jeu\n• Chauffe le métal de 1 créature par 2 niveaux (à 9 m au plus les unes des autres) ou 12,5 kg de métal par niveau dans un cercle de 9 m de rayon.\n• Dégâts de feu par round : 1 et 7 = rien ; 2 et 6 = 1d4 ; 3, 4 et 5 = 2d4.\n• Pleins dégâts si l’armure est touchée ou si le métal porté pèse au moins 1/5 de la créature ; sinon, dégâts minimaux (1 ou 2).\n• Volonté annule (objet) ; le métal non magique ni porté ni tenu n’a pas de jet.\n• Un froid assez fort pour blesser la créature annule les dégâts de feu point pour point (et inversement).\n• Sous l’eau : moitié des dégâts, et l’eau autour se met à bouillir.\n• Contre et dissipe métal gelé."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": ["feu"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "équipement métallique de 1 créature/2 niveaux, ou 12,5 kg de métal/niveau",
+        "duration": "7 rounds",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "2d4 fire", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.chill_metal",
+      "type": "spell",
+      "name": { "fr": "Métal gelé", "en": "Chill Metal" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le givre court sur les mailles, les gantelets collent à la peau. Garder son armure devient un supplice glacé.\n\nEn jeu\n• Refroidit le métal de 1 créature par 2 niveaux (à 9 m au plus les unes des autres) ou 12,5 kg de métal par niveau dans un cercle de 9 m de rayon.\n• Dégâts de froid par round : 1 et 7 = rien ; 2 et 6 = 1d4 ; 3, 4 et 5 = 2d4.\n• Pleins dégâts si l’armure est touchée ou si le métal porté pèse au moins 1/5 de la créature ; sinon, dégâts minimaux (1 ou 2).\n• Volonté annule (objet) ; le métal non magique ni porté ni tenu n’a pas de jet.\n• Une chaleur assez forte pour blesser la créature annule les dégâts de froid point pour point (et inversement).\n• Sous l’eau : aucun dégât, mais une gangue de glace se forme et pousse la victime vers la surface.\n• Contre et dissipe métal brûlant."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": ["froid"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "équipement métallique de 1 créature/2 niveaux, ou 12,5 kg de métal/niveau",
+        "duration": "7 rounds",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "2d4 cold", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.polymorph",
+      "type": "spell",
+      "name": { "fr": "Métamorphose", "en": "Polymorph" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "La peau se couvre d’écailles, les os s’allongent, et l’allié consentant se relève sous une forme toute neuve, prêt à mordre.\n\nEn jeu\n• Une créature vivante et consentante prend la forme d’une autre créature vivante : de son type, ou aberration, animal, créature magique, dragon, fée, géant, humanoïde, humanoïde monstrueux, plante, vase ou vermine.\n• DV de la forme : au plus le niveau de lanceur (ou les DV du sujet si plus haut), 15 DV au maximum ; pas plus petit que Infime, ni intangible, ni gazeux.\n• Le sujet prend la For, la Dex et la Con de la forme, ses armes naturelles, son armure naturelle, ses déplacements et ses attaques spéciales extraordinaires ; il garde Int, Sag, Cha, points de vie, BBA et sauvegardes de base.\n• Il récupère des points de vie comme après une nuit de repos, au moment de la transformation.\n• Le sujet prend le type de la forme ; à sa mort, il retrouve sa vraie forme.\n• Sans effet sur les créatures intangibles ou gazeuses ; un métamorphe peut reprendre sa forme par une action simple."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante et consentante touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animal_shapes",
+      "type": "spell",
+      "name": { "fr": "Métamorphose animale", "en": "Animal Shapes" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Un geste vers la forêt, et la troupe entière se change en meute de loups ou en volée de faucons. Personne ne remarquera des voyageurs qui n’existent plus.\n\nEn jeu\n• Jusqu’à 1 créature consentante par niveau (à 9 m au plus les unes des autres) prend la même forme animale, choisie par le lanceur.\n• Fonctionne comme métamorphose, mais seulement vers un animal ; DV au plus égaux au plus bas entre les DV du sujet et le niveau de lanceur, 20 DV au maximum.\n• Chaque sujet peut reprendre sa forme par une action complexe ; le sort continue pour les autres.\n• Durée : 1 heure par niveau ; sans effet sur une créature qui refuse."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 1 créature consentante/niveau, à 9 m au plus les unes des autres",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.baleful_polymorph",
+      "type": "spell",
+      "name": { "fr": "Métamorphose funeste", "en": "Baleful Polymorph" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Un mot cinglant, et le seigneur arrogant coasse au fond de ses bottes. Le crapaud, lui, se souvient peut-être encore de qui il était.\n\nEn jeu\n• Change la cible en animal de taille P ou moins, de 1 DV au plus, de façon permanente ; Vigueur annule.\n• +4 au jet de Vigueur si la nouvelle forme serait mortelle (poisson hors de l’eau, par exemple).\n• Si la Vigueur échoue, jet de Volonté : en cas d’échec, la cible perd ses pouvoirs extraordinaires, surnaturels et magiques et ses sorts, et prend l’Int, la Sag, le Cha et l’alignement de l’animal.\n• Elle garde classe, niveau, points de vie, BBA et sauvegardes de base.\n• Sans effet sur les créatures intangibles ou gazeuses ; un métamorphe peut reprendre sa forme par une action simple."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "permanente",
+        "savingThrow": "Vigueur, annule ; Volonté, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.polymorph_any_object",
+      "type": "spell",
+      "name": { "fr": "Métamorphose universelle", "en": "Polymorph Any Object" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le caillou devient soldat, la chaise devient loup, l’ennemi devient tapis. La matière n’a plus d’avis sur ce qu’elle doit être.\n\nEn jeu\n• Comme métamorphose, mais transforme aussi un objet non magique (environ 2,8 m³ par niveau), ou une créature en objet et inversement.\n• Durée selon le facteur d’écart : même règne +5, même classe +2, parenté proche +2, même taille +2, Int égale ou plus basse +2 ; total 0 = 20 min, 2 = 1 h, 4 = 3 h, 5 = 12 h, 6 = 2 jours, 7 = 1 semaine, 9+ = permanent.\n• La cible prend l’Int de sa nouvelle forme ; Volonté annule.\n• Ne crée pas de matière précieuse, ne rend rien magique, n’affecte pas les objets magiques.\n• Peut reproduire métamorphose, pétrification, transmutation de la pierre en chair et sorts du même genre."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature ou 1 objet non magique (jusqu’à 2,8 m³/niveau)",
+        "duration": "voir description",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.miracle",
+      "type": "spell",
+      "name": { "fr": "Miracle", "en": "Miracle" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "On ne lance pas un miracle, on le demande. Et parfois, la réponse descend du ciel avec une force que rien ne peut contredire.\n\nEn jeu\n• Reproduit un sort divin du lanceur jusqu’au niveau 8 (domaines compris), ou tout autre sort jusqu’au niveau 7.\n• Peut aussi lever des effets néfastes comme débilité ou aliénation mentale, ou produire un effet de puissance équivalente.\n• Une faveur majeure (ramener les alliés tombés jusqu’à la fin du combat, transporter le groupe sans erreur vers un autre plan, protéger une ville d’une catastrophe) coûte 5 000 PX.\n• Sort reproduit : sauvegardes et résistance à la magie normales, DD d’un sort de niveau 9 ; coût en PX et composantes de plus de 100 po du sort reproduit restent dus.\n• Une demande contraire à la nature ou à l’alignement de la divinité est refusée."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, PX (voir description)",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "target": "voir description",
+        "duration": "voir description",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mirage_arcana",
+      "type": "spell",
+      "name": { "fr": "Mirage", "en": "Mirage Arcana" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Le marais devient prairie, la ruine devient palais, avec l’odeur des fleurs et le grincement des portes. Tout est faux, sauf les gens qui s’y promènent.\n\nEn jeu\n• Fait passer une zone (un cube de 6 m d’arête par niveau) pour un autre lieu, avec images, sons, odeurs et toucher.\n• Comme terrain hallucinatoire, mais peut aussi changer, cacher ou ajouter des bâtiments.\n• Ne déguise, ne cache ni n’ajoute aucune créature.\n• Durée : concentration + 1 heure par niveau ; Volonté pour dévoiler l’illusion en interagissant avec elle."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "1 cube de 6 m d’arête/niveau (F)",
+        "duration": "concentration + 1 heure/niveau (T)",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.harm",
+      "type": "spell",
+      "name": { "fr": "Mise à mal", "en": "Harm" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Une paume posée sur le torse, et un flot d’énergie noire vide la cible de sa vie. Les morts-vivants, eux, s’en trouvent revigorés.\n\nEn jeu\n• Inflige 10 points de dégâts d’énergie négative par niveau de lanceur (150 au plus, au niveau 15) par une attaque de contact.\n• Volonté réussie : moitié des dégâts, et le sort ne peut pas faire descendre la cible sous 1 point de vie.\n• Sur un mort-vivant, agit comme guérison suprême (soigne au lieu de blesser)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "add", "value": "10 * min(@spell.caster_level, 15)", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.death_knell",
+      "type": "spell",
+      "name": { "fr": "Mise à mort", "en": "Death Knell" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Un dernier souffle cueilli au bord du gouffre. La victime s’éteint, et sa force passe dans les veines du lanceur.\n\nEn jeu\n• Ne marche que sur une créature vivante à –1 point de vie ou moins ; Volonté annule.\n• En cas d’échec, elle meurt ; le lanceur gagne 1d8 points de vie temporaires, +2 en Force et +1 niveau de lanceur (sans sorts supplémentaires).\n• Ces bonus durent 10 minutes par DV de la créature tuée."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": ["Mal", "mort"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "instantanée/10 minutes par DV de la cible",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "ability.str.score", "op": "add", "value": 2, "condition": "active('toggle.death_knell')" }
+      ]
+    },
+    {
+      "id": "spell.lesser_geas",
+      "type": "spell",
+      "name": { "fr": "Mission", "en": "Geas, Lesser" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Un ordre prononcé d’une voix qui ne souffre pas de réplique. La cible part en mission, et chaque jour de désobéissance lui ronge le corps.\n\nEn jeu\n• Impose une tâche (ou un interdit) à une créature vivante de 7 DV au plus qui comprend le lanceur ; Volonté annule.\n• Pas d’ordre suicidaire ; la cible suit l’ordre à la lettre et peut le détourner si elle est maligne.\n• Dure jusqu’à la tâche accomplie, ou 1 jour par niveau pour un ordre sans fin (« garde cette porte »).\n• Chaque jour entier sans pouvoir agir pour la mission : –2 à toutes les caractéristiques, jusqu’à –8 (jamais sous 1) ; la pénalité part 1 jour après la reprise.\n• Levé par annulation d’enchantement, délivrance des malédictions, souhait limité, souhait ou miracle ; dissipation de la magie est sans effet."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["langage", "mental"],
+        "components": "V",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante de 7 DV ou moins",
+        "duration": "1 jour/niveau ou jusqu’à accomplissement (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.alter_self",
+      "type": "spell",
+      "name": { "fr": "Modification d'apparence", "en": "Alter Self" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le visage coule comme de la cire, les épaules s’élargissent ou s’affinent. Le lanceur devient quelqu’un d’autre de son espèce, ou presque.\n\nEn jeu\n• Le lanceur prend la forme d’une créature de son type, d’au plus une catégorie de taille d’écart, de DV au plus égaux à son niveau de lanceur (5 DV au maximum).\n• Il garde caractéristiques, points de vie, BBA, sauvegardes, classe et pouvoirs, et ses sorts s’il peut parler et manipuler.\n• Il gagne l’armure naturelle, les armes naturelles et les modes de déplacement de la forme (vol 36 m au plus, autres déplacements 18 m au plus), ses bonus raciaux de compétence et ses dons raciaux, mais pas ses pouvoirs spéciaux.\n• +10 au test de Déguisement pour se faire passer pour un autre.\n• Durée : 10 minutes par niveau ; fin volontaire possible."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        { "target": "skill.disguise", "op": "add", "value": 10, "condition": "active('toggle.alter_self')" }
+      ]
+    },
+    {
+      "id": "spell.modify_memory",
+      "type": "spell",
+      "name": { "fr": "Modification de mémoire", "en": "Modify Memory" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Des doigts invisibles fouillent les souvenirs et les recousent autrement. Le témoin gênant se rappelle soudain une soirée parfaitement calme.\n\nEn jeu\n• Touche jusqu’à 5 minutes de la mémoire de la cible : effacer un souvenir, le rendre parfaitement net, en changer les détails ou en implanter un faux ; Volonté annule.\n• Il faut autant de temps que la durée modifiée pour la retoucher ; si le lanceur est interrompu, rien ne change.\n• Un souvenir absurde peut être écarté par la cible comme un rêve ou une erreur.\n• Ne lève pas charme, quête, mission ni suggestion."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G",
+        "castingTime": "1 round (voir description)",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "permanente",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.moment_of_prescience",
+      "type": "spell",
+      "name": { "fr": "Moment de prescience", "en": "Moment of Prescience" },
+      "provenance": "official",
+      "labels": ["spell", "divination"],
+      "description": {
+        "fr": "Un frisson à la nuque, une image qui passe : le lanceur sait, une seule fois, exactement ce qui va arriver. Il suffit de choisir le bon moment.\n\nEn jeu\n• Une seule fois pendant la durée : bonus d’intuition égal au niveau de lanceur (+25 au plus) à un jet d’attaque, un test opposé de caractéristique ou de compétence, ou un jet de sauvegarde.\n• Ou à la CA contre une attaque, même pris au dépourvu.\n• Sans action, même pendant le tour d’un autre, mais à décider avant le jet ; le sort prend fin ensuite.\n• Un seul moment de prescience actif à la fois ; durée 1 heure par niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 heure/niveau ou jusqu’à utilisation",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mount",
+      "type": "spell",
+      "name": { "fr": "Monture", "en": "Mount" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Une poignée de crins jetée au vent, et un cheval sellé piaffe déjà sur la route. Les pieds fatigués disent merci.\n\nEn jeu\n• Fait apparaître un cheval léger ou un poney, au choix, avec mors, rênes et selle.\n• L’animal sert le lanceur docilement pendant 2 heures par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "1 monture",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_fang",
+      "type": "spell",
+      "name": { "fr": "Morsure magique", "en": "Magic Fang" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Les crocs du loup luisent d’un éclat d’argent. La prochaine morsure ira plus loin et frappera plus fort.\n\nEn jeu\n• Une arme naturelle du sujet (morsure, griffe, coup de poing…) gagne +1 d’altération à l’attaque et aux dégâts.\n• Ne rend pas létaux des dégâts non létaux.\n• Durée : 1 minute par niveau ; compatible avec permanence."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_magic_fang",
+      "type": "spell",
+      "name": { "fr": "Morsure magique suprême", "en": "Magic Fang, Greater" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Toute la bête s’aiguise d’un coup : crocs, griffes et sabots portent la marque de la magie pour des heures.\n\nEn jeu\n• Une arme naturelle gagne +1 d’altération à l’attaque et aux dégâts par 4 niveaux de lanceur (+5 au plus).\n• Variante : +1 d’altération à toutes les armes naturelles du sujet, quel que soit le niveau.\n• Portée courte, 1 créature vivante, 1 heure par niveau ; compatible avec permanence."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    }
+  ]
+}

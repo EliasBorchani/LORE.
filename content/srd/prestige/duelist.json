@@ -1,0 +1,374 @@
+{
+  "entities": [
+    {
+      "id": "class.duelist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Duelliste",
+        "en": "Duelist"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "combat"
+      ],
+      "hitDie": 10,
+      "skillPoints": 4,
+      "description": {
+        "fr": "Pas d’armure, pas de bouclier, juste une lame fine, un sourire en coin et un jeu de jambes impossible à suivre. Le duelliste a fait de l’escrime un art : il pare, il feinte, il recule d’un pas pile au bon moment, puis il plante sa pointe là où ça fait mal. Ses adversaires frappent plus fort que lui ; ils ne le touchent juste presque jamais. Et le public, lui, en redemande.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : bonus de base à l’attaque +6 ; 5 rangs en Acrobaties et 3 rangs en Représentation ; dons Attaque en finesse, Esquive et Souplesse du serpent.\n• Formé aux armes courantes et de guerre ; à aucune armure ni aucun bouclier.\n• Aptitudes : défense astucieuse (1) ; réaction accrue +2 (2), puis +4 (8) ; grande souplesse (3) ; style (4) ; attaque précise +1d6 (5), puis +2d6 (10) ; charge acrobatique (6) ; parade élaborée (7) ; parade de projectile (9)."
+      },
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.duelist_canny_defense",
+      "type": "class_power",
+      "name": {
+        "fr": "Défense astucieuse",
+        "en": "Canny defense"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Le duelliste lit l’attaque avant qu’elle parte : un coup d’œil à l’épaule de l’adversaire, et la lame passe là où il n’est déjà plus.\n\nEn jeu\n• Sans armure ni bouclier, une arme de corps à corps en main : ajoute son bonus d’Intelligence (s’il est positif) à la CA, au plus égal à son niveau de duelliste.\n• Perdu quand il est pris au dépourvu ou privé de son bonus de Dextérité à la CA."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "min(max(0, @ability.int.mod), level('class.duelist'))"
+        }
+      ],
+      "note": "Condition sans armure ni bouclier, arme de corps à corps en main : pas encore dans le modèle, le bonus s’applique toujours."
+    },
+    {
+      "id": "power.duelist_improved_reaction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réaction accrue",
+        "en": "Improved reaction"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Le premier qui bouge a souvent gagné, et le duelliste bouge toujours un battement de cœur avant les autres.\n\nEn jeu\n• +2 aux tests d’initiative au niveau 2, +4 au niveau 8.\n• Se cumule avec Science de l’initiative."
+      },
+      "effects": [
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": "if(level('class.duelist') >= 8, 4, 2)"
+        }
+      ]
+    },
+    {
+      "id": "power.duelist_enhanced_mobility",
+      "type": "class_power",
+      "name": {
+        "fr": "Grande souplesse",
+        "en": "Enhanced mobility"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Traverser une mêlée sans une égratignure, en glissant entre les lames comme entre les gouttes de pluie : c’est presque une provocation.\n\nEn jeu\n• Sans armure ni bouclier : +4 à la CA contre les attaques d’opportunité qu’il provoque en sortant d’une case contrôlée."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "situation": "situation.vs_aoo_leaving_threatened"
+        }
+      ],
+      "note": "Condition sans armure ni bouclier : pas encore dans le modèle."
+    },
+    {
+      "id": "power.duelist_grace",
+      "type": "class_power",
+      "name": {
+        "fr": "Style",
+        "en": "Grace"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Une souplesse de danseur : quand le plafond tombe ou que le feu jaillit, le duelliste est déjà de l’autre côté.\n\nEn jeu\n• Sans armure ni bouclier : bonus d’aptitude de +2 aux jets de Réflexes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 2,
+          "bonusType": "competence"
+        }
+      ],
+      "note": "Condition sans armure ni bouclier : pas encore dans le modèle, le bonus s’applique toujours."
+    },
+    {
+      "id": "power.duelist_precise_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque précise",
+        "en": "Precise strike"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Pas besoin de trancher un bras : une pointe glissée entre deux côtes suffit, à condition de savoir exactement où viser.\n\nEn jeu\n• +1d6 aux dégâts au niveau 5, +2d6 au niveau 10.\n• Avec une arme perforante légère ou à une main, sans attaquer de la main secondaire ni tenir de bouclier.\n• Inutile contre une cible sans points vitaux (immunisée contre les critiques, ou protégée contre eux par un objet ou un pouvoir)."
+      },
+      "effects": [
+        {
+          "target": "damage.precise_strike",
+          "op": "dice",
+          "value": "(if(level('class.duelist') >= 10, 2, 1))d6"
+        }
+      ],
+      "note": "Conditions d’arme (perforante légère ou à une main) : pas encore dans le modèle."
+    },
+    {
+      "id": "power.duelist_acrobatic_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge acrobatique",
+        "en": "Acrobatic charge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Des tables renversées, un escalier, un sol couvert de gravats ? Le duelliste charge quand même, en sautant d’un appui à l’autre.\n\nEn jeu\n• Peut charger à travers un terrain difficile qui empêcherait les autres de le faire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.duelist_elaborate_parry",
+      "type": "class_power",
+      "name": {
+        "fr": "Parade élaborée",
+        "en": "Elaborate parry"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Quand il décide de ne plus attaquer que du bout de la lame, le duelliste devient un mur de parades.\n\nEn jeu\n• En combattant sur la défensive ou en défense totale au corps à corps : bonus d’esquive à la CA égal à son niveau de duelliste."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "level('class.duelist')",
+          "bonusType": "dodge",
+          "condition": "active('toggle.duelist_elaborate_parry')"
+        }
+      ]
+    },
+    {
+      "id": "power.duelist_deflect_arrows",
+      "type": "class_power",
+      "name": {
+        "fr": "Parade de projectile",
+        "en": "Deflect arrows"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "duelist"
+      ],
+      "description": {
+        "fr": "Une flèche qui siffle, un éclair d’acier, et le trait tombe à ses pieds, coupé net.\n\nEn jeu\n• Gagne les effets du don Parade de projectile tant qu’il tient une arme perforante légère ou à une main.\n• Une fois par round, détourne une attaque à distance qui l’aurait touché, s’il n’est pas pris au dépourvu."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.duelist",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.duelist_canny_defense"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.duelist_improved_reaction"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.duelist_enhanced_mobility"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.duelist_grace"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.duelist_precise_strike"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.duelist_acrobatic_charge"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.duelist_elaborate_parry"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.duelist",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.duelist_deflect_arrows"
+      ]
+    },
+    {
+      "classId": "class.duelist",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.duelist",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "power.duelist_deflect_arrows",
+      "relation": "grants",
+      "to": "feat.deflect_arrows"
+    }
+  ]
+}

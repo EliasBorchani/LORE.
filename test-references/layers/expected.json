@@ -1,0 +1,37 @@
+{
+  "character": "char.layers",
+  "atLevel": 1,
+  "note": "Set layers (worked example 4, animal form), floors and caps.",
+  "values": [
+    {
+      "stat": "ability.str.score",
+      "value": 31,
+      "status": "verified",
+      "how": "set base 27 replaces 10, then +4 enhancement"
+    },
+    {
+      "stat": "ac.natural",
+      "value": 11,
+      "status": "verified",
+      "how": "two base sets: 9 beats 8; then +2 enhancement"
+    },
+    {
+      "stat": "ac.dex_bonus",
+      "value": 3,
+      "status": "verified",
+      "how": "Dex mod 5, floor 1 not binding, cap 3"
+    },
+    {
+      "stat": "ac.total",
+      "value": 32,
+      "status": "verified",
+      "how": "10 + armor 8 + natural 11 + Dex 3"
+    },
+    {
+      "stat": "speed.land",
+      "value": 40,
+      "status": "verified",
+      "how": "final set ignores 30 + 10"
+    }
+  ]
+}

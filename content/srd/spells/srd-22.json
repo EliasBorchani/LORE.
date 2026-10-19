@@ -1,0 +1,629 @@
+{
+  "entities": [
+    {
+      "id": "spell.deathwatch",
+      "type": "spell",
+      "name": {
+        "fr": "Perception de la mort",
+        "en": "Deathwatch"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un regard froid qui pèse les vivants comme on pèse des grains. Chacun, dans le cône, porte soudain son étiquette : bientôt mort, pas encore, ou déjà de l’autre côté.\n\nEn jeu\n• Pendant 10 minutes par niveau, révèle l’état de chaque créature dans un cône de 9 m : morte, fragile (vivante, 3 pv ou moins), solide (vivante, 4 pv ou plus), mort-vivante ou ni vivante ni morte (créature artificielle).\n• Perce à jour les sorts et effets qui simulent la mort."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "area": "émanation en forme de cône",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.permanency",
+      "type": "spell",
+      "name": {
+        "fr": "Permanence",
+        "en": "Permanency"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Le geste qui fige un sortilège dans le temps. Ce qui devait s’éteindre au bout d’une heure reste là pour des années, au prix d’un peu de soi-même.\n\nEn jeu\n• Rend permanent un autre sort lancé juste avant, choisi dans une liste fixe ; chaque sort a un niveau de lanceur minimum (9 à 17) et un coût en PX (500 à 4 500).\n• Sur soi seulement (ne peut être dissipé que par un lanceur de niveau plus élevé que le vôtre au moment du sort) : compréhension des langues, détection de la magie, lecture de la magie (niv. 9, 500 PX), vision dans le noir, détection de l’invisibilité (niv. 10, 1 000 PX), don des langues, vision magique (niv. 11, 1 500 PX).\n• Sur soi ou une autre créature : agrandissement, rapetissement, résistance, morsure magique (niv. 9, 500 PX), morsure magique suprême (niv. 11, 1 500 PX), lien télépathique (niv. 13, 2 500 PX, deux créatures seulement).\n• Sur un objet ou une zone : alarme, lumières dansantes, son imaginaire (niv. 9, 500 PX), invisibilité, bouche magique, toile d’araignée (niv. 10, 1 000 PX), bourrasque, nuage nauséabond, rétrécissement d’objet (niv. 11, 1 500 PX), brouillard dense, mur de feu (niv. 12, 2 000 PX), sanctuaire privé, mur de force (niv. 13, 2 500 PX), animation d’objets (niv. 14, 3 000 PX), porte de phase (niv. 15, 3 500 PX), mur prismatique (niv. 16, 4 000 PX), cercle de téléportation, sphère prismatique (niv. 17, 4 500 PX).\n• Symboles sur un objet ou une zone : douleur (niv. 13, 2 500 PX), persuasion et terreur (niv. 14, 3 000 PX), étourdissement et faiblesse (niv. 15, 3 500 PX), aliénation mentale, mort et sommeil (niv. 16, 4 000 PX).\n• Hors du lanceur lui-même, l’effet permanent se dissipe normalement.\n• Le MD peut autoriser d’autres sorts, après des recherches."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G, PX",
+        "castingTime": "2 rounds",
+        "range": "voir description",
+        "target": "voir description",
+        "duration": "permanente (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.flesh_to_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Pétrification",
+        "en": "Flesh to Stone"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau grisonne, se fige, se craquelle : en un battement de cœur, l’ennemi devient une statue de plus dans le décor.\n\nEn jeu\n• Une créature de chair, avec tout son équipement, devient pierre (Vigueur, annule).\n• La victime n’est ni morte ni consciente ; une statue abîmée donne une créature mutilée si on la rend à la chair.\n• Sans effet sur les créatures qui ne sont pas faites de chair.\n• Composante matérielle : chaux, eau et terre."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fire_trap",
+      "type": "spell",
+      "name": {
+        "fr": "Piège à feu",
+        "en": "Fire Trap"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un coffre qui a l’air parfaitement banal. Puis quelqu’un soulève le couvercle, et le monde devient orange.\n\nEn jeu\n• Protège un objet qui s’ouvre (coffre, livre, porte, tiroir…) ; quand un autre que le lanceur l’ouvre, une explosion de feu remplit 1,50 m de rayon.\n• Dégâts : 1d4 + 1 par niveau de lanceur (+20 au plus) de feu, Réflexes pour la moitié.\n• L’objet n’est pas abîmé. Le lanceur peut l’ouvrir sans risque, et peut confier ce droit à d’autres (mot de passe ou accord).\n• Seul un roublard peut le repérer (Fouille) et le désamorcer (Désamorçage), DD 25 + niveau du sort : 27 en version druide, 29 en version ensorceleur/magicien.\n• Sous l’eau : dégâts réduits de moitié et grand nuage de vapeur. Une dissipation ratée ne le déclenche pas.\n• Composante matérielle : 250 g de poudre d’or (25 po). Incompatible avec un autre sort de fermeture sur le même objet."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "objet touché",
+        "duration": "permanente jusqu’au déclenchement (T)",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d4 fire",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.phantom_trap",
+      "type": "spell",
+      "name": {
+        "fr": "Piège illusoire",
+        "en": "Phantom Trap"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Une serrure qui semble prête à mordre. Les voleurs prudents passent leur chemin ; les autres découvrent qu’il n’y avait rien.\n\nEn jeu\n• Une serrure, un loquet ou un fermoir semble piégé à quiconque cherche les pièges, par compétence ou par magie : il est certain d’en avoir trouvé un.\n• Il n’y a aucun vrai piège ; déclencher l’illusion n’a aucune conséquence.\n• Échoue si un autre piège actif se trouve à 15 m ou moins au moment du lancement.\n• Composante matérielle : une poudre spéciale (50 po)."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché",
+        "duration": "permanente (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Pierre magique",
+        "en": "Magic Stone"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Trois cailloux ramassés au bord du chemin, un souffle dessus, et les voilà durs comme des marteaux. Les morts-vivants les craignent tout particulièrement.\n\nEn jeu\n• Jusqu’à 3 cailloux deviennent des projectiles : +1 d’altération à l’attaque, 1d6 + 1 dégâts chacun (2d6 + 2 contre les morts-vivants).\n• Lancés à la main (facteur de portée 6 m) ou à la fronde (15 m, comme une bille).\n• Dure 30 minutes ou jusqu’à utilisation."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "jusqu’à 3 cailloux touchés",
+        "duration": "30 minutes ou jusqu’à utilisation",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 bludgeoning",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": 1,
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.spike_stones",
+      "type": "spell",
+      "name": {
+        "fr": "Pierres acérées",
+        "en": "Spike Stones"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le sol rocheux se hérisse d’aiguilles de pierre, si bien camouflées qu’on ne les voit qu’en saignant.\n\nEn jeu\n• Une zone de terrain pierreux (un carré de 6 m de côté par niveau) se couvre de pointes presque invisibles pour 1 heure par niveau.\n• Avancer dans la zone : 1d8 dégâts perçants par 1,50 m parcouru, et vitesse réduite de moitié.\n• Une créature blessée fait un jet de Réflexes ; si elle le rate, ses pieds sont touchés : vitesse réduite de moitié pendant 24 heures, sauf sort de soins ou 10 minutes de Premiers secours réussis contre le DD du sort.\n• Repérer les pointes : seul un roublard le peut, Fouille DD 29 ; Désamorçage impossible."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "1 carré de 6 m de côté/niveau",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Réflexes, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8 piercing",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.stone_tell",
+      "type": "spell",
+      "name": {
+        "fr": "Pierre commères",
+        "en": "Stone Tell"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "La roche a une mémoire longue et peu de visiteurs. Il suffit de lui parler gentiment pour qu’elle raconte tout ce qu’elle a vu.\n\nEn jeu\n• Pendant 1 minute par niveau, le lanceur parle avec les pierres, naturelles ou taillées.\n• Elles disent ce qu’elles couvrent ou cachent et qui les a touchées, dans la limite de ce qu’une pierre peut percevoir et comprendre."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wail_of_the_banshee",
+      "type": "spell",
+      "name": {
+        "fr": "Plainte d’outre-tombe",
+        "en": "Wail of the Banshee"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un cri qui n’appartient pas aux vivants. Ceux qui l’entendent sentent leur cœur s’arrêter, l’un après l’autre.\n\nEn jeu\n• Tue jusqu’à 1 créature vivante par niveau dans une étendue de 12 m de rayon, en commençant par les plus proches du centre (Vigueur, annule).\n• Le lanceur n’est pas affecté.\n• Effet de mort et de son."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mort",
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "1 créature vivante/niveau dans une étendue de 12 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.grasping_hand",
+      "type": "spell",
+      "name": {
+        "fr": "Poigne agrippeuse",
+        "en": "Grasping Hand"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une main géante de pure force tombe du ciel et referme ses doigts sur l’ennemi. Il peut se débattre ; elle ne lâche pas.\n\nEn jeu\n• Main de force de taille G (1 round par niveau) qui a les points de vie normaux du lanceur et une CA de 20.\n• Une lutte par round : bonus d’attaque = niveau de lanceur + modificateur de caractéristique de lancement + 10 (Force 31) − 1 (taille G) ; tests de lutte avec +4 de taille au lieu de −1.\n• Retient sans blesser. Changer de cible : action de mouvement.\n• Peut aussi bousculer (+16 au test de Force) ou s’interposer comme une main interposée.\n• Focaliseur : un gant de cuir."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "main de 3 m",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.clenched_fist",
+      "type": "spell",
+      "name": {
+        "fr": "Poing serré",
+        "en": "Clenched Fist"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un poing de force de la taille d’un homme, qui frappe sans relâche celui que vous désignez. Le choc laisse souvent la cible hébétée.\n\nEn jeu\n• Poing de force de taille G (1 round par niveau) qui a les points de vie normaux du lanceur et une CA de 20 ; il vole jusqu’à 18 m par round.\n• Une attaque par round : bonus = niveau de lanceur + modificateur de caractéristique de lancement + 11 (Force 33) − 1 (taille G).\n• Dégâts : 1d8 + 11 par coup ; la cible touchée fait un jet de Vigueur ou est étourdie 1 round.\n• Changer de cible : action de mouvement. Peut aussi s’interposer ou bousculer (+15 au test de Force).\n• Focaliseur : un gant de cuir."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "main de 3 m",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8 force",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": 11,
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.gate",
+      "type": "spell",
+      "name": {
+        "fr": "Portail",
+        "en": "Gate"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le voile entre les mondes se déchire en un anneau de lumière. On peut passer de l’autre côté, ou faire venir quelqu’un de là-bas, qui n’aimera pas forcément être dérangé.\n\nEn jeu\n• Voyage : ouvre un cercle de 1,50 m à 6 m de diamètre vers un autre plan, à l’endroit choisi ; tient tant que le lanceur se concentre, 1 round par niveau au plus.\n• Seule une face transporte ; impossible de voyager dans le même plan. Les maîtres d’un plan peuvent y interdire les portails.\n• Appel : fait venir une créature nommée ou un type de créature d’un autre plan (coût 1 000 PX).\n• Créatures contrôlées : jusqu’à 2 DV par niveau de lanceur au total ; elles obéissent 1 round par niveau, ou accomplissent une tâche (contre paiement) si leurs DV ne dépassent pas le niveau de lanceur.\n• Au-delà de cette limite, la créature arrive libre et agit à sa guise ; les dieux et êtres uniques peuvent refuser de venir."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel ou création",
+        "components": "V, G, PX (voir description)",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "voir description",
+        "duration": "instantanée ou concentration (jusqu’à 1 round/niveau)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.phase_door",
+      "type": "spell",
+      "name": {
+        "fr": "Porte de phase",
+        "en": "Phase Door"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un passage secret qui n’existe que pour vous. Le mur reste un mur pour tous les autres.\n\nEn jeu\n• Crée un passage éthéré invisible de 2,40 m × 1,50 m, profond de 3 m + 1,50 m par 3 niveaux, à travers le bois, le plâtre ou la pierre.\n• Seul le lanceur peut l’utiliser : 1 passage par 2 niveaux. Emmener une créature de taille M ou plus petite compte comme 2 passages.\n• Le lanceur peut ouvrir le passage à d’autres, selon des conditions observables (nom, identité, alignement…) fixées au lancement.\n• Gemme de vision ou vision lucide le révèle sans permettre de l’emprunter ; dissipation de la magie expulse ceux qui sont dedans.\n• Peut être rendu permanent."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "0 m",
+        "effect": "ouverture éthérée de 2,40 m × 1,50 m, 3 m de profondeur + 1,50 m/3 niveaux",
+        "duration": "1 utilisation/2 niveaux",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dimension_door",
+      "type": "spell",
+      "name": {
+        "fr": "Porte dimensionnelle",
+        "en": "Dimension Door"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un pas de côté dans l’espace, et vous voilà ailleurs : derrière l’ennemi, de l’autre côté du gouffre, ou bien loin de tout ça.\n\nEn jeu\n• Téléporte le lanceur jusqu’à un point à portée longue (120 m + 12 m par niveau), qu’il voit ou décrit par direction et distance.\n• Emporte ce qu’il peut porter, plus 1 créature consentante de taille M ou plus petite (ou équivalent) par 3 niveaux, qui doivent le toucher.\n• Après l’arrivée, le lanceur ne peut plus agir avant son prochain tour.\n• Arrivée dans un espace occupé : 1d6 dégâts et déplacement vers un espace libre à 30 m au plus ; sinon 2d6 et jusqu’à 300 m ; sinon 4d6 et le sort échoue."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "le jeteur de sorts et des créatures consentantes ou objets touchés",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Volonté, annule (objet)",
+        "spellResistance": "oui ou non (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_jar",
+      "type": "spell",
+      "name": {
+        "fr": "Possession",
+        "en": "Magic Jar"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "L’âme quitte son corps pour se cacher dans une gemme, puis guette un hôte. Un jet de volonté manqué, et un étranger regarde par les yeux de la victime.\n\nEn jeu\n• L’âme du lanceur passe dans une gemme (réceptacle) à portée ; son propre corps semble mort.\n• Depuis la gemme, il sent les forces vitales à 3 m par niveau sans savoir qui est qui, sauf un écart de 4 DV ou plus.\n• Possession : action complexe, sur une créature à portée et en ligne d’effet, Volonté pour annuler ; l’âme de la victime prend sa place dans la gemme. Protection contre le Mal bloque la tentative.\n• Dans le corps volé : garde son Intelligence, sa Sagesse, son Charisme, son niveau, sa classe, son BBA, ses jets de sauvegarde, son alignement et ses capacités mentales ; prend le physique de l’hôte, sans ses pouvoirs extraordinaires ou surnaturels.\n• Si l’hôte meurt, le lanceur retourne dans la gemme s’il est à portée, sinon tous deux meurent. Dure 1 heure par niveau.\n• Focaliseur : une gemme d’au moins 100 po."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature",
+        "duration": "1 heure/niveau ou jusqu’au retour dans son corps",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.glitterdust",
+      "type": "spell",
+      "name": {
+        "fr": "Poussière scintillante",
+        "en": "Glitterdust"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une pluie de paillettes dorées qui colle à tout. Les invisibles brillent comme des lanternes, et les yeux des autres pleurent d’or.\n\nEn jeu\n• Recouvre tout dans une étendue de 3 m de rayon pendant 1 round par niveau.\n• Les créatures dans la zone sont aveuglées (Volonté pour annuler, nouveau jet à chaque round).\n• Les créatures et objets invisibles deviennent visibles ; les créatures couvertes subissent −40 aux tests de Discrétion.\n• La poudre ne s’enlève pas avant la fin du sort."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "créatures et objets dans une étendue de 3 m de rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (cécité seulement)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.foresight",
+      "type": "spell",
+      "name": {
+        "fr": "Prémonition",
+        "en": "Foresight"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un frisson juste avant la lame, une voix intérieure qui murmure « baisse-toi ». Le danger ne surprend plus personne.\n\nEn jeu\n• Pendant 10 minutes par niveau, le bénéficiaire est prévenu de tout danger imminent.\n• Sur soi : jamais surpris ni pris au dépourvu, +2 d’intuition à la CA et aux jets de Réflexes (perdu quand on perd le bonus de Dextérité à la CA).\n• Sur un autre : le lanceur sent le danger et doit prévenir le sujet à temps ; celui-ci n’est alors pas surpris, mais sans les bonus.\n• Composante matérielle : une plume de colibri."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle ou contact",
+        "target": "voir description",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun ou Volonté, annule (inoffensif)",
+        "spellResistance": "non ou oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "condition": "active('toggle.foresight')"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "condition": "active('toggle.foresight')"
+        }
+      ]
+    },
+    {
+      "id": "spell.gentle_repose",
+      "type": "spell",
+      "name": {
+        "fr": "Préservation des morts",
+        "en": "Gentle Repose"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un peu de sel, deux pièces sur les paupières, et le corps attend sans se gâter le jour où l’on viendra le rappeler.\n\nEn jeu\n• Un cadavre (ou un morceau de corps) ne se décompose pas pendant 1 jour par niveau.\n• Ces jours ne comptent pas dans le délai des sorts de résurrection comme rappel à la vie.\n• Sans effet sur les morts-vivants.\n• Composantes matérielles : une pincée de sel et une pièce de cuivre par œil du défunt."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "cadavre touché",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.prestidigitation",
+      "type": "spell",
+      "name": {
+        "fr": "Prestidigitation",
+        "en": "Prestidigitation"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Le tour de magie des apprentis et des amuseurs : nettoyer une cape, réchauffer une soupe, faire jaillir une petite flamme pour l’effet.\n\nEn jeu\n• Pendant 1 heure, petits effets à 3 m au plus : soulever lentement 500 g, nettoyer, salir ou colorer un objet, réchauffer, refroidir ou aromatiser un peu de matière, créer de menus objets fragiles.\n• Ne fait aucun dégât, ne peut pas reproduire un autre sort, et ses créations ne durent qu’une heure."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "target": "voir description",
+        "duration": "1 heure",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.contingency",
+      "type": "spell",
+      "name": {
+        "fr": "Prévoyance",
+        "en": "Contingency"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un sort mis en réserve, prêt à jaillir au bon moment. Vous tombez d’une falaise ? Il y a longtemps que vous aviez prévu le coup.\n\nEn jeu\n• Lie au lanceur un second sort qui se déclenche tout seul quand une condition fixée à l’avance se réalise.\n• Le sort lié doit viser le lanceur et être au plus d’un niveau égal au tiers du niveau de lanceur (arrondi à l’inférieur, 6 au plus).\n• Condition claire et générale ; trop compliquée, le sort échoue.\n• Une seule prévoyance active : en lancer une autre dissipe la première. Dure 1 jour par niveau ou jusqu’au déclenchement.\n• Temps d’incantation : 10 minutes au moins (ou celui du sort lié s’il est plus long).\n• Composantes : celles du sort lié, du vif-argent et un cil d’une créature magique ; focaliseur : une statuette d’ivoire du lanceur (1 500 po) qu’il doit porter."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, M, F",
+        "castingTime": "10 minutes au moins (voir description)",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 jour/niveau (T) ou jusqu’au déclenchement",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

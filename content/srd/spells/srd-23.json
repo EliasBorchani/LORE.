@@ -1,0 +1,516 @@
+{
+  "entities": [
+    {
+      "id": "spell.prayer",
+      "type": "spell",
+      "name": { "fr": "Prière", "en": "Prayer" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Quelques mots tournés vers le ciel, et le sort penche d’un côté du champ de bataille. Les alliés frappent juste, les ennemis trébuchent sur leur propre malchance.\n\nEn jeu\n• Tous les alliés dans un rayonnement de 12 m autour du lanceur (lui compris) : +1 de chance aux jets d’attaque, de dégâts, de sauvegarde et aux tests de compétence.\n• Tous les ennemis dans la zone : −1 à ces mêmes jets et tests.\n• Dure 1 round par niveau ; seules comptent les créatures présentes dans la zone au moment du sort."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "12 m",
+        "area": "tous les alliés et ennemis dans un rayonnement de 12 m de rayon centré sur le lanceur",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "attack.all", "op": "add", "value": 1, "bonusType": "luck", "condition": "active('toggle.prayer')" },
+        { "target": "damage.all", "op": "add", "value": 1, "bonusType": "luck", "condition": "active('toggle.prayer')" },
+        { "target": "save.all", "op": "add", "value": 1, "bonusType": "luck", "condition": "active('toggle.prayer')" }
+      ]
+    },
+    {
+      "id": "spell.desecrate",
+      "type": "spell",
+      "name": { "fr": "Profanation", "en": "Desecrate" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une pincée d’argent noirci, un filet d’eau maudite, et le sol se met à suinter d’énergie négative. Les morts y marchent plus droit, les vivants y prient moins bien.\n\nEn jeu\n• Émanation de 6 m de rayon pendant 2 heures par niveau.\n• Tests de renvoi des morts-vivants dans la zone : −3 de malfaisance.\n• Morts-vivants dans la zone : +1 de malfaisance aux jets d’attaque, de dégâts et de sauvegarde ; ceux créés ou convoqués dans la zone gagnent +1 pv par DV.\n• Si la zone abrite un autel ou un sanctuaire du dieu du lanceur (ou de son panthéon), les valeurs doublent : −6, +2 et +2 pv par DV.\n• Si elle abrite l’autel d’un autre dieu, le sort coupe ce lieu de son dieu à la place, sans bonus pour les morts-vivants.\n• Un sort d’animation des morts lancé dans la zone peut créer jusqu’au double du nombre normal de morts-vivants.\n• Contre et dissipe consécration.\n• Composante matérielle : eau maudite et 25 po de poudre d’argent."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["mal"],
+        "components": "V, G, M, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "émanation de 6 m de rayon",
+        "duration": "2 heures/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_missile",
+      "type": "spell",
+      "name": { "fr": "Projectile magique", "en": "Magic Missile" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Des flèches de lumière pure filent du bout des doigts et contournent tout ce qui se trouve sur leur route. Elles ne ratent jamais : seule la cible a le droit de le regretter.\n\nEn jeu\n• Chaque projectile inflige 1d4+1 dégâts de force et touche toujours, même au corps à corps ou derrière un abri ou un camouflage partiel.\n• 1 projectile au niveau 1, puis 1 de plus tous les 2 niveaux : 2 au niveau 3, 3 au niveau 5, 4 au niveau 7, 5 au maximum dès le niveau 9.\n• Les projectiles peuvent viser une ou plusieurs créatures, à 4,50 m au plus les unes des autres ; on choisit les cibles avant de lancer.\n• Il faut voir la créature visée ; un objet ne peut pas être pris pour cible."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["force"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "jusqu’à 5 créatures, à 4,50 m au plus les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "1d4 force", "scope": "spell" },
+        { "target": "spell.damage", "op": "add", "value": 1, "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.astral_projection",
+      "type": "spell",
+      "name": { "fr": "Projection astrale", "en": "Astral Projection" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Le corps reste allongé, immobile comme un dormeur, tandis que l’esprit glisse vers l’argent infini du plan Astral. Une corde scintillante le retient, fine comme un fil, solide comme une promesse.\n\nEn jeu\n• Le lanceur et 1 créature consentante par tranche de 2 niveaux (tous se tiennent par la main) partent dans le plan Astral avec une copie de leur équipement ; leurs corps restent en animation suspendue.\n• Depuis le plan Astral, on peut gagner un autre plan : un nouveau corps et son équipement s’y forment.\n• Une corde d’argent relie le corps astral au corps réel ; si elle est tranchée, le voyageur meurt. Si le corps astral (ou le corps formé sur un autre plan) est tué, la corde ramène l’esprit dans le corps réel, qui se réveille.\n• Les compagnons dépendent du lanceur : s’il lui arrive malheur, ils doivent trouver seuls le chemin du retour.\n• Dure jusqu’à ce que le lanceur y mette fin, qu’une dissipation de la magie touche le corps réel ou le corps astral, ou que le corps réel soit détruit (ce qui tue le voyageur).\n• Composantes matérielles : une hyacinthe d’au moins 1 000 po et une barrette d’argent de 5 po par voyageur."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "30 minutes",
+        "range": "contact",
+        "target": "le jeteur de sorts + 1 créature touchée/2 niveaux",
+        "duration": "voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.project_image",
+      "type": "spell",
+      "name": { "fr": "Projection d’image", "en": "Project Image" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Un double fait d’ombre se dresse à distance, même voix, même allure, même regard insolent. Le lanceur voit par ses yeux et lance ses sorts à travers lui, bien à l’abri derrière.\n\nEn jeu\n• Crée un double intangible du lanceur, tissé d’ombre, à portée moyenne, pour 1 round par niveau (T).\n• Le double imite le lanceur, sauf si celui-ci se concentre pour le faire agir autrement.\n• Action libre, une fois par tour : passer de ses propres sens à ceux du double et inversement ; pendant qu’il utilise ceux du double, le corps du lanceur est aveuglé et assourdi.\n• Les sorts du lanceur peuvent partir du double ; le double ne peut lancer sur lui-même que des illusions.\n• Une ligne d’effet doit toujours relier le lanceur et son double : si elle est coupée (téléportation, porte dimensionnelle, changement de plan…), le sort prend fin.\n• Qui interagit avec le double a droit à un jet de Volonté pour le reconnaître comme une illusion ; les objets le traitent comme s’ils avaient réussi ce jet.\n• Composante matérielle : une petite poupée à l’image du lanceur (5 po)."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "1 double d’ombre",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.protection_from_law",
+      "type": "spell",
+      "name": { "fr": "Protection contre la loi", "en": "Protection from Law" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Un cercle tracé à la poudre d’argent, et une bulle de désordre s’installe autour du protégé. Les créatures loyales y voient leurs coups dévier, leurs ordres glisser.\n\nEn jeu\n• Contre les attaques des créatures loyales : +2 de parade à la CA et +2 de résistance aux jets de sauvegarde.\n• Bloque toute possession et tout contrôle mental (charme, coercition) quel que soit l’alignement de l’agresseur : l’effet n’est pas annulé, juste tenu à distance tant que le sort dure.\n• Les créatures convoquées loyales ne peuvent pas toucher le protégé avec leurs armes naturelles ; cette protection cesse si le protégé les attaque ou les repousse avec la barrière. La résistance à la magie peut la franchir.\n• Dure 1 minute par niveau (T)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": ["chaos"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        { "target": "ac.total", "op": "add", "value": 2, "bonusType": "deflection", "condition": "active('toggle.protection_from_law')", "situation": "situation.vs_law" },
+        { "target": "save.all", "op": "add", "value": 2, "bonusType": "resistance", "condition": "active('toggle.protection_from_law')", "situation": "situation.vs_law" }
+      ]
+    },
+    {
+      "id": "spell.death_ward",
+      "type": "spell",
+      "name": { "fr": "Protection contre la mort", "en": "Death Ward" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Une lueur tiède se pose sur la poitrine du protégé. Les sorts qui arrachent l’âme et les mains glacées des morts-vivants glissent dessus sans trouver de prise.\n\nEn jeu\n• Immunité aux sorts de mort, aux effets de mort magiques, à l’absorption d’énergie et aux effets d’énergie négative (sorts de blessure, contact glacial…).\n• Ne rend pas les niveaux négatifs déjà subis et ne guérit pas les dégâts déjà reçus.\n• Ne change rien au jet de sauvegarde à faire 24 heures après un niveau négatif déjà subi.\n• Ne protège pas des autres menaces, même mortelles : perte de points de vie, poison, pétrification.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.protection_from_good",
+      "type": "spell",
+      "name": { "fr": "Protection contre le bien", "en": "Protection from Good" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Un cercle d’argent terni, et les lames justes hésitent au moment de frapper. Le protégé se tient dans une ombre que la lumière peine à percer.\n\nEn jeu\n• Contre les attaques des créatures bonnes : +2 de parade à la CA et +2 de résistance aux jets de sauvegarde.\n• Bloque toute possession et tout contrôle mental (charme, coercition) quel que soit l’alignement de l’agresseur : l’effet n’est pas annulé, juste tenu à distance tant que le sort dure.\n• Les créatures convoquées bonnes ne peuvent pas toucher le protégé avec leurs armes naturelles ; cette protection cesse si le protégé les attaque ou les repousse avec la barrière. La résistance à la magie peut la franchir.\n• Dure 1 minute par niveau (T)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": ["mal"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        { "target": "ac.total", "op": "add", "value": 2, "bonusType": "deflection", "condition": "active('toggle.protection_from_good')", "situation": "situation.vs_good" },
+        { "target": "save.all", "op": "add", "value": 2, "bonusType": "resistance", "condition": "active('toggle.protection_from_good')", "situation": "situation.vs_good" }
+      ]
+    },
+    {
+      "id": "spell.protection_from_chaos",
+      "type": "spell",
+      "name": { "fr": "Protection contre le chaos", "en": "Protection from Chaos" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Une barrière nette, droite, ordonnée, à un pas du corps. Ce qui vient du chaos s’y cogne comme une vague contre une digue.\n\nEn jeu\n• Contre les attaques des créatures chaotiques : +2 de parade à la CA et +2 de résistance aux jets de sauvegarde.\n• Bloque toute possession et tout contrôle mental (charme, coercition) quel que soit l’alignement de l’agresseur : l’effet n’est pas annulé, juste tenu à distance tant que le sort dure.\n• Les créatures convoquées chaotiques ne peuvent pas toucher le protégé avec leurs armes naturelles ; cette protection cesse si le protégé les attaque ou les repousse avec la barrière. La résistance à la magie peut la franchir.\n• Dure 1 minute par niveau (T)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": ["loi"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        { "target": "ac.total", "op": "add", "value": 2, "bonusType": "deflection", "condition": "active('toggle.protection_from_chaos')", "situation": "situation.vs_chaos" },
+        { "target": "save.all", "op": "add", "value": 2, "bonusType": "resistance", "condition": "active('toggle.protection_from_chaos')", "situation": "situation.vs_chaos" }
+      ]
+    },
+    {
+      "id": "spell.protection_from_evil",
+      "type": "spell",
+      "name": { "fr": "Protection contre le mal", "en": "Protection from Evil" },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Un cercle de poudre d’argent, une prière, et une fine barrière se referme à trente centimètres de la peau. Les griffes du mal y laissent des étincelles, rien de plus.\n\nEn jeu\n• Contre les attaques des créatures mauvaises : +2 de parade à la CA et +2 de résistance aux jets de sauvegarde.\n• Bloque toute possession et tout contrôle mental (charme, coercition) quel que soit l’alignement de l’agresseur : l’effet n’est pas annulé, juste tenu à distance tant que le sort dure ; s’il dure plus longtemps que le sort, il reprend ensuite.\n• Les créatures convoquées mauvaises ne peuvent pas toucher le protégé avec leurs armes naturelles ; cette protection cesse si le protégé les attaque ou les repousse avec la barrière. La résistance à la magie peut la franchir.\n• Dure 1 minute par niveau (T).\n• Composante matérielle profane : de la poudre d’argent pour tracer un cercle de 90 cm autour du protégé."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": ["bien"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "deflection",
+          "condition": "active('toggle.protection_from_evil')",
+          "status": "draft",
+          "note": "SRD ; fourni par l'Armure céleste"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "status": "draft",
+          "note": "Situationnel",
+          "situation": "situation.vs_evil"
+        }
+      ],
+      "status": "draft",
+      "note": "SRD (+2), fourni par l'Armure céleste."
+    },
+    {
+      "id": "spell.protection_from_energy",
+      "type": "spell",
+      "name": { "fr": "Protection contre les énergies destructives", "en": "Protection from Energy" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Une pellicule invisible boit la flamme, le givre ou la foudre avant qu’ils n’atteignent la peau. Elle tient bon, jusqu’à ce qu’elle soit pleine.\n\nEn jeu\n• Immunité à un type d’énergie choisi : acide, électricité, feu, froid ou son.\n• Le sort s’arrête après avoir absorbé 12 points de dégâts par niveau de lanceur (120 au plus, au niveau 10), ou après 10 minutes par niveau.\n• Ne se cumule pas avec résistance aux énergies destructives : si les deux sont actifs, la protection absorbe seule jusqu’à épuisement."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau ou jusqu’à épuisement",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.protection_from_arrows",
+      "type": "spell",
+      "name": { "fr": "Protection contre les projectiles", "en": "Protection from Arrows" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Les flèches arrivent, ralentissent, puis rebondissent mollement sur une peau soudain dure comme une carapace. Les archers ennemis froncent les sourcils.\n\nEn jeu\n• Réduction des dégâts 10/magie contre les armes à distance.\n• Le sort s’arrête après avoir absorbé 10 points de dégâts par niveau de lanceur (100 au plus), ou après 1 heure par niveau.\n• Ne permet pas de franchir la réduction des dégâts d’autres créatures.\n• Focaliseur : un morceau de carapace de tortue."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau ou jusqu’à épuisement",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.protection_from_spells",
+      "type": "spell",
+      "name": { "fr": "Protection contre les sorts", "en": "Protection from Spells" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Une poussière de diamant tombe en pluie fine sur les épaules des compagnons. Les sortilèges ennemis s’y accrochent, s’alourdissent, et perdent une bonne part de leur mordant.\n\nEn jeu\n• Jusqu’à 1 créature touchée par tranche de 4 niveaux : +8 de résistance aux jets de sauvegarde contre les sorts et pouvoirs magiques (pas contre les pouvoirs surnaturels ou extraordinaires).\n• Dure 10 minutes par niveau.\n• Composante matérielle : un diamant d’au moins 500 po, réduit en poudre.\n• Focaliseur : un diamant d’au moins 1 000 po par bénéficiaire, que chacun doit garder sur lui ; qui le perd n’est plus protégé."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "jusqu’à 1 créature touchée/4 niveaux",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        { "target": "save.all", "op": "add", "value": 8, "bonusType": "resistance", "condition": "active('toggle.protection_from_spells')", "situation": "situation.vs_spells" }
+      ]
+    },
+    {
+      "id": "spell.shield_other",
+      "type": "spell",
+      "name": { "fr": "Protection d’autrui", "en": "Shield Other" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Deux anneaux de platine, un pour chacun, et un lien se noue. Quand l’allié saigne, le lanceur saigne avec lui, et chacun n’en prend que la moitié.\n\nEn jeu\n• Le protégé gagne +1 de parade à la CA et +1 de résistance aux jets de sauvegarde.\n• Il ne subit que la moitié des dégâts en points de vie ; le lanceur encaisse l’autre moitié.\n• Les effets qui ne retirent pas de points de vie (charme, affaiblissement de caractéristique, absorption d’énergie, mort) touchent le protégé normalement ; une perte de pv due à une baisse de Constitution n’est pas partagée.\n• Dure 1 heure par niveau (T) ; le sort cesse si les deux s’éloignent au-delà de la portée. Les dégâts déjà partagés ne reviennent pas au protégé ensuite.\n• Focaliseurs : deux anneaux de platine d’au moins 50 po chacun, un porté par chacun."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        { "target": "ac.total", "op": "add", "value": 1, "bonusType": "deflection", "condition": "active('toggle.shield_other')" },
+        { "target": "save.all", "op": "add", "value": 1, "bonusType": "resistance", "condition": "active('toggle.shield_other')" }
+      ]
+    },
+    {
+      "id": "spell.divine_power",
+      "type": "spell",
+      "name": { "fr": "Puissance divine", "en": "Divine Power" },
+      "provenance": "official",
+      "source": "SRD + Équipe",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une force venue d’ailleurs gonfle les muscles et guide le bras. Pour quelques instants, le lanceur se bat comme un guerrier aguerri.\n\nEn jeu\n• Bonus de base à l’attaque égal au niveau de personnage, avec les attaques supplémentaires que cela donne. Règle maison : niveau de personnage jusqu’au niveau 20, puis +0,75 par niveau au-delà (49 au niveau 59).\n• +6 d’altération en Force (ne se cumule pas avec force de taureau).\n• 1 point de vie temporaire par niveau de lanceur.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "bab",
+          "op": "set",
+          "value": "if(level() <= 20, level(), 20 + floor(0.75 * (level() - 20)))",
+          "layer": "base",
+          "condition": "active('toggle.divine_power')",
+          "status": "draft",
+          "note": "Règle maison ; 49 au niveau 59"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 6,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.divine_power')",
+          "status": "draft",
+          "note": "Ne se cumule pas avec Force du taureau (+16)"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "level()",
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_power')",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "spell.purify_food_and_drink",
+      "type": "spell",
+      "name": { "fr": "Purification de nourriture et d’eau", "en": "Purify Food and Drink" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le pain moisi retrouve sa croûte, l’eau trouble redevient claire. Un petit miracle de cuisine qui a sauvé plus d’une expédition.\n\nEn jeu\n• Rend sains et consommables 30 dm³ par niveau de nourriture avariée ou d’eau croupie, empoisonnée ou souillée, à 3 m au plus.\n• N’empêche pas la nourriture de se gâter de nouveau plus tard.\n• Ôte son pouvoir à l’eau maudite et aux aliments ou boissons de ce genre ; sans effet sur les créatures et les potions magiques."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "target": "30 dm³/niveau d’eau et de nourriture impropres à la consommation",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.pyrotechnics",
+      "type": "spell",
+      "name": { "fr": "Pyrotechnie", "en": "Pyrotechnics" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le feu de camp explose en gerbes de couleurs, ou se change en une fumée noire qui pique les yeux et coupe les jambes. Au choix : la fête ou l’étouffement.\n\nEn jeu\n• Prend un feu existant (cube de 6 m au plus) comme source ; un feu ordinaire s’éteint, un feu plus grand n’est que partiellement soufflé, un feu magique ne s’éteint pas.\n• Feu d’artifice : les créatures à 36 m au plus qui voient le feu sont aveuglées 1d4+1 rounds (Volonté, annule ; la résistance à la magie s’applique).\n• Nuage de fumée : nuage opaque de 6 m de rayon pendant 1 round par niveau, que même la vision dans le noir ne perce pas. Les créatures dedans subissent −4 en Force et en Dextérité (Vigueur, annule) jusqu’à 1d4+1 rounds après en être sorties ou après la fin du nuage ; la résistance à la magie ne s’applique pas.\n• Une créature de feu utilisée comme source subit 1 point de dégâts par niveau de lanceur."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "1 source de feu (cube de 6 m d’arête au plus)",
+        "duration": "1d4+1 rounds, ou 1d4+1 rounds après la sortie du nuage (voir description)",
+        "savingThrow": "Volonté, annule ou Vigueur, annule (voir description)",
+        "spellResistance": "oui ou non (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.geas_quest",
+      "type": "spell",
+      "name": { "fr": "Quête", "en": "Geas/Quest" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Un ordre gravé dans l’âme, sans appel. Tant que la tâche n’est pas accomplie, chaque jour perdu se paie en chair et en fièvre.\n\nEn jeu\n• Impose une tâche à une créature vivante, quel que soit son nombre de DV, sans jet de sauvegarde ; elle doit comprendre le lanceur et poursuivre la tâche (qui ne peut pas être un suicide).\n• Chaque jour où elle ne travaille pas à sa quête, elle perd 3d6 points de vie et doit réussir un jet de Vigueur sous peine de tomber malade ; ces effets disparaissent 1 jour après qu’elle a repris sa quête.\n• Dure 1 jour par niveau ou jusqu’à ce que la tâche soit accomplie (T).\n• Délivrance des malédictions n’y met fin que si son lanceur a au moins 2 niveaux de lanceur de plus que celui de la quête ; annulation d’enchantement est sans effet ; souhait limité, miracle et souhait y mettent fin."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["langage", "mental"],
+        "components": "V",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "1 jour/niveau ou jusqu’à accomplissement (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "3d6", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.diminish_plants",
+      "type": "spell",
+      "name": { "fr": "Rabougrissement des plantes", "en": "Diminish Plants" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Les ronces reculent, les herbes folles se tassent, la forêt desserre son étreinte. Ou bien, plus sournois, les récoltes de toute une région s’étiolent pour l’année.\n\nEn jeu\n• Taille : à longue portée (120 m + 12 m/niveau), réduit d’environ un tiers la végétation ordinaire dans un cercle de 30 m de rayon, un demi-cercle de 45 m ou un quart de cercle de 60 m ; on peut épargner des zones dedans.\n• Arrêt de croissance : toutes les plantes ordinaires dans un rayon de 750 m autour du lanceur produisent un tiers de moins pendant l’année qui suit.\n• Contre croissance végétale ; sans effet sur les créatures végétales."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "voir description",
+        "target": "voir description",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.rage",
+      "type": "spell",
+      "name": { "fr": "Rage", "en": "Rage" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Le sang bat aux tempes, les mâchoires se serrent, la prudence s’envole. Les alliés chargent avec une fureur de berserker, et sans la fatigue qui suit d’habitude.\n\nEn jeu\n• 1 créature vivante consentante par tranche de 3 niveaux, à 9 m au plus les unes des autres.\n• +2 de moral en Force et en Constitution, +1 de moral aux jets de Volonté, −2 à la CA.\n• Comme la rage du barbare (pas d’actions qui demandent patience ou concentration), mais sans fatigue à la fin.\n• Dure le temps de la concentration + 1 round par niveau (T)."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante consentante/3 niveaux, à 9 m au plus les unes des autres",
+        "duration": "concentration + 1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "ability.str.score", "op": "add", "value": 2, "bonusType": "morale", "condition": "active('toggle.rage')" },
+        { "target": "ability.con.score", "op": "add", "value": 2, "bonusType": "morale", "condition": "active('toggle.rage')" },
+        { "target": "save.will", "op": "add", "value": 1, "bonusType": "morale", "condition": "active('toggle.rage')" },
+        { "target": "ac.total", "op": "add", "value": -2, "condition": "active('toggle.rage')" }
+      ]
+    }
+  ]
+}

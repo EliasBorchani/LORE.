@@ -1,0 +1,337 @@
+{
+  "version": "case-layers",
+  "bonusTypes": [
+    {
+      "id": "enhancement",
+      "stacks": false
+    },
+    {
+      "id": "morale",
+      "stacks": false
+    },
+    {
+      "id": "luck",
+      "stacks": false
+    },
+    {
+      "id": "competence",
+      "stacks": false
+    },
+    {
+      "id": "size",
+      "stacks": false
+    },
+    {
+      "id": "resistance",
+      "stacks": false
+    },
+    {
+      "id": "natural_armor",
+      "stacks": false
+    },
+    {
+      "id": "untyped",
+      "stacks": true
+    },
+    {
+      "id": "dodge",
+      "stacks": true
+    }
+  ],
+  "statistics": [
+    {
+      "key": "ability.str.score",
+      "base": "@ability.str.base"
+    },
+    {
+      "key": "ability.str.mod",
+      "base": "floor((@ability.str.score - 10) / 2)"
+    },
+    {
+      "key": "ability.dex.score",
+      "base": "@ability.dex.base"
+    },
+    {
+      "key": "ability.dex.mod",
+      "base": "floor((@ability.dex.score - 10) / 2)"
+    },
+    {
+      "key": "ability.con.score",
+      "base": "@ability.con.base"
+    },
+    {
+      "key": "ability.con.mod",
+      "base": "floor((@ability.con.score - 10) / 2)"
+    },
+    {
+      "key": "ability.int.score",
+      "base": "@ability.int.base"
+    },
+    {
+      "key": "ability.int.mod",
+      "base": "floor((@ability.int.score - 10) / 2)"
+    },
+    {
+      "key": "ability.wis.score",
+      "base": "@ability.wis.base"
+    },
+    {
+      "key": "ability.wis.mod",
+      "base": "floor((@ability.wis.score - 10) / 2)"
+    },
+    {
+      "key": "ability.cha.score",
+      "base": "@ability.cha.base"
+    },
+    {
+      "key": "ability.cha.mod",
+      "base": "floor((@ability.cha.score - 10) / 2)"
+    },
+    {
+      "key": "level",
+      "base": "level()"
+    },
+    {
+      "key": "level_from_xp",
+      "base": "floor((1 + isqrt(1 + 8 * @xp / 1000)) / 2)"
+    },
+    {
+      "key": "bab",
+      "base": "@progression.bab"
+    },
+    {
+      "key": "save.fort",
+      "components": [
+        "progression.fort",
+        "ability.con.mod"
+      ]
+    },
+    {
+      "key": "save.ref",
+      "components": [
+        "progression.ref",
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "save.will",
+      "components": [
+        "progression.will",
+        "ability.wis.mod"
+      ]
+    },
+    {
+      "key": "hp.base",
+      "base": "3 / 4 * @hit_dice.total"
+    },
+    {
+      "key": "hp.max",
+      "base": "@hp.base + @ability.con.mod * level()"
+    },
+    {
+      "key": "weapon.attack",
+      "base": 0
+    },
+    {
+      "key": "weapon.damage",
+      "base": 0
+    },
+    {
+      "key": "attack.melee",
+      "components": [
+        "bab",
+        "ability.str.mod",
+        "weapon.attack"
+      ]
+    },
+    {
+      "key": "damage.melee",
+      "components": [
+        "damage.melee.weapon",
+        "damage.melee.ability"
+      ]
+    },
+    {
+      "key": "damage.melee.weapon",
+      "base": "@weapon.damage"
+    },
+    {
+      "key": "damage.melee.ability",
+      "base": "@ability.str.mod"
+    },
+    {
+      "key": "ac.armor",
+      "base": 0
+    },
+    {
+      "key": "ac.natural",
+      "base": 0
+    },
+    {
+      "key": "ac.dex_bonus",
+      "base": "@ability.dex.mod"
+    },
+    {
+      "key": "ac.total",
+      "base": "10 + @ac.armor + @ac.natural + @ac.dex_bonus"
+    },
+    {
+      "key": "speed.land",
+      "base": 30
+    }
+  ],
+  "entities": [
+    {
+      "id": "class.fighter",
+      "type": "class",
+      "name": {
+        "en": "Fighter"
+      },
+      "hitDie": 10
+    },
+    {
+      "id": "power.bear_form",
+      "type": "class_power",
+      "name": {
+        "en": "Bear Form"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "set",
+          "value": 8,
+          "layer": "base",
+          "condition": "active('toggle.bear_form')"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "set",
+          "value": 27,
+          "layer": "base",
+          "condition": "active('toggle.bear_form')"
+        },
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 40,
+          "layer": "final",
+          "condition": "active('toggle.bear_form')"
+        }
+      ]
+    },
+    {
+      "id": "item.dire_totem",
+      "type": "item",
+      "name": {
+        "en": "Dire Totem"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "set",
+          "value": 9,
+          "layer": "base"
+        }
+      ]
+    },
+    {
+      "id": "item.amulet",
+      "type": "item",
+      "name": {
+        "en": "Amulet"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 2,
+          "bonusType": "enhancement"
+        }
+      ]
+    },
+    {
+      "id": "item.belt",
+      "type": "item",
+      "name": {
+        "en": "Belt"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement"
+        }
+      ]
+    },
+    {
+      "id": "item.armor",
+      "type": "item",
+      "name": {
+        "en": "Armor"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "set",
+          "value": 8,
+          "layer": "base"
+        },
+        {
+          "target": "ac.dex_bonus",
+          "op": "max",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "feat.fleet",
+      "type": "feat",
+      "name": {
+        "en": "Fleet"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 10,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.floor",
+      "type": "feat",
+      "name": {
+        "en": "Floor"
+      },
+      "effects": [
+        {
+          "target": "ac.dex_bonus",
+          "op": "min",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.fighter",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0
+    }
+  ],
+  "progressionRules": {
+    "epicAfterLevel": 20,
+    "epicPerLevel": {
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5
+    }
+  },
+  "relations": []
+}

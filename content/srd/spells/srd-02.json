@@ -1,0 +1,686 @@
+{
+  "entities": [
+    {
+      "id": "spell.break_enchantment",
+      "type": "spell",
+      "name": {
+        "fr": "Annulation d'enchantement",
+        "en": "Break Enchantment"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une minute de patience, et les chaînes invisibles se défont une à une. Charmes, métamorphoses et malédictions lâchent prise.\n\nEn jeu\n• Libère jusqu’à 1 créature/niveau (toutes à 9 m ou moins les unes des autres) des enchantements, transmutations et malédictions ; défait aussi les effets instantanés (pétrification…).\n• Pour chaque effet : 1d20 + niveau de lanceur (+15 au plus) contre DD 11 + niveau de lanceur de l’effet.\n• Objet maudit : DD 25 ; on peut retirer l’objet, mais il reste maudit.\n• Un effet que dissipation de la magie ne peut pas toucher ne cède que s’il est de niveau 5 ou moins."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 minute",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu’à 1 créature/niveau, toutes à 9 m ou moins les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.nondetection",
+      "type": "spell",
+      "name": {
+        "fr": "Antidétection",
+        "en": "Nondetection"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Les boules de cristal se troublent, les sorts de recherche glissent sur la cible comme la pluie sur une vitre.\n\nEn jeu\n• Protège une créature (et tout son équipement) ou un objet contre les divinations et la scrutation, boules de cristal comprises, pendant 1 heure/niveau.\n• Pour percer la protection : test de niveau de lanceur (1d20 + niveau) contre DD 11 + niveau du lanceur d’antidétection, DD 15 + niveau s’il se protège lui-même ou un de ses objets.\n• Composante : poudre de diamant d’au moins 50 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature ou objet touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.calm_animals",
+      "type": "spell",
+      "name": {
+        "fr": "Apaisement des animaux",
+        "en": "Calm Animals"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une voix posée, une main tendue, et la meute baisse les crocs. Les bêtes se figent, plus curieuses que menaçantes.\n\nEn jeu\n• Calme des animaux d’une même espèce (Intelligence 1 ou 2), tous à 9 m ou moins les uns des autres : 2d4 + niveau de lanceur DV au total.\n• Seuls les animaux sanguinaires ou dressés à l’attaque ont droit à un jet de Volonté.\n• Les animaux restent sur place sans attaquer ni fuir, mais se défendent ; toute menace met fin à l’effet.\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "animaux à 9 m ou moins les uns des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.calm_emotions",
+      "type": "spell",
+      "name": {
+        "fr": "Apaisement des émotions",
+        "en": "Calm Emotions"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Les poings se desserrent, les cris retombent. Une paix lourde, presque forcée, s’installe sur la foule.\n\nEn jeu\n• Créatures dans un rayon de 6 m : jet de Volonté ou elles ne peuvent plus agir avec violence, sauf pour se défendre.\n• Une attaque ou des dégâts contre une seule créature apaisée rompent le sort pour toutes.\n• Réprime (sans les dissiper) les bonus de moral (bénédiction, espoir, rage, inspiration du barde, rage de barbare), les effets de terreur et la confusion, le temps du sort.\n• Concentration, jusqu’à 1 round/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "créatures dans une étendue de 6 m de rayon",
+        "duration": "concentration, jusqu’à 1 round/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.call_lightning",
+      "type": "spell",
+      "name": {
+        "fr": "Appel de la foudre",
+        "en": "Call Lightning"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le ciel répond à l’appel : un trait de foudre tombe droit sur l’ennemi, puis un autre, aussi longtemps que dure l’orage intérieur.\n\nEn jeu\n• Un éclair vertical (1,50 m de large, 9 m de haut) par round au plus : 3d6 électricité, Réflexes pour la moitié.\n• Nombre d’éclairs : 1 par niveau de lanceur (10 au plus). Chaque éclair après le premier demande une action simple.\n• Dehors sous un orage : 3d10 au lieu de 3d6.\n• Dure 1 minute/niveau ; marche sous terre, pas sous l’eau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "1 ou plusieurs éclairs verticaux de 9 m de long",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6 electricity",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.call_lightning_storm",
+      "type": "spell",
+      "name": {
+        "fr": "Appel de la tempête",
+        "en": "Call Lightning Storm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Ce n’est plus un éclair, c’est la colère du ciel tout entier, tenue en laisse par une seule volonté.\n\nEn jeu\n• Comme appel de la foudre, mais chaque éclair inflige 5d6 électricité (5d10 sous un orage), Réflexes pour la moitié.\n• Jusqu’à 15 éclairs, un par round au plus.\n• Portée longue, dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "1 ou plusieurs éclairs verticaux de 9 m de long",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "5d6 electricity",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.align_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Arme alignée",
+        "en": "Align Weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La lame se charge d’une conviction : bien ou mal, ordre ou chaos. Les démons et les diables sentent la différence.\n\nEn jeu\n• Une arme ou 50 projectiles qui se touchent deviennent bons, mauvais, loyaux ou chaotiques (au choix) pour 1 minute/niveau.\n• L’arme passe la réduction des dégâts liée à cet alignement.\n• Sans effet sur une arme déjà alignée ou une arme naturelle. Le sort prend le registre de l’alignement choisi."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme touchée ou 50 projectiles en contact",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.disrupting_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Arme destructrice",
+        "en": "Disrupting Weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Chaque coup porte une étincelle de vie pure. Pour un mort-vivant, une seule touche peut suffire à le renvoyer à la poussière.\n\nEn jeu\n• Une arme de corps à corps, 1 round/niveau.\n• Mort-vivant touché dont les DV ne dépassent pas le niveau de lanceur : Volonté ou détruit.\n• La résistance à la magie ne protège pas de la destruction."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 arme de corps à corps",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet) ; voir description",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Arme magique",
+        "en": "Magic Weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un éclat discret court le long du fil. L’arme n’a pas changé, mais elle frappe plus juste et plus fort.\n\nEn jeu\n• +1 d’altération aux jets d’attaque et de dégâts de l’arme touchée, 1 minute/niveau.\n• Remplace le +1 d’une arme de maître (pas de cumul). Pas sur une arme naturelle, mais oui sur les mains nues d’un moine."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.magic_weapon')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.magic_weapon')"
+        }
+      ]
+    },
+    {
+      "id": "spell.greater_magic_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Arme magique suprême",
+        "en": "Greater Magic Weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La magie s’enracine dans le métal pour des heures. Plus le lanceur est puissant, plus la lame devient redoutable.\n\nEn jeu\n• +1 d’altération aux jets d’attaque et de dégâts par tranche de 4 niveaux de lanceur (+5 au plus), 1 heure/niveau.\n• Une arme, ou 50 projectiles du même type qui se touchent ; les projectiles perdent la magie une fois tirés (pas une arme de jet). Les shuriken comptent comme projectiles.\n• Composante profane : poudre de chaux et de carbone."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 arme ou 50 projectiles en contact",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "min(floor(@spell.caster_level / 4), 5)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.greater_magic_weapon')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "min(floor(@spell.caster_level / 4), 5)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.greater_magic_weapon')"
+        }
+      ]
+    },
+    {
+      "id": "spell.spiritual_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Arme spirituelle",
+        "en": "Spiritual Weapon"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une arme de pure force jaillit de nulle part et part au combat toute seule, fidèle comme un écuyer qui n’a jamais peur.\n\nEn jeu\n• Arme de force (l’arme de prédilection de la divinité) qui attaque dès le round où elle apparaît : 1d8 force + 1 par 3 niveaux de lanceur (+5 au plus).\n• Attaque avec le bonus de base du lanceur + son modificateur de Sagesse, autant d’attaques que lui ; critique de l’arme imitée.\n• Touche les intangibles sans chance de rater, passe la réduction des dégâts ; ne prend pas en tenaille, ignore dons et actions spéciales du lanceur.\n• Changer de cible : action de mouvement. Hors de portée ou de vue, elle revient près du lanceur. Dure 1 round/niveau.\n• Insensible aux attaques physiques ; dissipation de la magie, désintégration, sphère d’annihilation ou sceptre d’annulation l’affectent. CA de contact 12.\n• Cible dotée de résistance à la magie : test au premier contact ; s’il réussit, l’arme disparaît."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "arme magique de force",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8 force",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(floor(@spell.caster_level / 3), 5)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mage_armor",
+      "type": "spell",
+      "name": {
+        "fr": "Armure de mage",
+        "en": "Mage Armor"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un champ de force invisible épouse le corps comme une cotte de mailles qui ne pèse rien et ne fait aucun bruit.\n\nEn jeu\n• +4 d’armure à la CA pendant 1 heure/niveau (ne se cumule pas avec une armure portée).\n• Aucune pénalité d’armure, aucun risque d’échec des sorts profanes, aucune perte de vitesse.\n• Fait de force : arrête aussi les créatures intangibles."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "min",
+          "value": 4,
+          "condition": "active('toggle.mage_armor')"
+        }
+      ]
+    },
+    {
+      "id": "spell.time_stop",
+      "type": "spell",
+      "name": {
+        "fr": "Arrêt du temps",
+        "en": "Time Stop"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le monde se fige en plein battement de cœur. Pendant quelques instants volés, un seul être bouge encore.\n\nEn jeu\n• Le lanceur agit seul pendant 1d4 + 1 rounds de temps apparent.\n• Les autres créatures sont invulnérables à ses attaques et sorts ; ses sorts de zone qui durent plus longtemps agissent normalement une fois le temps relancé.\n• Il ne peut ni prendre ni abîmer un objet tenu par une créature figée ; feu, froid et gaz l’affectent normalement.\n• Indétectable pendant la durée ; ne peut pas entrer dans une zone d’antimagie."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1d4 + 1 rounds de temps apparent",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.acid_splash",
+      "type": "spell",
+      "name": {
+        "fr": "Aspersion d'acide",
+        "en": "Acid Splash"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une petite bulle verte fuse du bout des doigts et éclate en grésillant sur la cible.\n\nEn jeu\n• Attaque de contact à distance : 1d3 acide."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "acide"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un projectile d’acide",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d3 acid",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.phantasmal_killer",
+      "type": "spell",
+      "name": {
+        "fr": "Assassin imaginaire",
+        "en": "Phantasmal Killer"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "La victime voit surgir sa pire peur, taillée sur mesure. Si elle y croit, son cœur peut s’arrêter net.\n\nEn jeu\n• Volonté pour reconnaître l’illusion ; en cas d’échec, Vigueur ou la cible meurt de peur.\n• Même si elle réussit le jet de Vigueur, elle subit 3d6 dégâts.\n• Une cible qui porte un casque de télépathie et réussit son jet de Volonté renvoie le sort au lanceur, qui doit alors faire les jets à son tour."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "fantasme",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction), puis Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.guidance",
+      "type": "spell",
+      "name": {
+        "fr": "Assistance divine",
+        "en": "Guidance"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un murmure venu d’ailleurs souffle le bon geste au bon moment, une seule fois.\n\nEn jeu\n• +1 de compétence à un seul jet d’attaque, jet de sauvegarde ou test de compétence.\n• À choisir avant de lancer le dé ; le sort dure 1 minute ou jusqu’à son utilisation."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute ou jusqu’à utilisation",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sympathy",
+      "type": "spell",
+      "name": {
+        "fr": "Attirance",
+        "en": "Sympathy"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un lieu ou un objet se met à chanter pour une seule sorte de créatures. Elles viennent, et ne veulent plus repartir.\n\nEn jeu\n• Attire une espèce précise de créatures intelligentes (dragons rouges, vampires…) ou un alignement précis, choisi à l’incantation.\n• Jet de Volonté réussi : libre, mais un nouveau jet après 1d6 × 10 minutes. Échec : la créature revient sans cesse au lieu ou à l’objet.\n• Zone : un objet ou un lieu jusqu’à un cube de 3 m d’arête par niveau. Dure 2 heures/niveau.\n• Contre et dissipe aversion. Composantes : perles broyées (1 500 po au moins) et une goutte de miel."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 heure",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 lieu (jusqu’à 1 cube de 3 m d’arête/niveau) ou 1 objet",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.augury",
+      "type": "spell",
+      "name": {
+        "fr": "Augure",
+        "en": "Augury"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les osselets roulent, la fumée se tord : les puissances disent si le prochain pas mène à la fortune ou au péril.\n\nEn jeu\n• Une question sur une action prévue dans la demi-heure qui vient : fortune, péril, les deux, ou rien.\n• Chance de réponse juste : 70 % + 1 % par niveau de lanceur (90 % au plus) ; sinon réponse « rien » par défaut. Lancé par le MD en secret.\n• Plusieurs augures sur la même question donnent la même réponse.\n• Composante : encens (25 po au moins). Focaliseur : bâtonnets ou osselets gravés (25 po au moins)."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M, F",
+        "castingTime": "1 minute",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_aura",
+      "type": "spell",
+      "name": {
+        "fr": "Aura magique",
+        "en": "Magic Aura"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un faux reflet de magie, posé sur un objet banal, ou un vrai trésor qui se fait passer pour du fer-blanc.\n\nEn jeu\n• Un objet (2,5 kg/niveau au plus) montre l’aura magique de son choix aux sorts de détection, ou n’en montre aucune.\n• Identification ou examen similaire : jet de Volonté pour découvrir la ruse ; sinon l’aura convainc, quels que soient les tests.\n• Sans effet sur un objet à l’aura très puissante (artefact). Dure 1 jour/niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "objet touché (2,5 kg/niveau au plus)",
+        "duration": "1 jour/niveau (T)",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.unholy_aura",
+      "type": "spell",
+      "name": {
+        "fr": "Aura maudite",
+        "en": "Unholy Aura"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un voile de ténèbres enveloppe les fidèles. Les coups glissent, les sorts sacrés s’émoussent, et la main qui frappe se dessèche.\n\nEn jeu\n• Jusqu’à 1 créature/niveau dans un rayon de 6 m, pour 1 round/niveau : +4 de parade à la CA et +4 de résistance aux jets de sauvegarde.\n• Résistance à la magie 25 contre les sorts du Bien et ceux lancés par des créatures bonnes.\n• Bloque possession et influence mentale, comme protection contre le Bien.\n• Une créature bonne qui touche un protégé au corps à corps : Vigueur ou 1d6 points d’affaiblissement de Force.\n• Focaliseur : un reliquaire d’au moins 500 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "target": "1 créature/niveau dans un rayonnement de 6 m de rayon centré sur le lanceur",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "deflection",
+          "condition": "active('toggle.unholy_aura')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "resistance",
+          "condition": "active('toggle.unholy_aura')"
+        },
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": 25,
+          "layer": "base",
+          "situation": "situation.vs_good_spells",
+          "condition": "active('toggle.unholy_aura')"
+        }
+      ]
+    }
+  ]
+}

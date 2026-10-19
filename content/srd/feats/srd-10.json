@@ -1,0 +1,311 @@
+{
+  "entities": [
+    {
+      "id": "feat.empower_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Extension d'effet",
+        "en": "Empower Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le lanceur ne change pas la formule : il la gonfle. Il y verse plus de souffle, plus de volonté, et le sort sort de ses mains plus lourd de moitié, au prix d’un effort qui se paie en niveau d’emplacement.\n\nEn jeu\n• Toutes les variables numériques du sort (dégâts, soins, nombre de cibles…) sont multipliées par 1,5.\n• Les jets de sauvegarde, les jets opposés et les sorts sans variable numérique ne changent pas.\n• Le sort utilise un emplacement de 2 niveaux de plus que son niveau réel.\n• Avec Quintessence des sorts : le sort fait le maximum, plus la moitié d’un jet normal.\n• Ne se cumule pas avec Intensification ni Superspell : seul le plus fort s’applique."
+      },
+      "effects": [
+        {
+          "target": "spell.numeric",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "exclusive: metamagic_amplify",
+          "scope": "spell",
+          "status": "draft",
+          "note": "Numeric effects, as in 3.5 (Force of Colossus +12 on the sheet)"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.extend_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de durée",
+        "en": "Extend Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Un nœud de plus dans la trame, un fil tiré un peu plus loin : la magie tient là où elle aurait dû se défaire, et la protection du matin veille encore au soir.\n\nEn jeu\n• La durée du sort est doublée.\n• Sans effet sur les sorts à durée permanente, instantanée ou liée à la concentration.\n• Le sort utilise un emplacement de 1 niveau de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.enlarge_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de portée",
+        "en": "Enlarge Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "La voix porte plus loin, le geste vise plus haut : le sort franchit la distance que d’autres jugeraient hors d’atteinte, et l’ennemi qui se croyait à l’abri apprend son erreur.\n\nEn jeu\n• Double la portée d’un sort à portée courte, moyenne ou longue.\n• Portée courte : 15 m + 1,5 m par niveau ; moyenne : 60 m + 6 m par niveau ; longue : 240 m + 24 m par niveau.\n• Sans effet sur les autres portées (contact, personnelle, fixe, illimitée…).\n• Le sort utilise un emplacement de 1 niveau de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.range",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Seules les portées courte, moyenne et longue peuvent être doublées : pas encore vérifié par la fiche."
+    },
+    {
+      "id": "feat.widen_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de zone d’effet",
+        "en": "Widen Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le cercle s’ouvre, la ligne s’étire, la vague déborde : le lanceur repousse les bords de son sort jusqu’à couvrir le champ de bataille entier.\n\nEn jeu\n• Double les dimensions de la zone d’un sort en émanation, en étendue, en ligne ou en rayonnement.\n• Sans effet sur les autres zones (cônes, cylindres…) ni sur les sorts sans zone.\n• Le sort utilise un emplacement de 3 niveaux de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.area.radius",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Seul le rayon est doublé sur la fiche ; les formes de zone autorisées ne sont pas vérifiées."
+    },
+    {
+      "id": "feat.quicken_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation rapide",
+        "en": "Quicken Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Un mot, un claquement de doigts, et c’est fait. Le sort jaillit entre deux battements de cœur, laissant au lanceur tout le reste du round pour agir… ou lancer autre chose.\n\nEn jeu\n• Lancer le sort ne prend qu’une action libre et ne provoque pas d’attaque d’opportunité.\n• Un seul sort à incantation rapide par round.\n• La fiche l’affiche comme une action rapide (swift), qui a la même limite d’une par round.\n• Impossible sur un sort dont le temps d’incantation dépasse 1 round.\n• Le sort utilise un emplacement de 4 niveaux de plus que son niveau réel.\n• Ne s’applique pas aux sorts lancés spontanément (ensorceleur, barde, conversion spontanée), car la métamagie spontanée allonge leur incantation."
+      },
+      "effects": [
+        {
+          "target": "spell.action",
+          "op": "set",
+          "value": "'swift'",
+          "layer": "final",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.silent_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation silencieuse",
+        "en": "Silent Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Les lèvres bougent à peine, ou pas du tout. Bâillonné, plongé dans un silence magique ou simplement discret, le lanceur fait naître le sort sans un son.\n\nEn jeu\n• Le sort se lance sans composante verbale.\n• Sans effet sur les sorts qui n’ont pas de composante verbale.\n• Le sort utilise un emplacement de 1 niveau de plus que son niveau réel.\n• Les sorts de barde ne peuvent pas en profiter."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Composantes du sort : pas encore dans le modèle (seul le coût en emplacement est calculé)."
+    },
+    {
+      "id": "feat.still_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation statique",
+        "en": "Still Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Mains liées, bras pris dans la glace ou la poigne d’un géant : peu importe. Le lanceur a appris à tracer ses runes en pensée, sans le moindre geste.\n\nEn jeu\n• Le sort se lance sans composante gestuelle (pas de risque d’échec des sorts profanes dû à l’armure).\n• Sans effet sur les sorts qui n’ont pas de composante gestuelle.\n• Le sort utilise un emplacement de 1 niveau de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Composantes du sort : pas encore dans le modèle (seul le coût en emplacement est calculé)."
+    },
+    {
+      "id": "feat.maximize_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Quintessence des sorts",
+        "en": "Maximize Spell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Plus de hasard. Chaque dé tombe sur sa plus haute face, chaque flamme brûle à pleine force : le sort donne exactement tout ce qu’il peut donner.\n\nEn jeu\n• Toutes les variables numériques du sort (dégâts, soins, nombre de cibles…) prennent leur valeur maximale.\n• Les jets de sauvegarde, les jets opposés et les sorts sans variable numérique ne changent pas.\n• Le sort utilise un emplacement de 3 niveaux de plus que son niveau réel.\n• Avec Extension d’effet : maximum, plus la moitié d’un jet normal (boule de feu 10d6 : 60 + 10d6 / 2)."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Dés au maximum : pas encore dans le modèle (seul le coût en emplacement est calculé)."
+    },
+    {
+      "id": "feat.forge_ring",
+      "type": "feat",
+      "name": {
+        "fr": "Création d’anneaux magiques",
+        "en": "Forge Ring"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "creation",
+        "magic"
+      ],
+      "description": {
+        "fr": "Un cercle de métal, un serment gravé à l’intérieur, et des jours entiers à y couler une part de soi-même : l’anneau qui en sort porte un pouvoir pour toujours.\n\nEn jeu\n• Condition : niveau 12 de lanceur de sorts.\n• Permet de créer tout anneau magique dont le personnage remplit les conditions.\n• Coût : 1 jour par tranche de 1 000 po du prix de base, des PX égaux à 1/25 du prix de base et des matières premières pour la moitié du prix de base.\n• Certains anneaux ont un coût en plus, indiqué dans leur description.\n• Réparer un anneau cassé : mêmes conditions, temps, PX et matières premières divisés par deux."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 12 de lanceur de sorts."
+    },
+    {
+      "id": "feat.craft_magic_arms_and_armor",
+      "type": "feat",
+      "name": {
+        "fr": "Création d’armes et d’armures magiques",
+        "en": "Craft Magic Arms and Armor"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "creation",
+        "magic"
+      ],
+      "description": {
+        "fr": "Dans la forge, le marteau frappe en rythme avec l’incantation. Lame, cuirasse ou bouclier de maître : chaque pièce sort de l’enclume avec une magie qui ne la quittera plus.\n\nEn jeu\n• Condition : niveau 5 de lanceur de sorts.\n• Permet de créer toute arme, armure ou tout bouclier magique dont le personnage remplit les conditions.\n• L’objet doit être un objet de maître (son prix n’entre pas dans le calcul).\n• Coût : 1 jour par tranche de 1 000 po du prix de base des propriétés magiques, des PX égaux à 1/25 de ce prix et des matières premières pour sa moitié.\n• Réparer un objet cassé : mêmes conditions, temps, PX et matières premières divisés par deux."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 5 de lanceur de sorts."
+    }
+  ],
+  "relations": []
+}

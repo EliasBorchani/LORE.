@@ -1,0 +1,1339 @@
+{
+  "entities": [
+    {
+      "id": "skill.craft",
+      "type": "skill",
+      "name": {
+        "fr": "Artisanat",
+        "en": "Craft"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Fabriquer, réparer, évaluer le travail bien fait. Une compétence par métier : alchimie, forge, menuiserie…\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int"
+      },
+      "effects": [
+        {
+          "target": "skill.appraise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.craft.ranks >= 5",
+          "situation": "situation.items_of_your_craft"
+        }
+      ]
+    },
+    {
+      "id": "skill.handle_animal",
+      "type": "skill",
+      "name": {
+        "fr": "Dressage",
+        "en": "Handle Animal"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Apaiser, dresser et commander une bête, du cheval de guerre au loup apprivoisé.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.handle_animal.ranks >= 5"
+        },
+        {
+          "target": "check.wild_empathy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.handle_animal.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "skill.ride",
+      "type": "skill",
+      "name": {
+        "fr": "Équitation",
+        "en": "Ride"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Rester en selle quand tout tourne mal, et faire de sa monture un partenaire de combat.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex"
+      }
+    },
+    {
+      "id": "skill.climb",
+      "type": "skill",
+      "name": {
+        "fr": "Escalade",
+        "en": "Climb"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Monter aux murs, aux falaises et aux cordes, même quand quelqu’un essaie de vous en faire tomber.\n\nCaractéristique associée : Force."
+      },
+      "skill": {
+        "ability": "str",
+        "armorCheckPenalty": 1
+      }
+    },
+    {
+      "id": "skill.intimidate",
+      "type": "skill",
+      "name": {
+        "fr": "Intimidation",
+        "en": "Intimidate"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Obtenir ce qu’on veut par la menace, ou simplement par la présence.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha"
+      }
+    },
+    {
+      "id": "skill.swim",
+      "type": "skill",
+      "name": {
+        "fr": "Natation",
+        "en": "Swim"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Garder la tête hors de l’eau, en armure si possible.\n\nCaractéristique associée : Force."
+      },
+      "skill": {
+        "ability": "str",
+        "armorCheckPenalty": 2
+      }
+    },
+    {
+      "id": "skill.listen",
+      "type": "skill",
+      "name": {
+        "fr": "Perception auditive",
+        "en": "Listen"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Entendre le pas feutré derrière la porte avant qu’il ne soit trop tard.\n\nCaractéristique associée : Sagesse."
+      },
+      "skill": {
+        "ability": "wis"
+      }
+    },
+    {
+      "id": "skill.jump",
+      "type": "skill",
+      "name": {
+        "fr": "Saut",
+        "en": "Jump"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Franchir le gouffre, sauter la table, atterrir debout.\n\nCaractéristique associée : Force."
+      },
+      "skill": {
+        "ability": "str",
+        "armorCheckPenalty": 1
+      },
+      "effects": [
+        {
+          "target": "skill.tumble",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.jump.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "skill.survival",
+      "type": "skill",
+      "name": {
+        "fr": "Survie",
+        "en": "Survival"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Suivre une piste, trouver de l’eau, ne pas se perdre là où il n’y a pas de route.\n\nCaractéristique associée : Sagesse."
+      },
+      "skill": {
+        "ability": "wis"
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_nature",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.survival.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "proficiency.simple_weapons",
+      "type": "proficiency",
+      "name": {
+        "fr": "Armes courantes",
+        "en": "Simple weapons"
+      },
+      "provenance": "official",
+      "labels": [
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Dagues, masses, lances, arbalètes : les armes que n’importe qui peut apprendre à manier."
+      }
+    },
+    {
+      "id": "proficiency.martial_weapons",
+      "type": "proficiency",
+      "name": {
+        "fr": "Armes de guerre",
+        "en": "Martial weapons"
+      },
+      "provenance": "official",
+      "labels": [
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Épées longues, haches, arcs longs : les armes des combattants entraînés."
+      }
+    },
+    {
+      "id": "proficiency.shields",
+      "type": "proficiency",
+      "name": {
+        "fr": "Boucliers",
+        "en": "Shields"
+      },
+      "provenance": "official",
+      "labels": [
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Rondaches et écus, sans le pavois, qui demande une formation à part."
+      }
+    },
+    {
+      "id": "proficiency.light_armor",
+      "type": "proficiency",
+      "name": {
+        "fr": "Armures légères",
+        "en": "Light armor"
+      },
+      "provenance": "official",
+      "labels": [
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Cuir, cuir clouté, chemise de mailles : protéger sans entraver."
+      }
+    },
+    {
+      "id": "proficiency.medium_armor",
+      "type": "proficiency",
+      "name": {
+        "fr": "Armures intermédiaires",
+        "en": "Medium armor"
+      },
+      "provenance": "official",
+      "labels": [
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Peaux, écailles, cotte de mailles : plus de protection, un peu moins de souplesse."
+      }
+    },
+    {
+      "id": "alignment.lawful_good",
+      "type": "alignment",
+      "name": {
+        "fr": "Loyal bon",
+        "en": "Lawful good"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "Une parole donnée vaut une lame tirée. Le loyal bon croit que le bien ne tient debout que s’il a des fondations : des lois justes, des serments tenus, une porte qui s’ouvre à qui frappe. Il se dresse entre le faible et le loup, et il le fait sans masque, à la vue de tous. Son danger : confondre la règle et la justice le jour où elles se séparent.\n\nEn jeu\n• Tient parole, respecte l’autorité légitime, protège les innocents.\n• Préfère convaincre, juger, emprisonner, plutôt que tuer.\n• Seul alignement possible pour le paladin."
+      }
+    },
+    {
+      "id": "alignment.neutral_good",
+      "type": "alignment",
+      "name": {
+        "fr": "Neutre bon",
+        "en": "Neutral good"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "Ni bannière ni chaîne : seulement la main tendue. Le neutre bon fait le bien parce qu’il est le bien, et peu lui importe que la loi l’autorise ou le défende. Il soignera le soldat ennemi, mentira au tyran pour cacher un enfant, et repartira sans attendre de remerciements.\n\nEn jeu\n• Aide d’abord, discute des règles ensuite.\n• Travaille avec les autorités quand elles servent les gens, les contourne sinon.\n• L’alignement le plus simplement « gentil » : ni dogme ni rébellion."
+      }
+    },
+    {
+      "id": "alignment.chaotic_good",
+      "type": "alignment",
+      "name": {
+        "fr": "Chaotique bon",
+        "en": "Chaotic good"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "Le vent dans les voiles et le cœur à la bonne place. Le chaotique bon se méfie des trônes, des contrats et des uniformes, mais pas des gens. Il libère les prisonniers avant de se demander s’ils étaient coupables, vole le percepteur pour nourrir le village, et rit au nez de ceux qui lui parlent de « l’ordre des choses ».\n\nEn jeu\n• Suit sa conscience plutôt que les lois ; déteste qu’on lui donne des ordres.\n• Généreux, impulsif, fidèle à ses amis plus qu’à ses promesses.\n• Barde et barbare peuvent l’être ; le moine et le paladin, non."
+      }
+    },
+    {
+      "id": "alignment.lawful_neutral",
+      "type": "alignment",
+      "name": {
+        "fr": "Loyal neutre",
+        "en": "Lawful neutral"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "La balance ne penche pas : elle pèse. Le loyal neutre place l’ordre au-dessus du bien et du mal, parce que sans lui, les deux se noient dans le chaos. Juge impassible, soldat discipliné, moine en quête d’équilibre : il obéit au code, même quand le code lui coûte, et attend des autres qu’ils en fassent autant.\n\nEn jeu\n• Respecte la hiérarchie, les traditions et la parole donnée, quelles que soient les conséquences morales.\n• Prévisible, méthodique, incorruptible.\n• Compatible avec le moine (qui doit être loyal) ; pas avec le barbare ni le barde."
+      }
+    },
+    {
+      "id": "alignment.neutral",
+      "type": "alignment",
+      "name": {
+        "fr": "Neutre strict",
+        "en": "True neutral"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "Il regarde le monde comme on regarde une marée : sans colère, sans prière. Le neutre strict ne prend pas parti, ou ne prend parti que pour rétablir l’équilibre quand un plateau penche trop. Parfois c’est un druide qui défend la forêt contre les hommes comme contre les démons ; parfois, plus simplement, quelqu’un qui veut qu’on le laisse vivre.\n\nEn jeu\n• Agit selon la situation, sans grand idéal moral ni code.\n• Version philosophique : le gardien de l’équilibre entre les forces cosmiques.\n• Possible pour le druide (qui doit avoir une part de neutralité)."
+      }
+    },
+    {
+      "id": "alignment.chaotic_neutral",
+      "type": "alignment",
+      "name": {
+        "fr": "Chaotique neutre",
+        "en": "Chaotic neutral"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "Libre, et c’est tout. Le chaotique neutre suit son humeur comme une girouette suit le vent : généreux à midi, voleur à minuit, toujours sincère dans l’instant. Il ne veut pas faire de mal, mais il refuse qu’une loi, un dieu ou un ami décide à sa place. Imprévisible, oui. Fou, rarement : il sait très bien ce qu’il fait.\n\nEn jeu\n• Valorise sa liberté au-dessus de tout ; ni bienveillant ni cruel par principe.\n• Tient parole quand ça l’arrange ; difficile à commander.\n• Le plus délicat à bien jouer : imprévisible ne veut pas dire absurde."
+      }
+    },
+    {
+      "id": "alignment.lawful_evil",
+      "type": "alignment",
+      "name": {
+        "fr": "Loyal mauvais",
+        "en": "Lawful evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "La cruauté en ordre de bataille. Le loyal mauvais veut le pouvoir, et il sait que les lois, les contrats et les hiérarchies sont les meilleures chaînes jamais forgées. Il ne ment pas : il rédige des clauses. Il ne trahit pas : il applique la lettre. Un démon s’empare d’une âme par la force ; lui, il vous la fait signer.\n\nEn jeu\n• Respecte ses engagements, la hiérarchie et ses propres règles, mais au service de sa domination.\n• Méthodique, patient, souvent plus dangereux qu’un fou furieux.\n• L’alignement des diables, des inquisiteurs cruels et des empereurs implacables."
+      }
+    },
+    {
+      "id": "alignment.neutral_evil",
+      "type": "alignment",
+      "name": {
+        "fr": "Neutre mauvais",
+        "en": "Neutral evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "Ni loi ni folie : seulement l’intérêt. Le neutre mauvais fait le mal parce qu’il rapporte, et il le fait proprement. Il servira un tyran tant que la paie suit, et égorgera son allié le jour où la trahison vaudra plus que l’alliance. Pas de cris, pas de grand discours : le crime comme métier.\n\nEn jeu\n• Égoïste pur : aucune limite morale, aucun code qui le retienne.\n• Ni attaché à l’ordre ni amoureux du chaos ; utilise l’un ou l’autre selon le profit.\n• Peut-être le plus dangereux, car le plus pragmatique."
+      }
+    },
+    {
+      "id": "alignment.chaotic_evil",
+      "type": "alignment",
+      "name": {
+        "fr": "Chaotique mauvais",
+        "en": "Chaotic evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "alignment"
+      ],
+      "description": {
+        "fr": "L’incendie qui marche. Le chaotique mauvais ne veut pas régner, il veut briser : des vies, des villes, des serments, pour le plaisir de voir ce qui reste debout. Il obéit au plus fort tant qu’il a peur, et le poignarde dès que la peur retombe. Les démons des Abysses ne sont pas ses maîtres : ce sont ses modèles.\n\nEn jeu\n• Cruel, colérique, imprévisible ; la force est la seule loi qu’il reconnaisse.\n• Les bandes qu’il forme ne tiennent que par la peur d’un chef plus brutal.\n• L’alignement des démons et des pires fléaux d’une campagne."
+      }
+    },
+    {
+      "id": "skill.tumble",
+      "type": "skill",
+      "name": {
+        "fr": "Acrobaties",
+        "en": "Tumble"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Rouler sous une lame, traverser une mêlée sans s’y faire prendre, retomber sans se briser.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex",
+        "armorCheckPenalty": 1,
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.tumble.ranks >= 5"
+        },
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.tumble.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "skill.spellcraft",
+      "type": "skill",
+      "name": {
+        "fr": "Art de la magie",
+        "en": "Spellcraft"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Reconnaître un sort au geste et au mot, comprendre une formule, déjouer un piège magique sur le papier.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.use_magic_device",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.spellcraft.ranks >= 5",
+          "situation": "situation.scrolls"
+        }
+      ]
+    },
+    {
+      "id": "skill.bluff",
+      "type": "skill",
+      "name": {
+        "fr": "Bluff",
+        "en": "Bluff"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Faire croire n’importe quoi à n’importe qui, au moins le temps nécessaire.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha"
+      },
+      "effects": [
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.bluff.ranks >= 5"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.bluff.ranks >= 5"
+        },
+        {
+          "target": "skill.sleight_of_hand",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.bluff.ranks >= 5"
+        },
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.bluff.ranks >= 5",
+          "situation": "situation.acting_in_character"
+        }
+      ]
+    },
+    {
+      "id": "skill.concentration",
+      "type": "skill",
+      "name": {
+        "fr": "Concentration",
+        "en": "Concentration"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Garder le fil d’un sort quand tout autour cherche à vous le faire perdre.\n\nCaractéristique associée : Constitution."
+      },
+      "skill": {
+        "ability": "con"
+      }
+    },
+    {
+      "id": "skill.knowledge",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances",
+        "en": "Knowledge"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Savoir ce que les autres ignorent. Une compétence par domaine : arcanes, histoire, nature, religion, plans…\n\nCaractéristique associée : Intelligence."
+      }
+    },
+    {
+      "id": "skill.decipher_script",
+      "type": "skill",
+      "name": {
+        "fr": "Décryptage",
+        "en": "Decipher Script"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Lire une langue morte, une carte codée, une écriture que personne n’a déchiffrée depuis des siècles.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.use_magic_device",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.decipher_script.ranks >= 5",
+          "situation": "situation.scrolls"
+        }
+      ]
+    },
+    {
+      "id": "skill.disguise",
+      "type": "skill",
+      "name": {
+        "fr": "Déguisement",
+        "en": "Disguise"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Devenir quelqu’un d’autre, de la démarche à l’accent.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha"
+      }
+    },
+    {
+      "id": "skill.move_silently",
+      "type": "skill",
+      "name": {
+        "fr": "Déplacement silencieux",
+        "en": "Move Silently"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Marcher sans un bruit, même sur le parquet qui craque.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex",
+        "armorCheckPenalty": 1
+      }
+    },
+    {
+      "id": "skill.diplomacy",
+      "type": "skill",
+      "name": {
+        "fr": "Diplomatie",
+        "en": "Diplomacy"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Changer l’humeur d’une salle, conclure un marché, éviter une guerre.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha"
+      }
+    },
+    {
+      "id": "skill.hide",
+      "type": "skill",
+      "name": {
+        "fr": "Discrétion",
+        "en": "Hide"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Disparaître dans l’ombre, derrière un rideau, au milieu d’une foule.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex",
+        "armorCheckPenalty": 1
+      }
+    },
+    {
+      "id": "skill.balance",
+      "type": "skill",
+      "name": {
+        "fr": "Équilibre",
+        "en": "Balance"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Tenir debout sur une poutre, un pont de corde ou un pont de navire en pleine tempête.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex",
+        "armorCheckPenalty": 1
+      }
+    },
+    {
+      "id": "skill.sleight_of_hand",
+      "type": "skill",
+      "name": {
+        "fr": "Escamotage",
+        "en": "Sleight of Hand"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Une bourse qui change de propriétaire, une carte qui sort de la manche, une dague qu’on ne voit pas.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex",
+        "armorCheckPenalty": 1,
+        "trainedOnly": true
+      }
+    },
+    {
+      "id": "skill.appraise",
+      "type": "skill",
+      "name": {
+        "fr": "Estimation",
+        "en": "Appraise"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Savoir ce que vaut un objet, et repérer le faux au premier coup d’œil.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int"
+      }
+    },
+    {
+      "id": "skill.escape_artist",
+      "type": "skill",
+      "name": {
+        "fr": "Évasion",
+        "en": "Escape Artist"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Se défaire de cordes, de chaînes et d’étreintes qui n’ont pas été prévues pour vous.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex",
+        "armorCheckPenalty": 1
+      },
+      "effects": [
+        {
+          "target": "skill.use_rope",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.escape_artist.ranks >= 5",
+          "situation": "situation.binding_someone"
+        }
+      ]
+    },
+    {
+      "id": "skill.speak_language",
+      "type": "skill",
+      "name": {
+        "fr": "Langue",
+        "en": "Speak Language"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Apprendre une langue de plus : chaque rang en ouvre une nouvelle.\n\nCaractéristique associée : aucune."
+      }
+    },
+    {
+      "id": "skill.profession",
+      "type": "skill",
+      "name": {
+        "fr": "Profession",
+        "en": "Profession"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Vivre d’un métier : marin, herboriste, aubergiste… Une compétence par métier.\n\nCaractéristique associée : Sagesse."
+      },
+      "skill": {
+        "ability": "wis",
+        "trainedOnly": true
+      }
+    },
+    {
+      "id": "skill.sense_motive",
+      "type": "skill",
+      "name": {
+        "fr": "Psychologie",
+        "en": "Sense Motive"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Sentir le mensonge, le malaise, l’intention cachée derrière le sourire.\n\nCaractéristique associée : Sagesse."
+      },
+      "skill": {
+        "ability": "wis"
+      },
+      "effects": [
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.sense_motive.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "skill.gather_information",
+      "type": "skill",
+      "name": {
+        "fr": "Renseignements",
+        "en": "Gather Information"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Une soirée en ville, quelques pièces, et l’on sait tout ce qui se murmure.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha"
+      }
+    },
+    {
+      "id": "skill.perform",
+      "type": "skill",
+      "name": {
+        "fr": "Représentation",
+        "en": "Perform"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Chanter, jouer, déclamer, danser : tenir un public dans sa main. Une compétence par art.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha"
+      }
+    },
+    {
+      "id": "skill.use_magic_device",
+      "type": "skill",
+      "name": {
+        "fr": "Utilisation d’objets magiques",
+        "en": "Use Magic Device"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Faire marcher une baguette ou un parchemin qui n’a jamais été fait pour vous.\n\nCaractéristique associée : Charisme."
+      },
+      "skill": {
+        "ability": "cha",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.use_magic_device.ranks >= 5",
+          "situation": "situation.deciphering_scrolls"
+        }
+      ]
+    },
+    {
+      "id": "skill.heal",
+      "type": "skill",
+      "name": {
+        "fr": "Premiers secours",
+        "en": "Heal"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Arrêter une hémorragie, poser une attelle, veiller un mourant jusqu’au matin.\n\nCaractéristique associée : Sagesse."
+      },
+      "skill": {
+        "ability": "wis"
+      }
+    },
+    {
+      "id": "skill.spot",
+      "type": "skill",
+      "name": {
+        "fr": "Détection",
+        "en": "Spot"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Repérer l’archer sur le toit, le couteau sous la cape, le mensonge dans un déguisement.\n\nCaractéristique associée : Sagesse."
+      },
+      "skill": {
+        "ability": "wis"
+      }
+    },
+    {
+      "id": "skill.search",
+      "type": "skill",
+      "name": {
+        "fr": "Fouille",
+        "en": "Search"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Trouver le double fond, la dalle qui bouge, le piège sous la poussière.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int"
+      },
+      "effects": [
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.search.ranks >= 5",
+          "situation": "situation.following_tracks"
+        }
+      ]
+    },
+    {
+      "id": "skill.disable_device",
+      "type": "skill",
+      "name": {
+        "fr": "Désamorçage/sabotage",
+        "en": "Disable Device"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Désarmer un piège, bloquer une serrure, saboter une roue de chariot.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      }
+    },
+    {
+      "id": "skill.forgery",
+      "type": "skill",
+      "name": {
+        "fr": "Contrefaçon",
+        "en": "Forgery"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Imiter une écriture, un sceau, un ordre de mission, et repérer les faux des autres.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int"
+      }
+    },
+    {
+      "id": "skill.open_lock",
+      "type": "skill",
+      "name": {
+        "fr": "Crochetage",
+        "en": "Open Lock"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Deux tiges de métal, un peu de patience, et la porte s’ouvre.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex",
+        "trainedOnly": true
+      }
+    },
+    {
+      "id": "skill.use_rope",
+      "type": "skill",
+      "name": {
+        "fr": "Maîtrise des cordes",
+        "en": "Use Rope"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Le bon nœud, le bon grappin, et le prisonnier qui ne se libère pas.\n\nCaractéristique associée : Dextérité."
+      },
+      "skill": {
+        "ability": "dex"
+      },
+      "effects": [
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.use_rope.ranks >= 5",
+          "situation": "situation.climbing_a_rope"
+        },
+        {
+          "target": "skill.escape_artist",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.use_rope.ranks >= 5",
+          "situation": "situation.rope_bonds"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_arcana",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (mystères)",
+        "en": "Knowledge (arcana)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Sorts, objets magiques, dragons et créatures des arcanes.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_arcana.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_architecture",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (architecture et ingénierie)",
+        "en": "Knowledge (architecture and engineering)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Ponts, forteresses, mécanismes et points faibles d’un mur.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_architecture.ranks >= 5",
+          "situation": "situation.secret_doors"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_dungeoneering",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (exploration souterraine)",
+        "en": "Knowledge (dungeoneering)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Cavernes, aberrations, champignons et routes du monde d’en bas.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_dungeoneering.ranks >= 5",
+          "situation": "situation.underground"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_geography",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (géographie)",
+        "en": "Knowledge (geography)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Terres, climats, peuples et chemins pour aller de l’un à l’autre.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_geography.ranks >= 5",
+          "situation": "situation.not_getting_lost"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_history",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (histoire)",
+        "en": "Knowledge (history)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Guerres, royaumes disparus, fondations de villes et vieilles dynasties.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      }
+    },
+    {
+      "id": "skill.knowledge_local",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (folklore local)",
+        "en": "Knowledge (local)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Rumeurs, légendes, personnalités et lois d’une région.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_local.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_nature",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (nature)",
+        "en": "Knowledge (nature)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Animaux, plantes, saisons, fées et créatures des bois.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_nature.ranks >= 5",
+          "situation": "situation.natural_aboveground"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_nobility",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (noblesse et royauté)",
+        "en": "Knowledge (nobility and royalty)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Lignées, blasons, étiquette et qui doit quoi à qui.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_nobility.ranks >= 5"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_planes",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (plans)",
+        "en": "Knowledge (the planes)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Plans intérieurs et extérieurs, Plan astral, Extérieurs et élémentaires.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      },
+      "effects": [
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "condition": "@skill.knowledge_planes.ranks >= 5",
+          "situation": "situation.other_planes"
+        }
+      ]
+    },
+    {
+      "id": "skill.knowledge_religion",
+      "type": "skill",
+      "name": {
+        "fr": "Connaissances (religion)",
+        "en": "Knowledge (religion)"
+      },
+      "provenance": "official",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Dieux, rites, symboles sacrés et morts-vivants.\n\nCaractéristique associée : Intelligence."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      }
+    },
+    {
+      "id": "proficiency.heavy_armor",
+      "type": "proficiency",
+      "name": {
+        "fr": "Armures lourdes",
+        "en": "Heavy armor"
+      },
+      "provenance": "official",
+      "labels": [
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Clibanion, harnois, armure de plates : le poids de l’acier, et la protection qui va avec."
+      }
+    },
+    {
+      "id": "proficiency.tower_shield",
+      "type": "proficiency",
+      "name": {
+        "fr": "Pavois",
+        "en": "Tower shield"
+      },
+      "provenance": "official",
+      "labels": [
+        "proficiency"
+      ],
+      "description": {
+        "fr": "Un mur qu’on porte au bras, derrière lequel on peut se mettre entièrement à couvert."
+      }
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "entities": [
+    {
+      "id": "feat.stealthy",
+      "type": "feat",
+      "name": {
+        "fr": "Discret",
+        "en": "Stealthy"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il sait où poser le pied, quelle ombre choisir, quand retenir son souffle. On ne le voit pas arriver ; souvent, on ne le voit pas repartir non plus.\n\nEn jeu\n• +2 aux tests de Déplacement silencieux et de Discrétion."
+      },
+      "effects": [
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.eschew_materials",
+      "type": "feat",
+      "name": {
+        "fr": "Dispense de composantes matérielles",
+        "en": "Eschew Materials"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Pincée de soufre, plume de chouette, éclat de verre : d’autres fouillent leur sacoche au pire moment. Lui a appris à tirer la magie de rien, ou presque.\n\nEn jeu\n• Le personnage lance sans elle tout sort dont la composante matérielle coûte 1 po ou moins.\n• Lancer le sort provoque toujours des attaques d’opportunité, comme d’habitude.\n• Une composante matérielle de plus de 1 po reste nécessaire."
+      },
+      "note": "Composantes de sort : pas dans le modèle."
+    },
+    {
+      "id": "feat.deft_hands",
+      "type": "feat",
+      "name": {
+        "fr": "Doigts de fée",
+        "en": "Deft Hands"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Une bourse change de ceinture, un nœud se défait tout seul, une corde tient comme par magie. Ses mains vont plus vite que les yeux qui les surveillent.\n\nEn jeu\n• +2 aux tests d’Escamotage et de Maîtrise des cordes."
+      },
+      "effects": [
+        {
+          "target": "skill.sleight_of_hand",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.use_rope",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.diehard",
+      "type": "feat",
+      "name": {
+        "fr": "Dur à cuire",
+        "en": "Diehard"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Le sang coule, les jambes tremblent, la vue se brouille. N’importe qui serait déjà à terre. Lui serre les dents et reste debout, par pur entêtement.\n\nEn jeu\n• Condition : Endurance.\n• Entre −1 et −9 points de vie, il se stabilise tout seul : il ne perd plus 1 point de vie par round.\n• Au moment où il passe sous 0 point de vie (même pendant le tour d’un autre), il peut choisir d’agir comme s’il était hors de combat ; sinon, il tombe inconscient tout de suite.\n• Dans cet état, il a droit à une action de mouvement ou à une action simple par tour, pas aux deux, et jamais à une action complexe.\n• Une action de mouvement ne lui coûte rien ; une action simple, ou tout effort intense (même une action libre comme un sort à incantation rapide), lui inflige 1 point de dégâts une fois l’action faite.\n• À −10 points de vie, il meurt.\n• Normal : entre −1 et −9 points de vie, un personnage est inconscient et mourant."
+      },
+      "prerequisite": "has('feat.endurance')",
+      "note": "État hors de combat et mourant : pas dans le modèle."
+    },
+    {
+      "id": "feat.spell_penetration",
+      "type": "feat",
+      "name": {
+        "fr": "Efficacité des sorts accrue",
+        "en": "Spell Penetration"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Les protections magiques ne l’impressionnent plus. Ses sorts trouvent la faille, comme une lame qui glisse entre deux plaques d’armure.\n\nEn jeu\n• +2 au test de niveau de lanceur (1d20 + niveau de lanceur de sorts) pour passer la résistance à la magie d’une cible.\n• Vaut pour tous ses sorts : le bonus apparaît sur chaque variante."
+      },
+      "effects": [
+        {
+          "target": "spell.caster_level_vs_sr",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.greater_spell_penetration",
+      "type": "feat",
+      "name": {
+        "fr": "Efficacité des sorts supérieure",
+        "en": "Greater Spell Penetration"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "À force de percer les défenses magiques, il ne cherche même plus la faille : il la crée. Les résistances les plus solides cèdent sous la pression.\n\nEn jeu\n• Condition : Efficacité des sorts accrue.\n• +2 de plus au test de niveau de lanceur pour passer la résistance à la magie, soit +4 avec Efficacité des sorts accrue.\n• Vaut pour tous ses sorts : le bonus apparaît sur chaque variante."
+      },
+      "prerequisite": "has('feat.spell_penetration')",
+      "effects": [
+        {
+          "target": "spell.caster_level_vs_sr",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.extra_turning",
+      "type": "feat",
+      "name": {
+        "fr": "Emprise sur les morts-vivants",
+        "en": "Extra Turning"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "turning"
+      ],
+      "description": {
+        "fr": "Sa foi ne s’épuise pas. Là où d’autres prêtres baissent leur symbole sacré, à bout de forces, lui le lève encore, et encore, et les morts reculent toujours.\n\nEn jeu\n• Condition : pouvoir de renvoyer ou d’intimider des créatures.\n• +4 utilisations par jour de chacun de ses pouvoirs de renvoi et d’intimidation (morts-vivants, mais aussi les créatures d’un domaine, par exemple).\n• Normal : 3 + modificateur de Charisme utilisations par jour.\n• Peut être pris plusieurs fois : +4 utilisations de plus à chaque fois."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "effects": [
+        {
+          "target": "turn_undead.extra_uses",
+          "op": "add",
+          "value": "4 * count('feat.extra_turning')",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Les utilisations par jour du renvoi (pouvoirs de classe) ne lisent pas encore turn_undead.extra_uses : la statistique montre seulement le bonus."
+    },
+    {
+      "id": "feat.cleave",
+      "type": "feat",
+      "name": {
+        "fr": "Enchaînement",
+        "en": "Cleave"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Le premier ennemi s’effondre, et la lame n’a pas fini son mouvement. Elle continue, portée par l’élan, vers le suivant.\n\nEn jeu\n• Condition : Force 13, Attaque en puissance.\n• Quand le personnage abat un adversaire au corps à corps (il tombe sous 0 point de vie ou meurt), il porte tout de suite une attaque de corps à corps de plus contre un autre ennemi à son allonge.\n• Pas de pas de placement avant cette attaque ; même arme et même bonus d’attaque que le coup qui a abattu le premier.\n• Une fois par round.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack')"
+    },
+    {
+      "id": "feat.endurance",
+      "type": "feat",
+      "name": {
+        "fr": "Endurance",
+        "en": "Endurance"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Marches forcées, nuits glacées, jours sans eau : il encaisse tout. Son corps tient bien après le moment où les autres auraient abandonné.\n\nEn jeu\n• +4 aux tests de Natation contre les dégâts non létaux de l’épuisement.\n• +4 aux tests de Constitution pour courir plus longtemps, retenir son souffle, et tenir face aux dégâts non létaux d’une marche forcée, de la faim ou de la soif.\n• +4 aux jets de Vigueur contre les dégâts non létaux de la chaleur ou du froid, et contre l’asphyxie.\n• Il dort en armure légère ou intermédiaire et se réveille sans être fatigué.\n• Normal : une nuit en armure intermédiaire ou lourde laisse fatigué le lendemain.\n• Un rôdeur l’obtient gratuitement au niveau 3."
+      },
+      "effects": [
+        {
+          "target": "skill.swim",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.vs_exhaustion"
+        },
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.vs_heat_cold_or_suffocation"
+        }
+      ],
+      "note": "Tests de Constitution : pas de statistique ; le bonus est dans le texte. Les bonus de Natation et de Vigueur sont des lignes conditionnelles."
+    },
+    {
+      "id": "feat.dodge",
+      "type": "feat",
+      "name": {
+        "fr": "Esquive",
+        "en": "Dodge"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il garde un œil sur l’ennemi le plus dangereux, lit ses épaules, anticipe ses coups. Quand la lame arrive, il n’est déjà plus tout à fait là.\n\nEn jeu\n• Condition : Dextérité 13.\n• À son tour, le personnage désigne un adversaire : +1 d’esquive à la CA contre ses attaques.\n• Il perd ce bonus quand il perd son bonus de Dextérité à la CA.\n• Les bonus d’esquive se cumulent entre eux.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 13",
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge",
+          "situation": "situation.vs_designated_opponent"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.diehard",
+      "relation": "requires",
+      "to": "feat.endurance"
+    },
+    {
+      "from": "feat.greater_spell_penetration",
+      "relation": "requires",
+      "to": "feat.spell_penetration"
+    },
+    {
+      "from": "feat.cleave",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    }
+  ]
+}

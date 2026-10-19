@@ -1,0 +1,652 @@
+{
+  "entities": [
+    {
+      "id": "spell.regenerate",
+      "type": "spell",
+      "name": {
+        "fr": "Régénération",
+        "en": "Regenerate"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le doigt perdu repousse, la jambe tranchée se ressoude, les os brisés se remettent en place. Le corps se souvient de sa forme entière et la reprend.\n\nEn jeu\n• Fait repousser les membres et organes perdus, ressoude les os : 1 round si le membre coupé est tenu contre la plaie, sinon 2d10 rounds.\n• Rend 4d8 points de vie + 1 par niveau de lanceur (+35 au plus).\n• Supprime aussi la fatigue, l’épuisement et tous les dégâts non létaux.\n• Sans effet sur les créatures non vivantes, morts-vivants compris."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, FD",
+        "castingTime": "3 rounds",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "4d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 35)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.reincarnate",
+      "type": "spell",
+      "name": {
+        "fr": "Réincarnation",
+        "en": "Reincarnate"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La nature recycle tout, même les héros. Avec un peu de terre, de sève et de souffle, l’âme revient dans un corps neuf, pas forcément celui qu’elle attendait.\n\nEn jeu\n• Ramène à la vie une créature morte depuis 1 semaine au plus, si elle le veut ; il suffit d’un fragment de son corps. Le nouveau corps met 1 heure à se former.\n• La nouvelle race se tire au d100 (humanoïdes) : on retire les ajustements raciaux de Force, Dextérité et Constitution, puis on applique ceux de la nouvelle race.\n• Le sujet garde classes, dons, rangs, bonus de base, points de vie et souvenirs, et prend les aptitudes de son nouveau corps (sauf sa langue).\n• Il perd un niveau (ou 1 DV) ; au niveau 1, il perd 2 points de Constitution à la place (impossible si elle devait ainsi tomber à 0 ou moins).\n• Échoue sur un mort-vivant, une victime d’un effet de mort, une créature artificielle, un élémentaire, un Extérieur ou une mort de vieillesse.\n• Souhait ou miracle rend la forme d’origine. Composante : huiles et onguents pour 1 000 po."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M, FD",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature morte touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dispel_law",
+      "type": "spell",
+      "name": {
+        "fr": "Rejet de la loi",
+        "en": "Dispel Law"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une lueur jaune et vacillante danse autour du lanceur, ennemie de l’ordre figé. Ce qui vient d’ailleurs avec la Loi au cœur n’a plus qu’à repartir d’où il vient.\n\nEn jeu\n• +4 de parade à la CA contre les attaques des créatures loyales.\n• Une attaque de contact au corps à corps peut renvoyer chez elle une créature loyale venue d’un autre plan (jet de Volonté et RM pour l’éviter) ; le sort prend fin.\n• Ou bien, d’un contact, il dissipe sans jet un sort de la Loi ou un enchantement lancé par une créature loyale ; le sort prend fin. Les sorts insensibles à dissipation de la magie résistent.\n• Dure 1 round par niveau, ou jusqu’à ce que l’un de ces deux pouvoirs soit utilisé."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Chaos"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts et une créature extraplanaire touchée, ou un enchantement ou un sort de la Loi sur une créature ou un objet touché",
+        "duration": "1 round/niveau ou jusqu’à utilisation",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "voir description"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "deflection",
+          "condition": "active('toggle.dispel_law')",
+          "situation": "situation.vs_law"
+        }
+      ]
+    },
+    {
+      "id": "spell.dispel_good",
+      "type": "spell",
+      "name": {
+        "fr": "Rejet du bien",
+        "en": "Dispel Good"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une aura noire d’énergie impie enveloppe le lanceur et repousse la lumière. Ce qui vient d’ailleurs avec le Bien au cœur n’a plus qu’à repartir d’où il vient.\n\nEn jeu\n• +4 de parade à la CA contre les attaques des créatures bonnes.\n• Une attaque de contact au corps à corps peut renvoyer chez elle une créature bonne venue d’un autre plan (jet de Volonté et RM pour l’éviter) ; le sort prend fin.\n• Ou bien, d’un contact, il dissipe sans jet un sort du Bien ou un enchantement lancé par une créature bonne ; le sort prend fin. Les sorts insensibles à dissipation de la magie résistent.\n• Dure 1 round par niveau, ou jusqu’à ce que l’un de ces deux pouvoirs soit utilisé."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts et une créature extraplanaire touchée, ou un enchantement ou un sort du Bien sur une créature ou un objet touché",
+        "duration": "1 round/niveau ou jusqu’à utilisation",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "voir description"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "deflection",
+          "condition": "active('toggle.dispel_good')",
+          "situation": "situation.vs_good"
+        }
+      ]
+    },
+    {
+      "id": "spell.dispel_chaos",
+      "type": "spell",
+      "name": {
+        "fr": "Rejet du chaos",
+        "en": "Dispel Chaos"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une lumière bleue, nette et régulière, entoure le lanceur comme une loi qu’on ne discute pas. Ce qui vient d’ailleurs avec le Chaos au cœur n’a plus qu’à repartir d’où il vient.\n\nEn jeu\n• +4 de parade à la CA contre les attaques des créatures chaotiques.\n• Une attaque de contact au corps à corps peut renvoyer chez elle une créature chaotique venue d’un autre plan (jet de Volonté et RM pour l’éviter) ; le sort prend fin.\n• Ou bien, d’un contact, il dissipe sans jet un sort du Chaos ou un enchantement lancé par une créature chaotique ; le sort prend fin. Les sorts insensibles à dissipation de la magie résistent.\n• Dure 1 round par niveau, ou jusqu’à ce que l’un de ces deux pouvoirs soit utilisé."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Loi"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts et une créature extraplanaire touchée, ou un enchantement ou un sort du Chaos sur une créature ou un objet touché",
+        "duration": "1 round/niveau ou jusqu’à utilisation",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "voir description"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "deflection",
+          "condition": "active('toggle.dispel_chaos')",
+          "situation": "situation.vs_chaos"
+        }
+      ]
+    },
+    {
+      "id": "spell.dispel_evil",
+      "type": "spell",
+      "name": {
+        "fr": "Rejet du mal",
+        "en": "Dispel Evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une lumière blanche et chaude baigne le lanceur, et les ombres reculent. Ce qui vient d’ailleurs avec le Mal au cœur n’a plus qu’à repartir d’où il vient.\n\nEn jeu\n• +4 de parade à la CA contre les attaques des créatures mauvaises.\n• Une attaque de contact au corps à corps peut renvoyer chez elle une créature mauvaise venue d’un autre plan (jet de Volonté et RM pour l’éviter) ; le sort prend fin.\n• Ou bien, d’un contact, il dissipe sans jet un sort du Mal ou un enchantement lancé par une créature mauvaise ; le sort prend fin. Les sorts insensibles à dissipation de la magie résistent.\n• Dure 1 round par niveau, ou jusqu’à ce que l’un de ces deux pouvoirs soit utilisé."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Bien"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts et une créature extraplanaire touchée, ou un enchantement ou un sort du Mal sur une créature ou un objet touché",
+        "duration": "1 round/niveau ou jusqu’à utilisation",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "voir description"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "deflection",
+          "condition": "active('toggle.dispel_evil')",
+          "situation": "situation.vs_evil"
+        }
+      ]
+    },
+    {
+      "id": "spell.mages_lucubration",
+      "type": "spell",
+      "name": {
+        "fr": "Remémoration",
+        "en": "Mage's Lucubration"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une formule déjà dépensée remonte des profondeurs de la mémoire, intacte, prête à resservir.\n\nEn jeu\n• Rend un sort de niveau 5 au plus, déjà lancé dans les dernières 24 heures, comme s’il avait été préparé de nouveau.\n• Les composantes matérielles du sort rappelé restent nécessaires."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dismissal",
+      "type": "spell",
+      "name": {
+        "fr": "Renvoi",
+        "en": "Dismissal"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un mot d’autorité, et l’intrus venu d’un autre plan est arraché à ce monde pour être rendu au sien… en général.\n\nEn jeu\n• Renvoie une créature extraplanaire dans son plan d’origine.\n• Jet de Volonté : la créature ajoute ses DV et retire le niveau de lanceur du jeteur de sorts.\n• 20 % de chances qu’elle atterrisse sur un autre plan que le sien."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature extraplanaire",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.spell_turning",
+      "type": "spell",
+      "name": {
+        "fr": "Renvoi des sorts",
+        "en": "Spell Turning"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un miroir invisible se dresse autour du lanceur. Le charme qu’on lui destinait repart vers son auteur, avec ses compliments.\n\nEn jeu\n• Renvoie à leur lanceur les sorts qui ciblent le personnage ; les sorts de zone, à effet et de contact ne sont pas touchés.\n• Capacité : 1d4+6 niveaux de sort (tirés en secret), décomptés à chaque sort renvoyé ; le sort prend fin une fois épuisé ou après 10 minutes par niveau.\n• Si un sort dépasse ce qui reste, il est renvoyé en partie : dégâts partagés au prorata, ou chance d’être affecté au prorata pour les autres effets.\n• Si les deux adversaires ont renvoi des sorts : d100 ; 01–70 le sort se perd, 71–80 il touche les deux à plein effet, 81–97 les deux protections cessent 1d4 minutes, 98–100 les deux passent dans un autre plan."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "jusqu’à épuisement ou 10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mending",
+      "type": "spell",
+      "name": {
+        "fr": "Réparation",
+        "en": "Mending"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le vase recolle ses morceaux, l’anneau se referme, la corde se renoue. Petits miracles du quotidien.\n\nEn jeu\n• Répare un objet de 500 g au plus : une cassure nette sur du métal (anneau, maillon, lame fine), toutes les fissures du bois, de la céramique ou du cuir.\n• Ne rend pas ses pouvoirs à un objet magique ; ne répare ni bâton, ni baguette, ni sceptre, ni objet tordu.\n• Sans effet sur les créatures."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "target": "1 objet de 500 g au plus",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.make_whole",
+      "type": "spell",
+      "name": {
+        "fr": "Réparation intégrale",
+        "en": "Make Whole"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les éclats volent, se rassemblent et se recollent, et l’objet retrouve sa forme d’origine, même s’il était cassé de partout.\n\nEn jeu\n• Répare entièrement un objet de 0,3 m³ par niveau au plus, même cassé en plusieurs endroits.\n• Ne rend pas sa magie à un objet magique ; ne répare ni bâton, ni baguette, ni sceptre brisé.\n• Rien à faire pour un objet tordu, brûlé, désintégré, réduit en poudre, fondu ou vaporisé ; sans effet sur les créatures (créatures artificielles comprises)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 objet de 0,3 m³/niveau au plus",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.know_direction",
+      "type": "spell",
+      "name": {
+        "fr": "Repérage",
+        "en": "Know Direction"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Tourner sur soi-même, fermer les yeux, et savoir. Le nord n’a plus de secret.\n\nEn jeu\n• Le lanceur sait où se trouve le nord à l’instant du sort.\n• Sans repères visuels, il peut perdre cette direction ensuite ; peut échouer sur certains plans."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.expeditious_retreat",
+      "type": "spell",
+      "name": {
+        "fr": "Repli expéditif",
+        "en": "Expeditious Retreat"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Quand la bataille tourne mal, une sortie rapide vaut tous les discours. Les jambes se mettent à courir toutes seules.\n\nEn jeu\n• +9 m d’altération à la vitesse de déplacement au sol (et à la distance de saut).\n• N’affecte pas l’escalade, le creusement, le vol ni la nage."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 9,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.expeditious_retreat')"
+        }
+      ]
+    },
+    {
+      "id": "spell.repel_vermin",
+      "type": "spell",
+      "name": {
+        "fr": "Répulsif",
+        "en": "Repel Vermin"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un mur invisible bourdonne autour du lanceur. Araignées, scarabées et mille-pattes s’y heurtent et font demi-tour.\n\nEn jeu\n• Barrière de 3 m de rayon autour du lanceur, qui bouge avec lui, contre la vermine.\n• Vermine de moins d’un tiers du niveau du lanceur en DV : ne peut pas passer.\n• Les autres passent sur un jet de Volonté réussi, mais subissent 2d6 dégâts en traversant."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon centrée sur le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun ou Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.resistance",
+      "type": "spell",
+      "name": {
+        "fr": "Résistance",
+        "en": "Resistance"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un mot de protection murmuré avant la bataille, et l’âme se raidit contre ce qui vient.\n\nEn jeu\n• +1 de résistance à tous les jets de sauvegarde pendant 1 minute.\n• Peut être rendu permanent avec permanence."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "resistance",
+          "condition": "active('toggle.resistance')"
+        }
+      ]
+    },
+    {
+      "id": "spell.spell_resistance",
+      "type": "spell",
+      "name": {
+        "fr": "Résistance à la magie",
+        "en": "Spell Resistance"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un voile invisible s’accroche à la peau du sujet, et les sorts ennemis s’y effilochent avant de l’atteindre.\n\nEn jeu\n• Résistance à la magie égale à 12 + niveau de lanceur (72 avec niveau de lanceur 60).\n• Dure 1 minute par niveau."
+      },
+      "effects": [
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": "12 + @spell.caster_level",
+          "layer": "base",
+          "condition": "active('toggle.spell_resistance')",
+          "status": "draft",
+          "note": "72 avec niveau de lanceur 60"
+        }
+      ],
+      "status": "draft",
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      }
+    },
+    {
+      "id": "spell.resist_energy",
+      "type": "spell",
+      "name": {
+        "fr": "Résistance aux énergies destructives",
+        "en": "Resist Energy"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le feu lèche la peau sans la mordre, le froid glisse sur elle. Une seule énergie, choisie d’avance, perd l’essentiel de sa force.\n\nEn jeu\n• Résistance 10 à un type d’énergie choisi : acide, électricité, feu, froid ou son ; chaque attaque de ce type perd 10 points de dégâts.\n• Passe à 20 au niveau de lanceur 7, puis à 30 (maximum) au niveau 11.\n• Protège aussi l’équipement du sujet, mais pas des effets secondaires (noyade dans l’acide, prise dans la glace).\n• Ne se cumule pas avec protection contre les énergies destructives : celle-ci s’use d’abord."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sympathetic_vibration",
+      "type": "spell",
+      "name": {
+        "fr": "Résonance",
+        "en": "Sympathetic Vibration"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une note juste, tenue assez longtemps, et la pierre se met à trembler avec elle. Les ponts et les murailles finissent par céder.\n\nEn jeu\n• 2d10 dégâts par round à une construction isolée (bâtiment, pont, digue), solidité ignorée, sans jet de sauvegarde.\n• Dure jusqu’à 1 round par niveau (durée choisie au lancement).\n• Sans effet sur un élément naturel (colline) ni sur les créatures, créatures artificielles comprises. Focaliseur : un diapason."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G, F",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "une construction isolée",
+        "duration": "jusqu’à 1 round/niveau",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d10 sonic",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.water_breathing",
+      "type": "spell",
+      "name": {
+        "fr": "Respiration aquatique",
+        "en": "Water Breathing"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les poumons acceptent l’eau comme de l’air. Sous la surface, on respire aussi tranquillement qu’en forêt.\n\nEn jeu\n• Les créatures touchées respirent sous l’eau pendant 2 heures par niveau.\n• La durée se partage à parts égales entre tous les sujets.\n• Ne les empêche pas de respirer l’air."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créatures vivantes touchées",
+        "duration": "2 heures/niveau (voir description)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.restoration",
+      "type": "spell",
+      "name": {
+        "fr": "Restauration",
+        "en": "Restoration"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une poudre de diamant scintille sur la peau, et ce que la nuit et les monstres avaient volé revient : force, souffle, souvenirs.\n\nEn jeu\n• Dissipe tous les niveaux négatifs.\n• Rend un niveau drainé, s’il a été perdu depuis au plus 1 jour par niveau de lanceur.\n• Soigne tous les affaiblissements temporaires de caractéristique et tous les points perdus par diminution permanente d’une seule caractéristique (au choix).\n• Supprime la fatigue et l’épuisement.\n• Ne rend pas le niveau ou la Constitution perdus en revenant d’entre les morts. Composante : 100 po de poudre de diamant."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, M",
+        "castingTime": "3 rounds",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    }
+  ]
+}

@@ -1,0 +1,622 @@
+{
+  "entities": [
+    {
+      "id": "class.assassin",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Assassin",
+        "en": "Assassin"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "spontaneous",
+        "skills"
+      ],
+      "description": {
+        "fr": "Personne ne l’a vu entrer, personne ne l’a vu sortir, et pourtant le baron ne se réveillera pas. L’assassin a fait de la mort un métier, et il le fait bien : il observe, il attend, il note les habitudes de sa proie, puis il frappe une seule fois, au bon moment. Poisons, déguisements, quelques sorts soufflés dans l’ombre : tout lui sert. Il travaille pour une guilde, pour un commanditaire ou pour lui-même, mais jamais gratuitement, et il ne laisse que rarement un témoin.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : alignement mauvais ; Déguisement 4 rangs, Discrétion 8 rangs, Déplacement silencieux 8 rangs ; avoir tué quelqu’un sans autre raison que d’entrer dans la confrérie des assassins.\n• Alignement : mauvais (loyal, neutre ou chaotique).\n• Formé à l’arbalète de poing, à l’arbalète légère, à l’arbalète lourde, à la dague, au dard, à la rapière, à la matraque, à l’arc court (composite ou non) et à l’épée courte ; aux armures légères, pas aux boucliers.\n• Sorts profanes spontanés de la liste de l’assassin, basés sur l’Intelligence, du niveau 1 au niveau 4. Lancés en armure légère sans risque d’échec.\n• Aptitudes : attaque sournoise (+1d6 aux niveaux impairs), attaque mortelle, sorts et utilisation du poison (1) ; bonus contre le poison et esquive instinctive (2) ; esquive instinctive supérieure (5) ; discrétion totale (8)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "spellcasting": {
+        "ability": "int",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.assassin_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "Un pas de côté, une main sur l’épaule, et la lame entre là où l’armure s’arrête. L’assassin connaît l’anatomie mieux que bien des prêtres guérisseurs.\n\nEn jeu\n• +1d6 aux dégâts au niveau 1, puis +1d6 à chaque niveau impair (5d6 au niveau 9).\n• Mêmes règles que l’attaque sournoise du roublard : cible privée de son bonus de Dextérité à la CA ou prise en tenaille, à 9 m au plus à distance.\n• S’ajoute à l’attaque sournoise d’une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(ceil(level('class.assassin') / 2))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.assassin_death_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque mortelle",
+        "en": "Death attack"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "Trois rounds à regarder sa cible respirer, compter ses gardes, repérer le défaut du gorgerin. Puis un seul geste, et la question est réglée.\n\nEn jeu\n• Après avoir étudié une cible pendant 3 rounds sans qu’elle le remarque comme ennemi, une attaque sournoise qui touche et blesse peut la tuer ou la paralyser (au choix de l’assassin).\n• Jet de Vigueur, DD 10 + niveau d’assassin + modificateur d’Intelligence. Échec : mort, ou paralysie pendant 1d6 rounds + 1 round par niveau d’assassin. Réussite : seulement les dégâts de l’attaque sournoise.\n• L’attaque doit partir dans les 3 rounds qui suivent l’étude ; après un échec ou ce délai, il faut étudier à nouveau la cible pendant 3 rounds.\n• Pendant l’étude, il peut faire autre chose tant que son attention reste sur la cible."
+      },
+      "effects": [],
+      "note": "DD de l’attaque mortelle : pas encore une statistique du modèle."
+    },
+    {
+      "id": "power.assassin_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts d’assassin",
+        "en": "Assassin spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "Quelques formules apprises auprès de la guilde : de quoi changer de visage, éteindre une lanterne ou traverser un mur de gardes sans être vu. Rien de spectaculaire, tout est utile.\n\nEn jeu\n• Sorts profanes de la liste de l’assassin, lancés sans préparation, comme le barde.\n• Caractéristique : Intelligence. Il faut au moins 10 + niveau du sort en Intelligence pour le lancer. DD : 10 + niveau du sort + modificateur d’Intelligence.\n• Sorts par jour et sorts connus selon le niveau d’assassin ; un 0 dans la table veut dire seulement les sorts en bonus d’une Intelligence élevée.\n• Aux niveaux 6, 8 et 10, peut échanger un sort connu contre un autre de même niveau, au moins 2 niveaux sous son plus haut niveau de sort."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.assassin_poison_use",
+      "type": "class_power",
+      "name": {
+        "fr": "Utilisation du poison",
+        "en": "Poison use"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "Une goutte sur la lame, pas une de plus, et jamais sur les doigts. Pour l’assassin, le poison est un outil de travail comme un autre.\n\nEn jeu\n• Ne risque jamais de s’empoisonner par accident en enduisant une arme."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.assassin_save_bonus_against_poison",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus contre le poison",
+        "en": "Save bonus against poison"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "À force de manier les toxines, et d’en goûter un peu chaque jour, l’assassin finit par les supporter mieux que les autres.\n\nEn jeu\n• Bonus aux jets de sauvegarde contre le poison : +1 au niveau 2, puis +1 à chaque niveau pair (+5 au niveau 10)."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "floor(level('class.assassin') / 2)",
+          "situation": "situation.vs_poison"
+        }
+      ]
+    },
+    {
+      "id": "power.assassin_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "Ceux qui tuent dans le dos savent mieux que personne d’où viennent les coups.\n\nEn jeu\n• Garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible.\n• Le perd quand même s’il est immobilisé.\n• S’il a déjà esquive instinctive par une autre classe, il gagne esquive instinctive supérieure à la place."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.assassin_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "Deux lames de part et d’autre, et l’assassin les voit toutes les deux venir.\n\nEn jeu\n• Ne peut plus être pris en tenaille, sauf par un roublard d’au moins 4 niveaux de plus que ses niveaux d’assassin.\n• Les niveaux des classes qui donnent esquive instinctive s’additionnent pour ce calcul."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.assassin_hide_in_plain_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Discrétion totale",
+        "en": "Hide in plain sight"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "assassin"
+      ],
+      "description": {
+        "fr": "Une ombre de porte cochère, celle d’un étal ou d’une statue : il n’en faut pas plus pour que l’assassin disparaisse sous les yeux de ceux qui le cherchent.\n\nEn jeu\n• Peut utiliser Discrétion même quand on l’observe, s’il est à 3 m au plus d’une zone d’ombre.\n• Pas dans sa propre ombre : il faut celle d’un autre être ou d’un objet."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.assassin",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.assassin_sneak_attack",
+        "power.assassin_death_attack",
+        "power.assassin_spells",
+        "power.assassin_poison_use"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.assassin_save_bonus_against_poison",
+        "power.assassin_uncanny_dodge"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        1,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.assassin_improved_uncanny_dodge"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        2,
+        0,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        2,
+        0
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.assassin_hide_in_plain_sight"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        2
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.assassin",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.forgery"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.hand_crossbow"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.light_crossbow"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.heavy_crossbow"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.dagger"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.dart"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.rapier"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.sap"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.shortbow"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.composite_shortbow"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "item.short_sword"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.assassin",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

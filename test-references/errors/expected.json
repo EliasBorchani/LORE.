@@ -1,0 +1,49 @@
+{
+  "character": "char.errors",
+  "atLevel": 1,
+  "note": "Errors are reported, never fatal: a failing prerequisite names its parts, a cycle, a typo in a formula.",
+  "values": [
+    {
+      "stat": "loop.a",
+      "noValue": true,
+      "status": "verified",
+      "how": "in a cycle with loop.b"
+    },
+    {
+      "stat": "loop.b",
+      "noValue": true,
+      "status": "verified",
+      "how": "in a cycle with loop.a"
+    },
+    {
+      "stat": "fine",
+      "value": 7,
+      "status": "verified",
+      "how": "the rest of the sheet still computes"
+    },
+    {
+      "stat": "save.fort",
+      "value": 4,
+      "status": "verified",
+      "how": "table 2 + feat.fine 2; feat.typo is skipped"
+    }
+  ],
+  "prerequisites": [
+    {
+      "entity": "feat.cleave",
+      "failed": [
+        "has('feat.power_attack')",
+        "@ability.str.score >= 13"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "code": "cycle"
+    },
+    {
+      "code": "formula_error",
+      "source": "feat.typo/effects[0]"
+    }
+  ]
+}

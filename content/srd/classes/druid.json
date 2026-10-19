@@ -1,0 +1,870 @@
+{
+  "entities": [
+    {
+      "id": "class.druid",
+      "type": "class",
+      "name": {
+        "fr": "Druide",
+        "en": "Druid"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Le druide ne prie pas un dieu dans un temple : il écoute la forêt, la marée et l’orage, et ils lui répondent. Gardien des cercles de pierre et des sources oubliées, il voit les villes comme des clairières qui ont mal tourné. Ses sorts font pousser les ronces, tomber la foudre et guérir les blessures ; à force d’années, il apprend à porter le corps du loup, de l’aigle, puis celui des éléments eux-mêmes. Il ne déteste pas la civilisation. Il sait juste qu’elle passera, et que la forêt sera encore là.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : neutre sur au moins un axe (neutre bon, loyal neutre, neutre, chaotique neutre, neutre mauvais).\n• Formé au bâton, au cimeterre, à la dague, au dard, à l’épieu, à la fronde, au gourdin, à la lance et à la serpe, ainsi qu’aux attaques naturelles de ses formes animales.\n• Formé aux armures légères et intermédiaires et aux boucliers (sauf le pavois), mais son serment lui interdit le métal : cuir, peau, matelassée, bois. Porter du métal lui coupe ses sorts et ses pouvoirs surnaturels ou magiques, et encore 24 heures après.\n• Sorts divins préparés, basés sur la Sagesse, du niveau 0 au niveau 9.\n• Langues : la langue des druides d’office (secrète, interdite aux autres), et le sylvestre peut compter parmi ses langues en bonus.\n• Un druide qui renie la nature, change pour un alignement interdit ou enseigne la langue des druides perd ses sorts et pouvoirs jusqu’à sa pénitence.\n• Aptitudes : compagnon animal, empathie sauvage et instinct naturel (1) ; déplacement facilité (2) ; absence de traces (3) ; résistance à l’appel de la nature (4) ; forme animale (5) ; immunité contre le venin (9) ; mille visages (13) ; éternelle jeunesse (15) ; forme élémentaire (16)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.druid') - 20) / 4))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Langues, interdiction du métal et code du druide : pas encore dans le modèle (seulement dans le texte)."
+    },
+    {
+      "id": "power.druid_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de druide",
+        "en": "Druid spells"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "À l’aube, le druide médite et demande à la nature ce dont il aura besoin. Elle lui confie des sorts pour la journée ; s’il se trompe, il peut toujours les rendre contre l’aide d’une bête.\n\nEn jeu\n• Sorts divins de la liste du druide, préparés chaque jour à l’avance parmi toute la liste.\n• Caractéristique : Sagesse. Il faut au moins 10 + niveau du sort en Sagesse pour le préparer ou le lancer. DD : 10 + niveau du sort + modificateur de Sagesse.\n• Sorts par jour selon le niveau de druide ; sorts en bonus grâce à une Sagesse élevée.\n• Incantation spontanée : il peut sacrifier un sort préparé pour lancer à la place une convocation d’alliés naturels de niveau égal ou inférieur.\n• Ne lance pas les sorts d’un alignement opposé au sien (Bien, Chaos, Loi, Mal)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.druid_animal_companion",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon animal",
+        "en": "Animal companion"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Un loup, un faucon, un serpent : une bête choisie, et qui l’a choisi en retour. Au fil des années, elle devient plus forte, plus vive et plus fidèle que n’importe quel animal de son espèce.\n\nEn jeu\n• Au niveau 1 : aigle, blaireau, chameau, cheval, chien, chien de selle, chouette, faucon, loup, poney, rat sanguinaire ou serpent venimeux (calmar, marsouin ou requin en milieu aquatique).\n• Sa puissance suit le niveau de compagnon (niveau de druide, plus les niveaux d’autres classes qui donnent un compagnon) : tous les 3 niveaux environ, +2 DV, +2 d’armure naturelle, +1 en Force et Dextérité et un tour de plus.\n• Lien : diriger le compagnon est une action libre ; +4 sur les tests d’empathie sauvage et de Dressage avec lui.\n• Transfert d’effet magique : un sort qu’il se lance peut aussi toucher le compagnon à 1,50 m ou moins.\n• Le compagnon gagne en chemin esquive totale (3), dévotion (+4 contre les enchantements, 6), attaques multiples (9) et esquive extraordinaire (15).\n• Dès le niveau 4, un animal plus puissant est possible, avec un niveau de compagnon réduit.\n• Remplacer un compagnon demande 24 heures de prière."
+      },
+      "effects": [
+        {
+          "target": "animal_companion.level",
+          "op": "add",
+          "value": "level('class.druid')"
+        }
+      ]
+    },
+    {
+      "id": "power.druid_wild_empathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Empathie sauvage",
+        "en": "Wild empathy"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Un geste lent, une posture, un regard qui ne défie pas : le druide parle aux bêtes sans mots, et l’ours qui grognait finit par s’asseoir.\n\nEn jeu\n• Test d’empathie sauvage : 1d20 + niveau de druide + modificateur de Charisme, comme un test de Diplomatie pour changer l’attitude d’un animal.\n• Il faut se voir à 9 m ou moins ; compter environ une minute.\n• Marche aussi sur une créature magique d’Intelligence 1 ou 2, avec un malus de −4."
+      },
+      "effects": [
+        {
+          "target": "check.wild_empathy",
+          "op": "add",
+          "value": "level('class.druid') + @ability.cha.mod"
+        }
+      ]
+    },
+    {
+      "id": "power.druid_nature_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Instinct naturel",
+        "en": "Nature sense"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Le druide lit une forêt comme d’autres lisent un livre : la direction du vent, l’âge d’une trace, la plante qui soigne et celle qui tue.\n\nEn jeu\n• +2 aux tests de Connaissances (nature) et de Survie."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_nature",
+          "op": "add",
+          "value": 2
+        },
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "power.druid_woodland_stride",
+      "type": "class_power",
+      "name": {
+        "fr": "Déplacement facilité",
+        "en": "Woodland stride"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Les ronces s’écartent, les branches se relèvent. Là où les autres s’écorchent, le druide passe sans un bruit et sans une égratignure.\n\nEn jeu\n• Se déplace normalement dans les buissons, fourrés et ronciers, sans subir de dégâts.\n• La végétation enchantée pour gêner le mouvement l’affecte quand même."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.druid_trackless_step",
+      "type": "class_power",
+      "name": {
+        "fr": "Absence de traces",
+        "en": "Trackless step"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "L’herbe se redresse derrière lui et la boue oublie ses pas. Le chasseur qui le suit finit par tourner en rond.\n\nEn jeu\n• Ne laisse aucune trace en milieu naturel et ne peut pas être pisté, sauf s’il le veut."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.druid_resist_natures_lure",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance à l’appel de la nature",
+        "en": "Resist nature’s lure"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Les fées chantent pour égarer les voyageurs. Le druide connaît leurs chansons depuis trop longtemps pour s’y laisser prendre.\n\nEn jeu\n• +4 aux jets de sauvegarde contre les pouvoirs magiques des fées (dryades, nymphes, esprits follets…)."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "situation": "situation.vs_fey_spell_like"
+        }
+      ]
+    },
+    {
+      "id": "power.druid_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale",
+        "en": "Wild shape"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Le druide ferme les yeux, et quand il les rouvre ce sont ceux d’un loup. Il ne se déguise pas en bête : il en devient une, pour quelques heures, avec ses crocs, son flair et ses instincts.\n\nEn jeu\n• Se transforme en un animal qu’il connaît bien et revient à sa forme : action simple, sans attaque d’opportunité. Fonctionne comme métamorphose.\n• Dure une heure par niveau de druide, ou jusqu’à son retour.\n• Utilisations : 1/jour au niveau 5, puis 2 (6), 3 (7), 4 (10), 5 (14), 6 (18).\n• Taille : P ou M, puis G (8), TP (11), TG (15). Dés de vie de la forme : au plus son niveau de druide.\n• Dès le niveau 12, peut aussi prendre la forme d’une créature végétale.\n• Ne parle pas sous forme animale, mais communique avec les animaux de la même espèce."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.druid') >= 18, 6, if(level('class.druid') >= 14, 5, if(level('class.druid') >= 10, 4, if(level('class.druid') >= 7, 3, if(level('class.druid') >= 6, 2, 1)))))"
+    },
+    {
+      "id": "power.druid_venom_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité contre le venin",
+        "en": "Venom immunity"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Des années de piqûres, de morsures et de baies douteuses ont fini par payer : aucun poison ne trouble plus son sang.\n\nEn jeu\n• Immunisé contre tous les poisons et venins."
+      },
+      "effects": [],
+      "note": "Immunité : pas encore dans le modèle."
+    },
+    {
+      "id": "power.druid_a_thousand_faces",
+      "type": "class_power",
+      "name": {
+        "fr": "Mille visages",
+        "en": "A thousand faces"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Un peu plus grand, un peu plus vieux, une autre couleur d’yeux : le druide change de visage comme on change de manteau.\n\nEn jeu\n• À volonté, change d’apparence comme le sort modification d’apparence, sous sa forme normale seulement."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.druid_timeless_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Éternelle jeunesse",
+        "en": "Timeless body"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Les saisons passent sur lui comme sur un vieux chêne : il prend de la sagesse, pas des rides.\n\nEn jeu\n• Ne subit plus les malus de l’âge et est immunisé contre le vieillissement magique.\n• Garde les malus déjà subis, gagne toujours les bonus de l’âge et meurt quand son heure vient."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.druid_elemental_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme élémentaire",
+        "en": "Elemental wild shape"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "druid"
+      ],
+      "description": {
+        "fr": "Le vent, la pierre, la vague, la flamme. Au sommet de son art, le druide ne se contente plus des bêtes : il devient l’élément.\n\nEn jeu\n• Se transforme en élémentaire d’Air, d’Eau, de Feu ou de Terre de taille P, M ou G ; TG au niveau 20.\n• Utilisations : 1/jour au niveau 16, 2 (18), 3 (20), en plus des formes animales.\n• Gagne les pouvoirs extraordinaires, surnaturels et magiques et les dons de l’élémentaire, mais garde son propre type."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.druid') >= 20, 3, if(level('class.druid') >= 18, 2, 1))"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.druid",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.druid_spells",
+        "power.druid_animal_companion",
+        "power.druid_wild_empathy",
+        "power.druid_nature_sense"
+      ],
+      "spellsPerDay": [
+        3,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.druid_woodland_stride"
+      ],
+      "spellsPerDay": [
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.druid_trackless_step"
+      ],
+      "spellsPerDay": [
+        4,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.druid_resist_natures_lure"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.druid_wild_shape"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        5,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.druid_venom_immunity"
+      ],
+      "spellsPerDay": [
+        6,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 11,
+      "bab": 8,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 12,
+      "bab": 9,
+      "fort": 8,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 13,
+      "bab": 9,
+      "fort": 8,
+      "ref": 4,
+      "will": 8,
+      "grants": [
+        "power.druid_a_thousand_faces"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 14,
+      "bab": 10,
+      "fort": 9,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 15,
+      "bab": 11,
+      "fort": 9,
+      "ref": 5,
+      "will": 9,
+      "grants": [
+        "power.druid_timeless_body"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 16,
+      "bab": 12,
+      "fort": 10,
+      "ref": 5,
+      "will": 10,
+      "grants": [
+        "power.druid_elemental_wild_shape"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 17,
+      "bab": 12,
+      "fort": 10,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 18,
+      "bab": 13,
+      "fort": 11,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 19,
+      "bab": 14,
+      "fort": 11,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3,
+        3
+      ]
+    },
+    {
+      "classId": "class.druid",
+      "level": 20,
+      "bab": 15,
+      "fort": 12,
+      "ref": 6,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.druid",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.quarterstaff"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.scimitar"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.dagger"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.dart"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.shortspear"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.sling"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.club"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.spear"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "item.sickle"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.druid",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.druid",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.druid",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.druid",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.druid",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.druid",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    }
+  ]
+}

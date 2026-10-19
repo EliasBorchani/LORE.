@@ -1,0 +1,127 @@
+{
+  "character": "char.danalieth",
+  "atLevel": 59,
+  "note": "Values from Danalieth's sheet, each re-derived by hand from its components (see the spreadsheet tab 'Danalieth checks'). status=pending: the engine needs data not yet in the catalog.",
+  "values": [
+    {
+      "stat": "level",
+      "value": 59,
+      "status": "verified"
+    },
+    {
+      "stat": "level_from_xp",
+      "value": 59,
+      "status": "verified"
+    },
+    {
+      "stat": "ability.str.score",
+      "value": 111,
+      "status": "verified"
+    },
+    {
+      "stat": "ability.dex.score",
+      "value": 36,
+      "status": "verified"
+    },
+    {
+      "stat": "ability.con.score",
+      "value": 85,
+      "status": "verified"
+    },
+    {
+      "stat": "ability.int.score",
+      "value": 65,
+      "status": "verified"
+    },
+    {
+      "stat": "ability.wis.score",
+      "value": 16,
+      "status": "verified"
+    },
+    {
+      "stat": "ability.cha.score",
+      "value": 21,
+      "status": "verified"
+    },
+    {
+      "stat": "bab.classes",
+      "value": 39,
+      "status": "verified",
+      "how": "20 + 0.5 x 39 epic levels = 39.5, rounded once"
+    },
+    {
+      "stat": "bab",
+      "value": 49,
+      "status": "verified",
+      "how": "Divine Power (house rule): 20 + floor(0.75 x 39)"
+    },
+    {
+      "stat": "save.ref",
+      "value": 81,
+      "status": "verified",
+      "how": "class 29 + Dex 13 + Int 27 (Battle Clarity) + cloak 12"
+    },
+    {
+      "stat": "save.fort",
+      "value": 84,
+      "status": "verified",
+      "how": "class 35 + Con 37 + cloak 12"
+    },
+    {
+      "stat": "save.will",
+      "value": 44,
+      "status": "verified",
+      "how": "class 29 + Wis 3 + cloak 12"
+    },
+    {
+      "stat": "hp.base",
+      "value": 297,
+      "status": "verified",
+      "how": "3/4 hit die per level"
+    },
+    {
+      "stat": "hp.max",
+      "value": 2480,
+      "status": "verified",
+      "how": "297 + Con mod 37 x 59"
+    },
+    {
+      "stat": "attack.melee",
+      "value": 145,
+      "status": "verified",
+      "how": "BAB 49 + Divine Favor 24 + weapon 12 + stance 10 + Str 50"
+    },
+    {
+      "stat": "damage.melee",
+      "dice": "3d6",
+      "flat": 138,
+      "averageFloor": 148,
+      "status": "verified",
+      "how": "3d6 (size G) + enhancement 12 + Str 50 x 1.5 = 75 + Divine Favor 24 + Int 27 (Battle Cunning)"
+    },
+    {
+      "stat": "spell_resistance",
+      "value": 72,
+      "status": "verified",
+      "how": "12 + Wizard caster level 60"
+    },
+    {
+      "stat": "caster_level.wizard",
+      "value": 60,
+      "status": "verified",
+      "how": "Wizard 3 + advances 26 + Arcane Spell Power 8 + Spell Improvement 20 + Will of Death 3 (owner, 2026-10-15)"
+    },
+    {
+      "stat": "caster_level.sorcerer",
+      "value": 29,
+      "status": "verified",
+      "how": "Sorcerer 1 + advances 20 + Arcane Spell Power 8 (owner, 2026-10-15)"
+    },
+    {
+      "stat": "skill.spellcraft",
+      "value": 99,
+      "status": "pending",
+      "how": "skill ranks not recorded yet"
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "entities": [
+    {
+      "id": "spell.mass_inflict_light_wounds",
+      "type": "spell",
+      "name": { "fr": "Blessure légère de groupe", "en": "Inflict Light Wounds, Mass" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Une vague d’énergie négative roule sur la mêlée et ronge chaque corps vivant qu’elle croise. Les morts-vivants, eux, s’en régalent.\n\nEn jeu\n• Jusqu’à 1 créature par niveau, toutes à 9 m au plus les unes des autres.\n• Chaque cible vivante perd 1d8 points de vie + 1 par niveau de lanceur (+25 au plus) ; jet de Volonté pour la moitié.\n• Un mort-vivant touché récupère autant de points de vie au lieu d’en perdre.\n• Un lanceur qui convertit spontanément ses sorts en blessures peut aussi le faire pour cette version de groupe."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "1d8", "scope": "spell" },
+        { "target": "spell.damage", "op": "add", "value": "min(@spell.caster_level, 25)", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.inflict_moderate_wounds",
+      "type": "spell",
+      "name": { "fr": "Blessure modérée", "en": "Inflict Moderate Wounds" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Une main sombre se pose sur l’adversaire, et la chair cède sous elle comme du papier mouillé.\n\nEn jeu\n• Attaque de contact au corps à corps : la cible perd 2d8 points de vie + 1 par niveau de lanceur (+10 au plus).\n• Jet de Volonté pour la moitié.\n• Sur un mort-vivant, rend autant de points de vie au lieu d’en ôter."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "2d8", "scope": "spell" },
+        { "target": "spell.damage", "op": "add", "value": "min(@spell.caster_level, 10)", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.mass_inflict_moderate_wounds",
+      "type": "spell",
+      "name": { "fr": "Blessure modérée de groupe", "en": "Inflict Moderate Wounds, Mass" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Le souffle froid de la tombe balaie tout un groupe d’ennemis, assez fort pour faire plier les plus robustes.\n\nEn jeu\n• Jusqu’à 1 créature par niveau, toutes à 9 m au plus les unes des autres.\n• Chaque cible vivante perd 2d8 points de vie + 1 par niveau de lanceur (+30 au plus) ; jet de Volonté pour la moitié.\n• Les morts-vivants touchés sont soignés d’autant."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, à 9 m au plus les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "2d8", "scope": "spell" },
+        { "target": "spell.damage", "op": "add", "value": "min(@spell.caster_level, 30)", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.inflict_minor_wounds",
+      "type": "spell",
+      "name": { "fr": "Blessure superficielle", "en": "Inflict Minor Wounds" },
+      "provenance": "official",
+      "labels": ["spell", "nécromancie"],
+      "description": {
+        "fr": "Une piqûre d’ombre, à peine une égratignure. Juste assez pour achever un adversaire qui vacille.\n\nEn jeu\n• Attaque de contact au corps à corps : la cible perd 1 point de vie.\n• Un jet de Volonté réussi annule tout.\n• Sur un mort-vivant, rend 1 point de vie."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "add", "value": 1, "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.ironwood",
+      "type": "spell",
+      "name": { "fr": "Bois de fer", "en": "Ironwood" },
+      "provenance": "official",
+      "labels": ["spell", "transmutation"],
+      "description": {
+        "fr": "Le bois garde son grain et son odeur, mais prend la dureté et le poids de l’acier. Une lame de chêne qui ne rouille jamais et ne craint pas la forge.\n\nEn jeu\n• Transforme un objet en bois de 2,5 kg par niveau au plus en bois de fer, aussi solide et lourd que l’acier.\n• Les sorts qui visent le métal (métal brûlant…) ne l’affectent pas ; ceux qui visent le bois, si, mais il ne brûle pas.\n• Avec façonnage du bois ou un Artisanat du bois, on en tire armes et armures équivalentes à l’acier.\n• En se limitant à la moitié du poids permis, une arme, une armure ou un bouclier ainsi créé compte comme un objet magique +1.\n• Dure 1 jour par niveau ; incantation de 1 minute par 500 g."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 minute/500 g",
+        "range": "0 m",
+        "target": "un objet en bois de fer de 2,5 kg/niveau au plus",
+        "duration": "1 jour/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_mouth",
+      "type": "spell",
+      "name": { "fr": "Bouche magique", "en": "Magic Mouth" },
+      "provenance": "official",
+      "labels": ["spell", "illusion"],
+      "description": {
+        "fr": "Des lèvres apparaissent sur une statue, une porte ou un coffre et se mettent à parler au bon moment. Parfait pour les avertissements, les énigmes et les plaisanteries de mauvais goût.\n\nEn jeu\n• Place une bouche sur une créature ou un objet ; elle délivre un message de 25 mots au plus, dit en 10 minutes au maximum, quand une condition choisie se réalise.\n• La condition doit être visible ou audible ; la bouche se fie aux apparences et peut être trompée par un déguisement ou une illusion.\n• Elle ne distingue ni alignement, ni niveau, ni classe, et ne peut ni lancer de sort ni prononcer de mot de commande.\n• Portée de déclenchement : 4,50 m par niveau de lanceur.\n• Dure jusqu’à ce que le message soit délivré."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature ou 1 objet",
+        "duration": "permanente jusqu’à utilisation",
+        "savingThrow": "Volonté, annule (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shield",
+      "type": "spell",
+      "name": { "fr": "Bouclier", "en": "Shield" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Un disque de force invisible flotte devant le lanceur et suit chacun de ses gestes. Les projectiles magiques s’y écrasent sans bruit.\n\nEn jeu\n• Bonus de bouclier de +4 à la CA, valable aussi contre les attaques de contact intangibles.\n• Bloque tous les projectiles magiques qui visent le lanceur.\n• Aucun malus d’armure, aucun risque d’échec des sorts profanes, mais pas d’abri.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": ["force"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "The +4 is a shield bonus; the catalog has no shield bonus type yet, so no AC effect (it must not stack with a real shield)."
+    },
+    {
+      "id": "spell.fire_shield",
+      "type": "spell",
+      "name": { "fr": "Bouclier de feu", "en": "Fire Shield" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Le lanceur s’embrase de flammes douces, vertes et bleues s’il veut le froid, bleues et violettes s’il veut la chaleur. Qui le frappe s’y brûle les doigts.\n\nEn jeu\n• Toute créature qui touche le lanceur avec une arme de corps à corps ou une arme naturelle subit 1d6 + 1 par niveau de lanceur (+15 au plus), en feu (bouclier chaud) ou en froid (bouclier froid). La résistance à la magie s’applique ; les armes à allonge en sont protégées.\n• Bouclier chaud : le lanceur ne subit que la moitié des dégâts de froid ; si l’attaque permet un jet de Réflexes pour demi-dégâts, un jet réussi les annule.\n• Bouclier froid : même protection, mais contre le feu.\n• Éclaire sur 3 m. Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["feu ou froid"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (voir description)"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "1d6", "scope": "spell" },
+        { "target": "spell.damage", "op": "add", "value": "min(@spell.caster_level, 15)", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.shield_of_faith",
+      "type": "spell",
+      "name": { "fr": "Bouclier de la foi", "en": "Shield of Faith" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Une lueur sacrée entoure le protégé et écarte les coups au dernier moment, comme une main invisible.\n\nEn jeu\n• Bonus de parade de +2 à la CA, +1 par tranche de 6 niveaux de lanceur (+5 au plus, atteint au niveau 18).\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        { "target": "ac.total", "op": "add", "value": "2 + min(floor(@spell.caster_level / 6), 3)", "bonusType": "deflection", "condition": "active('toggle.shield_of_faith')" }
+      ]
+    },
+    {
+      "id": "spell.shield_of_law",
+      "type": "spell",
+      "name": { "fr": "Bouclier de la Loi", "en": "Shield of Law" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Les alliés se drapent d’un halo bleu acier, raide comme une loi gravée dans la pierre. Le chaos qui s’y frotte en ressort engourdi.\n\nEn jeu\n• Jusqu’à 1 créature par niveau dans un rayon de 6 m autour du lanceur.\n• +4 de parade à la CA et +4 de résistance à tous les jets de sauvegarde, contre toutes les attaques.\n• Résistance à la magie 25 contre les sorts du Chaos et ceux lancés par des créatures chaotiques.\n• Bloque la possession et le contrôle mental, comme protection contre le Chaos.\n• Une créature chaotique qui touche un protégé au corps à corps est ralentie (comme lenteur) sauf jet de Volonté réussi contre le DD de ce sort.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": ["Loi"],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "target": "1 créature/niveau dans un rayonnement de 6 m centré sur le lanceur",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        { "target": "ac.total", "op": "add", "value": 4, "bonusType": "deflection", "condition": "active('toggle.shield_of_law')" },
+        { "target": "save.all", "op": "add", "value": 4, "bonusType": "resistance", "condition": "active('toggle.shield_of_law')" },
+        { "target": "spell_resistance", "op": "set", "value": 25, "layer": "base", "condition": "active('toggle.shield_of_law')", "situation": "situation.vs_chaotic" }
+      ]
+    },
+    {
+      "id": "spell.entropic_shield",
+      "type": "spell",
+      "name": { "fr": "Bouclier entropique", "en": "Entropic Shield" },
+      "provenance": "official",
+      "labels": ["spell", "abjuration"],
+      "description": {
+        "fr": "Un tourbillon de couleurs changeantes enveloppe le lanceur ; flèches et rayons s’y perdent et dévient au hasard.\n\nEn jeu\n• Toute attaque à distance qui vise le lanceur avec un jet d’attaque a 20 % de chances de rater, comme avec un camouflage.\n• Sans effet sur les attaques à distance sans jet d’attaque (souffle de dragon…).\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fireball",
+      "type": "spell",
+      "name": { "fr": "Boule de feu", "en": "Fireball" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une bille rougeoyante file du doigt du lanceur et éclate en une sphère de flammes rugissantes. Le classique, et pour cause.\n\nEn jeu\n• 1d6 dégâts de feu par niveau de lanceur (10d6 au plus) à tout ce qui se trouve dans un rayon de 6 m ; jet de Réflexes pour la moitié.\n• La bille explose plus tôt si elle heurte un obstacle ; passer par une ouverture étroite demande une attaque de contact à distance.\n• Enflamme les combustibles et peut faire fondre les métaux mous (plomb, or, cuivre, argent, bronze).\n• Si l’obstacle est détruit, l’explosion continue au-delà."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["feu"],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "étendue de 6 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "(min(@spell.caster_level, 10))d6 fire", "scope": "spell" },
+        { "target": "spell.area.radius", "op": "add", "value": 6, "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.delayed_blast_fireball",
+      "type": "spell",
+      "name": { "fr": "Boule de feu à retardement", "en": "Delayed Blast Fireball" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "La bille de feu se pose, luisante et patiente, puis attend son heure. Ceux qui la ramassent jouent à un jeu dangereux.\n\nEn jeu\n• 1d6 dégâts de feu par niveau de lanceur (20d6 au plus) dans un rayon de 6 m ; jet de Réflexes pour la moitié.\n• L’explosion peut être retardée jusqu’à 5 rounds, choisis à l’incantation et impossibles à changer ensuite.\n• N’importe qui peut saisir la bille et la lancer (facteur de portée 3 m) ; si on la saisit dans le round qui précède l’explosion, 25 % de chances qu’elle éclate dans la main."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["feu"],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "étendue de 6 m de rayon",
+        "duration": "jusqu’à 5 rounds (voir description)",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "(min(@spell.caster_level, 20))d6 fire", "scope": "spell" },
+        { "target": "spell.area.radius", "op": "add", "value": 6, "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.gust_of_wind",
+      "type": "spell",
+      "name": { "fr": "Bourrasque", "en": "Gust of Wind" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Une rafale hurlante jaillit de la main tendue, couche les petits, éteint les torches et fait claquer les capes.\n\nEn jeu\n• Ligne de 18 m ; jet de Vigueur pour annuler.\n• TP ou moins au sol : renversé et repoussé de 1d4 × 3 m, 1d4 dégâts non létaux par 3 m. En vol : repoussé de 2d6 × 3 m et 2d6 dégâts non létaux.\n• P : renversé, ou repoussé de 1d6 × 3 m en vol. M : ne peut avancer contre le vent, ou repoussé de 1d6 × 1,50 m en vol. G ou plus : aucun effet.\n• −4 aux attaques à distance et aux tests de Perception auditive dans la zone.\n• Éteint les flammes nues ; 50 % de chances pour les flammes protégées. Disperse brumes et gaz.\n• Dure 1 round."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["air"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "effect": "rafale en ligne partant du lanceur jusqu’à la limite de portée",
+        "duration": "1 round",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.solid_fog",
+      "type": "spell",
+      "name": { "fr": "Brouillard dense", "en": "Solid Fog" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Une brume si épaisse qu’on la pousse comme de la laine mouillée. On y avance au pas, on y frappe mollement, et les flèches s’y engluent.\n\nEn jeu\n• Brouillard de 6 m de rayon et 6 m de haut ; vision limitée à 1,50 m (camouflage, puis camouflage total au-delà).\n• Vitesse réduite à 1,50 m, −2 aux jets d’attaque et de dégâts au corps à corps, pas de pas de placement.\n• Attaques à distance impossibles (sauf rayons).\n• Une chute à travers la brume est freinée : −1d6 aux dégâts de chute par tranche de 3 m traversée.\n• Seul un vent d’au moins 50 km/h la disperse, en 1 round.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "brouillard de 6 m de rayon et 6 m de haut",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.acid_fog",
+      "type": "spell",
+      "name": { "fr": "Brume acide", "en": "Acid Fog" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Un brouillard verdâtre et lourd, qui colle à la peau et la ronge. Rester dedans, c’est fondre lentement.\n\nEn jeu\n• Brouillard de 6 m de rayon et 6 m de haut, aussi gênant que brouillard dense (vitesse 1,50 m, −2 au corps à corps, pas d’attaques à distance, vision 1,50 m).\n• Chaque round, 2d6 dégâts d’acide aux créatures et objets dans la brume ; pas de jet de sauvegarde.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": ["acide"],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "brouillard de 6 m de rayon et 6 m de haut",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "2d6 acid", "scope": "spell" }
+      ]
+    },
+    {
+      "id": "spell.obscuring_mist",
+      "type": "spell",
+      "name": { "fr": "Brume de dissimulation", "en": "Obscuring Mist" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Des volutes grises montent du sol et noient le lanceur et ses voisins. Plus personne ne sait très bien qui est où.\n\nEn jeu\n• Brouillard immobile de 6 m de rayon et 6 m de haut, centré sur le lanceur.\n• Vision (vision dans le noir comprise) limitée à 1,50 m.\n• À 1,50 m : camouflage (20 % de chances de rater). Au-delà : camouflage total (50 %, impossible de repérer à vue).\n• Un vent modéré (15 km/h) la disperse en 4 rounds, un vent fort (30 km/h) en 1 round ; le feu (boule de feu, mur de feu…) la dissipe là où il frappe.\n• Ne fonctionne pas sous l’eau. Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "effect": "brouillard de 6 m de rayon et 6 m de haut, centré sur le lanceur",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mind_fog",
+      "type": "spell",
+      "name": { "fr": "Brume mentale", "en": "Mind Fog" },
+      "provenance": "official",
+      "labels": ["spell", "enchantement"],
+      "description": {
+        "fr": "Une brume légère, presque transparente, qui embrume surtout les esprits. Ceux qui y respirent deviennent dociles et confus.\n\nEn jeu\n• Brouillard de 6 m de rayon et 6 m de haut, qui ne gêne pas la vue.\n• Jet de Volonté pour annuler ; un jet réussi protège même en restant dans la brume.\n• Malus de −10 aux tests de Sagesse et aux jets de Volonté, dans la brume et pendant 2d6 rounds après en être sorti.\n• Dure 30 minutes ; un vent modéré la disperse en 4 rounds, un vent fort en 1 round."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": ["mental"],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "brouillard de 6 m de rayon et 6 m de haut",
+        "duration": "30 minutes et 2d6 rounds (voir description)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.cloudkill",
+      "type": "spell",
+      "name": { "fr": "Brume mortelle", "en": "Cloudkill" },
+      "provenance": "official",
+      "labels": ["spell", "invocation"],
+      "description": {
+        "fr": "Un nuage jaune-vert, lourd et empoisonné, rampe au ras du sol en s’éloignant du lanceur. Les faibles tombent sans un mot.\n\nEn jeu\n• Nuage de 6 m de rayon et 6 m de haut, aussi gênant que brouillard dense ; il s’éloigne du lanceur de 3 m par round et coule dans les creux.\n• 3 DV ou moins : mort, sans jet de sauvegarde.\n• 4 à 6 DV : jet de Vigueur ou mort ; même en cas de réussite, 1d4 d’affaiblissement de Constitution.\n• Plus de 6 DV : 1d4 d’affaiblissement de Constitution par round dans le nuage (Vigueur pour la moitié).\n• Ne touche que les créatures vivantes. Retenir son souffle ne protège pas ; celles immunisées contre le poison ne craignent rien. Impossible sous l’eau.\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "nuage de 6 m de rayon et 6 m de haut",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Vigueur, partiel (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sound_burst",
+      "type": "spell",
+      "name": { "fr": "Cacophonie", "en": "Sound Burst" },
+      "provenance": "official",
+      "labels": ["spell", "évocation"],
+      "description": {
+        "fr": "Un fracas assourdissant éclate d’un coup, comme cent cymbales frappées ensemble. Les tympans sifflent, les jambes flanchent.\n\nEn jeu\n• 1d8 dégâts de son à toutes les créatures dans un rayon de 3 m.\n• Jet de Vigueur ou étourdi pendant 1 round ; les créatures sourdes ne sont pas étourdies mais subissent les dégâts."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": ["son"],
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "étendue de 3 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        { "target": "spell.damage", "op": "dice", "value": "1d8 sonic", "scope": "spell" },
+        { "target": "spell.area.radius", "op": "add", "value": 3, "scope": "spell" }
+      ]
+    }
+  ]
+}

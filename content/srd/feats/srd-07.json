@@ -1,0 +1,263 @@
+{
+  "entities": [
+    {
+      "id": "feat.improved_sunder",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la destruction",
+        "en": "Improved Sunder"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Une lame se brise, un bouclier vole en éclats : là où d’autres visent la chair, ce combattant vise l’acier. Il a appris à lire les points faibles d’une arme et à y frapper sans jamais baisser sa garde.\n\nEn jeu\n• Condition : Force 13, Attaque en puissance.\n• Tenter une destruction (frapper une arme, un bouclier ou un objet tenu ou porté par un adversaire) ne provoque pas d’attaque d’opportunité.\n• +4 aux jets d’attaque pour frapper un objet tenu ou porté par un adversaire.\n• Normal : sans ce don, frapper un objet tenu ou porté provoque une attaque d’opportunité."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack')",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.sunder"
+        }
+      ]
+    },
+    {
+      "id": "feat.improved_initiative",
+      "type": "feat",
+      "name": {
+        "fr": "Science de l’initiative",
+        "en": "Improved Initiative"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense"
+      ],
+      "description": {
+        "fr": "Avant que l’embuscade ne se referme, avant que le premier mot de l’incantation ne tombe, il a déjà bougé. Ses réflexes ont une longueur d’avance sur le reste du monde.\n\nEn jeu\n• +4 aux tests d’initiative."
+      },
+      "effects": [
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.improved_bull_rush",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la bousculade",
+        "en": "Improved Bull Rush"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Épaule en avant, bouclier levé, il charge comme un bélier de siège. Ceux qui se dressent sur sa route n’ont pas le temps de frapper : ils reculent déjà.\n\nEn jeu\n• Condition : Force 13, Attaque en puissance.\n• Une bousculade ne provoque pas d’attaque d’opportunité de la part de la cible.\n• +4 au test de Force opposé pour repousser la cible.\n• Normal : sans ce don, une bousculade provoque une attaque d’opportunité de la cible."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack')",
+      "effects": [
+        {
+          "target": "check.bull_rush",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.improved_feint",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la feinte",
+        "en": "Improved Feint"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "skill"
+      ],
+      "description": {
+        "fr": "Un regard vers la gauche, un pas qui ment, et la lame arrive de l’autre côté. Pour lui, tromper la garde d’un adversaire est devenu aussi naturel que respirer.\n\nEn jeu\n• Condition : Intelligence 13, Expertise du combat.\n• Feinter en combat (test de Bluff) se fait par une action de mouvement.\n• Normal : une feinte est une action simple."
+      },
+      "prerequisite": "@ability.int.score >= 13 and has('feat.combat_expertise')"
+    },
+    {
+      "id": "feat.improved_grapple",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la lutte",
+        "en": "Improved Grapple"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "unarmed",
+        "melee"
+      ],
+      "description": {
+        "fr": "Une clé de bras, une prise au col, et le combat se joue au sol. Il connaît chaque levier du corps humain et s’en sert comme d’autres d’une épée.\n\nEn jeu\n• Condition : Dextérité 13, Science du combat à mains nues.\n• L’attaque de contact qui engage une lutte ne provoque pas d’attaque d’opportunité.\n• +4 à tous les tests de lutte, que le personnage ait engagé la lutte ou non.\n• Normal : l’attaque de contact qui engage une lutte provoque une attaque d’opportunité.\n• Un moine peut le prendre comme don supplémentaire au niveau 1 sans remplir les conditions."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.improved_unarmed_strike')",
+      "effects": [
+        {
+          "target": "check.grapple",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Exception du moine (don supplémentaire sans conditions) non vérifiée par la fiche."
+    },
+    {
+      "id": "feat.improved_two_weapon_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Science du combat à deux armes",
+        "en": "Improved Two-Weapon Fighting"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "two_weapon",
+        "melee"
+      ],
+      "description": {
+        "fr": "Ses deux lames ne se relaient plus : elles tissent un rideau d’acier. Là où un bretteur ordinaire place un coup de la main faible, lui en place deux.\n\nEn jeu\n• Condition : Dextérité 17, Combat à deux armes, bonus de base à l’attaque +6.\n• En combattant à deux armes, une deuxième attaque supplémentaire avec l’arme secondaire, à −5 au jet d’attaque.\n• Normal : une seule attaque supplémentaire par round avec l’arme secondaire.\n• Un rôdeur de niveau 6 ayant choisi le style de combat à deux armes en profite sans remplir les conditions, en armure légère ou sans armure."
+      },
+      "prerequisite": "@ability.dex.score >= 17 and has('feat.two_weapon_fighting') and @bab >= 6",
+      "note": "Attaques supplémentaires de l’arme secondaire : pas encore dans le modèle (une seule arme maniée). Exception du rôdeur (style à deux armes, niveau 6, armure légère ou aucune) non vérifiée par la fiche."
+    },
+    {
+      "id": "feat.improved_unarmed_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Science du combat à mains nues",
+        "en": "Improved Unarmed Strike"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Ses poings sont des armes, et il le sait. Celui qui croit le trouver désarmé découvre trop tard que ses mains frappent aussi sûrement qu’une masse.\n\nEn jeu\n• Le personnage est considéré comme armé à mains nues : attaquer ainsi un adversaire armé ne provoque pas d’attaque d’opportunité.\n• Il menace la zone autour de lui et peut porter une attaque d’opportunité à qui l’attaque à mains nues.\n• Ses coups à mains nues infligent au choix des dégâts létaux ou non létaux.\n• Normal : sans ce don, un personnage à mains nues est considéré comme désarmé et n’inflige que des dégâts non létaux.\n• Les moines l’obtiennent d’office au niveau 1."
+      }
+    },
+    {
+      "id": "feat.improved_counterspell",
+      "type": "feat",
+      "name": {
+        "fr": "Science du contresort",
+        "en": "Improved Counterspell"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il n’a pas besoin du même sort pour briser celui d’un rival : il en comprend la trame et y oppose n’importe quel fil de la même école, pourvu qu’il soit plus solide.\n\nEn jeu\n• Pour contrer un sort, le personnage peut utiliser n’importe quel sort de la même école d’au moins un niveau de plus.\n• Normal : on ne contre un sort qu’avec le même sort, ou avec un sort qui précise qu’il peut servir de contresort."
+      }
+    },
+    {
+      "id": "feat.improved_shield_bash",
+      "type": "feat",
+      "name": {
+        "fr": "Science du coup de bouclier",
+        "en": "Improved Shield Bash"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense",
+        "melee"
+      ],
+      "description": {
+        "fr": "Son bouclier frappe et protège dans le même mouvement. L’adversaire qui espérait une ouverture après l’impact ne trouve que du bois cerclé de fer.\n\nEn jeu\n• Condition : Maniement des boucliers.\n• Après un coup de bouclier, le personnage garde le bonus de bouclier à la CA.\n• Normal : sans ce don, un coup de bouclier fait perdre le bonus de bouclier à la CA jusqu’au tour suivant."
+      },
+      "note": "Condition non vérifiée par la fiche : Maniement des boucliers (le maniement donné par une classe vient d’une relation proficiency.shields, que has() ne lit pas)."
+    },
+    {
+      "id": "feat.improved_critical",
+      "type": "feat",
+      "name": {
+        "fr": "Science du critique",
+        "en": "Improved Critical"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Il ne frappe pas plus fort : il frappe mieux. Chaque coup cherche la gorge, la jointure de l’armure, le battement de cœur entre deux respirations, et trouve de plus en plus souvent sa cible.\n\nEn jeu\n• Condition : maniement de l’arme choisie, bonus de base à l’attaque +8.\n• Zone de critique de l’arme choisie doublée : une rapière passe de 18–20 à 15–20, une hache d’armes de 20 à 19–20.\n• Aucun cumul avec un autre effet qui élargit la zone de critique, sort affûtage compris.\n• Don répétable, une nouvelle arme à chaque fois ; deux exemplaires pour la même arme n’apportent rien de plus."
+      },
+      "prerequisite": "@bab >= 8",
+      "note": "Condition non vérifiée par la fiche : maniement de l’arme choisie. Arme choisie : pas encore dans le modèle. Doublement de la zone de critique non modélisé : weapon.threat_range s’ajoute à la zone de base de l’arme, que le modèle ne connaît pas encore."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.improved_sunder",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.improved_bull_rush",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.improved_feint",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.improved_grapple",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.improved_two_weapon_fighting",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.improved_shield_bash",
+      "relation": "requires",
+      "to": "feat.shield_proficiency"
+    }
+  ]
+}

@@ -1,0 +1,651 @@
+{
+  "entities": [
+    {
+      "id": "spell.grease",
+      "type": "spell",
+      "name": {
+        "fr": "Graisse",
+        "en": "Grease"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une flaque luisante, un pavé huilé, une épée qui file entre les doigts : la magie la plus simple est parfois la plus humiliante.\n\nEn jeu\n• Zone de 3 m × 3 m ou un objet, pendant 1 round par niveau.\n• Toute créature dans la zone (au lancement, en y entrant ou à chaque round) fait un jet de Réflexes ou tombe.\n• Traverser la zone : test d’Équilibre DD 10 pour avancer à demi-vitesse ; un échec immobilise pour le round et impose un jet de Réflexes contre la chute ; rater de 5 ou plus fait tomber.\n• Objet tenu : jet de Réflexes du porteur ou il le lâche, à refaire chaque round où l’on s’en sert ; un objet libre est graissé d’office.\n• Armure ou vêtements graissés : +10 de circonstance aux tests d’Évasion et de lutte pour se dégager."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "1 objet ou un carré de 3 m de côté",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "non",
+        "subschool": "création"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.longstrider",
+      "type": "spell",
+      "name": {
+        "fr": "Grand pas",
+        "en": "Longstrider"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les jambes s’allongent, la foulée devient celle d’un voyageur pressé qui ne connaît plus la fatigue des routes.\n\nEn jeu\n• +3 m de bonus d’altération à la vitesse au sol, pendant 1 heure par niveau.\n• Aucun effet sur le vol, la nage, l’escalade ni le creusement."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 3,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.longstrider')"
+        }
+      ]
+    },
+    {
+      "id": "spell.shambler",
+      "type": "spell",
+      "name": {
+        "fr": "Grand tertre",
+        "en": "Shambler"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La terre détrempée se soulève, les racines se nouent : une poignée de tertres errants se dresse et attend les ordres.\n\nEn jeu\n• Crée 1d4+2 tertres errants de 11 DV, à moins de 9 m les uns des autres.\n• Ils combattent, accomplissent une tâche ou servent de gardes du corps pendant 7 jours.\n• Postés pour garder un lieu précis : 7 mois, sans quitter la portée du sort.\n• Leur résistance au feu ne marche que sous la pluie ou dans un lieu très humide."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "1d4+2 tertres errants à moins de 9 m les uns des autres",
+        "duration": "7 jours ou 7 mois (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.heal_mount",
+      "type": "spell",
+      "name": {
+        "fr": "Guérison de destrier",
+        "en": "Heal Mount"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La main posée sur l’encolure, le cavalier rend à sa monture fidèle tout ce que la bataille lui a pris.\n\nEn jeu\n• Comme guérison suprême, mais seulement sur la monture spéciale du paladin.\n• Rend 10 points de vie par niveau de lanceur (150 au plus) et soigne maladies, poison, fatigue, confusion, étourdissement et autres maux.\n• Ne rend pas les niveaux perdus ni les diminutions permanentes de caractéristique."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la monture spéciale du paladin",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(10 * @spell.caster_level, 150)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.remove_blindness_deafness",
+      "type": "spell",
+      "name": {
+        "fr": "Guérison de la cécité/surdité",
+        "en": "Remove Blindness/Deafness"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un voile se lève, un silence se brise : les sens éteints reviennent d’un coup, qu’un mal naturel ou un sort les ait volés.\n\nEn jeu\n• Soigne la cécité ou la surdité (au choix), d’origine naturelle ou magique.\n• Répare un œil ou une oreille abîmé, mais ne fait pas repousser un organe perdu.\n• Contre et dissipe cécité/surdité."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.remove_disease",
+      "type": "spell",
+      "name": {
+        "fr": "Guérison des maladies",
+        "en": "Remove Disease"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La fièvre retombe, les pustules pâlissent, et ce qui grouillait sous la peau meurt sans un bruit.\n\nEn jeu\n• Guérit toutes les maladies du sujet et tue les parasites (limon vert compris).\n• Certaines maladies résistent au sort ou exigent un niveau de lanceur minimum.\n• Effet instantané : aucune protection contre une nouvelle infection."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.heal",
+      "type": "spell",
+      "name": {
+        "fr": "Guérison suprême",
+        "en": "Heal"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un torrent d’énergie positive traverse le corps : les plaies se ferment, l’esprit s’éclaircit, et le blessé se relève comme neuf.\n\nEn jeu\n• Rend 10 points de vie par niveau de lanceur, 150 au plus (niveau 15).\n• Soigne aussi affaiblissement temporaire de caractéristique, aliénation, cécité, confusion, débilité, éblouissement, poison, épuisement, étourdissement, fatigue, état fiévreux, hébétement, maladies, nausée et surdité.\n• Ne rend ni niveaux négatifs, ni niveaux perdus, ni diminutions permanentes de caractéristique.\n• Contre un mort-vivant, agit comme mise à mal (attaque de contact)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(10 * @spell.caster_level, 150)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_heal",
+      "type": "spell",
+      "name": {
+        "fr": "Guérison suprême de groupe",
+        "en": "Heal, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La lumière jaillit et se répand sur tout un groupe : d’un seul geste, une compagnie entière se relève.\n\nEn jeu\n• Comme guérison suprême, sur une ou plusieurs créatures à moins de 9 m les unes des autres.\n• Rend 10 points de vie par niveau de lanceur, 250 au plus par créature.\n• Les morts-vivants pris dans le sort le subissent comme une mise à mal."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 ou plusieurs créatures à moins de 9 m les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(10 * @spell.caster_level, 250)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.daze",
+      "type": "spell",
+      "name": {
+        "fr": "Hébétement",
+        "en": "Daze"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un mot trop bien placé, et l’adversaire reste planté là, l’esprit vide, le temps d’un battement de cœur.\n\nEn jeu\n• Un humanoïde de 4 DV ou moins qui rate son jet de Volonté est hébété : il ne peut pas agir pendant 1 round (il reste sur ses gardes).\n• Hébété n’est pas étourdi : les attaquants ne gagnent aucun avantage contre lui.\n• Les humanoïdes de 5 DV ou plus sont immunisés."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 humanoïde de 4 DV ou moins",
+        "duration": "1 round",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.daze_monster",
+      "type": "spell",
+      "name": {
+        "fr": "Hébétement de monstre",
+        "en": "Daze Monster"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Même les bêtes les plus étranges ont un esprit à embrumer : un instant, la créature oublie ce qu’elle faisait.\n\nEn jeu\n• Une créature vivante de 6 DV ou moins, de n’importe quel type, qui rate son jet de Volonté est hébétée 1 round.\n• Les créatures de 7 DV ou plus sont immunisées.\n• Portée moyenne (30 m + 3 m/niveau)."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante de 6 DV ou moins",
+        "duration": "1 round",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.heroism",
+      "type": "spell",
+      "name": {
+        "fr": "Héroïsme",
+        "en": "Heroism"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le cœur bat plus fort, la peur recule : le sujet se sent l’étoffe des héros des vieilles chansons.\n\nEn jeu\n• +2 de moral aux jets d’attaque, aux jets de sauvegarde et aux tests de compétence.\n• Dure 10 minutes par niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.heroism')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.heroism')"
+        }
+      ]
+    },
+    {
+      "id": "spell.greater_heroism",
+      "type": "spell",
+      "name": {
+        "fr": "Héroïsme suprême",
+        "en": "Heroism, Greater"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Plus de doute, plus de peur : le sujet avance comme une légende vivante, insensible à la terreur et plus coriace qu’avant.\n\nEn jeu\n• +4 de moral aux jets d’attaque, aux jets de sauvegarde et aux tests de compétence.\n• Immunité contre la terreur.\n• Points de vie temporaires égaux au niveau de lanceur (20 au plus).\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "morale",
+          "condition": "active('toggle.greater_heroism')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "morale",
+          "condition": "active('toggle.greater_heroism')"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "condition": "active('toggle.greater_heroism')"
+        }
+      ]
+    },
+    {
+      "id": "spell.hypnotism",
+      "type": "spell",
+      "name": {
+        "fr": "Hypnose",
+        "en": "Hypnotism"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Des gestes lents, une voix monotone, un pendule qui oscille : les regards se fixent et ne se détachent plus.\n\nEn jeu\n• Fascine 2d4 DV de créatures qui voient ou entendent le lanceur, les plus faibles en premier.\n• En combat, les cibles ont +2 au jet de Volonté ; une cible seule et hors combat a −2.\n• Une créature hypnotisée voit son attitude envers le lanceur s’améliorer de deux crans : elle accepte une requête brève et raisonnable.\n• Après le sort, elle garde cette attitude pour cette requête seulement ; si elle a raté son jet, elle ne se souvient de rien."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "plusieurs créatures vivantes à moins de 9 m les unes des autres",
+        "duration": "2d4 rounds (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animal_trance",
+      "type": "spell",
+      "name": {
+        "fr": "Hypnose des animaux",
+        "en": "Animal Trance"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un balancement lent, un chant rythmé, et les bêtes s’assoient, les yeux rivés sur le lanceur, oubliant leur faim.\n\nEn jeu\n• Fascine 2d6 DV d’animaux ou de créatures magiques d’Intelligence 1 ou 2, les plus proches d’abord.\n• Les animaux sauvages non dressés n’ont pas de jet de sauvegarde ; les animaux dressés à l’attaque ou à la garde, les animaux sanguinaires et les créatures magiques font un jet de Volonté.\n• Dure tant que le lanceur se concentre."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "animaux ou créatures magiques d’Intelligence 1 ou 2",
+        "duration": "concentration",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.identify",
+      "type": "spell",
+      "name": {
+        "fr": "Identification",
+        "en": "Identify"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une heure de concentration, une perle broyée, et l’objet dévoile ce qu’il sait faire.\n\nEn jeu\n• Révèle toutes les propriétés d’un objet magique, comment l’activer et ses charges restantes.\n• Sans effet sur les artefacts.\n• Composante profane : une perle d’au moins 100 po, broyée dans du vin."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M/FD",
+        "castingTime": "1 heure",
+        "range": "contact",
+        "target": "1 objet touché",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.touch_of_idiocy",
+      "type": "spell",
+      "name": {
+        "fr": "Idiotie",
+        "en": "Touch of Idiocy"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un simple contact, et les pensées s’emmêlent : formules oubliées, mots qui se dérobent, regard vague.\n\nEn jeu\n• Attaque de contact au corps à corps : la cible subit −1d6 en Intelligence, en Sagesse et en Charisme.\n• Aucune valeur ne descend sous 1.\n• Peut empêcher la cible de lancer des sorts dont la caractéristique requise devient trop basse.\n• Dure 10 minutes par niveau ; pas de jet de sauvegarde."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.flare",
+      "type": "spell",
+      "name": {
+        "fr": "Illumination",
+        "en": "Flare"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un éclair blanc en plein visage : pratique pour gagner une seconde, et une seconde suffit parfois.\n\nEn jeu\n• La cible qui rate son jet de Vigueur est éblouie pendant 1 minute (−1 aux jets d’attaque, à la Détection et à la Fouille).\n• Sans effet sur les créatures aveugles ou déjà éblouies."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayonnement de lumière",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui",
+        "descriptors": [
+          "lumière"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.major_image",
+      "type": "spell",
+      "name": {
+        "fr": "Image accomplie",
+        "en": "Major Image"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le mirage a désormais une voix, une odeur et une chaleur : on jurerait que c’est réel.\n\nEn jeu\n• Comme image silencieuse, avec des sons, des odeurs et de la chaleur (parole comprise).\n• Le lanceur la déplace dans la portée tant qu’il se concentre ; elle dure encore 3 rounds après.\n• Un coup porté à l’image la fait disparaître, sauf si le lanceur la fait réagir de façon crédible ; jet de Volonté pour qui interagit.\n• Zone : 4 cubes de 3 m + 1 cube par niveau ; portée longue."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "chimère visuelle dans 4 cubes de 3 m d’arête + 1 cube/niveau",
+        "duration": "concentration + 3 rounds",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.minor_image",
+      "type": "spell",
+      "name": {
+        "fr": "Image imparfaite",
+        "en": "Minor Image"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Une image qui bouge et qui murmure : un bruit de pas, un grognement, assez pour qu’on y croie un instant.\n\nEn jeu\n• Comme image silencieuse, avec quelques sons, mais aucune parole compréhensible.\n• Le lanceur la déplace dans la portée tant qu’il se concentre ; elle dure encore 2 rounds après.\n• Jet de Volonté pour qui interagit avec elle ; zone : 4 cubes de 3 m + 1 cube par niveau ; portée longue."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "chimère visuelle dans 4 cubes de 3 m d’arête + 1 cube/niveau",
+        "duration": "concentration + 2 rounds",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mirror_image",
+      "type": "spell",
+      "name": {
+        "fr": "Image miroir",
+        "en": "Mirror Image"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Soudain ils sont cinq, six, sept à porter le même visage, et l’ennemi frappe au hasard dans la foule des reflets.\n\nEn jeu\n• Crée 1d4 doubles + 1 par tranche de 3 niveaux de lanceur (8 au plus), groupés : chacun à 1,50 m au plus du lanceur ou d’un autre double.\n• Chaque attaque contre le lanceur choisit sa cible au hasard parmi lui et ses doubles ; un double touché disparaît.\n• CA d’un double : 10 + modificateur de taille + modificateur de Dextérité du lanceur.\n• Inutile contre qui ne voit pas les images (lanceur invisible, adversaire aveugle).\n• Dure 1 minute par niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle (voir description)",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

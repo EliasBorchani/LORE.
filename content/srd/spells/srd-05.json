@@ -1,0 +1,682 @@
+{
+  "entities": [
+    {
+      "id": "spell.forcecage",
+      "type": "spell",
+      "name": {
+        "fr": "Cage de force",
+        "en": "Forcecage"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Des barreaux de pure force tombent du ciel, ou six murs sans la moindre fente. Ce qui est dedans reste dedans, et la magie ordinaire n'y peut rien.\n\nEn jeu\n• Au choix : une cage à barreaux (cube de 6 m d'arête) ou une cellule pleine (cube de 3 m d'arête).\n• Les créatures dans la zone sont prises sans jet de sauvegarde ; si l'une est trop grande pour la cage, le sort échoue.\n• Cage : barreaux larges d'environ 1 cm, espacés d'autant ; une créature assez petite pour passer entre eux s'échappe.\n• Cage : seule une arme assez fine pour passer entre les barreaux peut frapper à travers, et le prisonnier a alors un abri ; sorts et souffles passent normalement.\n• Cellule : six murs de force, aucune ouverture.\n• Résiste à dissipation de la magie ; détruite par désintégration, une sphère d'annihilation ou un sceptre d'oblitération.\n• La cage existe aussi dans le plan Éthéré ; téléportation et voyage astral permettent de s'échapper.\n• Dure 2 heures/niveau. Composante : poudre de rubis de 1 500 po."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "cage à barreaux (cube de 6 m) ou cellule (cube de 3 m)",
+        "duration": "2 heures/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.soul_bind",
+      "type": "spell",
+      "name": {
+        "fr": "Capture d'âme",
+        "en": "Soul Bind"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Le dernier souffle d'un mourant ne s'envole pas : il tombe dans une pierre noire, et plus rien ne pourra le rappeler.\n\nEn jeu\n• Cible un cadavre mort depuis au plus 1 round/niveau de lanceur ; son âme est enfermée dans un saphir noir (Volonté, annule).\n• Tant qu'elle y est, aucun sort ne peut ramener la créature à la vie, ni clone, ni résurrection, ni même miracle ou souhait.\n• Briser la gemme ou dissiper le sort libère l'âme, sans ramener le mort.\n• Focaliseur : saphir noir d'au moins 1 000 po par DV de la créature ; trop bon marché, il éclate à la fin de l'incantation."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "cadavre",
+        "duration": "permanente",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.nightmare",
+      "type": "spell",
+      "name": {
+        "fr": "Cauchemar",
+        "en": "Nightmare"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Loin, très loin, quelqu'un s'endort, et le rêve tourne mal. Au réveil, il est épuisé, blessé, et sa magie ne revient pas.\n\nEn jeu\n• Portée illimitée : vise une créature nommée ou décrite ; le DD du jet de Volonté dépend de ce que le lanceur sait d'elle et de son lien avec elle.\n• En cas d'échec, la cible perd 1d10 points de vie, ne récupère pas de son sommeil (fatiguée) et ne peut pas regagner ses sorts profanes pendant 24 heures.\n• Si la cible est éveillée, le lanceur peut attendre en transe qu'elle s'endorme ; il est alors sans défense et rate tous ses jets de sauvegarde.\n• Si la cible est sous dissipation du Mal, le sort est dissipé et le lanceur est étourdi 10 minutes par niveau du lanceur de dissipation du Mal.\n• Sans effet sur les créatures qui ne dorment pas ou ne rêvent pas (elfes, mais pas demi-elfes)."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "fantasme",
+        "descriptors": [
+          "mal",
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "illimitée",
+        "target": "1 créature vivante",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d10",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.blindness_deafness",
+      "type": "spell",
+      "name": {
+        "fr": "Cécité/surdité",
+        "en": "Blindness/Deafness"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un mot sec, et le monde s'éteint pour la victime : plus de lumière, ou plus de son, et pour de bon.\n\nEn jeu\n• La cible devient aveugle ou sourde, au choix du lanceur (Vigueur, annule).\n• Permanent jusqu'à ce qu'on le dissipe ou le soigne (guérison de la cécité/surdité, guérison suprême…)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante",
+        "duration": "permanente (T)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.circle_of_death",
+      "type": "spell",
+      "name": {
+        "fr": "Cercle de mort",
+        "en": "Circle of Death"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une onde noire part d'un point et souffle les vies comme des bougies, les plus fragiles d'abord.\n\nEn jeu\n• Tue 1d4 DV de créatures vivantes par niveau de lanceur (20d4 au plus) dans un rayon de 12 m (Vigueur, annule).\n• Les créatures aux DV les plus bas meurent d'abord ; à DV égaux, les plus proches du centre ; les DV restants qui ne suffisent pas pour la suivante sont perdus.\n• Les créatures de 9 DV ou plus sont immunisées.\n• Composante : perle noire d'au moins 500 po réduite en poudre."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mort"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "créatures vivantes dans un rayonnement de 12 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.teleportation_circle",
+      "type": "spell",
+      "name": {
+        "fr": "Cercle de téléportation",
+        "en": "Teleportation Circle"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un anneau d'ambre presque invisible sur le sol. Un pas à l'intérieur, et l'on est ailleurs, sans erreur possible.\n\nEn jeu\n• Trace un cercle de 1,50 m de rayon ; toute créature qui y entre est transportée comme par téléportation suprême vers la destination fixée à l'incantation.\n• La destination ne change plus ; le sort échoue si elle est dans un objet solide, sur un autre plan ou inconnue (une description précise suffit).\n• Peut être rendu permanent avec permanence ; s'il est neutralisé, il se réactive après 10 minutes.\n• Piège magique : Fouille et Désamorçage/sabotage DD 34 (roublards seulement).\n• Dure 10 minutes/niveau. Composante : poudre d'ambre de 1 000 po."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V, M",
+        "castingTime": "10 minutes",
+        "range": "0 m",
+        "effect": "cercle de 1,50 m de rayon",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.magic_circle_against_law",
+      "type": "spell",
+      "name": {
+        "fr": "Cercle magique contre la loi",
+        "en": "Magic Circle against Law"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un anneau de poudre d'argent où l'ordre trop rigide n'a plus prise, ni sur les esprits ni sur les corps.\n\nEn jeu\n• Comme protection contre la Loi, mais dans une émanation de 3 m de rayon autour de la créature touchée, qui suit ses déplacements.\n• Tous ceux qui sont dans le cercle gagnent +2 de parade à la CA et +2 de résistance aux jets de sauvegarde contre les créatures loyales.\n• Bloque toute possession et tout contrôle mental continu (charme, coercition) sur ceux qui sont dans le cercle, d'où qu'ils viennent.\n• Les créatures convoquées qui ne sont pas chaotiques ne peuvent ni entrer ni toucher les protégés ; contre une créature dotée de RM, le lanceur doit vaincre cette RM (parade et résistance s'appliquent toujours).\n• Tourné vers l'intérieur, le cercle emprisonne une créature appelée qui n'est pas chaotique, jusqu'à 24 heures/niveau ; elle peut s'en libérer par sa RM (un test par jour) ou par un déplacement dimensionnel.\n• Un diagramme tracé avec Art de la magie DD 20 (10 minutes) permet d'y ajouter ancre dimensionnelle ; la RM ne s'applique plus et le DD de Charisme pour s'évader augmente de 5.\n• Ne se cumule pas avec protection contre la Loi.\n• Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "chaos"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "area": "émanation de 3 m de rayon centrée sur la créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "deflection",
+          "condition": "active('toggle.magic_circle_against_law')",
+          "situation": "situation.vs_law"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "condition": "active('toggle.magic_circle_against_law')",
+          "situation": "situation.vs_law"
+        }
+      ]
+    },
+    {
+      "id": "spell.magic_circle_against_good",
+      "type": "spell",
+      "name": {
+        "fr": "Cercle magique contre le bien",
+        "en": "Magic Circle against Good"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un cercle tracé dans l'ombre, et la lumière des justes s'y brise comme sur un mur.\n\nEn jeu\n• Comme protection contre le Bien, mais dans une émanation de 3 m de rayon autour de la créature touchée, qui suit ses déplacements.\n• Tous ceux qui sont dans le cercle gagnent +2 de parade à la CA et +2 de résistance aux jets de sauvegarde contre les créatures bonnes.\n• Bloque toute possession et tout contrôle mental continu (charme, coercition) sur ceux qui sont dans le cercle, d'où qu'ils viennent.\n• Les créatures convoquées qui ne sont pas mauvaises ne peuvent ni entrer ni toucher les protégés ; contre une créature dotée de RM, le lanceur doit vaincre cette RM (parade et résistance s'appliquent toujours).\n• Tourné vers l'intérieur, le cercle emprisonne une créature appelée qui n'est pas mauvaise, jusqu'à 24 heures/niveau ; elle peut s'en libérer par sa RM (un test par jour) ou par un déplacement dimensionnel.\n• Un diagramme tracé avec Art de la magie DD 20 (10 minutes) permet d'y ajouter ancre dimensionnelle ; la RM ne s'applique plus et le DD de Charisme pour s'évader augmente de 5.\n• Ne se cumule pas avec protection contre le Bien.\n• Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "area": "émanation de 3 m de rayon centrée sur la créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "deflection",
+          "condition": "active('toggle.magic_circle_against_good')",
+          "situation": "situation.vs_good"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "condition": "active('toggle.magic_circle_against_good')",
+          "situation": "situation.vs_good"
+        }
+      ]
+    },
+    {
+      "id": "spell.magic_circle_against_chaos",
+      "type": "spell",
+      "name": {
+        "fr": "Cercle magique contre le chaos",
+        "en": "Magic Circle against Chaos"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une ligne nette dans la poudre d'argent : à l'intérieur, l'ordre règne, et le chaos reste à la porte.\n\nEn jeu\n• Comme protection contre le Chaos, mais dans une émanation de 3 m de rayon autour de la créature touchée, qui suit ses déplacements.\n• Tous ceux qui sont dans le cercle gagnent +2 de parade à la CA et +2 de résistance aux jets de sauvegarde contre les créatures chaotiques.\n• Bloque toute possession et tout contrôle mental continu (charme, coercition) sur ceux qui sont dans le cercle, d'où qu'ils viennent.\n• Les créatures convoquées qui ne sont pas loyales ne peuvent ni entrer ni toucher les protégés ; contre une créature dotée de RM, le lanceur doit vaincre cette RM (parade et résistance s'appliquent toujours).\n• Tourné vers l'intérieur, le cercle emprisonne une créature appelée qui n'est pas loyale, jusqu'à 24 heures/niveau ; elle peut s'en libérer par sa RM (un test par jour) ou par un déplacement dimensionnel.\n• Un diagramme tracé avec Art de la magie DD 20 (10 minutes) permet d'y ajouter ancre dimensionnelle ; la RM ne s'applique plus et le DD de Charisme pour s'évader augmente de 5.\n• Ne se cumule pas avec protection contre le Chaos.\n• Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "loi"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "area": "émanation de 3 m de rayon centrée sur la créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "deflection",
+          "condition": "active('toggle.magic_circle_against_chaos')",
+          "situation": "situation.vs_chaos"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "condition": "active('toggle.magic_circle_against_chaos')",
+          "situation": "situation.vs_chaos"
+        }
+      ]
+    },
+    {
+      "id": "spell.magic_circle_against_evil",
+      "type": "spell",
+      "name": {
+        "fr": "Cercle magique contre le mal",
+        "en": "Magic Circle against Evil"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un cercle d'argent sur le sol, et les démons s'arrêtent net au bord, grondant sans pouvoir le franchir.\n\nEn jeu\n• Comme protection contre le Mal, mais dans une émanation de 3 m de rayon autour de la créature touchée, qui suit ses déplacements.\n• Tous ceux qui sont dans le cercle gagnent +2 de parade à la CA et +2 de résistance aux jets de sauvegarde contre les créatures mauvaises.\n• Bloque toute possession et tout contrôle mental continu (charme, coercition) sur ceux qui sont dans le cercle, d'où qu'ils viennent.\n• Les créatures convoquées qui ne sont pas bonnes ne peuvent ni entrer ni toucher les protégés ; contre une créature dotée de RM, le lanceur doit vaincre cette RM (parade et résistance s'appliquent toujours).\n• Tourné vers l'intérieur, le cercle emprisonne une créature appelée qui n'est pas bonne, jusqu'à 24 heures/niveau ; elle peut s'en libérer par sa RM (un test par jour) ou par un déplacement dimensionnel.\n• Un diagramme tracé avec Art de la magie DD 20 (10 minutes) permet d'y ajouter ancre dimensionnelle ; la RM ne s'applique plus et le DD de Charisme pour s'évader augmente de 5.\n• Ne se cumule pas avec protection contre le Mal.\n• Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "bien"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "area": "émanation de 3 m de rayon centrée sur la créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non (voir description)"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "deflection",
+          "condition": "active('toggle.magic_circle_against_evil')",
+          "situation": "situation.vs_evil"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance",
+          "condition": "active('toggle.magic_circle_against_evil')",
+          "situation": "situation.vs_evil"
+        }
+      ]
+    },
+    {
+      "id": "spell.repulsion",
+      "type": "spell",
+      "name": {
+        "fr": "Champ de force",
+        "en": "Repulsion"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une bulle invisible pousse le monde à distance. Les ennemis avancent, butent, et ne gagnent plus un pas.\n\nEn jeu\n• Émanation centrée sur le lanceur, de rayon choisi jusqu'à 3 m/niveau.\n• Une créature dans la zone ou qui y entre fait un jet de Volonté ; en cas d'échec, elle ne peut plus se rapprocher du lanceur.\n• Elle peut agir autrement (sorts, armes à distance, autres cibles) ; si le lanceur s'approche, elle n'est pas repoussée et peut le frapper au contact.\n• Une créature qui recule ne peut plus regagner le terrain perdu.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, F/FD",
+        "castingTime": "1 action simple",
+        "range": "jusqu'à 3 m/niveau",
+        "area": "émanation de 3 m/niveau de rayon au plus, centrée sur le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shapechange",
+      "type": "spell",
+      "name": {
+        "fr": "Changement de forme",
+        "en": "Shapechange"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Dragon, puce, golem, nuage de brume : la chair devient argile, et l'on change de corps à chaque battement de cœur.\n\nEn jeu\n• Comme métamorphose, mais toute créature non unique de taille I à C, de n'importe quel type, jusqu'à autant de DV que le niveau de lanceur (25 au plus).\n• Formes intangibles et gazeuses permises ; le lanceur prend le type de la forme.\n• Gagne les attaques et particularités extraordinaires et surnaturelles de la forme, pas ses pouvoirs magiques ; perd ses propres pouvoirs surnaturels.\n• Changer de forme : une action libre, une fois par round, avant ou après son action.\n• +10 aux tests de Déguisement en se faisant passer pour une autre créature.\n• Dure 10 minutes/niveau. Focaliseur : serre-tête de jade de 1 500 po."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.shapechange')"
+        }
+      ]
+    },
+    {
+      "id": "spell.plane_shift",
+      "type": "spell",
+      "name": {
+        "fr": "Changement de plan",
+        "en": "Plane Shift"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une baguette fourchue vibre, la réalité se déchire, et l'on tombe dans un autre monde, rarement là où l'on visait.\n\nEn jeu\n• Envoie le lanceur ou une créature touchée sur un autre plan ; jusqu'à 8 créatures consentantes en se tenant par la main.\n• On arrive à 8d100 km du lieu visé.\n• Aller simple : il faut un autre moyen pour revenir.\n• Une cible non consentante a droit à un jet de Volonté et à la RM ; il faut réussir une attaque de contact au corps à corps.\n• Focaliseur : une baguette métallique fourchue accordée au plan voulu."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "téléportation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée, ou jusqu'à 8 créatures consentantes se tenant par la main",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.song_of_discord",
+      "type": "spell",
+      "name": {
+        "fr": "Chant de discorde",
+        "en": "Song of Discord"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une mélodie qui grince dans les têtes : soudain, le voisin ressemble à l'ennemi, et les lames se retournent.\n\nEn jeu\n• Créatures dans une étendue de 6 m de rayon (Volonté, annule).\n• Chaque round, chaque créature affectée a 50 % de chances d'attaquer la créature la plus proche, de toutes ses forces.\n• Sinon, elle agit librement ce round-là ; elle n'attaque jamais une cible inconsciente.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "créatures dans une étendue de 6 m de rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.charm_animal",
+      "type": "spell",
+      "name": {
+        "fr": "Charme animal",
+        "en": "Charm Animal"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une main tendue, une voix calme, et le loup qui grondait vient renifler la paume comme un vieux compagnon.\n\nEn jeu\n• Comme charme-personne, mais sur un animal.\n• L'animal qui rate son jet de Volonté voit le lanceur comme un ami ; +5 au jet s'il est menacé.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "charme",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 animal",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.charm_monster",
+      "type": "spell",
+      "name": {
+        "fr": "Charme monstre",
+        "en": "Charm Monster"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Même le troll le plus affamé a besoin d'un ami. Pendant quelques jours, c'est le lanceur.\n\nEn jeu\n• Comme charme-personne, mais sur n'importe quelle créature vivante, quels que soient sa taille et son type.\n• La cible qui rate son jet de Volonté voit le lanceur comme un ami ; +5 au jet si elle est menacée.\n• Obtenir quelque chose qu'elle ne ferait pas demande un test opposé de Charisme.\n• Dure 1 jour/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "charme",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mass_charm_monster",
+      "type": "spell",
+      "name": {
+        "fr": "Charme monstre de groupe",
+        "en": "Charm Monster, Mass"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une seule phrase, et toute une bande de brutes décide que ce nouveau venu est le meilleur ami qu'elle ait jamais eu.\n\nEn jeu\n• Comme charme monstre, sur plusieurs créatures à 9 m au plus les unes des autres.\n• Total de DV affectés : jusqu'à deux fois le niveau du lanceur, ou une seule créature quels que soient ses DV.\n• S'il y a trop de cibles, le lanceur les choisit une à une jusqu'à la limite.\n• Dure 1 jour/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "charme",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une ou plusieurs créatures, à 9 m au plus les unes des autres",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.charm_person",
+      "type": "spell",
+      "name": {
+        "fr": "Charme-personne",
+        "en": "Charm Person"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Soudain, le garde voit dans l'inconnu un vieil ami. Il ne fera pas n'importe quoi pour lui, mais il l'écoutera volontiers.\n\nEn jeu\n• Un humanoïde qui rate son jet de Volonté considère le lanceur comme un ami digne de confiance.\n• +5 au jet de sauvegarde si la cible est menacée ou attaquée par le lanceur ou ses alliés.\n• Ne la rend pas esclave : obtenir quelque chose qu'elle ne ferait pas demande un test opposé de Charisme ; jamais d'ordre suicidaire.\n• Toute menace du lanceur ou de ses alliés envers elle rompt le charme.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 humanoïde",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui",
+        "subschool": "charme",
+        "descriptors": [
+          "mental"
+        ]
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.holy_smite",
+      "type": "spell",
+      "name": {
+        "fr": "Châtiment sacré",
+        "en": "Holy Smite"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une colonne de lumière sainte s'abat sur la mêlée. Les justes n'en sentent qu'une chaleur ; les autres brûlent.\n\nEn jeu\n• Rayonnement de 6 m de rayon ; les créatures bonnes ne sont pas affectées.\n• Créatures mauvaises : 1d8 dégâts par 2 niveaux de lanceur (5d8 au plus) et aveuglées 1 round ; Volonté pour moitié et sans cécité.\n• Extérieurs mauvais : 1d6 par niveau (10d6 au plus) à la place.\n• Créatures neutres : moitié des dégâts, pas de cécité (un quart si le jet de Volonté réussit)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "bien"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "rayonnement de 6 m de rayon",
+        "duration": "instantanée (1 round) (voir description)",
+        "savingThrow": "Volonté, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.liveoak",
+      "type": "spell",
+      "name": {
+        "fr": "Chêne animé",
+        "en": "Liveoak"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le vieux chêne près de la maison ouvre un œil d'écorce. Qu'un intrus dise le mauvais mot, et il se lève.\n\nEn jeu\n• Change un chêne adulte en bonne santé (taille TG ou plus) en sylvanien gardien.\n• Le chêne doit être à 3 m au plus de la demeure du lanceur, dans un lieu qui lui est sacré, ou à 90 m au plus d'un lieu à protéger.\n• Le lanceur donne une consigne d'au plus un mot par niveau de lanceur.\n• Un seul chêne animé à la fois ; dissipé, l'arbre s'enracine sur place ; libéré, il rentre chez lui d'abord.\n• Dure 1 jour/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "arbre touché",
+        "duration": "1 jour/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

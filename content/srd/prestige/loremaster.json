@@ -1,0 +1,520 @@
+{
+  "entities": [
+    {
+      "id": "class.loremaster",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Gardien du savoir",
+        "en": "Loremaster"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "knowledge"
+      ],
+      "hitDie": 4,
+      "skillPoints": 4,
+      "description": {
+        "fr": "Il a passé plus de nuits dans les archives que dans son lit, et il ne le regrette pas. Le gardien du savoir traque les connaissances perdues comme d’autres traquent les dragons : grimoires moisis, tablettes en langues mortes, confidences de sages mourants. À force de lire, il a appris des choses qu’on n’enseigne nulle part, des astuces de survie aux sorts oubliés. Posez-lui une question sur une épée ancienne ou une lignée royale disparue : il connaît sans doute l’histoire, et peut-être même la fin que personne n’a écrite.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : 10 rangs dans deux compétences de Connaissances ; trois dons de métamagie ou de création d’objets, plus Talent (une compétence de Connaissances) ; savoir lancer sept sorts de divination différents, dont un du 3e niveau ou plus.\n• Aucune formation nouvelle aux armes ni aux armures.\n• +1 niveau de lanceur de sorts profanes ou divins à chaque niveau (1 à 10), pour une classe de lanceur de sorts qu’il avait déjà : sorts par jour, sorts connus et niveau de lanceur, sans les autres avantages de cette classe.\n• Aptitudes : secret aux niveaux 1, 3, 5, 7 et 9 ; savoir (2) ; langue supplémentaire (4 et 8) ; savoir supérieur (6) ; savoir ultime (10)."
+      },
+      "note": "Conditions d’accès : pas encore en formule (rangs et dons pas encore dans le modèle)."
+    },
+    {
+      "id": "power.loremaster_secret",
+      "type": "class_power",
+      "name": {
+        "fr": "Secret",
+        "en": "Secret"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster"
+      ],
+      "description": {
+        "fr": "Au fil de ses lectures, le gardien du savoir tombe sur des choses que les autres ignorent : une technique, une astuce, un sort que plus personne ne connaît.\n\nEn jeu\n• Un secret aux niveaux 1, 3, 5, 7 et 9 ; chaque secret ne peut être pris qu’une fois.\n• Choix limité par niveau de gardien du savoir + modificateur d’Intelligence : 1 maîtrise instantanée, 2 santé secrète, 3 force intérieure, 4 endurance véritable, 5 art de l’esquive, 6 astuce martiale, 7 esquive de l’initié, 8 savoir utile, 9 arcane retrouvé, 10 arcane retrouvé supérieur."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.loremaster_secret",
+          "op": "add",
+          "value": "ceil(level('class.loremaster') / 2)"
+        }
+      ],
+      "note": "Choix des secrets : pas encore dans le modèle. Chaque secret existe comme pouvoir à part (power.loremaster_secret_*), à ajouter au personnage quand le choix sera possible."
+    },
+    {
+      "id": "power.loremaster_secret_instant_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise instantanée",
+        "en": "Instant mastery"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Quelques pages bien choisies, et le voilà capable de faire ce qu’il n’avait jamais essayé.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 1.\n• 4 rangs dans une compétence où il n’en avait aucun."
+      },
+      "effects": [],
+      "note": "Rangs de compétence : pas encore dans le modèle."
+    },
+    {
+      "id": "power.loremaster_secret_health",
+      "type": "class_power",
+      "name": {
+        "fr": "Santé secrète",
+        "en": "Secret health"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Un régime d’ermite, une tisane oubliée : son corps encaisse mieux qu’avant.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 2.\n• Gagne le don Robustesse : +3 points de vie."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.loremaster_secret_inner_strength",
+      "type": "class_power",
+      "name": {
+        "fr": "Force intérieure",
+        "en": "Secrets of inner strength"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Des exercices de méditation tirés d’un vieux traité lui rendent l’esprit plus solide.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 3.\n• +2 aux jets de Volonté."
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "power.loremaster_secret_true_stamina",
+      "type": "class_power",
+      "name": {
+        "fr": "Endurance véritable",
+        "en": "The lore of true stamina"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Il sait comment le corps résiste au poison et à la fatigue, et il applique ce qu’il a lu.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 4.\n• +2 aux jets de Vigueur."
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "power.loremaster_secret_avoidance",
+      "type": "class_power",
+      "name": {
+        "fr": "Art de l’esquive",
+        "en": "Secret knowledge of avoidance"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Il a étudié les pièges et les explosions assez longtemps pour savoir où se jeter.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 5.\n• +2 aux jets de Réflexes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "power.loremaster_secret_weapon_trick",
+      "type": "class_power",
+      "name": {
+        "fr": "Astuce martiale",
+        "en": "Weapon trick"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Un manuel d’escrime oublié lui a appris où frapper.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 6.\n• +1 aux jets d’attaque."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "power.loremaster_secret_dodge_trick",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive de l’initié",
+        "en": "Dodge trick"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Un pas de côté appris dans une chronique de duel lui sauve souvent la mise.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 7.\n• Bonus d’esquive de +1 à la CA."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge"
+        }
+      ]
+    },
+    {
+      "id": "power.loremaster_secret_applicable_knowledge",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir utile",
+        "en": "Applicable knowledge"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "La théorie finit par devenir pratique.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 8.\n• Un don au choix, dont il remplit les conditions."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.loremaster_bonus",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "power.loremaster_secret_newfound_arcana",
+      "type": "class_power",
+      "name": {
+        "fr": "Arcane retrouvé",
+        "en": "Newfound arcana"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Un sort perdu, recopié d’une marge de parchemin.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 9.\n• Un emplacement de sort du 1er niveau en plus, comme un sort en bonus dû à une caractéristique élevée."
+      },
+      "effects": [],
+      "note": "Emplacement en bonus pour la classe choisie : pas encore dans le modèle."
+    },
+    {
+      "id": "power.loremaster_secret_more_newfound_arcana",
+      "type": "class_power",
+      "name": {
+        "fr": "Arcane retrouvé supérieur",
+        "en": "More newfound arcana"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster",
+        "loremaster_secret"
+      ],
+      "description": {
+        "fr": "Un second sort oublié, plus puissant que le premier.\n\nEn jeu\n• Secret : niveau de gardien du savoir + modificateur d’Intelligence d’au moins 10.\n• Un emplacement de sort du 2e niveau en plus, comme un sort en bonus dû à une caractéristique élevée."
+      },
+      "effects": [],
+      "note": "Emplacement en bonus pour la classe choisie : pas encore dans le modèle."
+    },
+    {
+      "id": "power.loremaster_lore",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir",
+        "en": "Lore"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster"
+      ],
+      "description": {
+        "fr": "Légendes, généalogies, rumeurs de cour, vieilles prophéties : le gardien du savoir a tout lu, et il s’en souvient au bon moment.\n\nEn jeu\n• Test de savoir : 1d20 + niveau de gardien du savoir + modificateur d’Intelligence, comme le savoir bardique.\n• S’additionne avec le savoir bardique d’un barde (même test : niveaux de barde et de gardien du savoir additionnés, modificateur d’Intelligence compté une fois)."
+      },
+      "effects": [
+        {
+          "target": "check.bardic_knowledge",
+          "op": "add",
+          "value": "level('class.loremaster') + if(has('power.bard_bardic_knowledge'), 0, @ability.int.mod)"
+        }
+      ],
+      "note": "Cumul avec le savoir bardique : lecture de la FAQ officielle (le SRD ne le dit pas)."
+    },
+    {
+      "id": "power.loremaster_bonus_language",
+      "type": "class_power",
+      "name": {
+        "fr": "Langue supplémentaire",
+        "en": "Bonus language"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster"
+      ],
+      "description": {
+        "fr": "Les meilleurs textes ne sont jamais traduits. Alors il apprend les langues dans lesquelles ils sont écrits.\n\nEn jeu\n• Une langue de plus au niveau 4, une autre au niveau 8 (n’importe laquelle, même secrète comme le druidique)."
+      },
+      "effects": [],
+      "note": "Langues : pas encore dans le modèle."
+    },
+    {
+      "id": "power.loremaster_greater_lore",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir supérieur",
+        "en": "Greater lore"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster"
+      ],
+      "description": {
+        "fr": "Un coup d’œil, quelques notes, et l’objet n’a plus de secret pour lui.\n\nEn jeu\n• Aptitude extraordinaire : identifie les objets magiques comme le sort identification."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.loremaster_true_lore",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir ultime",
+        "en": "True lore"
+      },
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "loremaster"
+      ],
+      "description": {
+        "fr": "Tout ce qu’il a lu converge : une fois par jour, il sait ce qu’aucun livre ne dit plus.\n\nEn jeu\n• Aptitude extraordinaire, 1 fois par jour : effet de mythes et légendes ou d’analyse d’enchantement, au choix."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.loremaster",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.loremaster_secret"
+      ]
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.loremaster_lore"
+      ]
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.loremaster_bonus_language"
+      ]
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.loremaster_greater_lore"
+      ]
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.loremaster",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.loremaster_true_lore"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.loremaster",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "power.loremaster_secret_health",
+      "relation": "grants",
+      "to": "feat.toughness"
+    }
+  ]
+}

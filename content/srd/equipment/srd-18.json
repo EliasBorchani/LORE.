@@ -1,0 +1,145 @@
+{
+  "entities": [
+    {
+      "id": "item.coach_cab",
+      "type": "item",
+      "name": {
+        "fr": "Diligence",
+        "en": "Coach cab"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "service"
+      ],
+      "item": {
+        "cost": "3 pc par 1,5 km"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Banquettes dures, essieux qui grincent et un cocher qui connaît toutes les auberges de la route : la diligence relie les villes pour qui n’a pas de monture.\n\nEn jeu\n• Trajet entre deux villes, pour des voyageurs et un bagage léger ; prix par 1,5 km parcouru\n• Pour circuler dans une même cité, un fiacre suffit : 1 pc couvre d’ordinaire la course"
+      }
+    },
+    {
+      "id": "item.hireling_trained",
+      "type": "item",
+      "name": {
+        "fr": "Employé qualifié",
+        "en": "Hireling, trained"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "service"
+      ],
+      "item": {
+        "cost": "3 pa par jour"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Mercenaire, maçon, scribe ou charretier : quelqu’un qui sait faire son métier et compte bien être payé pour cela.\n\nEn jeu\n• Salaire d’une journée pour un travail qui demande une compétence\n• Tarif plancher : un artisan rare ou très demandé fixe souvent son propre prix, bien au-dessus"
+      }
+    },
+    {
+      "id": "item.hireling_untrained",
+      "type": "item",
+      "name": {
+        "fr": "Employé non qualifié",
+        "en": "Hireling, untrained"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "service"
+      ],
+      "item": {
+        "cost": "1 pa par jour"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Porteur, cuisinier, manœuvre ou portier : des bras loués à la journée pour les tâches que les héros préfèrent laisser à d’autres.\n\nEn jeu\n• Salaire d’une journée pour un travail sans compétence particulière"
+      }
+    },
+    {
+      "id": "item.messenger",
+      "type": "item",
+      "name": {
+        "fr": "Messager",
+        "en": "Messenger"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "service"
+      ],
+      "item": {
+        "cost": "2 pc par 1,5 km"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Un coursier à pied ou à cheval qui emporte votre lettre et, avec un peu de chance, revient avec la réponse.\n\nEn jeu\n• Prix par 1,5 km jusqu’au destinataire\n• Moitié prix environ si le messager devait déjà se rendre là-bas"
+      }
+    },
+    {
+      "id": "item.road_or_gate_toll",
+      "type": "item",
+      "name": {
+        "fr": "Droit de passage ou d’entrée",
+        "en": "Road or gate toll"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "service"
+      ],
+      "item": {
+        "cost": "1 pc"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une barrière, un garde qui tend la main, et la route redevient libre : sans ces piécettes, ni pavés réparés ni soldats sur les chemins.\n\nEn jeu\n• Péage sur certaines grandes routes, ou droit d’entrée dans une ville fortifiée\n• Quelques cités taxent aussi ceux qui en repartent"
+      }
+    },
+    {
+      "id": "item.ships_passage",
+      "type": "item",
+      "name": {
+        "fr": "Traversée en bateau",
+        "en": "Ship’s passage"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "service"
+      ],
+      "item": {
+        "cost": "1 pa par 1,5 km"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Une place sur le pont d’un navire marchand, entre les tonneaux et les cordages : rarement confortable, souvent le chemin le plus court.\n\nEn jeu\n• Prix par 1,5 km de traversée\n• Prix doublé pour une créature de taille G ou plus, ou difficile à embarquer (monture, bête rétive)"
+      }
+    },
+    {
+      "id": "item.spellcasting_service",
+      "type": "item",
+      "name": {
+        "fr": "Lancement de sort",
+        "en": "Spellcasting"
+      },
+      "provenance": "official",
+      "labels": [
+        "item",
+        "service"
+      ],
+      "item": {
+        "cost": "niveau de sort × niveau de lanceur × 10 po (niveau 0 : × 5 po)"
+      },
+      "source": "SRD",
+      "description": {
+        "fr": "Quand aucun membre du groupe ne connaît le bon sort, il reste le temple ou la tour du mage : on y achète un miracle, à condition d’y mettre le prix et la patience.\n\nEn jeu\n• Prix : niveau du sort × niveau de lanceur × 10 po (sort de niveau 0 : niveau de lanceur × 5 po)\n• Il faut se rendre chez le lanceur, qui jette le sort quand il le peut (souvent le lendemain, le temps de le préparer) ; le faire venir à soi reste une exception à discuter, rarement accordée\n• Composante matérielle coûteuse : son prix s’ajoute ; focaliseur coûteux (hors focaliseur divin) : +1/10 de son prix ; coût en PX : +5 po par PX\n• Sort aux conséquences risquées : le lanceur exige la preuve qu’on paiera les dégâts éventuels ; sort de transport : on paie en général deux lancements (l’aller et son retour)\n• Disponibilité : sorts du 1er niveau dans une petite ville, 2e dans une grande ville, 3e–4e dans une petite cité, 5e–6e dans une grande cité, 7e–8e dans une métropole ; le 9e niveau n’est garanti nulle part"
+      },
+      "note": "Le prix dépend du sort et du lanceur choisis : il n’est pas calculé."
+    }
+  ]
+}
