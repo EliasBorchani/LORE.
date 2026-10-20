@@ -64,4 +64,6 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   Strength for both, owner's choice for now).
 - Magic tab (`src/screens/sheet/MagicTab.tsx`): per casting class, slots left / total (tap to spend), saved variants
   with « Lancer » (spends a slot of the variant's slot level), spells known, and « Nouvelle variante » (spell +
-  metamagic feats the character has, previewed live with `previewVariant`, saved into `character.variants`).
+  metamagic feats the character has, previewed live with `previewVariant`, saved into `character.variants`). A
+  character with Heighten Spell gets an « Augmentation d'intensité » stepper (+0 up to the class's highest slot level
+  minus the spell's level, no 9th-level cap): it sets the variant's `heighten`, and the id gets `.h<N>`.

@@ -38,7 +38,7 @@ internal sealed interface Input {
 }
 
 /** A spell as the character casts it: from a saved variant, or from a toggle naming a spell and its metamagic. */
-internal data class VariantDef(val spell: String, val casterClass: String?, val metamagic: List<String>)
+internal data class VariantDef(val spell: String, val casterClass: String?, val metamagic: List<String>, val heighten: Int = 0)
 
 /** The character's choices replayed up to one level, with what the catalog derives from them directly. */
 internal class CharacterState(character: Character, atLevel: Int?, private val catalog: CompiledCatalog) {
@@ -56,7 +56,7 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
      * whose id is the spell id (how Danalieth's buffs are written).
      */
     private val variants: Map<String, VariantDef> = buildMap {
-        for (v in character.variants) put(v.id, VariantDef(v.spell, v.casterClass, v.metamagic))
+        for (v in character.variants) put(v.id, VariantDef(v.spell, v.casterClass, v.metamagic, maxOf(v.heighten, 0)))
         for (toggle in character.activeToggles) {
             val spell = toggle.spell ?: continue
             if (toggle.variant == null && spell !in this) put(spell, VariantDef(spell, toggle.casterClass, toggle.metamagic))
@@ -139,7 +139,7 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         is Input.SpellTable -> spellTable(input.classId, input.known)?.getOrNull(input.level)?.toLong() ?: -1L
         is Input.MaxSpellLevel -> spellTable(input.classId, known = false)?.indexOfLast { it != null }?.toLong() ?: -1L
         is Input.SpellLevel -> variants[input.variantId]
-            ?.let { v -> v.casterClass?.let { catalog.spellLevel(v.spell, it) } }?.toLong() ?: -1L
+            ?.let { v -> v.casterClass?.let { catalog.spellLevel(v.spell, it) }?.plus(v.heighten) }?.toLong() ?: -1L
         is Input.MetamagicCount -> metamagic(input.variantId).size.toLong()
         is Input.SkillRanks -> skillRanks[input.skillId] ?: 0L
         is Input.ClassSkill -> if (isClassSkill(input.skillId)) 1L else 0L

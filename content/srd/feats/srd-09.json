@@ -240,16 +240,7 @@
       "description": {
         "fr": "Un sort mineur, gonflé de puissance jusqu’à devenir quelque chose d’autre. Ce n’est pas une illusion de force : le sort monte vraiment de niveau, et les protections qui l’auraient arrêté cèdent devant lui.\n\nEn jeu\n• Le lanceur choisit de combien de niveaux il hausse le sort, sans dépasser le 9e niveau.\n• Le sort prend un emplacement de ce nouveau niveau.\n• Le sort est vraiment de ce niveau, ce qu’aucun autre don de métamagie ne fait : son DD de sauvegarde, sa capacité à percer un globe d’invulnérabilité partielle et tout effet lié au niveau en tiennent compte."
       },
-      "effects": [
-        {
-          "target": "spell.slot_cost",
-          "op": "add",
-          "value": 1,
-          "bonusType": "untyped",
-          "scope": "spell"
-        }
-      ],
-      "note": "Coût variable (nombre de niveaux choisi au lancement) : la fiche compte +1. La hausse réelle du niveau du sort (DD) n’est pas encore dans le modèle."
+      "note": "Pas d’effet : chaque variante de sort choisit ses niveaux (`heighten`), qui haussent le niveau réel du sort (emplacement, DD)."
     }
   ],
   "relations": [

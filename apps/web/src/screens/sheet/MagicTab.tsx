@@ -11,6 +11,7 @@ import { messageOf } from '../../useLoad'
 import { Log } from './CombatTab'
 
 const list = <T,>(kt: { asJsReadonlyArrayView(): ReadonlyArray<T> }) => kt.asJsReadonlyArrayView()
+const HEIGHTEN = 'feat.heighten_spell'
 
 /** Spells per casting class: slots to spend, saved variants to cast, known spells, and the variant builder. */
 export function MagicTab() {
@@ -127,6 +128,7 @@ function VariantBuilder({ caster }: { caster: CasterLine }) {
   const levelOf = useSpellLevels(caster.classId)
   const [spell, setSpell] = useState('')
   const [metamagic, setMetamagic] = useState<string[]>([])
+  const [heighten, setHeighten] = useState(0)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -143,9 +145,16 @@ function VariantBuilder({ caster }: { caster: CasterLine }) {
   const metamagicFeats = [...new Set(owned)].filter((id) =>
     entity(id)?.effects?.some((e) => e.scope === 'spell' && e.target === 'spell.slot_cost'),
   )
+  // Heighten Spell raises the spell up to the class's highest slot level.
+  const spellLevel = spell ? levelOf(spell) : null
+  const maxHeighten = owned.includes(HEIGHTEN) && spellLevel != null ? Math.max(list(caster.slots).length - 1 - spellLevel, 0) : 0
+  const levels = Math.min(heighten, maxHeighten)
 
   const draft: SpellVariant | null = spell
-    ? { id: `var.${spell.replace(/^spell\./, '')}.${metamagic.map((m) => m.replace(/^feat\./, '')).join('.') || 'plain'}`, spell, casterClass: caster.classId, metamagic }
+    ? {
+        id: `var.${spell.replace(/^spell\./, '')}.${metamagic.map((m) => m.replace(/^feat\./, '')).join('.') || 'plain'}${levels ? `.h${levels}` : ''}`,
+        spell, casterClass: caster.classId, metamagic, ...(levels ? { heighten: levels } : {}),
+      }
     : null
   const preview = draft ? sheet.previewVariant(JSON.stringify(draft)) : null
 
@@ -158,6 +167,7 @@ function VariantBuilder({ caster }: { caster: CasterLine }) {
       await saveCharacter({ ...record.character, variants: [...others, draft] })
       setSpell('')
       setMetamagic([])
+      setHeighten(0)
     } catch (e) {
       setError(messageOf(e))
     } finally {
@@ -181,6 +191,19 @@ function VariantBuilder({ caster }: { caster: CasterLine }) {
               ))}
             </select>
           </label>
+          {maxHeighten > 0 && (
+            <div className="heighten-row">
+              <span className="heighten-label">
+                {fr.magic.heighten}
+                <InfoButton id={HEIGHTEN} name={fr.magic.heighten} />
+              </span>
+              <span className="stepper">
+                <button type="button" aria-label={fr.sheet.less} disabled={levels <= 0} onClick={() => setHeighten(levels - 1)}>−</button>
+                <output aria-live="polite">+{levels}</output>
+                <button type="button" aria-label={fr.sheet.more} disabled={levels >= maxHeighten} onClick={() => setHeighten(levels + 1)}>+</button>
+              </span>
+            </div>
+          )}
           <fieldset className="metamagic">
             <legend className="type-label-caps">{fr.magic.builderMetamagic}</legend>
             {metamagicFeats.length === 0 && <p className="muted">{fr.magic.builderNoMetamagic}</p>}
@@ -224,18 +247,22 @@ function useSpellLevels(classId: string): (spellId: string) => number | null {
 /** The spell and each metamagic feat, each opening its panel. */
 function VariantName({ variant }: { variant: VariantLine }) {
   const { name } = useSheet()
-  const ids = [variant.spell, ...list(variant.metamagic)]
-  return ids.map((id, i) => (
-    <span key={id}>
+  const parts = [
+    { id: variant.spell, label: name(variant.spell) },
+    ...(variant.heighten > 0 ? [{ id: HEIGHTEN, label: fr.magic.heightenBy(variant.heighten) }] : []),
+    ...list(variant.metamagic).map((id) => ({ id, label: name(id) })),
+  ]
+  return parts.map((part, i) => (
+    <span key={part.id}>
       {i > 0 && ' · '}
-      <EntityName id={id}>{name(id)}</EntityName>
+      <EntityName id={part.id}>{part.label}</EntityName>
     </span>
   ))
 }
 
 function variantName(variant: VariantLine, name: (id: string) => string): string {
-  const metamagic = list(variant.metamagic).map(name)
-  return metamagic.length ? `${name(variant.spell)} · ${metamagic.join(' · ')}` : name(variant.spell)
+  const extras = [...(variant.heighten > 0 ? [fr.magic.heightenBy(variant.heighten)] : []), ...list(variant.metamagic).map(name)]
+  return [name(variant.spell), ...extras].join(' · ')
 }
 
 /** « emplacement niv. 4 · DD 15 · Soins 1d8 + 5 (~9) ». */
@@ -246,6 +273,9 @@ function variantMeta(variant: VariantLine): string {
     return `${fr.magic.numbers[n.key] ?? n.key} ${value}`
   })
   return [
+    variant.heighten > 0 && variant.level != null
+      ? fr.magic.heightened(variant.level, Number(variant.level) - variant.heighten, variant.heighten)
+      : null,
     variant.slotLevel != null ? fr.magic.slotLevel(variant.slotLevel) : null,
     variant.saveDc != null ? fr.magic.dc(variant.saveDc) : null,
     ...numbers,

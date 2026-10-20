@@ -270,6 +270,8 @@ dl.facts dt { color: var(--ink-muted); }
 }
 .spell-actions { display: flex; gap: var(--space-2); flex: none; }
 details.block > summary { cursor: pointer; list-style: revert; }
+.heighten-row { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding-block: var(--space-3); }
+.heighten-label { display: inline-flex; align-items: center; font: 400 18px var(--font-display); color: var(--garnet); }
 .metamagic { border: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
 select.input { appearance: auto; }
 

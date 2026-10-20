@@ -72,6 +72,8 @@ export interface SpellVariant {
   spell: string
   casterClass: string
   metamagic?: string[]
+  /** Levels added by Heighten Spell: the spell really is that level (slot, DC). */
+  heighten?: number
 }
 
 export interface CharacterSummary {

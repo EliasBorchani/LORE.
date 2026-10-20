@@ -43,6 +43,11 @@ data class SpellVariant(
     /** Class casting it: its caster level, casting ability and spell list apply. */
     val casterClass: String,
     val metamagic: List<String> = emptyList(),
+    /**
+     * Levels added by Heighten Spell. The spell really is that level (slot, DC), so it is not a modifier in
+     * [metamagic]: the « at least +1 » rule and Improved Metamagic do not touch it.
+     */
+    val heighten: Int = 0,
 )
 
 @Serializable

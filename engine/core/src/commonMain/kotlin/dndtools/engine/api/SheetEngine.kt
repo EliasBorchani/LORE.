@@ -142,6 +142,7 @@ class CharacterSheet internal constructor(private val engine: Engine, private va
             spell = variant.spell,
             casterClass = variant.casterClass,
             metamagic = variant.metamagic,
+            heighten = maxOf(variant.heighten, 0),
             level = value(CompiledCatalog.SPELL_LEVEL)?.takeIf { it != "-1" },
             slotLevel = value(CompiledCatalog.SPELL_SLOT_LEVEL)?.takeIf { value(CompiledCatalog.SPELL_LEVEL) != "-1" },
             casterLevel = value(CompiledCatalog.SPELL_CASTER_LEVEL),
@@ -249,7 +250,9 @@ data class VariantLine(
     val spell: String,
     val casterClass: String,
     val metamagic: List<String>,
-    /** The spell's level on the caster class's list; null when it is not on that list. */
+    /** Levels added by Heighten Spell, included in [level]. */
+    val heighten: Int,
+    /** The spell's level on the caster class's list plus [heighten]; null when it is not on that list. */
     val level: String?,
     /** The slot it needs: level + metamagic cost. */
     val slotLevel: String?,

@@ -126,6 +126,9 @@ export const fr = {
     builderPick: 'Choisir un sort',
     builderMetamagic: 'Métamagie',
     builderNoMetamagic: 'Aucun don de métamagie.',
+    heighten: 'Augmentation d’intensité',
+    heightenBy: (n: number) => `Augmentation d’intensité +${n}`,
+    heightened: (level: string, base: number, plus: number) => `sort niv. ${level} (${base} + ${plus})`,
     builderSave: 'Enregistrer la variante',
     builderNone: 'Aucun sort disponible pour cette classe.',
     numbers: {

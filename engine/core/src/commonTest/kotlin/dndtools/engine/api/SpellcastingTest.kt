@@ -97,6 +97,27 @@ class SpellcastingTest {
     }
 
     @Test
+    fun heightenRaisesTheSpellLevelItsSlotAndItsDc() {
+        fun variant(heighten: Int, vararg metamagic: String) =
+            """{"id": "var.fireball", "spell": "spell.fireball", "casterClass": "class.bard", "heighten": $heighten,
+                "metamagic": [${metamagic.joinToString(",") { "\"$it\"" }}]}"""
+        val heightened = engine.open(bard(4)).previewVariant(variant(3))
+        assertEquals(3, heightened.heighten)
+        assertEquals("5", heightened.level)
+        assertEquals("5", heightened.slotLevel)
+        assertEquals("18", heightened.saveDc)
+
+        assertEquals("7", engine.open(bard(4)).previewVariant(variant(3, "feat.empower")).slotLevel)
+        // Improved Metamagic lowers Empower by 1 and leaves the heightened levels alone.
+        val improved = engine.open(bard(4, listOf("feat.improved_metamagic")))
+        assertEquals("6", improved.previewVariant(variant(3, "feat.empower")).slotLevel)
+
+        val offList = engine.open(bard(4))
+            .previewVariant("""{"id": "v", "spell": "spell.unknown", "casterClass": "class.bard", "heighten": 2}""")
+        assertEquals(null, offList.level)
+    }
+
+    @Test
     fun savedVariantsAreListedAndPreviewsChangeNothing() {
         val saved = """, "variants": [{"id": "var.fireball", "spell": "spell.fireball", "casterClass": "class.bard",
                          "metamagic": ["feat.empower"]}]"""

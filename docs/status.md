@@ -111,6 +111,12 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    Info panel (2026-10-20, owner's choices: a panel over the screen, not a page change; sheet, Build, level-up and
    catalog): a tap on a spell, power, feat, class or item name shows what it does without leaving the sheet;
    prerequisites read « Force ≥ 13 et Attaque en puissance ». Tested in Chrome on the dev stack (wide and 400 px).
+   Heighten Spell (2026-10-20, owner's choice: Heighten only, Augmented Casting later): « Nouvelle variante » picks how
+   many levels to raise the spell; the spell really is that level (slot and DC follow). `feat.heighten_spell` lost its
+   fixed +1 cost (`content/srd/feats/srd-09.json`): **on the VPS, re-import that batch** (`server import
+   /content/srd/feats/srd-09.json --author srd-import`, see `docs/deploy.md`). Tested in Chrome on the dev stack.
+   Next, important for later (owner): effects shown in readable French (« +2 aux tests d'Art de la magie » instead
+   of `skill.spellcraft add 2 (untyped)`), on catalog pages and in the info panel.
 3. Deploy on an OVHcloud VPS with a DuckDNS address (owner's choice, 2026-10-19), following `docs/deploy.md`: `compose.prod.yaml`, Caddy
    (HTTPS, web app, `/api`), `deploy/import-content.sh`, `deploy/backup.sh`. Deployed and working on the owner's
    OVH VPS (2026-10-19). Still missing: core sections in a batch of their own.

@@ -79,8 +79,10 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
   changes every spell (Improved Metamagic, Arcane Reach); per-variant modifiers are entities with a spell-scoped
   `spell.slot_cost` effect or the label `spell modifier`. A buff's numeric bonus is multiplied by
   `variant[...].spell.numeric`; `@spell.caster_level` reads `caster_level.<class>` of the casting class. Built in:
-  `spell.level` (relation `on_spell_list` with `level`), `spell.slot_level` (level + metamagic, each modifier at least
-  +1), `spell.dc` (10 + level + casting ability modifier), `spell.metamagic_count`.
+  `spell.level` (relation `on_spell_list` with `level`, plus the variant's `heighten`), `spell.slot_level` (level +
+  metamagic, each modifier at least +1), `spell.dc` (10 + level + casting ability modifier), `spell.metamagic_count`.
+  Heighten Spell is the saved variant's `heighten` (levels added), not a modifier in `metamagic`: the spell really is
+  that level, so the slot and the DC follow, and the « at least +1 » rule and Improved Metamagic leave it alone.
 - **Spell slots:** a class with `spellcasting` (`ability`, `kind`, default `mode`) gets built-in `caster_level.<class>`
   (unless the catalog defines it) and `slots.<class>[L]` for L = 0…30 = its table's `spellsPerDay` at the casting
   level (class levels + `spellcasting.advances`; past the last row the last one holds) + SRD bonus spells
