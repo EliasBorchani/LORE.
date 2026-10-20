@@ -45,8 +45,10 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   typed by hand. A spell has a « Niveaux » block (class / prestige class / domain + level per line). No preview on a
   character and no going back to an old version (owner's choice): every save is kept.
 - Catalog (`src/screens/CatalogScreens.tsx`): a search field on the catalog home (every type) and on each type's list
-  (that type), sent to `/search` once typing pauses (250 ms); the text is copied to the address (`?q=`) so back
-  keeps the results.
+  (that type), sent to `/search` once typing pauses (250 ms). It finds names, ids and descriptions; a result found
+  only in its description says so. On a type's list, « Filtres » opens chips per filter the server returns (École,
+  Registre, Liste de sorts, Niveau de sort, Affecte), each with its count; a tap toggles it. Text and filters are
+  copied to the address (`?q=…&level=8`), so back keeps the results. « Affecte » names: `affectsNames` in `fr.ts`.
 - Skills tab (`src/screens/sheet/SkillsTab.tsx`): every skill with its total, ranks / max, class skill. Build screen:
   a « Compétences » block edits a draft of `skillRanks` (+ / −, points left, cross-class ranks cost 2) and saves it in
   one go. Combat tab: an Initiative row and both attacks (melee with Strength, ranged with Dexterity; damage keeps

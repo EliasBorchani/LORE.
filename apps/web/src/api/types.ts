@@ -172,10 +172,29 @@ export interface EntityPage {
   next?: string
 }
 
+/** The search filters; their values come from the content (`server/migrations/0007_search_filters.sql`). */
+export const FACETS = ['school', 'descriptor', 'list', 'level', 'affects'] as const
+export type Facet = (typeof FACETS)[number]
+export type SearchFilters = Partial<Record<Facet, string[]>>
+
+export interface SearchItem extends EntitySummary {
+  /** Present when the words are only in the description. */
+  matchedIn?: 'description'
+}
+
+export interface FacetValue {
+  value: string | number
+  /** Results with this value, the other filters applied. */
+  count: number
+  /** When the value is an entity id (a spell list, a skill). */
+  name?: Localized
+}
+
 export interface SearchPage {
-  items: EntitySummary[]
+  items: SearchItem[]
   /** The `offset` of the next page. */
   next?: number
+  facets?: Record<Facet, FacetValue[]>
 }
 
 export interface EntityDetail {

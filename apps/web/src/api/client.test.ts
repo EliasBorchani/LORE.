@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { ApiClient, ApiError, type KeyStore } from './client'
+import { ApiClient, ApiError, searchPath, type KeyStore } from './client'
 
 function memoryStore(initial: Record<string, string> = {}): KeyStore & { data: Record<string, string> } {
   const data = { ...initial }
@@ -90,5 +90,13 @@ describe('ApiClient', () => {
     expect(sent).toEqual(['/api/auth/invitation/accept {"token":"abc","password":"a long enough passphrase"}'])
     expect(store.data['lore.refreshToken']).toBe('refresh1')
     expect(client.hasSession).toBe(true)
+  })
+})
+
+describe('searchPath', () => {
+  it('sends each filter comma-separated and leaves empty ones out', () => {
+    expect(searchPath({ q: ' boule de feu ', type: 'spell', filters: { descriptor: ['feu', 'froid'], school: [] }, facets: true }))
+      .toBe('/search?q=boule+de+feu&type=spell&descriptor=feu%2Cfroid&offset=0&limit=50&facets=true')
+    expect(searchPath({ filters: { level: ['8'] }, offset: 50 })).toBe('/search?level=8&offset=50&limit=50')
   })
 })

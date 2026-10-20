@@ -403,6 +403,233 @@ async fn search_ignores_accents_case_and_word_order(pool: PgPool) {
     );
 }
 
+/// Spells, a feat and a class power with school, descriptors, spell lists and effects, for the search filters.
+fn search_catalog() -> Value {
+    let spell = |id: &str, fr: &str, school: &str, descriptors: Value, description: &str| {
+        json!({
+            "id": id, "type": "spell", "name": { "fr": fr },
+            "spell": { "school": school, "descriptors": descriptors },
+            "description": { "fr": description }
+        })
+    };
+    let mut cone = spell(
+        "spell.cone_of_cold",
+        "Cône de froid",
+        "Évocation",
+        json!(["Froid"]),
+        "Un cône de glace.",
+    );
+    // Scoped to the spell: it says nothing about the character.
+    cone["effects"] = json!([{ "op": "add", "scope": "spell", "target": "ac.total", "value": 1 }]);
+    json!({
+        "version": "test",
+        "entities": [
+            spell("spell.fireball", "Boule de feu", "Évocation", json!(["feu"]), "Une explosion de flammes."),
+            cone,
+            spell("spell.fear", "Terreur", "Nécromancie", json!(["mental", "terreur"]), "Les créatures sont aveuglées par la peur."),
+            spell("spell.blindness", "Cécité", "Nécromancie", json!([]), "La cible devient aveugle."),
+            {
+                "id": "spell.shield_of_faith", "type": "spell", "name": { "fr": "Bouclier de la foi" },
+                "spell": { "school": "Abjuration" },
+                "effects": [{ "op": "add", "target": "ac.total", "value": 2 }]
+            },
+            {
+                "id": "feat.blind_fight", "type": "feat", "name": { "fr": "Combat en aveugle" },
+                "description": { "fr": "Se battre sans voir." }
+            },
+            {
+                "id": "feat.dodge", "type": "feat", "name": { "fr": "Esquive", "en": "Dodge" },
+                "description": { "en": "You are harder to hit." },
+                "effects": [{ "op": "add", "target": "ac.total", "value": 1 }]
+            },
+            {
+                "id": "class_power.inner_strength", "type": "class_power", "name": { "fr": "Force intérieure" },
+                "effects": [{ "op": "add", "target": "ability.all.score", "value": 2 }]
+            },
+            { "id": "class.wizard", "type": "class", "name": { "fr": "Magicien" } },
+            { "id": "class.cleric", "type": "class", "name": { "fr": "Prêtre" } }
+        ],
+        "relations": [
+            { "from": "spell.fireball", "relation": "on_spell_list", "to": "class.wizard", "level": 3 },
+            { "from": "spell.fireball", "relation": "on_spell_list", "to": "class.cleric", "level": 8 },
+            { "from": "spell.cone_of_cold", "relation": "on_spell_list", "to": "class.wizard", "level": 5 },
+            { "from": "spell.fear", "relation": "on_spell_list", "to": "class.wizard", "level": 4 }
+        ]
+    })
+}
+
+async fn search_page(pool: &PgPool, uri: &str) -> Value {
+    let (status, page) = call(pool, "GET", uri, None).await;
+    assert_eq!(status, StatusCode::OK, "{uri}: {page}");
+    page
+}
+
+fn item_ids(page: &Value) -> Vec<&str> {
+    page["items"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|item| item["id"].as_str().unwrap())
+        .collect()
+}
+
+/// `[(value, count)]` of one facet.
+fn counts(page: &Value, facet: &str) -> Vec<(String, u64)> {
+    page["facets"][facet]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|v| {
+            (
+                v["value"].to_string().replace('"', ""),
+                v["count"].as_u64().unwrap(),
+            )
+        })
+        .collect()
+}
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
+async fn search_finds_words_in_descriptions_after_names(pool: PgPool) {
+    import(&pool, &search_catalog(), "test", None)
+        .await
+        .unwrap();
+
+    let page = search_page(&pool, "/search?q=aveugle").await;
+    let ids = item_ids(&page);
+    // The name first; then the descriptions, where « aveuglées » and « aveugle » share their root.
+    assert_eq!(ids[0], "feat.blind_fight");
+    assert_eq!(
+        ids[1..].iter().copied().collect::<BTreeSet<_>>(),
+        BTreeSet::from(["spell.blindness", "spell.fear"])
+    );
+    assert!(page["items"][0].get("matchedIn").is_none());
+    assert_eq!(page["items"][1]["matchedIn"], "description");
+
+    // An unfinished last word is a prefix, accents are ignored, English descriptions are searched in English.
+    assert_eq!(
+        item_ids(&search_page(&pool, "/search?q=AVEUG").await).len(),
+        3
+    );
+    assert_eq!(
+        item_ids(&search_page(&pool, "/search?q=harder%20hit").await),
+        ["feat.dodge"]
+    );
+    assert_eq!(
+        item_ids(&search_page(&pool, "/search?q=glace&type=feat").await),
+        Vec::<&str>::new()
+    );
+}
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
+async fn search_filters_spells_by_school_descriptor_and_list(pool: PgPool) {
+    import(&pool, &search_catalog(), "test", None)
+        .await
+        .unwrap();
+    let ids = |uri: &'static str| {
+        let pool = pool.clone();
+        async move {
+            let page = search_page(&pool, uri).await;
+            item_ids(&page)
+                .into_iter()
+                .map(str::to_owned)
+                .collect::<Vec<_>>()
+        }
+    };
+
+    // No text: sorted by name.
+    assert_eq!(
+        ids("/search?type=spell&school=N%C3%A9cromancie").await,
+        ["spell.blindness", "spell.fear"]
+    );
+    // Case and accents merged; OR inside a filter, AND between filters.
+    assert_eq!(
+        ids("/search?descriptor=FROID,Feu").await,
+        ["spell.fireball", "spell.cone_of_cold"]
+    );
+    assert_eq!(
+        ids("/search?descriptor=froid,feu&school=Évocation&q=boule").await,
+        ["spell.fireball"]
+    );
+    // List and level hold on the same entry: Fireball is Wizard 3 and Cleric 8, not Wizard 8.
+    assert_eq!(
+        ids("/search?list=class.wizard&level=8").await,
+        Vec::<String>::new()
+    );
+    assert_eq!(ids("/search?level=8").await, ["spell.fireball"]);
+    assert_eq!(
+        ids("/search?list=class.wizard&level=3,4").await,
+        ["spell.fireball", "spell.fear"]
+    );
+
+    // Effects on the character, `ability.all` counting for each ability; the cone's spell-scoped effect is left out.
+    assert_eq!(
+        ids("/search?affects=ac").await,
+        ["spell.shield_of_faith", "feat.dodge"]
+    );
+    assert_eq!(
+        ids("/search?affects=ability.wis").await,
+        ["class_power.inner_strength"]
+    );
+
+    assert_eq!(
+        call(&pool, "GET", "/search?level=high", None).await.0,
+        StatusCode::BAD_REQUEST
+    );
+    assert_eq!(
+        call(&pool, "GET", "/search", None).await.0,
+        StatusCode::BAD_REQUEST
+    );
+}
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
+async fn each_facet_is_counted_without_its_own_filter(pool: PgPool) {
+    import(&pool, &search_catalog(), "test", None)
+        .await
+        .unwrap();
+
+    let page = search_page(&pool, "/search?type=spell&descriptor=feu&facets=true").await;
+    assert_eq!(item_ids(&page), ["spell.fireball"]);
+    // Choosing fire still shows the other descriptors; the other facets only count fire spells.
+    assert_eq!(
+        counts(&page, "descriptor"),
+        [
+            ("feu".into(), 1),
+            ("froid".into(), 1),
+            ("mental".into(), 1),
+            ("terreur".into(), 1)
+        ]
+    );
+    assert_eq!(counts(&page, "school"), [("évocation".into(), 1)]);
+    assert_eq!(counts(&page, "level"), [("3".into(), 1), ("8".into(), 1)]);
+    assert_eq!(page["facets"]["list"][0]["name"], json!({ "fr": "Prêtre" }));
+
+    let page = search_page(&pool, "/search?list=class.wizard&level=3&facets=true").await;
+    // Levels on the wizard list; lists that have a level 3 spell.
+    assert_eq!(
+        counts(&page, "level"),
+        [("3".into(), 1), ("4".into(), 1), ("5".into(), 1)]
+    );
+    assert_eq!(counts(&page, "list"), [("class.wizard".into(), 1)]);
+
+    let page = search_page(&pool, "/search?q=e&facets=true").await;
+    // Most results first, then by value.
+    assert_eq!(
+        counts(&page, "affects")[..3],
+        [
+            ("ac".into(), 2),
+            ("ability.cha".into(), 1),
+            ("ability.con".into(), 1)
+        ]
+    );
+    assert!(page["facets"]["affects"][0].get("name").is_none());
+    assert!(
+        search_page(&pool, "/search?q=e")
+            .await
+            .get("facets")
+            .is_none()
+    );
+}
+
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn an_entity_comes_with_its_relations_and_their_names(pool: PgPool) {
     let catalog = json!({

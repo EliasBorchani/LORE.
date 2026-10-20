@@ -11,6 +11,7 @@ use crate::auth::CurrentUser;
 use crate::auth::routes as auth;
 use crate::catalog::closure::{self, Closure};
 use crate::catalog::edit::{self, EntityUpdate, NewEntity, Saved};
+use crate::catalog::search::{self, SearchPage, SearchQuery};
 use crate::characters::routes as characters;
 use crate::error::AppError;
 use crate::state::AppState;
@@ -172,81 +173,11 @@ async fn list_entities(
     Ok(Json(Page { items, next }))
 }
 
-#[derive(Deserialize)]
-struct SearchQuery {
-    q: String,
-    r#type: Option<String>,
-    offset: Option<i64>,
-    limit: Option<i64>,
-}
-
-#[derive(Serialize)]
-struct SearchPage {
-    items: Vec<EntitySummary>,
-    /// Pass as `offset` to get the next page; absent on the last page.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    next: Option<i64>,
-}
-
-const MAX_SEARCH_WORDS: usize = 8;
-const MAX_SEARCH_OFFSET: i64 = 10_000;
-
-/// Entities whose names (any language) or id contain every word of `q`, accents and case ignored. Names that are the
-/// query or start with it come first, then names with a word starting with it, then the rest, each by name.
 async fn search(
     State(pool): State<PgPool>,
     Query(query): Query<SearchQuery>,
 ) -> Result<Json<SearchPage>, AppError> {
-    // Ids are searched with `.` and `_` as spaces, so `feat.power_attack` finds Power Attack too.
-    let words: Vec<String> = query
-        .q
-        .replace(['.', '_'], " ")
-        .split_whitespace()
-        .take(MAX_SEARCH_WORDS)
-        .map(escape_like)
-        .collect();
-    if words.is_empty() {
-        return Err(AppError::BadRequest("q: type at least one word".into()));
-    }
-    let limit = query.limit.unwrap_or(DEFAULT_PAGE).clamp(1, MAX_PAGE);
-    let offset = query.offset.unwrap_or(0).clamp(0, MAX_SEARCH_OFFSET);
-    let phrase = words.join(" ");
-
-    let mut sql = sqlx::QueryBuilder::new(
-        "SELECT e.id, e.type, v.content -> 'name' AS name, v.content -> 'labels' AS labels
-         FROM entity e JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version
-         WHERE TRUE",
-    );
-    // One LIKE per word, so the words may come in any order; the trigram index serves each of them.
-    for word in &words {
-        sql.push(" AND lore_search_text(v.content) LIKE '%' || lore_fold(")
-            .push_bind(word.clone())
-            .push(") || '%'");
-    }
-    if let Some(r#type) = &query.r#type {
-        sql.push(" AND e.type = ").push_bind(r#type.clone());
-    }
-    sql.push(" ORDER BY CASE WHEN lore_sort_name(v.content) LIKE lore_fold(")
-        .push_bind(phrase.clone())
-        .push(") || '%' THEN 0 WHEN lore_sort_name(v.content) LIKE '% ' || lore_fold(")
-        .push_bind(phrase)
-        .push(") || '%' THEN 1 ELSE 2 END, lore_sort_name(v.content), e.id LIMIT ")
-        .push_bind(limit + 1)
-        .push(" OFFSET ")
-        .push_bind(offset);
-    let mut items: Vec<EntitySummary> = sql.build_query_as().fetch_all(&pool).await?;
-    let next = if items.len() as i64 > limit {
-        items.truncate(limit as usize);
-        Some(offset + limit).filter(|next| *next <= MAX_SEARCH_OFFSET)
-    } else {
-        None
-    };
-    Ok(Json(SearchPage { items, next }))
-}
-
-/// `%` and `\` typed by the user are plain characters, not LIKE wildcards (`_` became a space before).
-fn escape_like(word: &str) -> String {
-    word.replace('\\', "\\\\").replace('%', "\\%")
+    Ok(Json(search::search(&pool, query).await?))
 }
 
 #[derive(Serialize, sqlx::FromRow)]

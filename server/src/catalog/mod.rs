@@ -6,6 +6,7 @@ pub mod edit;
 pub mod export;
 pub mod import;
 pub mod refs;
+pub mod search;
 
 use serde_json::{Map, Value};
 

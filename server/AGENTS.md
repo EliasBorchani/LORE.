@@ -30,11 +30,22 @@ rule sections plus the closure of its character's entities, and later only what 
   id, including inside formulas), outgoing relations except `on_spell_list`, and class table rows. Danalieth's closure
   (80 of 92 entities) gives the same 20 verified values in the reference runner. `{character}` instead of `{roots}`
   gives a draft character's closure (as `GET /characters/{id}/catalog`, every skill included), for the level-up preview.
-- Search (`migrations/0004_search.sql`): every word of `q` must appear in the names (every language) or the id (`.` and
-  `_` read as spaces), accents and case ignored (`unaccent`, `lore_fold`). A trigram GIN index on
-  `lore_search_text(content)` of `entity_version` serves it, so import and restore need no extra step. Order: names
-  starting with the query, then names with a word starting with it, then the rest, by name; paged by `offset` (max
-  10 000).
+- Search (`server/src/catalog/search.rs`, `migrations/0004_search.sql` and `0007_search_filters.sql`): text plus
+  filters, as in the Catalog model. The values it reads are stored generated columns of `entity_version`
+  (`search_*`, `facet_*`): Postgres computes them when a version is written, so import, restore and the editor need
+  no extra step, and the export leaves them out. Computing them from the JSON at query time was several times too
+  slow.
+  - Text: every word of `q` in the names (every language) or the id (`.` and `_` read as spaces; trigram index,
+    accents and case ignored), **or** the query in the description (full text, `lore_fr` / `lore_en`: unaccent +
+    stemmer, so « aveugle » finds « aveuglés »; the last word is a prefix from 3 letters).
+  - Order: names starting with the query, then a word of the name starting with it, then other name matches, by
+    name; then description-only matches by `ts_rank` (`matchedIn: "description"`). Paged by `offset` (max 10 000).
+  - Filters, computed from the content: `school`, `descriptor` (lower case, so « Mal » = « mal »), `list` + `level`
+    (`on_spell_list`, both on the same entry), and `affects`. `affects` is the effect targets by family (`ac`,
+    `ability.str`, `skill.jump`…; `ability.all.*` counts for all six), leaving out effects scoped to the spell or the
+    item itself. Values comma-separated: any of them; different filters: all.
+  - `facets=true` adds `{value, count, name?}` per filter value, each filter counted without itself.
+  - Measured on 28,600 entities (the catalog ×20), release build: 7–120 ms; 1–2 letter queries 170–220 ms.
 - Content editing (`server/src/catalog/edit.rs`, PRD 5): `POST /entities {entity, note, variantOf?}` and
   `PUT /entities/{id} {version, entity, note}`, each save a new `entity_version` with the user's login as author.
   Owner's rule: every member creates and edits team content (`provenance: "team"`, forced for members); official
@@ -53,7 +64,7 @@ rule sections plus the closure of its character's entities, and later only what 
 - `GET /catalog/spell-list/{classId}`: the spells on a class's list with their level and name (for picking spells
   known; the closure leaves `on_spell_list` out).
 - Endpoints: `GET /health`, `GET /catalog/core`, `POST /catalog/closure`, `GET /entities?type=&after=&limit=` (paged by
-  id, max 200; each item has `id`, `type`, `name`, `labels`), `GET /search?q=&type=&offset=&limit=` (same items), `GET /entities/{id}`, `GET /entities/{id}/versions`.
+  id, max 200; each item has `id`, `type`, `name`, `labels`), `GET /search?q=&type=&school=&descriptor=&list=&level=&affects=&offset=&limit=&facets=` (same items), `GET /entities/{id}`, `GET /entities/{id}/versions`.
 - Auth (`server/src/auth/`, PRD 5.6): everything except `/health`, `/auth/login|refresh|logout` and `/auth/invitation[/accept]` goes through the
   `require_user` middleware (`Authorization: Bearer <access token>`); handlers take `CurrentUser` to know who calls.
   - Passwords: Argon2id, at least 12 characters; logins are case-insensitive. Unknown login and wrong password give

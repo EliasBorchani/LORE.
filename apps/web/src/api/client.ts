@@ -10,6 +10,7 @@ import type {
   EntityVersion,
   Invitation,
   Me,
+  SearchFilters,
   SearchPage,
   SpellLevel,
   SpellListEntry,
@@ -108,9 +109,8 @@ export class ApiClient {
     this.request<CharacterRecord>('PUT', `/characters/${id}`, { updatedAt, character })
   entities = (type: string, after?: string, limit = 50) =>
     this.request<EntityPage>('GET', `/entities?type=${encodeURIComponent(type)}&limit=${limit}${after ? `&after=${encodeURIComponent(after)}` : ''}`)
-  /** Names (any language) and ids containing every word of `q`, accents and case ignored. */
-  search = (q: string, type?: string, offset = 0, limit = 50) =>
-    this.request<SearchPage>('GET', `/search?q=${encodeURIComponent(q)}${type ? `&type=${encodeURIComponent(type)}` : ''}&offset=${offset}&limit=${limit}`)
+  /** Words in names, ids and descriptions, plus filters; `facets` adds the count of each filter value. */
+  search = (params: SearchParams) => this.request<SearchPage>('GET', searchPath(params))
   core = () => this.request<CoreSections>('GET', '/catalog/core')
   /** `spellLists`: a spell's levels (only for spells). */
   createEntity = (entity: Entity, note: string, variantOf?: string, spellLists?: SpellLevel[]) =>
@@ -185,6 +185,29 @@ async function read<T>(response: Response): Promise<T> {
   const body = text ? JSON.parse(text) : null
   if (!response.ok) throw new ApiError(response.status, body)
   return body as T
+}
+
+export interface SearchParams {
+  q?: string
+  type?: string
+  filters?: SearchFilters
+  offset?: number
+  limit?: number
+  facets?: boolean
+}
+
+/** A filter's values go comma-separated (any of them); empty filters are left out. */
+export function searchPath({ q, type, filters = {}, offset = 0, limit = 50, facets = false }: SearchParams): string {
+  const query = new URLSearchParams()
+  if (q?.trim()) query.set('q', q.trim())
+  if (type) query.set('type', type)
+  for (const [facet, values] of Object.entries(filters)) {
+    if (values?.length) query.set(facet, values.join(','))
+  }
+  query.set('offset', String(offset))
+  query.set('limit', String(limit))
+  if (facets) query.set('facets', 'true')
+  return `/search?${query}`
 }
 
 export const api = new ApiClient()

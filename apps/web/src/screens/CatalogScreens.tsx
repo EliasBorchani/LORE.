@@ -1,20 +1,35 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { api } from '../api/client'
-import type { Effect, EntitySummary } from '../api/types'
+import { FACETS, type Effect, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
 import { Badge, ErrorNotice, Icon, Loading, StatBlock } from '../components/grimoire'
-import { entityTypes, fr, typeName } from '../i18n/fr'
+import { formatNumber } from '../format'
+import { affectsNames, entityTypes, fr, typeName } from '../i18n/fr'
 import { entityName, localized } from '../sheet/names'
 import { messageOf, useLoad } from '../useLoad'
 import { CLASS_TYPES, ClassProgression } from './ClassProgression'
 
 const SEARCH_DELAY_MS = 250
+/** Values shown per filter before « Voir tout ». */
+const FACET_SHOWN = 12
+
+interface SearchState {
+  text: string
+  setText: (text: string) => void
+  filters: SearchFilters
+  /** Changes when the filters do: `filters` itself is a new object on every render. */
+  filtersKey: string
+  activeFilters: number
+  toggle: (facet: Facet, value: string) => void
+  clear: () => void
+}
 
 /**
- * The search text is copied to the address (`?q=`), so coming back from an entity shows the same results. The input
- * reads its own state: the address updates asynchronously, and reading it back would drop fast keystrokes.
+ * The search text and filters are copied to the address (`?q=…&level=8`), so coming back from an entity shows the same
+ * results. The input reads its own state: the address updates asynchronously, and reading it back would drop fast
+ * keystrokes. Filters change on a tap and are read from the address.
  */
-function useSearchText(): [string, (text: string) => void] {
+function useSearchState(): SearchState {
   const [params, setParams] = useSearchParams()
   const fromAddress = params.get('q') ?? ''
   const [text, setLocal] = useState(fromAddress)
@@ -32,12 +47,39 @@ function useSearchText(): [string, (text: string) => void] {
       setLocal(fromAddress)
     }
   }
-  const setText = (next: string) => {
-    pending.current.push(next)
-    setLocal(next)
-    setParams(next ? { q: next } : {}, { replace: true })
+  const update = (change: (next: URLSearchParams) => void) =>
+    setParams((current) => {
+      const next = new URLSearchParams(current)
+      change(next)
+      return next
+    }, { replace: true })
+  const setText = (value: string) => {
+    pending.current.push(value)
+    setLocal(value)
+    update((next) => (value ? next.set('q', value) : next.delete('q')))
   }
-  return [text, setText]
+  const filters: SearchFilters = {}
+  for (const facet of FACETS) {
+    const values = (params.get(facet) ?? '').split(',').filter(Boolean)
+    if (values.length) filters[facet] = values
+  }
+  const toggle = (facet: Facet, value: string) =>
+    update((next) => {
+      const values = (next.get(facet) ?? '').split(',').filter(Boolean)
+      const changed = values.includes(value) ? values.filter((v) => v !== value) : [...values, value]
+      if (changed.length) next.set(facet, changed.join(','))
+      else next.delete(facet)
+    })
+  const clear = () => update((next) => FACETS.forEach((facet) => next.delete(facet)))
+  return {
+    text,
+    setText,
+    filters,
+    filtersKey: FACETS.map((facet) => filters[facet]?.join(',') ?? '').join('|'),
+    activeFilters: Object.values(filters).reduce((n, values) => n + values.length, 0),
+    toggle,
+    clear,
+  }
 }
 
 function SearchField({ text, onChange, label, placeholder }: { text: string; onChange: (text: string) => void; label: string; placeholder?: string }) {
@@ -49,26 +91,34 @@ function SearchField({ text, onChange, label, placeholder }: { text: string; onC
   )
 }
 
-/** Server search, sent once typing pauses; an answer to an older text is dropped. */
-function SearchResults({ text, type }: { text: string; type?: string }) {
-  const q = text.trim()
-  const [items, setItems] = useState<EntitySummary[]>([])
+/**
+ * Server search, sent once typing pauses; an answer to an older query is dropped. The first page also brings the count
+ * of each filter value, shown in the filter panel when `showFilters`.
+ */
+function SearchResults({ search, type, showFilters }: { search: SearchState; type?: string; showFilters?: boolean }) {
+  const q = search.text.trim()
+  const { filters, filtersKey } = search
+  const [items, setItems] = useState<SearchItem[]>([])
+  const [facets, setFacets] = useState<SearchPage['facets']>()
   const [next, setNext] = useState<number | undefined>()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [attempt, setAttempt] = useState(0)
-  const latest = useRef(q)
-  latest.current = q
+  const queryKey = `${q}|${type}|${filtersKey}`
+  const latest = useRef(queryKey)
+  latest.current = queryKey
 
+  // `filters` is read through `filtersKey`, which changes with it.
   useEffect(() => {
     let current = true
     setLoading(true)
     setError(null)
     const timer = setTimeout(() => {
-      api.search(q, type).then(
+      api.search({ q, type, filters, facets: true }).then(
         (page) => {
           if (!current) return
           setItems(page.items)
+          setFacets(page.facets)
           setNext(page.next)
           setLoading(false)
         },
@@ -83,19 +133,19 @@ function SearchResults({ text, type }: { text: string; type?: string }) {
       current = false
       clearTimeout(timer)
     }
-  }, [q, type, attempt])
+  }, [q, type, filtersKey, attempt])
 
   const more = (offset: number) => {
     setLoading(true)
-    api.search(q, type, offset).then(
+    api.search({ q, type, filters, offset }).then(
       (page) => {
-        if (latest.current !== q) return
+        if (latest.current !== queryKey) return
         setItems((shown) => [...shown, ...page.items])
         setNext(page.next)
         setLoading(false)
       },
       (e) => {
-        if (latest.current !== q) return
+        if (latest.current !== queryKey) return
         setError(messageOf(e))
         setLoading(false)
       },
@@ -104,18 +154,22 @@ function SearchResults({ text, type }: { text: string; type?: string }) {
 
   return (
     <>
+      {showFilters && facets && <FilterPanel facets={facets} search={search} />}
       {error && <ErrorNotice message={error} onRetry={() => setAttempt((n) => n + 1)} />}
       {items.length > 0 && (
         <div className="list">
-          {items.map((e) => (
-            <Link key={e.id} className="list-row" to={`/catalog/entity/${e.id}`}>
-              <span className="list-row-text">
-                <span className="list-row-title">{localized(e.name) ?? e.id}</span>
-                {!type && <span className="list-row-sub">{typeName(e.type)}</span>}
-              </span>
-              <Icon name="chevron" />
-            </Link>
-          ))}
+          {items.map((e) => {
+            const sub = [!type && typeName(e.type), e.matchedIn === 'description' && fr.catalog.inDescription].filter(Boolean).join(' · ')
+            return (
+              <Link key={e.id} className="list-row" to={`/catalog/entity/${e.id}`}>
+                <span className="list-row-text">
+                  <span className="list-row-title">{localized(e.name) ?? e.id}</span>
+                  {sub && <span className="list-row-sub">{sub}</span>}
+                </span>
+                <Icon name="chevron" />
+              </Link>
+            )
+          })}
         </div>
       )}
       {!loading && !error && items.length === 0 && <p className="muted">{fr.catalog.noResult}</p>}
@@ -129,8 +183,61 @@ function SearchResults({ text, type }: { text: string; type?: string }) {
   )
 }
 
+function FilterPanel({ facets, search }: { facets: NonNullable<SearchPage['facets']>; search: SearchState }) {
+  const groups = FACETS.filter((facet) => facets[facet]?.length || search.filters[facet]?.length)
+  return (
+    <div className="filters">
+      {groups.map((facet) => (
+        <FacetGroup key={facet} facet={facet} values={facets[facet] ?? []} chosen={search.filters[facet] ?? []} onToggle={search.toggle} />
+      ))}
+      {search.activeFilters > 0 && (
+        <button className="btn btn-secondary btn-small" onClick={search.clear}>{fr.catalog.clearFilters}</button>
+      )}
+    </div>
+  )
+}
+
+function FacetGroup(props: { facet: Facet; values: FacetValue[]; chosen: string[]; onToggle: (facet: Facet, value: string) => void }) {
+  const { facet, chosen, onToggle } = props
+  const [all, setAll] = useState(false)
+  const values = [...props.values]
+  // A chosen value with no result left stays visible, so it can be removed.
+  for (const value of chosen) {
+    if (!values.some((v) => String(v.value) === value)) values.push({ value, count: 0 })
+  }
+  if (facet === 'level') values.sort((a, b) => Number(a.value) - Number(b.value))
+  const shown = all ? values : values.filter((v, i) => i < FACET_SHOWN || chosen.includes(String(v.value)))
+  return (
+    <fieldset className="facet">
+      <legend>{fr.catalog.facets[facet]}</legend>
+      <div className="chips">
+        {shown.map((v) => (
+          <button key={String(v.value)} type="button" className="chip" aria-pressed={chosen.includes(String(v.value))}
+            onClick={() => onToggle(facet, String(v.value))}>
+            {facetLabel(facet, v)}
+            <span className="chip-count">{formatNumber(String(v.count))}</span>
+          </button>
+        ))}
+      </div>
+      {values.length > FACET_SHOWN && (
+        <button type="button" className="btn btn-secondary btn-small facet-more" onClick={() => setAll(!all)}>
+          {all ? fr.catalog.showLess : fr.catalog.showAll(values.length)}
+        </button>
+      )}
+    </fieldset>
+  )
+}
+
+function facetLabel(facet: Facet, v: FacetValue): string {
+  const value = String(v.value)
+  if (v.name) return localized(v.name) ?? value
+  if (facet === 'affects') return affectsNames[value] ?? value
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
+
 export function CatalogScreen() {
-  const [text, setText] = useSearchText()
+  const search = useSearchState()
+  const { text, setText } = search
   return (
     <>
       <header className="page-head-row">
@@ -140,7 +247,7 @@ export function CatalogScreen() {
       <search>
         <SearchField text={text} onChange={setText} label={fr.catalog.search} placeholder={fr.catalog.searchAll} />
       </search>
-      {text.trim() ? <SearchResults text={text} /> : <TypeList />}
+      {text.trim() ? <SearchResults search={search} /> : <TypeList />}
     </>
   )
 }
@@ -163,10 +270,12 @@ function TypeList() {
   )
 }
 
-/** One type, a page of 50 at a time, or the search within that type. */
+/** One type, a page of 50 at a time, or the search within that type, with its filters. */
 export function CatalogListScreen() {
   const type = useParams().type!
-  const [text, setText] = useSearchText()
+  const search = useSearchState()
+  const [filtersOpen, setFiltersOpen] = useState(search.activeFilters > 0)
+  const searching = search.text.trim() !== '' || search.activeFilters > 0 || filtersOpen
   return (
     <>
       <header className="page-head-title">
@@ -176,10 +285,13 @@ export function CatalogListScreen() {
         <h1 className="type-display-l">{typeName(type)}</h1>
         <Link className="btn btn-secondary btn-small" style={{ marginLeft: 'auto' }} to={`/catalog/new?type=${encodeURIComponent(type)}`}>{fr.content.newEntry}</Link>
       </header>
-      <search>
-        <SearchField text={text} onChange={setText} label={fr.catalog.searchIn(typeName(type))} />
+      <search className="search-row">
+        <SearchField text={search.text} onChange={search.setText} label={fr.catalog.searchIn(typeName(type))} />
+        <button type="button" className="btn btn-secondary btn-small" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(!filtersOpen)}>
+          {fr.catalog.filtersCount(search.activeFilters)}
+        </button>
       </search>
-      {text.trim() ? <SearchResults text={text} type={type} /> : <TypePage key={type} type={type} />}
+      {searching ? <SearchResults key={type} search={search} type={type} showFilters={filtersOpen} /> : <TypePage key={type} type={type} />}
     </>
   )
 }

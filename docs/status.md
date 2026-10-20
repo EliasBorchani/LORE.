@@ -103,8 +103,11 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
 
 1. Owner tries the web app, then reviews everything (`server/`, `apps/web/`, `engine/`, `content/`, `compose.yaml`) and
    makes the first commit (the owner commits once the whole PoC works).
-2. Then, in PRD order: the rest of search (facets, tags, glossary, full text in descriptions, Catalog model
-   "Search"; names and ids are done); later sharing characters inside the group (MVP+).
+2. Then, in PRD order: the rest of search (tags, glossary; names, ids, descriptions and filters are done,
+   2026-10-20); later sharing characters inside the group (MVP+).
+   Search (2026-10-20, owner's choices: filter values computed from the content, no facet tables yet): full text in
+   descriptions (French and English), filters École, Registre, Liste de sorts + Niveau, Affecte, with counts. Tested
+   in Chrome on the dev stack; 7–220 ms on the catalog copied 20 times (28,600 entities).
 3. Deploy on an OVHcloud VPS with a DuckDNS address (owner's choice, 2026-10-19), following `docs/deploy.md`: `compose.prod.yaml`, Caddy
    (HTTPS, web app, `/api`), `deploy/import-content.sh`, `deploy/backup.sh`. Deployed and working on the owner's
    OVH VPS (2026-10-19). Still missing: core sections in a batch of their own.
@@ -136,8 +139,9 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
 
 ## Known limits
 
-- Web: the home card shows name and level only (the numbers need each character's catalog). Catalog search covers
-  names (every language) and ids only: no filters, no search in descriptions. The level-up feat list still loads every
+- Web: the home card shows name and level only (the numbers need each character's catalog). Search filters cover
+  spells (school, descriptor, list, level) and effects (« Affecte », only as good as the modelled effects: about 60
+  feats have effects). Descriptor data needs a clean-up: « voir description », « feu ou froid ». The level-up feat list still loads every
   feat into the page (`allOfType`); at tens of thousands of entities it should use `/search`. Content editor: no
   preview on a character, no going back to an old version (owner's choice), relations other than a spell's levels and class tables
   are not editable (batch files only; re-importing `lists.json` would overwrite levels edited in the app), the server trusts the client's engine check. The weapon line shows the engine's
