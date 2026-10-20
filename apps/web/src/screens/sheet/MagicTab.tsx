@@ -1,6 +1,7 @@
 import type { CasterLine, VariantLine } from 'dnd-engine'
 import { useMemo, useState } from 'react'
 import type { SpellVariant } from '../../api/types'
+import { EntityName, InfoButton } from '../../components/EntityPanel'
 import { StatBlock } from '../../components/grimoire'
 import { formatNumber, splitDice, toInteger } from '../../format'
 import { abilities, fr } from '../../i18n/fr'
@@ -41,7 +42,7 @@ function CasterSection({ caster }: { caster: CasterLine }) {
   return (
     <>
       <StatBlock
-        title={name(caster.classId)}
+        title={<EntityName id={caster.classId}>{name(caster.classId)}</EntityName>}
         subtitle={fr.magic.header(caster.casterLevel ?? '—', ability, fr.magic.modes[caster.mode] ?? caster.mode)}
         label={name(caster.classId)}
       >
@@ -81,7 +82,7 @@ function VariantRow({ variant, left, spend }: { variant: VariantLine; left: (lev
   return (
     <div className="spell-row">
       <span className="toggle-text">
-        <span className="toggle-name">{label}</span>
+        <span className="toggle-name"><VariantName variant={variant} /></span>
         <span className="toggle-meta">{variantMeta(variant)}</span>
         {variant.slotLevel != null && slotLevel != null && !canCast && <span className="warning">{fr.magic.noSlot(slotLevel)}</span>}
         {slotLevel == null && <span className="warning">{fr.magic.notOnList}</span>}
@@ -109,7 +110,7 @@ function KnownSpells({ caster, left, spend }: { caster: CasterLine; left: (level
       {spells.map((s) => (
         <div key={s.id} className="spell-row">
           <span className="toggle-text">
-            <span className="toggle-name">{s.label}</span>
+            <span className="toggle-name"><EntityName id={s.id}>{s.label}</EntityName></span>
             <span className="toggle-meta">{s.level != null ? fr.magic.spellLevel(s.level) : fr.magic.notOnList}</span>
           </span>
           <button className="btn btn-primary btn-small" disabled={s.level == null || left(s.level) <= 0}
@@ -188,6 +189,7 @@ function VariantBuilder({ caster }: { caster: CasterLine }) {
                 <span className="toggle-name">{name(id)}</span>
                 <input type="checkbox" checked={metamagic.includes(id)}
                   onChange={(e) => setMetamagic(e.target.checked ? [...metamagic, id] : metamagic.filter((m) => m !== id))} />
+                <InfoButton id={id} name={name(id)} />
               </label>
             ))}
           </fieldset>
@@ -217,6 +219,18 @@ function useSpellLevels(classId: string): (spellId: string) => number | null {
     )
     return (spellId: string) => levels.get(spellId) ?? null
   }, [closure, classId])
+}
+
+/** The spell and each metamagic feat, each opening its panel. */
+function VariantName({ variant }: { variant: VariantLine }) {
+  const { name } = useSheet()
+  const ids = [variant.spell, ...list(variant.metamagic)]
+  return ids.map((id, i) => (
+    <span key={id}>
+      {i > 0 && ' · '}
+      <EntityName id={id}>{name(id)}</EntityName>
+    </span>
+  ))
 }
 
 function variantName(variant: VariantLine, name: (id: string) => string): string {

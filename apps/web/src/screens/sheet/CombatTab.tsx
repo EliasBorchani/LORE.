@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
+import { EntityName, InfoButton } from '../../components/EntityPanel'
 import { StatBlock, StatTile, ToggleRow } from '../../components/grimoire'
 import { formatModifier, formatNumber, formatThreatRange, splitDice, toInteger } from '../../format'
 import { fr, statLabels } from '../../i18n/fr'
@@ -125,7 +126,7 @@ function Weapon() {
   const multiplier = stat('weapon.crit_multiplier')
   const to = (key: string) => `/characters/${record.id}/stat/${key}`
   return (
-    <StatBlock title={weapon ? name(weapon.id) : fr.sheet.weapon} label={fr.sheet.weapon}>
+    <StatBlock title={weapon ? <EntityName id={weapon.id}>{name(weapon.id)}</EntityName> : fr.sheet.weapon} label={fr.sheet.weapon}>
       <div className="weapon-nums">
         {attack != null && (
           <Link className="weapon-num" to={to('attack.melee')} aria-label={fr.sheet.seeBreakdown(statLabels['attack.melee'])}>
@@ -182,7 +183,8 @@ function EffectRow({ toggle }: { toggle: ToggleView }) {
   }
 
   return (
-    <ToggleRow name={label} meta={toggle.active ? metamagic : fr.sheet.effectOff} on={toggle.active} onChange={switchTo}>
+    <ToggleRow name={label} meta={toggle.active ? metamagic : fr.sheet.effectOff} on={toggle.active} onChange={switchTo}
+      info={toggle.source && <InfoButton id={toggle.source} name={label} />}>
       {toggle.active && toggle.takesValue && (
         <div className="toggle-value">
           <span>{fr.sheet.toggleValue}</span>
@@ -211,7 +213,7 @@ function DailyUses() {
         return (
           <div className="power-row" key={u.entity}>
             <span className="list-row-text">
-              <span>{label}</span>
+              <EntityName id={u.entity}>{label}</EntityName>
               <span className="muted">{fr.sheet.usesLeft(u.max - used, u.max)}</span>
             </span>
             <span className="pips">

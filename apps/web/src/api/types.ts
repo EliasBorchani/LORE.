@@ -206,6 +206,14 @@ export interface EntityDetail {
   variantOf?: string
   /** Outgoing relations, each with the target's name (null when the target is not in the catalog). */
   relations?: EntityRelation[]
+  /** The entities its content names (`has('feat.power_attack')`). */
+  references?: EntityReference[]
+}
+
+export interface EntityReference {
+  id: string
+  type: string
+  name: Localized | null
 }
 
 export interface EntityRelation {

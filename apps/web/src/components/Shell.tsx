@@ -1,6 +1,7 @@
 import { Link, Navigate, Outlet, useLocation } from 'react-router'
 import { api } from '../api/client'
 import { fr } from '../i18n/fr'
+import { EntityPanel } from './EntityPanel'
 import { Icon } from './grimoire'
 
 const sections = [
@@ -32,6 +33,7 @@ export function Shell() {
       <nav className="bottom-nav" aria-label={fr.nav.main}>
         {links}
       </nav>
+      <EntityPanel />
     </div>
   )
 }

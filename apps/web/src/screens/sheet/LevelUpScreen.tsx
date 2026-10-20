@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router'
 import { api } from '../../api/client'
 import type { Character, Closure, EntitySummary, LevelRecord } from '../../api/types'
 import { ErrorNotice, StatBlock } from '../../components/grimoire'
+import { EntityName, InfoButton } from '../../components/EntityPanel'
 import { Picker } from '../../components/Picker'
 import { formatModifier, formatNumber } from '../../format'
 import { abilities, fr, labelNames, statLabels } from '../../i18n/fr'
@@ -143,7 +144,10 @@ export function LevelUpScreen() {
           </select>
         </label>
         {classId && draft && (
-          <p className="muted">{fr.editor.classLevel(name(classId), draft.levels!.at(-1)!.classLevel)}</p>
+          <p className="muted chosen">
+            {fr.editor.classLevel(name(classId), draft.levels!.at(-1)!.classLevel)}
+            <InfoButton id={classId} name={name(classId)} />
+          </p>
         )}
         {level % 4 === 0 && (
           <label className="field">
@@ -162,6 +166,7 @@ export function LevelUpScreen() {
                 <span className="toggle-name">{name(c)}</span>
                 <input type="checkbox" checked={advances.includes(c)}
                   onChange={(e) => setAdvances((a) => (e.target.checked ? [...a, c] : a.filter((x) => x !== c)))} />
+                <InfoButton id={c} name={name(c)} />
               </label>
             ))}
           </fieldset>
@@ -173,7 +178,7 @@ export function LevelUpScreen() {
           {picked.map((f) => (
             <div key={`${f.slot}-${f.id}`} className="chosen">
               <span className="list-row-text">
-                <span>{name(f.id)}</span>
+                <EntityName id={f.id}>{name(f.id)}</EntityName>
                 <span className="list-row-sub">{slotName(f.slot, name)}</span>
               </span>
               <button type="button" className="btn btn-secondary btn-small" aria-label={fr.editor.remove(name(f.id))}

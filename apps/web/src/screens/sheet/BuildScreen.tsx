@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { api } from '../../api/client'
 import type { EntitySummary, LevelRecord, SpellListEntry } from '../../api/types'
 import { Loading, StatBlock } from '../../components/grimoire'
+import { EntityName, InfoButton } from '../../components/EntityPanel'
 import { Picker } from '../../components/Picker'
 import { allOfType } from '../../sheet/catalogLists'
 import { localized } from '../../sheet/names'
@@ -76,10 +77,10 @@ function Levels() {
               <span style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'center' }}>
                 <span className="type-stat-m" style={{ minWidth: '2.5ch' }}>{level.level}</span>
                 <span className="list-row-text">
-                  <span>{name(level.classId)} {level.classLevel}</span>
+                  <span><EntityName id={level.classId}>{name(level.classId)}</EntityName> {level.classLevel}</span>
                   <span className={flagged ? 'warning' : 'list-row-sub'}>
                     {flagged ? `${fr.build.check} · ` : ''}
-                    {choices(level, name) || fr.build.noChoice}
+                    <Choices level={level} />
                   </span>
                 </span>
               </span>
@@ -190,7 +191,7 @@ function ClassSpells(props: {
       {known.length === 0 && <p className="muted">{fr.editor.noKnownSpells}</p>}
       {known.map((id) => (
         <div key={id} className="chosen">
-          <span>{spellName(id)}</span>
+          <EntityName id={id}>{spellName(id)}</EntityName>
           <button type="button" className="btn btn-secondary btn-small" disabled={busy} aria-label={fr.editor.remove(spellName(id))}
             onClick={() => void save(known.filter((s) => s !== id))}>×</button>
         </div>
@@ -215,16 +216,23 @@ function levelIds(level: LevelRecord): string[] {
   return [level.classId, ...(level.feats ?? []).map((f) => f.id), ...(level.gained ?? [])]
 }
 
-function choices(level: LevelRecord, name: (id: string) => string): string {
+/** A level's feats, ability increase, gained entities and caster level advances; each entity opens its panel. */
+function Choices({ level }: { level: LevelRecord }) {
+  const { name } = useSheet()
   const ability = abilities.find((a) => a.id === level.abilityIncrease)
-  return [
-    ...(level.feats ?? []).map((f) => name(f.id)),
+  const parts = [
+    ...(level.feats ?? []).map((f) => <EntityName id={f.id}>{name(f.id)}</EntityName>),
     ability ? fr.build.abilityIncrease(ability.name) : null,
-    ...(level.gained ?? []).map(name),
+    ...(level.gained ?? []).map((id) => <EntityName id={id}>{name(id)}</EntityName>),
     ...(level.spellcastingAdvances ?? []).map((c) => `${fr.sheet.casterLevel(name(c))} +1`),
-  ]
-    .filter(Boolean)
-    .join(' · ')
+  ].filter((part) => part != null)
+  if (parts.length === 0) return fr.build.noChoice
+  return parts.map((part, i) => (
+    <span key={i}>
+      {i > 0 && ' · '}
+      {part}
+    </span>
+  ))
 }
 
 /**
@@ -354,6 +362,7 @@ function Items() {
             </span>
             <input type="checkbox" checked={item.equipped !== false} disabled={busy}
               aria-label={fr.build.equipped(name(item.id))} onChange={(e) => setEquipped(i, e.target.checked)} />
+            <InfoButton id={item.id} name={itemName(item.id)} />
             <button type="button" className="btn btn-secondary btn-small" disabled={busy} aria-label={fr.editor.remove(itemName(item.id))}
               onClick={(e) => { e.preventDefault(); void saveItems(items.filter((_, j) => j !== i)) }}>×</button>
           </label>

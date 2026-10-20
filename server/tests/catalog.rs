@@ -653,3 +653,25 @@ async fn an_entity_comes_with_its_relations_and_their_names(pool: PgPool) {
         ])
     );
 }
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
+async fn an_entity_names_the_entities_its_content_refers_to(pool: PgPool) {
+    let catalog = json!({
+        "version": "test",
+        "entities": [
+            { "id": "feat.cleave", "type": "feat", "name": { "fr": "Enchaînement" },
+              "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack') and @skill.jump.ranks >= 2" },
+            { "id": "feat.power_attack", "type": "feat", "name": { "fr": "Attaque en puissance" } },
+            { "id": "skill.jump", "type": "skill", "name": { "fr": "Saut" } }
+        ]
+    });
+    import(&pool, &catalog, "test", None).await.unwrap();
+    let (_, detail) = call(&pool, "GET", "/entities/feat.cleave", None).await;
+    assert_eq!(
+        detail["references"],
+        json!([
+            { "id": "feat.power_attack", "type": "feat", "name": { "fr": "Attaque en puissance" } },
+            { "id": "skill.jump", "type": "skill", "name": { "fr": "Saut" } }
+        ])
+    );
+}

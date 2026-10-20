@@ -367,6 +367,17 @@ export const fr = {
     } as Record<string, string>,
   },
 
+  panel: {
+    title: 'Détail',
+    info: (name: string) => `Voir ${name}`,
+    close: 'Fermer',
+    open: 'Voir la fiche complète',
+    ranks: 'rangs',
+    and: 'et',
+    or: 'ou',
+    characterLevel: 'niveau global',
+    levelOf: 'niveau de',
+  },
   account: {
     title: 'Compte',
     signedInAs: (login: string) => `Connecté en tant que ${login}`,

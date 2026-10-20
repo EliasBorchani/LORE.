@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router'
 import { api, ApiError } from '../api/client'
 import type { CoreSections, EntityDetail, EntitySummary, SpellLevel } from '../api/types'
+import { forgetEntityInfo } from '../components/EntityPanel'
 import { ErrorNotice, Loading, StatBlock } from '../components/grimoire'
 import { emptyEffect, fromDraft, idFrom, toDraft, type EffectDraft, type EntityDraft } from '../content/entityForm'
 import { entityTypes, fr, typeName } from '../i18n/fr'
@@ -134,6 +135,7 @@ function Editor({ start, onReplaced }: { start: Start; onReplaced: (detail: Enti
         ? await api.createEntity(built.entity, note, start.variantOf, spellLists)
         : await api.updateEntity(built.entity, start.version!, note, spellLists)
       forgetLists()
+      forgetEntityInfo(saved.id)
       navigate(`/catalog/entity/${saved.id}`)
     } catch (e) {
       setBusy(false)

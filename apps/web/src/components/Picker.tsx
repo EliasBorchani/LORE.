@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { fr } from '../i18n/fr'
+import { InfoButton } from './EntityPanel'
 
 export interface PickerItem {
   id: string
@@ -14,7 +15,7 @@ export function normalize(text: string): string {
   return text.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
 }
 
-/** A searchable list: type part of a name or keyword, tap a row to pick it. */
+/** A searchable list: type part of a name or keyword, tap a row to pick it, ⓘ to read it first. */
 export function Picker({ items, onPick, label = fr.editor.search }: { items: PickerItem[]; onPick: (id: string) => void; label?: string }) {
   const [query, setQuery] = useState('')
   const q = normalize(query.trim())
@@ -28,12 +29,15 @@ export function Picker({ items, onPick, label = fr.editor.search }: { items: Pic
       </label>
       <div className="list">
         {shown.map((item) => (
-          <button key={item.id} type="button" className="list-row picker-row" onClick={() => onPick(item.id)}>
-            <span className="list-row-text">
-              <span>{item.name}</span>
-              {item.sub && <span className="list-row-sub">{item.sub}</span>}
-            </span>
-          </button>
+          <div key={item.id} className="picker-line">
+            <button type="button" className="list-row picker-row" onClick={() => onPick(item.id)}>
+              <span className="list-row-text">
+                <span>{item.name}</span>
+                {item.sub && <span className="list-row-sub">{item.sub}</span>}
+              </span>
+            </button>
+            <InfoButton id={item.id} name={item.name} />
+          </div>
         ))}
         {shown.length === 0 && <p className="muted">{fr.editor.noResult}</p>}
       </div>

@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { api } from '../api/client'
-import { FACETS, type Effect, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
+import { FACETS, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
 import { Badge, ErrorNotice, Icon, Loading, StatBlock } from '../components/grimoire'
 import { formatNumber } from '../format'
 import { affectsNames, entityTypes, fr, typeName } from '../i18n/fr'
 import { entityName, localized } from '../sheet/names'
 import { messageOf, useLoad } from '../useLoad'
 import { CLASS_TYPES, ClassProgression } from './ClassProgression'
+import { EntityFacts, EntityText } from './EntitySummary'
 
 const SEARCH_DELAY_MS = 250
 /** Values shown per filter before « Voir tout ». */
@@ -356,14 +357,9 @@ export function EntityScreen() {
   )
   if (error) return <ErrorNotice message={error} onRetry={reload} />
   if (!data) return <Loading />
-  const [{ content: entity, variantOf, relations = [] }, versions, me, original] = data
-  const spellLevels = relations
-    .filter((r) => r.relation === 'on_spell_list')
-    .map((r) => ({ id: r.to, name: localized(r.name ?? undefined) ?? r.to, level: r.extra.level }))
-    .sort((a, b) => (a.level ?? 0) - (b.level ?? 0) || a.name.localeCompare(b.name, 'fr'))
-  const spell = entity.type === 'spell' ? ((entity.spell ?? {}) as Record<string, unknown>) : null
+  const [detail, versions, me, original] = data
+  const { content: entity, variantOf, relations = [] } = detail
   const relationName = (to: string) => localized(relations.find((r) => r.to === to)?.name ?? undefined) ?? to
-  const description = localized(entity.description)
   // The server has the last word; this only hides a button that would be refused.
   const editable = me.role === 'admin' || entity.provenance === 'team'
 
@@ -385,63 +381,11 @@ export function EntityScreen() {
             {fr.content.variantOf} <Link to={`/catalog/entity/${variantOf}`}>{entityName(original?.content, variantOf)}</Link>
           </p>
         )}
-        {entity.labels && entity.labels.length > 0 && (
-          <div className="tags">{entity.labels.map((l) => <span key={l} className="tag">{l}</span>)}</div>
-        )}
-        <dl className="facts">
-          {entity.prerequisite && (
-            <>
-              <dt>{fr.catalog.prerequisite}</dt>
-              <dd className="formula">{entity.prerequisite}</dd>
-            </>
-          )}
-          {spell && (
-            <>
-              <dt>{fr.catalog.spellLevels}</dt>
-              <dd>
-                {spellLevels.length === 0 && fr.catalog.noSpellLevel}
-                {spellLevels.map((l, i) => (
-                  <span key={l.id}>
-                    {i > 0 && ' · '}
-                    <Link to={`/catalog/entity/${l.id}`}>{l.name}</Link> {l.level}
-                  </span>
-                ))}
-              </dd>
-            </>
-          )}
-          {spell &&
-            Object.entries(fr.catalog.spellFields).map(([field, label]) => {
-              const value = spell[field]
-              const text = Array.isArray(value) ? value.join(', ') : value == null ? '' : String(value)
-              return text ? (
-                <div key={field} style={{ display: 'contents' }}>
-                  <dt>{label}</dt>
-                  <dd>{text}</dd>
-                </div>
-              ) : null
-            })}
-          {entity.usesPerDay != null && (
-            <>
-              <dt>{fr.catalog.usesPerDay}</dt>
-              <dd className="formula">{String(entity.usesPerDay)}</dd>
-            </>
-          )}
-        </dl>
+        <EntityFacts detail={detail} />
       </StatBlock>
-      {description && (
-        <section className="page-head">
-          <h2 className="type-heading">{fr.catalog.description}</h2>
-          <p className="type-body-l prose">{description}</p>
-        </section>
-      )}
+      <EntityText detail={detail} />
       {CLASS_TYPES.includes(entity.type) && <ClassProgression classId={entity.id} className={entityName(entity, entity.id)} />}
       {SPELL_LIST_TYPES.includes(entity.type) && <ListSpells listId={entity.id} />}
-      {entity.effects && entity.effects.length > 0 && (
-        <section className="page-head">
-          <h2 className="type-heading">{fr.catalog.effects}</h2>
-          <ul className="formula">{entity.effects.map((e, i) => <li key={i}>{effectText(e)}</li>)}</ul>
-        </section>
-      )}
       <section className="page-head">
         <h2 className="type-heading">{fr.catalog.history}</h2>
         <ul>
@@ -498,9 +442,3 @@ function ListSpells({ listId }: { listId: string }) {
   )
 }
 
-/** `attack.melee add -@toggle.power_attack.value (untyped) if active('toggle.power_attack')`: the content as written. */
-function effectText(e: Effect): string {
-  return [e.target, e.op, String(e.value), e.bonusType && `(${e.bonusType})`, e.condition && `if ${e.condition}`, e.situation && `[${e.situation}]`]
-    .filter(Boolean)
-    .join(' ')
-}

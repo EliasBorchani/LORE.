@@ -108,6 +108,9 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    Search (2026-10-20, owner's choices: filter values computed from the content, no facet tables yet): full text in
    descriptions (French and English), filters École, Registre, Liste de sorts + Niveau, Affecte, with counts. Tested
    in Chrome on the dev stack; 7–220 ms on the catalog copied 20 times (28,600 entities).
+   Info panel (2026-10-20, owner's choices: a panel over the screen, not a page change; sheet, Build, level-up and
+   catalog): a tap on a spell, power, feat, class or item name shows what it does without leaving the sheet;
+   prerequisites read « Force ≥ 13 et Attaque en puissance ». Tested in Chrome on the dev stack (wide and 400 px).
 3. Deploy on an OVHcloud VPS with a DuckDNS address (owner's choice, 2026-10-19), following `docs/deploy.md`: `compose.prod.yaml`, Caddy
    (HTTPS, web app, `/api`), `deploy/import-content.sh`, `deploy/backup.sh`. Deployed and working on the owner's
    OVH VPS (2026-10-19). Still missing: core sections in a batch of their own.
@@ -146,7 +149,9 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
   preview on a character, no going back to an old version (owner's choice), relations other than a spell's levels and class tables
   are not editable (batch files only; re-importing `lists.json` would overwrite levels edited in the app), the server trusts the client's engine check. The weapon line shows the engine's
   raw `weapon.threat_range` (10) and `weapon.crit_multiplier` (12); the mockup says « 13–20 ×8 »: these values are not
-  hand-verified, check the data and the meaning of threat range. The production bundle is one 843 KB file (231 KB
+  hand-verified, check the data and the meaning of threat range. Readable prerequisites leave the statistics with no
+  French name as written (`@feats.spell_focus.schools`, `@spellcasting.arcane.max_level`): add them to `statLabels`.
+  Effects on a catalog page and in the info panel are still the raw formulas. The production bundle is one 843 KB file (231 KB
   gzipped); split the engine out with a dynamic import if it matters.
 
 - Characters: the sync delta (`updatedSince`) compares server times set at the start of each transaction, so a write

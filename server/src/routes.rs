@@ -1,3 +1,5 @@
+use std::collections::BTreeSet;
+
 use axum::extract::{Path, Query, State};
 use axum::middleware;
 use axum::routing::{get, post, put};
@@ -11,6 +13,7 @@ use crate::auth::CurrentUser;
 use crate::auth::routes as auth;
 use crate::catalog::closure::{self, Closure};
 use crate::catalog::edit::{self, EntityUpdate, NewEntity, Saved};
+use crate::catalog::refs::collect_candidate_ids;
 use crate::catalog::search::{self, SearchPage, SearchQuery};
 use crate::characters::routes as characters;
 use crate::error::AppError;
@@ -192,6 +195,16 @@ struct EntityDetail {
     variant_of: Option<String>,
     /// Its outgoing relations (spell lists with their level, class skills…), each with the target's name.
     relations: Value,
+    /// The entities its content names (`has('feat.power_attack')`), so a client can show names instead of ids.
+    #[sqlx(skip)]
+    references: Vec<Reference>,
+}
+
+#[derive(Serialize, sqlx::FromRow)]
+struct Reference {
+    id: String,
+    r#type: String,
+    name: Value,
 }
 
 async fn create_entity(
@@ -215,7 +228,7 @@ async fn entity(
     State(pool): State<PgPool>,
     Path(id): Path<String>,
 ) -> Result<Json<EntityDetail>, AppError> {
-    sqlx::query_as(
+    let mut detail: EntityDetail = sqlx::query_as(
         "SELECT e.id, e.type, e.current_version AS version, v.content,
                 (SELECT r.to_id FROM entity_relation r WHERE r.from_id = e.id AND r.relation = $2 LIMIT 1) AS variant_of,
                 (SELECT coalesce(jsonb_agg(jsonb_build_object(
@@ -232,8 +245,22 @@ async fn entity(
     .bind(edit::VARIANT_OF)
     .fetch_optional(&pool)
     .await?
-    .map(Json)
-    .ok_or_else(|| AppError::NotFound(format!("{id}: unknown entity")))
+    .ok_or_else(|| AppError::NotFound(format!("{id}: unknown entity")))?;
+
+    let mut ids = BTreeSet::new();
+    collect_candidate_ids(&detail.content, &mut ids);
+    ids.remove(&id);
+    let ids: Vec<String> = ids.into_iter().collect();
+    // Statistic keys (`ability.str`) look like ids too: the join keeps only real entities.
+    detail.references = sqlx::query_as(
+        "SELECT e.id, e.type, coalesce(v.content -> 'name', 'null') AS name
+         FROM entity e JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version
+         WHERE e.id = ANY($1) ORDER BY e.id",
+    )
+    .bind(&ids)
+    .fetch_all(&pool)
+    .await?;
+    Ok(Json(detail))
 }
 
 #[derive(Serialize, sqlx::FromRow)]

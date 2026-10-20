@@ -53,7 +53,8 @@ rule sections plus the closure of its character's entities, and later only what 
   `current`, a taken id on create too. The server checks only the shape (id `prefix.lowercase_words`, a type, a
   name); the client checks the rest with the engine. A variant gets a `variant_of` relation to its original
   (`GET /entities/{id}` returns `variantOf`; closures do not follow it). `GET /entities/{id}` also lists the
-  entity's outgoing `relations` with each target's name: a spell page shows its levels (`on_spell_list`) and its
+  entity's outgoing `relations` with each target's name, and `references` (`{id, type, name}` of the entities its
+  content names, found like the closure's ids, so `has('feat.x')` can show a name): a spell page shows its levels (`on_spell_list`) and its
   `spell` block; a class or domain page lists its spells by level (`/catalog/spell-list/{id}`).
 - A spell's levels are edited with it (owner's choice): `spellLists: [{to, level}]` in the create / update body
   replaces its `on_spell_list` relations (a class, prestige class or domain of the catalog, once each, level 0–30;

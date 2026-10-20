@@ -1,5 +1,6 @@
 import { useParams } from 'react-router'
 import type { BreakdownRow as EngineRow } from 'dnd-engine'
+import { useEntityInfo } from '../../components/EntityPanel'
 import { BreakdownRow } from '../../components/grimoire'
 import { formatModifier, formatNumber, splitDice } from '../../format'
 import { bonusTypes, breakdownStatus, breakdownSteps, fr, statLabels } from '../../i18n/fr'
@@ -10,6 +11,7 @@ import { CharacterHeader } from './CharacterLayout'
 export function BreakdownScreen() {
   const key = useParams().key!
   const { sheet, stat, record, name, entity } = useSheet()
+  const openInfo = useEntityInfo()
   const total = stat(key)
   const rows = sheet.explain(key).asJsReadonlyArrayView()
   const label = statLabels[key] ?? (entity(key) ? name(key) : key)
@@ -40,6 +42,7 @@ export function BreakdownScreen() {
               value={display(row.value, row.step === 'add' || isModifier(row.source))}
               out={row.status !== 'applied'}
               to={row.step === 'component' && stat(row.source) != null ? `/characters/${record.id}/stat/${row.source}` : undefined}
+              onOpen={row.step !== 'component' && entity(row.source) ? () => openInfo(row.source) : undefined}
             />
           ))}
           <div className="breakdown-total">
