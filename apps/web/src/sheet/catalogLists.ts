@@ -1,24 +1,26 @@
-import { api } from '../api/client'
+import type { GroupApi } from '../api/client'
 import type { EntitySummary } from '../api/types'
 
+/** By group, then type: two groups see different rulesets. */
 const cache = new Map<string, Promise<EntitySummary[]>>()
 
-/** Every entity of a type (id, name, labels), all pages, fetched once per page load: lists for the pickers. */
-export function allOfType(type: string): Promise<EntitySummary[]> {
-  let list = cache.get(type)
+/** Every entity of a type (id, name, labels) as the group sees it, all pages, fetched once per page load: lists for the pickers. */
+export function allOfType(groupApi: GroupApi, type: string): Promise<EntitySummary[]> {
+  const key = `${groupApi.groupId}/${type}`
+  let list = cache.get(key)
   if (!list) {
     list = (async () => {
       const items: EntitySummary[] = []
       let after: string | undefined
       do {
-        const page = await api.entities(type, after, 200)
+        const page = await groupApi.entities(type, after, 200)
         items.push(...page.items)
         after = page.next
       } while (after)
       return items
     })()
-    list.catch(() => cache.delete(type))
-    cache.set(type, list)
+    list.catch(() => cache.delete(key))
+    cache.set(key, list)
   }
   return list
 }

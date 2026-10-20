@@ -36,8 +36,11 @@ const NUMBER = /^-?\d+(\.\d+)?$/
 /** The id prefix of a type, when it is not the type itself. */
 const ID_PREFIX: Record<string, string> = { class_power: 'power', prestige_class: 'class' }
 
-/** `feat` + « Volonté de fer » → `feat.volonte_de_fer`. Ids are English by convention: the English name goes first. */
-export function idFrom(type: string, name: string): string {
+/**
+ * `feat` + « Volonté de fer » → `feat.volonte_de_fer`, or `eberron:feat.volonte_de_fer` in the ruleset `eberron`. Ids
+ * are English by convention: the English name goes first.
+ */
+export function idFrom(type: string, name: string, slug?: string): string {
   const words = name
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
@@ -46,7 +49,9 @@ export function idFrom(type: string, name: string): string {
     .replace(/æ/g, 'ae')
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '')
-  return words ? `${ID_PREFIX[type] ?? type}.${words}` : ''
+  if (!words) return ''
+  const id = `${ID_PREFIX[type] ?? type}.${words}`
+  return slug ? `${slug}:${id}` : id
 }
 
 export function emptyEffect(): EffectDraft {

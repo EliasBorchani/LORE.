@@ -13,6 +13,10 @@ export interface Invitation {
   email: string
   role: 'member' | 'admin'
   expiresAt: string
+  /** The group the link leads into. */
+  group?: { id: string; name: string }
+  /** The email has an account already: its owner logs in, then joins. */
+  account: boolean
 }
 
 export interface Me {
@@ -79,6 +83,7 @@ export interface SpellVariant {
 export interface CharacterSummary {
   id: string
   ownerId: number
+  groupId: string | null
   name: string
   level: number
   archived: boolean
@@ -89,6 +94,7 @@ export interface CharacterSummary {
 export interface CharacterRecord {
   id: string
   ownerId: number
+  groupId: string | null
   version: number
   updatedAt: string
   archived: boolean
@@ -154,6 +160,17 @@ export interface Closure {
   catalog: CatalogJson
   versions: Record<string, number>
   missing: string[]
+  /** Entities sent whose content is a house rule of the group, by official id. */
+  houseRules?: Record<string, HouseRule>
+}
+
+/** A ruleset entity that replaces an official one in the group (« règle maison »). */
+export interface HouseRule {
+  /** The override's own id, the one to edit. */
+  id: string
+  ruleset: string
+  rulesetName: string
+  version: number
 }
 
 export interface EntitySummary {
@@ -161,6 +178,7 @@ export interface EntitySummary {
   type: string
   name: Localized | null
   labels?: string[] | null
+  houseRule?: HouseRule
 }
 
 export interface SpellListEntry {
@@ -204,8 +222,14 @@ export interface EntityDetail {
   type: string
   version: number
   content: Entity
-  /** The entity a team copy started from. */
+  /** The entity a team copy started from (before rulesets). */
   variantOf?: string
+  /** The official entity this house rule replaces in the group. */
+  overrides?: string
+  /** The ruleset it belongs to; absent for official content. */
+  ruleset?: { slug: string; name: string }
+  /** The caller may change it. */
+  editable: boolean
   /** Outgoing relations, each with the target's name (null when the target is not in the catalog). */
   relations?: EntityRelation[]
   /** The entities its content names (`has('feat.power_attack')`). */
@@ -246,4 +270,90 @@ export interface EntityVersion {
 export interface SpellLevel {
   to: string
   level: number
+}
+
+export type Permission = 'see_characters' | 'edit_characters' | 'edit_content' | 'invite' | 'moderator' | 'admin'
+
+export interface GroupSummary {
+  id: string
+  name: string
+  rpg: string
+  archived: boolean
+  /** The caller's permissions. */
+  permissions: Permission[]
+}
+
+export interface GroupRuleset {
+  slug: string
+  name: string
+  visibility: 'private' | 'public'
+  archived: boolean
+  /** The caller may change its content. */
+  editable: boolean
+}
+
+/** Two rulesets of the group override the same entity: `winner` (the last in order) applies. */
+export interface RulesetConflict {
+  id: string
+  rulesets: string[]
+  winner: string
+}
+
+export interface GroupDetail extends GroupSummary {
+  rulesets: GroupRuleset[]
+  conflicts: RulesetConflict[]
+}
+
+export interface Member {
+  userId: number
+  login: string
+  permissions: Permission[]
+  joinedAt: string
+}
+
+export interface InviteReply {
+  email: string
+  sent: boolean
+  /** Only when the mail could not be sent: pass it on another way. */
+  link?: string
+  expiresAt: string
+}
+
+export type RulesetAccess = 'read' | 'edit' | 'own'
+
+export interface RulesetSummary {
+  slug: string
+  name: string
+  rpg: string
+  visibility: 'private' | 'public'
+  archived: boolean
+  access: 'own' | 'edit'
+}
+
+export interface Person {
+  id: number
+  login: string
+}
+
+export interface RulesetDetail {
+  slug: string
+  name: string
+  rpg: string
+  visibility: 'private' | 'public'
+  archived: boolean
+  access: RulesetAccess
+  createdAt: string
+  /** Only for its owner and editors (logins are emails). */
+  owner?: Person
+  editors?: Person[]
+  entities: number
+}
+
+export interface RulesetEntity {
+  id: string
+  type: string
+  name: Localized | null
+  labels?: string[] | null
+  overrides?: string
+  version: number
 }

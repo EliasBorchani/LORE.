@@ -86,4 +86,22 @@ class SkillsTest {
         assertEquals("-9", s.skill("skill.swim").total)
         assertEquals("1", s.skill("skill.knowledge_arcana").total)
     }
+
+    @Test
+    fun aHomebrewSkillWorksLikeAnOfficialOne() {
+        val homebrew = catalog.replace(
+            "\"entities\": [",
+            """"entities": [
+            {"id": "eberron:skill.airship_piloting", "type": "skill", "name": {"en": "Airship Piloting"}, "skill": {"ability": "dex"},
+             "effects": [{"target": "skill.balance", "op": "add", "value": 2, "bonusType": "untyped", "condition": "@eberron:skill.airship_piloting.ranks >= 5"}]},""",
+        )
+        val records = (1..4).joinToString(",") { """{"level": $it, "classId": "class.rogue", "classLevel": $it}""" }
+        val character = """
+            {"id": "c", "name": "C", "baseAbilities": {"str": 12, "dex": 14, "con": 10, "int": 12, "wis": 10, "cha": 10},
+             "levels": [$records], "skillRanks": {"eberron:skill.airship_piloting": 5}, "items": []}
+        """
+        val s = SheetEngine(homebrew).open(character)
+        assertEquals("7", s.skill("eberron:skill.airship_piloting").total)
+        assertEquals("4", s.skill("skill.balance").total)
+    }
 }

@@ -1,5 +1,6 @@
 //! Content written in the app (PRD 5: the structured editor). Every save is a new entity version with its author
-//! and note, as an import makes. Team content is open to every member; official content only to admins.
+//! and note, as an import makes. Homebrew goes into a ruleset its owner and editors change (docs/prd-multi.md);
+//! official content only the platform admin changes.
 
 use std::collections::BTreeSet;
 
@@ -7,13 +8,15 @@ use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 use sqlx::{PgConnection, PgPool};
 
-use crate::auth::{CurrentUser, Role};
+use super::ids;
+use crate::access::{self, RulesetRow};
+use crate::auth::CurrentUser;
 use crate::error::AppError;
 
-pub const TEAM: &str = "team";
-/// From a team copy to the entity it started from.
+/// From a team copy to the entity it started from (before rulesets; still read, no longer written).
 pub const VARIANT_OF: &str = "variant_of";
 pub const ON_SPELL_LIST: &str = "on_spell_list";
+pub const DEFAULT_RPG: &str = "dnd35";
 const LIST_TYPES: [&str; 3] = ["class", "prestige_class", "domain"];
 const MAX_SPELL_LEVEL: i32 = 30;
 
@@ -30,9 +33,13 @@ pub struct ListEntry {
 pub struct NewEntity {
     pub entity: Value,
     pub note: Option<String>,
-    /// The entity this one copies: a team variant of official content keeps a link to its original.
-    pub variant_of: Option<String>,
-    /// A spell's levels; absent = none.
+    /// The ruleset (slug) it goes into; absent = official content (platform admin).
+    pub ruleset: Option<String>,
+    /// Official content only: its RPG (default `dnd35`).
+    pub rpg: Option<String>,
+    /// The official entity it replaces in the groups using the ruleset (a house rule).
+    pub overrides: Option<String>,
+    /// A spell's levels; absent = none (or the official entity's, for a house rule).
     pub spell_lists: Option<Vec<ListEntry>>,
 }
 
@@ -56,34 +63,113 @@ pub struct Saved {
     pub content: Value,
 }
 
+/// Where a new entity goes: its RPG, and its ruleset unless it is official.
+struct Target {
+    rpg: String,
+    ruleset: Option<RulesetRow>,
+}
+
+async fn target(
+    pool: &PgPool,
+    user: CurrentUser,
+    id: &str,
+    request: &NewEntity,
+) -> Result<Target, AppError> {
+    let slug = ids::parse(id).and_then(|id| id.slug);
+    match &request.ruleset {
+        Some(ruleset) => {
+            let (row, access) = access::ruleset(pool, user, ruleset).await?;
+            access::edits_ruleset(&row, access)?;
+            if slug != Some(row.slug.as_str()) {
+                return Err(AppError::BadRequest(format!(
+                    "id: content of the ruleset {0} starts with {0}:",
+                    row.slug
+                )));
+            }
+            Ok(Target {
+                rpg: row.rpg.clone(),
+                ruleset: Some(row),
+            })
+        }
+        None => {
+            access::edits_official(user)?;
+            if slug.is_some() || request.overrides.is_some() {
+                return Err(AppError::BadRequest(
+                    "ruleset: homebrew ids and house rules belong to a ruleset".into(),
+                ));
+            }
+            let rpg = request.rpg.clone().unwrap_or_else(|| DEFAULT_RPG.into());
+            let known: bool = sqlx::query_scalar("SELECT EXISTS (SELECT 1 FROM rpg WHERE id = $1)")
+                .bind(&rpg)
+                .fetch_one(pool)
+                .await?;
+            if !known {
+                return Err(AppError::BadRequest(format!("rpg: {rpg} is unknown")));
+            }
+            Ok(Target { rpg, ruleset: None })
+        }
+    }
+}
+
 pub async fn create(
     pool: &PgPool,
     user: CurrentUser,
     request: NewEntity,
 ) -> Result<Saved, AppError> {
-    let mut entity = request.entity;
+    let entity = request.entity.clone();
     let (id, entity_type) = check_shape(&entity)?;
-    if user.role != Role::Admin || entity.get("provenance").is_none() {
-        entity["provenance"] = TEAM.into();
-    }
+    let target = target(pool, user, &id, &request).await?;
     let mut tx = pool.begin().await?;
     if let Some(current) = current(&mut tx, &id).await? {
         return Err(AppError::Conflict(
             serde_json::to_value(current).expect("serializes"),
         ));
     }
-    if let Some(original) = &request.variant_of {
-        if current(&mut tx, original).await?.is_none() {
-            return Err(AppError::BadRequest(format!(
-                "variantOf: {original} is not in the catalog"
-            )));
+    if let Some(official) = &request.overrides {
+        let found: Option<String> = sqlx::query_scalar(
+            "SELECT type FROM entity WHERE id = $1 AND rpg = $2 AND ruleset_id IS NULL",
+        )
+        .bind(official)
+        .bind(&target.rpg)
+        .fetch_optional(&mut *tx)
+        .await?;
+        match found {
+            None => {
+                return Err(AppError::BadRequest(format!(
+                    "overrides: {official} is not official content of this RPG"
+                )));
+            }
+            Some(official_type) if official_type != entity_type => {
+                return Err(AppError::BadRequest(format!(
+                    "overrides: {official} is a {official_type}, not a {entity_type}"
+                )));
+            }
+            Some(_) => {}
         }
-        sqlx::query("INSERT INTO entity_relation (from_id, to_id, relation) VALUES ($1, $2, $3)")
-            .bind(&id)
-            .bind(original)
-            .bind(VARIANT_OF)
-            .execute(&mut *tx)
-            .await?;
+    }
+    let author = login(&mut tx, user).await?;
+    sqlx::query(
+        "INSERT INTO entity (id, type, provenance, source, current_version, rpg, ruleset_id, overrides)
+         VALUES ($1, $2, $3, $4, 1, $5, $6, $7)",
+    )
+    .bind(&id)
+    .bind(&entity_type)
+    .bind(entity.get("provenance").and_then(Value::as_str))
+    .bind(entity.get("source").and_then(Value::as_str))
+    .bind(&target.rpg)
+    .bind(target.ruleset.as_ref().map(|r| r.id))
+    .bind(&request.overrides)
+    .execute(&mut *tx)
+    .await
+    .map_err(|error| match &error {
+        sqlx::Error::Database(db) if db.is_unique_violation() => AppError::BadRequest(format!(
+            "overrides: this ruleset already has a house rule for {}",
+            request.overrides.as_deref().unwrap_or_default()
+        )),
+        _ => error.into(),
+    })?;
+    if let Some(official) = &request.overrides {
+        inherit(&mut tx, &id, official).await?;
     }
     let lists = match request.spell_lists {
         Some(lists) => {
@@ -91,16 +177,9 @@ pub async fn create(
             write_lists(&mut tx, &id, &lists).await?;
             Some(lists)
         }
-        None => (entity_type == "spell").then(Vec::new),
+        None if entity_type == "spell" => Some(current_lists(&mut tx, &id).await?),
+        None => None,
     };
-    let author = login(&mut tx, user).await?;
-    sqlx::query("INSERT INTO entity (id, type, provenance, source, current_version) VALUES ($1, $2, $3, $4, 1)")
-        .bind(&id)
-        .bind(&entity_type)
-        .bind(entity.get("provenance").and_then(Value::as_str))
-        .bind(entity.get("source").and_then(Value::as_str))
-        .execute(&mut *tx)
-        .await?;
     write_version(
         &mut tx,
         &id,
@@ -120,8 +199,47 @@ pub async fn create(
     })
 }
 
-/// Saves a new version. The id and the type never change; a member may not edit official content or turn team
-/// content into official content. Saving the same content again writes nothing.
+/// A house rule starts with the relations (class skills, spell levels…) and the class table of the entity it
+/// replaces: the group sees the override's, not the official ones. Does nothing when it already has its own.
+pub async fn inherit(conn: &mut PgConnection, id: &str, official: &str) -> Result<(), sqlx::Error> {
+    let has_relations: bool = sqlx::query_scalar(
+        "SELECT EXISTS (SELECT 1 FROM entity_relation WHERE from_id = $1 AND relation <> $2)",
+    )
+    .bind(id)
+    .bind(VARIANT_OF)
+    .fetch_one(&mut *conn)
+    .await?;
+    if !has_relations {
+        sqlx::query(
+            "INSERT INTO entity_relation (from_id, to_id, relation, extra)
+             SELECT $1, to_id, relation, extra FROM entity_relation WHERE from_id = $2 AND relation <> $3",
+        )
+        .bind(id)
+        .bind(official)
+        .bind(VARIANT_OF)
+        .execute(&mut *conn)
+        .await?;
+    }
+    let has_rows: bool =
+        sqlx::query_scalar("SELECT EXISTS (SELECT 1 FROM progression_row WHERE class_id = $1)")
+            .bind(id)
+            .fetch_one(&mut *conn)
+            .await?;
+    if !has_rows {
+        sqlx::query(
+            "INSERT INTO progression_row (rpg, class_id, level, content)
+             SELECT rpg, $1, level, jsonb_set(content, '{classId}', to_jsonb($1::text))
+             FROM progression_row WHERE class_id = $2",
+        )
+        .bind(id)
+        .bind(official)
+        .execute(&mut *conn)
+        .await?;
+    }
+    Ok(())
+}
+
+/// Saves a new version. The id and the type never change. Saving the same content again writes nothing.
 pub async fn update(
     pool: &PgPool,
     user: CurrentUser,
@@ -133,6 +251,22 @@ pub async fn update(
     if entity_id != id {
         return Err(AppError::BadRequest("an entity id never changes".into()));
     }
+    let not_found = || AppError::NotFound(format!("{id}: unknown entity"));
+    let ruleset_id: Option<Option<i64>> =
+        sqlx::query_scalar("SELECT ruleset_id FROM entity WHERE id = $1")
+            .bind(id)
+            .fetch_optional(pool)
+            .await?;
+    match ruleset_id.ok_or_else(not_found)? {
+        Some(ruleset_id) => {
+            let Some((row, Some(access))) = access::ruleset_by_id(pool, user, ruleset_id).await?
+            else {
+                return Err(not_found());
+            };
+            access::edits_ruleset(&row, access)?;
+        }
+        None => access::edits_official(user)?,
+    }
     let mut tx = pool.begin().await?;
     let current = sqlx::query_as::<_, Saved>(
         "SELECT e.id, e.type, e.current_version AS version, v.content
@@ -142,21 +276,7 @@ pub async fn update(
     .bind(id)
     .fetch_optional(&mut *tx)
     .await?
-    .ok_or_else(|| AppError::NotFound(format!("{id}: unknown entity")))?;
-    if user.role != Role::Admin {
-        let team =
-            |content: &Value| content.get("provenance").and_then(Value::as_str) == Some(TEAM);
-        if !team(&current.content) {
-            return Err(AppError::Forbidden(
-                "only an admin edits official content".into(),
-            ));
-        }
-        if !team(&entity) {
-            return Err(AppError::Forbidden(
-                "team content keeps the provenance 'team'".into(),
-            ));
-        }
-    }
+    .ok_or_else(not_found)?;
     if entity_type != current.r#type {
         return Err(AppError::BadRequest("an entity type never changes".into()));
     }
@@ -219,17 +339,10 @@ fn check_shape(entity: &Value) -> Result<(String, String), AppError> {
         .get("id")
         .and_then(Value::as_str)
         .ok_or_else(|| bad("id: missing"))?;
-    let is_id = id.split_once('.').is_some_and(|(prefix, name)| {
-        !prefix.is_empty()
-            && !name.is_empty()
-            && prefix.chars().all(|c| c.is_ascii_lowercase() || c == '_')
-            && name
-                .chars()
-                .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_')
-    });
+    let is_id = ids::parse(id).is_some();
     if !is_id {
         return Err(bad(
-            "id: lowercase English words joined by '_' after a type prefix, as in feat.power_attack",
+            "id: lowercase English words joined by '_' after a type prefix, as in feat.power_attack (eberron:feat.power_attack in a ruleset)",
         ));
     }
     let entity_type = object

@@ -73,7 +73,7 @@ async fn login_gives_tokens_that_open_the_api(pool: PgPool) {
         (&me.body["login"], &me.body["role"]),
         (&json!("Elias"), &json!("admin"))
     );
-    let core = send(&app, "GET", "/catalog/core", None, Some(access)).await;
+    let core = send(&app, "GET", "/groups", None, Some(access)).await;
     assert_eq!(core.status, StatusCode::OK);
 }
 
@@ -102,13 +102,13 @@ async fn content_needs_a_valid_access_token(pool: PgPool) {
         Some(other_secret.as_str()),
         Some(expired.as_str()),
     ] {
-        let reply = send(&app, "GET", "/catalog/core", None, token).await;
+        let reply = send(&app, "GET", "/groups", None, token).await;
         assert_eq!(reply.status, StatusCode::UNAUTHORIZED, "{token:?}");
         assert_eq!(reply.headers["www-authenticate"], "Bearer");
     }
     let valid = signed(TEST_SECRET, 600);
     assert_eq!(
-        send(&app, "GET", "/catalog/core", None, Some(&valid))
+        send(&app, "GET", "/groups", None, Some(&valid))
             .await
             .status,
         StatusCode::OK

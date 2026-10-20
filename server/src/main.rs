@@ -4,7 +4,9 @@ use std::path::PathBuf;
 use anyhow::Context;
 use clap::{Parser, Subcommand};
 use server::auth::{AuthConfig, Role, invitations, users};
+use server::catalog::import::Target;
 use server::mail::{self, SmtpConfig};
+use server::state::Mailer;
 use sqlx::postgres::PgPoolOptions;
 use tracing_subscriber::EnvFilter;
 
@@ -26,10 +28,21 @@ enum Command {
         /// Signs access tokens; at least 32 bytes. Changing it logs everyone out within 15 minutes.
         #[arg(long, env = "JWT_SECRET", hide_env_values = true)]
         jwt_secret: String,
+        /// The address of the web app, start of invitation links sent from the app.
+        #[arg(long, env = "APP_URL")]
+        app_url: Option<String>,
+        #[command(flatten)]
+        smtp: SmtpArgs,
     },
     /// Import a catalog file (the engine's JSON format); only changed entities get a new version.
     Import {
         path: PathBuf,
+        /// Official content of this RPG (default dnd35).
+        #[arg(long)]
+        rpg: Option<String>,
+        /// Content of this ruleset instead (its ids start with `<slug>:`).
+        #[arg(long, conflicts_with = "rpg")]
+        ruleset: Option<String>,
         #[arg(long)]
         author: String,
         #[arg(long)]
@@ -38,8 +51,31 @@ enum Command {
         #[arg(long)]
         dry_run: bool,
     },
-    /// Write the current catalog in the format `import` reads.
-    ExportCatalog { path: PathBuf },
+    /// Write the current catalog of an RPG (default dnd35) or of a ruleset in the format `import` reads.
+    ExportCatalog {
+        path: PathBuf,
+        #[arg(long)]
+        rpg: Option<String>,
+        #[arg(long, conflicts_with = "rpg")]
+        ruleset: Option<String>,
+    },
+    /// Once, after `export`: today's table becomes the first group and its team content a private ruleset
+    /// (docs/prd-multi.md, section 10). Prints the id map; nothing to do on a second run.
+    MigrateGroups {
+        /// Login of the owner: platform admin, group admin and ruleset owner.
+        #[arg(long)]
+        owner: String,
+        #[arg(long)]
+        group_name: String,
+        /// Slug of the ruleset: team ids become `<slug>:<id>`, for good.
+        #[arg(long)]
+        ruleset: String,
+        #[arg(long)]
+        ruleset_name: String,
+        /// Report what would change, then roll back: nothing is written.
+        #[arg(long)]
+        dry_run: bool,
+    },
     /// Write the whole database, history included, into a new folder (one file per entity and per character).
     Export { dir: PathBuf },
     /// Load a folder written by `export` into an empty database, all or nothing.
@@ -86,6 +122,41 @@ enum UserCommand {
     Password { login: String },
     /// Block logins and end every session of the user.
     Disable { login: String },
+    /// Change what the account may create (defaults: 10 groups as admin, 10 rulesets, 20 pending invitations).
+    Limits {
+        login: String,
+        #[arg(long)]
+        groups: Option<i32>,
+        #[arg(long)]
+        rulesets: Option<i32>,
+        #[arg(long)]
+        invitations: Option<i32>,
+    },
+}
+
+#[derive(clap::Args)]
+struct SmtpArgs {
+    #[arg(long, env = "SMTP_HOST", default_value = "smtp.gmail.com")]
+    smtp_host: String,
+    #[arg(long, env = "SMTP_USER")]
+    smtp_user: Option<String>,
+    #[arg(long, env = "SMTP_PASSWORD", hide_env_values = true)]
+    smtp_password: Option<String>,
+    /// `Name <address>`; default `LORE. <SMTP_USER>`.
+    #[arg(long, env = "MAIL_FROM")]
+    mail_from: Option<String>,
+}
+
+impl SmtpArgs {
+    /// `None` when the user or the password is missing or empty.
+    fn config(self) -> Option<SmtpConfig> {
+        Some(SmtpConfig {
+            host: self.smtp_host,
+            user: self.smtp_user.filter(|user| !user.is_empty())?,
+            password: self.smtp_password.filter(|password| !password.is_empty())?,
+            from: self.mail_from,
+        })
+    }
 }
 
 #[tokio::main]
@@ -108,8 +179,19 @@ async fn main() -> anyhow::Result<()> {
         .context("migrations failed")?;
 
     match cli.command {
-        Command::Serve { bind, jwt_secret } => {
-            let state = server::AppState::new(pool, AuthConfig::new(jwt_secret.as_bytes())?);
+        Command::Serve {
+            bind,
+            jwt_secret,
+            app_url,
+            smtp,
+        } => {
+            let mut state = server::AppState::new(pool, AuthConfig::new(jwt_secret.as_bytes())?);
+            if let Some(app_url) = app_url.filter(|url| !url.is_empty()) {
+                state = state.with_mailer(Mailer {
+                    app_url,
+                    smtp: smtp.config(),
+                });
+            }
             let listener = tokio::net::TcpListener::bind(&bind)
                 .await
                 .with_context(|| format!("cannot bind {bind}"))?;
@@ -120,34 +202,67 @@ async fn main() -> anyhow::Result<()> {
         }
         Command::Import {
             path,
+            rpg,
+            ruleset,
             author,
             note,
             dry_run,
         } => {
             let text = std::fs::read_to_string(&path)
                 .with_context(|| format!("cannot read {}", path.display()))?;
-            let catalog = serde_json::from_str(&text)
+            let catalog: serde_json::Value = serde_json::from_str(&text)
                 .with_context(|| format!("{} is not valid JSON", path.display()))?;
+            let target = Target::find(&pool, rpg.as_deref(), ruleset.as_deref()).await?;
             if dry_run {
-                let report =
-                    server::catalog::import::dry_run(&pool, &catalog, &author, note.as_deref())
-                        .await?;
+                let report = server::catalog::import::dry_run(
+                    &pool,
+                    &target,
+                    &catalog,
+                    &author,
+                    note.as_deref(),
+                )
+                .await?;
                 println!("dry run, nothing written: {report}");
             } else {
-                let report =
-                    server::catalog::import::import(&pool, &catalog, &author, note.as_deref())
-                        .await?;
+                let report = server::catalog::import::import(
+                    &pool,
+                    &target,
+                    &catalog,
+                    &author,
+                    note.as_deref(),
+                )
+                .await?;
                 println!("{report}");
             }
         }
-        Command::ExportCatalog { path } => {
-            let catalog = server::catalog::export::export_catalog(&pool).await?;
+        Command::ExportCatalog { path, rpg, ruleset } => {
+            let target = Target::find(&pool, rpg.as_deref(), ruleset.as_deref()).await?;
+            let catalog = server::catalog::export::export_catalog(&pool, &target).await?;
             server::archive::write_json(&path, &catalog)?;
             println!("catalog written to {}", path.display());
         }
         Command::Export { dir } => {
             let counts = server::archive::export::export(&pool, &dir).await?;
             println!("exported to {}: {counts}", dir.display());
+        }
+        Command::MigrateGroups {
+            owner,
+            group_name,
+            ruleset,
+            ruleset_name,
+            dry_run,
+        } => {
+            let options = server::migrate::Options {
+                owner,
+                group_name,
+                ruleset_slug: ruleset,
+                ruleset_name,
+            };
+            let report = server::migrate::migrate_groups(&pool, &options, !dry_run).await?;
+            if dry_run {
+                println!("dry run, nothing written:");
+            }
+            println!("{report}");
         }
         Command::Restore { dir } => {
             let counts = server::archive::restore::restore(&pool, &dir).await?;
@@ -223,6 +338,18 @@ async fn main() -> anyhow::Result<()> {
             UserCommand::Disable { login } => {
                 users::disable(&pool, &login).await?;
                 println!("{login}: disabled, sessions ended");
+            }
+            UserCommand::Limits {
+                login,
+                groups,
+                rulesets,
+                invitations,
+            } => {
+                let (groups, rulesets, invitations) =
+                    users::set_limits(&pool, &login, groups, rulesets, invitations).await?;
+                println!(
+                    "{login}: {groups} groups as admin, {rulesets} rulesets, {invitations} pending invitations"
+                );
             }
         },
     }

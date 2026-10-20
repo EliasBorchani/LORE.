@@ -6,6 +6,7 @@ import { formatModifier, formatNumber, formatThreatRange, splitDice, toInteger }
 import { fr, statLabels } from '../../i18n/fr'
 import { useSheet, type ToggleView } from '../../sheet/SheetContext'
 import { AbilityTiles } from './AbilitiesTab'
+import { useGroupPath } from '../../group/GroupContext'
 
 export function CombatTab() {
   return (
@@ -83,8 +84,9 @@ export function Log() {
 }
 
 function Defenses() {
+  const groupPath = useGroupPath()
   const { stat, record } = useSheet()
-  const to = (key: string) => `/characters/${record.id}/stat/${key}`
+  const to = (key: string) => groupPath(`/characters/${record.id}/stat/${key}`)
   const initiative = stat('initiative')
   const tiles = [
     { key: 'ac.total', label: 'CA', modifier: false },
@@ -112,6 +114,7 @@ function Defenses() {
 }
 
 function Weapon() {
+  const groupPath = useGroupPath()
   const { stat, record, name, entity } = useSheet()
   const attack = stat('attack.melee')
   const ranged = stat('attack.ranged')
@@ -124,7 +127,7 @@ function Weapon() {
   const dice = damage ? splitDice(damage) : null
   const threat = stat('weapon.threat_range')
   const multiplier = stat('weapon.crit_multiplier')
-  const to = (key: string) => `/characters/${record.id}/stat/${key}`
+  const to = (key: string) => groupPath(`/characters/${record.id}/stat/${key}`)
   return (
     <StatBlock title={weapon ? <EntityName id={weapon.id}>{name(weapon.id)}</EntityName> : fr.sheet.weapon} label={fr.sheet.weapon}>
       <div className="weapon-nums">

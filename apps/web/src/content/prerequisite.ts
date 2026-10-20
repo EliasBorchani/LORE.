@@ -10,7 +10,7 @@ export interface PrerequisiteWords {
   levelOf: string
 }
 
-const TOKEN = /has\('([^']+)'\)|level\('([^']+)'\)|level\(\)|@([a-z0-9_.]+)|>=|<=|\band\b|\bor\b/g
+const TOKEN = /has\('([^']+)'\)|level\('([^']+)'\)|level\(\)|@([a-z0-9_.:]+)|>=|<=|\band\b|\bor\b/g
 
 /**
  * `@ability.str.score >= 13 and has('feat.power_attack')` → « Force ≥ 13 et » + Attaque en puissance. [names] holds the
@@ -42,7 +42,7 @@ export function prerequisiteParts(formula: string, names: Map<string, string>, w
       } else text(raw)
     } else if (raw === 'level()') text(words.characterLevel)
     else if (stat) {
-      const skill = /^(skill\.[a-z0-9_]+)\.ranks$/.exec(stat)?.[1]
+      const skill = /^((?:[a-z][a-z0-9_]*:)?skill\.[a-z0-9_]+)\.ranks$/.exec(stat)?.[1]
       if (words.stats[stat]) text(words.stats[stat])
       else if (skill && names.has(skill)) {
         entity(skill, raw)

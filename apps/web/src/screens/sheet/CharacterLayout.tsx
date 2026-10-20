@@ -5,6 +5,7 @@ import { fr } from '../../i18n/fr'
 import { classSummary } from '../../sheet/names'
 import { SheetProvider, useSheet } from '../../sheet/SheetContext'
 import { useLoad } from '../../useLoad'
+import { useGroupPath } from '../../group/GroupContext'
 
 /** Loads the character and the part of the catalog it needs, then gives both to every page under it. */
 export function CharacterLayout() {
@@ -21,7 +22,9 @@ export function CharacterLayout() {
   )
 }
 
-export function CharacterHeader({ back = '/', backLabel = fr.nav.characters }: { back?: string; backLabel?: string }) {
+export function CharacterHeader({ back, backLabel = fr.nav.characters }: { back?: string; backLabel?: string }) {
+  const groupPath = useGroupPath()
+  back ??= groupPath('')
   const { record, name, stat } = useSheet()
   const level = stat('level') ?? String(record.character.levels?.length ?? 0)
   return (
@@ -33,7 +36,7 @@ export function CharacterHeader({ back = '/', backLabel = fr.nav.characters }: {
           </Link>
           <h1 className="type-display-l">{record.character.name}</h1>
         </div>
-        <Link className="btn btn-secondary btn-small" to={`/characters/${record.id}/build`}>
+        <Link className="btn btn-secondary btn-small" to={groupPath(`/characters/${record.id}/build`)}>
           {fr.sheet.build}
         </Link>
       </div>
@@ -46,8 +49,9 @@ export function CharacterHeader({ back = '/', backLabel = fr.nav.characters }: {
 
 /** The sheet with its tabs. */
 export function SheetPage() {
+  const groupPath = useGroupPath()
   const { record } = useSheet()
-  const base = `/characters/${record.id}`
+  const base = groupPath(`/characters/${record.id}`)
   const tabs = [
     { to: base, label: fr.sheet.tabs.combat, end: true },
     { to: `${base}/magic`, label: fr.sheet.tabs.magic },

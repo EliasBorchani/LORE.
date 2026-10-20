@@ -3,9 +3,11 @@ import { StatBlock, StatTile } from '../../components/grimoire'
 import { formatModifier, formatNumber } from '../../format'
 import { abilities, fr, statLabels } from '../../i18n/fr'
 import { useSheet } from '../../sheet/SheetContext'
+import { useGroupPath } from '../../group/GroupContext'
 
 /** Modifier as the number, score under it (Grimoire StatTile rule for abilities). */
 export function AbilityTiles() {
+  const groupPath = useGroupPath()
   const { stat, record } = useSheet()
   return (
     <section className="abilities" aria-label={fr.sheet.tabs.abilities}>
@@ -15,7 +17,7 @@ export function AbilityTiles() {
         if (score == null || mod == null) return null
         return (
           <StatTile key={a.id} value={formatModifier(mod)} label={a.short} extra={formatNumber(score)}
-            to={`/characters/${record.id}/stat/ability.${a.id}.score`} />
+            to={groupPath(`/characters/${record.id}/stat/ability.${a.id}.score`)} />
         )
       })}
     </section>
@@ -50,11 +52,12 @@ export function AbilitiesTab() {
 }
 
 function Fact({ id, statKey, label, value }: { id: string; statKey: string; label: string; value: string }) {
+  const groupPath = useGroupPath()
   return (
     <>
       <dt>{label}</dt>
       <dd>
-        <Link to={`/characters/${id}/stat/${statKey}`}>{value}</Link>
+        <Link to={groupPath(`/characters/${id}/stat/${statKey}`)}>{value}</Link>
       </dd>
     </>
   )

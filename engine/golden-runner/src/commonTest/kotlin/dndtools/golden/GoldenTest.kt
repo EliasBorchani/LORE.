@@ -33,6 +33,31 @@ class GoldenTest {
         }
     }
 
+    /**
+     * The move of team content into a ruleset (`server migrate-groups`) prefixes its ids with the ruleset's slug. The
+     * same sheet must come out: this renames every team id the way the server does (same id pattern) and checks the
+     * verified values again.
+     */
+    @Test
+    fun danaliethWithRulesetIdsGivesTheSameValues() {
+        val catalog = EngineJson.decodeCatalog(danalieth.catalog)
+        val team = catalog.entities.filter { it.provenance == "team" }.map { it.id }.toSet()
+        val id = Regex("""\b(?:[a-z][a-z0-9_]*:)?[a-z][a-z0-9_]*\.[a-z0-9_]+\b""")
+        fun rename(text: String) = id.replace(text) { if (it.value in team) "table:${it.value}" else it.value }
+        val renamed = GoldenCase(
+            "danalieth-ruleset",
+            rename(danalieth.catalog),
+            rename(danalieth.character),
+            rename(danalieth.expected),
+        )
+        assertTrue(rename(danalieth.character) != danalieth.character, "the character names team content")
+
+        val before = GoldenRunner.run(danalieth)
+        val after = GoldenRunner.run(renamed)
+        assertEquals(emptyList(), after.failures)
+        assertEquals(before.checks.map { it.actual }, after.checks.map { it.actual })
+    }
+
     @Test
     fun danaliethIsFastEnough() {
         val catalog = EngineJson.decodeCatalog(danalieth.catalog)

@@ -13,6 +13,7 @@ const names = new Map([
   ['feat.power_attack', 'Attaque en puissance'],
   ['skill.spellcraft', 'Art de la magie'],
   ['class.wizard', 'Magicien'],
+  ['eberron:skill.airship_piloting', 'Pilotage de navire volant'],
 ])
 
 describe('prerequisiteParts', () => {
@@ -29,6 +30,13 @@ describe('prerequisiteParts', () => {
       { text: ' (rangs) ≥ 12 ou niveau de ' },
       { id: 'class.wizard', name: 'Magicien' },
       { text: ' ≥ 5 ou niveau global ≥ 9' },
+    ])
+  })
+
+  it('reads homebrew ids with their ruleset slug', () => {
+    expect(prerequisiteParts('@eberron:skill.airship_piloting.ranks >= 5', names, words)).toEqual([
+      { id: 'eberron:skill.airship_piloting', name: 'Pilotage de navire volant' },
+      { text: ' (rangs) ≥ 5' },
     ])
   })
 

@@ -6,7 +6,11 @@ import { Shell } from './components/Shell'
 import { AccountScreen } from './screens/AccountScreen'
 import { EntityEditorScreen } from './screens/EntityEditorScreen'
 import { CatalogListScreen, CatalogScreen, EntityScreen } from './screens/CatalogScreens'
+import { GroupLayout } from './group/GroupContext'
+import { GroupSettingsScreen } from './screens/GroupSettingsScreen'
+import { GroupsScreen } from './screens/GroupsScreen'
 import { HomeScreen } from './screens/HomeScreen'
+import { RulesetScreen } from './screens/RulesetScreen'
 import { InviteScreen } from './screens/InviteScreen'
 import { LoginScreen } from './screens/LoginScreen'
 import { AbilitiesTab } from './screens/sheet/AbilitiesTab'
@@ -30,33 +34,43 @@ const router = createBrowserRouter([
   {
     element: <Shell />,
     children: [
-      { index: true, element: <HomeScreen /> },
-      { path: 'characters/new', element: <NewCharacterScreen /> },
+      { index: true, element: <GroupsScreen /> },
+      { path: 'account', element: <AccountScreen /> },
+      { path: 'rulesets/:slug', element: <RulesetScreen /> },
       {
-        path: 'characters/:id',
-        element: <CharacterLayout />,
+        // A group's pages: the catalog, characters and editor read through its RPG and rulesets.
+        path: 'g/:groupId',
+        element: <GroupLayout />,
         children: [
+          { index: true, element: <HomeScreen /> },
+          { path: 'settings', element: <GroupSettingsScreen /> },
+          { path: 'characters/new', element: <NewCharacterScreen /> },
           {
-            element: <SheetPage />,
+            path: 'characters/:id',
+            element: <CharacterLayout />,
             children: [
-              { index: true, element: <CombatTab /> },
-              { path: 'magic', element: <MagicTab /> },
-              { path: 'abilities', element: <AbilitiesTab /> },
-              { path: 'skills', element: <SkillsTab /> },
-              { path: 'feats', element: <FeatsTab /> },
+              {
+                element: <SheetPage />,
+                children: [
+                  { index: true, element: <CombatTab /> },
+                  { path: 'magic', element: <MagicTab /> },
+                  { path: 'abilities', element: <AbilitiesTab /> },
+                  { path: 'skills', element: <SkillsTab /> },
+                  { path: 'feats', element: <FeatsTab /> },
+                ],
+              },
+              { path: 'stat/:key', element: <BreakdownScreen /> },
+              { path: 'build', element: <BuildScreen /> },
+              { path: 'level-up', element: <LevelUpScreen /> },
             ],
           },
-          { path: 'stat/:key', element: <BreakdownScreen /> },
-          { path: 'build', element: <BuildScreen /> },
-          { path: 'level-up', element: <LevelUpScreen /> },
+          { path: 'catalog', element: <CatalogScreen /> },
+          { path: 'catalog/:type', element: <CatalogListScreen /> },
+          { path: 'catalog/entity/:id', element: <EntityScreen /> },
+          { path: 'catalog/entity/:id/edit', element: <EntityEditorScreen /> },
+          { path: 'catalog/new', element: <EntityEditorScreen /> },
         ],
       },
-      { path: 'catalog', element: <CatalogScreen /> },
-      { path: 'catalog/:type', element: <CatalogListScreen /> },
-      { path: 'catalog/entity/:id', element: <EntityScreen /> },
-      { path: 'catalog/entity/:id/edit', element: <EntityEditorScreen /> },
-      { path: 'catalog/new', element: <EntityEditorScreen /> },
-      { path: 'account', element: <AccountScreen /> },
     ],
   },
 ])

@@ -21,7 +21,13 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   token stays in memory, the refresh token in `localStorage` (PoC trade-off, httpOnly cookie later); a 401 refreshes
   once and retries.
 - Invitations (`src/screens/InviteScreen.tsx`, outside the login guard): `/invite#<token>` shows the invited email,
-  asks for the password twice and opens the session; the login is the email.
+  asks for the password twice and opens the session; the login is the email. A group invitation for an email that
+  has an account asks to log in, then joins.
+- Groups (`docs/prd-multi.md`): `/` lists the account's groups and opens the only one or the last used
+  (`?all` shows the list). A group's pages live under `/g/<group>/…` (`src/group/GroupContext.tsx`): `useGroup()`
+  gives the group, its permissions, `catalog` (the group-scoped API: every catalog read goes through it) and
+  `path('/catalog/…')` for links. Settings (`GroupSettingsScreen`): members and permissions, invite, rulesets in
+  order (added by slug or pasted page link), new ruleset, leave, archive. Ruleset pages: `/rulesets/<slug>`.
 - The sheet (`src/sheet/SheetContext.tsx`) loads `/characters/{id}` and `/characters/{id}/catalog`, runs `SheetEngine`
   in the page and applies toggles one by one (`setToggleChoice`, `setToggle`, `setToggleValue`).
 - **Play state rule (owner):** the build stores the default toggles (`activeToggles`); at the table, toggles, damage,
@@ -37,8 +43,10 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   Lists come from `GET /entities` (all pages, cached in `src/sheet/catalogLists.ts`); the shared `Picker` ignores
   accents and case. A save that brings new entities calls `reload()` (sheet context) to fetch the catalog again.
 - Content editor (`src/screens/EntityEditorScreen.tsx`, form logic in `src/content/entityForm.ts`): « Nouvelle entrée »
-  (catalog home and each type), « Modifier » (team content, or anything for an admin) and « Créer une variante » (a
-  team copy, id `<original>_team`, linked to its original). A form for the common fields (names, descriptions, labels,
+  (catalog home and each type) into a ruleset of the group the person edits (or official content for the platform
+  admin), « Modifier » when the server says `editable`, and « Règle maison » (a house rule: the content the group
+  sees, id `<slug>:<official id>`, replacing the official entity in groups using the ruleset; badge « Règle maison »
+  in the catalog, the info panel and breakdowns). A form for the common fields (names, descriptions, labels,
   prerequisite, uses per day, effects one card each with target suggestions from the core statistics and the bonus
   types of the core); the category blocks (`item`, `spell`, `skill`…), provenance and source stay a JSON field. The
   engine's `ContentCheck` runs as you type, and a save needs no problem left. A new id follows the English name until

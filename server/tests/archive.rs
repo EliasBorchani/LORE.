@@ -5,7 +5,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use axum::http::StatusCode;
-use common::{send, user_token};
+use common::{official, send, user_token};
 use serde_json::{Value, json};
 use server::archive::export::export;
 use server::archive::restore::restore;
@@ -73,35 +73,49 @@ fn sorted(list: &Value) -> Vec<String> {
 async fn empty_database(pool: &PgPool) {
     sqlx::query(
         "TRUNCATE app_user, refresh_token, entity, entity_version, entity_relation, progression_row, catalog_section,
-                  player_character, player_character_version, player_character_play RESTART IDENTITY CASCADE",
+                  player_character, player_character_version, player_character_play, invitation, ruleset,
+                  ruleset_editor, lore_group, group_member, group_ruleset, id_migration RESTART IDENTITY CASCADE",
     )
     .execute(pool)
     .await
     .unwrap();
 }
 
-/// Catalog with history, three accounts (one admin, one disabled), characters with versions, archive and play state.
-async fn fill(pool: &PgPool) -> String {
+/// Catalog with history, three accounts (one admin, one disabled), a group with a ruleset (a homebrew feat and a
+/// house rule), characters with versions, archive and play state. Returns a character id and the group id.
+async fn fill(pool: &PgPool) -> (String, String) {
     let catalog = golden("catalog.json");
-    import(pool, &catalog, "import", None).await.unwrap();
+    import(pool, &official(), &catalog, "import", None)
+        .await
+        .unwrap();
     let mut changed = catalog.clone();
     changed["entities"][0]["description"]["en"] = json!("A new English text.");
-    import(pool, &changed, "owner", Some("English text"))
+    import(pool, &official(), &changed, "owner", Some("English text"))
         .await
         .unwrap();
 
     let state = common::test_state(pool);
-    let (_, alice) = user_token(&state, "alice", Role::Member).await;
-    user_token(&state, "gm", Role::Admin).await;
+    let (alice_id, alice) = user_token(&state, "alice", Role::Member).await;
+    let (_, gm) = user_token(&state, "gm", Role::Admin).await;
     user_token(&state, "old", Role::Member).await;
     users::disable(pool, "old").await.unwrap();
 
     let app = server::app(state);
+    let group = common::group(&app, &gm, "Table").await;
+    common::join(pool, &group, alice_id, &["see_characters", "edit_content"]).await;
+    common::ruleset(&app, &gm, &group, "maison", "private").await;
+    for body in [
+        json!({ "entity": { "id": "maison:feat.dragon_blood", "type": "feat", "name": { "fr": "Sang de dragon" } }, "ruleset": "maison" }),
+        json!({ "entity": { "id": "maison:feat.power_attack", "type": "feat", "name": { "fr": "Attaque (maison)" } }, "ruleset": "maison", "overrides": "feat.power_attack" }),
+    ] {
+        let saved = send(&app, "POST", "/entities", Some(body), Some(&alice)).await;
+        assert_eq!(saved.status, StatusCode::OK, "{}", saved.body);
+    }
     let created = send(
         &app,
         "POST",
         "/characters",
-        Some(json!({ "character": golden("character.json") })),
+        Some(json!({ "groupId": group, "character": golden("character.json") })),
         Some(&alice),
     )
     .await
@@ -129,7 +143,7 @@ async fn fill(pool: &PgPool) -> String {
         &app,
         "POST",
         "/characters",
-        Some(json!({ "character": { "name": "Bérénice", "baseAbilities": {} } })),
+        Some(json!({ "groupId": group, "character": { "name": "Bérénice", "baseAbilities": {} } })),
         Some(&alice),
     )
     .await
@@ -142,15 +156,17 @@ async fn fill(pool: &PgPool) -> String {
         Some(&alice),
     )
     .await;
-    id
+    (id, group)
 }
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn export_catalog_gives_back_what_was_imported(pool: PgPool) {
     let catalog = golden("catalog.json");
-    import(&pool, &catalog, "import", None).await.unwrap();
+    import(&pool, &official(), &catalog, "import", None)
+        .await
+        .unwrap();
 
-    let exported = export_catalog(&pool).await.unwrap();
+    let exported = export_catalog(&pool, &official()).await.unwrap();
     for key in ["entities", "relations", "progressions"] {
         assert_eq!(sorted(&exported[key]), sorted(&catalog[key]), "{key}");
     }
@@ -159,13 +175,15 @@ async fn export_catalog_gives_back_what_was_imported(pool: PgPool) {
             assert_eq!(&exported[key], value, "section {key}");
         }
     }
-    let again = import(&pool, &exported, "import", None).await.unwrap();
+    let again = import(&pool, &official(), &exported, "import", None)
+        .await
+        .unwrap();
     assert_eq!((again.created, again.updated), (0, 0));
 }
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn export_restore_export_gives_the_same_files(pool: PgPool) {
-    let character_id = fill(&pool).await;
+    let (character_id, _) = fill(&pool).await;
     let (first, second) = (TempDir::new(), TempDir::new());
 
     let before = export(&pool, &first.0).await.unwrap();
@@ -177,7 +195,21 @@ async fn export_restore_export_gives_the_same_files(pool: PgPool) {
             before.characters,
             before.character_versions
         ),
-        (3, 92, 93, 2, 3)
+        (3, 94, 95, 2, 3)
+    );
+    assert_eq!(
+        (
+            before.rpgs,
+            before.rulesets,
+            before.groups,
+            before.group_members
+        ),
+        (1, 1, 1, 2)
+    );
+    assert!(
+        first
+            .join("catalog/entities/feat/maison%3Afeat.power_attack.json")
+            .exists()
     );
     assert!(
         first
@@ -204,7 +236,7 @@ async fn export_restore_export_gives_the_same_files(pool: PgPool) {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn a_restored_database_keeps_logins_history_and_ids(pool: PgPool) {
-    let character_id = fill(&pool).await;
+    let (character_id, group) = fill(&pool).await;
     let archive = TempDir::new();
     export(&pool, &archive.0).await.unwrap();
     empty_database(&pool).await;
@@ -253,20 +285,36 @@ async fn a_restored_database_keeps_logins_history_and_ids(pool: PgPool) {
     let entity = send(
         &app,
         "GET",
-        "/entities/class.warblade/versions",
+        &format!("/groups/{group}/entities/class.warblade/versions"),
         None,
         Some(token),
     )
     .await;
     assert_eq!(entity.status, StatusCode::OK);
+    let house_rule = send(
+        &app,
+        "GET",
+        &format!("/groups/{group}/entities/feat.power_attack"),
+        None,
+        Some(token),
+    )
+    .await;
+    assert_eq!(house_rule.body["id"], json!("maison:feat.power_attack"));
 
     let (new_id, _) = user_token(&state, "newcomer", Role::Member).await;
     assert_eq!(new_id, 4);
+    let next_ruleset: i64 = sqlx::query_scalar(
+        "INSERT INTO ruleset (slug, rpg, owner_id, name, visibility) VALUES ('autre', 'dnd35', 4, 'Autre', 'public') RETURNING id",
+    )
+    .fetch_one(&pool)
+    .await
+    .unwrap();
+    assert_eq!(next_ruleset, 2);
 }
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn restore_refuses_a_filled_database_an_unknown_format_and_a_broken_file(pool: PgPool) {
-    let character_id = fill(&pool).await;
+    let (character_id, _) = fill(&pool).await;
     let archive = TempDir::new();
     export(&pool, &archive.0).await.unwrap();
 
@@ -278,19 +326,11 @@ async fn restore_refuses_a_filled_database_an_unknown_format_and_a_broken_file(p
     let manifest = fs::read_to_string(&manifest_path).unwrap();
     fs::write(
         &manifest_path,
-        manifest.replace("\"format\": 2", "\"format\": 99"),
+        manifest.replace("\"format\": 3", "\"format\": 99"),
     )
     .unwrap();
     let format = restore(&pool, &archive.0).await.unwrap_err();
     assert!(format.to_string().contains("format 99"), "{format:#}");
-    // Format 1 had no relations in entity versions: it still restores.
-    fs::write(
-        &manifest_path,
-        manifest.replace("\"format\": 2", "\"format\": 1"),
-    )
-    .unwrap();
-    restore(&pool, &archive.0).await.unwrap();
-    empty_database(&pool).await;
     fs::write(&manifest_path, manifest).unwrap();
 
     let broken = archive.join(&format!("characters/{character_id}.json"));

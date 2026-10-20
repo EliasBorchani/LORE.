@@ -1,29 +1,34 @@
 import { useCallback, useEffect, useRef, type ReactNode } from 'react'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router'
-import { api } from '../api/client'
+import type { GroupApi } from '../api/client'
 import type { EntityDetail } from '../api/types'
 import { fr, typeName } from '../i18n/fr'
 import { EntitySummary } from '../screens/EntitySummary'
 import { entityName } from '../sheet/names'
 import { useLoad } from '../useLoad'
 import { Badge, ErrorNotice, Icon, Loading } from './grimoire'
+import { useGroupApi, useGroupPath } from '../group/GroupContext'
 
 const INFO = 'info'
+/** By group, then id: a house rule changes what one group sees. */
 const cache = new Map<string, Promise<EntityDetail>>()
 
-function load(id: string): Promise<EntityDetail> {
-  let detail = cache.get(id)
+function load(groupApi: GroupApi, id: string): Promise<EntityDetail> {
+  const key = `${groupApi.groupId}/${id}`
+  let detail = cache.get(key)
   if (!detail) {
-    detail = api.entity(id)
-    detail.catch(() => cache.delete(id))
-    cache.set(id, detail)
+    detail = groupApi.entity(id)
+    detail.catch(() => cache.delete(key))
+    cache.set(key, detail)
   }
   return detail
 }
 
-/** After an edit, the panel must not show the old version. */
-export function forgetEntityInfo(id: string) {
-  cache.delete(id)
+/** After an edit, the panel must not show the old version (an override is cached under its official id too). */
+export function forgetEntityInfo(...ids: string[]) {
+  for (const key of [...cache.keys()]) {
+    if (ids.some((id) => key.endsWith(`/${id}`))) cache.delete(key)
+  }
 }
 
 /**
@@ -92,7 +97,9 @@ export function EntityPanel() {
 }
 
 function PanelBody({ id, close }: { id: string; close: () => void }) {
-  const { data, error, reload } = useLoad(() => load(id), id)
+  const groupPath = useGroupPath()
+  const groupApi = useGroupApi()
+  const { data, error, reload } = useLoad(() => load(groupApi, id), `${groupApi.groupId}/${id}`)
   return (
     <div className="entity-panel-body">
       <header className="entity-panel-head">
@@ -100,7 +107,7 @@ function PanelBody({ id, close }: { id: string; close: () => void }) {
           {data && <span className="muted">{typeName(data.type)}</span>}
           <h2 className="block-title">{entityName(data?.content, id)}</h2>
         </span>
-        {data && <Badge provenance={data.content.provenance} />}
+        {data && <Badge provenance={data.content.provenance} ruleset={data.ruleset?.name} houseRule={data.overrides != null} />}
         <button type="button" className="info-button" aria-label={fr.panel.close} onClick={close}>
           <Icon name="close" />
         </button>
@@ -110,7 +117,7 @@ function PanelBody({ id, close }: { id: string; close: () => void }) {
       {data && (
         <>
           <EntitySummary detail={data} />
-          <Link className="btn btn-secondary" to={`/catalog/entity/${encodeURIComponent(id)}`}>{fr.panel.open}</Link>
+          <Link className="btn btn-secondary" to={groupPath(`/catalog/entity/${encodeURIComponent(id)}`)}>{fr.panel.open}</Link>
         </>
       )}
     </div>

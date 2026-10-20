@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
-import { api } from '../../api/client'
 import type { EntitySummary, LevelRecord, SpellListEntry } from '../../api/types'
 import { Loading, StatBlock } from '../../components/grimoire'
 import { EntityName, InfoButton } from '../../components/EntityPanel'
@@ -12,6 +11,7 @@ import { abilities, fr, labelNames } from '../../i18n/fr'
 import { useSheet } from '../../sheet/SheetContext'
 import { messageOf } from '../../useLoad'
 import { skillDetails, sortedSkills } from './SkillsTab'
+import { useGroupApi, useGroupPath } from '../../group/GroupContext'
 
 const RECENT_LEVELS = 6
 
@@ -19,6 +19,7 @@ const RECENT_LEVELS = 6
 const xpForLevel = (n: number) => (n * (n - 1) * 1000) / 2
 
 export function BuildScreen() {
+  const groupPath = useGroupPath()
   const { record } = useSheet()
   return (
     <>
@@ -28,7 +29,7 @@ export function BuildScreen() {
             <span className="muted">{fr.build.title}</span>
             <h1 className="type-display-l">{record.character.name}</h1>
           </div>
-          <Link className="btn btn-primary btn-small" to={`/characters/${record.id}`}>{fr.build.done}</Link>
+          <Link className="btn btn-primary btn-small" to={groupPath(`/characters/${record.id}`)}>{fr.build.done}</Link>
         </div>
       </header>
       <Experience />
@@ -55,6 +56,7 @@ function Experience() {
 }
 
 function Levels() {
+  const groupPath = useGroupPath()
   const { record, sheet, name } = useSheet()
   const [all, setAll] = useState(false)
   const failed = new Set(
@@ -66,7 +68,7 @@ function Levels() {
   return (
     <StatBlock title={fr.build.levels} aside={<span className="muted">{fr.build.newestFirst}</span>}>
       <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-        <Link className="btn btn-primary btn-small" to={`/characters/${record.id}/level-up`}>{fr.editor.addLevel}</Link>
+        <Link className="btn btn-primary btn-small" to={groupPath(`/characters/${record.id}/level-up`)}>{fr.editor.addLevel}</Link>
         <RemoveLastLevel />
       </div>
       <div>
@@ -160,6 +162,7 @@ function ClassSpells(props: {
   reload: () => void
 }) {
   const { classId, mode, known, record, name, saveCharacter, reload } = props
+  const groupApi = useGroupApi()
   const [list, setList] = useState<SpellListEntry[] | null>(null)
   const [adding, setAdding] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -182,7 +185,7 @@ function ClassSpells(props: {
 
   function open() {
     setAdding(true)
-    if (!list) api.spellList(classId).then(setList, (error) => setMessage(messageOf(error)))
+    if (!list) groupApi.spellList(classId).then(setList, (error) => setMessage(messageOf(error)))
   }
 
   const spellName = (id: string) => localized(list?.find((s) => s.id === id)?.name) ?? name(id)
@@ -312,6 +315,7 @@ function clean(ranks: Record<string, number>): Record<string, number> {
 }
 
 function Items() {
+  const groupApi = useGroupApi()
   const { record, name, saveCharacter, reload } = useSheet()
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
@@ -335,7 +339,7 @@ function Items() {
 
   function open() {
     setAdding(true)
-    if (!catalog) allOfType('item').then(setCatalog, (error) => setMessage(messageOf(error)))
+    if (!catalog) allOfType(groupApi, 'item').then(setCatalog, (error) => setMessage(messageOf(error)))
   }
   const itemName = (id: string) => localized(catalog?.find((i) => i.id === id)?.name) ?? name(id)
 

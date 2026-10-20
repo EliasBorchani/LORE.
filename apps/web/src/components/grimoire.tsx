@@ -3,7 +3,10 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { fr } from '../i18n/fr'
 
-export function Badge({ provenance }: { provenance?: string }) {
+/** Where content comes from: a house rule or another entity of a ruleset (by name), else its provenance. */
+export function Badge({ provenance, ruleset, houseRule }: { provenance?: string; ruleset?: string; houseRule?: boolean }) {
+  if (houseRule) return <span className="badge badge-team">{fr.catalog.houseRule}</span>
+  if (ruleset) return <span className="badge badge-team">{ruleset}</span>
   if (!provenance) return null
   return provenance === 'official' ? (
     <span className="badge badge-official">{fr.catalog.official}</span>
@@ -90,11 +93,12 @@ export function BreakdownRow(props: { source: string; detail: string; value: str
   )
 }
 
-export function Icon({ name }: { name: 'back' | 'chevron' | 'person' | 'book' | 'gear' | 'check' | 'plus' | 'info' | 'close' }) {
+export function Icon({ name }: { name: 'back' | 'chevron' | 'person' | 'people' | 'book' | 'gear' | 'check' | 'plus' | 'info' | 'close' }) {
   const paths: Record<typeof name, ReactNode> = {
     back: <path d="m15 18-6-6 6-6" />,
     chevron: <path d="m9 18 6-6-6-6" />,
     person: <><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></>,
+    people: <><circle cx="9" cy="8" r="3.5" /><path d="M2 20a7 7 0 0 1 14 0" /><circle cx="17" cy="7" r="3" /><path d="M17.5 13a6 6 0 0 1 4.5 6" /></>,
     book: <path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2.5zM8 7h7" />,
     gear: <><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" /></>,
     check: <path d="M20 6 9 17l-5-5" />,

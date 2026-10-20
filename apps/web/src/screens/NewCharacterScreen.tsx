@@ -7,12 +7,14 @@ import { abilities, fr } from '../i18n/fr'
 import { allOfType } from '../sheet/catalogLists'
 import { localized } from '../sheet/names'
 import { messageOf } from '../useLoad'
+import { useGroup } from '../group/GroupContext'
 
 /**
  * Name, race, alignment and the six scores typed by hand (owner's choice). The character starts with no level: the
  * level-up screen then adds level 1 with its class and feats.
  */
 export function NewCharacterScreen() {
+  const { group, catalog: groupApi, path: groupPath } = useGroup()
   const navigate = useNavigate()
   const [races, setRaces] = useState<EntitySummary[]>([])
   const [alignments, setAlignments] = useState<EntitySummary[]>([])
@@ -24,8 +26,8 @@ export function NewCharacterScreen() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    allOfType('race').then(setRaces, (e) => setError(messageOf(e)))
-    allOfType('alignment').then(setAlignments, (e) => setError(messageOf(e)))
+    allOfType(groupApi, 'race').then(setRaces, (e) => setError(messageOf(e)))
+    allOfType(groupApi, 'alignment').then(setAlignments, (e) => setError(messageOf(e)))
   }, [])
 
   const valid = name.trim() !== '' && abilities.every((a) => /^\d+$/.test(scores[a.id] ?? ''))
@@ -35,7 +37,7 @@ export function NewCharacterScreen() {
     setBusy(true)
     setError(null)
     try {
-      const record = await api.createCharacter({
+      const record = await api.createCharacter(group.id, {
         id: '',
         name: name.trim(),
         ...(race ? { race } : {}),
@@ -43,7 +45,7 @@ export function NewCharacterScreen() {
         baseAbilities: Object.fromEntries(abilities.map((a) => [a.id, Number(scores[a.id])])),
         levels: [],
       })
-      navigate(`/characters/${record.id}/level-up`)
+      navigate(groupPath(`/characters/${record.id}/level-up`))
     } catch (e) {
       setError(messageOf(e))
       setBusy(false)

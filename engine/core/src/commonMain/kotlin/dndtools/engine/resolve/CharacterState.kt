@@ -201,15 +201,17 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
     }
 
     companion object {
+        /** The optional ruleset slug of a homebrew id: `eberron:skill.airship_piloting`. */
+        private const val SLUG = "(?:[a-z][a-z0-9_]*:)"
         private val ABILITY_BASE = Regex("ability\\.(str|dex|con|int|wis|cha)\\.base")
-        private val TOGGLE_VALUE = Regex("(toggle\\..+)\\.value")
+        private val TOGGLE_VALUE = Regex("($SLUG?toggle\\..+)\\.value")
         private val PROGRESSION = Regex("progression\\.(bab|fort|ref|will)")
         private val ADVANCES = Regex("spellcasting\\.advances\\[(.+)\\]")
         private val SLOTS_BASE = Regex("slots\\.base\\[(.+):(\\d+)\\]")
         private val KNOWN_BASE = Regex("spells_known\\.base\\[(.+):(\\d+)\\]")
         private val MAX_BASE = Regex("slots\\.max_base\\[(.+)\\]")
-        private val SKILL_RANKS = Regex("(skill\\..+)\\.ranks")
-        private val CLASS_SKILL = Regex("(skill\\..+)\\.class_skill")
+        private val SKILL_RANKS = Regex("($SLUG?skill\\..+)\\.ranks")
+        private val CLASS_SKILL = Regex("($SLUG?skill\\..+)\\.class_skill")
         private const val KNOWLEDGE = "skill.knowledge"
         private const val KNOWLEDGE_FIELD = "skill.knowledge_"
 

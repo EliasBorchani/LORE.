@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sqlx::{PgPool, Postgres, QueryBuilder};
 
+use super::stack::{HouseRule, Layers};
 use crate::error::AppError;
 
 const DEFAULT_PAGE: i64 = 50;
@@ -52,6 +53,9 @@ struct SearchItem {
     /// `"description"` when the words are not in the name: the list shows why the entity came up.
     #[serde(skip_serializing_if = "Option::is_none")]
     matched_in: Option<&'static str>,
+    /// The group's house rule shown in place of the official entity.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    house_rule: Option<HouseRule>,
 }
 
 #[derive(sqlx::FromRow)]
@@ -258,6 +262,7 @@ fn escape_like(word: &str) -> String {
 /// only the id and the facet values, so the rows kept for the five counts stay small.
 fn push_base(
     sql: &mut QueryBuilder<'_, Postgres>,
+    layers: &Layers,
     r#type: &Option<String>,
     text: &Option<Text>,
     ranked: bool,
@@ -285,8 +290,14 @@ fn push_base(
         }
     }
     sql.push(
-        " FROM entity e JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version WHERE TRUE",
+        " FROM entity e JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version WHERE e.rpg = ",
     );
+    sql.push_bind(layers.rpg.clone())
+        .push(" AND (e.ruleset_id IS NULL OR e.ruleset_id = ANY(")
+        .push_bind(layers.rulesets.clone())
+        .push(")) AND NOT e.id = ANY(")
+        .push_bind(layers.hidden.clone())
+        .push(")");
     if let Some(r#type) = r#type {
         sql.push(" AND e.type = ").push_bind(r#type.clone());
     }
@@ -300,7 +311,11 @@ fn push_base(
     sql.push(")");
 }
 
-pub async fn search(pool: &PgPool, query: SearchQuery) -> Result<SearchPage, AppError> {
+pub async fn search(
+    pool: &PgPool,
+    layers: &Layers,
+    query: SearchQuery,
+) -> Result<SearchPage, AppError> {
     let filters = Filters::parse(&query)?;
     let text = Text::parse(query.q.as_deref().unwrap_or(""));
     if text.is_none() && query.r#type.is_none() && filters.is_empty() {
@@ -312,7 +327,7 @@ pub async fn search(pool: &PgPool, query: SearchQuery) -> Result<SearchPage, App
     let offset = query.offset.unwrap_or(0).clamp(0, MAX_SEARCH_OFFSET);
 
     let mut sql = QueryBuilder::new("");
-    push_base(&mut sql, &query.r#type, &text, true);
+    push_base(&mut sql, layers, &query.r#type, &text, true);
     sql.push(" SELECT b.id, b.type, b.name, b.labels, b.tier FROM base b WHERE TRUE");
     filters.push(&mut sql, None);
     sql.push(" ORDER BY b.tier, CASE WHEN b.tier = ")
@@ -332,14 +347,15 @@ pub async fn search(pool: &PgPool, query: SearchQuery) -> Result<SearchPage, App
         .into_iter()
         .map(|row| SearchItem {
             matched_in: (row.tier == DESCRIPTION_TIER).then_some("description"),
-            id: row.id,
+            house_rule: layers.house_rule(layers.canonical(&row.id)).cloned(),
+            id: layers.canonical(&row.id).to_owned(),
             r#type: row.r#type,
             name: row.name,
             labels: row.labels,
         })
         .collect();
     let facets = if query.facets {
-        Some(facets(pool, &query.r#type, &text, &filters).await?)
+        Some(facets(pool, layers, &query.r#type, &text, &filters).await?)
     } else {
         None
     };
@@ -355,12 +371,13 @@ pub async fn search(pool: &PgPool, query: SearchQuery) -> Result<SearchPage, App
 /// Cold spells there are; values with no result are absent.
 async fn facets(
     pool: &PgPool,
+    layers: &Layers,
     r#type: &Option<String>,
     text: &Option<Text>,
     filters: &Filters,
 ) -> Result<Value, AppError> {
     let mut sql = QueryBuilder::new("");
-    push_base(&mut sql, r#type, text, false);
+    push_base(&mut sql, layers, r#type, text, false);
     sql.push(" SELECT jsonb_build_object(");
 
     let counted = |sql: &mut QueryBuilder<'_, Postgres>,

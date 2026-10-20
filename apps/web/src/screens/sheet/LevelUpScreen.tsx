@@ -1,7 +1,6 @@
 import { SheetEngine, type CharacterSheet } from 'dnd-engine'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { api } from '../../api/client'
 import type { Character, Closure, EntitySummary, LevelRecord } from '../../api/types'
 import { ErrorNotice, StatBlock } from '../../components/grimoire'
 import { EntityName, InfoButton } from '../../components/EntityPanel'
@@ -12,6 +11,7 @@ import { allOfType } from '../../sheet/catalogLists'
 import { entityName, localized } from '../../sheet/names'
 import { useSheet } from '../../sheet/SheetContext'
 import { messageOf } from '../../useLoad'
+import { useGroupApi, useGroupPath } from '../../group/GroupContext'
 
 interface FeatPick {
   id: string
@@ -26,6 +26,8 @@ const PREVIEW = ['hp.max', 'bab', 'save.fort', 'save.ref', 'save.will', 'skill_p
  * draft is computed live from the catalog it needs; rule breaks are flagged, never refused.
  */
 export function LevelUpScreen() {
+  const groupApi = useGroupApi()
+  const groupPath = useGroupPath()
   const { record, name: currentName, stat, saveCharacter, reload } = useSheet()
   const navigate = useNavigate()
   const levels = record.character.levels ?? []
@@ -43,8 +45,8 @@ export function LevelUpScreen() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    Promise.all([allOfType('class'), allOfType('prestige_class')]).then(([base, prestige]) => setClasses([...base, ...prestige]), (e) => setError(messageOf(e)))
-    allOfType('feat').then(setFeats, (e) => setError(messageOf(e)))
+    Promise.all([allOfType(groupApi, 'class'), allOfType(groupApi, 'prestige_class')]).then(([base, prestige]) => setClasses([...base, ...prestige]), (e) => setError(messageOf(e)))
+    allOfType(groupApi, 'feat').then(setFeats, (e) => setError(messageOf(e)))
   }, [])
 
   const classType = new Map(classes.map((c) => [c.id, c.type]))
@@ -73,7 +75,7 @@ export function LevelUpScreen() {
     if (!draft) return
     let current = true
     setClosure(null)
-    api.draftCatalog(draft).then((c) => current && setClosure(c), (e) => current && setError(messageOf(e)))
+    groupApi.draftCatalog(draft).then((c) => current && setClosure(c), (e) => current && setError(messageOf(e)))
     return () => {
       current = false
     }
@@ -107,7 +109,7 @@ export function LevelUpScreen() {
         return
       }
       reload()
-      navigate(`/characters/${record.id}/build`)
+      navigate(groupPath(`/characters/${record.id}/build`))
     } catch (e) {
       setError(`${fr.build.saveFailed} ${messageOf(e)}`)
       setBusy(false)
@@ -129,7 +131,7 @@ export function LevelUpScreen() {
             <span className="muted">{record.character.name}</span>
             <h1 className="type-display-l">{fr.editor.levelTitle(level)}</h1>
           </div>
-          <Link className="btn btn-secondary btn-small" to={`/characters/${record.id}/build`}>{fr.editor.cancel}</Link>
+          <Link className="btn btn-secondary btn-small" to={groupPath(`/characters/${record.id}/build`)}>{fr.editor.cancel}</Link>
         </div>
       </header>
       {error && <ErrorNotice message={error} />}

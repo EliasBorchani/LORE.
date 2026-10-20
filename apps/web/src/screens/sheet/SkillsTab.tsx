@@ -3,9 +3,11 @@ import type { SkillLine } from 'dnd-engine'
 import { formatModifier } from '../../format'
 import { abilities, fr } from '../../i18n/fr'
 import { useSheet } from '../../sheet/SheetContext'
+import { useGroupPath } from '../../group/GroupContext'
 
 /** Every skill with its total; ranks, class skill and armor penalty under it. Opens the breakdown. */
 export function SkillsTab() {
+  const groupPath = useGroupPath()
   const { sheet, name, record } = useSheet()
   const skills = sortedSkills(sheet.skills.asJsReadonlyArrayView(), name)
   if (skills.length === 0) return <p className="muted">{fr.sheet.noSkills}</p>
@@ -15,7 +17,7 @@ export function SkillsTab() {
         // A skill that needs training cannot be used without ranks: its total is shown muted.
         const unusable = s.trainedOnly && s.ranks === '0'
         return (
-          <Link key={s.id} className="list-row" to={`/characters/${record.id}/stat/${s.id}`}>
+          <Link key={s.id} className="list-row" to={groupPath(`/characters/${record.id}/stat/${s.id}`)}>
             <span className="list-row-text">
               <span className="list-row-title">{name(s.id)}</span>
               <span className="list-row-sub">{skillDetails(s)}</span>

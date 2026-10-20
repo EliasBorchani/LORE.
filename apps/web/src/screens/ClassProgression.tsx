@@ -1,11 +1,11 @@
 import { Link } from 'react-router'
-import { api } from '../api/client'
 import type { Closure, ProgressionRow } from '../api/types'
 import { ErrorNotice, Loading } from '../components/grimoire'
 import { formatModifier } from '../format'
 import { fr } from '../i18n/fr'
 import { entityName } from '../sheet/names'
 import { useLoad } from '../useLoad'
+import { useGroupApi, useGroupPath } from '../group/GroupContext'
 
 export const CLASS_TYPES = ['class', 'prestige_class']
 
@@ -14,7 +14,8 @@ export const CLASS_TYPES = ['class', 'prestige_class']
  * proficiencies, alignments). Both come from the class's closure, which also carries the names to show.
  */
 export function ClassProgression({ classId, className }: { classId: string; className: string }) {
-  const { data, error, reload } = useLoad(() => api.closure([classId]), classId)
+  const groupApi = useGroupApi()
+  const { data, error, reload } = useLoad(() => groupApi.closure([classId]), classId)
   if (error) return <ErrorNotice message={error} onRetry={reload} />
   if (!data) return <Loading />
 
@@ -34,6 +35,7 @@ export function ClassProgression({ classId, className }: { classId: string; clas
 }
 
 function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; caption: string; name: (id: string) => string }) {
+  const groupPath = useGroupPath()
   const c = fr.catalog.tableColumns
   return (
     <section className="page-head">
@@ -63,7 +65,7 @@ function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; cap
                   {(row.grants ?? []).map((id, i) => (
                     <span key={id}>
                       {i > 0 && ', '}
-                      <Link to={`/catalog/entity/${id}`}>{name(id)}</Link>
+                      <Link to={groupPath(`/catalog/entity/${id}`)}>{name(id)}</Link>
                     </span>
                   ))}
                 </td>
@@ -108,6 +110,7 @@ function SpellTable({ rows, column, title }: { rows: ProgressionRow[]; column: '
 }
 
 function Related({ closure, classId, name }: { closure: Closure; classId: string; name: (id: string) => string }) {
+  const groupPath = useGroupPath()
   const relations = (closure.catalog.relations ?? []).filter((r) => r.from === classId)
   const groups = Object.entries(fr.catalog.related)
     .map(([kind, label]) => ({ label, ids: relations.filter((r) => r.relation === kind).map((r) => r.to) }))
@@ -122,7 +125,7 @@ function Related({ closure, classId, name }: { closure: Closure; classId: string
               .map((id) => ({ id, label: name(id) }))
               .sort((a, b) => a.label.localeCompare(b.label, 'fr'))
               .map((t) => (
-                <Link key={t.id} className="tag" to={`/catalog/entity/${t.id}`}>
+                <Link key={t.id} className="tag" to={groupPath(`/catalog/entity/${t.id}`)}>
                   {t.label}
                 </Link>
               ))}

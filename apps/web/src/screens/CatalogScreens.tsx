@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
-import { api } from '../api/client'
 import { FACETS, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
 import { Badge, ErrorNotice, Icon, Loading, StatBlock } from '../components/grimoire'
 import { formatNumber } from '../format'
@@ -9,6 +8,7 @@ import { entityName, localized } from '../sheet/names'
 import { messageOf, useLoad } from '../useLoad'
 import { CLASS_TYPES, ClassProgression } from './ClassProgression'
 import { EntityFacts, EntityText } from './EntitySummary'
+import { useGroup, useGroupApi, useGroupPath } from '../group/GroupContext'
 
 const SEARCH_DELAY_MS = 250
 /** Values shown per filter before « Voir tout ». */
@@ -97,6 +97,8 @@ function SearchField({ text, onChange, label, placeholder }: { text: string; onC
  * of each filter value, shown in the filter panel when `showFilters`.
  */
 function SearchResults({ search, type, showFilters }: { search: SearchState; type?: string; showFilters?: boolean }) {
+  const groupApi = useGroupApi()
+  const groupPath = useGroupPath()
   const q = search.text.trim()
   const { filters, filtersKey } = search
   const [items, setItems] = useState<SearchItem[]>([])
@@ -115,7 +117,7 @@ function SearchResults({ search, type, showFilters }: { search: SearchState; typ
     setLoading(true)
     setError(null)
     const timer = setTimeout(() => {
-      api.search({ q, type, filters, facets: true }).then(
+      groupApi.search({ q, type, filters, facets: true }).then(
         (page) => {
           if (!current) return
           setItems(page.items)
@@ -138,7 +140,7 @@ function SearchResults({ search, type, showFilters }: { search: SearchState; typ
 
   const more = (offset: number) => {
     setLoading(true)
-    api.search({ q, type, filters, offset }).then(
+    groupApi.search({ q, type, filters, offset }).then(
       (page) => {
         if (latest.current !== queryKey) return
         setItems((shown) => [...shown, ...page.items])
@@ -160,9 +162,9 @@ function SearchResults({ search, type, showFilters }: { search: SearchState; typ
       {items.length > 0 && (
         <div className="list">
           {items.map((e) => {
-            const sub = [!type && typeName(e.type), e.matchedIn === 'description' && fr.catalog.inDescription].filter(Boolean).join(' · ')
+            const sub = [!type && typeName(e.type), e.houseRule && fr.catalog.houseRule, e.matchedIn === 'description' && fr.catalog.inDescription].filter(Boolean).join(' · ')
             return (
-              <Link key={e.id} className="list-row" to={`/catalog/entity/${e.id}`}>
+              <Link key={e.id} className="list-row" to={groupPath(`/catalog/entity/${e.id}`)}>
                 <span className="list-row-text">
                   <span className="list-row-title">{localized(e.name) ?? e.id}</span>
                   {sub && <span className="list-row-sub">{sub}</span>}
@@ -237,13 +239,14 @@ function facetLabel(facet: Facet, v: FacetValue): string {
 }
 
 export function CatalogScreen() {
+  const groupPath = useGroupPath()
   const search = useSearchState()
   const { text, setText } = search
   return (
     <>
       <header className="page-head-row">
         <h1 className="type-display-l">{fr.catalog.title}</h1>
-        <Link className="btn btn-secondary btn-small" to="/catalog/new">{fr.content.newEntry}</Link>
+        <Link className="btn btn-secondary btn-small" to={groupPath('/catalog/new')}>{fr.content.newEntry}</Link>
       </header>
       <search>
         <SearchField text={text} onChange={setText} label={fr.catalog.search} placeholder={fr.catalog.searchAll} />
@@ -254,11 +257,12 @@ export function CatalogScreen() {
 }
 
 function TypeList() {
+  const groupPath = useGroupPath()
   return (
     <>
       <nav className="list" aria-label={fr.catalog.title}>
         {entityTypes.map((t) => (
-          <Link key={t.type} className="list-row" to={`/catalog/${t.type}`}>
+          <Link key={t.type} className="list-row" to={groupPath(`/catalog/${t.type}`)}>
             <span className="list-row-text">
               <span className="list-row-title">{t.name}</span>
               <span className="list-row-sub">{t.hint}</span>
@@ -273,6 +277,7 @@ function TypeList() {
 
 /** One type, a page of 50 at a time, or the search within that type, with its filters. */
 export function CatalogListScreen() {
+  const groupPath = useGroupPath()
   const type = useParams().type!
   const search = useSearchState()
   const [filtersOpen, setFiltersOpen] = useState(search.activeFilters > 0)
@@ -280,11 +285,11 @@ export function CatalogListScreen() {
   return (
     <>
       <header className="page-head-title">
-        <Link className="icon-link" to="/catalog" aria-label={`${fr.nav.back} : ${fr.catalog.title}`}>
+        <Link className="icon-link" to={groupPath('/catalog')} aria-label={`${fr.nav.back} : ${fr.catalog.title}`}>
           <Icon name="back" />
         </Link>
         <h1 className="type-display-l">{typeName(type)}</h1>
-        <Link className="btn btn-secondary btn-small" style={{ marginLeft: 'auto' }} to={`/catalog/new?type=${encodeURIComponent(type)}`}>{fr.content.newEntry}</Link>
+        <Link className="btn btn-secondary btn-small" style={{ marginLeft: 'auto' }} to={groupPath(`/catalog/new?type=${encodeURIComponent(type)}`)}>{fr.content.newEntry}</Link>
       </header>
       <search className="search-row">
         <SearchField text={search.text} onChange={search.setText} label={fr.catalog.searchIn(typeName(type))} />
@@ -298,6 +303,8 @@ export function CatalogListScreen() {
 }
 
 function TypePage({ type }: { type: string }) {
+  const groupApi = useGroupApi()
+  const groupPath = useGroupPath()
   const [items, setItems] = useState<EntitySummary[]>([])
   const [next, setNext] = useState<string | undefined>()
   const [loading, setLoading] = useState(true)
@@ -306,7 +313,7 @@ function TypePage({ type }: { type: string }) {
   const load = (after?: string) => {
     setLoading(true)
     setError(null)
-    api.entities(type, after).then(
+    groupApi.entities(type, after).then(
       (page) => {
         setItems((current) => (after ? [...current, ...page.items] : page.items))
         setNext(page.next)
@@ -327,8 +334,11 @@ function TypePage({ type }: { type: string }) {
       {items.length > 0 && (
         <div className="list">
           {items.map((e) => (
-            <Link key={e.id} className="list-row" to={`/catalog/entity/${e.id}`}>
-              <span className="list-row-title">{localized(e.name) ?? e.id}</span>
+            <Link key={e.id} className="list-row" to={groupPath(`/catalog/entity/${e.id}`)}>
+              <span className="list-row-text">
+                <span className="list-row-title">{localized(e.name) ?? e.id}</span>
+                {e.houseRule && <span className="list-row-sub">{fr.catalog.houseRule}</span>}
+              </span>
               <Icon name="chevron" />
             </Link>
           ))}
@@ -346,41 +356,38 @@ function TypePage({ type }: { type: string }) {
 }
 
 export function EntityScreen() {
+  const groupApi = useGroupApi()
+  const groupPath = useGroupPath()
   const id = useParams().id!
-  const { data, error, reload } = useLoad(
-    () =>
-      Promise.all([api.entity(id), api.entityVersions(id), api.me()]).then(async ([detail, versions, me]) => {
-        const original = detail.variantOf ? await api.entity(detail.variantOf).catch(() => null) : null
-        return [detail, versions, me, original] as const
-      }),
-    id,
-  )
+  const { group } = useGroup()
+  const { data, error, reload } = useLoad(() => Promise.all([groupApi.entity(id), groupApi.entityVersions(id)]), `${group.id}/${id}`)
   if (error) return <ErrorNotice message={error} onRetry={reload} />
   if (!data) return <Loading />
-  const [detail, versions, me, original] = data
-  const { content: entity, variantOf, relations = [] } = detail
+  const [detail, versions] = data
+  const { content: entity, relations = [] } = detail
   const relationName = (to: string) => localized(relations.find((r) => r.to === to)?.name ?? undefined) ?? to
-  // The server has the last word; this only hides a button that would be refused.
-  const editable = me.role === 'admin' || entity.provenance === 'team'
+  // The server has the last word; this only hides buttons that would be refused.
+  const official = detail.overrides ?? (detail.ruleset ? null : detail.id)
+  // A ruleset has one house rule per official entity: another ruleset must take a new one.
+  const canHouseRule = official != null && group.rulesets.some((r) => r.editable && !r.archived && r.slug !== detail.ruleset?.slug)
 
   return (
     <>
       <header className="page-head-title">
-        <Link className="icon-link" to={`/catalog/${entity.type}`} aria-label={`${fr.nav.back} : ${typeName(entity.type)}`}>
+        <Link className="icon-link" to={groupPath(`/catalog/${entity.type}`)} aria-label={`${fr.nav.back} : ${typeName(entity.type)}`}>
           <Icon name="back" />
         </Link>
         <span className="muted">{fr.catalog.title} · {typeName(entity.type)}</span>
       </header>
-      <StatBlock title={entityName(entity, entity.id)} subtitle={entity.source} aside={<Badge provenance={entity.provenance} />}>
+      <StatBlock title={entityName(entity, entity.id)} subtitle={entity.source}
+        aside={<Badge provenance={entity.provenance} ruleset={detail.ruleset?.name} houseRule={detail.overrides != null} />}>
         <div className="button-row">
-          {editable && <Link className="btn btn-secondary btn-small" to={`/catalog/entity/${entity.id}/edit`}>{fr.content.edit}</Link>}
-          <Link className="btn btn-secondary btn-small" to={`/catalog/new?from=${encodeURIComponent(entity.id)}`}>{fr.content.makeVariant}</Link>
+          {detail.editable && <Link className="btn btn-secondary btn-small" to={groupPath(`/catalog/entity/${detail.id}/edit`)}>{fr.content.edit}</Link>}
+          {canHouseRule && (
+            <Link className="btn btn-secondary btn-small" to={groupPath(`/catalog/new?from=${encodeURIComponent(official)}`)}>{fr.content.makeHouseRule}</Link>
+          )}
         </div>
-        {variantOf && (
-          <p className="muted">
-            {fr.content.variantOf} <Link to={`/catalog/entity/${variantOf}`}>{entityName(original?.content, variantOf)}</Link>
-          </p>
-        )}
+        {detail.overrides && detail.ruleset && <p className="muted">{fr.content.houseRuleOf(detail.ruleset.name)}</p>}
         <EntityFacts detail={detail} />
       </StatBlock>
       <EntityText detail={detail} />
@@ -412,7 +419,9 @@ const SPELL_LIST_TYPES = ['class', 'prestige_class', 'domain']
 
 /** The spells of a class or domain list, by level; nothing when the list is empty. */
 function ListSpells({ listId }: { listId: string }) {
-  const { data, error, reload } = useLoad(() => api.spellList(listId), listId)
+  const groupApi = useGroupApi()
+  const groupPath = useGroupPath()
+  const { data, error, reload } = useLoad(() => groupApi.spellList(listId), listId)
   if (error) return <ErrorNotice message={error} onRetry={reload} />
   if (!data || data.length === 0) return null
   const levels = [...new Set(data.map((s) => s.level))]
@@ -431,7 +440,7 @@ function ListSpells({ listId }: { listId: string }) {
                 .map((s, i) => (
                   <span key={s.id}>
                     {i > 0 && ' · '}
-                    <Link to={`/catalog/entity/${s.id}`}>{s.name}</Link>
+                    <Link to={groupPath(`/catalog/entity/${s.id}`)}>{s.name}</Link>
                   </span>
                 ))}
             </dd>

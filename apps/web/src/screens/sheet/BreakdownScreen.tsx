@@ -6,25 +6,32 @@ import { formatModifier, formatNumber, splitDice } from '../../format'
 import { bonusTypes, breakdownStatus, breakdownSteps, fr, statLabels } from '../../i18n/fr'
 import { useSheet } from '../../sheet/SheetContext'
 import { CharacterHeader } from './CharacterLayout'
+import { useGroupPath } from '../../group/GroupContext'
 
 /** Where a number comes from: every source, including the ones that did not count and why (Grimoire BreakdownRow). */
 export function BreakdownScreen() {
+  const groupPath = useGroupPath()
   const key = useParams().key!
-  const { sheet, stat, record, name, entity } = useSheet()
+  const { sheet, stat, record, name, entity, closure } = useSheet()
   const openInfo = useEntityInfo()
   const total = stat(key)
   const rows = sheet.explain(key).asJsReadonlyArrayView()
   const label = statLabels[key] ?? (entity(key) ? name(key) : key)
 
   // A line's source is an entity, a component statistic, or `definition` for the base formula.
+  // A house rule of the group says so: the number differs from the book's.
   const sourceName = (source: string) =>
-    source === 'definition' ? fr.breakdown.base : entity(source) ? name(source) : (statLabels[source] ?? source)
+    source === 'definition'
+      ? fr.breakdown.base
+      : entity(source)
+        ? name(source) + (closure.houseRules?.[source] ? ` · ${fr.catalog.houseRule}` : '')
+        : (statLabels[source] ?? source)
   const counted = rows.filter((r) => r.status !== 'situational')
   const situational = rows.filter((r) => r.status === 'situational')
 
   return (
     <>
-      <CharacterHeader back={`/characters/${record.id}`} backLabel={record.character.name} />
+      <CharacterHeader back={groupPath(`/characters/${record.id}`)} backLabel={record.character.name} />
       <section className="page-head">
         <h2 className="type-heading">{label}</h2>
         <span className="type-stat-xl">{total == null ? '—' : display(total, isModifier(key))}</span>
@@ -41,7 +48,7 @@ export function BreakdownScreen() {
               detail={detail(row, name)}
               value={display(row.value, row.step === 'add' || isModifier(row.source))}
               out={row.status !== 'applied'}
-              to={row.step === 'component' && stat(row.source) != null ? `/characters/${record.id}/stat/${row.source}` : undefined}
+              to={row.step === 'component' && stat(row.source) != null ? groupPath(`/characters/${record.id}/stat/${row.source}`) : undefined}
               onOpen={row.step !== 'component' && entity(row.source) ? () => openInfo(row.source) : undefined}
             />
           ))}

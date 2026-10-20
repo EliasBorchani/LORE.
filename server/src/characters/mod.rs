@@ -11,7 +11,8 @@ use sqlx::{FromRow, PgPool};
 use time::OffsetDateTime;
 use uuid::Uuid;
 
-use crate::auth::{CurrentUser, Role};
+use crate::access::{self, CharacterAccess, Permission, character_not_found};
+use crate::auth::CurrentUser;
 use crate::error::AppError;
 
 /// Strictly increasing, even for two writes in the same microsecond, so "newer" is always well defined.
@@ -22,6 +23,8 @@ const NEXT_UPDATED_AT: &str = "greatest(now(), updated_at + interval '1 microsec
 pub struct CharacterRecord {
     pub id: Uuid,
     pub owner_id: i64,
+    /// Absent only for characters made before groups, until `server migrate-groups` runs.
+    pub group_id: Option<String>,
     pub version: i32,
     #[serde(with = "time::serde::rfc3339")]
     pub updated_at: OffsetDateTime,
@@ -42,6 +45,7 @@ pub struct PlayRecord {
 struct CharacterRow {
     id: Uuid,
     owner_id: i64,
+    group_id: Option<String>,
     version: i32,
     updated_at: OffsetDateTime,
     archived: bool,
@@ -55,6 +59,7 @@ impl From<CharacterRow> for CharacterRecord {
         CharacterRecord {
             id: row.id,
             owner_id: row.owner_id,
+            group_id: row.group_id,
             version: row.version,
             updated_at: row.updated_at,
             archived: row.archived,
@@ -68,7 +73,7 @@ impl From<CharacterRow> for CharacterRecord {
 }
 
 const SELECT_CHARACTER: &str = "
-    SELECT c.id, c.owner_id, c.version, c.updated_at, c.archived_at IS NOT NULL AS archived, c.content,
+    SELECT c.id, c.owner_id, c.group_id, c.version, c.updated_at, c.archived_at IS NOT NULL AS archived, c.content,
            p.state AS play_state, p.updated_at AS play_updated_at
     FROM player_character c JOIN player_character_play p ON p.character_id = c.id";
 
@@ -77,6 +82,7 @@ const SELECT_CHARACTER: &str = "
 pub struct CharacterSummary {
     pub id: Uuid,
     pub owner_id: i64,
+    pub group_id: Option<String>,
     pub name: String,
     /// Number of level-up records.
     pub level: i32,
@@ -92,38 +98,25 @@ pub struct ListFilter {
     /// Sync delta: characters whose build choices or play state changed after this time, archived ones included.
     pub updated_since: Option<OffsetDateTime>,
     pub include_archived: bool,
-    /// Admins only: everyone's characters.
-    pub all: bool,
+    /// One group: the caller's characters there, and the others' with « See characters ». Without it, the
+    /// caller's own characters in every group (a device's sync).
+    pub group: Option<String>,
 }
 
-fn not_found(id: Uuid) -> AppError {
-    AppError::NotFound(format!("{id}: unknown character"))
-}
-
-/// Owners and admins can read; only the owner can write. Anyone else gets 404, so the character's existence stays
-/// hidden.
+/// Who may read and write is decided in `access::character`; anyone else gets 404, so the character's existence
+/// stays hidden.
 pub async fn read(pool: &PgPool, user: CurrentUser, id: Uuid) -> Result<CharacterRecord, AppError> {
-    let row: Option<CharacterRow> = sqlx::query_as(&format!(
-        "{SELECT_CHARACTER} WHERE c.id = $1 AND (c.owner_id = $2 OR $3)"
-    ))
-    .bind(id)
-    .bind(user.id)
-    .bind(user.role == Role::Admin)
-    .fetch_optional(pool)
-    .await?;
-    row.map(CharacterRecord::from).ok_or_else(|| not_found(id))
+    access::character(pool, user, id, CharacterAccess::Read).await?;
+    load(pool, id).await
 }
 
-async fn read_owned(
-    pool: &PgPool,
-    user: CurrentUser,
-    id: Uuid,
-) -> Result<CharacterRecord, AppError> {
-    let record = read(pool, user, id).await?;
-    if record.owner_id != user.id {
-        return Err(not_found(id));
-    }
-    Ok(record)
+async fn load(pool: &PgPool, id: Uuid) -> Result<CharacterRecord, AppError> {
+    let row: Option<CharacterRow> = sqlx::query_as(&format!("{SELECT_CHARACTER} WHERE c.id = $1"))
+        .bind(id)
+        .fetch_optional(pool)
+        .await?;
+    row.map(CharacterRecord::from)
+        .ok_or_else(|| character_not_found(id))
 }
 
 pub async fn list(
@@ -131,39 +124,53 @@ pub async fn list(
     user: CurrentUser,
     filter: &ListFilter,
 ) -> Result<Vec<CharacterSummary>, AppError> {
+    let others = match &filter.group {
+        Some(group) => {
+            let member = access::membership(pool, user, group).await?;
+            member.has(Permission::SeeCharacters) || member.has(Permission::EditCharacters)
+        }
+        None => false,
+    };
     let summaries = sqlx::query_as(
-        "SELECT c.id, c.owner_id, c.name,
+        "SELECT c.id, c.owner_id, c.group_id, c.name,
                 CASE WHEN jsonb_typeof(c.content -> 'levels') = 'array'
                      THEN jsonb_array_length(c.content -> 'levels') ELSE 0 END AS level,
                 c.archived_at IS NOT NULL AS archived, c.updated_at, p.updated_at AS play_updated_at
          FROM player_character c JOIN player_character_play p ON p.character_id = c.id
-         WHERE (c.owner_id = $1 OR $2)
+         WHERE (c.owner_id = $1 OR $2) AND ($5::text IS NULL OR c.group_id = $5)
            AND ($3::timestamptz IS NULL OR c.updated_at > $3 OR p.updated_at > $3)
            AND ($3::timestamptz IS NOT NULL OR $4 OR c.archived_at IS NULL)
          ORDER BY lower(c.name), c.id",
     )
     .bind(user.id)
-    .bind(filter.all && user.role == Role::Admin)
+    .bind(others)
     .bind(filter.updated_since)
     .bind(filter.include_archived)
+    .bind(&filter.group)
     .fetch_all(pool)
     .await?;
     Ok(summaries)
 }
 
+/// A new character always lives in a group the caller is in.
 pub async fn create(
     pool: &PgPool,
     user: CurrentUser,
+    group_id: &str,
     character: Value,
 ) -> Result<CharacterRecord, AppError> {
+    access::membership(pool, user, group_id).await?;
     let id = Uuid::new_v4();
     let (content, name) = checked(character, id)?;
     let mut tx = pool.begin().await?;
-    sqlx::query("INSERT INTO player_character (id, owner_id, name, content, version) VALUES ($1, $2, $3, $4, 1)")
+    sqlx::query(
+        "INSERT INTO player_character (id, owner_id, name, content, version, group_id) VALUES ($1, $2, $3, $4, 1, $5)",
+    )
         .bind(id)
         .bind(user.id)
         .bind(&name)
         .bind(&content)
+        .bind(group_id)
         .execute(&mut *tx)
         .await?;
     save_version(&mut tx, id, 1, &content, user.id).await?;
@@ -182,15 +189,15 @@ pub async fn update(
     base: OffsetDateTime,
     character: Value,
 ) -> Result<CharacterRecord, AppError> {
+    access::character(pool, user, id, CharacterAccess::Write).await?;
     let (content, name) = checked(character, id)?;
     let mut tx = pool.begin().await?;
     // Two pushes from the same base: the second one waits for the first one's row lock, then no longer matches.
     let version: Option<i32> = sqlx::query_scalar(&format!(
-        "UPDATE player_character SET content = $4, name = $5, version = version + 1, updated_at = {NEXT_UPDATED_AT}
-         WHERE id = $1 AND owner_id = $2 AND updated_at = $3 RETURNING version"
+        "UPDATE player_character SET content = $3, name = $4, version = version + 1, updated_at = {NEXT_UPDATED_AT}
+         WHERE id = $1 AND updated_at = $2 RETURNING version"
     ))
     .bind(id)
-    .bind(user.id)
     .bind(base)
     .bind(&content)
     .bind(&name)
@@ -198,7 +205,7 @@ pub async fn update(
     .await?;
     let Some(version) = version else {
         drop(tx);
-        return Err(stale_or_missing(pool, user, id).await);
+        return Err(stale(pool, id).await);
     };
     save_version(&mut tx, id, version, &content, user.id).await?;
     tx.commit().await?;
@@ -217,20 +224,19 @@ pub async fn update_play(
             "the play state must be a JSON object".into(),
         ));
     }
+    access::character(pool, user, id, CharacterAccess::Write).await?;
     let updated = sqlx::query(
         "UPDATE player_character_play p
-         SET state = $4, updated_at = greatest(now(), p.updated_at + interval '1 microsecond')
-         FROM player_character c
-         WHERE p.character_id = c.id AND c.id = $1 AND c.owner_id = $2 AND p.updated_at = $3",
+         SET state = $3, updated_at = greatest(now(), p.updated_at + interval '1 microsecond')
+         WHERE p.character_id = $1 AND p.updated_at = $2",
     )
     .bind(id)
-    .bind(user.id)
     .bind(base)
     .bind(&state)
     .execute(pool)
     .await?;
     if updated.rows_affected() == 0 {
-        return Err(stale_or_missing(pool, user, id).await);
+        return Err(stale(pool, id).await);
     }
     read(pool, user, id).await
 }
@@ -242,32 +248,72 @@ pub async fn set_archived(
     id: Uuid,
     archived: bool,
 ) -> Result<CharacterRecord, AppError> {
-    let updated = sqlx::query(&format!(
+    access::character(pool, user, id, CharacterAccess::Write).await?;
+    sqlx::query(&format!(
         "UPDATE player_character
-         SET archived_at = CASE WHEN $3 THEN coalesce(archived_at, now()) END, updated_at = {NEXT_UPDATED_AT}
-         WHERE id = $1 AND owner_id = $2"
+         SET archived_at = CASE WHEN $2 THEN coalesce(archived_at, now()) END, updated_at = {NEXT_UPDATED_AT}
+         WHERE id = $1"
     ))
     .bind(id)
-    .bind(user.id)
     .bind(archived)
     .execute(pool)
     .await?;
-    if updated.rows_affected() == 0 {
-        return Err(not_found(id));
-    }
     read(pool, user, id).await
 }
 
-/// A copy owned by the caller, with fresh history and an empty play state.
+/// To another group of the same RPG: its owner only, a member of both. It may then name entities the new group
+/// does not see; the sheet shows them as missing.
+pub async fn move_to(
+    pool: &PgPool,
+    user: CurrentUser,
+    id: Uuid,
+    group_id: &str,
+) -> Result<CharacterRecord, AppError> {
+    let meta = access::character(pool, user, id, CharacterAccess::Read).await?;
+    if meta.owner_id != user.id {
+        return Err(AppError::Forbidden(
+            "only its owner moves a character".into(),
+        ));
+    }
+    let target = access::membership(pool, user, group_id).await?;
+    let from_rpg: Option<String> = match &meta.group_id {
+        Some(from) => {
+            sqlx::query_scalar("SELECT rpg FROM lore_group WHERE id = $1")
+                .bind(from)
+                .fetch_optional(pool)
+                .await?
+        }
+        None => None,
+    };
+    if from_rpg.is_some_and(|rpg| rpg != target.rpg) {
+        return Err(AppError::BadRequest(
+            "a character moves only to a group of the same RPG".into(),
+        ));
+    }
+    sqlx::query(&format!(
+        "UPDATE player_character SET group_id = $2, updated_at = {NEXT_UPDATED_AT} WHERE id = $1"
+    ))
+    .bind(id)
+    .bind(group_id)
+    .execute(pool)
+    .await?;
+    read(pool, user, id).await
+}
+
+/// A copy owned by the caller in the same group, with fresh history and an empty play state.
 pub async fn duplicate(
     pool: &PgPool,
     user: CurrentUser,
     id: Uuid,
 ) -> Result<CharacterRecord, AppError> {
-    let mut content = read(pool, user, id).await?.character;
+    let record = read(pool, user, id).await?;
+    let group_id = record.group_id.ok_or_else(|| {
+        AppError::BadRequest("this character has no group yet (server migrate-groups)".into())
+    })?;
+    let mut content = record.character;
     let name = content["name"].as_str().unwrap_or_default().to_owned();
     content["name"] = Value::String(format!("{name} (copy)"));
-    create(pool, user, content).await
+    create(pool, user, &group_id, content).await
 }
 
 #[derive(Debug, Serialize, FromRow)]
@@ -327,10 +373,9 @@ async fn save_version(
     Ok(())
 }
 
-/// After a write matched no row: either the client's copy is stale (409 with the current record) or the caller
-/// does not own the character (404).
-async fn stale_or_missing(pool: &PgPool, user: CurrentUser, id: Uuid) -> AppError {
-    match read_owned(pool, user, id).await {
+/// After a write matched no row (access already checked): the client's copy is stale, 409 with the current record.
+async fn stale(pool: &PgPool, id: Uuid) -> AppError {
+    match load(pool, id).await {
         Ok(current) => {
             AppError::Conflict(serde_json::to_value(current).expect("a record always serializes"))
         }

@@ -126,7 +126,18 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    Invitations by email (2026-10-19, owner's choices: Gmail SMTP with an app password, the email is the login):
    `server user invite <email>`, page `/invite#<token>`, `server user rename` for older logins. Tested in Chrome on the
    dev stack with `--no-email`; a real Gmail send still to be tried by the owner (needs the app password in `.env`).
-4. Agreed with the owner, for later: automatic backups (nightly `pg_dump` with rotation, a copy off the machine, a
+4. Multi-RPG, groups and rulesets (owner, 2026-10-20): PRD draft in `docs/prd-multi.md`, from a grill-me session.
+   M1 = groups, permissions, rulesets and overrides on D&D 3.5 only, plus the migration of today's data; M2 = D&D 5e.
+   **M1 written (2026-10-20), not reviewed, not deployed.** Owner's choices: house rules resolved on the server (the
+   closure sends the override under the official id), groups named by a random id (`/g/<id>/…`), data moved by an
+   explicit command (`server migrate-groups`, dry run first, `docs/deploy.md` step 9), one review at the end.
+   Checked: engine (JVM, JS; iOS needs Xcode here), server fmt / clippy / 74 tests (stranger 404 on every group,
+   ruleset and character endpoint; migration of Danalieth's catalog gives her closure with renamed ids), web tests and
+   build, and in Chrome on a scratch database (`lore_m1_check`) migrated from today's shape: Danalieth's verified
+   values, a house rule made in the editor, group settings, an invitation creating an account in the group.
+   Left for later: the engine contract (M2), a public ruleset listing, editing a ruleset without a group, moving a
+   character from the web app (the API exists), archived groups still accept writes.
+5. Agreed with the owner, for later: automatic backups (nightly `pg_dump` with rotation, a copy off the machine, a
    restore tested regularly) and content migrations as code (when the engine model first changes, a versioned script
    upgrades each entity's current content as a new version authored "migration").
 
@@ -134,6 +145,9 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
 
 - No endpoint returns the whole catalog: core sections + the closure of a character's entities, then deltas.
 - Import of partial batch files deletes nothing absent from the file.
+- Multi-RPG (2026-10-20, details in `docs/prd-multi.md`): account → groups (no organization), a group = one RPG +
+  ordered rulesets + characters; permissions per member, not fixed roles; one engine per RPG; official content edited
+  by the platform admin only; non-SRD summaries stay visible to all; GDPR and English UI before public sign-up.
 - Earlier engine decisions: see the spike report and `engine/AGENTS.md`.
 
 ## Not confirmed by the owner (review these)

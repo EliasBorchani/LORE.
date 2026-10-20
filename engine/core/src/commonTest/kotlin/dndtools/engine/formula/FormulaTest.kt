@@ -210,4 +210,22 @@ class FormulaTest {
         assertTrue(f.usesCharacterLevel)
         assertFalse(parse("1 + 1").usesCharacterLevel)
     }
+
+    @Test
+    fun homebrewIdsKeepTheirRulesetSlug() {
+        val env = MapEnv(
+            stats = mapOf(
+                "eberron:skill.airship_piloting.ranks" to num(5),
+                "slots.base[eberron:class.artificer:3]" to num(2),
+            ),
+            entities = setOf("eberron:feat.dragon_blood"),
+        )
+        assertEquals(num(7), eval("@eberron:skill.airship_piloting.ranks + 2", env))
+        assertEquals(num(2), eval("@slots.base[eberron:class.artificer:3]", env))
+        assertEquals(Value.Bool(true), eval("has('eberron:feat.dragon_blood')", env))
+        assertEquals(setOf("eberron:skill.airship_piloting.ranks"), parse("@eberron:skill.airship_piloting.ranks").statRefs)
+        parseError("@eberron:")
+        parseError("@eberron:.x")
+        parseError("@skill.x:y")
+    }
 }

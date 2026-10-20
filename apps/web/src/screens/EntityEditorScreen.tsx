@@ -2,7 +2,7 @@ import { ContentCheck } from 'dnd-engine'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router'
 import { api, ApiError } from '../api/client'
-import type { CoreSections, EntityDetail, EntitySummary, SpellLevel } from '../api/types'
+import type { CoreSections, EntityDetail, EntitySummary, GroupRuleset, SpellLevel } from '../api/types'
 import { forgetEntityInfo } from '../components/EntityPanel'
 import { ErrorNotice, Loading, StatBlock } from '../components/grimoire'
 import { emptyEffect, fromDraft, idFrom, toDraft, type EffectDraft, type EntityDraft } from '../content/entityForm'
@@ -10,6 +10,7 @@ import { entityTypes, fr, typeName } from '../i18n/fr'
 import { allOfType, forgetLists } from '../sheet/catalogLists'
 import { entityName, localized } from '../sheet/names'
 import { messageOf } from '../useLoad'
+import { useGroup, useGroupApi, useGroupPath } from '../group/GroupContext'
 
 const OPS = ['add', 'multiply', 'set', 'min', 'max', 'dice', 'grant']
 const CHECK_DELAY_MS = 300
@@ -23,14 +24,26 @@ interface ListDraft {
 const LIST_TYPES = ['class', 'prestige_class', 'domain']
 const MAX_SPELL_LEVEL = 30
 
+/** Where a new entity can go: a ruleset of the group the caller edits, or official content (platform admin). */
+const OFFICIAL = ''
+
 interface Start {
   core: CoreSections
   draft: EntityDraft
   lists: ListDraft[]
   /** The version being edited; absent for a new entity. */
   version?: number
-  variantOf?: string
+  /** A house rule: the official id it replaces. */
+  overrides?: string
+  /** For a new entity: its possible places, the first one chosen. */
+  targets: Target[]
   title: string
+}
+
+interface Target {
+  /** A ruleset slug, or `OFFICIAL`. */
+  slug: string
+  name: string
 }
 
 /**
@@ -45,6 +58,8 @@ function listsOf(detail: EntityDetail | null): ListDraft[] {
 }
 
 export function EntityEditorScreen() {
+  const groupApi = useGroupApi()
+  const { group } = useGroup()
   const id = useParams().id
   const [params] = useSearchParams()
   const from = params.get('from') ?? undefined
@@ -55,8 +70,8 @@ export function EntityEditorScreen() {
   useEffect(() => {
     let current = true
     const editing = id ?? from
-    Promise.all([api.core(), editing ? api.entity(editing) : Promise.resolve(null)]).then(
-      ([core, detail]) => current && setStart(startOf(core, detail, id != null, newType)),
+    Promise.all([groupApi.core(), editing ? groupApi.entity(editing) : Promise.resolve(null), api.me()]).then(
+      ([core, detail, me]) => current && setStart(startOf(core, detail, id != null, newType, targetsOf(group.rulesets, me.role === 'admin' && !from))),
       (e) => current && setError(messageOf(e)),
     )
     return () => {
@@ -66,27 +81,57 @@ export function EntityEditorScreen() {
 
   if (error) return <ErrorNotice message={error} />
   if (!start) return <Loading />
+  if (!start.version && start.targets.length === 0) {
+    return <NoRuleset />
+  }
   return <Editor key={`${start.draft.id}-${start.version}`} start={start} onReplaced={(detail) => setStart({ ...start, draft: toDraft(detail.content), lists: listsOf(detail), version: detail.version })} />
 }
 
-function startOf(core: CoreSections, detail: EntityDetail | null, editing: boolean, newType: string): Start {
+/** The group's rulesets the caller edits, in the group's order, then official content for the platform admin. */
+function targetsOf(rulesets: GroupRuleset[], official: boolean): Target[] {
+  const editable = rulesets.filter((r) => r.editable && !r.archived).map((r) => ({ slug: r.slug, name: r.name }))
+  return official ? [...editable, { slug: OFFICIAL, name: fr.content.official }] : editable
+}
+
+function NoRuleset() {
+  const groupPath = useGroupPath()
+  return (
+    <>
+      <p className="muted">{fr.content.noRuleset}</p>
+      <Link className="btn btn-secondary" to={groupPath('/settings')}>{fr.groups.settings}</Link>
+    </>
+  )
+}
+
+/** `slug:feat.x` for a ruleset, `feat.x` for official content. */
+function inTarget(slug: string, id: string): string {
+  const plain = id.replace(/^[a-z][a-z0-9_]*:/, '')
+  return slug === OFFICIAL || !plain ? plain : `${slug}:${plain}`
+}
+
+function startOf(core: CoreSections, detail: EntityDetail | null, editing: boolean, newType: string, targets: Target[]): Start {
   if (detail && editing) {
-    return { core, draft: toDraft(detail.content), lists: listsOf(detail), version: detail.version, title: fr.content.editTitle(entityName(detail.content, detail.id)) }
+    return { core, draft: toDraft(detail.content), lists: listsOf(detail), version: detail.version, targets: [], title: fr.content.editTitle(entityName(detail.content, detail.id)) }
   }
+  const slug = targets[0]?.slug ?? OFFICIAL
   if (detail) {
-    // A team copy: same content, its own id, team provenance (official content stays as it is).
-    const draft = toDraft({ ...detail.content, id: `${detail.id}_team`, provenance: 'team' })
-    return { core, draft, lists: listsOf(detail), variantOf: detail.id, title: fr.content.variantTitle(entityName(detail.content, detail.id)) }
+    // A house rule: the content the group sees now, under the ruleset's id; it replaces the official entity.
+    const official = detail.overrides ?? detail.id
+    const draft = toDraft({ ...detail.content, id: inTarget(slug, official), provenance: 'team' })
+    return { core, draft, lists: listsOf(detail), overrides: official, targets, title: fr.content.houseRuleTitle(entityName(detail.content, official)) }
   }
-  const draft = toDraft({ id: '', type: newType, name: {}, provenance: 'team' })
-  return { core, draft, lists: [], title: fr.content.newTitle }
+  const draft = toDraft({ id: '', type: newType, name: {}, provenance: slug === OFFICIAL ? 'official' : 'team' })
+  return { core, draft, lists: [], targets, title: fr.content.newTitle }
 }
 
 function Editor({ start, onReplaced }: { start: Start; onReplaced: (detail: EntityDetail) => void }) {
+  const groupPath = useGroupPath()
+  const groupApi = useGroupApi()
   const navigate = useNavigate()
   const creating = start.version == null
   const [draft, setDraft] = useState(start.draft)
-  const [idTouched, setIdTouched] = useState(!creating || start.variantOf != null)
+  const [target, setTarget] = useState(start.targets[0]?.slug ?? OFFICIAL)
+  const [idTouched, setIdTouched] = useState(!creating)
   const [note, setNote] = useState('')
   const [lists, setLists] = useState(start.lists)
   const [listOptions, setListOptions] = useState<EntitySummary[]>([])
@@ -98,16 +143,22 @@ function Editor({ start, onReplaced }: { start: Start; onReplaced: (detail: Enti
     setDraft((d) => {
       const next = { ...d, ...patch }
       // A new id follows the name until it is typed by hand; English first, ids are English.
-      if (!idTouched && ('nameEn' in patch || 'nameFr' in patch || 'type' in patch)) next.id = idFrom(next.type, next.nameEn || next.nameFr)
+      if (!idTouched && !start.overrides && ('nameEn' in patch || 'nameFr' in patch || 'type' in patch)) {
+        next.id = idFrom(next.type, next.nameEn || next.nameFr, target || undefined)
+      }
       return next
     })
+  const chooseTarget = (slug: string) => {
+    setTarget(slug)
+    setDraft((d) => ({ ...d, id: inTarget(slug, d.id) }))
+  }
   const setEffect = (index: number, patch: Partial<EffectDraft>) =>
     setDraft((d) => ({ ...d, effects: d.effects.map((e, i) => (i === index ? { ...e, ...patch } : e)) }))
 
   const isSpell = draft.type === 'spell'
   useEffect(() => {
     if (!isSpell) return
-    Promise.all(LIST_TYPES.map(allOfType)).then((all) => setListOptions(all.flat()), () => setListOptions([]))
+    Promise.all(LIST_TYPES.map((type) => allOfType(groupApi, type))).then((all) => setListOptions(all.flat()), () => setListOptions([]))
   }, [isSpell])
   const listName = (id: string) => {
     const option = listOptions.find((o) => o.id === id)
@@ -132,11 +183,11 @@ function Editor({ start, onReplaced }: { start: Start; onReplaced: (detail: Enti
     try {
       const spellLists: SpellLevel[] | undefined = isSpell ? lists.map((l) => ({ to: l.to, level: Number(l.level) })) : undefined
       const saved = creating
-        ? await api.createEntity(built.entity, note, start.variantOf, spellLists)
+        ? await api.createEntity(built.entity, note, { ...(target ? { ruleset: target } : {}), ...(start.overrides ? { overrides: start.overrides } : {}) }, spellLists)
         : await api.updateEntity(built.entity, start.version!, note, spellLists)
       forgetLists()
-      forgetEntityInfo(saved.id)
-      navigate(`/catalog/entity/${saved.id}`)
+      forgetEntityInfo(saved.id, ...(start.overrides ? [start.overrides] : []))
+      navigate(groupPath(`/catalog/entity/${start.overrides ?? saved.id}`))
     } catch (e) {
       setBusy(false)
       if (e instanceof ApiError && e.status === 409) {
@@ -151,7 +202,7 @@ function Editor({ start, onReplaced }: { start: Start; onReplaced: (detail: Enti
     }
   }
 
-  const back = creating ? (start.variantOf ? `/catalog/entity/${start.variantOf}` : `/catalog/${draft.type}`) : `/catalog/entity/${draft.id}`
+  const back = creating ? (start.overrides ? groupPath(`/catalog/entity/${start.overrides}`) : groupPath(`/catalog/${draft.type}`)) : groupPath(`/catalog/entity/${draft.id}`)
 
   return (
     <>
@@ -163,7 +214,16 @@ function Editor({ start, onReplaced }: { start: Start; onReplaced: (detail: Enti
       </header>
 
       <StatBlock title={typeName(draft.type)}>
-        {creating && !start.variantOf && (
+        {creating && (
+          <label className="field">
+            <span>{fr.content.ruleset}</span>
+            <select className="input" value={target} onChange={(e) => chooseTarget(e.target.value)}>
+              {start.targets.map((t) => <option key={t.slug} value={t.slug}>{t.name}</option>)}
+            </select>
+            {start.overrides && <span className="field-hint">{fr.content.houseRuleHint}</span>}
+          </label>
+        )}
+        {creating && !start.overrides && (
           <label className="field">
             <span>{fr.content.type}</span>
             <select className="input" value={draft.type} onChange={(e) => set({ type: e.target.value })}>

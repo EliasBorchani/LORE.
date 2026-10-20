@@ -69,3 +69,77 @@ pub async fn send(
         headers,
     }
 }
+
+/// Official D&D 3.5 content, the target of most test imports.
+pub fn official() -> server::catalog::import::Target {
+    server::catalog::import::Target::Official {
+        rpg: "dnd35".into(),
+    }
+}
+
+/// A D&D 3.5 group whose admin is `admin`; returns its id.
+pub async fn group(app: &Router, admin_token: &str, name: &str) -> String {
+    let reply = send(
+        app,
+        "POST",
+        "/groups",
+        Some(serde_json::json!({"name": name, "rpg": "dnd35"})),
+        Some(admin_token),
+    )
+    .await;
+    assert_eq!(reply.status, StatusCode::CREATED, "{:?}", reply.body);
+    reply.body["id"].as_str().unwrap().to_owned()
+}
+
+/// Puts an account into a group with these permissions, straight in the database (no invitation round trip).
+pub async fn join(pool: &PgPool, group_id: &str, user_id: i64, permissions: &[&str]) {
+    sqlx::query("INSERT INTO group_member (group_id, user_id, permissions) VALUES ($1, $2, $3)")
+        .bind(group_id)
+        .bind(user_id)
+        .bind(
+            permissions
+                .iter()
+                .map(|p| p.to_string())
+                .collect::<Vec<_>>(),
+        )
+        .execute(pool)
+        .await
+        .unwrap();
+}
+
+/// A ruleset owned by the token's account, added to the group (whose admin that account must be).
+pub async fn ruleset(app: &Router, token: &str, group_id: &str, slug: &str, visibility: &str) {
+    let reply = send(
+        app,
+        "POST",
+        "/rulesets",
+        Some(serde_json::json!({"slug": slug, "name": slug, "rpg": "dnd35", "visibility": visibility})),
+        Some(token),
+    )
+    .await;
+    assert_eq!(reply.status, StatusCode::CREATED, "{:?}", reply.body);
+    let current = send(
+        app,
+        "GET",
+        &format!("/groups/{group_id}"),
+        None,
+        Some(token),
+    )
+    .await;
+    let mut slugs: Vec<Value> = current.body["rulesets"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|r| r["slug"].clone())
+        .collect();
+    slugs.push(Value::String(slug.into()));
+    let reply = send(
+        app,
+        "PUT",
+        &format!("/groups/{group_id}/rulesets"),
+        Some(serde_json::json!({ "rulesets": slugs })),
+        Some(token),
+    )
+    .await;
+    assert_eq!(reply.status, StatusCode::OK, "{:?}", reply.body);
+}

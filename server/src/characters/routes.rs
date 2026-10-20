@@ -10,6 +10,8 @@ use uuid::Uuid;
 use super::{CharacterRecord, CharacterSummary, ListFilter, VersionSummary};
 use crate::auth::CurrentUser;
 use crate::catalog::closure::{Closure, closure_for};
+use crate::catalog::edit::DEFAULT_RPG;
+use crate::catalog::stack::Layers;
 use crate::error::AppError;
 
 #[derive(Deserialize)]
@@ -19,8 +21,7 @@ pub struct ListQuery {
     updated_since: Option<OffsetDateTime>,
     #[serde(default)]
     archived: bool,
-    #[serde(default)]
-    all: bool,
+    group: Option<String>,
 }
 
 pub async fn list(
@@ -31,14 +32,15 @@ pub async fn list(
     let filter = ListFilter {
         updated_since: query.updated_since,
         include_archived: query.archived,
-        all: query.all,
+        group: query.group,
     };
     Ok(Json(super::list(&pool, user, &filter).await?))
 }
 
 #[derive(Deserialize)]
-#[serde(deny_unknown_fields)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
 pub struct CreateRequest {
+    group_id: String,
     character: Value,
 }
 
@@ -49,7 +51,7 @@ pub async fn create(
 ) -> Result<(StatusCode, Json<CharacterRecord>), AppError> {
     Ok((
         StatusCode::CREATED,
-        Json(super::create(&pool, user, body.character).await?),
+        Json(super::create(&pool, user, &body.group_id, body.character).await?),
     ))
 }
 
@@ -116,6 +118,21 @@ pub async fn restore(
     Ok(Json(super::set_archived(&pool, user, id, false).await?))
 }
 
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields, rename_all = "camelCase")]
+pub struct MoveRequest {
+    group_id: String,
+}
+
+pub async fn move_to(
+    State(pool): State<PgPool>,
+    user: CurrentUser,
+    Path(id): Path<Uuid>,
+    Json(body): Json<MoveRequest>,
+) -> Result<Json<CharacterRecord>, AppError> {
+    Ok(Json(super::move_to(&pool, user, id, &body.group_id).await?))
+}
+
 pub async fn duplicate(
     State(pool): State<PgPool>,
     user: CurrentUser,
@@ -143,12 +160,16 @@ pub async fn version(
     Ok(Json(super::version(&pool, user, id, version).await?))
 }
 
-/// The part of the catalog this character needs, for the engine on the client.
+/// The part of the catalog this character needs, for the engine on the client, through its group's layers.
 pub async fn catalog(
     State(pool): State<PgPool>,
     user: CurrentUser,
     Path(id): Path<Uuid>,
 ) -> Result<Json<Closure>, AppError> {
-    let character = super::read(&pool, user, id).await?.character;
-    Ok(Json(closure_for(&pool, &character).await?))
+    let record = super::read(&pool, user, id).await?;
+    let layers = match &record.group_id {
+        Some(group_id) => Layers::for_group(&pool, group_id).await?,
+        None => Layers::official(DEFAULT_RPG),
+    };
+    Ok(Json(closure_for(&pool, &layers, &record.character).await?))
 }

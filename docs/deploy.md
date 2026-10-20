@@ -126,7 +126,8 @@ docker compose -f compose.prod.yaml exec server server user invite <a player's e
 ```
 
 The email is the login. `user add` asks for the password twice (at least 12 characters). `user invite` mails a
-link, valid 7 days and usable once, where the person chooses their password. Inviting the same email again replaces
+link, valid 7 days and usable once, where the person chooses their password (with groups, members with « Inviter »
+invite from the group's page instead; the server needs `APP_URL` and the SMTP settings for that). Inviting the same email again replaces
 the link. Add `--role admin` for another admin, or `--no-email` to print the link and send it yourself. If the mail
 cannot be sent, the command prints the link anyway.
 
@@ -172,6 +173,25 @@ docker compose -f compose.prod.yaml up -d --build
 
 Database migrations run by themselves when the server starts. Never `docker compose down -v`: `-v` deletes the
 database.
+
+### Once: groups and rulesets (M1, `docs/prd-multi.md`)
+
+The update that brings groups adds tables by itself, then today's table moves into the first group with one command.
+It renames team content (`feat.x` → `<slug>:feat.x`) for good, so export first:
+
+```sh
+docker compose -f compose.prod.yaml exec server server export /exports/before-groups
+git pull && docker compose -f compose.prod.yaml up -d --build
+docker compose -f compose.prod.yaml exec server server migrate-groups --owner <your email> \
+  --group-name "<the table's name>" --ruleset <slug> --ruleset-name "<its name>" --dry-run
+# read the id map it prints, then the same without --dry-run
+```
+
+Until it runs, nobody is in a group: the app shows no group. The owner becomes the only platform admin; today's
+admins become admins of the group, the other accounts get « Voir les personnages » and « Modifier le contenu ». The
+slug is the ruleset's id forever (3 to 31 lowercase letters, digits or `_`). Rollback: `restore` of
+`before-groups` into an empty database. A later official import that names a team id brings the old id back (shown
+as missing): such files must use the new id.
 
 ## Known limits
 

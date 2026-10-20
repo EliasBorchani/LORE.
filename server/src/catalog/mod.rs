@@ -4,9 +4,12 @@
 pub mod closure;
 pub mod edit;
 pub mod export;
+pub mod ids;
 pub mod import;
 pub mod refs;
+pub mod routes;
 pub mod search;
+pub mod stack;
 
 use serde_json::{Map, Value};
 

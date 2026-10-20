@@ -112,3 +112,32 @@ pub async fn disable(pool: &PgPool, login: &str) -> anyhow::Result<()> {
     tx.commit().await?;
     Ok(())
 }
+
+/// What the account may create; an absent value stays. Returns the limits now in force.
+pub async fn set_limits(
+    pool: &PgPool,
+    login: &str,
+    groups: Option<i32>,
+    rulesets: Option<i32>,
+    invitations: Option<i32>,
+) -> anyhow::Result<(i32, i32, i32)> {
+    if [groups, rulesets, invitations]
+        .iter()
+        .flatten()
+        .any(|n| *n < 0)
+    {
+        anyhow::bail!("a limit is 0 or more");
+    }
+    sqlx::query_as(
+        "UPDATE app_user SET max_groups = coalesce($2, max_groups), max_rulesets = coalesce($3, max_rulesets),
+                max_pending_invites = coalesce($4, max_pending_invites)
+         WHERE lower(login) = lower($1) RETURNING max_groups, max_rulesets, max_pending_invites",
+    )
+    .bind(login.trim())
+    .bind(groups)
+    .bind(rulesets)
+    .bind(invitations)
+    .fetch_optional(pool)
+    .await?
+    .with_context(|| format!("{login}: unknown user"))
+}

@@ -8,7 +8,7 @@ web app. Backend: Rust. Deployment: Docker Compose on a home server, reachable o
 Design documents (owner's Claude Docs, readable with the Claude Docs tools): PRD `1xMWUKLs3tuxQVTFqbbbH9`, Rules
 engine model `97nW4QWw5NosBZHyGF6ZVj`, Catalog model `TB3H5i5iQz8rz1jXYTZS38`, Character model
 `Hqu9NdiJGXKPGjhzUrAS1x`, Engine spike plan `McC2yiPPmYDxN728NcC5S5`, Engine spike report
-`0b757acc-e09d-4259-a34f-fa540a16444a`. The essentials are summarized in the `AGENTS.md` of each folder; when they and
+`0b757acc-e09d-4259-a34f-fa540a16444a`. Multi-RPG, groups and rulesets (draft, next big step): `docs/prd-multi.md`. The essentials are summarized in the `AGENTS.md` of each folder; when they and
 a document disagree, ask.
 
 ## Layout
@@ -22,7 +22,7 @@ a document disagree, ask.
 | `content/` | official catalog batches, the scripts that built them, Danalieth's spreadsheet | `content/AGENTS.md` |
 | `test-references/` | hand-checked sheets the engine must keep giving (Danalieth level 59 + six small cases) | `test-references/README.md` |
 | `deploy/` | production: `Caddyfile`, `import-content.sh` (first import), `backup.sh` (nightly export) | `docs/deploy.md` |
-| `docs/` | `status.md`: where the project stands, next steps, decisions, known limits; `deploy.md`: the VPS guide | |
+| `docs/` | `status.md`: where the project stands, next steps, decisions, known limits; `deploy.md`: the VPS guide; `prd-multi.md`: PRD for multi-RPG, groups and rulesets | |
 
 ## Current phase: PoC (server + web app), before the first commit
 
@@ -44,6 +44,7 @@ only in the database (see `server/AGENTS.md`, Data safety).
 
 ## Conventions
 
-- Entity ids: type prefix + lowercase English name, never changed (`feat.power_attack`).
+- Entity ids: type prefix + lowercase English name, never changed (`feat.power_attack`); in a ruleset, its slug first
+  (`eberron:feat.dragon_blood`). The one exception: `server migrate-groups` renamed team content once.
 - User-facing text: French and English, keywords referenced by id so they stay bold and translated.
 - Content outside the SRD (Book of Nine Swords, Complete Arcane, Complete Mage): short summaries, never book text.

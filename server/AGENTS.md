@@ -24,9 +24,22 @@ rule sections plus the closure of its character's entities, and later only what 
   `arbitrary_precision` (numbers pass through as text, never f64).
 - Tables (`server/migrations/`): `entity` + `entity_version` (full JSON per version, author, date, note),
   `entity_relation`, `progression_row` (class tables), `catalog_section` (every other top-level catalog key, as is).
+  Groups and rulesets (`0008_groups.sql`, `docs/prd-multi.md`): `rpg` (`dnd35`), `ruleset` + `ruleset_editor`,
+  `lore_group` + `group_member` (permissions as text) + `group_ruleset` (order), `id_migration` (the one-time id map).
+  `entity` gets `rpg`, `ruleset_id` (null = official) and `overrides` (the official id a house rule replaces);
+  sections and class tables get `rpg`; characters get `group_id` (null only before `migrate-groups`).
+- Ids (`catalog/ids.rs`): `feat.x` official, `<slug>:feat.x` in a ruleset. The id finder (`refs.rs`) keeps the slug.
+- Access (`access.rs`): every handler asks there. Membership, character (owner; « See / Edit characters » in its
+  group; archived = read-only for others), ruleset (owner, editors, « Edit content » in a group whose admin owns it;
+  public = read). Anything not visible is 404; 403 only for something seen but not allowed. `tests/access.rs` calls
+  every endpoint as a stranger: add new endpoints there.
+- Layers (`catalog/stack.rs`): a group sees its RPG's official content, then its rulesets in order. A house rule
+  replaces the official entity under the official id everywhere (closure, search, lists, entity pages, spell
+  lists); the last ruleset wins, and `GET /groups/{g}` lists conflicts. A new house rule starts with the official
+  entity's relations and class table (`edit::inherit`).
 - Import (`server import <file> --author <name> [--note <text>]`): one transaction; an entity gets a new version only
   when its JSON changed. Files may be partial batches, so nothing absent from the file is deleted.
-- Closure (`POST /catalog/closure {roots}`): entities reached through ids found in content (any string shaped like an
+- Closure (`POST /groups/{g}/catalog/closure {roots}`): entities reached through ids found in content (any string shaped like an
   id, including inside formulas), outgoing relations except `on_spell_list`, and class table rows. Danalieth's closure
   (80 of 92 entities) gives the same 20 verified values in the reference runner. `{character}` instead of `{roots}`
   gives a draft character's closure (as `GET /characters/{id}/catalog`, every skill included), for the level-up preview.
@@ -46,10 +59,10 @@ rule sections plus the closure of its character's entities, and later only what 
     item itself. Values comma-separated: any of them; different filters: all.
   - `facets=true` adds `{value, count, name?}` per filter value, each filter counted without itself.
   - Measured on 28,600 entities (the catalog ×20), release build: 7–120 ms; 1–2 letter queries 170–220 ms.
-- Content editing (`server/src/catalog/edit.rs`, PRD 5): `POST /entities {entity, note, variantOf?}` and
-  `PUT /entities/{id} {version, entity, note}`, each save a new `entity_version` with the user's login as author.
-  Owner's rule: every member creates and edits team content (`provenance: "team"`, forced for members); official
-  content (any other provenance) only admins (403). Id and type never change; a stale `version` gives 409 with
+- Content editing (`server/src/catalog/edit.rs`, PRD 5): `POST /entities {entity, note, ruleset?, overrides?, rpg?}`
+  and `PUT /entities/{id} {version, entity, note}`, each save a new `entity_version` with the user's login as author.
+  Into a ruleset its editors change (the id must start with its slug), or official content (no `ruleset`): platform
+  admin only (`app_user.role = 'admin'`). Id and type never change; a stale `version` gives 409 with
   `current`, a taken id on create too. The server checks only the shape (id `prefix.lowercase_words`, a type, a
   name); the client checks the rest with the engine. A variant gets a `variant_of` relation to its original
   (`GET /entities/{id}` returns `variantOf`; closures do not follow it). `GET /entities/{id}` also lists the
@@ -64,8 +77,15 @@ rule sections plus the closure of its character's entities, and later only what 
   Re-importing `lists.json` would overwrite levels edited in the app.
 - `GET /catalog/spell-list/{classId}`: the spells on a class's list with their level and name (for picking spells
   known; the closure leaves `on_spell_list` out).
-- Endpoints: `GET /health`, `GET /catalog/core`, `POST /catalog/closure`, `GET /entities?type=&after=&limit=` (paged by
-  id, max 200; each item has `id`, `type`, `name`, `labels`), `GET /search?q=&type=&school=&descriptor=&list=&level=&affects=&offset=&limit=&facets=` (same items), `GET /entities/{id}`, `GET /entities/{id}/versions`.
+- Endpoints: `GET /health`. Catalog reads go through a group (members only): `GET /groups/{g}/catalog/core`,
+  `POST /groups/{g}/catalog/closure`, `GET /groups/{g}/entities?type=&after=&limit=` (paged by id, max 200; each item
+  has `id`, `type`, `name`, `labels`, `houseRule?`), `GET /groups/{g}/search?…` (same items),
+  `GET /groups/{g}/entities/{id}` (+ `overrides`, `ruleset`, `editable`), `…/versions`,
+  `GET /groups/{g}/catalog/spell-list/{class}`. Groups: `GET|POST /groups`, `GET|PATCH /groups/{g}`,
+  `GET /groups/{g}/members`, `PUT|DELETE /groups/{g}/members/{user}`, `POST /groups/{g}/leave`,
+  `PUT /groups/{g}/rulesets` (slugs in order), `POST /groups/{g}/invitations`, `POST /groups/join {token}`.
+  Rulesets: `GET|POST /rulesets`, `GET|PATCH /rulesets/{slug}`, `PUT /rulesets/{slug}/editors` (people the owner
+  shares a group with), `GET /rulesets/{slug}/entities`. Limits per account: `server user limits <login>`.
 - Auth (`server/src/auth/`, PRD 5.6): everything except `/health`, `/auth/login|refresh|logout` and `/auth/invitation[/accept]` goes through the
   `require_user` middleware (`Authorization: Bearer <access token>`); handlers take `CurrentUser` to know who calls.
   - Passwords: Argon2id, at least 12 characters; logins are case-insensitive. Unknown login and wrong password give
@@ -86,13 +106,15 @@ rule sections plus the closure of its character's entities, and later only what 
     `POST /auth/invitation/accept {token, password}` creates the account (login = email) and returns a token pair.
     Unknown, used and expired tokens give the same 404; a short password 400 (the link stays usable); an account
     made meanwhile 409. Invitations are not exported (temporary, like refresh tokens).
-- Characters (`server/src/characters/`): build choices (the engine's character JSON, every saved version kept in
+- Characters (`server/src/characters/`, always in a group: `POST /characters {groupId, character}`,
+  `POST /characters/{id}/move {groupId}` to a group of the same RPG, `GET /characters?group=`; leaving a group
+  archives one's characters there): build choices (the engine's character JSON, every saved version kept in
   `player_character_version`) and play state (`player_character_play`, an opaque JSON object owned by the clients,
   no history), each with its own `updatedAt`. The server sets `content.id` to the character's UUID and checks only
-  `name` and `baseAbilities`. Owner reads and writes, admins read, anyone else gets 404. Archive, never delete.
+  `name` and `baseAbilities`. Who reads and writes: `access::character` (above). Archive, never delete.
   - **Sync rule (owner):** a push carries the `updatedAt` it was based on; if the server copy is newer, 409 with
     `current`, and the client takes it (the server wins). `updatedAt` always increases (at least +1 µs per write).
-  - Endpoints: `GET|POST /characters` (`updatedSince`, `archived`, `all` for admins), `GET|PUT /characters/{id}`,
+  - Endpoints: `GET|POST /characters` (`updatedSince`, `archived`, `group`), `GET|PUT /characters/{id}`,
     `PUT /characters/{id}/play`, `POST /characters/{id}/archive|restore|duplicate`,
     `GET /characters/{id}/versions[/{n}]`, `GET /characters/{id}/catalog` (closure of the ids in the character).
 - Development (`compose.yaml`) publishes the server on 127.0.0.1:8080 only. Production (`compose.prod.yaml`, `docs/deploy.md`)
@@ -109,9 +131,14 @@ rule sections plus the closure of its character's entities, and later only what 
 - `server restore <dir>`: into an empty database only, one transaction, ids and `updatedAt` kept (clients' sync
   tokens stay valid), identity sequences moved past the highest id. Refuses an unknown `format`, a newer schema, a
   file whose name does not match its id, counts that differ from the manifest.
-- `server export-catalog <file>`: the current catalog in the `import` format.
+- `server export-catalog <file> [--rpg dnd35 | --ruleset <slug>]`: official content or one ruleset, in the `import`
+  format; `server import <file> [--rpg | --ruleset <slug>]` the other way.
+- `server migrate-groups --owner <login> --group-name … --ruleset <slug> --ruleset-name … [--dry-run]`: once, today's
+  table into the first group and its team content into a private ruleset (ids renamed, map kept in `id_migration`
+  and the export's `migration/id-map.json`).
 - Moving the infrastructure: stop writes, `export` on the old machine, `restore` on the new one, `export` there, and
   `diff -r` the two folders: no output means nothing was lost. In Docker the server sees `./exports` as `/exports`
   (`docker compose exec server server export /exports/<date>`).
 - Changing the archive layout or a record means bumping `archive::FORMAT` and teaching `restore` the old format.
-  Format 2 added `relations` to entity versions; restore reads formats 1 and 2 (`READABLE_FORMATS`).
+  Format 2 added `relations` to entity versions; format 3 RPGs, rulesets, groups and the id map (sections and class
+  tables in one folder per RPG); restore reads formats 1 to 3 (`READABLE_FORMATS`).

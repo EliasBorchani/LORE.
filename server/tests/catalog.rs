@@ -4,6 +4,7 @@ use std::collections::BTreeSet;
 use std::path::Path;
 
 use axum::http::StatusCode;
+use common::official;
 use serde_json::{Value, json};
 use server::catalog::import::{ImportReport, import};
 use server::catalog::refs::collect_candidate_ids;
@@ -16,12 +17,59 @@ fn golden(file: &str) -> Value {
     serde_json::from_str(&std::fs::read_to_string(path).unwrap()).unwrap()
 }
 
-/// Calls the API as a logged-in member.
+/// Calls the API as a member of a group with no ruleset: catalog routes (`/catalog/…`, `/entities…`, `/search`) are
+/// read through that group, so these tests see the official content as before groups.
 async fn call(pool: &PgPool, method: &str, uri: &str, body: Option<Value>) -> (StatusCode, Value) {
     let state = common::test_state(pool);
-    let token = common::member_token(&state);
-    let reply = common::send(&server::app(state), method, uri, body, Some(&token)).await;
+    let app = server::app(state.clone());
+    let (token, group) = reader(&state, &app).await;
+    let scoped = ["/catalog/", "/entities", "/search"];
+    let uri = if scoped.iter().any(|prefix| uri.starts_with(prefix)) {
+        format!("/groups/{group}{uri}")
+    } else {
+        uri.to_owned()
+    };
+    let reply = common::send(&app, method, &uri, body, Some(&token)).await;
     (reply.status, reply.body)
+}
+
+/// The test reader and its group, made on the first call.
+async fn reader(state: &server::AppState, app: &axum::Router) -> (String, String) {
+    let pool = &state.pool;
+    let found: Option<(i64, Option<String>)> = sqlx::query_as(
+        "SELECT u.id, (SELECT m.group_id FROM group_member m WHERE m.user_id = u.id LIMIT 1)
+         FROM app_user u WHERE u.login = 'reader'",
+    )
+    .fetch_optional(pool)
+    .await
+    .unwrap();
+    let id = match found {
+        Some((id, Some(group))) => {
+            let token = server::auth::tokens::issue_access(
+                &state.auth,
+                server::auth::CurrentUser {
+                    id,
+                    role: server::auth::Role::Member,
+                },
+            );
+            return (token, group);
+        }
+        Some((id, None)) => id,
+        None => {
+            common::user_token(state, "reader", server::auth::Role::Member)
+                .await
+                .0
+        }
+    };
+    let token = server::auth::tokens::issue_access(
+        &state.auth,
+        server::auth::CurrentUser {
+            id,
+            role: server::auth::Role::Member,
+        },
+    );
+    let group = common::group(app, &token, "Table de test").await;
+    (token, group)
 }
 
 fn ids_of(list: &Value) -> BTreeSet<String> {
@@ -46,7 +94,9 @@ fn sorted(list: &Value) -> Vec<String> {
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn closure_of_danalieth_matches_the_golden_catalog(pool: PgPool) {
     let catalog = golden("catalog.json");
-    import(&pool, &catalog, "test", None).await.unwrap();
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
 
     let entity_ids = ids_of(&catalog["entities"]);
     let mut roots = BTreeSet::new();
@@ -116,7 +166,7 @@ async fn closure_of_danalieth_matches_the_golden_catalog(pool: PgPool) {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn closure_of_one_feat_stays_small(pool: PgPool) {
-    import(&pool, &golden("catalog.json"), "test", None)
+    import(&pool, &official(), &golden("catalog.json"), "test", None)
         .await
         .unwrap();
 
@@ -140,9 +190,13 @@ async fn closure_of_one_feat_stays_small(pool: PgPool) {
 async fn second_import_changes_nothing_and_paging_sees_every_entity(pool: PgPool) {
     let catalog = golden("catalog.json");
     let count = catalog["entities"].as_array().unwrap().len();
-    import(&pool, &catalog, "test", None).await.unwrap();
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
 
-    let report = import(&pool, &catalog, "test", None).await.unwrap();
+    let report = import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
     assert_eq!(
         (report.created, report.updated, report.unchanged),
         (0, 0, count)
@@ -183,7 +237,9 @@ async fn second_import_changes_nothing_and_paging_sees_every_entity(pool: PgPool
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn a_changed_entity_gets_a_new_version_and_a_batch_deletes_nothing(pool: PgPool) {
     let catalog = golden("catalog.json");
-    import(&pool, &catalog, "test", None).await.unwrap();
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
     let relations_before: i64 = sqlx::query_scalar("SELECT count(*) FROM entity_relation")
         .fetch_one(&pool)
         .await
@@ -198,7 +254,7 @@ async fn a_changed_entity_gets_a_new_version_and_a_batch_deletes_nothing(pool: P
         .clone();
     entity["description"]["en"] = json!("Trade attack for damage.");
     let batch = json!({ "entities": [entity] });
-    let report = import(&pool, &batch, "owner", Some("English text"))
+    let report = import(&pool, &official(), &batch, "owner", Some("English text"))
         .await
         .unwrap();
     assert_eq!(
@@ -261,7 +317,7 @@ async fn unknown_entities_are_404(pool: PgPool) {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn health_and_core(pool: PgPool) {
-    import(&pool, &golden("catalog.json"), "test", None)
+    import(&pool, &official(), &golden("catalog.json"), "test", None)
         .await
         .unwrap();
     let (status, _) = call(&pool, "GET", "/health", None).await;
@@ -274,7 +330,7 @@ async fn health_and_core(pool: PgPool) {
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn a_dry_run_reports_and_writes_nothing(pool: PgPool) {
     let catalog = golden("catalog.json");
-    let report = server::catalog::import::dry_run(&pool, &catalog, "test", None)
+    let report = server::catalog::import::dry_run(&pool, &official(), &catalog, "test", None)
         .await
         .unwrap();
     assert_eq!(
@@ -294,7 +350,7 @@ async fn a_dry_run_reports_and_writes_nothing(pool: PgPool) {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn a_draft_character_gets_the_same_closure_as_a_saved_one(pool: PgPool) {
-    import(&pool, &golden("catalog.json"), "test", None)
+    import(&pool, &official(), &golden("catalog.json"), "test", None)
         .await
         .unwrap();
     let (status, closure) = call(
@@ -319,7 +375,7 @@ async fn a_draft_character_gets_the_same_closure_as_a_saved_one(pool: PgPool) {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn a_spell_list_gives_each_spell_with_its_level(pool: PgPool) {
-    import(&pool, &golden("catalog.json"), "test", None)
+    import(&pool, &official(), &golden("catalog.json"), "test", None)
         .await
         .unwrap();
     let (status, list) = call(&pool, "GET", "/catalog/spell-list/class.wizard", None).await;
@@ -348,7 +404,9 @@ async fn search_ignores_accents_case_and_word_order(pool: PgPool) {
             entity("feat.cœur", "feat", "Cœur 100%", "Heart"),
         ]
     });
-    import(&pool, &catalog, "test", None).await.unwrap();
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
     let found = |uri: &'static str| {
         let pool = pool.clone();
         async move {
@@ -490,7 +548,7 @@ fn counts(page: &Value, facet: &str) -> Vec<(String, u64)> {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn search_finds_words_in_descriptions_after_names(pool: PgPool) {
-    import(&pool, &search_catalog(), "test", None)
+    import(&pool, &official(), &search_catalog(), "test", None)
         .await
         .unwrap();
 
@@ -522,7 +580,7 @@ async fn search_finds_words_in_descriptions_after_names(pool: PgPool) {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn search_filters_spells_by_school_descriptor_and_list(pool: PgPool) {
-    import(&pool, &search_catalog(), "test", None)
+    import(&pool, &official(), &search_catalog(), "test", None)
         .await
         .unwrap();
     let ids = |uri: &'static str| {
@@ -583,7 +641,7 @@ async fn search_filters_spells_by_school_descriptor_and_list(pool: PgPool) {
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
 async fn each_facet_is_counted_without_its_own_filter(pool: PgPool) {
-    import(&pool, &search_catalog(), "test", None)
+    import(&pool, &official(), &search_catalog(), "test", None)
         .await
         .unwrap();
 
@@ -643,7 +701,9 @@ async fn an_entity_comes_with_its_relations_and_their_names(pool: PgPool) {
             { "from": "spell.fireball", "relation": "on_spell_list", "to": "domain.unknown", "level": 3 }
         ]
     });
-    import(&pool, &catalog, "test", None).await.unwrap();
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
     let (_, detail) = call(&pool, "GET", "/entities/spell.fireball", None).await;
     assert_eq!(
         detail["relations"],
@@ -665,7 +725,9 @@ async fn an_entity_names_the_entities_its_content_refers_to(pool: PgPool) {
             { "id": "skill.jump", "type": "skill", "name": { "fr": "Saut" } }
         ]
     });
-    import(&pool, &catalog, "test", None).await.unwrap();
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
     let (_, detail) = call(&pool, "GET", "/entities/feat.cleave", None).await;
     assert_eq!(
         detail["references"],

@@ -16,9 +16,10 @@ use time::OffsetDateTime;
 use uuid::Uuid;
 
 /// Bumped when the layout or a record changes; restore refuses formats it does not know.
-pub const FORMAT: u32 = 2;
-/// Formats restore still reads. 1: entity versions had no `relations`.
-pub const READABLE_FORMATS: [u32; 2] = [1, 2];
+pub const FORMAT: u32 = 3;
+/// Formats restore still reads. 1: entity versions had no `relations`. 2: no RPGs, rulesets or groups (everything
+/// is D&D 3.5 official or team content; `server migrate-groups` then makes the first group).
+pub const READABLE_FORMATS: [u32; 3] = [1, 2, 3];
 
 pub const MANIFEST: &str = "manifest.json";
 pub const ACCOUNTS: &str = "accounts.json";
@@ -27,6 +28,28 @@ pub const ENTITIES: &str = "catalog/entities";
 pub const RELATIONS: &str = "catalog/relations.json";
 pub const PROGRESSIONS: &str = "catalog/progressions";
 pub const CHARACTERS: &str = "characters";
+pub const RPGS: &str = "rpgs.json";
+pub const RULESETS: &str = "rulesets.json";
+pub const GROUPS: &str = "groups.json";
+pub const ID_MAP: &str = "migration/id-map.json";
+/// The RPG of everything in a format 1 or 2 archive.
+pub const OLD_RPG: &str = "dnd35";
+
+fn old_rpg() -> String {
+    OLD_RPG.into()
+}
+
+fn default_limit_10() -> i32 {
+    10
+}
+
+fn default_limit_20() -> i32 {
+    20
+}
+
+fn is_zero(n: &usize) -> bool {
+    *n == 0
+}
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
@@ -48,13 +71,23 @@ pub struct Counts {
     pub progression_rows: usize,
     pub characters: usize,
     pub character_versions: usize,
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub rpgs: usize,
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub rulesets: usize,
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub groups: usize,
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub group_members: usize,
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub id_migrations: usize,
 }
 
 impl std::fmt::Display for Counts {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(
             f,
-            "{} accounts, {} sections, {} entities ({} versions), {} relations, {} progression rows, {} characters ({} versions)",
+            "{} accounts, {} sections, {} entities ({} versions), {} relations, {} progression rows, {} characters ({} versions), {} RPGs, {} rulesets, {} groups ({} members), {} migrated ids",
             self.accounts,
             self.sections,
             self.entities,
@@ -62,7 +95,12 @@ impl std::fmt::Display for Counts {
             self.relations,
             self.progression_rows,
             self.characters,
-            self.character_versions
+            self.character_versions,
+            self.rpgs,
+            self.rulesets,
+            self.groups,
+            self.group_members,
+            self.id_migrations
         )
     }
 }
@@ -79,13 +117,85 @@ pub struct Account {
     pub created_at: OffsetDateTime,
     #[serde(with = "time::serde::rfc3339::option")]
     pub disabled_at: Option<OffsetDateTime>,
+    #[serde(default = "default_limit_10")]
+    pub max_groups: i32,
+    #[serde(default = "default_limit_10")]
+    pub max_rulesets: i32,
+    #[serde(default = "default_limit_20")]
+    pub max_pending_invites: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Section {
+    #[serde(default = "old_rpg")]
+    pub rpg: String,
     pub name: String,
     pub content: Value,
+}
+
+#[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
+#[serde(deny_unknown_fields)]
+pub struct Rpg {
+    pub id: String,
+    pub name: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct RulesetRecord {
+    pub id: i64,
+    pub slug: String,
+    pub rpg: String,
+    pub owner_id: i64,
+    pub name: String,
+    pub visibility: String,
+    #[serde(with = "time::serde::rfc3339")]
+    pub created_at: OffsetDateTime,
+    #[serde(with = "time::serde::rfc3339::option")]
+    pub archived_at: Option<OffsetDateTime>,
+    #[sqlx(skip)]
+    pub editors: Vec<i64>,
+}
+
+#[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct GroupRecord {
+    pub id: String,
+    pub rpg: String,
+    pub name: String,
+    #[serde(with = "time::serde::rfc3339")]
+    pub created_at: OffsetDateTime,
+    #[serde(with = "time::serde::rfc3339::option")]
+    pub archived_at: Option<OffsetDateTime>,
+    #[sqlx(skip)]
+    pub members: Vec<MemberRecord>,
+    /// Ruleset ids, in the group's order.
+    #[sqlx(skip)]
+    pub rulesets: Vec<i64>,
+}
+
+#[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct MemberRecord {
+    #[serde(skip)]
+    pub group_id: String,
+    pub user_id: i64,
+    /// Sorted, so the same permissions always give the same bytes.
+    pub permissions: Vec<String>,
+    #[serde(with = "time::serde::rfc3339")]
+    pub joined_at: OffsetDateTime,
+    #[serde(with = "time::serde::rfc3339::option")]
+    pub left_at: Option<OffsetDateTime>,
+}
+
+#[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct IdMigration {
+    pub old_id: String,
+    pub new_id: String,
+    #[serde(with = "time::serde::rfc3339")]
+    pub migrated_at: OffsetDateTime,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -97,6 +207,13 @@ pub struct EntityFile {
     pub provenance: Option<String>,
     pub source: Option<String>,
     pub current_version: i32,
+    #[serde(default = "old_rpg")]
+    pub rpg: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub ruleset_id: Option<i64>,
+    /// The official id this house rule replaces.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub overrides: Option<String>,
     pub versions: Vec<EntityVersion>,
 }
 
@@ -119,6 +236,8 @@ pub struct EntityVersion {
 pub struct CharacterFile {
     pub id: Uuid,
     pub owner_id: i64,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub group_id: Option<String>,
     pub name: String,
     #[serde(with = "time::serde::rfc3339")]
     pub created_at: OffsetDateTime,

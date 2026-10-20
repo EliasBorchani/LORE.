@@ -8,6 +8,8 @@ describe('idFrom', () => {
     expect(idFrom('class_power', 'Cœur de l’Épée !')).toBe('power.coeur_de_l_epee')
     expect(idFrom('prestige_class', 'Archmage')).toBe('class.archmage')
     expect(idFrom('feat', ' ? ')).toBe('')
+    expect(idFrom('feat', 'Dragon Blood', 'eberron')).toBe('eberron:feat.dragon_blood')
+    expect(idFrom('feat', ' ? ', 'eberron')).toBe('')
   })
 })
 

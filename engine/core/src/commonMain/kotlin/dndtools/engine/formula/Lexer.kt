@@ -78,13 +78,17 @@ internal class Lexer(private val source: String) {
         return whole
     }
 
-    /** `ability.str.score`, `toggle.power_attack.value`, `dc.school[abjuration]`. */
+    /**
+     * `ability.str.score`, `toggle.power_attack.value`, `dc.school[abjuration]`, and homebrew ids with their ruleset
+     * slug: `eberron:skill.airship_piloting.ranks` (one `:`, before the first `.`).
+     */
     private fun readStatKey(start: Int): String {
         val sb = StringBuilder()
         while (pos < source.length) {
             val c = source[pos]
             when {
                 c.isLetterOrDigit() || c == '_' || c == '.' -> { sb.append(c); pos++ }
+                c == ':' && sb.isNotEmpty() && sb.none { it == '.' || it == ':' || it == '[' } -> { sb.append(c); pos++ }
                 c == '[' -> {
                     val close = source.indexOf(']', pos)
                     if (close < 0) throw FormulaException("Missing ']' in statistic key", pos)
@@ -95,7 +99,7 @@ internal class Lexer(private val source: String) {
             }
         }
         val key = sb.toString()
-        if (key.isEmpty() || key.startsWith('.') || key.endsWith('.') || ".." in key) {
+        if (key.isEmpty() || key.startsWith('.') || key.endsWith('.') || ".." in key || key.endsWith(':') || ":." in key) {
             throw FormulaException("Invalid statistic key '@$key'", start)
         }
         return key

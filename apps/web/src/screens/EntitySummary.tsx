@@ -4,6 +4,7 @@ import { EntityName } from '../components/EntityPanel'
 import { prerequisiteParts } from '../content/prerequisite'
 import { fr, statLabels } from '../i18n/fr'
 import { localized } from '../sheet/names'
+import { useGroupPath } from '../group/GroupContext'
 
 /** What an entity does: its facts, description and effects. The catalog page and the info panel both show it. */
 export function EntitySummary({ detail }: { detail: EntityDetail }) {
@@ -17,6 +18,7 @@ export function EntitySummary({ detail }: { detail: EntityDetail }) {
 
 /** Labels, prerequisite, spell levels and fields, uses per day. */
 export function EntityFacts({ detail }: { detail: EntityDetail }) {
+  const groupPath = useGroupPath()
   const { content: entity, relations = [] } = detail
   const spellLevels = relations
     .filter((r) => r.relation === 'on_spell_list')
@@ -44,7 +46,7 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
               {spellLevels.map((l, i) => (
                 <span key={l.id}>
                   {i > 0 && ' · '}
-                  <Link to={`/catalog/entity/${l.id}`}>{l.name}</Link> {l.level}
+                  <Link to={groupPath(`/catalog/entity/${l.id}`)}>{l.name}</Link> {l.level}
                 </span>
               ))}
             </dd>
