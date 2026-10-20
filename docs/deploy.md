@@ -161,7 +161,9 @@ A copy on your own computer, now and then:
 `rsync -a -e "ssh -i ~/.ssh/id_ed25519_perso" lore@<server address>:/srv/lore/exports/ ~/LORE-backups/`.
 
 Restoring (a new server, or after a disaster): an empty database, then
-`docker compose -f compose.prod.yaml exec server server restore /exports/<date>` (see `server/AGENTS.md`, Data safety).
+`docker compose -f compose.prod.yaml exec --user "$(id -u):$(id -g)" server server restore /exports/<date>` (see
+`server/AGENTS.md`, Data safety). Exports and restores run as your user (`--user`), like `backup.sh`: an export is
+private to you (0700), and the server's own user in the container can neither write into `exports/` nor read it.
 
 ## 9. Updating
 
@@ -180,7 +182,7 @@ The update that brings groups adds tables by itself, then today's table moves in
 It renames team content (`feat.x` → `<slug>:feat.x`) for good, so export first:
 
 ```sh
-docker compose -f compose.prod.yaml exec server server export /exports/before-groups
+docker compose -f compose.prod.yaml exec --user "$(id -u):$(id -g)" server server export /exports/before-groups
 git pull && docker compose -f compose.prod.yaml up -d --build
 docker compose -f compose.prod.yaml exec server server migrate-groups --owner <your email> \
   --group-name "<the table's name>" --ruleset <slug> --ruleset-name "<its name>" --dry-run

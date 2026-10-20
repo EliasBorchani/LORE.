@@ -27,7 +27,8 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   (`?all` shows the list). A group's pages live under `/g/<group>/…` (`src/group/GroupContext.tsx`): `useGroup()`
   gives the group, its permissions, `catalog` (the group-scoped API: every catalog read goes through it) and
   `path('/catalog/…')` for links. Settings (`GroupSettingsScreen`): members and permissions, invite, rulesets in
-  order (added by slug or pasted page link), new ruleset, leave, archive. Ruleset pages: `/rulesets/<slug>`.
+  order (added by slug or pasted page link), new ruleset, leave, archive. Ruleset pages: `/rulesets/<slug>`. Its owner
+  moves a character to another group of the same RPG at the bottom of Build (two taps).
 - The sheet (`src/sheet/SheetContext.tsx`) loads `/characters/{id}` and `/characters/{id}/catalog`, runs `SheetEngine`
   in the page and applies toggles one by one (`setToggleChoice`, `setToggle`, `setToggleValue`).
 - **Play state rule (owner):** the build stores the default toggles (`activeToggles`); at the table, toggles, damage,

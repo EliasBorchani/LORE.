@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { api } from '../../api/client'
 import type { EntitySummary, LevelRecord, SpellListEntry } from '../../api/types'
 import { Loading, StatBlock } from '../../components/grimoire'
 import { EntityName, InfoButton } from '../../components/EntityPanel'
@@ -9,9 +10,9 @@ import { localized } from '../../sheet/names'
 import { formatNumber } from '../../format'
 import { abilities, fr, labelNames } from '../../i18n/fr'
 import { useSheet } from '../../sheet/SheetContext'
-import { messageOf } from '../../useLoad'
+import { messageOf, useLoad } from '../../useLoad'
 import { skillDetails, sortedSkills } from './SkillsTab'
-import { useGroupApi, useGroupPath } from '../../group/GroupContext'
+import { useGroup, useGroupApi, useGroupPath } from '../../group/GroupContext'
 
 const RECENT_LEVELS = 6
 
@@ -37,7 +38,53 @@ export function BuildScreen() {
       <Skills />
       <Spells />
       <Items />
+      <MoveCharacter />
     </>
+  )
+}
+
+/**
+ * Its owner takes a character to another of their groups of the same RPG (an archived group's characters can still
+ * leave). Two taps. Entities the new group does not see show as missing on the sheet.
+ */
+function MoveCharacter() {
+  const { group } = useGroup()
+  const { record } = useSheet()
+  const navigate = useNavigate()
+  const { data } = useLoad(() => Promise.all([api.groups(), api.me()]), 'groups-me')
+  const [target, setTarget] = useState('')
+  const [confirm, setConfirm] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  if (!data) return null
+  const [groups, me] = data
+  const choices = groups.filter((g) => g.id !== group.id && g.rpg === group.rpg && !g.archived)
+  if (record.ownerId !== me.id || choices.length === 0) return null
+
+  async function move() {
+    try {
+      await api.moveCharacter(record.id, target)
+      navigate(`/g/${target}/characters/${record.id}`)
+    } catch (e) {
+      setError(messageOf(e))
+      setConfirm(false)
+    }
+  }
+
+  return (
+    <StatBlock title={fr.build.move}>
+      <label className="field">
+        <span>{fr.build.moveTo}</span>
+        <select className="input" value={target} onChange={(e) => { setTarget(e.target.value); setConfirm(false) }}>
+          <option value="">{fr.editor.pick}</option>
+          {choices.map((g) => <option key={g.id} value={g.id}>{g.name}</option>)}
+        </select>
+      </label>
+      <p className="field-hint">{fr.build.moveHint}</p>
+      <button className="btn btn-secondary" disabled={!target} onClick={() => (confirm ? move() : setConfirm(true))}>
+        {confirm ? fr.build.moveConfirm(choices.find((g) => g.id === target)?.name ?? '') : fr.build.move}
+      </button>
+      {error && <p className="warning" role="alert">{error}</p>}
+    </StatBlock>
   )
 }
 

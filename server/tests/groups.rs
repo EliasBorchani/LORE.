@@ -282,3 +282,120 @@ async fn a_ruleset_owner_chooses_editors_among_people_they_play_with(pool: PgPoo
     .await;
     assert_eq!(edit.status, StatusCode::FORBIDDEN);
 }
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
+async fn an_archived_group_is_read_only_but_characters_can_move_out(pool: PgPool) {
+    let state = common::test_state(&pool);
+    let (_, admin) = user_token(&state, "admin", Role::Member).await;
+    let (player_id, player) = user_token(&state, "player", Role::Member).await;
+    let app = server::app(state);
+    let group = common::group(&app, &admin, "Table").await;
+    common::join(&pool, &group, player_id, &["edit_content"]).await;
+    common::ruleset(&app, &admin, &group, "maison", "private").await;
+    let character = send(
+        &app,
+        "POST",
+        "/characters",
+        Some(json!({ "groupId": group, "character": { "name": "Bérénice", "baseAbilities": {} } })),
+        Some(&player),
+    )
+    .await
+    .body;
+    let id = character["id"].as_str().unwrap();
+    let archived = send(
+        &app,
+        "PATCH",
+        &format!("/groups/{group}"),
+        Some(json!({ "archived": true })),
+        Some(&admin),
+    )
+    .await;
+    assert_eq!(archived.body["archived"], json!(true));
+
+    let refused = [
+        (
+            "PUT",
+            format!("/characters/{id}"),
+            Some(
+                json!({ "updatedAt": character["updatedAt"], "character": { "name": "X", "baseAbilities": {} } }),
+            ),
+        ),
+        (
+            "PUT",
+            format!("/characters/{id}/play"),
+            Some(json!({ "updatedAt": character["play"]["updatedAt"], "state": {} })),
+        ),
+        ("POST", format!("/characters/{id}/duplicate"), None),
+        (
+            "POST",
+            "/characters".to_owned(),
+            Some(json!({ "groupId": group, "character": { "name": "Y", "baseAbilities": {} } })),
+        ),
+        (
+            "POST",
+            "/entities".to_owned(),
+            Some(
+                json!({ "entity": { "id": "maison:feat.x", "type": "feat", "name": { "fr": "X" } }, "ruleset": "maison" }),
+            ),
+        ),
+    ];
+    for (method, uri, body) in refused {
+        let reply = send(&app, method, &uri, body, Some(&player)).await;
+        assert_eq!(
+            reply.status,
+            StatusCode::FORBIDDEN,
+            "{method} {uri}: {}",
+            reply.body
+        );
+    }
+    for (method, uri, body) in [
+        (
+            "PUT",
+            format!("/groups/{group}/rulesets"),
+            Some(json!({ "rulesets": [] })),
+        ),
+        (
+            "POST",
+            format!("/groups/{group}/invitations"),
+            Some(json!({ "email": "a@b.cd" })),
+        ),
+    ] {
+        let reply = send(&app, method, &uri, body, Some(&admin)).await;
+        assert_eq!(
+            reply.status,
+            StatusCode::FORBIDDEN,
+            "{method} {uri}: {}",
+            reply.body
+        );
+    }
+    // Still readable, and its owner can take a character to a live group.
+    let read = send(
+        &app,
+        "GET",
+        &format!("/characters/{id}"),
+        None,
+        Some(&player),
+    )
+    .await;
+    assert_eq!(read.status, StatusCode::OK);
+    let other = common::group(&app, &player, "Nouvelle table").await;
+    let moved = send(
+        &app,
+        "POST",
+        &format!("/characters/{id}/move"),
+        Some(json!({ "groupId": other })),
+        Some(&player),
+    )
+    .await;
+    assert_eq!(moved.status, StatusCode::OK, "{}", moved.body);
+    // Not into an archived group.
+    let back = send(
+        &app,
+        "POST",
+        &format!("/characters/{id}/move"),
+        Some(json!({ "groupId": group })),
+        Some(&player),
+    )
+    .await;
+    assert_eq!(back.status, StatusCode::FORBIDDEN);
+}

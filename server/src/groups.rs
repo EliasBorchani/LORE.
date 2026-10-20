@@ -454,6 +454,9 @@ pub async fn set_rulesets(
 ) -> Result<Json<GroupDetail>, AppError> {
     let member = access::membership(&pool, user, &group_id).await?;
     require_admin(&member)?;
+    if member.group_archived {
+        return Err(access::group_read_only());
+    }
     let current: Vec<i64> =
         sqlx::query_scalar("SELECT ruleset_id FROM group_ruleset WHERE group_id = $1")
             .bind(&group_id)
@@ -538,6 +541,9 @@ pub async fn invite(
         return Err(AppError::Forbidden(
             "« Invite » is needed to invite someone".into(),
         ));
+    }
+    if member.group_archived {
+        return Err(access::group_read_only());
     }
     let permissions = match &body.permissions {
         Some(texts) => {

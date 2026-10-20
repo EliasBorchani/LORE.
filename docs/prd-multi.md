@@ -216,7 +216,20 @@ This step breaks « ids never change » **once**, for team content only, with a 
 - **M1: structure, on D&D 3.5 only.** Id separator `:` supported everywhere; RPG column; groups, permissions, rulesets,
   overrides, access module with stranger tests; group-scoped catalog; web app group switcher and settings;
   migration of today's data.
-- **M2: a second RPG.** Engine contract fixed; D&D 5e engine and SRD 5.1 content; RPG plug-in for the web app.
+- **M2: a second RPG** (not a priority, owner 2026-10-20). Engine contract fixed; D&D 5e engine and SRD 5.1
+  content; RPG plug-in for the web app. Architecture work M1 left on purpose, to do before the second engine:
+  1. **Entity key `(rpg, id)`**: official ids are unique only within an RPG. `entity_version`'s foreign key,
+     relations and class tables (which name ids without an RPG) and every `id = ANY(…)` query take the RPG
+     (the group's layers already carry it). One schema migration; the biggest piece.
+  2. **Archive layout**: entity files (`catalog/entities/<type>/<id>.json`) get a folder per RPG, as sections and
+     class tables already have; a format bump.
+  3. **Web app RPG module**: the app calls the D&D 3.5 engine directly and its sheet tabs, `statLabels`, editor
+     blocks and search filters are D&D 3.5. A small interface chosen from the group's `rpg`; today's screens become
+     the D&D 3.5 module.
+  4. **Engine contract** (section 7): the input (choices + closure) and output (sheet) every engine follows.
+
+  Already ready: `rpg` on groups, rulesets, entities, sections and class tables; catalog reads and search filtered
+  by RPG; a character's RPG through its group (moves between RPGs refused); access rules independent of the RPG.
 - **Then:** mobile apps; English UI; public sign-up (with GDPR, abuse limits, public ruleset listing).
 
 ## 12. Limits and risks

@@ -135,8 +135,10 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    ruleset and character endpoint; migration of Danalieth's catalog gives her closure with renamed ids), web tests and
    build, and in Chrome on a scratch database (`lore_m1_check`) migrated from today's shape: Danalieth's verified
    values, a house rule made in the editor, group settings, an invitation creating an account in the group.
-   Left for later: the engine contract (M2), a public ruleset listing, editing a ruleset without a group, moving a
-   character from the web app (the API exists), archived groups still accept writes.
+   Deployed on the VPS on 2026-10-20 (`migrate-groups` run). A second RPG is not a priority (owner, 2026-10-20): what
+   mattered was that the structure scales. Left for later: the engine contract (M2), a public ruleset listing, editing a ruleset without a group. Done after the
+   deploy (not reviewed, not deployed): an archived group is read-only, and a character moves to another group from
+   the Build screen.
 5. Agreed with the owner, for later: automatic backups (nightly `pg_dump` with rotation, a copy off the machine, a
    restore tested regularly) and content migrations as code (when the engine model first changes, a versioned script
    upgrades each entity's current content as a new version authored "migration").

@@ -159,7 +159,12 @@ pub async fn create(
     group_id: &str,
     character: Value,
 ) -> Result<CharacterRecord, AppError> {
-    access::membership(pool, user, group_id).await?;
+    if access::membership(pool, user, group_id)
+        .await?
+        .group_archived
+    {
+        return Err(access::group_read_only());
+    }
     let id = Uuid::new_v4();
     let (content, name) = checked(character, id)?;
     let mut tx = pool.begin().await?;
@@ -276,6 +281,9 @@ pub async fn move_to(
         ));
     }
     let target = access::membership(pool, user, group_id).await?;
+    if target.group_archived {
+        return Err(access::group_read_only());
+    }
     let from_rpg: Option<String> = match &meta.group_id {
         Some(from) => {
             sqlx::query_scalar("SELECT rpg FROM lore_group WHERE id = $1")

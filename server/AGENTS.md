@@ -30,7 +30,7 @@ rule sections plus the closure of its character's entities, and later only what 
   sections and class tables get `rpg`; characters get `group_id` (null only before `migrate-groups`).
 - Ids (`catalog/ids.rs`): `feat.x` official, `<slug>:feat.x` in a ruleset. The id finder (`refs.rs`) keeps the slug.
 - Access (`access.rs`): every handler asks there. Membership, character (owner; « See / Edit characters » in its
-  group; archived = read-only for others), ruleset (owner, editors, « Edit content » in a group whose admin owns it;
+  group; archived = read-only for others; an archived group is read-only for everyone, but a character can leave it), ruleset (owner, editors, « Edit content » in a group whose admin owns it;
   public = read). Anything not visible is 404; 403 only for something seen but not allowed. `tests/access.rs` calls
   every endpoint as a stranger: add new endpoints there.
 - Layers (`catalog/stack.rs`): a group sees its RPG's official content, then its rulesets in order. A house rule

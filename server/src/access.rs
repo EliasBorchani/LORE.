@@ -133,6 +133,7 @@ pub struct CharacterMeta {
     pub owner_id: i64,
     pub group_id: Option<String>,
     pub archived: bool,
+    pub group_archived: bool,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -147,6 +148,7 @@ pub fn character_not_found(id: Uuid) -> AppError {
 
 /// The owner always reads and writes their character. In its group, « See characters » reads it and « Edit
 /// characters » changes it, unless it is archived (a member who left: read-only for the others). Anyone else: 404.
+/// An archived group is read-only for everyone; its owner can still move a character out.
 pub async fn character(
     pool: &PgPool,
     user: CurrentUser,
@@ -154,15 +156,35 @@ pub async fn character(
     wanted: CharacterAccess,
 ) -> Result<CharacterMeta, AppError> {
     let meta: CharacterMeta = sqlx::query_as(
-        "SELECT owner_id, group_id, archived_at IS NOT NULL AS archived FROM player_character WHERE id = $1",
+        "SELECT c.owner_id, c.group_id, c.archived_at IS NOT NULL AS archived,
+                coalesce(g.archived_at IS NOT NULL, false) AS group_archived
+         FROM player_character c LEFT JOIN lore_group g ON g.id = c.group_id WHERE c.id = $1",
     )
     .bind(id)
     .fetch_optional(pool)
     .await?
     .ok_or_else(|| character_not_found(id))?;
-    if meta.owner_id == user.id {
-        return Ok(meta);
+    if meta.owner_id != user.id {
+        other_members(pool, user, &meta, id, wanted).await?;
     }
+    if wanted == CharacterAccess::Write && meta.group_archived {
+        return Err(group_read_only());
+    }
+    Ok(meta)
+}
+
+pub fn group_read_only() -> AppError {
+    AppError::Forbidden("this group is archived: read-only".into())
+}
+
+/// Someone else's character: the caller's permissions in its group decide (404 when they don't open it).
+async fn other_members(
+    pool: &PgPool,
+    user: CurrentUser,
+    meta: &CharacterMeta,
+    id: Uuid,
+    wanted: CharacterAccess,
+) -> Result<(), AppError> {
     let Some(group_id) = &meta.group_id else {
         return Err(character_not_found(id));
     };
@@ -183,7 +205,7 @@ pub async fn character(
             "an archived character is read-only for everyone but its owner".into(),
         ));
     }
-    Ok(meta)
+    Ok(())
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize)]
@@ -262,6 +284,7 @@ async fn ruleset_access(
                          AND owner.left_at IS NULL AND 'admin' = ANY(owner.permissions)
                     JOIN group_member me ON me.group_id = gr.group_id AND me.user_id = $2 AND me.left_at IS NULL
                          AND me.permissions && ARRAY['edit_content', 'admin']
+                    JOIN lore_group g ON g.id = gr.group_id AND g.archived_at IS NULL
                     WHERE gr.ruleset_id = $1),
             EXISTS (SELECT 1 FROM group_ruleset gr
                     JOIN group_member me ON me.group_id = gr.group_id AND me.user_id = $2 AND me.left_at IS NULL

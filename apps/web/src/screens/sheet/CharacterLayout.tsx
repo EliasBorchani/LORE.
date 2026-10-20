@@ -5,7 +5,7 @@ import { fr } from '../../i18n/fr'
 import { classSummary } from '../../sheet/names'
 import { SheetProvider, useSheet } from '../../sheet/SheetContext'
 import { useLoad } from '../../useLoad'
-import { useGroupPath } from '../../group/GroupContext'
+import { useGroup, useGroupPath } from '../../group/GroupContext'
 
 /** Loads the character and the part of the catalog it needs, then gives both to every page under it. */
 export function CharacterLayout() {
@@ -23,7 +23,7 @@ export function CharacterLayout() {
 }
 
 export function CharacterHeader({ back, backLabel = fr.nav.characters }: { back?: string; backLabel?: string }) {
-  const groupPath = useGroupPath()
+  const { group, path: groupPath } = useGroup()
   back ??= groupPath('')
   const { record, name, stat } = useSheet()
   const level = stat('level') ?? String(record.character.levels?.length ?? 0)
@@ -43,6 +43,7 @@ export function CharacterHeader({ back, backLabel = fr.nav.characters }: { back?
       <span className="muted">
         {fr.home.level} <strong className="gilt">{level}</strong> · {classSummary(record.character, name)}
       </span>
+      {group.archived && <p className="warning">{fr.groups.archivedNotice}</p>}
     </header>
   )
 }
