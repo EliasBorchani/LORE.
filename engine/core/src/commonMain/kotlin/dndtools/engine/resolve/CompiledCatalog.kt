@@ -65,6 +65,12 @@ internal class CompiledCatalog(val catalog: Catalog) {
     /** Entity id to its uses per day, for the entities that have some. */
     val dailyUses = LinkedHashMap<String, CompiledValue>()
 
+    /** Entity id to the maximum of the value picked at the table, for the entities that have one. */
+    val tableMax = LinkedHashMap<String, CompiledValue>()
+
+    /** Entities whose effects apply once per take (`repeatable`). */
+    val repeatable = HashSet<String>()
+
     /**
      * Entities applied to one variant by choice: metamagic that costs slot levels (`spell.slot_cost`) and the team's
      * free variant modifiers (label `spell modifier`). Other entities the character has with spell-scoped effects
@@ -193,6 +199,10 @@ internal class CompiledCatalog(val catalog: Catalog) {
             }
             entity.usesPerDay?.let { uses ->
                 compile(uses, "${entity.id}/usesPerDay")?.let { dailyUses[entity.id] = it }
+            }
+            if (entity.repeatable != null) repeatable += entity.id
+            entity.tableValue?.let { value ->
+                compile(value.max, "${entity.id}/tableValue.max")?.let { tableMax[entity.id] = it }
             }
             entity.prerequisite?.let { source ->
                 val formula = (compile(source, "${entity.id}/prerequisite") as? CompiledValue.Expr)?.formula

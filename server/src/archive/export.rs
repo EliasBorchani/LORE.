@@ -9,10 +9,10 @@ use time::OffsetDateTime;
 use uuid::Uuid;
 
 use super::{
-    ACCOUNTS, Account, CHARACTERS, CharacterFile, CharacterVersion, Counts, ENTITIES, EntityFile,
-    EntityVersion, FORMAT, GROUPS, GroupRecord, ID_MAP, IdMigration, MANIFEST, Manifest,
-    MemberRecord, PROGRESSIONS, Play, RELATIONS, RPGS, RULESETS, Rpg, RulesetRecord, SECTIONS,
-    Section, file_name, write_json,
+    ACCOUNTS, Account, CHARACTERS, CharacterFile, CharacterVersion, Counts, DRAFTS, DraftRecord,
+    ENTITIES, EntityFile, EntityVersion, FORMAT, GROUPS, GroupRecord, ID_MAP, IdMigration,
+    MANIFEST, Manifest, MemberRecord, PROGRESSIONS, Play, RELATIONS, RPGS, RULESETS, Rpg,
+    RulesetRecord, SECTIONS, Section, file_name, write_json,
 };
 use crate::catalog::relation_json;
 
@@ -294,6 +294,16 @@ pub async fn export(pool: &PgPool, dir: &Path) -> anyhow::Result<Counts> {
             &dir.join(CHARACTERS).join(format!("{}.json", row.id)),
             &file,
         )?;
+    }
+
+    let drafts: Vec<DraftRecord> = sqlx::query_as(
+        "SELECT id, author_id, group_id, payload, created_at, updated_at FROM entity_draft ORDER BY id",
+    )
+    .fetch_all(&mut *tx)
+    .await?;
+    counts.drafts = drafts.len();
+    if !drafts.is_empty() {
+        write_json(&dir.join(DRAFTS), &drafts)?;
     }
 
     tx.commit().await?;

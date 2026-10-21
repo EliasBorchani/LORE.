@@ -8,7 +8,8 @@ import { Picker } from '../../components/Picker'
 import { allOfType } from '../../sheet/catalogLists'
 import { localized } from '../../sheet/names'
 import { formatNumber } from '../../format'
-import { abilities, fr, labelNames } from '../../i18n/fr'
+import { abilities, fr } from '../../i18n/fr'
+import { labelLine } from '../../rpg/dnd35/labels'
 import { useSheet } from '../../sheet/SheetContext'
 import { messageOf, useLoad } from '../../useLoad'
 import { skillDetails, sortedSkills } from './SkillsTab'
@@ -423,7 +424,7 @@ function Items() {
       {adding ? (
         catalog ? (
           <Picker label={fr.build.addItem}
-            items={catalog.map((i) => ({ id: i.id, name: localized(i.name) ?? i.id, sub: (i.labels ?? []).filter((l) => l !== 'item').map((l) => labelNames[l] ?? l).join(' · ') }))
+            items={catalog.map((i) => ({ id: i.id, name: localized(i.name) ?? i.id, sub: labelLine('item', i.labels ?? []) }))
               .sort((a, b) => a.name.localeCompare(b.name, 'fr'))}
             onPick={(id) => void saveItems([...items, { id, equipped: true }])} />
         ) : (

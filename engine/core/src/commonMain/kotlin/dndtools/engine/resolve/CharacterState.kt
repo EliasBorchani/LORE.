@@ -108,11 +108,19 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         }
     }
 
-    private val choices = character.choices
+    /** Entity id to each take's choice, in level order; an entity no take chose for uses `character.choices`. */
+    private val choices: Map<String, List<String>> = buildMap {
+        character.choices.forEach { (id, choice) -> put(id, listOf(choice)) }
+        val taken = HashMap<String, MutableList<String>>()
+        for (record in records) record.feats.forEach { feat -> feat.choice?.let { taken.getOrPut(feat.id) { ArrayList() } += it } }
+        putAll(taken)
+    }
 
     fun isSource(entityId: String) = entityId in sources
 
-    fun choice(entityId: String): String? = choices[entityId]
+    fun count(entityId: String): Int = sources[entityId] ?: 0
+
+    fun choices(entityId: String): List<String> = choices[entityId].orEmpty()
 
     /** The variant an active toggle casts [spellId] as, when the spell is on the sheet. */
     fun variantOfSpell(spellId: String): String? = spellVariants[spellId]

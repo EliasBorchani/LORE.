@@ -36,7 +36,10 @@ Team content is not here: it lives in the database, written with the app's conte
   `proficiency` → `proficiency.*`, `alignment` → `alignment.*` (shared entities in `content/srd/rules.json`; skill
   entity ids are the skill statistic keys). Each feature is a `class_power` `power.<class>_<feature>`; scaling uses
   `level('class.<class>')` (`usesPerDay`, effect values); a feature switched on at the table reads
-  `active('toggle.<class>_<feature>')`. Tiers that replace each other (rage, greater rage, mighty rage) are
+  `active('toggle.<class>_<feature>')`; when the player picks a number for it, the entity declares
+  `"tableValue": {"max": <number or formula>}` and its effects read `@toggle.<id>.value` (Power Attack). An entity
+  taken more than once declares `"repeatable": {}` (each take adds its effects again) or `{"choose": "skill" | "school" |
+  "class"}` (each take picks one; targets read it as `{choice}`, `dc.school[{choice}]`, `caster_level.class[{choice}]`). Tiers that replace each other (rage, greater rage, mighty rage) are
   conditioned on `not has('<next tier>')`, since their bonuses are untyped and would otherwise add up.
 - Descriptions: an original LORE-style paragraph, then « En jeu » with one rule per line.
 - Spellcasting classes get `spellcasting` on the class, `spellsPerDay` / `spellsKnown` columns in their table rows
@@ -49,6 +52,12 @@ Team content is not here: it lives in the database, written with the app's conte
   the rows. Assassin and Blackguard have their own spells (`spellcasting`, table columns, entries in `lists.json`).
   Check with `node content/tools/prestige/check.mjs <file>` (same replace rules as the import, test sheet Fighter 10 +
   the class).
+- Books and situations (`content/srd/sources.json`, `content/srd/situations.json`, written by
+  `content/tools/catalog/sources.mjs` and `situations.mjs`): `source.*` entries with their English title only, and one
+  `situation.*` entry per situation the official content names, with a short French and English name read after a bonus
+  (« contre le poison »). The editor picks them from dropdowns and a ruleset adds its own from there. Entries still
+  store their old `source` text (`SRD`, `Complete Arcane`…); the web app reads it as the book (`rpg/dnd35/sources.ts`).
+  Check with `node content/tools/catalog/check.mjs` (it also fails on a situation id in the content with no entry).
 - Skills (`content/srd/rules.json`, written by `content/tools/skills/add_skill_data.py`): each `skill.*` entity has a
   `skill` block (`ability`, `armorCheckPenalty` 1 or 2 for Swim, `trainedOnly`) and its SRD synergies as effects
   (`+2` when `@skill.<from>.ranks >= 5`, a `situation` when the bonus depends on the case). `skill.knowledge` (every

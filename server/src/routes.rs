@@ -11,7 +11,7 @@ use crate::catalog::routes as catalog;
 use crate::characters::routes as characters;
 use crate::error::AppError;
 use crate::state::AppState;
-use crate::{groups, rulesets};
+use crate::{atelier, groups, rulesets};
 
 pub fn app(state: AppState) -> Router {
     // All content requires a logged-in user (PRD 5.6); only health, getting tokens and invitation links are open.
@@ -29,7 +29,19 @@ pub fn app(state: AppState) -> Router {
         .route("/groups/{group}/leave", post(groups::leave))
         .route("/groups/{group}/rulesets", put(groups::set_rulesets))
         .route("/groups/{group}/invitations", post(groups::invite))
+        .route(
+            "/groups/{group}/drafts",
+            get(atelier::list_drafts).post(atelier::create_draft),
+        )
+        .route(
+            "/groups/{group}/drafts/{id}",
+            get(atelier::get_draft)
+                .put(atelier::update_draft)
+                .delete(atelier::delete_draft),
+        )
+        .route("/groups/{group}/changes", get(atelier::changes))
         .route("/groups/{group}/catalog/core", get(catalog::core))
+        .route("/groups/{group}/catalog/states", get(catalog::states))
         .route(
             "/groups/{group}/catalog/closure",
             post(catalog::catalog_closure),

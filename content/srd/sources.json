@@ -1,0 +1,236 @@
+{
+  "entities": [
+    {
+      "id": "source.srd",
+      "type": "source",
+      "name": {
+        "en": "System Reference Document (SRD)"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.players_handbook",
+      "type": "source",
+      "name": {
+        "en": "Player’s Handbook"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.dungeon_masters_guide",
+      "type": "source",
+      "name": {
+        "en": "Dungeon Master’s Guide"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.monster_manual",
+      "type": "source",
+      "name": {
+        "en": "Monster Manual"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.epic_level_handbook",
+      "type": "source",
+      "name": {
+        "en": "Epic Level Handbook"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.players_handbook_2",
+      "type": "source",
+      "name": {
+        "en": "Player’s Handbook II"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.dungeon_masters_guide_2",
+      "type": "source",
+      "name": {
+        "en": "Dungeon Master’s Guide II"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.complete_adventurer",
+      "type": "source",
+      "name": {
+        "en": "Complete Adventurer"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.complete_arcane",
+      "type": "source",
+      "name": {
+        "en": "Complete Arcane"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.complete_champion",
+      "type": "source",
+      "name": {
+        "en": "Complete Champion"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.complete_divine",
+      "type": "source",
+      "name": {
+        "en": "Complete Divine"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.complete_mage",
+      "type": "source",
+      "name": {
+        "en": "Complete Mage"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.complete_scoundrel",
+      "type": "source",
+      "name": {
+        "en": "Complete Scoundrel"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.complete_warrior",
+      "type": "source",
+      "name": {
+        "en": "Complete Warrior"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.tome_of_battle",
+      "type": "source",
+      "name": {
+        "en": "Tome of Battle: The Book of Nine Swords"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.spell_compendium",
+      "type": "source",
+      "name": {
+        "en": "Spell Compendium"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.magic_item_compendium",
+      "type": "source",
+      "name": {
+        "en": "Magic Item Compendium"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.expanded_psionics_handbook",
+      "type": "source",
+      "name": {
+        "en": "Expanded Psionics Handbook"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.unearthed_arcana",
+      "type": "source",
+      "name": {
+        "en": "Unearthed Arcana"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.libris_mortis",
+      "type": "source",
+      "name": {
+        "en": "Libris Mortis"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.draconomicon",
+      "type": "source",
+      "name": {
+        "en": "Draconomicon"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.book_of_exalted_deeds",
+      "type": "source",
+      "name": {
+        "en": "Book of Exalted Deeds"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.book_of_vile_darkness",
+      "type": "source",
+      "name": {
+        "en": "Book of Vile Darkness"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.races_of_stone",
+      "type": "source",
+      "name": {
+        "en": "Races of Stone"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.races_of_the_wild",
+      "type": "source",
+      "name": {
+        "en": "Races of the Wild"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.races_of_destiny",
+      "type": "source",
+      "name": {
+        "en": "Races of Destiny"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.races_of_the_dragon",
+      "type": "source",
+      "name": {
+        "en": "Races of the Dragon"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.eberron_campaign_setting",
+      "type": "source",
+      "name": {
+        "en": "Eberron Campaign Setting"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "source.forgotten_realms_campaign_setting",
+      "type": "source",
+      "name": {
+        "en": "Forgotten Realms Campaign Setting"
+      },
+      "provenance": "official"
+    }
+  ]
+}

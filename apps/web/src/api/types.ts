@@ -42,7 +42,7 @@ export interface LevelRecord {
   level: number
   classId: string
   classLevel: number
-  feats?: { id: string; slot?: string }[]
+  feats?: { id: string; slot?: string; choice?: string }[]
   abilityIncrease?: string
   skillRanks?: Record<string, number>
   spellcastingAdvances?: string[]
@@ -112,9 +112,13 @@ export interface Entity {
   labels?: string[]
   prerequisite?: string
   usesPerDay?: string | number
+  /** Can be taken more than once; `choose` is what each take applies to (`{choice}` in effect targets). */
+  repeatable?: { choose?: ChoiceKind }
   effects?: Effect[]
   [field: string]: unknown
 }
+
+export type ChoiceKind = 'skill' | 'school' | 'class'
 
 export interface Effect {
   target: string
@@ -356,4 +360,54 @@ export interface RulesetEntity {
   labels?: string[] | null
   overrides?: string
   version: number
+}
+
+/** A state (`toggle.x`, switched on at the table) or a situation the group's content names, with a few entities using it. */
+export interface StateUse {
+  id: string
+  kind: 'toggle' | 'situation'
+  usedBy: EntityReference[]
+  count: number
+}
+
+export interface DraftSummary {
+  id: string
+  type: string | null
+  name: Localized | null
+  updatedAt: string
+}
+
+/** What the editor keeps of an unfinished entry; the server stores it as is. */
+export interface DraftPayload {
+  entity: Entity
+  /** A new entry, or a new version of `entity.id`. */
+  mode: 'create' | 'update'
+  ruleset?: string
+  overrides?: string
+  /** The version an update started from: someone saving since is a conflict on publish. */
+  baseVersion?: number
+  spellLists?: { to: string; level: string }[]
+  note?: string
+  /** The id was typed by hand: it stops following the name. */
+  idTouched?: boolean
+}
+
+export interface Draft {
+  id: string
+  payload: DraftPayload
+  createdAt: string
+  updatedAt: string
+}
+
+/** A save in one of the group's rulesets. */
+export interface ContentChange {
+  id: string
+  type: string
+  name: Localized | null
+  version: number
+  author: string
+  createdAt: string
+  note: string | null
+  ruleset: string
+  overrides?: string
 }

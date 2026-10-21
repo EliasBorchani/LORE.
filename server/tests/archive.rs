@@ -74,7 +74,7 @@ async fn empty_database(pool: &PgPool) {
     sqlx::query(
         "TRUNCATE app_user, refresh_token, entity, entity_version, entity_relation, progression_row, catalog_section,
                   player_character, player_character_version, player_character_play, invitation, ruleset,
-                  ruleset_editor, lore_group, group_member, group_ruleset, id_migration RESTART IDENTITY CASCADE",
+                  ruleset_editor, lore_group, group_member, group_ruleset, id_migration, entity_draft RESTART IDENTITY CASCADE",
     )
     .execute(pool)
     .await
@@ -111,6 +111,15 @@ async fn fill(pool: &PgPool) -> (String, String) {
         let saved = send(&app, "POST", "/entities", Some(body), Some(&alice)).await;
         assert_eq!(saved.status, StatusCode::OK, "{}", saved.body);
     }
+    let draft = send(
+        &app,
+        "POST",
+        &format!("/groups/{group}/drafts"),
+        Some(json!({ "payload": { "entity": { "type": "feat", "name": { "fr": "À finir" } } } })),
+        Some(&alice),
+    )
+    .await;
+    assert_eq!(draft.status, StatusCode::CREATED, "{}", draft.body);
     let created = send(
         &app,
         "POST",
@@ -326,7 +335,7 @@ async fn restore_refuses_a_filled_database_an_unknown_format_and_a_broken_file(p
     let manifest = fs::read_to_string(&manifest_path).unwrap();
     fs::write(
         &manifest_path,
-        manifest.replace("\"format\": 3", "\"format\": 99"),
+        manifest.replace("\"format\": 4", "\"format\": 99"),
     )
     .unwrap();
     let format = restore(&pool, &archive.0).await.unwrap_err();

@@ -81,7 +81,11 @@ rule sections plus the closure of its character's entities, and later only what 
   `POST /groups/{g}/catalog/closure`, `GET /groups/{g}/entities?type=&after=&limit=` (paged by id, max 200; each item
   has `id`, `type`, `name`, `labels`, `houseRule?`), `GET /groups/{g}/search?…` (same items),
   `GET /groups/{g}/entities/{id}` (+ `overrides`, `ruleset`, `editable`), `…/versions`,
-  `GET /groups/{g}/catalog/spell-list/{class}`. Groups: `GET|POST /groups`, `GET|PATCH /groups/{g}`,
+  `GET /groups/{g}/catalog/spell-list/{class}`, `GET /groups/{g}/catalog/states` (the `toggle.*` and `situation.*`
+  ids the group's content names, from the stored column `facet_states`, `migrations/0009_cms.sql`). Atelier
+  (`atelier.rs`, `docs/prd-cms.md`): `GET|POST /groups/{g}/drafts`, `GET|PUT|DELETE /groups/{g}/drafts/{id}` (the
+  author's only, an opaque `payload`, 256 KB and 200 per account at most; archived group: delete only),
+  `GET /groups/{g}/changes` (latest versions in the group's rulesets). Groups: `GET|POST /groups`, `GET|PATCH /groups/{g}`,
   `GET /groups/{g}/members`, `PUT|DELETE /groups/{g}/members/{user}`, `POST /groups/{g}/leave`,
   `PUT /groups/{g}/rulesets` (slugs in order), `POST /groups/{g}/invitations`, `POST /groups/join {token}`.
   Rulesets: `GET|POST /rulesets`, `GET|PATCH /rulesets/{slug}`, `PUT /rulesets/{slug}/editors` (people the owner
@@ -141,4 +145,5 @@ rule sections plus the closure of its character's entities, and later only what 
   (`docker compose exec server server export /exports/<date>`).
 - Changing the archive layout or a record means bumping `archive::FORMAT` and teaching `restore` the old format.
   Format 2 added `relations` to entity versions; format 3 RPGs, rulesets, groups and the id map (sections and class
-  tables in one folder per RPG); restore reads formats 1 to 3 (`READABLE_FORMATS`).
+  tables in one folder per RPG); format 4 the editor's drafts (`drafts.json`); restore reads formats 1 to 4
+  (`READABLE_FORMATS`).

@@ -13,7 +13,8 @@ const INFO = 'info'
 /** By group, then id: a house rule changes what one group sees. */
 const cache = new Map<string, Promise<EntityDetail>>()
 
-function load(groupApi: GroupApi, id: string): Promise<EntityDetail> {
+/** An entity as the group sees it, fetched once per page load (the editor forgets the ones it saves). */
+export function entityInfo(groupApi: GroupApi, id: string): Promise<EntityDetail> {
   const key = `${groupApi.groupId}/${id}`
   let detail = cache.get(key)
   if (!detail) {
@@ -99,7 +100,7 @@ export function EntityPanel() {
 function PanelBody({ id, close }: { id: string; close: () => void }) {
   const groupPath = useGroupPath()
   const groupApi = useGroupApi()
-  const { data, error, reload } = useLoad(() => load(groupApi, id), `${groupApi.groupId}/${id}`)
+  const { data, error, reload } = useLoad(() => entityInfo(groupApi, id), `${groupApi.groupId}/${id}`)
   return (
     <div className="entity-panel-body">
       <header className="entity-panel-head">

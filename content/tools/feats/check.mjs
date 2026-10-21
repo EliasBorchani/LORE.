@@ -9,7 +9,7 @@ const files = process.argv.slice(2)
 const problems = []
 const warnings = []
 const CATEGORIES = ['general', 'metamagic', 'item_creation', 'monster', 'epic']
-const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'source', 'labels', 'description', 'prerequisite', 'effects', 'usesPerDay', 'note', 'status'])
+const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'source', 'labels', 'description', 'prerequisite', 'tableValue', 'repeatable', 'effects', 'usesPerDay', 'note', 'status'])
 
 const catalog = read(R + 'test-references/danalieth/catalog.json')
 const add = (batch) => {

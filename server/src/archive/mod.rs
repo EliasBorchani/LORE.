@@ -16,10 +16,10 @@ use time::OffsetDateTime;
 use uuid::Uuid;
 
 /// Bumped when the layout or a record changes; restore refuses formats it does not know.
-pub const FORMAT: u32 = 3;
+pub const FORMAT: u32 = 4;
 /// Formats restore still reads. 1: entity versions had no `relations`. 2: no RPGs, rulesets or groups (everything
-/// is D&D 3.5 official or team content; `server migrate-groups` then makes the first group).
-pub const READABLE_FORMATS: [u32; 3] = [1, 2, 3];
+/// is D&D 3.5 official or team content; `server migrate-groups` then makes the first group). 3: no drafts.
+pub const READABLE_FORMATS: [u32; 4] = [1, 2, 3, 4];
 
 pub const MANIFEST: &str = "manifest.json";
 pub const ACCOUNTS: &str = "accounts.json";
@@ -32,6 +32,7 @@ pub const RPGS: &str = "rpgs.json";
 pub const RULESETS: &str = "rulesets.json";
 pub const GROUPS: &str = "groups.json";
 pub const ID_MAP: &str = "migration/id-map.json";
+pub const DRAFTS: &str = "drafts.json";
 /// The RPG of everything in a format 1 or 2 archive.
 pub const OLD_RPG: &str = "dnd35";
 
@@ -81,13 +82,15 @@ pub struct Counts {
     pub group_members: usize,
     #[serde(default, skip_serializing_if = "is_zero")]
     pub id_migrations: usize,
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub drafts: usize,
 }
 
 impl std::fmt::Display for Counts {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(
             f,
-            "{} accounts, {} sections, {} entities ({} versions), {} relations, {} progression rows, {} characters ({} versions), {} RPGs, {} rulesets, {} groups ({} members), {} migrated ids",
+            "{} accounts, {} sections, {} entities ({} versions), {} relations, {} progression rows, {} characters ({} versions), {} RPGs, {} rulesets, {} groups ({} members), {} migrated ids, {} drafts",
             self.accounts,
             self.sections,
             self.entities,
@@ -100,7 +103,8 @@ impl std::fmt::Display for Counts {
             self.rulesets,
             self.groups,
             self.group_members,
-            self.id_migrations
+            self.id_migrations,
+            self.drafts
         )
     }
 }
@@ -196,6 +200,20 @@ pub struct IdMigration {
     pub new_id: String,
     #[serde(with = "time::serde::rfc3339")]
     pub migrated_at: OffsetDateTime,
+}
+
+/// An unfinished entry in the editor, private to its author.
+#[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct DraftRecord {
+    pub id: Uuid,
+    pub author_id: i64,
+    pub group_id: String,
+    pub payload: Value,
+    #[serde(with = "time::serde::rfc3339")]
+    pub created_at: OffsetDateTime,
+    #[serde(with = "time::serde::rfc3339")]
+    pub updated_at: OffsetDateTime,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

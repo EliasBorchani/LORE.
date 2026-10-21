@@ -101,6 +101,10 @@ data class Entity(
     val prerequisite: String? = null,
     /** Maximum uses per day, a number or a formula. Shown for reference, never tracked. */
     val usesPerDay: EffectValue? = null,
+    /** A value the player picks at the table when switching the entity's toggle on (Power Attack). */
+    val tableValue: TableValue? = null,
+    /** Can be taken more than once (Skill Focus): each take applies the effects again, with its own choice. */
+    val repeatable: Repeatable? = null,
     val effects: List<Effect> = emptyList(),
     /** How a class casts spells; its slots and spells known are columns of its table. */
     val spellcasting: SpellcastingDef? = null,
@@ -113,6 +117,22 @@ data class Entity(
     /** Skill points a class gives per level, before the Intelligence modifier (×4 at character level 1). */
     val skillPoints: Long? = null,
 )
+
+/** The value picked at the table, from 1 to [max] (a number or a formula: `@bab`); read as `@toggle.<id>.value`. */
+@Serializable
+data class TableValue(val max: EffectValue)
+
+/** What a repeatable entity asks at each take; effects read it through `{choice}` in their target. */
+@Serializable
+data class Repeatable(val choose: ChoiceKind? = null)
+
+/** What a take's choice names: a skill id (`skill.climb`), a school (`evocation`) or a class id (`class.wizard`). */
+@Serializable
+enum class ChoiceKind {
+    @SerialName("skill") SKILL,
+    @SerialName("school") SCHOOL,
+    @SerialName("class") CLASS,
+}
 
 /** A skill: its ability, and whether armor hinders it (2 for Swim) or it needs ranks to be used. */
 @Serializable

@@ -52,11 +52,14 @@ class CharacterSheet internal constructor(private val engine: Engine, private va
             val active = character.activeToggles.mapTo(HashSet()) { it.toggle }
             val read = session.toggleSources()
             val known = knownToggles.values.map {
-                ToggleLine(it.toggle, it.toggle in active, it.value?.toString(), it.spell ?: it.entity ?: read[it.toggle])
+                val source = it.spell ?: it.entity ?: read[it.toggle]
+                ToggleLine(it.toggle, it.toggle in active, it.value?.toString(), source, maxValue(source))
             }
-            val others = read.filterKeys { it !in knownToggles }.map { (id, source) -> ToggleLine(id, false, null, source) }
+            val others = read.filterKeys { it !in knownToggles }.map { (id, source) -> ToggleLine(id, false, null, source, maxValue(source)) }
             return known + others
         }
+
+    private fun maxValue(source: String?): String? = source?.let(session::tableMax)?.let(::text)
 
     /** Uses per day of the character's powers (wards, Kaleidoscopic Doom), as exact text. */
     val dailyUses: List<DailyUse>
@@ -262,9 +265,12 @@ data class VariantLine(
     val numbers: List<StatLine>,
 )
 
-/** [source]: the entity the toggle belongs to (its spell, or the feat whose effects read it), to show its name. */
+/**
+ * [source]: the entity the toggle belongs to (its spell, or the feat whose effects read it), to show its name.
+ * [maxValue]: the highest value the player may pick, when the source declares a `tableValue`.
+ */
 @JsExport
-data class ToggleLine(val id: String, val active: Boolean, val value: String?, val source: String?)
+data class ToggleLine(val id: String, val active: Boolean, val value: String?, val source: String?, val maxValue: String? = null)
 
 @JsExport
 data class DailyUse(val entity: String, val uses: String?)

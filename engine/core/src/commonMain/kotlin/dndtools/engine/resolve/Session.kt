@@ -121,14 +121,25 @@ class Session internal constructor(
         }
     }
 
+    /** The highest value the player may pick for the entity's toggle, or null when it has none (or it fails). */
+    fun tableMax(entityId: String): Value? = when (val max = compiled.tableMax[entityId]) {
+        null -> null
+        is CompiledValue.Const -> max.value
+        is CompiledValue.Expr -> (max.formula.evaluate(Frame("tableValue:$entityId")) as? EvalResult.Ok)?.value
+    }
+
     private fun activeEffects(key: String, state: CharacterState): List<CompiledEffect> {
         val variant = CompiledCatalog.parseVariant(key)
         val fixed = compiled.effectsFor(key).filter {
             if (variant != null) isVariantEffect(variant.first, it.entityId, state) else state.isSource(it.entityId)
         }
         if (variant != null) return fixed
-        val chosen = compiled.choiceEffects.filter { state.isSource(it.entityId) && choiceTarget(it, state) == key }
-        return if (chosen.isEmpty()) fixed else fixed + chosen
+        // A repeatable entity applies its effects once per take; a choice effect once per take that chose this key.
+        val taken = fixed.flatMap { if (it.entityId in compiled.repeatable) List(state.count(it.entityId)) { _ -> it } else listOf(it) }
+        val chosen = compiled.choiceEffects.filter { state.isSource(it.entityId) }.flatMap { effect ->
+            choiceTargets(effect, state).filter { it == key }.map { effect }
+        }
+        return if (chosen.isEmpty()) taken else taken + chosen
     }
 
     /**
@@ -139,16 +150,19 @@ class Session internal constructor(
         state.isVariantSource(variantId, entityId) ||
             (state.isSource(entityId) && entityId !in compiled.perVariantModifiers && compiled.entity(entityId)?.type != "spell")
 
-    /** `caster_level.class[{choice}]` with the character's choice for the effect's entity, or null without one. */
-    private fun choiceTarget(effect: CompiledEffect, state: CharacterState): String? =
-        state.choice(effect.entityId)?.let { effect.effect.target.replace(CompiledCatalog.CHOICE, it) }
+    /** `caster_level.class[{choice}]` with each of the character's choices for the effect's entity. */
+    private fun choiceTargets(effect: CompiledEffect, state: CharacterState): List<String> =
+        state.choices(effect.entityId).map { effect.effect.target.replace(CompiledCatalog.CHOICE, it) }
 
     /** A choice effect of an active entity that cannot apply: no choice made, or a choice naming no statistic. */
-    private fun choiceIssues(): List<SheetIssue> = compiled.choiceEffects.filter { state.isSource(it.entityId) }.mapNotNull {
-        when (val target = choiceTarget(it, state)) {
-            null -> SheetIssue(SheetIssue.Code.INVALID_VALUE, source = it.ref, message = "${it.entityId} needs a choice for '${it.effect.target}'")
-            !in compiled.keys -> SheetIssue(SheetIssue.Code.INVALID_VALUE, source = it.ref, message = "The choice gives '$target', which is not a statistic")
-            else -> null
+    private fun choiceIssues(): List<SheetIssue> = compiled.choiceEffects.filter { state.isSource(it.entityId) }.flatMap {
+        val targets = choiceTargets(it, state)
+        if (targets.isEmpty()) {
+            listOf(SheetIssue(SheetIssue.Code.INVALID_VALUE, source = it.ref, message = "${it.entityId} needs a choice for '${it.effect.target}'"))
+        } else {
+            targets.filter { target -> target !in compiled.keys }.map { target ->
+                SheetIssue(SheetIssue.Code.INVALID_VALUE, source = it.ref, message = "The choice gives '$target', which is not a statistic")
+            }
         }
     }
 

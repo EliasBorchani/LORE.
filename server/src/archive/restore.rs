@@ -6,9 +6,10 @@ use serde_json::Value;
 use sqlx::{PgConnection, PgPool};
 
 use super::{
-    ACCOUNTS, Account, CHARACTERS, CharacterFile, Counts, ENTITIES, EntityFile, FORMAT, GROUPS,
-    GroupRecord, ID_MAP, IdMigration, MANIFEST, Manifest, OLD_RPG, PROGRESSIONS, READABLE_FORMATS,
-    RELATIONS, RPGS, RULESETS, Rpg, RulesetRecord, SECTIONS, Section, file_name, read_json,
+    ACCOUNTS, Account, CHARACTERS, CharacterFile, Counts, DRAFTS, DraftRecord, ENTITIES,
+    EntityFile, FORMAT, GROUPS, GroupRecord, ID_MAP, IdMigration, MANIFEST, Manifest, OLD_RPG,
+    PROGRESSIONS, READABLE_FORMATS, RELATIONS, RPGS, RULESETS, Rpg, RulesetRecord, SECTIONS,
+    Section, file_name, read_json,
 };
 
 /// Format 3 keeps sections and class tables in one folder per RPG; before, everything was D&D 3.5.
@@ -127,6 +128,25 @@ pub async fn restore(pool: &PgPool, dir: &Path) -> anyhow::Result<Counts> {
             .execute(&mut *tx)
             .await?;
             counts.id_migrations += 1;
+        }
+    }
+
+    if dir.join(DRAFTS).exists() {
+        let drafts: Vec<DraftRecord> = read_json(&dir.join(DRAFTS))?;
+        for draft in drafts {
+            sqlx::query(
+                "INSERT INTO entity_draft (id, author_id, group_id, payload, created_at, updated_at)
+                 VALUES ($1, $2, $3, $4, $5, $6)",
+            )
+            .bind(draft.id)
+            .bind(draft.author_id)
+            .bind(&draft.group_id)
+            .bind(&draft.payload)
+            .bind(draft.created_at)
+            .bind(draft.updated_at)
+            .execute(&mut *tx)
+            .await?;
+            counts.drafts += 1;
         }
     }
 

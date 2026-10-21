@@ -13,8 +13,10 @@ export interface ToggleView {
   choice: ToggleChoice
   /** The entity the toggle belongs to (its spell, or the feat reading it). */
   source: string | null
-  /** True when an effect reads `@toggle.<id>.value` (Power Attack): the sheet shows a stepper. */
+  /** True when the source declares a value picked at the table, or an effect reads `@toggle.<id>.value`. */
   takesValue: boolean
+  /** The highest value allowed, from the source's `tableValue`; null = the base attack bonus (older content). */
+  maxValue: number | null
 }
 
 export interface DailyUseView {
@@ -83,10 +85,12 @@ export function SheetProvider(props: { record: CharacterRecord; closure: Closure
     const toggles = ids.map((toggleId): ToggleView => {
       const playing = play.toggles.find((t) => t.toggle === toggleId)
       const choice = playing ?? defaults.find((t) => t.toggle === toggleId) ?? { toggle: toggleId }
-      const source = engineToggles.find((t) => t.id === toggleId)?.source ?? choice.spell ?? choice.entity ?? null
+      const line = engineToggles.find((t) => t.id === toggleId)
+      const source = line?.source ?? choice.spell ?? choice.entity ?? null
       const sourceEntity = source ? entities.get(source) : undefined
-      const takesValue = JSON.stringify(sourceEntity?.effects ?? []).includes(`@${toggleId}.value`)
-      return { id: toggleId, active: playing != null, choice, source, takesValue }
+      const maxValue = toInteger(line?.maxValue ?? null)
+      const takesValue = maxValue != null || JSON.stringify(sourceEntity?.effects ?? []).includes(`@${toggleId}.value`)
+      return { id: toggleId, active: playing != null, choice, source, takesValue, maxValue }
     })
 
     const dailyUses = sheet.dailyUses

@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
-import { FACETS, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
+import { FACETS, type EntityDetail, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
 import { Badge, ErrorNotice, Icon, Loading, StatBlock } from '../components/grimoire'
 import { formatNumber } from '../format'
 import { affectsNames, entityTypes, fr, typeName } from '../i18n/fr'
+import { sourceId } from '../rpg/dnd35/sources'
 import { entityName, localized } from '../sheet/names'
 import { messageOf, useLoad } from '../useLoad'
 import { CLASS_TYPES, ClassProgression } from './ClassProgression'
@@ -246,7 +247,7 @@ export function CatalogScreen() {
     <>
       <header className="page-head-row">
         <h1 className="type-display-l">{fr.catalog.title}</h1>
-        <Link className="btn btn-secondary btn-small" to={groupPath('/catalog/new')}>{fr.content.newEntry}</Link>
+        <Link className="btn btn-secondary btn-small" to={groupPath('/atelier')}>{fr.content.newEntry}</Link>
       </header>
       <search>
         <SearchField text={text} onChange={setText} label={fr.catalog.search} placeholder={fr.catalog.searchAll} />
@@ -379,7 +380,7 @@ export function EntityScreen() {
         </Link>
         <span className="muted">{fr.catalog.title} · {typeName(entity.type)}</span>
       </header>
-      <StatBlock title={entityName(entity, entity.id)} subtitle={entity.source}
+      <StatBlock title={entityName(entity, entity.id)} subtitle={sourceTitle(entity.source, detail.references)}
         aside={<Badge provenance={entity.provenance} ruleset={detail.ruleset?.name} houseRule={detail.overrides != null} />}>
         <div className="button-row">
           {detail.editable && <Link className="btn btn-secondary btn-small" to={groupPath(`/catalog/entity/${detail.id}/edit`)}>{fr.content.edit}</Link>}
@@ -451,3 +452,10 @@ function ListSpells({ listId }: { listId: string }) {
   )
 }
 
+
+/** The book an entry comes from, by its title; a name written as text before books were entries, as it is. */
+function sourceTitle(source: string | undefined, references: EntityDetail['references']): string | undefined {
+  if (!source) return undefined
+  const book = references?.find((r) => r.id === sourceId(source))
+  return book ? (localized(book.name) ?? source) : source
+}

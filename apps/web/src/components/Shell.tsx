@@ -4,7 +4,7 @@ import { fr } from '../i18n/fr'
 import { useLoad } from '../useLoad'
 import { Icon } from './grimoire'
 
-type Section = { to: string; label: string; icon: 'person' | 'book' | 'people' | 'gear'; current: boolean }
+type Section = { to: string; label: string; icon: 'person' | 'book' | 'people' | 'gear' | 'quill'; current: boolean }
 
 /** Pages behind login: a top bar on wide screens, a bottom bar on phones. Inside a group, its sections. */
 export function Shell() {
@@ -15,10 +15,12 @@ export function Shell() {
 
   const base = groupId ? `/g/${groupId}` : ''
   const path = location.pathname
+  const editing = /\/catalog\/(new|entity\/[^/]+\/edit)$/.test(path)
   const sections: Section[] = groupId
     ? [
         { to: base, label: fr.nav.characters, icon: 'person', current: path === base || path.startsWith(`${base}/characters`) },
-        { to: `${base}/catalog`, label: fr.nav.catalog, icon: 'book', current: path.startsWith(`${base}/catalog`) },
+        { to: `${base}/catalog`, label: fr.nav.catalog, icon: 'book', current: path.startsWith(`${base}/catalog`) && !editing },
+        { to: `${base}/atelier`, label: fr.nav.atelier, icon: 'quill', current: path.startsWith(`${base}/atelier`) || editing },
         { to: `${base}/settings`, label: fr.nav.group, icon: 'people', current: path.startsWith(`${base}/settings`) },
       ]
     : [{ to: '/', label: fr.nav.groups, icon: 'people', current: path === '/' || path.startsWith('/rulesets') }]

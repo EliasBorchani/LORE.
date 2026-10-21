@@ -8,7 +8,7 @@ web app. Backend: Rust. Deployment: Docker Compose on a home server, reachable o
 Design documents (owner's Claude Docs, readable with the Claude Docs tools): PRD `1xMWUKLs3tuxQVTFqbbbH9`, Rules
 engine model `97nW4QWw5NosBZHyGF6ZVj`, Catalog model `TB3H5i5iQz8rz1jXYTZS38`, Character model
 `Hqu9NdiJGXKPGjhzUrAS1x`, Engine spike plan `McC2yiPPmYDxN728NcC5S5`, Engine spike report
-`0b757acc-e09d-4259-a34f-fa540a16444a`. Multi-RPG, groups and rulesets (draft, next big step): `docs/prd-multi.md`. The essentials are summarized in the `AGENTS.md` of each folder; when they and
+`0b757acc-e09d-4259-a34f-fa540a16444a`. Multi-RPG, groups and rulesets: `docs/prd-multi.md`. The guided content editor (CMS): `docs/prd-cms.md`. The essentials are summarized in the `AGENTS.md` of each folder; when they and
 a document disagree, ask.
 
 ## Layout

@@ -43,16 +43,26 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   niveau » (two taps), spells known / spellbook per casting class (from the class list) and adding or removing items.
   Lists come from `GET /entities` (all pages, cached in `src/sheet/catalogLists.ts`); the shared `Picker` ignores
   accents and case. A save that brings new entities calls `reload()` (sheet context) to fetch the catalog again.
-- Content editor (`src/screens/EntityEditorScreen.tsx`, form logic in `src/content/entityForm.ts`): « Nouvelle entrée »
-  (catalog home and each type) into a ruleset of the group the person edits (or official content for the platform
-  admin), « Modifier » when the server says `editable`, and « Règle maison » (a house rule: the content the group
-  sees, id `<slug>:<official id>`, replacing the official entity in groups using the ruleset; badge « Règle maison »
-  in the catalog, the info panel and breakdowns). A form for the common fields (names, descriptions, labels,
-  prerequisite, uses per day, effects one card each with target suggestions from the core statistics and the bonus
-  types of the core); the category blocks (`item`, `spell`, `skill`…), provenance and source stay a JSON field. The
-  engine's `ContentCheck` runs as you type, and a save needs no problem left. A new id follows the English name until
-  typed by hand. A spell has a « Niveaux » block (class / prestige class / domain + level per line). No preview on a
-  character and no going back to an old version (owner's choice): every save is kept.
+- Content editor, the guided CMS (`docs/prd-cms.md`): the group's « Atelier » tab (`src/screens/AtelierScreen.tsx`:
+  type cards, « Partir d'une entrée existante » = `catalog/new?copy=<id>`, my drafts, recent changes) and
+  `src/screens/EntityEditorScreen.tsx` (new, `?type=`; edit; house rule `?from=`; draft `atelier/draft/<id>`). The
+  form comes from the type's schema (`src/rpg/dnd35/forms.ts`, rendered by `src/cms/FormEngine.tsx`): optional fields
+  behind « + Ajouter » chips, effects as recipe cards or a sentence builder (`src/cms/EffectsField.tsx`, recipes in
+  `src/rpg/dnd35/recipes.ts`), values from dropdowns (`src/cms/ValueField.tsx`: a number, per level, an ability
+  modifier, the value picked at the table, dice; model in `formulas.ts`), prerequisite and uses-per-day builders
+  (`src/cms/RulesFields.tsx`). No formula box and no typed key anywhere: a formula no builder can say shows as
+  written and stays untouched. Books, statistics and situations come from `EntrySelect` (`src/cms/EntrySelect.tsx`):
+  the module's built-in choices, then the catalog's `source` / `statistic` / `situation` entries by ruleset, then
+  « + Ajouter … à <ruleset> », which publishes a new one in the ruleset of the entry being edited. Metamagic recipes
+  (feats) and « Synergie » (skills) open in the effect gallery; « Peut être pris plusieurs fois » (`repeatable`) adds
+  « la compétence choisie » (`{choice}`) to the targets, and the level-up asks each take's choice. « Avancé » is a dialog with the whole entry as JSON; « Appliquer » replaces the entry, the form follows.
+  The id shows under the name as it is built. The live card beside the form is `EntitySummary`.
+  The engine's `ContentCheck` runs as you type and its issues show under the field they come from; « Publier » needs
+  none left, « Enregistrer le brouillon » doesn't (then the draft autosaves). Labels are the curated list of
+  `src/rpg/dnd35/labels.ts` (chips per type, with their icon; `src/cms/Labels.tsx`); icons are `src/rpg/dnd35/icons.ts`,
+  drawn by `Mark` (`docs/iconography.md`). The D&D 3.5 module (`src/rpg/dnd35/`) carries its own French text, so
+  another RPG brings its own. Effects read as French sentences everywhere (`describe.ts`). A spell keeps its « Niveaux »
+  block.
 - Info panel (`src/components/EntityPanel.tsx`, owner's choice): tapping an entity's name anywhere (sheet tabs,
   breakdown sources, Build, level-up, prerequisites) opens a panel over the screen, at the bottom on phones and on the
   right from 1024 px. It's a native `<dialog>`, and `?info=<id>` is pushed to the address, so back closes it. It loads

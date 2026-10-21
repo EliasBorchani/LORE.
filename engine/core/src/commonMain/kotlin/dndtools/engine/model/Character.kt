@@ -82,6 +82,8 @@ data class FeatChoice(
     val id: String,
     /** Which feat slot pays for it: `general`, `epic`, `warblade_bonus`... */
     val slot: String? = null,
+    /** What this take of a repeatable feat applies to, read by `{choice}`: `skill.climb`, `evocation`... */
+    val choice: String? = null,
 )
 
 @Serializable

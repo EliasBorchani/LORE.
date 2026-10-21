@@ -76,6 +76,14 @@ async fn a_stranger_gets_404_everywhere(pool: PgPool) {
             format!("/groups/{g}/invitations"),
             Some(json!({ "email": "a@b.cd" })),
         ),
+        ("GET", format!("/groups/{g}/drafts"), None),
+        (
+            "POST",
+            format!("/groups/{g}/drafts"),
+            Some(json!({ "payload": {} })),
+        ),
+        ("GET", format!("/groups/{g}/changes"), None),
+        ("GET", format!("/groups/{g}/catalog/states"), None),
         ("GET", format!("/groups/{g}/catalog/core"), None),
         (
             "POST",

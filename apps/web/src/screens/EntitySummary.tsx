@@ -1,8 +1,10 @@
 import { Link } from 'react-router'
-import type { Effect, EntityDetail } from '../api/types'
+import type { EntityDetail } from '../api/types'
+import { LabelTags } from '../cms/Labels'
 import { EntityName } from '../components/EntityPanel'
 import { prerequisiteParts } from '../content/prerequisite'
 import { fr, statLabels } from '../i18n/fr'
+import { effectText } from '../rpg/dnd35/describe'
 import { localized } from '../sheet/names'
 import { useGroupPath } from '../group/GroupContext'
 
@@ -28,9 +30,7 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
 
   return (
     <>
-      {entity.labels && entity.labels.length > 0 && (
-        <div className="tags">{entity.labels.map((l) => <span key={l} className="tag">{l}</span>)}</div>
-      )}
+      {entity.labels && <LabelTags type={entity.type} labels={entity.labels} />}
       <dl className="facts">
         {entity.prerequisite && (
           <>
@@ -76,6 +76,8 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
 
 export function EntityText({ detail }: { detail: EntityDetail }) {
   const entity = detail.content
+  const names = new Map((detail.references ?? []).map((r) => [r.id, localized(r.name) ?? r.id]))
+  names.set(entity.id, localized(entity.name) ?? entity.id)
   const description = localized(entity.description)
   return (
     <>
@@ -88,7 +90,7 @@ export function EntityText({ detail }: { detail: EntityDetail }) {
       {entity.effects && entity.effects.length > 0 && (
         <section className="page-head">
           <h2 className="type-heading">{fr.catalog.effects}</h2>
-          <ul className="formula">{entity.effects.map((e, i) => <li key={i}>{effectText(e)}</li>)}</ul>
+          <ul className="effect-list">{entity.effects.map((e, i) => <li key={i}>{effectText(e, names)}</li>)}</ul>
         </section>
       )}
     </>
@@ -105,11 +107,4 @@ function Prerequisite({ formula, detail }: { formula: string; detail: EntityDeta
       {parts.map((part, i) => ('id' in part ? <EntityName key={i} id={part.id}>{part.name}</EntityName> : <span key={i}>{part.text}</span>))}
     </>
   )
-}
-
-/** `attack.melee add -@toggle.power_attack.value (untyped) if active('toggle.power_attack')`: the content as written. */
-function effectText(e: Effect): string {
-  return [e.target, e.op, String(e.value), e.bonusType && `(${e.bonusType})`, e.condition && `if ${e.condition}`, e.situation && `[${e.situation}]`]
-    .filter(Boolean)
-    .join(' ')
 }

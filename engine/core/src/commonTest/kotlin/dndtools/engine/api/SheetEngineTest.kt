@@ -12,7 +12,7 @@ class SheetEngineTest {
           "entities": [
             {"id": "class.fighter", "type": "class", "name": {"en": "Fighter"}, "hitDie": 10},
             {"id": "feat.power_attack", "type": "feat", "name": {"en": "Power Attack"},
-             "prerequisite": "@bab >= 1 and has('feat.cleave')",
+             "prerequisite": "@bab >= 1 and has('feat.cleave')", "tableValue": {"max": "@bab"},
              "effects": [{"target": "attack.melee", "op": "add", "value": "-@toggle.power_attack.value",
                           "condition": "active('toggle.power_attack')"}]},
             {"id": "power.ward", "type": "class_power", "name": {"en": "Ward"},
@@ -44,7 +44,7 @@ class SheetEngineTest {
         assertEquals(
             listOf(
                 ToggleLine("toggle.bless", active = true, value = null, source = "spell.bless"),
-                ToggleLine("toggle.power_attack", active = false, value = null, source = "feat.power_attack"),
+                ToggleLine("toggle.power_attack", active = false, value = null, source = "feat.power_attack", maxValue = "3"),
             ),
             sheet.toggles,
         )
@@ -60,7 +60,7 @@ class SheetEngineTest {
 
         sheet.setToggleChoice("""{"toggle": "toggle.power_attack", "value": "2"}""")
         assertEquals("2", sheet.statistic("attack.melee")?.text)
-        assertEquals(ToggleLine("toggle.power_attack", true, "2", "feat.power_attack"), sheet.toggles.last())
+        assertEquals(ToggleLine("toggle.power_attack", true, "2", "feat.power_attack", "3"), sheet.toggles.last())
 
         sheet.setToggle("toggle.bless", false)
         assertEquals("1", sheet.statistic("attack.melee")?.text)

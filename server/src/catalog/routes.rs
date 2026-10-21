@@ -362,3 +362,64 @@ pub async fn versions(
         .await?,
     ))
 }
+
+const STATE_USERS: usize = 3;
+
+/// A state (`toggle.x`, switched on at the table) or a situation (`situation.x`) named by the group's content.
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct StateUse {
+    id: String,
+    kind: &'static str,
+    /// A few entities that name it, so the editor can say « Rage (Rage de berserker) ».
+    used_by: Vec<Reference>,
+    count: usize,
+}
+
+/// Every state and situation the group's content names, for the editor's « Quand… » picker.
+pub async fn states(
+    State(pool): State<PgPool>,
+    user: CurrentUser,
+    Path(group_id): Path<String>,
+) -> Result<Json<Vec<StateUse>>, AppError> {
+    let layers = layers(&pool, user, &group_id).await?;
+    let rows: Vec<(String, String, String, Value)> = bind_visible(
+        sqlx::query_as(&format!(
+            "SELECT s, e.id, e.type, coalesce(v.content -> 'name', 'null')
+             FROM entity e JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version,
+                  unnest(v.facet_states) s
+             WHERE v.facet_states <> '{{}}' AND {}
+             ORDER BY s, e.id",
+            Layers::visible("e", 1)
+        )),
+        &layers,
+    )
+    .fetch_all(&pool)
+    .await?;
+    let mut states: Vec<StateUse> = Vec::new();
+    for (state, id, r#type, name) in rows {
+        if states.last().is_none_or(|last| last.id != state) {
+            let kind = if state.contains("situation.") {
+                "situation"
+            } else {
+                "toggle"
+            };
+            states.push(StateUse {
+                id: state,
+                kind,
+                used_by: Vec::new(),
+                count: 0,
+            });
+        }
+        let last = states.last_mut().expect("pushed above");
+        last.count += 1;
+        if last.used_by.len() < STATE_USERS {
+            last.used_by.push(Reference {
+                id: layers.canonical(&id).to_owned(),
+                r#type,
+                name,
+            });
+        }
+    }
+    Ok(Json(states))
+}

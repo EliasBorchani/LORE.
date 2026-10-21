@@ -1,12 +1,14 @@
 import { SheetEngine, type CharacterSheet } from 'dnd-engine'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import type { Character, Closure, EntitySummary, LevelRecord } from '../../api/types'
+import type { Character, ChoiceKind, Closure, EntitySummary, LevelRecord } from '../../api/types'
 import { ErrorNotice, StatBlock } from '../../components/grimoire'
 import { EntityName, InfoButton } from '../../components/EntityPanel'
 import { Picker } from '../../components/Picker'
 import { formatModifier, formatNumber } from '../../format'
-import { abilities, fr, labelNames, statLabels } from '../../i18n/fr'
+import { abilities, fr, statLabels } from '../../i18n/fr'
+import { labelLine } from '../../rpg/dnd35/labels'
+import { SCHOOLS } from '../../rpg/dnd35/targets'
 import { allOfType } from '../../sheet/catalogLists'
 import { entityName, localized } from '../../sheet/names'
 import { useSheet } from '../../sheet/SheetContext'
@@ -16,6 +18,8 @@ import { useGroupApi, useGroupPath } from '../../group/GroupContext'
 interface FeatPick {
   id: string
   slot: string
+  /** A repeatable feat's take: what it applies to. */
+  choice?: string
 }
 
 const PREVIEW = ['hp.max', 'bab', 'save.fort', 'save.ref', 'save.will', 'skill_points.total']
@@ -62,7 +66,7 @@ export function LevelUpScreen() {
       level,
       classId,
       classLevel,
-      ...(picked.length ? { feats: picked.map((f) => ({ id: f.id, slot: f.slot })) } : {}),
+      ...(picked.length ? { feats: picked.map((f) => ({ id: f.id, slot: f.slot, ...(f.choice ? { choice: f.choice } : {}) })) } : {}),
       ...(abilityIncrease && level % 4 === 0 ? { abilityIncrease } : {}),
       ...(advances.length ? { spellcastingAdvances: advances } : {}),
     }
@@ -93,8 +97,18 @@ export function LevelUpScreen() {
   const failures = preview
     ? preview.prerequisites.asJsReadonlyArrayView().filter((p) => p.entity === classId || picked.some((f) => f.id === p.entity))
     : []
-  const needsChoice = picked.filter((f) => JSON.stringify(entityOf(f.id)?.effects ?? []).includes('{choice}'))
+  const choose = (id: string) => (entityOf(id)?.repeatable as { choose?: ChoiceKind } | undefined)?.choose
+  const needsChoice = picked.filter((f) => !choose(f.id) && JSON.stringify(entityOf(f.id)?.effects ?? []).includes('{choice}'))
   const ownClasses = [...new Set((draft?.levels ?? []).map((l) => l.classId))]
+  /** What a take of a repeatable feat can apply to, without the choices its other takes made. */
+  const takeOptions = (pick: FeatPick): { key: string; label: string }[] => {
+    const kind = choose(pick.id)
+    const all = kind === 'skill'
+      ? (closure?.catalog.entities ?? []).filter((e) => e.type === 'skill').map((e) => ({ key: e.id, label: entityName(e, e.id) }))
+      : kind === 'school' ? SCHOOLS : kind === 'class' ? ownClasses.map((c) => ({ key: c, label: name(c) })) : []
+    const taken = new Set([...levels.flatMap((l) => l.feats ?? []), ...picked.filter((p) => p !== pick)].filter((f) => f.id === pick.id).map((f) => f.choice))
+    return all.filter((o) => !taken.has(o.key)).sort((a, b) => a.label.localeCompare(b.label, 'fr'))
+  }
   const casters = preview ? preview.spellcasting.asJsReadonlyArrayView().map((c) => c.classId).filter((c) => c !== classId) : []
 
   async function save() {
@@ -177,8 +191,8 @@ export function LevelUpScreen() {
 
       {draft && (
         <StatBlock title={fr.editor.feats}>
-          {picked.map((f) => (
-            <div key={`${f.slot}-${f.id}`} className="chosen">
+          {picked.map((f, i) => (
+            <div key={i} className="chosen">
               <span className="list-row-text">
                 <EntityName id={f.id}>{name(f.id)}</EntityName>
                 <span className="list-row-sub">{slotName(f.slot, name)}</span>
@@ -186,6 +200,16 @@ export function LevelUpScreen() {
               <button type="button" className="btn btn-secondary btn-small" aria-label={fr.editor.remove(name(f.id))}
                 onClick={() => setPicked((p) => p.filter((x) => x !== f))}>×</button>
             </div>
+          ))}
+          {picked.map((f, i) => choose(f.id) && (
+            <label key={`take-${i}`} className="field">
+              <span>{fr.editor.takeFor(name(f.id), choose(f.id)!)}</span>
+              <select className="input" value={f.choice ?? ''}
+                onChange={(e) => setPicked((p) => p.map((x) => (x === f ? { ...x, choice: e.target.value || undefined } : x)))}>
+                <option value="">{fr.editor.pick}</option>
+                {takeOptions(f).map((o) => <option key={o.key} value={o.key}>{o.label}</option>)}
+              </select>
+            </label>
           ))}
           {needsChoice.map((f) => (
             <label key={`choice-${f.id}`} className="field">
@@ -202,7 +226,7 @@ export function LevelUpScreen() {
           {freeSlots.map((s) => (
             <div key={s.slot}>
               <p>{fr.editor.freeSlot(slotName(s.slot, name), s.left)}</p>
-              <Picker items={featsFor(s.slot, feats, picked)} onPick={(id) => setPicked((p) => [...p, { id, slot: s.slot }])} />
+              <Picker items={featsFor(s.slot, feats, picked, (id) => entityOf(id)?.repeatable != null)} onPick={(id) => setPicked((p) => [...p, { id, slot: s.slot }])} />
             </div>
           ))}
         </StatBlock>
@@ -254,12 +278,13 @@ function slotName(slot: string, name: (id: string) => string): string {
  * The feats a slot offers: a class bonus slot lists the feats labelled for it (`fighter_bonus`) when there are any,
  * the epic bonus slot the epic feats, other slots every feat. Feats already picked are left out.
  */
-function featsFor(slot: string, feats: EntitySummary[], picked: FeatPick[]) {
+/** The feats a slot offers: those labelled for it, without the ones picked at this level unless they repeat. */
+function featsFor(slot: string, feats: EntitySummary[], picked: FeatPick[], repeats: (id: string) => boolean) {
   const label = slot === 'epic_bonus' ? 'epic' : slot
   const labelled = feats.filter((f) => f.labels?.includes(label))
   const pool = slot !== 'general' && slot !== 'epic' && labelled.length > 0 ? labelled : feats
   return pool
-    .filter((f) => !picked.some((p) => p.id === f.id))
-    .map((f) => ({ id: f.id, name: localized(f.name) ?? f.id, sub: (f.labels ?? []).filter((l) => l !== 'feat').map((l) => labelNames[l] ?? l).join(' · ') }))
+    .filter((f) => repeats(f.id) || !picked.some((p) => p.id === f.id))
+    .map((f) => ({ id: f.id, name: localized(f.name) ?? f.id, sub: labelLine('feat', f.labels ?? []) }))
     .sort((a, b) => a.name.localeCompare(b.name, 'fr'))
 }

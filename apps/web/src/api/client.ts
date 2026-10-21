@@ -3,7 +3,11 @@ import type {
   CharacterSummary,
   Character,
   Closure,
+  ContentChange,
   CoreSections,
+  Draft,
+  DraftPayload,
+  DraftSummary,
   Entity,
   EntityDetail,
   EntityPage,
@@ -22,6 +26,7 @@ import type {
   SearchPage,
   SpellLevel,
   SpellListEntry,
+  StateUse,
   TokenPair,
 } from './types'
 
@@ -243,6 +248,17 @@ export class GroupApi {
   core = () => this.client.request<CoreSections>('GET', `${this.base}/catalog/core`)
   entity = (id: string) => this.client.request<EntityDetail>('GET', `${this.base}/entities/${encodeURIComponent(id)}`)
   entityVersions = (id: string) => this.client.request<EntityVersion[]>('GET', `${this.base}/entities/${encodeURIComponent(id)}/versions`)
+  /** The states and situations the group's content names, for the editor's « Quand… ». */
+  states = () => this.client.request<StateUse[]>('GET', `${this.base}/catalog/states`)
+
+  /** The caller's own drafts in this group (nobody else sees them). */
+  drafts = () => this.client.request<DraftSummary[]>('GET', `${this.base}/drafts`)
+  draft = (id: string) => this.client.request<Draft>('GET', `${this.base}/drafts/${id}`)
+  createDraft = (payload: DraftPayload) => this.client.request<Draft>('POST', `${this.base}/drafts`, { payload })
+  saveDraft = (id: string, payload: DraftPayload) => this.client.request<Draft>('PUT', `${this.base}/drafts/${id}`, { payload })
+  deleteDraft = (id: string) => this.client.request<null>('DELETE', `${this.base}/drafts/${id}`)
+  /** The latest saves in the group's rulesets. */
+  changes = () => this.client.request<ContentChange[]>('GET', `${this.base}/changes`)
 }
 
 export interface SearchParams {

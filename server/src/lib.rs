@@ -1,5 +1,6 @@
 pub mod access;
 pub mod archive;
+pub mod atelier;
 pub mod auth;
 pub mod catalog;
 pub mod characters;

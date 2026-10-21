@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import { api } from './api/client'
 import { Shell } from './components/Shell'
 import { AccountScreen } from './screens/AccountScreen'
+import { AtelierScreen } from './screens/AtelierScreen'
 import { EntityEditorScreen } from './screens/EntityEditorScreen'
 import { CatalogListScreen, CatalogScreen, EntityScreen } from './screens/CatalogScreens'
 import { GroupLayout } from './group/GroupContext'
@@ -69,6 +70,8 @@ const router = createBrowserRouter([
           { path: 'catalog/entity/:id', element: <EntityScreen /> },
           { path: 'catalog/entity/:id/edit', element: <EntityEditorScreen /> },
           { path: 'catalog/new', element: <EntityEditorScreen /> },
+          { path: 'atelier', element: <AtelierScreen /> },
+          { path: 'atelier/draft/:draftId', element: <EntityEditorScreen /> },
         ],
       },
     ],

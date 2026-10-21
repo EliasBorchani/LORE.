@@ -24,8 +24,9 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
 - `api/SheetEngine.kt`, exported to JS with generated TypeScript types, and to Swift: JSON in, plain objects out,
   numbers as exact text (`25.5`, `3d6 + 138 (~148)`). Lists are `KtList` in TypeScript (`.asJsReadonlyArrayView()`),
   so Swift gets native arrays. A sheet also lists `toggles` (the character's and those its entities' effects read,
-  with their `source`), `dailyUses` (evaluated `usesPerDay`), `prerequisites` (failed parts) and breakdown rows with
-  `suppressedBy`, `situation`, `modifiers`.
+  with their `source`, and `maxValue`: the evaluated `tableValue.max` of an entity whose toggle carries a value picked
+  at the table, like Power Attack's `@bab`), `dailyUses` (evaluated `usesPerDay`), `prerequisites` (failed parts) and
+  breakdown rows with `suppressedBy`, `situation`, `modifiers`.
 - `api/ContentCheck.kt`: `ContentCheck.entity(entityJson, catalogJson)` lists an entity's problems: strict decoding
   first (code `format`), then `ModelCheck` on it alone (formulas, bonus types, layers, multiplier modes); the core
   sections are enough as catalog. The content editor runs it as you type.
@@ -40,7 +41,7 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
 - **Units:** each statistic has one unit (distances in metres, durations in rounds); values are plain numbers (`180`, `14400`), and a display formatter converts them (14400 rounds → 24 h). Words are quoted text (`'swift'`, `'none'`).
 - **Ops:** `add`, `multiply`, `set`, `min`, `max`, `dice`, `grant`.
 - **Order of operations per statistic:** base → `set` (base layer) → `add` with stacking → `multiply` → `set` (final layer) → `min`/`max` → round down.
-- **Stacking:** bonus types are data with a `stacks` flag. Non-stacking types keep the highest bonus; stacking types (untyped, dodge, template) sum. Penalties sum. Same-source rule: an entity counts once (the same spell cast twice gives its bonus once); the different effects of one entity follow the normal type rules.
+- **Stacking:** bonus types are data with a `stacks` flag. Non-stacking types keep the highest bonus; stacking types (untyped, dodge, template) sum. Penalties sum. Same-source rule: an entity counts once (the same spell cast twice gives its bonus once); the different effects of one entity follow the normal type rules. The one exception is an entity marked `repeatable` (Skill Focus, Toughness): each take applies its effects again, so untyped bonuses add up and typed ones still keep the highest.
 - **Two `set` on one layer:** the highest wins. **Floor and cap:** floors (`min`) apply first, then caps (`max`), so a cap always holds.
 - **Multiplier modes (explicit on every multiplier):**
   - `exclusive: <group>`: only the highest of the group applies (Empower ×1.5, Intensify ×2, Superspell ×4).
@@ -56,7 +57,7 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
 - **Spell statistics:** `@spell.caster_level` is the caster level of the class casting the spell (a buff toggle names it in `casterClass`). `spell.range` is a distance in metres; `spell.range_kind` is the kind (`'touch'`, `'personal'`...).
 - **Class tables:** rows hold running totals (Warblade level 5: BAB 5); past the last written row the last value holds. Rows list the entities the class grants at that level; `relations` of type `grants` add more (from a class at `level`, default 1; from any other entity while it is active). The epic rule is data (`progressionRules`): it replaces BAB and saves only, class features still come at their class level.
 - **Inputs from the choices** are read as statistics: `ability.<a>.base`, `toggle.<id>.value`, `progression.<bab|fort|ref|will>`, `hit_dice.total`, `xp`, `spellcasting.advances[<class>]`.
-- **Choices:** `character.choices` maps an entity to the option the player picked; an effect target with `{choice}` uses it (Spell Improvement: `caster_level.class[{choice}]`, one class). One choice per entity for the spike.
+- **Choices:** an effect target with `{choice}` uses the option the player picked (Spell Improvement: `caster_level.class[{choice}]`). A repeatable entity (`repeatable: {choose: skill | school | class}`) is picked once per take, each `FeatChoice` with its own `choice` (Skill Focus: `{choice}` = `skill.climb`, then `skill.swim`); the effect applies once per take. Without a take's choice, `character.choices` maps an entity to one option (an entity gained from a class).
 - **Skills:** for every entity with a `skill` block the engine defines `skill.<x>` = `@skill.<x>.ranks` + ability
   modifier + `armorCheckPenalty` × `@armor.check_penalty`, and `skill.<x>.max_ranks` (level + 3 for a class skill,
   half rounded down otherwise), unless the catalog defines them. Inputs: `skill.<x>.ranks` (the character's

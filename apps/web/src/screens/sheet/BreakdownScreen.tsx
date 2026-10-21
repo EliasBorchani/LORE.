@@ -4,6 +4,7 @@ import { useEntityInfo } from '../../components/EntityPanel'
 import { BreakdownRow } from '../../components/grimoire'
 import { formatModifier, formatNumber, splitDice } from '../../format'
 import { bonusTypes, breakdownStatus, breakdownSteps, fr, statLabels } from '../../i18n/fr'
+import { situationName } from '../../rpg/dnd35/formulas'
 import { useSheet } from '../../sheet/SheetContext'
 import { CharacterHeader } from './CharacterLayout'
 import { useGroupPath } from '../../group/GroupContext'
@@ -61,7 +62,7 @@ export function BreakdownScreen() {
       {situational.map((row, i) => (
         <p key={i} className="muted">
           {fr.breakdown.situational} {formatModifier(row.value)} ({sourceName(row.source)}
-          {row.situation ? ` · ${situationName(row.situation)}` : ''})
+          {row.situation ? ` · ${entity(row.situation) ? name(row.situation) : situationName(row.situation)}` : ''})
         </p>
       ))}
     </>
@@ -92,7 +93,3 @@ function display(text: string, signed: boolean): string {
   return signed ? formatModifier(text) : formatNumber(text)
 }
 
-/** `situation.vs_evil` → `vs evil`: situations are ids, not catalog entities yet. */
-function situationName(id: string): string {
-  return id.replace(/^situation\./, '').replaceAll('_', ' ')
-}

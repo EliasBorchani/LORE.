@@ -177,7 +177,7 @@ function EffectRow({ toggle }: { toggle: ToggleView }) {
   const label = toggle.source ? name(toggle.source) : toggle.id
   const metamagic = (toggle.choice.metamagic ?? []).map(name).join(' · ')
   const value = toInteger(String(toggle.choice.value ?? '')) ?? 1
-  const maxValue = Math.max(toInteger(stat('bab')) ?? 1, 1)
+  const maxValue = Math.max(toggle.maxValue ?? toInteger(stat('bab')) ?? 1, 1)
 
   const switchTo = (on: boolean) => {
     // A toggle carrying a value starts at 1: with none, the engine would read 0 and the toggle would do nothing.

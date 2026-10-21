@@ -1,0 +1,508 @@
+{
+  "entities": [
+    {
+      "id": "situation.acting_in_character",
+      "type": "situation",
+      "name": {
+        "fr": "pour jouer un rôle",
+        "en": "when acting in character"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.appraise_by_weight",
+      "type": "situation",
+      "name": {
+        "fr": "pour estimer au poids",
+        "en": "when appraising by weight"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.appraise_small_detailed",
+      "type": "situation",
+      "name": {
+        "fr": "pour estimer un petit objet ouvragé",
+        "en": "when appraising small detailed items"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.binding_someone",
+      "type": "situation",
+      "name": {
+        "fr": "pour ligoter quelqu’un",
+        "en": "when binding someone"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.casting_defensively_or_grappled",
+      "type": "situation",
+      "name": {
+        "fr": "pour lancer sur la défensive ou agrippé",
+        "en": "when casting defensively or grappled"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.chosen_craft",
+      "type": "situation",
+      "name": {
+        "fr": "dans l’artisanat choisi",
+        "en": "in the chosen craft"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.climbing_a_rope",
+      "type": "situation",
+      "name": {
+        "fr": "pour grimper à une corde",
+        "en": "when climbing a rope"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.conceal_dagger",
+      "type": "situation",
+      "name": {
+        "fr": "pour cacher une dague",
+        "en": "when hiding a dagger"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.convincing_lies",
+      "type": "situation",
+      "name": {
+        "fr": "pour un mensonge crédible",
+        "en": "for convincing lies"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.craft_alchemy",
+      "type": "situation",
+      "name": {
+        "fr": "en alchimie",
+        "en": "for alchemy"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.deciphering_scrolls",
+      "type": "situation",
+      "name": {
+        "fr": "pour déchiffrer un parchemin",
+        "en": "when deciphering scrolls"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.disarm",
+      "type": "situation",
+      "name": {
+        "fr": "pour désarmer",
+        "en": "when disarming"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.following_tracks",
+      "type": "situation",
+      "name": {
+        "fr": "pour suivre une piste",
+        "en": "when following tracks"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.items_of_your_craft",
+      "type": "situation",
+      "name": {
+        "fr": "pour les objets de son artisanat",
+        "en": "for items of your craft"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.natural_aboveground",
+      "type": "situation",
+      "name": {
+        "fr": "en extérieur, dans la nature",
+        "en": "in natural aboveground places"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.not_getting_lost",
+      "type": "situation",
+      "name": {
+        "fr": "pour ne pas se perdre",
+        "en": "to avoid getting lost"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.other_planes",
+      "type": "situation",
+      "name": {
+        "fr": "sur les autres plans",
+        "en": "on other planes"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.ranged_within_9m",
+      "type": "situation",
+      "name": {
+        "fr": "à distance, à 9 m ou moins",
+        "en": "ranged, within 9 m"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.rope_bonds",
+      "type": "situation",
+      "name": {
+        "fr": "contre des liens de corde",
+        "en": "against rope bonds"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.running_jump",
+      "type": "situation",
+      "name": {
+        "fr": "pour un saut avec élan",
+        "en": "for a running jump"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.scrolls",
+      "type": "situation",
+      "name": {
+        "fr": "avec un parchemin",
+        "en": "with scrolls"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.secret_doors",
+      "type": "situation",
+      "name": {
+        "fr": "pour trouver une porte secrète",
+        "en": "to find secret doors"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.standing_on_ground",
+      "type": "situation",
+      "name": {
+        "fr": "debout sur le sol",
+        "en": "standing on the ground"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.staying_in_saddle",
+      "type": "situation",
+      "name": {
+        "fr": "pour rester en selle",
+        "en": "to stay in the saddle"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.stone_or_metal",
+      "type": "situation",
+      "name": {
+        "fr": "contre la pierre ou le métal",
+        "en": "with stone or metal"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.sunder",
+      "type": "situation",
+      "name": {
+        "fr": "pour une destruction d’arme",
+        "en": "when sundering"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.thrown_or_sling",
+      "type": "situation",
+      "name": {
+        "fr": "avec une arme de jet ou une fronde",
+        "en": "with thrown weapons or slings"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.underground",
+      "type": "situation",
+      "name": {
+        "fr": "sous terre",
+        "en": "underground"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.unusual_stonework",
+      "type": "situation",
+      "name": {
+        "fr": "pour remarquer une maçonnerie inhabituelle",
+        "en": "to notice unusual stonework"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.using_silk_rope",
+      "type": "situation",
+      "name": {
+        "fr": "avec une corde en soie",
+        "en": "with a silk rope"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_aoo_leaving_threatened",
+      "type": "situation",
+      "name": {
+        "fr": "contre les attaques d’opportunité en quittant une case menacée",
+        "en": "against attacks of opportunity when leaving a threatened square"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_attacks_of_opportunity_moving",
+      "type": "situation",
+      "name": {
+        "fr": "contre les attaques d’opportunité en se déplaçant",
+        "en": "against attacks of opportunity when moving"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_chaos",
+      "type": "situation",
+      "name": {
+        "fr": "contre le Chaos",
+        "en": "against chaos"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_chaotic",
+      "type": "situation",
+      "name": {
+        "fr": "contre les créatures chaotiques",
+        "en": "against chaotic creatures"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_charm_or_fear",
+      "type": "situation",
+      "name": {
+        "fr": "contre le charme ou la terreur",
+        "en": "against charm or fear"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_cold",
+      "type": "situation",
+      "name": {
+        "fr": "contre le froid",
+        "en": "against cold"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_designated_opponent",
+      "type": "situation",
+      "name": {
+        "fr": "contre l’adversaire désigné",
+        "en": "against the designated opponent"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_enchantment",
+      "type": "situation",
+      "name": {
+        "fr": "contre les enchantements",
+        "en": "against enchantments"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_evil",
+      "type": "situation",
+      "name": {
+        "fr": "contre le Mal",
+        "en": "against evil"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_exhaustion",
+      "type": "situation",
+      "name": {
+        "fr": "contre l’épuisement",
+        "en": "against exhaustion"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_favored_enemy",
+      "type": "situation",
+      "name": {
+        "fr": "contre un ennemi juré",
+        "en": "against a favored enemy"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_fear",
+      "type": "situation",
+      "name": {
+        "fr": "contre la terreur",
+        "en": "against fear"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_fey_spell_like",
+      "type": "situation",
+      "name": {
+        "fr": "contre les pouvoirs magiques des fées",
+        "en": "against the spell-like abilities of fey"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_giants",
+      "type": "situation",
+      "name": {
+        "fr": "contre les géants",
+        "en": "against giants"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_good",
+      "type": "situation",
+      "name": {
+        "fr": "contre le Bien",
+        "en": "against good"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_good_spells",
+      "type": "situation",
+      "name": {
+        "fr": "contre les sorts du Bien",
+        "en": "against good spells"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_heat_cold_or_suffocation",
+      "type": "situation",
+      "name": {
+        "fr": "contre la chaleur, le froid ou l’asphyxie",
+        "en": "against heat, cold or suffocation"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_illusion",
+      "type": "situation",
+      "name": {
+        "fr": "contre les illusions",
+        "en": "against illusions"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_kobolds_goblinoids",
+      "type": "situation",
+      "name": {
+        "fr": "contre les kobolds et les gobelinoïdes",
+        "en": "against kobolds and goblinoids"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_law",
+      "type": "situation",
+      "name": {
+        "fr": "contre la Loi",
+        "en": "against law"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_mastered_terrain",
+      "type": "situation",
+      "name": {
+        "fr": "dans un terrain maîtrisé",
+        "en": "in a mastered terrain"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_orcs_goblinoids",
+      "type": "situation",
+      "name": {
+        "fr": "contre les orques et les gobelinoïdes",
+        "en": "against orcs and goblinoids"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_poison",
+      "type": "situation",
+      "name": {
+        "fr": "contre le poison",
+        "en": "against poison"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_spells",
+      "type": "situation",
+      "name": {
+        "fr": "contre les sorts",
+        "en": "against spells"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_traps",
+      "type": "situation",
+      "name": {
+        "fr": "contre les pièges",
+        "en": "against traps"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.within_9m",
+      "type": "situation",
+      "name": {
+        "fr": "à 9 m ou moins",
+        "en": "within 9 m"
+      },
+      "provenance": "official"
+    }
+  ]
+}

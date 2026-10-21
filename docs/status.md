@@ -136,9 +136,16 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    build, and in Chrome on a scratch database (`lore_m1_check`) migrated from today's shape: Danalieth's verified
    values, a house rule made in the editor, group settings, an invitation creating an account in the group.
    Deployed on the VPS on 2026-10-20 (`migrate-groups` run). A second RPG is not a priority (owner, 2026-10-20): what
-   mattered was that the structure scales. Left for later: the engine contract (M2), a public ruleset listing, editing a ruleset without a group. Done after the
-   deploy (not reviewed, not deployed): an archived group is read-only, and a character moves to another group from
-   the Build screen.
+   mattered was that the structure scales. Left for later: the engine contract (M2), a public ruleset listing,
+   editing a ruleset without a group. Done after the deploy (not reviewed, not deployed): an archived group is
+   read-only, and a character moves to another group from the Build screen.
+6. The guided CMS (`docs/prd-cms.md`), five phases each reviewed by the owner. **Phase 1 written (2026-10-20), not
+   reviewed, not deployed:** Atelier tab, form schemas (feat, class power, generic), recipes and sentence builder,
+   prerequisite and uses-per-day builders, live card, private drafts (server table, archive format 4), states and
+   recent changes routes. Checked: server fmt / clippy / tests, web tsc / tests (every official effect round-trips
+   through the recipes) / build. Reviewed by the owner on 2026-10-21. **Phase 2 written (2026-10-21), not reviewed,
+   not deployed:** « dropdowns everywhere » (`docs/prd-cms.md`). Production needs `sources.json`, `situations.json`
+   and `feats/srd-01.json` (Power Attack's `tableValue`) imported. Next: phase 3, search cards.
 5. Agreed with the owner, for later: automatic backups (nightly `pg_dump` with rotation, a copy off the machine, a
    restore tested regularly) and content migrations as code (when the engine model first changes, a versioned script
    upgrades each entity's current content as a new version authored "migration").
@@ -150,6 +157,14 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
 - Multi-RPG (2026-10-20, details in `docs/prd-multi.md`): account → groups (no organization), a group = one RPG +
   ordered rulesets + characters; permissions per member, not fixed roles; one engine per RPG; official content edited
   by the platform admin only; non-SRD summaries stay visible to all; GDPR and English UI before public sign-up.
+- Iconography (2026-10-21): every icon drawn in-house on a 24 grid with a fixed 1.5 px line, reviewed one by one by
+  the owner (`docs/iconography.md`). Labels are curated by the RPG module (`apps/web/src/rpg/dnd35/labels.ts`), each
+  with an icon and a family colour; old label names of the content read as their curated label, the data is unchanged.
+- Repeatable entries (2026-10-21): `repeatable` on an entity, each take applies its effects again and carries its own
+  `choice` in the level record (`FeatChoice.choice`), the one exception to « an entity counts once ». Official content
+  keeps its one-entry-per-option feats (Skill Focus per skill) and its `count()` formulas (Toughness).
+- Books, statistics and situations are catalog entries (types `source`, `statistic`, `situation`); D&D 3.5's own
+  statistics stay in the RPG module (`targets.ts`), a ruleset adds its own from the dropdowns.
 - Earlier engine decisions: see the spike report and `engine/AGENTS.md`.
 
 ## Not confirmed by the owner (review these)

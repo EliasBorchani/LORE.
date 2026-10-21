@@ -84,6 +84,7 @@ object ModelCheck {
             }
             entity.prerequisite?.let { formula("entity:${entity.id}/prerequisite", it) }
             (entity.usesPerDay as? EffectValue.Text)?.let { formula("entity:${entity.id}/usesPerDay", it.text) }
+            (entity.tableValue?.max as? EffectValue.Text)?.let { formula("entity:${entity.id}/tableValue.max", it.text) }
             entity.effects.forEachIndexed { i, effect ->
                 val at = "entity:${entity.id}/effects[$i]"
                 (effect.value as? EffectValue.Text)?.let { formula("$at.value", it.text) }

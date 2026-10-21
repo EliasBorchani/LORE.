@@ -250,6 +250,9 @@
         "fr": "Il renonce à la précision pour tout mettre dans l’impact. Le coup est plus lent, plus lisible, mais celui qui ne l’esquive pas s’en souviendra longtemps.\n\nEn jeu\n• Condition : Force 13.\n• À son tour, avant d’attaquer, le personnage choisit un nombre au plus égal à son bonus de base à l’attaque : malus aux jets d’attaque au corps à corps, bonus égal aux jets de dégâts au corps à corps, jusqu’à son prochain tour.\n• Avec une arme à deux mains (ou une arme à une main tenue à deux mains), le bonus aux dégâts est doublé.\n• Une arme légère ne reçoit pas le bonus aux dégâts (sauf attaque à mains nues ou arme naturelle), mais subit le malus.\n• Une seule tête d’une arme double utilisée seule compte comme une arme à deux mains.\n• Sur la fiche : le bonus est compté à deux mains."
       },
       "prerequisite": "@ability.str.score >= 13",
+      "tableValue": {
+        "max": "@bab"
+      },
       "effects": [
         {
           "target": "attack.melee",
