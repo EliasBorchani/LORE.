@@ -76,6 +76,14 @@ export function ValueField({ value, onChange, dice }: { value: string | number; 
             </optgroup>
           </select>
           <label className="cms-inline">
+            <span className="cms-sublabel">{t.after}</span>
+            <input className="input input-number" type="number" inputMode="numeric" min={1} value={model.after ?? ''} placeholder="—" aria-label={t.after}
+              onChange={(e) => {
+                const after = Math.trunc(Number(e.target.value) || 0)
+                emit({ ...model, after: after > 0 ? after : undefined })
+              }} />
+          </label>
+          <label className="cms-inline">
             <span className="cms-sublabel">{t.atMost}</span>
             <input className="input input-number" type="number" inputMode="numeric" min={0} value={model.max ?? ''} placeholder="—" aria-label={t.atMost}
               onChange={(e) => emit({ ...model, max: e.target.value === '' ? undefined : Math.max(0, Math.trunc(Number(e.target.value) || 0)) })} />

@@ -376,6 +376,7 @@ export const fr = {
       caster: 'de lanceur de sorts',
       classes: 'd’une classe',
       atMost: 'au plus',
+      after: 'au-delà du niveau',
       sign: 'Bonus ou malus',
       plus: 'plus',
       minus: 'moins',

@@ -166,8 +166,8 @@ export type LevelSource = { kind: 'class'; classId: string } | { kind: 'characte
 /** An effect's value, as the value builder shows it. `other` is anything else, kept as written. */
 export type ValueModel =
   | { kind: 'number'; n: number }
-  /** `n` every `every` levels, at most `max`. */
-  | { kind: 'perLevel'; n: number; every: number; source: LevelSource; max?: number }
+  /** `n` every `every` levels (counted past level `after`, when set), at most `max`. */
+  | { kind: 'perLevel'; n: number; every: number; source: LevelSource; max?: number; after?: number }
   | { kind: 'ability'; ability: AbilityId }
   /** The value picked at the table, times `times` (−1 for a malus). */
   | { kind: 'table'; times: number }
@@ -208,6 +208,16 @@ function perLevelOf(text: string): { n: number; every: number; source: LevelSour
   return source ? { n, every: m ? Number(m[2]) : 1, source } : null
 }
 
+const PAST_LEVELS = new RegExp(String.raw`^max\(0, (?:${INT} \* )?(?:floor\(\((.+) - (\d+)\) / (\d+)\)|\((.+) - (\d+)\))\)$`)
+
+/** `max(0, floor((L - a) / k))`, `max(0, (L - a))`, with an optional `n * ` inside: levels past `a` only. */
+function pastLevelsOf(text: string): { n: number; every: number; source: LevelSource; after: number } | null {
+  const m = PAST_LEVELS.exec(text)
+  const source = m && sourceOf(m[2] ?? m[5])
+  if (!m || !source) return null
+  return { n: m[1] ? Number(m[1]) : 1, every: m[4] ? Number(m[4]) : 1, source, after: Number(m[3] ?? m[6]) }
+}
+
 export function parseValue(value: string | number, toggle: string): ValueModel {
   if (typeof value === 'number') return { kind: 'number', n: value }
   const text = value.trim()
@@ -223,7 +233,8 @@ export function parseValue(value: string | number, toggle: string): ValueModel {
     if ((m = new RegExp(String.raw`^${INT} \* ${t.replaceAll('.', '\\.')}$`).exec(text))) return { kind: 'table', times: Number(m[1]) }
   }
   const capped = new RegExp(String.raw`^min\((.+), (\d+)\)$`).exec(text)
-  const per = perLevelOf(capped ? capped[1] : text)
+  const body = capped ? capped[1] : text
+  const per = pastLevelsOf(body) ?? perLevelOf(body)
   if (per) return { kind: 'perLevel', ...per, ...(capped ? { max: Number(capped[2]) } : {}) }
   return { kind: 'other', text }
 }
@@ -239,10 +250,12 @@ export function valueFormula(model: ValueModel, toggle: string): string | number
       return model.times === 1 ? t : model.times === -1 ? `-${t}` : `${t} * ${model.times}`
     }
     case 'perLevel': {
-      const level = sourceTerm(model.source)
+      const term = sourceTerm(model.source)
+      const level = model.after != null ? `(${term} - ${model.after})` : term
       const steps = model.every > 1 ? `floor(${level} / ${model.every})` : level
       const scaled = model.n === 1 ? steps : `${model.n} * ${steps}`
-      return model.max != null ? `min(${scaled}, ${model.max})` : scaled
+      const counted = model.after != null ? `max(0, ${scaled})` : scaled
+      return model.max != null ? `min(${counted}, ${model.max})` : counted
     }
     case 'other': return model.text
   }

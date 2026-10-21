@@ -34,7 +34,8 @@ export function valueWords(value: ValueModel, names: Names = new Map()): string 
     case 'number': return formatNumber(String(Math.abs(value.n)))
     case 'perLevel': {
       const per = value.every > 1 ? `tous les ${value.every} ${levelWords(value.source, true, names)}` : `par ${levelWords(value.source, false, names)}`
-      return `${formatNumber(String(Math.abs(value.n)))} ${per}${value.max != null ? ` (au plus ${formatNumber(String(value.max))})` : ''}`
+      const after = value.after != null ? ` au-delà du niveau ${formatNumber(String(value.after))}` : ''
+      return `${formatNumber(String(Math.abs(value.n)))} ${per}${after}${value.max != null ? ` (au plus ${formatNumber(String(value.max))})` : ''}`
     }
     case 'ability': return `le modificateur de ${abilities.find((a) => a.id === value.ability)?.name ?? value.ability}`
     case 'table': return Math.abs(value.times) === 1 ? 'la valeur choisie' : `${formatNumber(String(Math.abs(value.times)))} × la valeur choisie`
