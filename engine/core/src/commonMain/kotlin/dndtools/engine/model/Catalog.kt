@@ -108,8 +108,15 @@ data class Entity(
     val effects: List<Effect> = emptyList(),
     /** How a class casts spells; its slots and spells known are columns of its table. */
     val spellcasting: SpellcastingDef? = null,
+    /**
+     * How a class (counts from its table columns) or a feat (counts from effects on `maneuvers.known|stances.<id>`, as
+     * Martial Study) gives martial maneuvers (Tome of Battle).
+     */
+    val initiating: InitiatingDef? = null,
     /** A spell's display data. Its numbers are effects scoped to `spell`. */
     val spell: SpellInfo? = null,
+    /** A maneuver's or stance's display data, and what the sheet checks when a character learns it. */
+    val maneuver: ManeuverInfo? = null,
     /** An item's display data. Its numbers are effects (weapon dice scoped to `item`, armor on `ac.armor`). */
     val item: ItemInfo? = null,
     /** How a skill is computed; the skill's statistic key is its entity id. */
@@ -173,6 +180,45 @@ data class SpellcastingDef(
     /** How the class casts when the character does not say otherwise. */
     val mode: SpellcastingMode = SpellcastingMode.PREPARED,
 )
+
+@Serializable
+data class InitiatingDef(
+    /**
+     * The class's key ability: `int` (Warblade), `wis` (Swordsage), `cha` (Crusader); none for a feat. Shown only: each
+     * maneuver writes its own save DC.
+     */
+    val ability: Ability? = null,
+)
+
+/** A maneuver or a stance. Text fields are shown as written; the sheet checks [discipline], [level] and [requires]. */
+@Serializable
+data class ManeuverInfo(
+    /** Discipline entity id (`discipline.diamond_mind`); a class may learn it when it `initiates` that discipline. */
+    val discipline: String,
+    /** Maneuver level, 1 to 9: an initiator learns it from initiator level 2 × level − 1. */
+    val level: Int,
+    val kind: ManeuverKind,
+    val descriptors: List<String> = emptyList(),
+    /** Maneuvers of the same discipline the character must already know. */
+    val requires: Int = 0,
+    /** Prerequisite as written, when it says more than [requires] (an alignment). */
+    val prerequisite: String? = null,
+    val initiationAction: String? = null,
+    val range: String? = null,
+    val target: String? = null,
+    val area: String? = null,
+    val effect: String? = null,
+    val duration: String? = null,
+    val savingThrow: String? = null,
+)
+
+@Serializable
+enum class ManeuverKind {
+    @SerialName("strike") STRIKE,
+    @SerialName("boost") BOOST,
+    @SerialName("counter") COUNTER,
+    @SerialName("stance") STANCE,
+}
 
 /** Rules text of a spell, shown as written; nothing here is computed. */
 @Serializable
@@ -342,6 +388,10 @@ data class ProgressionRow(
     val spellsPerDay: List<Int?> = emptyList(),
     /** Spells known by spell level from 0, for spontaneous casters; null = « — ». */
     val spellsKnown: List<Int?> = emptyList(),
+    /** Maneuvers known (stances not counted), readied, and stances known, for classes with `initiating`. */
+    val maneuversKnown: Int? = null,
+    val maneuversReadied: Int? = null,
+    val stancesKnown: Int? = null,
 )
 
 /**

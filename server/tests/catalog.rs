@@ -689,6 +689,83 @@ async fn each_facet_is_counted_without_its_own_filter(pool: PgPool) {
 }
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
+async fn search_filters_maneuvers_by_discipline_and_level(pool: PgPool) {
+    let maneuver = |id: &str, discipline: &str, level: u8, kind: &str| {
+        json!({
+            "id": id, "type": if kind == "stance" { "stance" } else { "maneuver" }, "name": { "fr": id },
+            "maneuver": { "discipline": discipline, "level": level, "kind": kind }
+        })
+    };
+    let catalog = json!({
+        "version": "test",
+        "entities": [
+            { "id": "discipline.iron_heart", "type": "discipline", "name": { "fr": "Cœur de fer" } },
+            { "id": "discipline.tiger_claw", "type": "discipline", "name": { "fr": "Griffe du tigre" } },
+            maneuver("maneuver.steel_wind", "discipline.iron_heart", 1, "strike"),
+            maneuver("stance.punishing_stance", "discipline.iron_heart", 1, "stance"),
+            maneuver("maneuver.finishing_move", "discipline.iron_heart", 4, "strike"),
+            maneuver("maneuver.sudden_leap", "discipline.tiger_claw", 1, "boost"),
+            { "id": "class.crusader", "type": "class", "name": { "fr": "Croisé" } }
+        ],
+        "relations": [
+            { "from": "class.crusader", "relation": "initiates", "to": "discipline.iron_heart" }
+        ]
+    });
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
+
+    let page = search_page(
+        &pool,
+        "/search?type=maneuver&discipline=discipline.iron_heart&maneuver_level=1&facets=true",
+    )
+    .await;
+    assert_eq!(item_ids(&page), ["maneuver.steel_wind"]);
+    // Each facet without its own filter: both disciplines at level 1, both levels of Iron Heart.
+    assert_eq!(
+        counts(&page, "discipline"),
+        [
+            ("discipline.iron_heart".into(), 1),
+            ("discipline.tiger_claw".into(), 1)
+        ]
+    );
+    assert_eq!(
+        page["facets"]["discipline"][0]["name"],
+        json!({ "fr": "Cœur de fer" })
+    );
+    assert_eq!(
+        counts(&page, "maneuver_level"),
+        [("1".into(), 1), ("4".into(), 1)]
+    );
+    assert_eq!(
+        call(&pool, "GET", "/search?maneuver_level=high", None)
+            .await
+            .0,
+        StatusCode::BAD_REQUEST
+    );
+
+    // What a class may learn: the maneuvers and stances of the disciplines it initiates, with their block.
+    let (status, list) = call(&pool, "GET", "/catalog/maneuvers/class.crusader", None).await;
+    assert_eq!(status, StatusCode::OK);
+    let ids: Vec<&str> = list
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|m| m["id"].as_str().unwrap())
+        .collect();
+    assert_eq!(
+        ids,
+        [
+            "maneuver.finishing_move",
+            "maneuver.steel_wind",
+            "stance.punishing_stance"
+        ]
+    );
+    assert_eq!(list[0]["maneuver"]["level"], 4);
+    assert_eq!(list[2]["type"], "stance");
+}
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
 async fn an_entity_comes_with_its_relations_and_their_names(pool: PgPool) {
     let catalog = json!({
         "version": "test",

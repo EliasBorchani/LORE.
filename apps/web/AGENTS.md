@@ -40,7 +40,11 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   class or prestige class, +1 ability every 4 levels, a feat per free slot from a searchable list (a class bonus slot
   lists the feats labelled for it), the class of a feat's `{choice}`, the casting classes a prestige level advances;
   live preview from the draft's closure with failed prerequisites), and on the Build screen « Retirer le dernier
-  niveau » (two taps), spells known / spellbook per casting class (from the class list) and adding or removing items.
+  niveau » (two taps), spells known / spellbook per casting class (from the class list), maneuvers and stances per
+  initiator class (« Manœuvres », counts and problems from the engine's `initiators`, the picker lists what the class
+  may learn now: its disciplines, the highest level, the prerequisite count; a feat such as Martial Study gets its own
+  block) and adding or removing items. Taking one stance too many in « Effets » leaves the one taken first
+  (`SheetContext`; one at a time, `stances.active_max` from the engine: two with Stance Mastery).
   Lists come from `GET /entities` (all pages, cached in `src/sheet/catalogLists.ts`); the shared `Picker` ignores
   accents and case. A save that brings new entities calls `reload()` (sheet context) to fetch the catalog again.
 - Content editor, the guided CMS (`docs/prd-cms.md`): the group's « Atelier » tab (`src/screens/AtelierScreen.tsx`:

@@ -37,6 +37,8 @@ export function ClassProgression({ classId, className }: { classId: string; clas
 function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; caption: string; name: (id: string) => string }) {
   const groupPath = useGroupPath()
   const c = fr.catalog.tableColumns
+  const maneuvers = rows.some((r) => r.maneuversKnown != null)
+  const maneuverColumns = ['maneuversKnown', 'maneuversReadied', 'stancesKnown'] as const
   return (
     <section className="page-head">
       <h2 className="type-heading">{fr.catalog.table}</h2>
@@ -51,6 +53,7 @@ function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; cap
               <th scope="col">{c.fort}</th>
               <th scope="col">{c.will}</th>
               <th scope="col" className="special">{c.special}</th>
+              {maneuvers && maneuverColumns.map((col) => <th key={col} scope="col">{c[col]}</th>)}
             </tr>
           </thead>
           <tbody>
@@ -69,6 +72,7 @@ function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; cap
                     </span>
                   ))}
                 </td>
+                {maneuvers && maneuverColumns.map((col) => <td key={col}>{row[col] ?? '—'}</td>)}
               </tr>
             ))}
           </tbody>

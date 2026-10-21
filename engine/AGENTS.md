@@ -90,6 +90,22 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
   (⌊(mod − L) / 4⌋ + 1 when mod ≥ L, at every castable level) + effects. Slots above the table's maximum come only from
   `slots.above_max[<class>]` (Improved Spell Capacity, Will of Death's epic spell, via `{choice}`) as a ladder: one
   slot at each level max+1, max+2… Table cells are inputs `slots.base[class.x:L]`, `spells_known.base[class.x:L]`.
+- **Maneuvers (Tome of Battle):** an entity with `initiating` gives maneuvers. A class (`ability`: its key ability,
+  shown only; each maneuver writes its own DC) gets built-in `initiator_level.<class>` = class levels + ½ the other
+  levels (rounded down) + `initiator_level.class[<class>]`, and `maneuvers.known|readied|stances.<class>` from its
+  table columns `maneuversKnown`, `maneuversReadied`, `stancesKnown` (inputs `maneuvers.<column>.base[<class>]`; past
+  the last row the last value holds). A feat (Martial Study: `maneuvers.known.martial_study`) gets its counts from
+  effects and the character's initiator level. Each initiator has `maneuvers.max_level.<key>` = ⌈IL / 2⌉ (9 at most);
+  the key is the id without its type (`warblade`, `martial_study`). Built in too: `initiator_level` = the highest
+  class one, or ½ the character level without any (formulas read it: « +1 per initiator level »), and
+  `stances.active_max` = 1 (Stance Mastery adds 1; the web app keeps that many stances on). Input
+  `maneuvers.count[…]` counts the maneuvers known for prerequisites: `[all]`, `[stance]` (a kind), `[discipline.x]`,
+  `[discipline.x:strike]`. A `maneuver` block (discipline id, level, kind, `requires` = known maneuvers of the same
+  discipline) is display data plus what the sheet checks. `character.maneuvers[<class or feat>].known` lists
+  maneuvers and stances; those of a class the character has or a feat it took are had (sources), so a stance's
+  `active('toggle.<id>')` shows in the toggles. The API lists `initiators` (counts, disciplines from `initiates`
+  relations, maneuvers and stances apart, issues `unknown`, `discipline`, `level`, `requires`, `too_many`,
+  `too_many_stances`). Readied and expended maneuvers are play state, not tracked yet.
 - **Prerequisites** are formulas; on failure, report which part failed. A choice that becomes invalid is kept and flagged, never deleted.
 - **Breakdown:** every number lists its sources and the suppressed bonuses.
 - **Content checks:** JSON decoding is strict (unknown field = error); review metadata (`status`, `note`, `flag`, `assumptions`) is stripped first. `ModelCheck` reports data problems (unknown references and types, formulas that do not parse) without throwing.
@@ -118,7 +134,7 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
 ## Reference tests (`test-references/`)
 
 `test-references/danalieth/`: catalog, character (level 59) and expected sheet. 20 values are verified by hand
-(abilities, BAB 39 / 49, saves 81 / 84 / 44, HP 297 / 2480, attack 145, damage 3d6 + 138 ≈ 148, level,
+(abilities, BAB 39 / 49, saves 81 / 84 / 44, HP 297 / 2480, attack 135, damage 3d6 + 138 ≈ 148, level,
 caster levels Wizard 60 / Sorcerer 29, spell resistance 72). Spellcraft is pending (her skill ranks are not entered yet).
 Six small cases cover the rules one by one (stacking, multipliers, layers, worked examples, level 60, errors).
 See `test-references/README.md`. All pass on JVM, JS and iOS through `golden-runner`, which embeds the folders at build time.

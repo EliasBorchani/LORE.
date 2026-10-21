@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { api } from '../../api/client'
-import type { EntitySummary, LevelRecord, SpellListEntry } from '../../api/types'
+import type { EntitySummary, LevelRecord, ManeuverEntry, SpellListEntry } from '../../api/types'
 import { Loading, StatBlock } from '../../components/grimoire'
 import { EntityName, InfoButton } from '../../components/EntityPanel'
 import { Picker } from '../../components/Picker'
@@ -38,6 +38,7 @@ export function BuildScreen() {
       <Levels />
       <Skills />
       <Spells />
+      <Maneuvers />
       <Items />
       <MoveCharacter />
     </>
@@ -260,6 +261,106 @@ function ClassSpells(props: {
       )}
       {message && <p role="status" className="muted">{message}</p>}
     </StatBlock>
+  )
+}
+
+/** Maneuvers and stances of each initiator class: counts from its table, problems, remove one or learn one. */
+function Maneuvers() {
+  const { record, sheet, name, saveCharacter, reload } = useSheet()
+  const groupApi = useGroupApi()
+  const initiators = sheet.initiators.asJsReadonlyArrayView()
+  const [lists, setLists] = useState<Record<string, ManeuverEntry[]>>({})
+  const [adding, setAdding] = useState<string | null>(null)
+  const [busy, setBusy] = useState(false)
+  const [message, setMessage] = useState<string | null>(null)
+  if (initiators.length === 0) return null
+
+  const allKnown = initiators.flatMap((line) => [...line.maneuvers.asJsReadonlyArrayView(), ...line.stances.asJsReadonlyArrayView()])
+  const info = (id: string) => Object.values(lists).flat().find((m) => m.id === id)
+
+  async function save(classId: string, known: string[]) {
+    setBusy(true)
+    setMessage(null)
+    const maneuvers = { ...(record.character.maneuvers ?? {}), [classId]: { known } }
+    try {
+      const result = await saveCharacter({ ...record.character, maneuvers })
+      setMessage(result === 'saved' ? fr.build.saved : fr.build.conflict)
+      setAdding(null)
+      reload()
+    } catch (error) {
+      setMessage(`${fr.build.saveFailed} ${messageOf(error)}`)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  function open(classId: string) {
+    setAdding(classId)
+    if (!lists[classId]) {
+      groupApi.maneuverList(classId).then(
+        (list) => setLists((all) => ({ ...all, [classId]: list })),
+        (error) => setMessage(messageOf(error)),
+      )
+    }
+  }
+
+  return (
+    <>
+      {initiators.map((line) => {
+        const classId = line.classId
+        const maneuvers = [...line.maneuvers.asJsReadonlyArrayView()]
+        const stances = [...line.stances.asJsReadonlyArrayView()]
+        const known = [...(record.character.maneuvers?.[classId]?.known ?? [])]
+        const issues = [...line.issues.asJsReadonlyArrayView()]
+        const maxLevel = Number(line.maxManeuverLevel ?? 0)
+        const entryName = (id: string) => localized(info(id)?.name ?? undefined) ?? name(id)
+        // What the class may learn now: not known yet, within the highest level, prerequisite count met.
+        const learnable = (lists[classId] ?? []).filter((m) => {
+          const block = m.maneuver
+          if (!block || known.includes(m.id) || block.level > maxLevel) return false
+          const sameDiscipline = allKnown.filter((id) => info(id)?.maneuver?.discipline === block.discipline).length
+          return sameDiscipline >= (block.requires ?? 0)
+        })
+        return (
+          <StatBlock key={classId} title={fr.editor.maneuvers(name(classId))}>
+            <p className="muted">
+              {fr.editor.maneuverCounts(maneuvers.length, line.maneuversKnown ?? '0', stances.length, line.stancesKnown ?? '0')}
+              <br />
+              {fr.editor.maneuverLimits(line.maneuversReadied ?? '0', line.maxManeuverLevel ?? '0', line.initiatorLevel ?? '0')}
+            </p>
+            {issues.map((issue) => (
+              <p key={`${issue.entity}-${issue.code}`} className="muted" role="alert">
+                {issue.entity ? `${name(issue.entity)} ${fr.editor.maneuverIssues[issue.code]}` : fr.editor.maneuverIssues[issue.code]}
+              </p>
+            ))}
+            {known.length === 0 && <p className="muted">{fr.editor.noManeuvers}</p>}
+            {[...stances, ...maneuvers].map((id) => (
+              <div key={id} className="chosen">
+                <EntityName id={id}>{entryName(id)}</EntityName>
+                <button type="button" className="btn btn-secondary btn-small" disabled={busy} aria-label={fr.editor.remove(entryName(id))}
+                  onClick={() => void save(classId, known.filter((k) => k !== id))}>×</button>
+              </div>
+            ))}
+            {adding === classId ? (
+              lists[classId] ? (
+                <Picker label={fr.editor.addManeuver}
+                  items={learnable.map((m) => ({
+                    id: m.id,
+                    name: localized(m.name ?? undefined) ?? m.id,
+                    sub: fr.editor.maneuverSub(fr.catalog.maneuverKinds[m.maneuver!.kind] ?? m.maneuver!.kind, m.maneuver!.level),
+                  }))}
+                  onPick={(id) => void save(classId, [...known, id])} />
+              ) : (
+                <Loading />
+              )
+            ) : (
+              <button className="btn btn-secondary btn-small" onClick={() => open(classId)}>{fr.editor.addManeuver}</button>
+            )}
+          </StatBlock>
+        )
+      })}
+      {message && <p role="status" className="muted">{message}</p>}
+    </>
   )
 }
 

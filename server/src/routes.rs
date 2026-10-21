@@ -50,6 +50,10 @@ pub fn app(state: AppState) -> Router {
             "/groups/{group}/catalog/spell-list/{class_id}",
             get(catalog::spell_list),
         )
+        .route(
+            "/groups/{group}/catalog/maneuvers/{class_id}",
+            get(catalog::maneuver_list),
+        )
         .route("/groups/{group}/entities", get(catalog::list_entities))
         .route("/groups/{group}/search", get(catalog::catalog_search))
         .route("/groups/{group}/entities/{id}", get(catalog::entity))

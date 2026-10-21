@@ -27,6 +27,7 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
     .map((r) => ({ id: r.to, name: localized(r.name ?? undefined) ?? r.to, level: r.extra.level }))
     .sort((a, b) => (a.level ?? 0) - (b.level ?? 0) || a.name.localeCompare(b.name, 'fr'))
   const spell = entity.type === 'spell' ? ((entity.spell ?? {}) as Record<string, unknown>) : null
+  const maneuver = entity.maneuver as ManeuverInfo | undefined
 
   return (
     <>
@@ -63,6 +64,7 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
               </div>
             ) : null
           })}
+        {maneuver && <ManeuverFacts maneuver={maneuver} detail={detail} />}
         {entity.usesPerDay != null && (
           <>
             <dt>{fr.catalog.usesPerDay}</dt>
@@ -70,6 +72,49 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
           </>
         )}
       </dl>
+    </>
+  )
+}
+
+interface ManeuverInfo {
+  discipline: string
+  level: number
+  kind: string
+  requires?: number
+  prerequisite?: string
+  [field: string]: unknown
+}
+
+function ManeuverFacts({ maneuver, detail }: { maneuver: ManeuverInfo; detail: EntityDetail }) {
+  const discipline = localized(detail.references?.find((r) => r.id === maneuver.discipline)?.name) ?? maneuver.discipline
+  const prerequisite = [
+    maneuver.requires ? fr.catalog.maneuverRequires(maneuver.requires, discipline) : null,
+    maneuver.prerequisite,
+  ].filter(Boolean).join(' ; ')
+  return (
+    <>
+      <dt>{fr.catalog.discipline}</dt>
+      <dd><EntityName id={maneuver.discipline}>{discipline}</EntityName></dd>
+      <dt>{fr.catalog.maneuverLevel}</dt>
+      <dd>{maneuver.level}</dd>
+      <dt>{fr.catalog.maneuverKind}</dt>
+      <dd>{fr.catalog.maneuverKinds[maneuver.kind] ?? maneuver.kind}</dd>
+      {prerequisite && (
+        <>
+          <dt>{fr.catalog.prerequisite}</dt>
+          <dd>{prerequisite}</dd>
+        </>
+      )}
+      {Object.entries(fr.catalog.maneuverFields).map(([field, label]) => {
+        const value = maneuver[field]
+        const text = Array.isArray(value) ? value.join(', ') : value == null ? '' : String(value)
+        return text ? (
+          <div key={field} style={{ display: 'contents' }}>
+            <dt>{label}</dt>
+            <dd>{text}</dd>
+          </div>
+        ) : null
+      })}
     </>
   )
 }

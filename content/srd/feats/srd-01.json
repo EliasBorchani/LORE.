@@ -123,6 +123,7 @@
       "labels": [
         "general",
         "fighter_bonus",
+        "warblade_bonus",
         "melee",
         "ranged"
       ],
@@ -142,6 +143,7 @@
       "source": "SRD",
       "labels": [
         "general",
+        "warblade_bonus",
         "skill",
         "movement"
       ],

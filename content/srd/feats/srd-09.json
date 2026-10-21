@@ -152,6 +152,7 @@
       "source": "SRD",
       "labels": [
         "general",
+        "warblade_bonus",
         "defense"
       ],
       "description": {
@@ -177,6 +178,7 @@
       "source": "SRD",
       "labels": [
         "general",
+        "warblade_bonus",
         "defense"
       ],
       "description": {
@@ -202,6 +204,7 @@
       "source": "SRD",
       "labels": [
         "general",
+        "warblade_bonus",
         "skill",
         "movement"
       ],

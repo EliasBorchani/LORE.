@@ -86,6 +86,15 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
   with prerequisites, spellbook, items, removing the last level; Combat tab numbers right (AC 14 with a chain shirt,
   longsword +6 / 1d8 + 3, 19–20 ×2). Checked at phone width (390 px, in a frame: Chrome would not resize its window):
   Combat, level-up and Build screens fit, no sideways scroll, the tab bar scrolls. Not reviewed.
+- Tome of Battle (engine, server, web, content), 2026-10-21: the 3 classes, 9 disciplines, Martial Lore and the 208
+  maneuvers and stances from the owner's PDF (see `content/AGENTS.md`). Engine: `maneuver` block, `initiating`, table
+  columns, `character.maneuvers`, built-in initiator statistics, `initiators` in the API (`InitiatingTest`). Server:
+  `discipline` and `maneuver_level` search filters (`0010_maneuver_filters.sql`), `catalog/maneuvers/{class}`. Web:
+  maneuver facts and filters in the catalog, guided forms, class table columns, « Manœuvres » on the Build screen, one
+  stance at a time (two with Stance Mastery). Then: `@initiator_level` in formulas, `maneuvers.count[…]` for
+  prerequisites, feats that give maneuvers, the book's 38 feats, an effects pass over the maneuvers, 9 new
+  situations. Checked: engine allTests, server tests, web tests and build, content checks, an import into a
+  throwaway database (before the feats). Not checked in a browser; not reviewed; not imported on the VPS.
 - Auth: refresh retry grace (30 s). A page reload during a token refresh used to log the session out; now a used
   token presented again within 30 s, when no newer token of the session was used, gets a new pair and the token the
   client never received is revoked. Past 30 s, or after a newer token was used, it is theft as before (whole session
@@ -178,6 +187,16 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
 - The engine-side items from the spike: see "To review" in the spike report.
 
 ## Known limits
+
+- Tome of Battle: past class level 20 the known / readied / stance counts stay at row 20 (no epic table in the book;
+  owner: not decided yet). Readied and expended maneuvers are not tracked (play state). Discipline focus (Swordsage) and the Crusader's delayed
+  damage pool are text; Furious Counterstrike is a toggle whose value the player picks (1 to 6). Most maneuver bonuses
+  that depend on the fight or help allies are text only. The Warblade uses the book's rules (owner, 2026-10-21):
+  Battle Cunning only against flat-footed or flanked foes, Battle Clarity capped by class level; Danalieth's test
+  catalog keeps the group's house rules, so her real sheet on the VPS drops once the official Warblade is imported
+  (Reflex 81 → 74, damage 138 → 111). Her placeholder stance (+10 attack) is removed: verified attack 145 → 135.
+  Martial Study maneuvers use the character's highest initiator level, not the book's « half your level » when the
+  character also has an initiator class (the same value or higher).
 
 - Web: the home card shows name and level only (the numbers need each character's catalog). Search filters cover
   spells (school, descriptor, list, level) and effects (« Affecte », only as good as the modelled effects: about 60

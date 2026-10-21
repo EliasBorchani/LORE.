@@ -1,4 +1,5 @@
 # Builds content/srd/classes/<class>.json from the scraped tables (content/tools/out) and the curated data in this folder.
+# Tome of Battle classes (`tobTable`) read their table from content/tools/out/tob/classes.json (content/tools/tob).
 # Usage: python3 gen.py <repo root> druid sorcerer ...
 import importlib.util, json, re, sys
 from pathlib import Path
@@ -39,12 +40,17 @@ def build(mod):
         'hitDie': c['hitDie'],
         'skillPoints': c['skillPoints'],
     }
+    if c.get('source'):
+        cls['source'] = c['source']
     if 'spellcasting' in c:
         cls['spellcasting'] = c['spellcasting']
+    if 'initiating' in c:
+        cls['initiating'] = c['initiating']
+    cls['effects'] = c.get('effects', [])
     # SRD epic bonus feats: one every N class levels past 20 (class features keep coming at class level).
-    every = c['epicBonusFeatEvery']
-    epic = {'target': 'feat_slots.epic_bonus', 'op': 'add', 'value': f"max(0, floor((level('{cid}') - 20) / {every}))", 'bonusType': 'untyped'}
-    cls['effects'] = c.get('effects', []) + [epic]
+    every = c.get('epicBonusFeatEvery')
+    if every:
+        cls['effects'].append({'target': 'feat_slots.epic_bonus', 'op': 'add', 'value': f"max(0, floor((level('{cid}') - 20) / {every}))", 'bonusType': 'untyped'})
     if c.get('note'):
         cls['note'] = c['note']
     entities = [cls]
@@ -52,16 +58,35 @@ def build(mod):
     for p in mod.POWERS:
         e = {
             'id': f"power.{c['id']}_{p['id']}", 'type': 'class_power', 'name': {'fr': p['fr'], 'en': p['en']},
-            'provenance': 'official', 'labels': ['class_power', c['id']],
+            'provenance': 'official', **({'source': c['source']} if c.get('source') else {}),
+            'labels': ['class_power', c['id']],
             'description': {'fr': describe(p['text'], p['rules'])},
             'effects': p.get('effects', []),
         }
-        for key in ('usesPerDay', 'note'):
+        for key in ('usesPerDay', 'tableValue', 'note'):
             if key in p:
                 e[key] = p[key]
         entities.append(e)
         grants.setdefault(p['level'], []).append(e['id'])
 
+    if c.get('tobTable'):
+        progressions = [{'classId': cid, 'level': r['level'], 'bab': r['bab'], 'fort': r['fort'], 'ref': r['ref'],
+                         'will': r['will'], 'grants': grants.get(r['level'], []), 'maneuversKnown': r['maneuversKnown'],
+                         'maneuversReadied': r['maneuversReadied'], 'stancesKnown': r['stancesKnown']}
+                        for r in json.load(open(ROOT / 'content/tools/out/tob/classes.json'))[c['id']]]
+    else:
+        progressions = rows_from_table(c, cid, grants)
+
+    relations = [{'from': cid, 'relation': 'class_skill', 'to': s} for s in c['skills']]
+    relations += [{'from': cid, 'relation': 'proficiency', 'to': p} for p in c['proficiencies']]
+    relations += [{'from': cid, 'relation': 'alignment', 'to': f'alignment.{a}'} for a in c['alignments']]
+    relations += [{'from': cid, 'relation': 'initiates', 'to': f'discipline.{d}'} for d in c.get('disciplines', [])]
+    # A power that gives a feat grants it, so `has('feat.track')` holds and the feat comes with the closure.
+    relations += [{'from': f"power.{c['id']}_{p['id']}", 'relation': 'grants', 'to': p['feat']} for p in mod.POWERS if 'feat' in p]
+    return {'entities': entities, 'progressions': progressions, 'relations': relations}
+
+
+def rows_from_table(c, cid, grants):
     rows = table(*c['table'])
     header = rows[0]
     spells_at = header.index('Spécial') + 1 if c.get('spellColumns') else None
@@ -79,13 +104,7 @@ def build(mod):
         for row, cells in zip(progressions, known[1:]):
             assert int(cells[0]) == row['level']
             row['spellsKnown'] = [spell_cell(x) for x in cells[1:]]
-
-    relations = [{'from': cid, 'relation': 'class_skill', 'to': s} for s in c['skills']]
-    relations += [{'from': cid, 'relation': 'proficiency', 'to': p} for p in c['proficiencies']]
-    relations += [{'from': cid, 'relation': 'alignment', 'to': f'alignment.{a}'} for a in c['alignments']]
-    # A power that gives a feat grants it, so `has('feat.track')` holds and the feat comes with the closure.
-    relations += [{'from': f"power.{c['id']}_{p['id']}", 'relation': 'grants', 'to': p['feat']} for p in mod.POWERS if 'feat' in p]
-    return {'entities': entities, 'progressions': progressions, 'relations': relations}
+    return progressions
 
 
 for name in sys.argv[2:]:

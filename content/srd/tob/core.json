@@ -1,0 +1,150 @@
+{
+  "entities": [
+    {
+      "id": "discipline.desert_wind",
+      "type": "discipline",
+      "name": {
+        "fr": "Vent du désert",
+        "en": "Desert Wind"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "L’école du feu et du mouvement. Ses adeptes ne restent jamais en place : ils tournoient, bondissent et laissent derrière eux des traînées de flammes nées de la seule vitesse de leur lame.\n\nEn jeu\n• Enseignée par : Sage de l’épée.\n• Compétence clé : Acrobaties.\n• Armes associées : cimeterre, masse d’armes légère, pic de guerre léger, cimeterre à deux mains, lance."
+      }
+    },
+    {
+      "id": "discipline.devoted_spirit",
+      "type": "discipline",
+      "name": {
+        "fr": "Esprit dévoué",
+        "en": "Devoted Spirit"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "La voie de la foi armée. Le croisé puise dans sa cause une énergie qui soigne ses alliés, le garde debout quand d’autres tomberaient et frappe ceux qui s’opposent à ce qu’il défend.\n\nEn jeu\n• Enseignée par : Croisé.\n• Compétence clé : Intimidation.\n• Armes associées : cimeterre à deux mains, massue, épée longue, maillet."
+      }
+    },
+    {
+      "id": "discipline.diamond_mind",
+      "type": "discipline",
+      "name": {
+        "fr": "Esprit de diamant",
+        "en": "Diamond Mind"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "La vitesse vient de l’esprit, pas du corps. L’adepte lit le combat avant qu’il n’ait lieu, frappe là où l’adversaire sera et répond aux menaces par la pure clarté de sa pensée.\n\nEn jeu\n• Enseignée par : Sage de l’épée, Maître des lames.\n• Compétence clé : Concentration.\n• Armes associées : rapière, épieu, épée bâtarde (katana), trident."
+      }
+    },
+    {
+      "id": "discipline.iron_heart",
+      "type": "discipline",
+      "name": {
+        "fr": "Cœur de fer",
+        "en": "Iron Heart"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "La maîtrise absolue de l’épée. Des années d’exercice font du pratiquant une arme sans défaut : frappes multiples, parades impossibles, et un coup final qui ne laisse aucune chance.\n\nEn jeu\n• Enseignée par : Maître des lames.\n• Compétence clé : Équilibre.\n• Armes associées : épée bâtarde, hache de guerre naine, épée longue, double-lame."
+      }
+    },
+    {
+      "id": "discipline.setting_sun",
+      "type": "discipline",
+      "name": {
+        "fr": "Soleil couchant",
+        "en": "Setting Sun"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Retourner la force de l’ennemi contre lui. L’adepte esquive, déséquilibre et projette, et finit par laisser l’adversaire se vaincre lui-même.\n\nEn jeu\n• Enseignée par : Sage de l’épée.\n• Compétence clé : Psychologie.\n• Armes associées : épée courte, bâton, nunchaku, combat à mains nues."
+      }
+    },
+    {
+      "id": "discipline.shadow_hand",
+      "type": "discipline",
+      "name": {
+        "fr": "Main de l’ombre",
+        "en": "Shadow Hand"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Ne jamais montrer à l’adversaire ce qu’il s’attend à voir. Feintes, téléportations d’ombre en ombre et frappes empoisonnées par le froid du néant : l’école de l’assassin.\n\nEn jeu\n• Enseignée par : Sage de l’épée.\n• Compétence clé : Discrétion.\n• Armes associées : dague, épée courte, sai, siangham, combat à mains nues, chaîne cloutée."
+      }
+    },
+    {
+      "id": "discipline.stone_dragon",
+      "type": "discipline",
+      "name": {
+        "fr": "Dragon de pierre",
+        "en": "Stone Dragon"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "La force et l’endurance de la montagne. Pieds bien ancrés au sol, l’adepte brise les armures et les os, et encaisse ce qui renverserait un autre.\n\nEn jeu\n• Enseignée par : Croisé, Sage de l’épée, Maître des lames.\n• Compétence clé : Équilibre.\n• Armes associées : épée à deux mains, grande hache, masse d’armes lourde, combat à mains nues."
+      }
+    },
+    {
+      "id": "discipline.tiger_claw",
+      "type": "discipline",
+      "name": {
+        "fr": "Griffe du tigre",
+        "en": "Tiger Claw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "L’instinct contre la pensée. L’adepte devient bête : il bondit, déchire, frappe de deux armes à la fois et se nourrit du sang qu’il fait couler.\n\nEn jeu\n• Enseignée par : Sage de l’épée, Maître des lames.\n• Compétence clé : Saut.\n• Armes associées : kukri, kama, griffe, hachette, grande hache, combat à mains nues."
+      }
+    },
+    {
+      "id": "discipline.white_raven",
+      "type": "discipline",
+      "name": {
+        "fr": "Corbeau blanc",
+        "en": "White Raven"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Aucun guerrier ne se bat seul. Cris de guerre, ordres et charges menées en tête : chaque manœuvre du corbeau blanc rend les alliés plus forts que la somme de leurs lames.\n\nEn jeu\n• Enseignée par : Croisé, Maître des lames.\n• Compétence clé : Diplomatie.\n• Armes associées : épée longue, hache d’armes, marteau de guerre, épée à deux mains, hallebarde."
+      }
+    },
+    {
+      "id": "skill.martial_lore",
+      "type": "skill",
+      "name": {
+        "fr": "Savoir martial",
+        "en": "Martial Lore"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "skill"
+      ],
+      "description": {
+        "fr": "Reconnaître une manœuvre au premier geste, deviner l’école d’un adversaire à sa garde : le savoir des initiés des Neuf Épées.\n\nEn jeu\n• Caractéristique associée : Intelligence. Formation nécessaire.\n• Identifier une manœuvre qu’on voit initier : DD 10 + niveau de la manœuvre, sans action, une seule tentative.\n• Identifier une manœuvre écrite sur un parchemin martial : DD 10 + niveau de la manœuvre, une action complexe, une tentative par jour.\n• Connaître toutes les disciplines d’une créature qu’on voit initier : DD 20 + son niveau d’initiateur."
+      },
+      "skill": {
+        "ability": "int",
+        "trainedOnly": true
+      }
+    }
+  ]
+}

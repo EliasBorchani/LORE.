@@ -160,8 +160,8 @@ export function valueOf(text: string): string | number {
   return /^-?\d+(\.\d+)?$/.test(t) ? Number(t) : t
 }
 
-/** What « by level » counts: a class's levels, the character's level, or the spell's caster level. */
-export type LevelSource = { kind: 'class'; classId: string } | { kind: 'character' } | { kind: 'caster' }
+/** What « by level » counts: a class's levels, the character's level, the spell's caster level, or the initiator level. */
+export type LevelSource = { kind: 'class'; classId: string } | { kind: 'character' } | { kind: 'caster' } | { kind: 'initiator' }
 
 /** An effect's value, as the value builder shows it. `other` is anything else, kept as written. */
 export type ValueModel =
@@ -178,6 +178,7 @@ const SOURCE_TERMS: [RegExp, (m: RegExpExecArray) => LevelSource][] = [
   [new RegExp(String.raw`^level\('(${ID})'\)$`), (m) => ({ kind: 'class', classId: m[1] })],
   [/^level\(\)$/, () => ({ kind: 'character' })],
   [/^@spell\.caster_level$/, () => ({ kind: 'caster' })],
+  [/^@initiator_level$/, () => ({ kind: 'initiator' })],
 ]
 
 function sourceOf(text: string): LevelSource | null {
@@ -193,6 +194,7 @@ function sourceTerm(source: LevelSource): string {
     case 'class': return `level('${source.classId}')`
     case 'character': return 'level()'
     case 'caster': return '@spell.caster_level'
+    case 'initiator': return '@initiator_level'
   }
 }
 

@@ -1,0 +1,212 @@
+{
+  "entities": [
+    {
+      "id": "stance.rising_phoenix",
+      "type": "stance",
+      "name": {
+        "fr": "Phénix ascendant",
+        "en": "Rising Phoenix"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Un tourbillon d’air brûlant monte sous vos pieds et vous soulève au-dessus du sol, porté par une colonne qui ondule comme la flamme d’un brasier.\n\nEn jeu\n• Vous flottez jusqu’à 3 m au-dessus d’une surface solide ou liquide et gagnez une vitesse de vol égale à votre vitesse au sol (manœuvrabilité parfaite), sans jamais dépasser 3 m de hauteur.\n• Vous franchissez ainsi fosses peu profondes et inégalités du terrain sans perdre d’altitude.\n• Si vous restez sur place et faites une attaque à outrance, la colonne inflige 3d6 dégâts de feu aux créatures dans la colonne ou adjacentes à votre case ; vous n’en subissez aucun.\n• Si vous vous retrouvez à plus de 3 m du sol, la posture prend fin aussitôt et vous tombez.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 8,
+        "kind": "stance",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "set",
+          "value": "@speed.land",
+          "condition": "active('toggle.rising_phoenix')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.iron_heart_surge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Sursaut du Cœur de fer",
+        "en": "Iron Heart Surge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Votre volonté se durcit comme l’acier : d’un seul effort de corps et d’esprit, vous rejetez ce qui vous entrave et repartez à l’assaut, plus déterminé que jamais.\n\nEn jeu\n• Choisissez un sort, effet ou état qui vous affecte et dont la durée est d’au moins 1 round : il prend fin immédiatement.\n• Vous gagnez un bonus de moral de +2 aux jets d’attaque jusqu’à la fin de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 3,
+        "kind": "boost",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "voir texte"
+      },
+      "note": "Le livre ne donne pas de type à cette manœuvre : classée renforcement.",
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.iron_heart_surge')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.shadow_jaunt",
+      "type": "maneuver",
+      "name": {
+        "fr": "Saut de l’ombre",
+        "en": "Shadow Jaunt"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Un nuage d’ombre vous avale, se contracte en un point minuscule et s’évanouit, pour vous recracher un instant plus tard à l’autre bout du champ de bataille.\n\nEn jeu\n• Vous vous téléportez jusqu’à 15 m.\n• Vous devez avoir une ligne de vue et une ligne d’effet jusqu’à votre destination.\n• Si la destination est occupée, vous ne bougez pas et la manœuvre est dépensée sans effet."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 2,
+        "kind": "boost",
+        "descriptors": [
+          "téléportation"
+        ],
+        "initiationAction": "1 action simple",
+        "range": "15 m",
+        "target": "vous"
+      },
+      "note": "Le livre ne donne pas de type à cette manœuvre : classée renforcement."
+    },
+    {
+      "id": "maneuver.shadow_stride",
+      "type": "maneuver",
+      "name": {
+        "fr": "Enjambée de l’ombre",
+        "en": "Shadow Stride"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Vous vous dissolvez en une bouffée d’ombre noire qui se reforme plus loin, en un clin d’œil, sans que vous ayez eu à vous arrêter.\n\nEn jeu\n• Fonctionne comme Saut de l’ombre : téléportation jusqu’à 15 m, avec ligne de vue et ligne d’effet, sans effet si la destination est occupée.\n• S’initie par une action de mouvement au lieu d’une action simple."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 5,
+        "kind": "boost",
+        "descriptors": [
+          "téléportation"
+        ],
+        "initiationAction": "1 action de mouvement",
+        "range": "15 m",
+        "target": "vous"
+      },
+      "note": "Le livre ne donne pas de type à cette manœuvre : classée renforcement."
+    },
+    {
+      "id": "maneuver.death_in_the_dark",
+      "type": "maneuver",
+      "name": {
+        "fr": "Mort dans les ténèbres",
+        "en": "Death in the Dark"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre ennemi ne vous a pas vu venir : une seule lame, glissée au bon endroit, suffit à éteindre sa vie.\n\nEn jeu\n• Ne fonctionne que contre un adversaire pris au dépourvu et sensible aux coups critiques.\n• Une attaque au corps à corps ; si elle touche, dégâts normaux et la cible fait un jet de Vigueur (DD 17 + modificateur de Sagesse).\n• Échec : +15d6 dégâts ; réussite : +5d6 dégâts."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 7,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.shadow_blink",
+      "type": "maneuver",
+      "name": {
+        "fr": "Clignement de l’ombre",
+        "en": "Shadow Blink"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Le temps d’un battement de paupières, vous n’êtes plus là : une étincelle d’ombre s’ouvre au loin et vous en surgissez.\n\nEn jeu\n• Fonctionne comme Saut de l’ombre : téléportation jusqu’à 15 m, avec ligne de vue et ligne d’effet, sans effet si la destination est occupée.\n• S’initie par une action rapide au lieu d’une action simple."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 7,
+        "kind": "boost",
+        "descriptors": [
+          "téléportation"
+        ],
+        "initiationAction": "1 action rapide",
+        "range": "15 m",
+        "target": "vous"
+      },
+      "note": "Le livre ne donne pas de type à cette manœuvre : classée renforcement."
+    },
+    {
+      "id": "maneuver.order_forged_from_chaos",
+      "type": "maneuver",
+      "name": {
+        "fr": "L’ordre né du chaos",
+        "en": "Order Forged from Chaos"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Quelques ordres secs claquent au milieu de la mêlée et vos compagnons, sans même y penser, se replacent là où vous les voulez.\n\nEn jeu\n• Chaque allié à 9 m ou moins de vous peut aussitôt faire une action de mouvement pour se déplacer jusqu’à sa vitesse.\n• Ce déplacement provoque des attaques d’opportunité.\n• Il ne compte pas pour le déplacement minimum exigé par des capacités ou des dons (comme l’escarmouche de l’éclaireur)."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 6,
+        "kind": "boost",
+        "requires": 2,
+        "initiationAction": "1 action de mouvement",
+        "range": "personnelle",
+        "target": "les créatures alliées à 9 m ou moins"
+      },
+      "note": "Le livre ne donne pas de type à cette manœuvre : classée renforcement."
+    }
+  ]
+}

@@ -1,0 +1,656 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.feigned_opening",
+      "type": "maneuver",
+      "name": {
+        "fr": "Ouverture feinte",
+        "en": "Feigned Opening"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Vous laissez paraître une faille grossière dans votre garde. L’ennemi s’y jette, et c’est lui qui se retrouve exposé.\n\nEn jeu\n• À initier quand un adversaire tente une attaque d’opportunité contre vous, avant d’en connaître le résultat.\n• Si son attaque échoue, il provoque à son tour une attaque d’opportunité de votre part.\n• Si elle vous touche, il provoque une attaque d’opportunité de chacun de vos alliés qui le menacent."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 3,
+        "kind": "counter",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "stance.giant_killing_style",
+      "type": "stance",
+      "name": {
+        "fr": "Style du tueur de géants",
+        "en": "Giant Killing Style"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous restez collé aux jambes du colosse, sous sa garde, et taillez tendons et genoux qu’il ne peut protéger.\n\nEn jeu\n• Contre un adversaire d’une catégorie de taille supérieure à la vôtre : +2 aux jets d’attaque et +4 aux jets de dégâts.\n• Une fois déclenché, ce bonus vaut pour toutes vos attaques jusqu’à la fin de votre tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_larger_creatures",
+          "condition": "active('toggle.giant_killing_style')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 4,
+          "situation": "situation.vs_larger_creatures",
+          "condition": "active('toggle.giant_killing_style')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.comet_throw",
+      "type": "maneuver",
+      "name": {
+        "fr": "Projection de la comète",
+        "en": "Comet Throw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous saisissez l’élan de l’adversaire et l’envoyez voler comme une pierre lancée, droit sur un autre ennemi.\n\nEn jeu\n• Attaque de contact au corps à corps, puis tentative de croc-en-jambe avec +4 au test.\n• En cas de réussite, la cible est projetée jusqu’à 3 m (case de votre choix), tombe à terre et subit 4d6 dégâts ; +1,50 m de portée par tranche de 5 points d’écart au test opposé.\n• Vous pouvez la jeter sur la case d’un second ennemi : celui-ci subit aussi 4d6 dégâts et tombe à terre ; un jet de Réflexes (DD 14 + modificateur de Force) réduit ses dégâts de moitié et le laisse debout.\n• La créature projetée atterrit alors à terre sur une case libre adjacente à ce second ennemi."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 4,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée (voir texte)",
+        "savingThrow": "Réflexes, partiel (voir texte)"
+      }
+    },
+    {
+      "id": "maneuver.strike_of_the_broken_shield",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du bouclier brisé",
+        "en": "Strike of the Broken Shield"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup calculé pour faire voler en éclats la garde adverse et le laisser chercher son équilibre.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 4d6 dégâts supplémentaires.\n• La cible doit réussir un jet de Réflexes (DD 14 + modificateur de Force) ou être prise au dépourvu jusqu’au début de son prochain tour.\n• Les dégâts s’appliquent même si le jet réussit ; une créature qui ne peut pas être prise au dépourvu (esquive instinctive…) subit seulement les dégâts."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 4,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Réflexes, partiel"
+      }
+    },
+    {
+      "id": "maneuver.mirrored_pursuit",
+      "type": "maneuver",
+      "name": {
+        "fr": "Poursuite en miroir",
+        "en": "Mirrored Pursuit"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Vous devenez l’ombre de votre adversaire : chacun de ses pas est le vôtre, il ne peut pas vous semer.\n\nEn jeu\n• Quand un adversaire adjacent se déplace, vous pouvez, dès qu’il s’arrête, vous déplacer sur une case adjacente à lui.\n• La distance parcourue ne peut pas dépasser votre vitesse.\n• Ce déplacement ne provoque pas d’attaque d’opportunité."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 5,
+        "kind": "counter",
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.soaring_throw",
+      "type": "maneuver",
+      "name": {
+        "fr": "Projection aérienne",
+        "en": "Soaring Throw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Avec un cri, vous faites décrire à votre ennemi une grande courbe dans les airs avant qu’il ne s’écrase lourdement au sol.\n\nEn jeu\n• Attaque de contact au corps à corps, puis croc-en-jambe sans provoquer d’attaque d’opportunité et sans riposte possible si vous échouez ; vous utilisez la Force ou la Dextérité (la meilleure), avec +4 au test.\n• En cas de réussite, la cible est projetée jusqu’à 6 m, sur une case libre de votre choix, tombe à terre et subit 8d6 dégâts ; +1,50 m par tranche de 5 points d’écart au test opposé.\n• Faute de case libre à portée, elle tombe à terre sur place.\n• La projection peut traverser des cases occupées et ne provoque pas d’attaque d’opportunité pour la cible."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée"
+      }
+    },
+    {
+      "id": "maneuver.stalking_shadow",
+      "type": "maneuver",
+      "name": {
+        "fr": "Ombre traqueuse",
+        "en": "Stalking Shadow"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "L’ennemi recule à peine que vous êtes déjà là, collé à lui : fuir vous coûtera cher.\n\nEn jeu\n• Quand un adversaire adjacent se déplace, vous pouvez faire un pas de placement de 1,50 m dans la case (ou l’une des cases) qu’il occupait.\n• Ce déplacement ne provoque pas d’attaque d’opportunité."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 5,
+        "kind": "counter",
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "stance.shifting_defense",
+      "type": "stance",
+      "name": {
+        "fr": "Défense mouvante",
+        "en": "Shifting Defense"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Chaque coup que l’ennemi vous porte devient pour vous une occasion de glisser ailleurs sur le champ de bataille.\n\nEn jeu\n• Chaque fois qu’un adversaire vous attaque, vous pouvez faire immédiatement un pas de placement de 1,50 m.\n• Chaque pas consomme une de vos attaques d’opportunité du round ; impossible s’il ne vous en reste aucune.\n• Ce déplacement ne provoque pas d’attaque d’opportunité."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 5,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.ballista_throw",
+      "type": "maneuver",
+      "name": {
+        "fr": "Projection de la baliste",
+        "en": "Ballista Throw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous faites tournoyer votre adversaire comme une toupie avant de le lâcher, tel un carreau de baliste, à travers les rangs ennemis.\n\nEn jeu\n• Attaque de contact au corps à corps, puis croc-en-jambe avec +4 au test.\n• En cas de réussite, la cible est lancée sur une ligne de 18 m : elle et toutes les créatures de la ligne subissent 6d6 dégâts.\n• La cible finit à terre au bout de la ligne, ou sur la case libre la plus proche si celle-ci est occupée."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "contact et 18 m (voir texte)",
+        "target": "créature touchée",
+        "area": "ligne de 18 m"
+      }
+    },
+    {
+      "id": "maneuver.scorpion_parry",
+      "type": "maneuver",
+      "name": {
+        "fr": "Parade du scorpion",
+        "en": "Scorpion Parry"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "D’un geste sec, vous déviez l’arme ennemie vers l’un de ses propres compagnons.\n\nEn jeu\n• Quand un adversaire vous attaque, faites un jet d’attaque opposé au sien.\n• S’il l’emporte, son attaque se déroule normalement contre vous.\n• Si vous l’emportez, choisissez une créature adjacente à vous et dans la zone qu’il menace : elle devient la cible, avec son jet d’attaque d’origine."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 6,
+        "kind": "counter",
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.hydra_slaying_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du tueur d’hydre",
+        "en": "Hydra Slaying Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup placé avec une précision chirurgicale qui oblige l’ennemi à se recomposer au lieu de déchaîner toutes ses attaques.\n\nEn jeu\n• Une attaque au corps à corps, dégâts normaux.\n• Si elle touche, la cible ne peut pas faire d’attaque à outrance à son prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 7,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.fools_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Coup du fou",
+        "en": "Fool’s Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "L’ennemi frappe, et vous lui renvoyez son propre coup en pleine figure.\n\nEn jeu\n• Quand un adversaire vous attaque, faites un jet d’attaque opposé au sien.\n• S’il l’emporte, son attaque se déroule normalement contre vous.\n• Si vous l’emportez, il lance les dégâts de son attaque et les subit lui-même."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 8,
+        "kind": "counter",
+        "requires": 3,
+        "initiationAction": "1 action immédiate",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.ghostly_defense",
+      "type": "stance",
+      "name": {
+        "fr": "Défense fantôme",
+        "en": "Ghostly Defense"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Insaisissable dans la brume, vous esquivez au dernier instant et l’arme ennemie s’abat sur l’un de ses alliés.\n\nEn jeu\n• Ne fonctionne que si les attaques contre vous ont une chance de rater (camouflage, par exemple).\n• Quand une attaque au corps à corps ou à distance vous rate à cause de cette chance de rater, vous pouvez la rediriger vers une autre cible adjacente à vous (pas l’attaquant) : dans son allonge au corps à corps, ou dans sa ligne d’effet à distance.\n• Le résultat d’origine sert contre la nouvelle cible, sans nouvelle chance de rater ; une attaque n’est redirigée qu’une fois.\n• Vous devez être conscient de l’attaque : sans effet si vous êtes pris au dépourvu."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 8,
+        "kind": "stance",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.tornado_throw",
+      "type": "maneuver",
+      "name": {
+        "fr": "Projection de la tornade",
+        "en": "Tornado Throw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous traversez le champ de bataille comme un tourbillon, envoyant valser un ennemi après l’autre.\n\nEn jeu\n• Action complexe : déplacement jusqu’à deux fois votre vitesse (attaques d’opportunité normales), avec au moins 3 m parcourus avant la première projection.\n• Après chaque tranche de 3 m, vous pouvez tenter une projection (même ennemi ou un autre) : attaque de contact au corps à corps puis croc-en-jambe sans provoquer ni riposte, Force ou Dextérité, +2 au test par 1,50 m déjà parcouru ce tour.\n• En cas de réussite, la cible est projetée jusqu’à 3 m sur une case libre de votre choix, tombe à terre et subit 2d6 dégâts ; par tranche de 5 points d’écart : +1,50 m et +1d6 dégâts.\n• La projection traverse les cases occupées sans provoquer d’attaque d’opportunité ; faute de case libre, la cible tombe sur place."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 9,
+        "kind": "strike",
+        "requires": 5,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une ou plusieurs créatures"
+      }
+    },
+    {
+      "id": "maneuver.clinging_shadow_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de l’ombre tenace",
+        "en": "Clinging Shadow Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Votre lame se fait ténèbres et, au contact, éclate en un voile d’ombre qui aveugle à moitié l’ennemi.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, +1d6 dégâts.\n• La cible doit réussir un jet de Vigueur (DD 11 + modificateur de Sagesse) ou subir 20 % de chances de rater toutes ses attaques pendant 1 round.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.shadow_blade_technique",
+      "type": "maneuver",
+      "name": {
+        "fr": "Technique de la lame d’ombre",
+        "en": "Shadow Blade Technique"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Un double illusoire et luisant de votre arme danse à côté de la vraie ; l’ennemi ne sait plus laquelle parer.\n\nEn jeu\n• Une attaque au corps à corps pour laquelle vous lancez 2d20 et gardez le résultat de votre choix.\n• Avec le plus haut : attaque normale. Avec le plus bas, ou si les deux dés sont égaux : +1d6 dégâts de froid.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.child_of_shadow",
+      "type": "stance",
+      "name": {
+        "fr": "Enfant de l’ombre",
+        "en": "Child of Shadow"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Tant que vous bougez, les ombres tourbillonnent autour de vous comme un manteau, même en plein soleil.\n\nEn jeu\n• Si vous vous déplacez d’au moins 3 m pendant votre tour, vous bénéficiez d’un camouflage contre les attaques au corps à corps et à distance jusqu’au début de votre prochain tour.\n• Ce camouflage ne permet pas de se cacher sans abri : il faut toujours un élément du terrain pour utiliser Discrétion.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.island_of_blades",
+      "type": "stance",
+      "name": {
+        "fr": "Île de lames",
+        "en": "Island of Blades"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Un tourbillon d’ombre vous enveloppe et, avec un compagnon, vous coordonnez vos assauts pour briser la garde adverse.\n\nEn jeu\n• Si vous et un allié êtes tous deux adjacents à la même créature, vous la prenez en tenaille tous les deux.\n• Cela vaut contre plusieurs adversaires à la fois, pour vous comme pour vos alliés."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.cloak_of_deception",
+      "type": "maneuver",
+      "name": {
+        "fr": "Manteau de duperie",
+        "en": "Cloak of Deception"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Les ombres se ruent sur vous et vous engloutissent : un instant, vous disparaissez.\n\nEn jeu\n• Vous devenez invisible comme par le sort invisibilité suprême.\n• L’effet dure jusqu’à la fin de votre tour.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 2,
+        "kind": "boost",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      }
+    },
+    {
+      "id": "maneuver.drain_vitality",
+      "type": "maneuver",
+      "name": {
+        "fr": "Drain de vitalité",
+        "en": "Drain Vitality"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Une aura grisâtre et maladive entoure votre arme et s’infiltre dans la plaie pour en tirer les forces de l’ennemi.\n\nEn jeu\n• Une attaque au corps à corps, dégâts normaux.\n• Si elle touche, la cible doit réussir un jet de Vigueur (DD 12 + modificateur de Sagesse) ou subir 2 points d’affaiblissement temporaire de Constitution."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 2,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, annule"
+      }
+    },
+    {
+      "id": "maneuver.shadow_garrote",
+      "type": "maneuver",
+      "name": {
+        "fr": "Garrot d’ombre",
+        "en": "Shadow Garrote"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "D’un geste discret, vous découpez un fil d’ombre dans l’air et le lancez au cou de l’ennemi pour l’étrangler.\n\nEn jeu\n• Attaque de contact à distance contre une créature vivante à 18 m maximum : 5d6 dégâts.\n• La cible doit réussir un jet de Vigueur (DD 13 + modificateur de Sagesse) ou être prise au dépourvu jusqu’au début de son prochain tour.\n• Sans effet sur les créatures non vivantes (créatures artificielles, morts-vivants).\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 3,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "18 m",
+        "target": "une créature vivante",
+        "duration": "voir texte",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.strength_draining_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe affaiblissante",
+        "en": "Strength Draining Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Une énergie noire et liquide nappe votre arme puis coule dans les veines de l’ennemi, qui sent ses forces fondre.\n\nEn jeu\n• Une attaque au corps à corps : dégâts normaux plus 4 points d’affaiblissement temporaire de Force.\n• Un jet de Vigueur réussi (DD 13 + modificateur de Sagesse) réduit de moitié l’affaiblissement de Force, pas les dégâts normaux.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 3,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, ½ dégâts"
+      }
+    },
+    {
+      "id": "stance.assassins_stance",
+      "type": "stance",
+      "name": {
+        "fr": "Posture de l’assassin",
+        "en": "Assassin’s Stance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Le moindre défaut d’armure, le moindre pli de cuir appelle votre lame vers le point fatal.\n\nEn jeu\n• Vous gagnez l’attaque sournoise (+2d6) si vous ne l’avez pas.\n• Si vous l’avez déjà, votre attaque sournoise inflige +2d6 dégâts."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "2d6",
+          "condition": "active('toggle.assassins_stance')"
+        }
+      ]
+    },
+    {
+      "id": "stance.dance_of_the_spider",
+      "type": "stance",
+      "name": {
+        "fr": "Danse de l’araignée",
+        "en": "Dance of the Spider"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Une énergie d’ombre couvre vos mains et vos pieds ; vous filez sur les murs et les plafonds comme une araignée.\n\nEn jeu\n• Effet proche du sort pattes d’araignée : vitesse d’escalade de 6 m, sans test d’Escalade, même au plafond.\n• Il vous faut au moins une main libre ; vous gardez votre bonus de Dextérité à la CA et ne subissez aucun malus en grimpant.\n• Impossible de courir en grimpant ainsi."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 3,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.hand_of_death",
+      "type": "maneuver",
+      "name": {
+        "fr": "Main de la mort",
+        "en": "Hand of Death"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "D’un doigt posé sur un centre nerveux, vous déversez une énergie noire qui fige les muscles de l’ennemi.\n\nEn jeu\n• Ne fonctionne que contre un adversaire pris au dépourvu.\n• Attaque de contact au corps à corps ; si elle touche, la cible doit réussir un jet de Vigueur (DD 14 + modificateur de Sagesse) ou être paralysée pendant 1d3 rounds."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 4,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1d3 rounds",
+        "savingThrow": "Vigueur, annule"
+      }
+    }
+  ]
+}

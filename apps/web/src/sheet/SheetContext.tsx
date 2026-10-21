@@ -110,6 +110,17 @@ export function SheetProvider(props: { record: CharacterRecord; closure: Closure
       dailyUses,
       setToggle(toggle, on) {
         if (on) {
+          // One stance at a time, two with Stance Mastery (Tome of Battle, `stances.active_max`): taking one more leaves
+          // the stance taken first.
+          const isStance = (t: ToggleView) => entities.get(t.source ?? '')?.type === 'stance'
+          if (isStance(toggle)) {
+            const max = Number(sheet.statistic('stances.active_max')?.text ?? 1)
+            const others = toggles.filter((t) => t.active && t.id !== toggle.id && isStance(t))
+            for (const other of others.slice(0, Math.max(0, others.length - max + 1))) {
+              sheet.setToggle(other.id, false)
+              dispatchPlay({ type: 'toggleOff', toggle: other.id })
+            }
+          }
           sheet.setToggleChoice(JSON.stringify(toggle.choice))
           dispatchPlay({ type: 'toggleOn', choice: toggle.choice })
         } else {

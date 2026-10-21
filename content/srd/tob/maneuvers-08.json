@@ -1,0 +1,647 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.hamstring_attack",
+      "type": "maneuver",
+      "name": {
+        "fr": "Coupe-jarret",
+        "en": "Hamstring Attack"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre lame cherche l’arrière des jambes : l’adversaire boite, chancelle et peine à suivre le rythme du combat.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, dégâts normaux.\n• La cible subit en plus 1d8 points de dégâts de Dextérité et un malus de –3 m à sa vitesse pendant 1 minute.\n• Jet de Vigueur (DD 17 + modificateur de Force) : la moitié des dégâts de Dextérité et la moitié du malus de vitesse."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 7,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 minute",
+        "savingThrow": "Vigueur, ½ dégâts"
+      }
+    },
+    {
+      "id": "maneuver.swooping_dragon_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du dragon plongeant",
+        "en": "Swooping Dragon Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous bondissez par-dessus votre ennemi comme un dragon en piqué et l’abattez d’un coup fendu en pleine chute.\n\nEn jeu\n• Faites un test de Saut suffisant pour passer au-dessus de la cible ; réussi, vous ne provoquez pas d’attaque d’opportunité en quittant les cases menacées pendant le saut.\n• Si le saut réussit, la cible perd son bonus de Dextérité à la CA contre votre attaque, qui inflige +10d6 dégâts.\n• La cible doit réussir un jet de Vigueur (DD égal au résultat du test de Saut) ou être étourdie pendant 1 round.\n• Saut raté : vous pouvez provoquer des attaques d’opportunité ; trop court, vous atterrissez à côté d’elle et pouvez porter une attaque normale si elle est à portée."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 7,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "stance.prey_on_the_weak",
+      "type": "stance",
+      "name": {
+        "fr": "S’attaquer aux faibles",
+        "en": "Prey on the Weak"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Chaque ennemi qui s’effondre près de vous attise votre soif de sang, et vous fondez aussitôt sur le suivant.\n\nEn jeu\n• Quand un adversaire à 3 m ou moins tombe à –1 point de vie ou moins, quelle qu’en soit la cause, vous pouvez immédiatement porter une attaque d’opportunité contre un adversaire que vous menacez."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 7,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.girallon_windmill_flesh_rip",
+      "type": "maneuver",
+      "name": {
+        "fr": "Moulinet déchirant du girallon",
+        "en": "Girallon Windmill Flesh Rip"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Vos armes tournoient de deux côtés à la fois ; à chaque coup qui porte, vous élargissez la plaie avec une torsion cruelle.\n\nEn jeu\n• Vous devez manier au moins deux armes et utiliser ce renforcement avant toute attaque du round.\n• À la fin de votre tour, chaque créature touchée plusieurs fois subit des dégâts de déchirure selon le nombre de coups qui l’ont atteinte.\n• 2 coups : 8d6 ; 3 : 10d6 ; 4 : 12d6 ; 5 : 14d6 ; 6 : 16d6 ; 7 : 18d6 ; 8 ou plus : 20d6.\n• S’applique séparément à chaque adversaire frappé."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 8,
+        "kind": "boost",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "attaque au corps à corps",
+        "target": "une ou plusieurs créatures",
+        "duration": "jusqu’à la fin du tour"
+      }
+    },
+    {
+      "id": "maneuver.raging_mongoose",
+      "type": "maneuver",
+      "name": {
+        "fr": "Mangouste enragée",
+        "en": "Raging Mongoose"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Vous abandonnez toute prudence et déchaînez une rafale de coups aussi rapides que les crocs d’une mangouste.\n\nEn jeu\n• Vous obtenez deux attaques supplémentaires avec chaque arme maniée, jusqu’à quatre attaques supplémentaires au maximum.\n• Ces attaques utilisent votre meilleur bonus d’attaque pour l’arme concernée.\n• Vous pouvez les répartir entre autant d’adversaires que vous voulez."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 8,
+        "kind": "boost",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      }
+    },
+    {
+      "id": "stance.wolf_pack_tactics",
+      "type": "stance",
+      "name": {
+        "fr": "Tactique de la meute",
+        "en": "Wolf Pack Tactics"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Comme un fauve qui rôde, vous profitez de chaque coup porté pour glisser autour de votre proie et choisir votre prochaine cible.\n\nEn jeu\n• Chaque attaque au corps à corps réussie vous permet de vous déplacer de 1,50 m.\n• Ce déplacement ne provoque pas d’attaque d’opportunité de la créature touchée.\n• Vous ne pouvez pas parcourir ainsi plus que votre vitesse en un round."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 8,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.feral_death_blow",
+      "type": "maneuver",
+      "name": {
+        "fr": "Coup fatal sauvage",
+        "en": "Feral Death Blow"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Avec un hurlement primitif, vous bondissez sur votre ennemi et vous accrochez à lui pour lui lacérer la gorge.\n\nEn jeu\n• Vous devez être adjacent à la cible ; faites un test de Saut contre un DD égal à sa CA.\n• Réussi : une attaque au corps à corps, la cible étant prise au dépourvu ; raté : une attaque normale, et la manœuvre est dépensée.\n• Si l’attaque inflige des dégâts, jet de Vigueur (DD 19 + modificateur de Force) : en cas d’échec, la cible meurt (tombe à –10 points de vie) ; en cas de réussite, elle subit +20d6 dégâts.\n• Les créatures immunisées contre les coups critiques ne craignent pas l’effet de mort."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 9,
+        "kind": "strike",
+        "requires": 4,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.douse_the_flames",
+      "type": "maneuver",
+      "name": {
+        "fr": "Étouffer les flammes",
+        "en": "Douse the Flames"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup retentissant suivi d’une bordée de défis et d’insultes : l’ennemi n’a plus d’yeux que pour vous.\n\nEn jeu\n• Une attaque au corps à corps contre une cible que vous menacez ; si elle touche, dégâts normaux.\n• La cible ne peut plus faire d’attaque d’opportunité pendant 1 round, mais menace toujours sa zone normale."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.leading_the_attack",
+      "type": "maneuver",
+      "name": {
+        "fr": "Mener l’assaut",
+        "en": "Leading the Attack"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous frappez en poussant un cri de guerre : votre exemple montre aux autres que la victoire est à portée de main.\n\nEn jeu\n• Une attaque au corps à corps.\n• Si elle touche, vos alliés gagnent un bonus de moral de +4 aux jets d’attaque contre la créature touchée pendant 1 round."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "stance.bolstering_voice",
+      "type": "stance",
+      "name": {
+        "fr": "Voix d’airain",
+        "en": "Bolstering Voice"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vos encouragements résonnent sur le champ de bataille et durcissent la volonté de vos compagnons.\n\nEn jeu\n• Les alliés à 18 m ou moins qui vous entendent gagnent un bonus de moral de +2 aux jets de Volonté.\n• Ce bonus passe à +4 contre les effets de terreur.\n• Vous-même n’en bénéficiez pas."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "18 m",
+        "area": "émanation de 18 m de rayon centrée sur vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.leading_the_charge",
+      "type": "stance",
+      "name": {
+        "fr": "Mener la charge",
+        "en": "Leading the Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Votre ardeur se communique à vos compagnons, qui se jettent sur l’ennemi avec une bravoure renouvelée.\n\nEn jeu\n• Les alliés à 18 m ou moins qui vous entendent et font une charge dans la zone gagnent un bonus aux jets de dégâts égal à votre niveau d’initiateur."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "18 m",
+        "area": "émanation de 18 m de rayon centrée sur vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.battle_leaders_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge du chef de bataille",
+        "en": "Battle Leader’s Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous menez depuis le premier rang, ouvrant la voie d’une charge à laquelle vos alliés n’ont plus qu’à emboîter le pas.\n\nEn jeu\n• Vous chargez un adversaire sans provoquer d’attaque d’opportunité pour ce déplacement.\n• Si l’attaque de charge touche, elle inflige 10 points de dégâts supplémentaires."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 2,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.tactical_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe tactique",
+        "en": "Tactical Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre coup déséquilibre l’ennemi au pire moment, et vos compagnons en profitent pour se placer.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, +2d6 dégâts.\n• Chaque allié adjacent à la cible peut aussitôt faire un pas de placement de 1,50 m qui ne provoque pas d’attaque d’opportunité."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 2,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.lions_roar",
+      "type": "maneuver",
+      "name": {
+        "fr": "Rugissement du lion",
+        "en": "Lion’s Roar"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Votre ennemi s’écroule et vous lancez un rugissement de victoire qui galvanise tous vos compagnons.\n\nEn jeu\n• À utiliser après avoir réduit un adversaire à moins de 0 point de vie.\n• Vous et vos alliés à 18 m ou moins gagnez un bonus de moral de +5 aux jets de dégâts pendant 1 round."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 3,
+        "kind": "boost",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "18 m",
+        "target": "vous et les créatures alliées à 18 m ou moins",
+        "duration": "1 round"
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 5,
+          "bonusType": "morale",
+          "condition": "active('toggle.lions_roar')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.white_raven_tactics",
+      "type": "maneuver",
+      "name": {
+        "fr": "Tactique du Corbeau blanc",
+        "en": "White Raven Tactics"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Quelques ordres brefs, et votre compagnon saisit l’initiative au moment exact où vous le voulez.\n\nEn jeu\n• Choisissez un allié à 3 m ou moins : son initiative devient égale à la vôtre –1, et il agit à ce nouveau rang.\n• S’il a déjà agi ce round, il peut agir à nouveau ; sinon, il agit à son nouveau rang et pas à l’ancien.\n• Sans effet si son initiative ne change pas."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 3,
+        "kind": "boost",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "3 m",
+        "target": "un allié"
+      }
+    },
+    {
+      "id": "stance.tactics_of_the_wolf",
+      "type": "stance",
+      "name": {
+        "fr": "Tactique du loup",
+        "en": "Tactics of the Wolf"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous coordonnez vos compagnons comme une meute de loups qui harcèle une proie encerclée.\n\nEn jeu\n• Quand vous prenez un ennemi en tenaille, vous et les alliés qui le prennent en tenaille avec vous gagnez un bonus aux jets de dégâts contre lui égal à la moitié de votre niveau d’initiateur."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "floor(@initiator_level / 2)",
+          "condition": "active('toggle.tactics_of_the_wolf')",
+          "situation": "situation.vs_flanked_foe"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.covering_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de couverture",
+        "en": "Covering Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Une série d’assauts féroces met vos ennemis sur la défensive et laisse à vos alliés le temps de passer sans dommage.\n\nEn jeu\n• Après ce renforcement, vous attaquez normalement ; chaque ennemi que vous touchez ne peut plus faire d’attaque d’opportunité pendant 3 rounds.\n• La créature menace toujours sa zone normale.\n• Une créature ne peut subir qu’une seule frappe de couverture par rencontre."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 4,
+        "kind": "boost",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "3 rounds"
+      }
+    },
+    {
+      "id": "maneuver.white_raven_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du Corbeau blanc",
+        "en": "White Raven Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre œil de tacticien repère la faille dans la garde ennemie, et votre coup la fait voler en éclats.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, +4d6 dégâts.\n• La cible est prise au dépourvu jusqu’au début de son prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 4,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.flanking_maneuver",
+      "type": "maneuver",
+      "name": {
+        "fr": "Manœuvre d’encerclement",
+        "en": "Flanking Maneuver"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vos coups et ceux de vos compagnons s’enchaînent si bien que l’ennemi encerclé ne sait plus où donner de la tête.\n\nEn jeu\n• Utilisable quand vous et un ou plusieurs alliés prenez en tenaille un adversaire que vous désignez.\n• Une attaque au corps à corps contre lui ; si elle touche, chaque allié qui le prend en tenaille peut aussitôt porter une attaque au corps à corps contre lui (pas une attaque d’opportunité).\n• Les alliés doivent pouvoir vous voir."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.press_the_advantage",
+      "type": "stance",
+      "name": {
+        "fr": "Pousser l’avantage",
+        "en": "Press the Advantage"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous sentez le flux du combat et glissez d’une ouverture à l’autre sans jamais baisser votre garde.\n\nEn jeu\n• Juste après votre pas de placement de 1,50 m, vous pouvez en faire un second, qui ne provoque pas non plus d’attaque d’opportunité.\n• Un pas de placement en terrain difficile est permis, mais il empêche alors le second."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 5,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.war_leaders_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge du seigneur de guerre",
+        "en": "War Leader’s Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un hurlement titanesque jaillit de vos poumons tandis que vous vous ruez en avant, ajoutant toute votre fureur au coup.\n\nEn jeu\n• Vous chargez un adversaire sans provoquer d’attaque d’opportunité pour ce déplacement.\n• Si l’attaque de charge touche, elle inflige 35 points de dégâts supplémentaires."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.clarion_call",
+      "type": "maneuver",
+      "name": {
+        "fr": "Appel du clairon",
+        "en": "Clarion Call"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Votre victoire devient celle de tous : votre cri de guerre relance vos compagnons à l’assaut.\n\nEn jeu\n• À utiliser pendant votre tour, après qu’une de vos attaques au corps à corps a réduit un adversaire à moins de 0 point de vie.\n• Chaque allié à 18 m ou moins qui peut vous voir et vous entendre peut aussitôt porter une attaque au corps à corps à son meilleur bonus ou faire une action de mouvement.\n• Ces attaques ne sont pas des attaques d’opportunité."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 7,
+        "kind": "boost",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "18 m",
+        "area": "explosion de 18 m de rayon centrée sur vous"
+      }
+    },
+    {
+      "id": "maneuver.swarming_assault",
+      "type": "maneuver",
+      "name": {
+        "fr": "Assaut de la nuée",
+        "en": "Swarming Assault"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre coup brutal ouvre la garde ennemie, et vos ordres secs poussent vos alliés à s’engouffrer dans la brèche.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, dégâts normaux.\n• Chaque allié qui menace la cible peut aussitôt l’attaquer ; vous choisissez l’ordre de ces attaques."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 7,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.white_raven_hammer",
+      "type": "maneuver",
+      "name": {
+        "fr": "Marteau du Corbeau blanc",
+        "en": "White Raven Hammer"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup d’une violence inouïe sonne votre adversaire, le laissant sans défense le temps que vos alliés l’achèvent.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, +6d6 dégâts.\n• La cible est étourdie pendant 1 round."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 8,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "stance.swarm_tactics",
+      "type": "stance",
+      "name": {
+        "fr": "Tactique de la nuée",
+        "en": "Swarm Tactics"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vos indications rapides transforment vos compagnons en une équipe soudée qui se rue sur l’ennemi que vous tenez en respect.\n\nEn jeu\n• Si vous êtes adjacent à un ou plusieurs adversaires, vos alliés à 18 m ou moins gagnent un bonus de +5 aux jets d’attaque contre ces adversaires."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 8,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "18 m",
+        "area": "émanation de 18 m de rayon centrée sur vous",
+        "duration": "posture"
+      }
+    }
+  ]
+}

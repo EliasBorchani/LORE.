@@ -23,6 +23,12 @@ internal sealed interface Input {
     /** A cell of a class's spells-per-day (or spells-known) column at the class's casting level; −1 for « — ». */
     data class SpellTable(val classId: String, val known: Boolean, val level: Int) : Input
 
+    /** A maneuver column of the class's table at its class level (`known`, `readied`, `stances`); −1 for none. */
+    data class ManeuverTable(val classId: String, val column: String) : Input
+
+    /** Known maneuvers and stances of a discipline and/or kind (`strike`, `stance`…), null = any; for prerequisites. */
+    data class ManeuverCount(val discipline: String?, val kind: String?) : Input
+
     /** Highest spell level the class's table gives a slot for at its casting level; −1 when none. */
     data class MaxSpellLevel(val classId: String) : Input
 
@@ -93,6 +99,9 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         skillRanks.filter { it.value > 0 }.keys.forEach(::add)
         spellVariants.keys.forEach(::add)
         character.activeToggles.forEach { add(it.entity) }
+        // Known maneuvers and stances are had, so a stance's toggle shows on the sheet: those of the classes the
+        // character has and of the feats it took (Martial Study), added above.
+        for ((key, choice) in character.maneuvers) if (key in classLevels || key in this) choice.known.forEach(::add)
         for ((classId, level) in classLevels) {
             catalog.classGrants(classId).filter { it.first <= level }.forEach { add(it.second) }
         }
@@ -117,6 +126,11 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
     }
 
     fun isSource(entityId: String) = entityId in sources
+
+    /** Maneuvers and stances the character knows, through its classes and feats, each once. */
+    val knownManeuvers: Set<String> = character.maneuvers
+        .filterKeys { it in classLevels || it in sources }
+        .values.flatMapTo(LinkedHashSet()) { it.known }
 
     fun count(entityId: String): Int = sources[entityId] ?: 0
 
@@ -145,6 +159,12 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         is Input.Advances -> records.count { input.classId in it.spellcastingAdvances }.toLong()
         is Input.CasterClass -> variants[input.variantId]?.casterClass ?: ""
         is Input.SpellTable -> spellTable(input.classId, input.known)?.getOrNull(input.level)?.toLong() ?: -1L
+        is Input.ManeuverTable -> maneuverTable(input.classId, input.column)?.toLong() ?: -1L
+        is Input.ManeuverCount -> knownManeuvers.count { id ->
+            val info = catalog.entity(id)?.maneuver
+            info != null && (input.discipline == null || info.discipline == input.discipline) &&
+                (input.kind == null || info.kind.name.lowercase() == input.kind)
+        }.toLong()
         is Input.MaxSpellLevel -> spellTable(input.classId, known = false)?.indexOfLast { it != null }?.toLong() ?: -1L
         is Input.SpellLevel -> variants[input.variantId]
             ?.let { v -> v.casterClass?.let { catalog.spellLevel(v.spell, it) }?.plus(v.heighten) }?.toLong() ?: -1L
@@ -175,6 +195,17 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         return catalog.progression(classId)
             .lastOrNull { it.level <= castingLevel && (if (known) it.spellsKnown else it.spellsPerDay).isNotEmpty() }
             ?.let { if (known) it.spellsKnown else it.spellsPerDay }
+    }
+
+    /** A maneuver column at the class level; past the last written row the last value holds. */
+    private fun maneuverTable(classId: String, column: String): Int? {
+        val level = classLevels[classId] ?: return null
+        fun cell(row: dndtools.engine.model.ProgressionRow) = when (column) {
+            MANEUVERS_KNOWN -> row.maneuversKnown
+            MANEUVERS_READIED -> row.maneuversReadied
+            else -> row.stancesKnown
+        }
+        return catalog.progression(classId).lastOrNull { it.level <= level && cell(it) != null }?.let(::cell)
     }
 
     /**
@@ -218,6 +249,11 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         private val SLOTS_BASE = Regex("slots\\.base\\[(.+):(\\d+)\\]")
         private val KNOWN_BASE = Regex("spells_known\\.base\\[(.+):(\\d+)\\]")
         private val MAX_BASE = Regex("slots\\.max_base\\[(.+)\\]")
+        private val MANEUVER_BASE = Regex("maneuvers\\.(known|readied|stances)\\.base\\[(.+)\\]")
+        private val MANEUVER_COUNT = Regex("maneuvers\\.count\\[(.+)\\]")
+        private val KINDS = setOf("strike", "boost", "counter", "stance")
+        const val MANEUVERS_KNOWN = "known"
+        const val MANEUVERS_READIED = "readied"
         private val SKILL_RANKS = Regex("($SLUG?skill\\..+)\\.ranks")
         private val CLASS_SKILL = Regex("($SLUG?skill\\..+)\\.class_skill")
         private const val KNOWLEDGE = "skill.knowledge"
@@ -226,12 +262,22 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         /**
          * Statistic keys that come straight from the choices: `ability.str.base`, `toggle.power_attack.value`,
          * `progression.bab`, `hit_dice.total`, `xp`, `spellcasting.advances[class.wizard]`, and the class table cells
-         * `slots.base[class.bard:3]`, `spells_known.base[class.bard:3]`, `slots.max_base[class.bard]`.
+         * `slots.base[class.bard:3]`, `spells_known.base[class.bard:3]`, `slots.max_base[class.bard]`, and the maneuver
+         * columns `maneuvers.known.base[class.warblade]` (also `readied`, `stances`), and `maneuvers.count[…]`: the
+         * maneuvers known (`all`, a kind, a discipline id, or `<discipline>:<kind>`).
          */
         fun inputFor(key: String): Input? {
             SLOTS_BASE.matchEntire(key)?.let { return Input.SpellTable(it.groupValues[1], false, it.groupValues[2].toInt()) }
             KNOWN_BASE.matchEntire(key)?.let { return Input.SpellTable(it.groupValues[1], true, it.groupValues[2].toInt()) }
             MAX_BASE.matchEntire(key)?.let { return Input.MaxSpellLevel(it.groupValues[1]) }
+            MANEUVER_BASE.matchEntire(key)?.let { return Input.ManeuverTable(it.groupValues[2], it.groupValues[1]) }
+            MANEUVER_COUNT.matchEntire(key)?.let { m ->
+                // `[all]`, `[stance]`, `[discipline.desert_wind]`, `[discipline.desert_wind:strike]`.
+                val parts = m.groupValues[1].split(':')
+                val discipline = parts[0].takeIf { it != "all" && it !in KINDS }
+                val kind = parts.getOrNull(1) ?: parts[0].takeIf { it in KINDS }
+                return Input.ManeuverCount(discipline, kind)
+            }
             ABILITY_BASE.matchEntire(key)?.let { m ->
                 return Input.AbilityBase(Ability.entries.first { it.name.lowercase() == m.groupValues[1] })
             }

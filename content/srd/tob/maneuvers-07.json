@@ -1,0 +1,650 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.crushing_vise",
+      "type": "maneuver",
+      "name": {
+        "fr": "Étau broyeur",
+        "en": "Crushing Vise"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Le coup tombe comme une dalle de granit : l’adversaire reste cloué au sol, les jambes soudain trop lourdes pour bouger.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 4d6 points de dégâts supplémentaires.\n• Si la cible touchée se tient sur le sol, sa vitesse tombe à 0 (tous modes de déplacement) pendant 1 round ; elle agit normalement pour le reste.\n• Une créature qui vole ou lévite ignore l’immobilisation mais subit les dégâts supplémentaires."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 6,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.iron_bones",
+      "type": "maneuver",
+      "name": {
+        "fr": "Os de fer",
+        "en": "Iron Bones"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Au moment où l’arme porte, l’initiateur se ferme comme une porte de forteresse : les flèches ricochent, les lames glissent sur sa peau.\n\nEn jeu\n• Une attaque au corps à corps.\n• Si elle touche, l’initiateur gagne une réduction des dégâts 10/adamantium pendant 1 round."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.irresistible_mountain_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de la montagne irrésistible",
+        "en": "Irresistible Mountain Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Le choc est si lourd que l’ennemi titube, à moitié sonné, incapable de reprendre l’initiative.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 4d6 points de dégâts supplémentaires.\n• La créature touchée fait un jet de Vigueur (DD 16 + modificateur de Force) ou ne peut pas faire d’action simple pendant 1 round ; elle agit normalement pour le reste.\n• Réussite au jet : elle subit quand même les dégâts supplémentaires.\n• Une créature qui vole ou lévite n’a pas à faire le jet, mais subit les dégâts supplémentaires."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 6,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.ancient_mountain_hammer",
+      "type": "maneuver",
+      "name": {
+        "fr": "Marteau de la montagne ancienne",
+        "en": "Ancient Mountain Hammer"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Tout le poids d’une montagne millénaire passe dans le bras : armure, os ou pierre, rien ne tient.\n\nEn jeu\n• Une attaque au corps à corps contre une créature ou un objet non tenu.\n• Elle inflige 12d6 points de dégâts supplémentaires.\n• Elle ignore automatiquement la réduction des dégâts et la solidité."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 7,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature ou un objet non tenu"
+      }
+    },
+    {
+      "id": "maneuver.colossus_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du colosse",
+        "en": "Colossus Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un cri grave monte de la poitrine de l’initiateur, puis le coup part et l’ennemi s’envole comme une poupée de chiffon.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 6d6 points de dégâts supplémentaires.\n• La créature touchée fait un jet de Vigueur (DD 17 + modificateur de Force) ou est projetée de 1d4 cases loin de l’initiateur et tombe à terre là où elle s’arrête.\n• Jet à −2 pour une créature plus petite que l’initiateur, à +2 pour une créature plus grande.\n• Ce déplacement ne provoque pas d’attaque d’opportunité ; un obstacle l’arrête dans la première case libre."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 7,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.adamantine_bones",
+      "type": "maneuver",
+      "name": {
+        "fr": "Os d’adamantium",
+        "en": "Adamantine Bones"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Au sommet de l’art du Dragon de pierre, le corps devient roc vivant : les coups les plus féroces s’y brisent sans laisser de trace.\n\nEn jeu\n• Une attaque au corps à corps.\n• Si elle touche, l’initiateur gagne une réduction des dégâts 20/adamantium pendant 1 round."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 8,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.earthstrike_quake",
+      "type": "maneuver",
+      "name": {
+        "fr": "Séisme du coup de terre",
+        "en": "Earthstrike Quake"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’arme s’abat sur le sol aux pieds de l’initiateur, et une onde sourde fait trembler la terre tout autour.\n\nEn jeu\n• Toute créature sur le sol dans une explosion de 6 m de rayon centrée sur l’initiateur fait un jet de Réflexes (DD 18 + modificateur de Force) ou tombe à terre.\n• Une créature sur le sol en train de lancer un sort fait un test de Concentration (DD 20 + niveau du sort) ou perd le sort.\n• L’initiateur est immunisé ; ses alliés doivent faire le jet comme les autres.\n• Les murs et barrières ne bloquent pas la ligne d’effet."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 8,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "6 m",
+        "area": "explosion de 6 m de rayon centrée sur vous",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, annule"
+      }
+    },
+    {
+      "id": "stance.strength_of_stone",
+      "type": "stance",
+      "name": {
+        "fr": "Force de la pierre",
+        "en": "Strength of Stone"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "L’initiateur s’ancre comme un rocher, ne laissant aucune faille par où un coup fatal pourrait passer.\n\nEn jeu\n• Immunité aux coups critiques tant que la posture dure.\n• La posture prend fin dès que l’initiateur se déplace de plus de 1,50 m, quelle qu’en soit la raison (bousculade, télékinésie…)."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 8,
+        "kind": "stance",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.mountain_tombstone_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de la pierre tombale",
+        "en": "Mountain Tombstone Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Le coup ne s’arrête pas à la chair : il broie les os et tord le corps de l’ennemi, qui ne s’en remettra pas de sitôt.\n\nEn jeu\n• Une attaque au corps à corps.\n• Si elle touche, elle inflige 2d6 points de dégâts de Constitution en plus des dégâts normaux."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 9,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.sudden_leap",
+      "type": "maneuver",
+      "name": {
+        "fr": "Bond soudain",
+        "en": "Sudden Leap"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "En un clin d’œil, l’initiateur n’est plus là où on l’attendait : un seul saut et il a changé de place.\n\nEn jeu\n• Test de Saut en action rapide ; l’initiateur se déplace de la distance obtenue, en ligne droite.\n• Ce déplacement provoque des attaques d’opportunité ; un test d’Acrobaties permet de les éviter, comme pour tout déplacement.\n• Impossible de traverser des ennemis sans réussir le test d’Acrobaties adapté."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 1,
+        "kind": "boost",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée"
+      }
+    },
+    {
+      "id": "maneuver.wolf_fang_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du croc de loup",
+        "en": "Wolf Fang Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Deux lames s’abattent presque en même temps, avec la vitesse et la sauvagerie d’un loup qui mord.\n\nEn jeu\n• Il faut combattre à deux armes ; avec une seule arme, la main non directrice peut porter un coup à mains nues.\n• Une attaque avec chaque arme contre le même adversaire, chacune à −2.\n• Si la première attaque fait tomber la cible à −1 point de vie ou moins, pas de seconde attaque."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.blood_in_the_water",
+      "type": "stance",
+      "name": {
+        "fr": "Sang dans l’eau",
+        "en": "Blood in the Water"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "L’odeur du sang réveille la bête : chaque blessure grave infligée pousse l’initiateur vers une frénésie toujours plus forte.\n\nEn jeu\n• Chaque coup critique réussi donne +1 aux jets d’attaque et de dégâts (bonus sans type, cumulable à chaque critique).\n• Si l’initiateur passe plus de 1 minute sans réussir de coup critique, il perd ces bonus."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 1,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.hunters_sense",
+      "type": "stance",
+      "name": {
+        "fr": "Instinct du chasseur",
+        "en": "Hunter’s Sense"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "L’initiateur hume l’air comme un fauve : les ennemis deviennent des proies, et des odeurs jusque-là invisibles lui sautent au nez.\n\nEn jeu\n• Tant que la posture dure, l’initiateur gagne la capacité spéciale odorat."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 1,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.claw_at_the_moon",
+      "type": "maneuver",
+      "name": {
+        "fr": "Griffe vers la lune",
+        "en": "Claw at the Moon"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’initiateur bondit comme un grand félin et retombe sur l’ennemi en visant la gorge et le visage.\n\nEn jeu\n• Test de Saut contre un DD égal à la CA de la cible, puis une attaque au corps à corps.\n• Test réussi : 2d6 points de dégâts supplémentaires et +4 pour confirmer un coup critique.\n• Test raté : l’attaque a lieu sans ces bonus, et la manœuvre est quand même dépensée."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 2,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.rabid_wolf_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du loup enragé",
+        "en": "Rabid Wolf Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’écume aux lèvres, l’initiateur hurle et se jette sur l’ennemi en oubliant toute prudence.\n\nEn jeu\n• Une attaque au corps à corps à +4, qui inflige 2d6 points de dégâts supplémentaires.\n• Ensuite, −4 à la CA jusqu’au début du prochain tour de l’initiateur."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 2,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.flesh_ripper",
+      "type": "maneuver",
+      "name": {
+        "fr": "Déchire-chair",
+        "en": "Flesh Ripper"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Avec une précision de boucher et une rage de bête, l’initiateur ouvre des plaies si laides que la douleur paralyse l’adversaire.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, la cible fait un jet de Vigueur (DD 13 + modificateur de Force) ou subit −4 aux attaques et à la CA pendant 1 round.\n• Sur un coup critique, ces malus durent un nombre de rounds égal au multiplicateur de critique de l’arme.\n• Les dégâts normaux s’appliquent quel que soit le résultat du jet.\n• Sans effet sur les créatures immunisées aux coups critiques."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 3,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round ou plus (voir texte)",
+        "savingThrow": "Vigueur, annule"
+      }
+    },
+    {
+      "id": "maneuver.soaring_raptor_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du rapace",
+        "en": "Soaring Raptor Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "D’un saut parfaitement calculé, l’initiateur passe au-dessus de la garde d’un ennemi géant et plonge son arme vers le sommet de son crâne.\n\nEn jeu\n• Seulement contre un adversaire d’une catégorie de taille supérieure.\n• Test de Saut contre un DD égal à la CA de la cible ; réussi, l’initiateur fait une attaque au corps à corps à +4 qui inflige 6d6 points de dégâts supplémentaires.\n• Test raté : pas d’attaque, et la manœuvre est quand même dépensée."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 3,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.leaping_dragon_stance",
+      "type": "stance",
+      "name": {
+        "fr": "Posture du dragon bondissant",
+        "en": "Leaping Dragon Stance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Même coincé, l’initiateur trouve l’élan d’un saut immense et traverse les airs avec grâce.\n\nEn jeu\n• Bonus d’altération de +3 m (+10 pieds) sur les tests de Saut.\n• Tous ses sauts comptent comme des sauts avec élan."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": 10,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.leaping_dragon_stance')"
+        }
+      ]
+    },
+    {
+      "id": "stance.wolverine_stance",
+      "type": "stance",
+      "name": {
+        "fr": "Posture du glouton",
+        "en": "Wolverine Stance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Pris dans une étreinte, l’initiateur devient une bête acculée qui taille et mord pour se libérer.\n\nEn jeu\n• En lutte, l’initiateur peut attaquer celui qui l’agrippe avec n’importe quelle arme à une main, sans le malus de −4 habituel.\n• Si l’adversaire qui l’agrippe est d’une catégorie de taille supérieure, +4 aux jets de dégâts contre lui tant que dure la lutte."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.wolverine_stance')",
+          "situation": "situation.vs_larger_grappler"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.death_from_above",
+      "type": "maneuver",
+      "name": {
+        "fr": "Mort venue d’en haut",
+        "en": "Death From Above"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Avec un cri de guerre, l’initiateur s’élève au-dessus de l’ennemi et redescend sur lui comme la foudre.\n\nEn jeu\n• Il faut être adjacent à l’adversaire. Test de Saut DD 20 ; réussi, une attaque au corps à corps en plein vol contre lui.\n• Cette attaque inflige 4d6 points de dégâts supplémentaires et l’adversaire est considéré comme pris au dépourvu.\n• L’initiateur atterrit sur une case adjacente à la cible, à 6 m au plus de son point de départ.\n• Test raté : il reste sur place et fait une attaque normale ; la manœuvre est quand même dépensée."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 4,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.fountain_of_blood",
+      "type": "maneuver",
+      "name": {
+        "fr": "Fontaine de sang",
+        "en": "Fountain of Blood"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Alors que l’ennemi s’effondre, l’initiateur tord son arme dans la plaie et un geyser de sang terrifie les survivants.\n\nEn jeu\n• Possible quand l’initiateur réduit, pendant son tour, un adversaire vivant de son allonge à −1 point de vie ou moins.\n• Cet adversaire subit 1d6 points de dégâts supplémentaires.\n• Les ennemis à 9 m ou moins font un jet de Volonté (DD 14 + modificateur de Force) ou sont secoués pendant 1 minute.\n• Le DD augmente de 1 par adversaire abattu plus tôt dans le même tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 4,
+        "kind": "boost",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "9 m",
+        "area": "explosion de 9 m de rayon centrée sur vous",
+        "duration": "1 minute",
+        "savingThrow": "Volonté, partiel (voir texte)"
+      }
+    },
+    {
+      "id": "maneuver.dancing_mongoose",
+      "type": "maneuver",
+      "name": {
+        "fr": "Mangouste dansante",
+        "en": "Dancing Mongoose"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Les armes tournoient si vite qu’on ne les voit plus : une volée de coups part en l’espace d’un souffle.\n\nEn jeu\n• Ce tour, une attaque supplémentaire avec chaque arme maniée (deux au maximum), à son meilleur bonus d’attaque.\n• Toutes ces attaques visent le même adversaire."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 5,
+        "kind": "boost",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      }
+    },
+    {
+      "id": "maneuver.pouncing_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge bondissante",
+        "en": "Pouncing Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Dans un rugissement de fauve, l’initiateur se jette dans la mêlée et frappe encore et encore en arrivant.\n\nEn jeu\n• L’initiateur fait une charge et, à son terme, une attaque à outrance au lieu d’une seule attaque.\n• Le bonus d’attaque de la charge s’applique à toutes ces attaques."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.rabid_bear_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de l’ours enragé",
+        "en": "Rabid Bear Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’initiateur concentre toute sa furie primitive dans un coup unique qui brise les os et fend l’acier.\n\nEn jeu\n• Une attaque au corps à corps à +4, qui inflige 10d6 points de dégâts supplémentaires.\n• Ensuite, −4 à la CA jusqu’au début du prochain tour de l’initiateur."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.wolf_climbs_the_mountain",
+      "type": "maneuver",
+      "name": {
+        "fr": "Le loup gravit la montagne",
+        "en": "Wolf Climbs the Mountain"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’initiateur se glisse entre les jambes d’un ennemi massif, frappe son flanc et se cache dans son ombre.\n\nEn jeu\n• Seulement contre un adversaire d’une catégorie de taille supérieure.\n• L’initiateur entre dans l’espace de la cible sans provoquer d’attaque d’opportunité, puis l’attaque : 5d6 points de dégâts supplémentaires.\n• Tant qu’il reste dans cet espace, il a un abri contre toutes les attaques, y compris celles de la cible.\n• Si la cible s’en va, elle le laisse sur place et provoque de sa part une attaque d’opportunité."
+      },
+      "maneuver": {
+        "discipline": "discipline.tiger_claw",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    }
+  ]
+}

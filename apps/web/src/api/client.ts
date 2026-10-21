@@ -26,6 +26,7 @@ import type {
   SearchPage,
   SpellLevel,
   SpellListEntry,
+  ManeuverEntry,
   StateUse,
   TokenPair,
 } from './types'
@@ -241,6 +242,8 @@ export class GroupApi {
   draftCatalog = (character: Character) => this.client.request<Closure>('POST', `${this.base}/catalog/closure`, { character })
   spellList = (classId: string) =>
     this.client.request<SpellListEntry[]>('GET', `${this.base}/catalog/spell-list/${encodeURIComponent(classId)}`)
+  maneuverList = (classId: string) =>
+    this.client.request<ManeuverEntry[]>('GET', `${this.base}/catalog/maneuvers/${encodeURIComponent(classId)}`)
   entities = (type: string, after?: string, limit = 50) =>
     this.client.request<EntityPage>('GET', `${this.base}/entities?type=${encodeURIComponent(type)}&limit=${limit}${after ? `&after=${encodeURIComponent(after)}` : ''}`)
   /** Words in names, ids and descriptions, plus filters; `facets` adds the count of each filter value. */

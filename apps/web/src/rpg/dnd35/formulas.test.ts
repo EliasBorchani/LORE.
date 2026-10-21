@@ -78,6 +78,7 @@ describe('values', () => {
     ["floor(level('class.bard') / 3)", { kind: 'perLevel', n: 1, every: 3, source: { kind: 'class', classId: 'class.bard' } }],
     ["level('class.monk')", { kind: 'perLevel', n: 1, every: 1, source: { kind: 'class', classId: 'class.monk' } }],
     ['min(@spell.caster_level, 10)', { kind: 'perLevel', n: 1, every: 1, source: { kind: 'caster' }, max: 10 }],
+    ['floor(@initiator_level / 2)', { kind: 'perLevel', n: 1, every: 2, source: { kind: 'initiator' } }],
     ['min(2 * floor(level() / 4), 6)', { kind: 'perLevel', n: 2, every: 4, source: { kind: 'character' }, max: 6 }],
     ["max(0, floor((level('class.barbarian') - 20) / 4))", { kind: 'perLevel', n: 1, every: 4, source: { kind: 'class', classId: 'class.barbarian' }, after: 20 }],
     ["max(0, (level('class.monk') - 20))", { kind: 'perLevel', n: 1, every: 1, source: { kind: 'class', classId: 'class.monk' }, after: 20 }],

@@ -152,6 +152,7 @@
       "source": "SRD",
       "labels": [
         "general",
+        "warblade_bonus",
         "defense"
       ],
       "description": {

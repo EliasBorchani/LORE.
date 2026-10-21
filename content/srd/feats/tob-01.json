@@ -1,0 +1,515 @@
+{
+  "entities": [
+    {
+      "id": "feat.adaptive_style",
+      "type": "feat",
+      "name": {
+        "fr": "Style adaptatif",
+        "en": "Adaptive Style"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Quelques instants de recueillement lui suffisent pour revoir toute sa tactique et choisir d’autres techniques face à l’adversaire du moment.\n\nEn jeu\n• Condition : niveau 1 de crusader, de swordsage ou de warblade.\n• Par une action complexe, le personnage change ses manœuvres préparées quand il le veut.\n• Un crusader perd alors ses manœuvres accordées et en reçoit de nouvelles, comme après une préparation normale.\n• Normal : changer ses manœuvres demande 5 minutes."
+      },
+      "prerequisite": "level('class.crusader') >= 1 or level('class.swordsage') >= 1 or level('class.warblade') >= 1"
+    },
+    {
+      "id": "feat.avenging_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe vengeresse",
+        "en": "Avenging Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Sa foi et son sens aigu de la justice se concentrent dans son arme au moment de frapper ceux qui servent le mal.\n\nEn jeu\n• Condition : alignement bon (quelconque).\n• Par une action rapide, la prochaine attaque au corps à corps contre un Extérieur du sous-type mal gagne un bonus égal au bonus de Charisme, à l’attaque et aux dégâts.\n• Utilisable un nombre de fois par jour égal au bonus de Charisme (au moins 1)."
+      },
+      "usesPerDay": "max(1, @ability.cha.mod)",
+      "note": "Condition non vérifiée par la fiche : alignement bon. Le bonus ne vaut que contre un Extérieur mauvais : il reste dans le texte."
+    },
+    {
+      "id": "feat.blade_meditation",
+      "type": "feat",
+      "name": {
+        "fr": "Méditation de la lame",
+        "en": "Blade Meditation"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "warblade_bonus",
+        "melee",
+        "skill"
+      ],
+      "description": {
+        "fr": "Une méditation régulière lui a ouvert les secrets d’une discipline martiale : ses armes de prédilection lui obéissent mieux et ses techniques deviennent plus dures à contrer.\n\nEn jeu\n• Condition : 1 degré de maîtrise en Concentration, bonus de base à l’attaque de +4, une manœuvre de n’importe quelle discipline.\n• Le personnage choisit une discipline : +1 aux dégâts avec ses armes de prédilection quand il porte un coup, +2 aux tests de sa compétence clé, +1 au DD de sauvegarde de ses manœuvres.\n• Vent du désert : cimeterre, masse légère, pic léger, lance, cimeterre à deux mains ; Acrobaties. Esprit dévoué : cimeterre à deux mains, massue, maillet, épée longue ; Intimidation. Esprit de diamant : rapière, javeline, trident, épée bâtarde ; Concentration. Cœur de fer : épée bâtarde, hache de guerre naine, épée longue, épée à deux lames ; Équilibre.\n• Soleil couchant : épée courte, nunchaku, mains nues, bâton ; Psychologie. Main de l’ombre : dague, saï, siangham, épée courte, chaîne cloutée, mains nues ; Discrétion. Dragon de pierre : épée à deux mains, grande hache, masse lourde, mains nues ; Équilibre. Griffe du tigre : kama, kukri, hachette, griffe, grande hache, mains nues ; Saut. Corbeau blanc : épée longue, hache d’armes, marteau de guerre, épée à deux mains, coutille ; Diplomatie.\n• Spécial : un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@skill.concentration.ranks >= 1 and @bab >= 4 and @maneuvers.count[all] >= 1",
+      "note": "Discipline choisie : pas encore dans le modèle ; les bonus aux dégâts, à la compétence clé et aux DD restent dans le texte."
+    },
+    {
+      "id": "feat.desert_fire",
+      "type": "feat",
+      "name": {
+        "fr": "Feu du désert",
+        "en": "Desert Fire"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "melee",
+        "movement"
+      ],
+      "description": {
+        "fr": "La chaleur des vents brûlants nourrit ses techniques : plus il se déplace avant de frapper, plus son coup du Vent du désert est violent.\n\nEn jeu\n• Condition : un coup du Vent du désert.\n• Si le personnage s’éloigne d’au moins 3 m de sa position de départ avant de porter un coup du Vent du désert dans le même round, ce coup inflige 1d6 points de dégâts en plus."
+      },
+      "prerequisite": "@maneuvers.count[discipline.desert_wind:strike] >= 1",
+      "note": "Les dégâts en plus ne valent que pour un coup : ils restent dans le texte."
+    },
+    {
+      "id": "feat.desert_wind_dodge",
+      "type": "feat",
+      "name": {
+        "fr": "Esquive du vent du désert",
+        "en": "Desert Wind Dodge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "defense",
+        "movement"
+      ],
+      "description": {
+        "fr": "Formé au Vent du désert, il tourbillonne sur le champ de bataille comme un vent brûlant, insaisissable et cuisant.\n\nEn jeu\n• Condition : Dextérité 13, une manœuvre du Vent du désert.\n• Après un déplacement d’au moins 3 m depuis sa position de départ : +1 d’esquive à la CA et 1 point de dégâts de feu en plus avec un cimeterre, une masse légère, un pic léger, une lance ou un cimeterre à deux mains, jusqu’au début de son prochain tour.\n• Spécial : remplace Esquive pour les conditions d’un don, d’une classe de prestige ou d’une autre capacité. Un personnage qui a déjà Esquive peut l’échanger contre un autre don dont il remplit les conditions.\n• Sur la fiche : interrupteur à activer après le déplacement."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and @maneuvers.count[discipline.desert_wind] >= 1",
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge",
+          "condition": "active('toggle.desert_wind_dodge')"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": 1,
+          "condition": "active('toggle.desert_wind_dodge')"
+        }
+      ],
+      "note": "Armes concernées : pas encore dans le modèle ; le +1 de feu compte pour l’arme maniée."
+    },
+    {
+      "id": "feat.devoted_bulwark",
+      "type": "feat",
+      "name": {
+        "fr": "Rempart dévoué",
+        "en": "Devoted Bulwark"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Sa dévotion le tient debout : chaque blessure reçue le rend plus ferme et plus difficile à atteindre.\n\nEn jeu\n• Condition : une manœuvre de l’Esprit dévoué.\n• Quand un ennemi lui inflige des dégâts avec une attaque au corps à corps, le personnage gagne +1 de moral à la CA jusqu’à la fin de son prochain tour.\n• Sur la fiche : interrupteur à activer après avoir été blessé."
+      },
+      "prerequisite": "@maneuvers.count[discipline.devoted_spirit] >= 1",
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.devoted_bulwark')"
+        }
+      ]
+    },
+    {
+      "id": "feat.divine_spirit",
+      "type": "feat",
+      "name": {
+        "fr": "Esprit divin",
+        "en": "Divine Spirit"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Le zèle de l’Esprit dévoué et sa ferveur envers sa divinité font de lui une source d’énergie sacrée qu’il peut tourner vers sa propre chair.\n\nEn jeu\n• Condition : pouvoir de renvoi ou d’intimidation des morts-vivants, une posture de l’Esprit dévoué.\n• Dans une posture de l’Esprit dévoué, le personnage peut dépenser une tentative de renvoi ou d’intimidation par une action immédiate pour récupérer 3 + son modificateur de Charisme points de vie (au moins 1)."
+      },
+      "prerequisite": "@maneuvers.count[discipline.devoted_spirit:stance] >= 1",
+      "note": "Condition non vérifiée par la fiche : renvoi ou intimidation des morts-vivants."
+    },
+    {
+      "id": "feat.evasive_reflexes",
+      "type": "feat",
+      "name": {
+        "fr": "Réflexes évasifs",
+        "en": "Evasive Reflexes"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "movement"
+      ],
+      "description": {
+        "fr": "Là où d’autres profitent d’une ouverture pour frapper, lui s’en sert pour se dégager.\n\nEn jeu\n• Condition : Dextérité 13.\n• Quand un adversaire lui offre une attaque d’opportunité, le personnage peut faire à la place un pas de placement de 1,50 m, tout de suite.\n• Spécial : remplace Attaques réflexes pour les conditions d’un don, d’une classe de prestige ou d’une autre capacité. On peut avoir les deux dons."
+      },
+      "prerequisite": "@ability.dex.score >= 13"
+    },
+    {
+      "id": "feat.extra_granted_maneuver",
+      "type": "feat",
+      "name": {
+        "fr": "Manœuvre accordée supplémentaire",
+        "en": "Extra Granted Maneuver"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Sa foi ou sa lucidité lui donnent plus de prise que les autres crusaders sur les techniques que le ciel lui accorde.\n\nEn jeu\n• Condition : niveau 1 de crusader.\n• Au début de chaque rencontre, et à chaque nouveau tirage après récupération, une manœuvre préparée de plus est accordée (par exemple 3 sur 5 au lieu de 2 sur 5 au niveau 5).\n• Spécial : ne se prend qu’une fois."
+      },
+      "prerequisite": "level('class.crusader') >= 1",
+      "effects": [
+        {
+          "target": "maneuvers.readied.crusader",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.extra_readied_maneuver",
+      "type": "feat",
+      "name": {
+        "fr": "Manœuvre préparée supplémentaire",
+        "en": "Extra Readied Maneuver"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Élève très attentif de la Voie sublime, il garde sans effort un grand nombre de techniques prêtes à l’emploi.\n\nEn jeu\n• Condition : niveau 1 de swordsage.\n• Le nombre de manœuvres que le personnage peut préparer grâce à ses niveaux de swordsage augmente de 1 (7 au lieu de 6 au niveau 5).\n• Spécial : ne se prend qu’une fois."
+      },
+      "prerequisite": "level('class.swordsage') >= 1",
+      "effects": [
+        {
+          "target": "maneuvers.readied.swordsage",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.falling_sun_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque du soleil déclinant",
+        "en": "Falling Sun Attack"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Le Soleil couchant lui a appris à retourner la force de l’adversaire contre lui et à viser le point exact qui le laissera hébété.\n\nEn jeu\n• Condition : Coup étourdissant, un coup du Soleil couchant.\n• Un coup du Soleil couchant porté à mains nues peut être déclaré attaque étourdissante ; cela consomme une utilisation de Coup étourdissant.\n• +1 au DD de sauvegarde de Coup étourdissant et des coups du Soleil couchant."
+      },
+      "prerequisite": "has('feat.stunning_fist') and @maneuvers.count[discipline.setting_sun:strike] >= 1"
+    },
+    {
+      "id": "feat.instant_clarity",
+      "type": "feat",
+      "name": {
+        "fr": "Clarté instantanée",
+        "en": "Instant Clarity"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "psionic"
+      ],
+      "description": {
+        "fr": "Sa concentration est si affûtée qu’une pensée fugace suffit à rassembler ses forces psioniques.\n\nEn jeu\n• Condition : 7 degrés de maîtrise en Concentration.\n• Après avoir réussi à initier un coup, le personnage peut se concentrer psioniquement par une action rapide, 3 fois par jour.\n• Normal : se concentrer psioniquement demande une action complexe.\n• Spécial : remplace Méditation psionique pour les conditions d’un don, d’une classe de prestige ou d’une autre capacité. On peut avoir les deux dons."
+      },
+      "prerequisite": "@skill.concentration.ranks >= 7",
+      "usesPerDay": "3"
+    },
+    {
+      "id": "feat.ironheart_aura",
+      "type": "feat",
+      "name": {
+        "fr": "Aura du cœur de fer",
+        "en": "Ironheart Aura"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "warblade_bonus"
+      ],
+      "description": {
+        "fr": "Sa volonté et son entraînement rayonnent autour de lui et raffermissent le courage de ceux qui combattent à ses côtés.\n\nEn jeu\n• Condition : une posture du Cœur de fer.\n• Tant que le personnage est dans une posture du Cœur de fer, ses alliés adjacents gagnent +2 de moral aux jets de sauvegarde."
+      },
+      "prerequisite": "@maneuvers.count[discipline.iron_heart:stance] >= 1",
+      "note": "Le bonus vaut pour les alliés, pas pour la fiche du personnage."
+    },
+    {
+      "id": "feat.martial_stance",
+      "type": "feat",
+      "name": {
+        "fr": "Posture martiale",
+        "en": "Martial Stance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "fighter_bonus"
+      ],
+      "description": {
+        "fr": "Les bases d’une discipline acquises, il en maîtrise désormais une posture.\n\nEn jeu\n• Condition : une manœuvre martiale.\n• Le personnage apprend une posture d’une discipline dont il connaît déjà au moins une manœuvre, s’il remplit les conditions de cette posture.\n• Son niveau d’initiateur pour cette posture est égal à ses niveaux d’adepte martial (s’il en a) + la moitié de ses niveaux dans les autres classes.\n• Spécial : peut être pris plusieurs fois, pour une nouvelle posture à chaque fois, d’une discipline dont il connaît au moins une manœuvre.\n• Spécial : un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@maneuvers.count[all] >= 1",
+      "initiating": {},
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "maneuvers.stances.martial_stance",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "feat.martial_study",
+      "type": "feat",
+      "name": {
+        "fr": "Étude martiale",
+        "en": "Martial Study"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "fighter_bonus"
+      ],
+      "description": {
+        "fr": "En étudiant les bases d’une discipline martiale, il apprend à canaliser son ki et à exécuter une première technique.\n\nEn jeu\n• Le personnage choisit une discipline : sa compétence clé devient une compétence de classe pour toutes ses classes, présentes et futures, et il apprend une manœuvre de cette discipline dont il remplit les conditions.\n• Avec des niveaux d’adepte martial, elle rejoint ses manœuvres connues. Sinon, il peut l’utiliser une fois par rencontre, avec un niveau d’initiateur égal à la moitié de son niveau de personnage.\n• Une manœuvre obtenue sans niveau d’adepte martial n’a pas de moyen de récupération, même si le personnage devient plus tard crusader, swordsage ou warblade. Elle ne peut jamais être échangée.\n• Spécial : jusqu’à trois fois, pour une nouvelle discipline (avec sa compétence clé) ou une autre manœuvre d’une discipline déjà choisie.\n• Spécial : un guerrier peut le prendre comme don supplémentaire."
+      },
+      "initiating": {},
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "maneuvers.known.martial_study",
+          "op": "add",
+          "value": 1
+        }
+      ],
+      "note": "Limite de trois prises non vérifiée par la fiche."
+    },
+    {
+      "id": "feat.psychic_renewal",
+      "type": "feat",
+      "name": {
+        "fr": "Renouveau psychique",
+        "en": "Psychic Renewal"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "psionic"
+      ],
+      "description": {
+        "fr": "Sa force mentale alimente ses techniques : en puisant dans ses réserves psioniques, il retrouve ses manœuvres les plus dévastatrices.\n\nEn jeu\n• Par une action rapide, le personnage récupère une manœuvre dépensée en dépensant sa concentration psionique et un nombre de points de pouvoir égal au niveau de la manœuvre."
+      }
+    },
+    {
+      "id": "feat.rapid_assault",
+      "type": "feat",
+      "name": {
+        "fr": "Assaut rapide",
+        "en": "Rapid Assault"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il mise tout sur l’ouverture du combat et cherche à abattre l’ennemi avant qu’il n’ait pris ses marques.\n\nEn jeu\n• Condition : bonus de base à l’attaque de +1.\n• Pendant le premier round du combat, ses attaques au corps à corps infligent 1d6 points de dégâts en plus.\n• Sur la fiche : interrupteur à activer pendant le premier round."
+      },
+      "prerequisite": "@bab >= 1",
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "dice",
+          "value": "1d6",
+          "condition": "active('toggle.rapid_assault')"
+        }
+      ]
+    },
+    {
+      "id": "feat.scribe_martial_script",
+      "type": "feat",
+      "name": {
+        "fr": "Écriture de parchemin martial",
+        "en": "Scribe Martial Script"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "item_creation"
+      ],
+      "description": {
+        "fr": "Il sait enfermer son savoir martial dans de minces bandes de papier : celui qui les lit peut, une fois, exécuter la technique qu’elles contiennent.\n\nEn jeu\n• Condition : niveau 1 de crusader ou de swordsage.\n• Le personnage peut mettre une manœuvre qu’il connaît dans un parchemin martial, à usage unique comme une potion ou un parchemin.\n• Prix de vente : niveau d’initiateur × niveau de la manœuvre × 50 po ; coût : 1/25 du prix en XP et la moitié du prix en matériaux.\n• Fabrication : un jour par tranche de 1 000 po du prix."
+      },
+      "prerequisite": "level('class.crusader') >= 1 or level('class.swordsage') >= 1"
+    },
+    {
+      "id": "feat.shadow_blade",
+      "type": "feat",
+      "name": {
+        "fr": "Lame de l’ombre",
+        "en": "Shadow Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "La Main de l’ombre lui a appris à mettre sa vivacité dans chaque coup de ses armes préférées.\n\nEn jeu\n• Condition : une posture de la Main de l’ombre.\n• Dans une posture de la Main de l’ombre, avec une arme de prédilection de cette discipline (dague, saï, siangham, épée courte, chaîne cloutée, mains nues), le personnage ajoute son modificateur de Dextérité aux dégâts au corps à corps.\n• Spécial : remplace Attaque en finesse pour les conditions d’un don, d’une classe de prestige ou d’une autre capacité ; un avantage prévu pour toutes les armes de finesse ne vaut alors que pour les armes de la Main de l’ombre.\n• Sur la fiche : interrupteur à activer dans la posture, avec une arme compatible."
+      },
+      "prerequisite": "@maneuvers.count[discipline.shadow_hand:stance] >= 1",
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@ability.dex.mod",
+          "condition": "active('toggle.shadow_blade')"
+        }
+      ],
+      "note": "Armes compatibles : pas encore dans le modèle ; l’interrupteur dit que l’arme maniée en est une."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.desert_wind"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.devoted_spirit"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.diamond_mind"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.iron_heart"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.setting_sun"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.shadow_hand"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.stone_dragon"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.tiger_claw"
+    },
+    {
+      "from": "feat.martial_stance",
+      "relation": "initiates",
+      "to": "discipline.white_raven"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.desert_wind"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.devoted_spirit"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.diamond_mind"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.iron_heart"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.setting_sun"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.shadow_hand"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.stone_dragon"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.tiger_claw"
+    },
+    {
+      "from": "feat.martial_study",
+      "relation": "initiates",
+      "to": "discipline.white_raven"
+    }
+  ]
+}

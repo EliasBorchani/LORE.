@@ -8,8 +8,8 @@ const read = (p) => JSON.parse(readFileSync(p, 'utf8'))
 const files = process.argv.slice(2)
 const problems = []
 const warnings = []
-const CATEGORIES = ['general', 'metamagic', 'item_creation', 'monster', 'epic']
-const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'source', 'labels', 'description', 'prerequisite', 'tableValue', 'repeatable', 'effects', 'usesPerDay', 'note', 'status'])
+const CATEGORIES = ['general', 'metamagic', 'item_creation', 'monster', 'epic', 'psionic', 'divine']
+const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'source', 'labels', 'description', 'prerequisite', 'tableValue', 'repeatable', 'effects', 'usesPerDay', 'note', 'status', 'initiating'])
 
 const catalog = read(R + 'test-references/danalieth/catalog.json')
 const add = (batch) => {
@@ -24,7 +24,7 @@ const add = (batch) => {
 const dir = (d) => readdirSync(R + d).filter((f) => f.endsWith('.json')).map((f) => d + '/' + f)
 const resolved = new Set(files.map((f) => new URL(f, 'file://' + process.cwd() + '/').pathname))
 const others = dir('content/srd/feats').filter((f) => !resolved.has(R + f))
-for (const f of ['content/srd/races.json', 'content/srd/rules.json', 'content/srd/domains.json', ...dir('content/srd/classes'), ...dir('content/srd/prestige'), ...dir('content/srd/spells'), ...dir('content/srd/equipment'), ...others]) add(read(R + f))
+for (const f of ['content/srd/races.json', 'content/srd/rules.json', 'content/srd/domains.json', ...dir('content/srd/classes'), ...dir('content/srd/prestige'), ...dir('content/srd/spells'), ...dir('content/srd/equipment'), ...dir('content/srd/tob'), ...others]) add(read(R + f))
 
 const mine = []
 for (const file of files) {
@@ -45,7 +45,10 @@ for (const file of files) {
   const ids = new Set((batch.entities ?? []).map((e) => e.id))
   for (const r of batch.relations ?? []) {
     if (!ids.has(r.from)) problems.push(`${at0}: relation from ${r.from}: only relations from this file's feats`)
-    if (r.relation !== 'requires') problems.push(`${at0}: relation ${r.relation}: only "requires" (feat -> feat it needs)`)
+    // `initiates`: the disciplines a feat that gives maneuvers (Martial Study) may teach.
+    if (r.relation !== 'requires' && !(r.relation === 'initiates' && r.to.startsWith('discipline.'))) {
+      problems.push(`${at0}: relation ${r.relation}: only "requires" (feat -> feat it needs) or "initiates" (feat -> discipline)`)
+    }
   }
   if (batch.progressions?.length) problems.push(`${at0}: no progressions in feat batches`)
   add(batch)

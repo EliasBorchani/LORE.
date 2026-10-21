@@ -11,6 +11,7 @@ import dndtools.engine.model.Effect
 import dndtools.engine.model.EffectScope
 import dndtools.engine.model.EffectValue
 import dndtools.engine.model.Entity
+import dndtools.engine.model.InitiatingDef
 import dndtools.engine.model.Op
 import dndtools.engine.model.ProgressionRow
 import dndtools.engine.model.SkillInfo
@@ -81,6 +82,15 @@ internal class CompiledCatalog(val catalog: Catalog) {
     /** Classes that cast spells, with how. */
     val casters: Map<String, SpellcastingDef> =
         catalog.entities.mapNotNull { e -> e.spellcasting?.let { e.id to it } }.toMap()
+
+    /** Classes and feats (Martial Study) that give maneuvers, with their key ability. */
+    val initiators: Map<String, InitiatingDef> =
+        catalog.entities.mapNotNull { e -> e.initiating?.let { e.id to it } }.toMap()
+
+    /** Class or feat id to the disciplines it may learn maneuvers from, from `initiates` relations. */
+    private val disciplines: Map<String, List<String>> = catalog.relations
+        .filter { it.relation == INITIATES }
+        .groupBy({ it.from }, { it.to })
 
     /** Skills (entities with a `skill` block): their statistic key is their id. */
     val skills: Map<String, SkillInfo> = catalog.entities.mapNotNull { e -> e.skill?.let { e.id to it } }.toMap()
@@ -156,6 +166,35 @@ internal class CompiledCatalog(val catalog: Catalog) {
             val base = compile(formula, at) ?: return
             defs[key] = CompiledDef(StatisticDef(key, EffectValue.Text(formula)), base)
         }
+        // Built-in statistics of each initiator (Tome of Battle). A class's initiator level is its levels + half the
+        // other levels, and its counts are its table columns; a feat (Martial Study) uses the character's initiator
+        // level and gets its counts from effects. Highest maneuver level: half the initiator level, rounded up, at
+        // most 9. `initiator_level`, read by maneuver formulas (« +1 per initiator level »), is the highest of the
+        // classes', or half the character level without any.
+        if (initiators.isNotEmpty()) {
+            define("initiator_level.class[*]", "0", "initiating")
+            define(STANCES_ACTIVE_MAX, "1", "initiating")
+        }
+        val classLevels = ArrayList<String>()
+        for (id in initiators.keys) {
+            val short = initiatorKey(id)
+            val at = "initiating:$id"
+            val isClass = entities[id]?.type in CLASS_TYPES
+            if (isClass) {
+                define("initiator_level.$short", "level('$id') + floor((level() - level('$id')) / 2) + @initiator_level.class[$id]", at)
+                classLevels += "@initiator_level.$short"
+            } else {
+                define("initiator_level.$short", "@$INITIATOR_LEVEL", at)
+            }
+            define("maneuvers.max_level.$short", "min(9, ceil(@initiator_level.$short / 2))", at)
+            for (column in listOf("known", "readied", "stances")) {
+                define("maneuvers.$column.$short", if (isClass) "max(@maneuvers.$column.base[$id], 0)" else "0", at)
+            }
+        }
+        if (initiators.isNotEmpty()) {
+            define(INITIATOR_LEVEL, (listOf("floor(level() / 2)") + classLevels).let { if (it.size == 1) it[0] else "max(${it.joinToString()})" }, "initiating")
+        }
+
         // Built-in skill statistics, unless the catalog writes its own: ranks + ability modifier + armor check penalty,
         // and the maximum ranks (level + 3 for a class skill, half that otherwise).
         if (skills.isNotEmpty()) {
@@ -236,6 +275,9 @@ internal class CompiledCatalog(val catalog: Catalog) {
 
     fun entity(id: String): Entity? = entities[id]
 
+    /** Disciplines [classId] may learn maneuvers from. */
+    fun disciplines(classId: String): List<String> = disciplines[classId].orEmpty()
+
     /** Skills [entityId] makes class skills; `skill.knowledge` stands for every Knowledge field. */
     fun classSkills(entityId: String): Set<String> = classSkills[entityId].orEmpty()
 
@@ -279,6 +321,13 @@ internal class CompiledCatalog(val catalog: Catalog) {
         const val SPELL_METAMAGIC_COUNT = "spell.metamagic_count"
         const val ON_SPELL_LIST = "on_spell_list"
         const val CLASS_SKILL = "class_skill"
+        const val INITIATES = "initiates"
+        const val INITIATOR_LEVEL = "initiator_level"
+        /** How many stances can be active at once: 1, more with Stance Mastery. */
+        const val STANCES_ACTIVE_MAX = "stances.active_max"
+
+        /** The key of an initiator's statistics: `class.warblade` → `warblade`, `feat.martial_study` → `martial_study`. */
+        fun initiatorKey(id: String) = id.substringAfter('.')
         const val ARMOR_CHECK_PENALTY = "armor.check_penalty"
         const val SKILL_POINTS_TOTAL = "skill_points.total"
         /** Input: each level's class skill points, ×4 at character level 1. */

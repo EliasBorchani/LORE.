@@ -104,6 +104,10 @@ class Session internal constructor(
     }
 
     /** A cell of a class table's spell columns at the class's casting level; −1 for « — » or no class. */
+    internal fun isSource(entityId: String): Boolean = state.isSource(entityId)
+
+    internal fun knownManeuvers(): Set<String> = state.knownManeuvers
+
     internal fun skillRanks(skillId: String): Long = state.skillRanks(skillId)
 
     internal fun isClassSkill(skillId: String): Boolean = state.isClassSkill(skillId)

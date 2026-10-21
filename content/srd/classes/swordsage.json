@@ -1,0 +1,637 @@
+{
+  "entities": [
+    {
+      "id": "class.swordsage",
+      "type": "class",
+      "name": {
+        "fr": "Sage de l’épée",
+        "en": "Swordsage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial",
+        "initiator"
+      ],
+      "description": {
+        "fr": "Pour le sage de l’épée, la lame est un maître autant qu’une arme. Il a étudié la Voie sublime dans un temple ou auprès d’un ermite, et chaque geste qu’il connaît est une leçon de patience et de clarté. Sans lourde armure, il compte sur sa mobilité, sa sagesse et le plus large éventail de manœuvres qui soit : flammes, ombres, pierre ou griffes.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 6 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé aux armes courantes, aux armes de guerre de corps à corps (et celles qu’on peut lancer) et aux armures légères ; aucun bouclier.\n• Initiateur : manœuvres de Dragon de pierre, Esprit de diamant, Griffe du tigre, Main de l’ombre, Soleil couchant et Vent du désert ; caractéristique clé Sagesse.\n• Aptitudes : prompt à agir +1 et focalisation martiale (1) ; bonus à la CA (2) ; focalisation martiale (4, 8, 12, 16) ; prompt à agir +2, +3, +4, +5 (5, 10, 15, 20) ; sens de la magie (7) ; esquive totale (9) ; esquive surnaturelle (17) ; double renforcement (20)."
+      },
+      "hitDie": 8,
+      "skillPoints": 6,
+      "source": "Book of Nine Swords",
+      "initiating": {
+        "ability": "wis"
+      },
+      "effects": [],
+      "note": "Pas de table épique dans le livre : au-delà du niveau 20, les manœuvres connues, préparées et les postures restent celles du niveau 20."
+    },
+    {
+      "id": "power.swordsage_maneuvers",
+      "type": "class_power",
+      "name": {
+        "fr": "Manœuvres",
+        "en": "Maneuvers"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "Cinq minutes de méditation, et les techniques de six écoles se rangent dans son esprit, prêtes à jaillir.\n\nEn jeu\n• Connaît 6 manœuvres et 1 posture au niveau 1, puis davantage selon la table ; il doit remplir le prérequis de chacune.\n• Niveau de manœuvre maximal : la moitié de son niveau d’initiateur, arrondie au supérieur (9 au plus).\n• Prépare ses manœuvres en 5 minutes de méditation et d’exercice ; chacune sert une fois par rencontre.\n• Récupère une manœuvre dépensée de son choix par une action complexe de méditation, qui ne provoque pas d’attaque d’opportunité.\n• Aux niveaux pairs à partir de 4, peut échanger une manœuvre connue contre une autre. Les postures ne s’échangent pas et ne se dépensent jamais.\n• Ses manœuvres ignorent la résistance à la magie et ne provoquent pas d’attaque d’opportunité."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swordsage_discipline_focus",
+      "type": "class_power",
+      "name": {
+        "fr": "Focalisation martiale",
+        "en": "Discipline focus"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "Le sage approfondit une école plus que les autres, jusqu’à en faire une seconde nature.\n\nEn jeu\n• À chaque fois, il choisit une de ses six disciplines dont il connaît au moins une manœuvre.\n• Niveau 1 : Arme de prédilection avec les armes associées à la discipline choisie.\n• Niveaux 4 et 12 : ajoute son modificateur de Sagesse aux dégâts des coups de la discipline choisie.\n• Niveaux 8 et 16 : +2 aux jets de sauvegarde tant qu’il est dans une posture de la discipline choisie.\n• +2 aux tests de Savoir martial sur les manœuvres d’une discipline focalisée."
+      },
+      "effects": [],
+      "note": "La discipline choisie n’est pas encore dans le modèle : ces bonus restent dans le texte."
+    },
+    {
+      "id": "power.swordsage_quick_to_act",
+      "type": "class_power",
+      "name": {
+        "fr": "Prompt à agir",
+        "en": "Quick to act"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "Il a déjà bougé quand les autres comprennent que le combat commence.\n\nEn jeu\n• +1 à l’initiative, puis +1 de plus aux niveaux 5, 10, 15 et 20."
+      },
+      "effects": [
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": "1 + floor(level('class.swordsage') / 5)"
+        }
+      ]
+    },
+    {
+      "id": "power.swordsage_ac_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à la CA",
+        "en": "AC bonus"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "Sa sagesse le place toujours un pas à côté du coup.\n\nEn jeu\n• Ajoute son modificateur de Sagesse à sa CA, aussi contre les attaques de contact et quand il est pris au dépourvu.\n• Seulement en armure légère, sans bouclier et sans charge ; perdu s’il est immobilisé ou sans défense."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "max(0, @ability.wis.mod)"
+        }
+      ],
+      "note": "Armure et charge ne sont pas encore dans le modèle : le bonus s’applique toujours."
+    },
+    {
+      "id": "power.swordsage_sense_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens de la magie",
+        "en": "Sense magic"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "En se concentrant sur une arme ou une armure, il en sent les enchantements comme une vibration dans la main.\n\nEn jeu\n• 10 minutes de concentration et un test de niveau (DD 10 + niveau de lanceur de l’objet) révèlent les propriétés d’une arme ou d’une armure (pas celles des artefacts)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swordsage_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "Le feu passe, le sage n’est déjà plus là.\n\nEn jeu\n• Contre un effet qui permet un jet de Réflexes pour moitié dégâts, ne subit aucun dégât s’il réussit.\n• Seulement en armure légère ou sans armure, et s’il n’est pas sans défense."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swordsage_improved_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive surnaturelle",
+        "en": "Improved evasion"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "Même pris de court, il ne laisse au souffle qu’une partie de lui-même.\n\nEn jeu\n• Comme l’esquive totale ; en cas d’échec au jet de Réflexes, il ne subit que la moitié des dégâts."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swordsage_dual_boost",
+      "type": "class_power",
+      "name": {
+        "fr": "Double renforcement",
+        "en": "Dual boost"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "swordsage"
+      ],
+      "description": {
+        "fr": "Deux techniques d’un même souffle.\n\nEn jeu\n• Trois fois par jour, quand il initie un renforcement, il peut en initier un second qu’il connaît, par une action libre. Les deux sont dépensés."
+      },
+      "effects": [],
+      "usesPerDay": 3
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.swordsage",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.swordsage_maneuvers",
+        "power.swordsage_discipline_focus",
+        "power.swordsage_quick_to_act"
+      ],
+      "maneuversKnown": 6,
+      "maneuversReadied": 4,
+      "stancesKnown": 1
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.swordsage_ac_bonus"
+      ],
+      "maneuversKnown": 7,
+      "maneuversReadied": 4,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "maneuversKnown": 8,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "maneuversKnown": 9,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "maneuversKnown": 10,
+      "maneuversReadied": 6,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "maneuversKnown": 11,
+      "maneuversReadied": 6,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.swordsage_sense_magic"
+      ],
+      "maneuversKnown": 12,
+      "maneuversReadied": 6,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "maneuversKnown": 13,
+      "maneuversReadied": 7,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.swordsage_evasion"
+      ],
+      "maneuversKnown": 14,
+      "maneuversReadied": 7,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "maneuversKnown": 15,
+      "maneuversReadied": 8,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 11,
+      "bab": 8,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "maneuversKnown": 16,
+      "maneuversReadied": 8,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 12,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 8,
+      "grants": [],
+      "maneuversKnown": 17,
+      "maneuversReadied": 8,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 13,
+      "bab": 10,
+      "fort": 4,
+      "ref": 8,
+      "will": 8,
+      "grants": [],
+      "maneuversKnown": 18,
+      "maneuversReadied": 9,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 14,
+      "bab": 10,
+      "fort": 4,
+      "ref": 9,
+      "will": 9,
+      "grants": [],
+      "maneuversKnown": 19,
+      "maneuversReadied": 9,
+      "stancesKnown": 5
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 15,
+      "bab": 11,
+      "fort": 5,
+      "ref": 9,
+      "will": 9,
+      "grants": [],
+      "maneuversKnown": 20,
+      "maneuversReadied": 10,
+      "stancesKnown": 5
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 16,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 10,
+      "grants": [],
+      "maneuversKnown": 21,
+      "maneuversReadied": 10,
+      "stancesKnown": 5
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 17,
+      "bab": 13,
+      "fort": 5,
+      "ref": 10,
+      "will": 10,
+      "grants": [
+        "power.swordsage_improved_evasion"
+      ],
+      "maneuversKnown": 22,
+      "maneuversReadied": 10,
+      "stancesKnown": 5
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 18,
+      "bab": 13,
+      "fort": 6,
+      "ref": 11,
+      "will": 11,
+      "grants": [],
+      "maneuversKnown": 23,
+      "maneuversReadied": 11,
+      "stancesKnown": 5
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 19,
+      "bab": 14,
+      "fort": 6,
+      "ref": 11,
+      "will": 11,
+      "grants": [],
+      "maneuversKnown": 24,
+      "maneuversReadied": 11,
+      "stancesKnown": 5
+    },
+    {
+      "classId": "class.swordsage",
+      "level": 20,
+      "bab": 15,
+      "fort": 6,
+      "ref": 12,
+      "will": 12,
+      "grants": [
+        "power.swordsage_dual_boost"
+      ],
+      "maneuversKnown": 25,
+      "maneuversReadied": 12,
+      "stancesKnown": 6
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.martial_lore"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "initiates",
+      "to": "discipline.desert_wind"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "initiates",
+      "to": "discipline.diamond_mind"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "initiates",
+      "to": "discipline.setting_sun"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "initiates",
+      "to": "discipline.shadow_hand"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "initiates",
+      "to": "discipline.stone_dragon"
+    },
+    {
+      "from": "class.swordsage",
+      "relation": "initiates",
+      "to": "discipline.tiger_claw"
+    }
+  ]
+}

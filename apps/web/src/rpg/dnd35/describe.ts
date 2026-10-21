@@ -25,6 +25,7 @@ function levelWords(source: LevelSource, plural: boolean, names: Names): string 
     case 'class': return `${levels} de ${names.get(source.classId) ?? source.classId.replace(/^.*\./, '')}`
     case 'character': return `${levels} de personnage`
     case 'caster': return `${levels} de lanceur`
+    case 'initiator': return `${levels} d’initiateur`
   }
 }
 

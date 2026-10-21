@@ -10,6 +10,15 @@
       "provenance": "official"
     },
     {
+      "id": "situation.after_moving_3m",
+      "type": "situation",
+      "name": {
+        "fr": "si vous vous êtes déplacé d’au moins 3 m pendant votre tour",
+        "en": "if you moved at least 10 feet during your turn"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.appraise_by_weight",
       "type": "situation",
       "name": {
@@ -127,6 +136,15 @@
       "provenance": "official"
     },
     {
+      "id": "situation.making_attack_of_opportunity",
+      "type": "situation",
+      "name": {
+        "fr": "sur une attaque d’opportunité",
+        "en": "on attacks of opportunity"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.natural_aboveground",
       "type": "situation",
       "name": {
@@ -159,6 +177,15 @@
       "name": {
         "fr": "à distance, à 9 m ou moins",
         "en": "ranged, within 9 m"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.resisting_grapple",
+      "type": "situation",
+      "name": {
+        "fr": "pour résister à une tentative de lutte",
+        "en": "to resist a grapple attempt"
       },
       "provenance": "official"
     },
@@ -388,6 +415,33 @@
       "provenance": "official"
     },
     {
+      "id": "situation.vs_flanked_foe",
+      "type": "situation",
+      "name": {
+        "fr": "contre un adversaire que vous prenez en tenaille",
+        "en": "against a foe you flank"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_flat_footed_or_flanked",
+      "type": "situation",
+      "name": {
+        "fr": "contre un adversaire pris au dépourvu ou pris en tenaille",
+        "en": "against flat-footed or flanked foes"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_foe_in_difficult_terrain",
+      "type": "situation",
+      "name": {
+        "fr": "contre un adversaire ralenti par un terrain difficile",
+        "en": "against a foe slowed by difficult terrain"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.vs_giants",
       "type": "situation",
       "name": {
@@ -442,6 +496,24 @@
       "provenance": "official"
     },
     {
+      "id": "situation.vs_larger_creatures",
+      "type": "situation",
+      "name": {
+        "fr": "contre une créature plus grande",
+        "en": "against larger creatures"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_larger_grappler",
+      "type": "situation",
+      "name": {
+        "fr": "contre une créature plus grande qui vous agrippe",
+        "en": "against a larger creature grappling you"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.vs_law",
       "type": "situation",
       "name": {
@@ -465,6 +537,15 @@
       "name": {
         "fr": "contre les orques et les gobelinoïdes",
         "en": "against orcs and goblinoids"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_other_than_designated_opponent",
+      "type": "situation",
+      "name": {
+        "fr": "contre tout autre adversaire que celui désigné",
+        "en": "against any opponent other than the designated one"
       },
       "provenance": "official"
     },

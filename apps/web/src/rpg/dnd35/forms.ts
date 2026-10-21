@@ -115,6 +115,47 @@ FORMS.push(
   },
 )
 
+/** The nine disciplines of the Tome of Battle; a ruleset's own discipline is written in « Avancé ». */
+const DISCIPLINES = [
+  ['desert_wind', 'Vent du désert'], ['devoted_spirit', 'Esprit dévoué'], ['diamond_mind', 'Esprit de diamant'],
+  ['iron_heart', 'Cœur de fer'], ['setting_sun', 'Soleil couchant'], ['shadow_hand', 'Main de l’ombre'],
+  ['stone_dragon', 'Dragon de pierre'], ['tiger_claw', 'Griffe du tigre'], ['white_raven', 'Corbeau blanc'],
+]
+
+function maneuverForm(type: 'maneuver' | 'stance', intro: string): FormSchema {
+  const text = (key: string, label: string, description: string): FieldSpec => ({ key: `maneuver.${key}`, kind: 'text', label, description, optional: true })
+  return {
+    type,
+    intro,
+    sections: [
+      { id: 'essentials', title: 'Essentiel', fields: [name, description, labels, source] },
+      {
+        id: 'rules',
+        title: 'Règles',
+        fields: [
+          { key: 'maneuver.discipline', kind: 'choice', label: 'Discipline', description: 'Une classe l’apprend si elle enseigne cette discipline.', options: [{ value: '', label: '— à choisir' }, ...DISCIPLINES.map(([id, label]) => ({ value: `discipline.${id}`, label }))] },
+          { key: 'maneuver.level', kind: 'choice', label: 'Niveau', description: 'Un initiateur l’apprend à partir du niveau d’initiateur 2 × niveau − 1.', options: [{ value: '', label: '— à choisir' }, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => ({ value: n, label: String(n) }))] },
+          { key: 'maneuver.kind', kind: 'choice', label: 'Type', description: 'Coup, renforcement, contre ou posture.', options: [{ value: '', label: '— à choisir' }, { value: 'strike', label: 'Coup' }, { value: 'boost', label: 'Renforcement' }, { value: 'counter', label: 'Contre' }, { value: 'stance', label: 'Posture' }] },
+          { key: 'maneuver.requires', kind: 'choice', label: 'Manœuvres demandées', description: 'Combien de manœuvres de la même discipline il faut déjà connaître.', options: [{ value: '', label: 'aucune' }, ...[1, 2, 3, 4, 5].map((n) => ({ value: n, label: String(n) }))], optional: true },
+          text('prerequisite', 'Autre prérequis', 'Ce que la fiche ne vérifie pas (un alignement).'),
+          text('initiationAction', 'Action', '1 action simple, 1 action rapide…'),
+          text('range', 'Portée', 'Attaque au corps à corps, personnelle, 18 m…'),
+          text('target', 'Cible', 'Une créature, vous…'),
+          text('area', 'Zone d’effet', 'Rayonnement de 9 m centré sur vous…'),
+          text('duration', 'Durée', 'Posture, 1 round, instantanée…'),
+          text('savingThrow', 'Jet de sauvegarde', 'Vigueur partiel, Réflexes annule…'),
+          effects,
+        ],
+      },
+    ],
+  }
+}
+
+FORMS.push(
+  maneuverForm('maneuver', 'Une manœuvre : un coup, un renforcement ou un contre qu’un initiateur prépare et dépense en combat.'),
+  maneuverForm('stance', 'Une posture : une manière de combattre que l’initiateur garde tant qu’il le veut, une seule à la fois.'),
+)
+
 /** Every other type until it gets its own form: the common fields; its own blocks stay in « Avancé ». */
 function generic(type: string): FormSchema {
   return {

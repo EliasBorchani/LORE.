@@ -1,0 +1,695 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.obscuring_shadow_veil",
+      "type": "maneuver",
+      "name": {
+        "fr": "Voile d’ombre aveuglant",
+        "en": "Obscuring Shadow Veil"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Une encre noire jaillit de votre lame et s’infiltre dans le regard de l’adversaire, qui frappe soudain à tâtons dans le vide.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, +5d6 points de dégâts.\n• La cible fait un jet de Vigueur (DD 14 + modificateur de Sagesse) ; en cas d’échec, ses attaques au corps à corps et à distance ont 50 % de risque de rater pendant 1 round.\n• Réussir le jet annule le risque de rater, pas les dégâts en plus.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 4,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.bloodletting_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe saignante",
+        "en": "Bloodletting Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre arme tourbillonne comme un vol de papillon et ouvre une dizaine d’entailles fines d’où le sang s’échappe à flots.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, la cible subit aussi 4 points de dégâts de Constitution.\n• Un jet de Vigueur réussi (DD 15 + modificateur de Sagesse) réduit ces dégâts de Constitution à 2 ; les dégâts normaux restent entiers."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "stance.step_of_the_dancing_moth",
+      "type": "stance",
+      "name": {
+        "fr": "Pas du papillon de nuit",
+        "en": "Step of the Dancing Moth"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Des ombres mouvantes vous soulèvent du sol : vous glissez au-dessus des ronces, de la lave ou de l’eau comme un papillon porté par la nuit.\n\nEn jeu\n• Vous marchez jusqu’à 1,50 m au-dessus du sol.\n• Votre vitesse devient 6 m et vous ne pouvez pas courir.\n• Vous ignorez tout élément de terrain qui ne dépasse pas 1,50 m de haut (terrain difficile, lave, eau…).\n• Pas de malus aux tests de Discrétion et de Déplacement silencieux pour vous déplacer vite."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 5,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "set",
+          "value": 6,
+          "layer": "final",
+          "condition": "active('toggle.step_of_the_dancing_moth')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.ghost_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame fantôme",
+        "en": "Ghost Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Un double illusoire de votre arme attire la parade de l’ennemi pendant que la vraie lame surgit d’un tout autre angle.\n\nEn jeu\n• Une attaque au corps à corps.\n• La cible est considérée comme prise au dépourvu contre cette attaque.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 6,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.shadow_noose",
+      "type": "maneuver",
+      "name": {
+        "fr": "Nœud coulant d’ombre",
+        "en": "Shadow Noose"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "D’un geste discret, vous faites tomber de nulle part une corde d’ombre qui se resserre sur la gorge de l’adversaire et le soulève du sol.\n\nEn jeu\n• Attaque de contact à distance contre une créature vivante prise au dépourvu à 18 m ou moins.\n• Si elle touche : 8d6 points de dégâts.\n• La cible fait un jet de Vigueur (DD 16 + modificateur de Sagesse) ou est étourdie pendant 1 round ; réussir annule l’étourdissement, pas les dégâts.\n• Sans effet contre les créatures non vivantes (créatures artificielles, morts-vivants).\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 6,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "18 m",
+        "target": "une créature vivante prise au dépourvu",
+        "duration": "1 round",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.stalker_in_the_night",
+      "type": "maneuver",
+      "name": {
+        "fr": "Rôdeur nocturne",
+        "en": "Stalker in the Night"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Tel un rapace dans le noir, vous quittez l’ombre le temps d’un coup puis vous y replongez sans que personne ne vous voie passer.\n\nEn jeu\n• Vous vous déplacez jusqu’à votre vitesse et faites une attaque au corps à corps à n’importe quel moment du trajet.\n• Si vous étiez caché, vous gardez vos résultats de Discrétion et de Déplacement silencieux malgré le déplacement et l’attaque.\n• Si vous finissez votre tour à un endroit où l’on peut se cacher, les ennemis doivent réussir leurs tests de Détection et de Perception auditive pour vous repérer."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 6,
+        "kind": "strike",
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.enervating_shadow_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe d’ombre débilitante",
+        "en": "Enervating Shadow Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Un halo noir enveloppe votre arme et se déverse dans la plaie : l’adversaire pâlit, tremble et sent ses forces le quitter.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, la cible fait un jet de Vigueur (DD 18 + modificateur de Sagesse) ou gagne 1d4 niveaux négatifs.\n• Vous gagnez 5 points de vie temporaires par niveau négatif infligé, jusqu’à la fin de la rencontre.\n• Les niveaux négatifs disparaissent au bout de 24 heures ; une cible avec autant de niveaux négatifs que de DV meurt.\n• Les dégâts normaux de l’attaque s’appliquent même si le jet est réussi.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 8,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Vigueur, annule"
+      }
+    },
+    {
+      "id": "maneuver.one_with_shadow",
+      "type": "maneuver",
+      "name": {
+        "fr": "Un avec l’ombre",
+        "en": "One With Shadow"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Votre corps devient translucide puis se dissout en pure ombre, et les coups ne rencontrent plus que du vide.\n\nEn jeu\n• Par une action immédiate, vous devenez intangible jusqu’au début de votre prochain tour, avec tous les avantages et inconvénients du sous-type intangible.\n• Votre équipement devient intangible lui aussi, mais pas une créature vivante que vous touchez ou portez."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 8,
+        "kind": "counter",
+        "requires": 3,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "voir texte"
+      }
+    },
+    {
+      "id": "stance.balance_on_the_sky",
+      "type": "stance",
+      "name": {
+        "fr": "Équilibre sur le ciel",
+        "en": "Balance on the Sky"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Les bras écartés, vous posez le pied sur l’air lui-même et montez comme sur un escalier invisible.\n\nEn jeu\n• Vous bénéficiez de l’effet de marche dans les airs, sur vous seul.\n• Vous devez garder au moins une main libre.\n• Monter de 1,50 m coûte 3 m de déplacement.\n• Si la posture prend fin alors que vous êtes en l’air, vous tombez.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 8,
+        "kind": "stance",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.five_shadow_creeping_ice_enervation_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe des cinq ombres de glace rampante",
+        "en": "Five-Shadow Creeping Ice Enervation Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Votre lame transperce l’ennemi jusqu’au cœur ; une ombre glacée en part et rampe dans ses veines vers l’un des cinq points de son corps.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, +15d6 points de dégâts, puis lancez 1d20.\n• 1–7, jambes : 2d6 de dégâts de Dextérité et vitesse réduite à 0. 8–14, bras : 2d6 de dégâts de Force et −6 aux jets d’attaque et aux tests de Concentration.\n• 15–20, cœur : 2d6 de dégâts de Dextérité, 2d6 de Force et 2d6 de Constitution.\n• Jet de Vigueur (DD 19 + modificateur de Sagesse) : en cas de réussite, pas d’effet spécial et moitié des dégâts de caractéristique ; les 15d6 restent entiers.\n• Chaque effet spécial dure 1d6 rounds ; fonctionne même sur une créature non humanoïde.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.shadow_hand",
+        "level": 9,
+        "kind": "strike",
+        "requires": 5,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 minute",
+        "savingThrow": "Vigueur, partiel (voir texte)"
+      }
+    },
+    {
+      "id": "maneuver.charging_minotaur",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge du minotaure",
+        "en": "Charging Minotaur"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous traversez le champ de bataille en rugissant et percutez l’adversaire avec la force d’un taureau, au point de le faire reculer en titubant.\n\nEn jeu\n• Vous tentez une bousculade dans le cadre d’une charge ; ni le déplacement ni la bousculade ne provoquent d’attaque d’opportunité.\n• Si votre test de Force bat celui de l’adversaire, il subit 2d6 + modificateur de Force points de dégâts contondants en plus d’être repoussé.\n• Vous pouvez le repousser de plus de 1,50 m sans avoir à le suivre."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.stone_bones",
+      "type": "maneuver",
+      "name": {
+        "fr": "Os de pierre",
+        "en": "Stone Bones"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’impact de votre coup remonte dans votre corps et le durcit comme le roc : seules les armes les plus tranchantes peuvent encore vous blesser.\n\nEn jeu\n• Une attaque au corps à corps.\n• Si elle touche, vous gagnez une réduction des dégâts de 5/adamantium pendant 1 round."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "stance.stonefoot_stance",
+      "type": "stance",
+      "name": {
+        "fr": "Posture du pied de pierre",
+        "en": "Stonefoot Stance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Accroupi, les pieds bien à plat, vous puisez dans la terre la patience de la montagne que le vent ne déplace pas.\n\nEn jeu\n• +2 aux tests de Force.\n• +2 à la CA contre les créatures d’une catégorie de taille supérieure à la vôtre.\n• La posture prend fin dès que vous êtes déplacé de plus de 1,50 m, pour quelque raison que ce soit."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "check.bull_rush",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.stonefoot_stance')"
+        },
+        {
+          "target": "check.resist_bull_rush_trip",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.stonefoot_stance')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_larger_creatures",
+          "condition": "active('toggle.stonefoot_stance')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.mountain_hammer",
+      "type": "maneuver",
+      "name": {
+        "fr": "Marteau de la montagne",
+        "en": "Mountain Hammer"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre arme s’abat comme un éboulement, avec tout le poids de la montagne derrière elle.\n\nEn jeu\n• Une attaque au corps à corps qui inflige +2d6 points de dégâts.\n• Elle ignore automatiquement la réduction des dégâts et la solidité."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 2,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature ou un objet non tenu"
+      }
+    },
+    {
+      "id": "maneuver.stone_vise",
+      "type": "maneuver",
+      "name": {
+        "fr": "Étau de pierre",
+        "en": "Stone Vise"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup lourd et précis cloue l’adversaire au sol : il lui faut un instant pour retrouver ses appuis.\n\nEn jeu\n• Une attaque au corps à corps qui inflige +1d6 points de dégâts.\n• Si la cible se tient au sol, toutes ses vitesses tombent à 0 pendant 1 round ; elle peut agir autrement.\n• Un jet de Vigueur réussi (DD 12 + modificateur de Force) annule l’immobilisation, pas les dégâts.\n• Une créature qui vole ou lévite subit les dégâts mais pas l’immobilisation."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 2,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "créature frappée",
+        "duration": "1 round",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.bonecrusher",
+      "type": "maneuver",
+      "name": {
+        "fr": "Broyeur d’os",
+        "en": "Bonecrusher"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Sous votre coup, le squelette de l’adversaire se fissure en mille endroits et la panique se lit dans ses yeux.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, +4d6 points de dégâts.\n• La cible fait un jet de Vigueur (DD 13 + modificateur de Force) ; en cas d’échec, tous les jets pour confirmer un coup critique contre elle gagnent +10.\n• Cet effet dure jusqu’à ce qu’elle récupère tous ses points de vie ; les dégâts en plus s’appliquent même si le jet est réussi.\n• Les créatures immunisées contre les coups critiques ou sans anatomie claire ignorent l’effet spécial."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 3,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "voir texte"
+      }
+    },
+    {
+      "id": "maneuver.stone_dragons_fury",
+      "type": "maneuver",
+      "name": {
+        "fr": "Fureur du dragon de pierre",
+        "en": "Stone Dragon’s Fury"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous repérez la moindre faille dans la matière et y abattez votre arme avec un cri : l’objet frissonne, puis vole en éclats.\n\nEn jeu\n• Une attaque au corps à corps ; contre une créature artificielle ou un objet, +4d6 points de dégâts.\n• Utilisable avec une destruction d’arme ou d’objet (attaque spéciale « briser ») contre un objet tenu ou porté.\n• Aucun avantage contre les autres cibles."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 3,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "créature ou objet frappé"
+      }
+    },
+    {
+      "id": "stance.crushing_weight_of_the_mountain",
+      "type": "stance",
+      "name": {
+        "fr": "Poids écrasant de la montagne",
+        "en": "Crushing Weight of the Mountain"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous plaquez l’ennemi sous vous et l’écrasez de tout votre poids, comme une montagne qui s’effondre lentement.\n\nEn jeu\n• Vous gagnez la capacité d’étreinte : 2d6 + 1,5 × votre bonus de Force points de dégâts.\n• Vous étreignez un adversaire avec qui vous êtes en lutte en réussissant un test de lutte."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.roots_of_the_mountain",
+      "type": "stance",
+      "name": {
+        "fr": "Racines de la montagne",
+        "en": "Roots of the Mountain"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous vous ancrez dans le sol comme une montagne vivante : rien ne peut plus vous faire bouger de l’endroit choisi.\n\nEn jeu\n• +10 aux tests pour résister à une bousculade, un renversement ou un croc-en-jambe, et aux tests de lutte pour résister à une tentative de lutte.\n• Toute créature qui traverse votre zone contrôlée ou votre espace subit −10 à ses tests d’Acrobaties.\n• Réduction des dégâts 2/—.\n• La posture prend fin dès que vous êtes déplacé de plus de 1,50 m, pour quelque raison que ce soit."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 3,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.roots_of_the_mountain')"
+        },
+        {
+          "target": "check.resist_bull_rush_trip",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.roots_of_the_mountain')"
+        },
+        {
+          "target": "check.grapple",
+          "op": "add",
+          "value": 10,
+          "situation": "situation.resisting_grapple",
+          "condition": "active('toggle.roots_of_the_mountain')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.bonesplitting_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe brise-os",
+        "en": "Bonesplitting Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un craquement d’os broyés accompagne votre coup : l’ennemi recule, vivant mais profondément atteint dans sa chair.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, la cible subit aussi 2 points de dégâts de Constitution."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 4,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.boulder_roll",
+      "type": "maneuver",
+      "name": {
+        "fr": "Roulement du rocher",
+        "en": "Boulder Roll"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Lancé comme un rocher qui dévale la pente, vous foncez à travers les rangs : il faut s’écarter ou être écrasé.\n\nEn jeu\n• À utiliser quand vous tentez un renversement.\n• +4 au test de Force pour renverser.\n• Si vous échouez, la cible ne peut pas vous faire tomber : vous vous arrêtez dans la dernière case légale traversée.\n• Ni le déplacement ni les tentatives de renversement ne provoquent d’attaque d’opportunité."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 4,
+        "kind": "boost",
+        "initiationAction": "1 action complexe",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée"
+      }
+    },
+    {
+      "id": "maneuver.overwhelming_mountain_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de la montagne écrasante",
+        "en": "Overwhelming Mountain Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre coup fait vaciller l’adversaire, qui doit perdre de précieuses secondes à retrouver son équilibre.\n\nEn jeu\n• Une attaque au corps à corps qui inflige +2d6 points de dégâts.\n• Si la cible se tient au sol, elle perd son action de mouvement pendant 1 round ; elle peut agir autrement.\n• Un jet de Vigueur réussi (DD 14 + modificateur de Force) annule la perte d’action, pas les dégâts.\n• Une créature qui vole ou lévite subit les dégâts mais pas l’effet."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 4,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.elder_mountain_hammer",
+      "type": "maneuver",
+      "name": {
+        "fr": "Marteau de la montagne ancestrale",
+        "en": "Elder Mountain Hammer"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous puisez la force de la terre sous vos pieds et la libérez dans un coup capable de fendre un bouclier ou d’abattre un ogre.\n\nEn jeu\n• Une attaque au corps à corps qui inflige +6d6 points de dégâts.\n• Elle ignore automatiquement la réduction des dégâts et la solidité."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature ou un objet non tenu"
+      }
+    },
+    {
+      "id": "maneuver.mountain_avalanche",
+      "type": "maneuver",
+      "name": {
+        "fr": "Avalanche de la montagne",
+        "en": "Mountain Avalanche"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Tel un géant des pierres lâché dans une foule, vous piétinez tout sur votre passage et laissez derrière vous un sillage de corps.\n\nEn jeu\n• Vous vous déplacez jusqu’à deux fois votre vitesse et pouvez entrer dans l’espace des créatures de votre taille ou plus petites.\n• Une créature dont vous occupez tout l’espace subit 2d6 + 1,5 × votre bonus de Force points de dégâts, une seule fois par round.\n• Si vous ne couvrez qu’une partie de son espace, elle choisit : une attaque d’opportunité contre vous, ou un jet de Réflexes (DD 15 + modificateur de Force) pour réduire les dégâts de moitié."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "personnelle",
+        "target": "vous",
+        "savingThrow": "Réflexes, ½ dégâts (voir texte)"
+      }
+    },
+    {
+      "id": "stance.giants_stance",
+      "type": "stance",
+      "name": {
+        "fr": "Posture du géant",
+        "en": "Giant’s Stance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous mettez tout le poids de votre corps dans de grands arcs dévastateurs qui feraient tomber un combattant moins maître de ses appuis.\n\nEn jeu\n• Vos dégâts d’arme et à mains nues sont calculés comme si vous aviez une catégorie de taille de plus, au maximum Grande.\n• Aucun autre effet d’un changement de taille (caractéristiques, CA, allonge).\n• La posture prend fin dès que vous êtes déplacé de plus de 1,50 m, pour quelque raison que ce soit."
+      },
+      "maneuver": {
+        "discipline": "discipline.stone_dragon",
+        "level": 5,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "weapon.size_steps",
+          "op": "add",
+          "value": "max(0, min(1, 1 - @size.steps))",
+          "condition": "active('toggle.giants_stance')"
+        }
+      ]
+    }
+  ]
+}

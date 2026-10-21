@@ -10,7 +10,7 @@ import { localized } from '../sheet/names'
 import { messageOf, useLoad } from '../useLoad'
 
 /** The types shown first, as cards; the others sit in a list below. */
-const MAIN_TYPES = ['feat', 'class_power', 'spell', 'item', 'class', 'prestige_class', 'race', 'skill']
+const MAIN_TYPES = ['feat', 'class_power', 'spell', 'maneuver', 'stance', 'item', 'class', 'prestige_class', 'race', 'skill']
 const SEARCH_DELAY_MS = 250
 
 /**

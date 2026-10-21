@@ -19,6 +19,8 @@ data class Character(
     val items: List<ItemChoice> = emptyList(),
     /** Class id to how that class casts. */
     val spellcasting: Map<String, SpellcastingChoice> = emptyMap(),
+    /** Initiator class id to the maneuvers and stances learned through it. */
+    val maneuvers: Map<String, ManeuverChoice> = emptyMap(),
     val activeToggles: List<ToggleChoice> = emptyList(),
     /**
      * Entity id to the option the player picked for it, e.g. the class Spell Improvement applies to. Effects read it
@@ -96,6 +98,12 @@ data class ItemChoice(
 data class SpellcastingChoice(
     val mode: SpellcastingMode,
     /** Spells known (spontaneous) or in the spellbook (prepared). Free-slot casters use the whole class list. */
+    val known: List<String> = emptyList(),
+)
+
+@Serializable
+data class ManeuverChoice(
+    /** Maneuvers and stances known, in the order learned; the sheet counts stances apart by their kind. */
     val known: List<String> = emptyList(),
 )
 

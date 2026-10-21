@@ -1,0 +1,659 @@
+{
+  "entities": [
+    {
+      "id": "stance.immortal_fortitude",
+      "type": "stance",
+      "name": {
+        "fr": "Fortitude immortelle",
+        "en": "Immortal Fortitude"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Tant que la bataille reste à gagner, votre corps refuse de tomber : les blessures qui terrasseraient n’importe qui ne font que vous faire vaciller.\n\nEn jeu\n• Les dégâts qui vous amènent à 0 point de vie ou moins ne vous tuent pas et ne vous mettent pas hors de combat d’office.\n• À chaque fois, jet de Vigueur de DD égal à votre total de points de vie négatifs : réussite, vous restez debout et conscient à 1 point de vie ; échec, vous mourez ou tombez inconscient selon le cas.\n• Aucune protection contre la mort sans perte de points de vie, la pétrification, la paralysie, etc., ni contre un coup de grâce si vous êtes sans défense.\n• La posture prend fin après le troisième de ces jets ; vous pouvez la reprendre à votre tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 8,
+        "kind": "stance",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.strike_of_righteous_vitality",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de vitalité vertueuse",
+        "en": "Strike of Righteous Vitality"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre lame s’abat sur l’ennemi et, dans le même souffle, une vague de lumière sacrée referme les plaies d’un compagnon.\n\nEn jeu\n• Vous ou un allié à 3 m ou moins bénéficiez d’un sort de guérison suprême, comme lancé par un prêtre de votre niveau de personnage.\n• Il faut toucher un ennemi dont l’alignement diffère du vôtre sur au moins un axe et qui menace directement vous ou vos alliés."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 9,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.moment_of_perfect_mind",
+      "type": "maneuver",
+      "name": {
+        "fr": "Instant d’esprit parfait",
+        "en": "Moment of Perfect Mind"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Quand une magie cherche à plier votre volonté, vous vous fermez comme un mur de fer, porté par des années de discipline mentale.\n\nEn jeu\n• Quand vous devez faire un jet de Volonté, faites à la place un test de Concentration, dont le résultat sert de jet de sauvegarde.\n• À décider avant le jet de Volonté.\n• Un 1 naturel au test de Concentration n’est pas un échec automatique."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 1,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.sapphire_nightmare_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame cauchemar de saphir",
+        "en": "Sapphire Nightmare Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un bref regard suffit pour lire la garde adverse et repérer l’instant où elle se relâche ; votre coup tombe pile dans cette faille.\n\nEn jeu\n• Test de Concentration contre un DD égal à la CA de la cible, puis une attaque au corps à corps.\n• Réussite : la cible est prise au dépourvu contre cette attaque, qui inflige 1d6 points de dégâts en plus.\n• Échec : l’attaque subit −2 et inflige des dégâts normaux."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.stance_of_clarity",
+      "type": "stance",
+      "name": {
+        "fr": "Posture de clarté",
+        "en": "Stance of Clarity"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Le reste du champ de bataille s’efface : il ne reste que votre adversaire, ses habitudes et la façon d’y répondre.\n\nEn jeu\n• Au début de votre tour, choisissez un adversaire : +2 d’intuition à la CA contre lui, jusqu’à ce que vous changiez de cible.\n• −2 à la CA contre tous les autres adversaires."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "situation": "situation.vs_designated_opponent",
+          "condition": "active('toggle.stance_of_clarity')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "situation": "situation.vs_other_than_designated_opponent",
+          "condition": "active('toggle.stance_of_clarity')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.action_before_thought",
+      "type": "maneuver",
+      "name": {
+        "fr": "Action avant la pensée",
+        "en": "Action Before Thought"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Votre esprit sent le danger avant même vos yeux, et votre corps s’écarte une fraction de seconde avant l’impact.\n\nEn jeu\n• Quand vous devez faire un jet de Réflexes, faites à la place un test de Concentration, dont le résultat sert de jet de sauvegarde.\n• À décider avant le jet de Réflexes.\n• Un 1 naturel au test de Concentration n’est pas un échec automatique."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 2,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.emerald_razor",
+      "type": "maneuver",
+      "name": {
+        "fr": "Rasoir d’émeraude",
+        "en": "Emerald Razor"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous voyez l’ouverture que nul autre ne verrait et y glissez votre lame comme si l’armure n’existait pas.\n\nEn jeu\n• Une attaque au corps à corps qui est une attaque de contact.\n• Si elle touche, dégâts normaux de corps à corps."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 2,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.insightful_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe perspicace",
+        "en": "Insightful Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "C’est votre esprit, plus que votre bras, qui guide l’arme vers le point faible exact de l’armure adverse.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, elle n’inflige pas ses dégâts normaux.\n• À la place, faites un test de Concentration : la cible subit des dégâts égaux à son résultat.\n• Ni le modificateur de Force, ni les propriétés magiques de l’arme, ni aucun dégât supplémentaire (aptitudes de classe, dons, sorts) ne s’ajoutent."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 3,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.mind_over_body",
+      "type": "maneuver",
+      "name": {
+        "fr": "L’esprit sur le corps",
+        "en": "Mind Over Body"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Poison ou maladie, votre volonté repousse le mal qui ronge votre chair.\n\nEn jeu\n• Quand vous devez faire un jet de Vigueur, faites à la place un test de Concentration, dont le résultat sert de jet de sauvegarde.\n• À décider avant le jet de Vigueur.\n• Un 1 naturel au test de Concentration n’est pas un échec automatique."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 3,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "stance.pearl_of_black_doubt",
+      "type": "stance",
+      "name": {
+        "fr": "Perle de doute noir",
+        "en": "Pearl of Black Doubt"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Chaque coup manqué sème le doute chez vos ennemis, et ce doute grossit comme une perle noire jusqu’à les paralyser.\n\nEn jeu\n• Chaque fois qu’un adversaire vous rate avec une attaque au corps à corps, vous gagnez +2 d’esquive à la CA.\n• Ces bonus se cumulent et durent jusqu’au début de votre prochain tour, contre les attaques de tous les adversaires."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.bounding_assault",
+      "type": "maneuver",
+      "name": {
+        "fr": "Assaut bondissant",
+        "en": "Bounding Assault"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous traversez la mêlée comme une traînée floue et ne vous arrêtez que le temps d’un coup féroce.\n\nEn jeu\n• Vous effectuez un double déplacement, puis une attaque au corps à corps avec +2.\n• Compte comme une charge pour les dons et aptitudes qui s’y appliquent."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 4,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.mind_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe mentale",
+        "en": "Mind Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup sec à la tête qui brouille les sens de l’adversaire et lui fait perdre le fil du combat.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, la cible fait un jet de Volonté (DD 14 + modificateur de Force).\n• Échec : 1d4 points d’affaiblissement temporaire de Sagesse ; réussite : seulement les dégâts de l’arme."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 4,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Volonté, annule"
+      }
+    },
+    {
+      "id": "maneuver.ruby_nightmare_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame cauchemar de rubis",
+        "en": "Ruby Nightmare Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un instant de réflexion et vous savez où frapper pour finir le combat d’un seul coup décisif.\n\nEn jeu\n• Test de Concentration contre un DD égal à la CA de la cible, puis une attaque au corps à corps.\n• Réussite : l’attaque inflige le double des dégâts normaux de corps à corps.\n• Échec : l’attaque subit −2 et inflige des dégâts normaux.\n• Sur un coup critique, les multiplicateurs se combinent normalement."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 4,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.disrupting_blow",
+      "type": "maneuver",
+      "name": {
+        "fr": "Coup perturbateur",
+        "en": "Disrupting Blow"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Force, timing et précision se combinent pour déséquilibrer l’adversaire et ruiner ce qu’il s’apprêtait à faire.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, dégâts normaux et jet de Volonté (DD 15 + modificateur de Force).\n• Échec : la cible ne peut entreprendre aucune action pendant 1 round, sans autre pénalité.\n• Elle peut encore faire des attaques d’opportunité, mais pas d’action immédiate avant son prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round",
+        "savingThrow": "Volonté, annule"
+      }
+    },
+    {
+      "id": "maneuver.rapid_counter",
+      "type": "maneuver",
+      "name": {
+        "fr": "Contre rapide",
+        "en": "Rapid Counter"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Au moindre relâchement adverse, votre arme jaillit comme un éclair dans la brèche.\n\nEn jeu\n• Quand un adversaire provoque une attaque d’opportunité de votre part, vous faites contre lui une attaque au corps à corps immédiate.\n• Cette attaque ne remplace pas votre attaque d’opportunité et n’en est pas une ; elle peut venir avant, après ou à la place de celle-ci, qui reste alors disponible pour un autre ennemi."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 5,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "stance.hearing_the_air",
+      "type": "stance",
+      "name": {
+        "fr": "Écouter l’air",
+        "en": "Hearing the Air"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vos sens s’aiguisent au point de percevoir le moindre souffle d’air : invisibles ou cachés, vos ennemis ne vous échappent plus.\n\nEn jeu\n• Vous gagnez la perception aveugle à 9 m.\n• +5 d’intuition aux tests de Perception auditive."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 5,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "vision.blindsense",
+          "op": "set",
+          "value": 9,
+          "condition": "active('toggle.hearing_the_air')"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 5,
+          "bonusType": "insight",
+          "condition": "active('toggle.hearing_the_air')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.greater_insightful_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe perspicace supérieure",
+        "en": "Insightful Strike, Greater"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre arme devient l’instrument de votre esprit et trouve la plus infime faille de la défense adverse.\n\nEn jeu\n• Comme Frappe perspicace, mais les dégâts sont égaux à 2 × le résultat du test de Concentration."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.moment_of_alacrity",
+      "type": "maneuver",
+      "name": {
+        "fr": "Instant d’alacrité",
+        "en": "Moment of Alacrity"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Vous vous glissez entre deux battements de cœur et reprenez la main avant que vos ennemis aient fini de réagir.\n\nEn jeu\n• Votre score d’initiative augmente de 20 pour le reste de la rencontre.\n• Le changement s’applique à la fin du round : votre nouvelle place dans l’ordre d’initiative vaut dès le round suivant."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 6,
+        "kind": "boost",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée"
+      },
+      "effects": [
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": 20,
+          "condition": "active('toggle.moment_of_alacrity')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.avalanche_of_blades",
+      "type": "maneuver",
+      "name": {
+        "fr": "Avalanche de lames",
+        "en": "Avalanche of Blades"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Tant que votre lame touche, elle revient, encore et encore, dans un tourbillon d’acier ; au premier raté, le rythme se brise.\n\nEn jeu\n• Une attaque au corps à corps contre un adversaire ; si elle touche, vous attaquez de nouveau la même cible à −4.\n• Chaque nouvelle attaque réussie en permet une autre avec un malus de −4 de plus (−8, −12…).\n• La série s’arrête au premier raté ou quand la cible tombe à −1 point de vie ou moins."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 7,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.quicksilver_motion",
+      "type": "maneuver",
+      "name": {
+        "fr": "Mouvement vif-argent",
+        "en": "Quicksilver Motion"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Dans un sursaut d’énergie, vous bougez avant que quiconque ait pu réagir, puis enchaînez comme si de rien n’était.\n\nEn jeu\n• Après l’initiation, vous obtenez une action de mouvement gratuite (n’importe quelle option d’action de mouvement).\n• Le reste de vos actions du tour reste disponible : par exemple, vous approcher puis faire une attaque à outrance ou une charge.\n• Ce déplacement provoque des attaques d’opportunité normalement."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 7,
+        "kind": "boost",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.diamond_defense",
+      "type": "maneuver",
+      "name": {
+        "fr": "Défense de diamant",
+        "en": "Diamond Defense"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Face à un sort hostile, vous rassemblez toute votre concentration et devenez dur comme le diamant.\n\nEn jeu\n• Quand vous devez faire un jet de sauvegarde, vous gagnez à ce jet un bonus égal à votre niveau d’initiateur.\n• À utiliser avant de lancer le jet."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 8,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.diamond_nightmare_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame cauchemar de diamant",
+        "en": "Diamond Nightmare Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous repérez l’unique faille fatale dans la défense adverse et y jetez toute votre concentration en un seul coup dévastateur.\n\nEn jeu\n• Test de Concentration contre un DD égal à la CA de la cible, puis une attaque au corps à corps.\n• Réussite : l’attaque inflige le quadruple des dégâts normaux de corps à corps.\n• Échec : l’attaque subit −2 et n’inflige pas de dégâts supplémentaires.\n• Sur un coup critique, les multiplicateurs se combinent normalement."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 8,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.stance_of_alacrity",
+      "type": "stance",
+      "name": {
+        "fr": "Posture d’alacrité",
+        "en": "Stance of Alacrity"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Corps et esprit ne font plus qu’un : toujours un temps d’avance, vous parez les menaces les unes après les autres.\n\nEn jeu\n• Une fois par round, vous pouvez initier un contre sans dépenser d’action immédiate.\n• Cela marche même si vous avez déjà utilisé votre action immédiate (par exemple pour un sort de feuille morte).\n• Vous ne pouvez pas utiliser la même manœuvre deux fois dans le round."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 8,
+        "kind": "stance",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.time_stands_still",
+      "type": "maneuver",
+      "name": {
+        "fr": "Le temps suspendu",
+        "en": "Time Stands Still"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Les gouttes de pluie se figent dans l’air tandis que vous agissez à la vitesse de la pensée, trop vite pour que l’œil vous suive.\n\nEn jeu\n• Vous effectuez deux attaques à outrance de suite.\n• Résolvez entièrement la première avant la seconde ; les attaques des deux ne peuvent pas être mélangées."
+      },
+      "maneuver": {
+        "discipline": "discipline.diamond_mind",
+        "level": 9,
+        "kind": "strike",
+        "requires": 4,
+        "initiationAction": "1 action complexe",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.steel_wind",
+      "type": "maneuver",
+      "name": {
+        "fr": "Vent d’acier",
+        "en": "Steel Wind"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre arme décrit un large arc mortel qui fauche deux ennemis d’un même élan.\n\nEn jeu\n• Deux attaques au corps à corps, chacune contre un adversaire différent que vous menacez.\n• Résolvez chaque attaque séparément."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "deux créatures"
+      }
+    }
+  ]
+}

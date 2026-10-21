@@ -23,9 +23,10 @@ export const LABELS: Label[] = [
   ...family('muted', ['feat'], [
     ['general', 'Général', 'General'], ['skill', 'Compétence', 'Skill'], ['epic', 'Épique', 'Epic'],
     ['monster', 'Monstre', 'Monster'], ['story', 'Histoire', 'Story'], ['custom', 'Maison', 'House'],
+    ['tactical', 'Tactique', 'Tactical'], ['psionic', 'Psionique', 'Psionic'],
   ]),
   ...family('garnet', ['feat'], [
-    ['fighter_bonus', 'Bonus de guerrier', 'Fighter bonus'], ['melee', 'Corps à corps', 'Melee'], ['ranged', 'Distance', 'Ranged'],
+    ['fighter_bonus', 'Bonus de guerrier', 'Fighter bonus'], ['warblade_bonus', 'Bonus de maître des lames', 'Warblade bonus'], ['melee', 'Corps à corps', 'Melee'], ['ranged', 'Distance', 'Ranged'],
     ['defense', 'Défense', 'Defense'], ['proficiency', 'Maniement', 'Proficiency'], ['movement', 'Déplacement', 'Movement'],
     ['unarmed', 'Mains nues', 'Unarmed'], ['mounted', 'Monté', 'Mounted'], ['two_weapon', 'Deux armes', 'Two-weapon'],
     ['natural_attack', 'Attaque naturelle', 'Natural attack'], ['flight', 'Vol', 'Flight'],
@@ -68,7 +69,7 @@ export const LABELS: Label[] = [
     ['barbarian', 'Barbare', 'Barbarian'], ['bard', 'Barde', 'Bard'], ['cleric', 'Prêtre', 'Cleric'], ['druid', 'Druide', 'Druid'],
     ['fighter', 'Guerrier', 'Fighter'], ['monk', 'Moine', 'Monk'], ['paladin', 'Paladin', 'Paladin'], ['ranger', 'Rôdeur', 'Ranger'],
     ['rogue', 'Roublard', 'Rogue'], ['sorcerer', 'Ensorceleur', 'Sorcerer'], ['wizard', 'Magicien', 'Wizard'],
-    ['warblade', 'Lame de guerre', 'Warblade'],
+    ['warblade', 'Maître des lames', 'Warblade'], ['swordsage', 'Sage de l’épée', 'Swordsage'], ['crusader', 'Croisé', 'Crusader'],
     ['arcane_archer', 'Archer-mage', 'Arcane archer'], ['arcane_trickster', 'Filou arcanique', 'Arcane trickster'],
     ['archmage', 'Archimage', 'Archmage'], ['assassin', 'Assassin', 'Assassin'], ['blackguard', 'Chevalier noir', 'Blackguard'],
     ['dragon_disciple', 'Disciple draconien', 'Dragon disciple'], ['duelist', 'Duelliste', 'Duelist'],
@@ -83,6 +84,11 @@ export const LABELS: Label[] = [
     ['prepared', 'Préparée', 'Prepared'], ['spontaneous', 'Spontanée', 'Spontaneous'], ['explorer', 'Explorateur', 'Explorer'],
     ['knowledge', 'Savoir', 'Knowledge'],
   ]),
+  ...family('garnet', ['maneuver', 'stance'], [
+    ['strike', 'Coup', 'Strike'], ['boost', 'Renforcement', 'Boost'], ['counter', 'Contre', 'Counter'],
+    ['supernatural', 'Surnaturelle', 'Supernatural'],
+  ]),
+  ...family('gilt', ['class'], [['initiator', 'Initiateur', 'Initiator']]),
   ...family('muted', ['race'], [
     ['small', 'Taille P', 'Small'], ['medium', 'Taille M', 'Medium'], ['large', 'Taille G', 'Large'],
   ]),

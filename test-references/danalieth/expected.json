@@ -87,9 +87,9 @@
     },
     {
       "stat": "attack.melee",
-      "value": 145,
+      "value": 135,
       "status": "verified",
-      "how": "BAB 49 + Divine Favor 24 + weapon 12 + stance 10 + Str 50"
+      "how": "BAB 49 + Divine Favor 24 + weapon 12 + Str 50 (the sheet's +10 stance was a placeholder, removed)"
     },
     {
       "stat": "damage.melee",

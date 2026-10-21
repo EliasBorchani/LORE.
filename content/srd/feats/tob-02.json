@@ -1,0 +1,442 @@
+{
+  "entities": [
+    {
+      "id": "feat.shadow_trickster",
+      "type": "feat",
+      "name": {
+        "fr": "Ruse des ombres",
+        "en": "Shadow Trickster"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le lanceur de sorts qui a goûté à la Main de l’ombre mêle de la pénombre véritable à ses mirages, et ses coups bas portent plus lourd.\n\nEn jeu\n• Condition : niveau de lanceur de sorts 1, connaître un coup de la Main de l’ombre.\n• Tant que vous êtes dans une posture de la Main de l’ombre, le DD des jets de sauvegarde contre vos sorts d’illusion augmente de 2.\n• +2 aux jets de dégâts lors d’une attaque sournoise, d’une frappe soudaine (ninja) ou contre une cible que vous prenez en tenaille."
+      },
+      "prerequisite": "@maneuvers.count[discipline.shadow_hand:strike] >= 1",
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_flat_footed_or_flanked"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : niveau de lanceur de sorts 1. Le +2 au DD des illusions n’est pas calculé par la fiche."
+    },
+    {
+      "id": "feat.song_of_the_white_raven",
+      "type": "feat",
+      "name": {
+        "fr": "Chant du Corbeau blanc",
+        "en": "Song of the White Raven"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Les enseignements du Corbeau blanc savent enflammer le courage des compagnons ; le barde qui les suit trouve dans ces leçons un nouveau souffle pour sa musique.\n\nEn jeu\n• Condition : musique de barde (inspiration vaillante), connaître une manœuvre du Corbeau blanc.\n• Dans une posture du Corbeau blanc, lancer l’inspiration vaillante ne demande qu’une action rapide.\n• Vos niveaux de croisé et de guerrier lame s’ajoutent à vos niveaux de barde pour calculer le bonus de l’inspiration vaillante."
+      },
+      "prerequisite": "@maneuvers.count[discipline.white_raven] >= 1",
+      "note": "Condition non vérifiée par la fiche : musique de barde (inspiration vaillante)."
+    },
+    {
+      "id": "feat.snap_kick",
+      "type": "feat",
+      "name": {
+        "fr": "Coup de pied éclair",
+        "en": "Snap Kick"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "melee",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Entre deux coups d’arme, le pied part tout seul : une frappe sèche de plus, glissée dans chaque assaut, au prix d’un peu de précision.\n\nEn jeu\n• Condition : Science du combat à mains nues, bonus de base à l’attaque de +6.\n• Quand vous attaquez avec une ou plusieurs armes de corps à corps (attaque simple, attaque à outrance ou coup), vous pouvez ajouter une attaque à mains nues à votre meilleur bonus d’attaque.\n• Cette attaque inflige vos dégâts de base à mains nues + la moitié de votre bonus de Force.\n• En échange, –2 à tous vos jets d’attaque pendant ce round."
+      },
+      "prerequisite": "has('feat.improved_unarmed_strike') and @bab >= 6",
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.snap_kick')"
+        }
+      ],
+      "note": "Le –2 s’applique quand l’interrupteur est activé, pour le round où vous ajoutez le coup de pied."
+    },
+    {
+      "id": "feat.stone_power",
+      "type": "feat",
+      "name": {
+        "fr": "Puissance de la pierre",
+        "en": "Stone Power"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "warblade_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Comme le Dragon de pierre, vous ramassez toute votre force brute dans le coup ; ce que vous perdez en précision, votre corps le gagne en résistance.\n\nEn jeu\n• Condition : Force 13, connaître une manœuvre du Dragon de pierre.\n• Lors d’une attaque simple, d’une attaque à outrance ou d’un coup du Dragon de pierre au corps à corps, vous pouvez prendre jusqu’à –5 à vos jets d’attaque (sans dépasser votre bonus de base à l’attaque).\n• Vous gagnez alors 2 points de vie temporaires par point de malus (10 au maximum), jusqu’au début de votre prochain tour.\n• Spécial : remplace Attaque en puissance pour remplir une condition (don, classe de prestige…). Vous pouvez prendre les deux dons."
+      },
+      "prerequisite": "@ability.str.score >= 13 and @maneuvers.count[discipline.stone_dragon] >= 1",
+      "note": "Le malus choisi et les points de vie temporaires se gèrent à la table."
+    },
+    {
+      "id": "feat.sudden_recovery",
+      "type": "feat",
+      "name": {
+        "fr": "Récupération soudaine",
+        "en": "Sudden Recovery"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Un souffle, un pas de côté, et la technique que vous venez de lâcher revient aussitôt sous vos doigts.\n\nEn jeu\n• Condition : connaître une manœuvre.\n• Une fois par jour, par une action rapide, vous récupérez une manœuvre dépensée, qui redevient prête.\n• Pour un croisé, la manœuvre est aussi accordée tout de suite."
+      },
+      "prerequisite": "@maneuvers.count[all] >= 1",
+      "usesPerDay": "1"
+    },
+    {
+      "id": "feat.superior_unarmed_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe à mains nues supérieure",
+        "en": "Superior Unarmed Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "melee",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "À force d’entraînement, vos poings et vos pieds trouvent d’instinct les points faibles, et chaque frappe à mains nues fait bien plus mal.\n\nEn jeu\n• Condition : Science du combat à mains nues, bonus de base à l’attaque de +3.\n• Vos dégâts à mains nues dépendent de votre niveau global : 1d4 au niveau 3, 1d6 aux niveaux 4 à 7, 1d8 aux niveaux 8 à 11, 1d10 aux niveaux 12 à 15, 2d6 aux niveaux 16 à 20.\n• Spécial : un moine inflige plutôt les dégâts à mains nues d’un moine de quatre niveaux de plus."
+      },
+      "prerequisite": "has('feat.improved_unarmed_strike') and @bab >= 3",
+      "note": "Les dégâts de base à mains nues ne sont pas encore calculés par la fiche."
+    },
+    {
+      "id": "feat.tiger_blooded",
+      "type": "feat",
+      "name": {
+        "fr": "Sang du tigre",
+        "en": "Tiger Blooded"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "warblade_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "La Griffe du tigre réveille la bête : quand vous cédez à la fureur ou prenez une forme sauvage, vos coups bousculent l’ennemi.\n\nEn jeu\n• Condition : capacité de rage, de transformation (shifter, maître griffe-de-sang) ou de forme animale ; connaître une manœuvre de la Griffe du tigre.\n• En rage, transformé ou sous forme animale, quand un coup de la Griffe du tigre touche une créature de votre catégorie de taille ou plus petite, elle recule de 1,50 m sauf réussite d’un jet de Vigueur (DD 10 + la moitié de votre niveau global + votre modificateur de Force).\n• Ce déplacement ne provoque pas d’attaque d’opportunité."
+      },
+      "prerequisite": "@maneuvers.count[discipline.tiger_claw] >= 1",
+      "note": "Condition non vérifiée par la fiche : rage, transformation ou forme animale."
+    },
+    {
+      "id": "feat.unnerving_calm",
+      "type": "feat",
+      "name": {
+        "fr": "Calme troublant",
+        "en": "Unnerving Calm"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "warblade_bonus"
+      ],
+      "description": {
+        "fr": "Votre esprit reste une eau immobile au cœur du combat ; l’adversaire qui croise votre regard n’y lit que sa propre défaite.\n\nEn jeu\n• Condition : Concentration 1 degré de maîtrise, connaître un coup de l’Esprit de diamant.\n• Dans un duel de volontés, vous pouvez utiliser Concentration à la place d’Intimidation, et vous gagnez +4 aux tests pour le résoudre.\n• Si l’adversaire ignore votre défi, vous gagnez un bonus de moral de +2 aux jets d’attaque contre lui pendant 1 round.\n• Normal : le duel de volontés se résout avec Intimidation, et ignorer le défi ne donne qu’un bonus de moral de +1."
+      },
+      "prerequisite": "@skill.concentration.ranks >= 1 and @maneuvers.count[discipline.diamond_mind:strike] >= 1"
+    },
+    {
+      "id": "feat.vital_recovery",
+      "type": "feat",
+      "name": {
+        "fr": "Récupération vitale",
+        "en": "Vital Recovery"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Reprendre ses techniques, c’est aussi reprendre son souffle : chaque fois que vous vous recentrez, vos plaies se referment un peu.\n\nEn jeu\n• Condition : connaître deux manœuvres.\n• Quand vous récupérez une ou plusieurs manœuvres dépensées, vous soignez 3 points de dégâts + 1 par niveau global.\n• Une seule fois par rencontre."
+      },
+      "prerequisite": "@maneuvers.count[all] >= 2"
+    },
+    {
+      "id": "feat.white_raven_defense",
+      "type": "feat",
+      "name": {
+        "fr": "Défense du Corbeau blanc",
+        "en": "White Raven Defense"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "warblade_bonus",
+        "defense"
+      ],
+      "description": {
+        "fr": "Au milieu de la mêlée, vous êtes le phare autour duquel le groupe se resserre : vous protégez vos compagnons et ils vous le rendent.\n\nEn jeu\n• Condition : connaître une posture du Corbeau blanc.\n• Dans une posture du Corbeau blanc et adjacent à au moins un allié, +1 à la CA.\n• Si vous maniez une arme de prédilection du Corbeau blanc, chaque allié adjacent gagne aussi +1 à la CA.\n• Ces bonus disparaissent quand vous êtes pris au dépourvu."
+      },
+      "prerequisite": "@maneuvers.count[discipline.white_raven:stance] >= 1",
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "condition": "active('toggle.white_raven_defense')"
+        }
+      ],
+      "note": "Interrupteur : dans une posture du Corbeau blanc, à côté d’un allié et pas pris au dépourvu."
+    },
+    {
+      "id": "feat.clarion_commander",
+      "type": "feat",
+      "name": {
+        "fr": "Commandant au clairon",
+        "en": "Clarion Commander"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee"
+      ],
+      "description": {
+        "fr": "Vous dirigez vos compagnons comme un chef de guerre, et chaque attaque commune ouvre une brèche que vous savez exploiter.\n\nEn jeu\n• Condition : Défense du Corbeau blanc, bonus de base à l’attaque de +6, connaître deux manœuvres du Corbeau blanc.\n• Enchaînement : après avoir touché une cible au corps à corps, réussissez un test de Diplomatie DD 20 (action de mouvement) ; si vous la touchez encore au tour suivant, elle provoque une attaque d’opportunité d’un allié de votre choix.\n• Tenaille permanente : réussissez un test d’Intimidation DD 20 (action simple) contre un ennemi ; si vous le touchez au tour suivant, vous et vos alliés le considérez pris en tenaille pendant 1 minute.\n• Curée : aidez un allié (aider quelqu’un) contre un ennemi que vous menacez tous deux ; s’il le touche avant votre prochain tour, vous lui portez une attaque d’opportunité immédiate (une seule fois)."
+      },
+      "prerequisite": "has('feat.white_raven_defense') and @bab >= 6 and @maneuvers.count[discipline.white_raven] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.distant_horizon",
+      "type": "feat",
+      "name": {
+        "fr": "Horizon lointain",
+        "en": "Distant Horizon"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee"
+      ],
+      "description": {
+        "fr": "Cette forme du Soleil couchant apprend à lire les faiblesses de l’ennemi, celles d’aujourd’hui comme celles du coup suivant.\n\nEn jeu\n• Condition : Intelligence 13, Attaque du soleil couchant, bonus de base à l’attaque de +6, connaître deux manœuvres du Soleil couchant.\n• Poussée continue : déplacez un ennemi d’au moins 1,50 m (bousculade ou coup du Soleil couchant) ; au tour suivant, +4 à vos tests de Force, de Dextérité et de lutte contre lui.\n• Retournement : un ennemi vous charge et vous rate (ou ne peut pas attaquer) ; au tour suivant, vous pouvez le charger même sans ligne droite et même si vous ne pouvez pas bouger de plus de 1,50 m.\n• Point faible durable : touchez au moins deux fois au corps à corps un ennemi que vous prenez en tenaille ; au tour suivant, une attaque à –2 (action simple) qui, si elle touche, lui fait subir 1 dégât de plus par attaque de corps à corps réussie pendant 1 minute."
+      },
+      "prerequisite": "@ability.int.score >= 13 and has('feat.falling_sun_attack') and @bab >= 6 and @maneuvers.count[discipline.setting_sun] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.faith_unswerving",
+      "type": "feat",
+      "name": {
+        "fr": "Foi inébranlable",
+        "en": "Faith Unswerving"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee"
+      ],
+      "description": {
+        "fr": "La ferveur du disciple de l’Esprit dévoué le porte au-delà de la douleur : plus on le blesse, plus il devient redoutable.\n\nEn jeu\n• Condition : Rempart dévoué, bonus de base à l’attaque de +6, connaître deux manœuvres de l’Esprit dévoué.\n• Pression constante : touchez un ennemi en chargeant ; jusqu’à votre prochain tour, quand il bouge, une action immédiate vous permet de le suivre (votre vitesse) pour finir à côté de lui.\n• Bouclier humain : touchez un ennemi au corps à corps ; jusqu’à votre prochain tour, action immédiate pour vous interposer quand il attaque un allié adjacent (avant le résultat) : si l’attaque touche, 1d20 + votre CA ; au-dessus de son résultat, c’est vous qu’il touche.\n• Dernier coup : quand une attaque ou un effet vous fait tomber à 0 point de vie ou moins, par une action immédiate, bougez de 1,50 m et portez une attaque de corps à corps à +5, avec un bonus aux dégâts égal à votre niveau global, avant de subir les dégâts."
+      },
+      "prerequisite": "has('feat.devoted_bulwark') and @bab >= 6 and @maneuvers.count[discipline.devoted_spirit] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.gloom_razor",
+      "type": "feat",
+      "name": {
+        "fr": "Rasoir de pénombre",
+        "en": "Gloom Razor"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee"
+      ],
+      "description": {
+        "fr": "Vos parades et vos attaques sont tissées d’ombre ; grâce à votre ki, vous brouillez les sens de l’ennemi et sapez son jeu.\n\nEn jeu\n• Condition : Discrétion 9 degrés de maîtrise, Lame d’ombre, bonus de base à l’attaque de +6, connaître deux manœuvres de la Main de l’ombre.\n• Pénombre persistante : un ennemi vous rate à cause d’un camouflage ; au tour suivant, test de Discrétion contre son test de Détection (action rapide) : si vous gagnez, vous êtes invisible pour lui jusqu’à la fin du tour.\n• Ombres mouvantes : blessez un ennemi au corps à corps et bougez d’au moins 3 m dans le tour ; au tour suivant, il est pris au dépourvu contre votre première attaque de corps à corps.\n• Glissement d’ombre : touchez un ennemi que vous prenez en tenaille ; au tour suivant, s’il est adjacent, réussissez un test d’Acrobaties DD 20 pour aller sur une case adjacente à lui (action libre) sans provoquer d’attaque d’opportunité."
+      },
+      "prerequisite": "@skill.hide.ranks >= 9 and has('feat.shadow_blade') and @bab >= 6 and @maneuvers.count[discipline.shadow_hand] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.perfect_clarity_of_mind_and_body",
+      "type": "feat",
+      "name": {
+        "fr": "Clarté parfaite du corps et de l’esprit",
+        "en": "Perfect Clarity of Mind and Body"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee"
+      ],
+      "description": {
+        "fr": "Le maître de l’Esprit de diamant puise dans des réserves que les autres guerriers ignorent, et dépasse ses propres limites.\n\nEn jeu\n• Condition : Calme troublant, bonus de base à l’attaque de +6, connaître deux manœuvres de l’Esprit de diamant.\n• Ressort : prenez l’action de défense totale sans bouger de plus de 1,50 m ; au tour suivant, +9 m à votre vitesse au sol et +2 à la CA, et une attaque après le déplacement si vous ne bougez pas plus du double de cette vitesse.\n• Esprit expert : battez un ennemi dans un duel de volontés ; au tour suivant, bonus de moral de +4 pour le désarmer, le feinter ou le faire chuter.\n• Pousser l’avantage : blessez, désarmez ou faites chuter un ennemi ; au tour suivant, test d’Intimidation DD 20 (action libre) : s’il réussit, l’ennemi a –2 aux jets d’attaque pendant 1 round."
+      },
+      "prerequisite": "has('feat.unnerving_calm') and @bab >= 6 and @maneuvers.count[discipline.diamond_mind] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.reaping_talons",
+      "type": "feat",
+      "name": {
+        "fr": "Serres moissonneuses",
+        "en": "Reaping Talons"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Une arme dans chaque main, comme deux griffes : la Griffe du tigre vous apprend à tirer le meilleur de ce style.\n\nEn jeu\n• Condition : Combat à deux armes, bonus de base à l’attaque de +6, connaître deux manœuvres de la Griffe du tigre.\n• Assaut ciblé : défense (sur la défensive, défense totale ou Expertise du combat à –3/+3) avec deux armes de prédilection de la Griffe du tigre, sans bouger de plus de 1,50 m ; au tour suivant, action complexe : une attaque à votre meilleur bonus contre chaque ennemi menacé qui vous a attaqué.\n• Prédateur acculé : touchez un ennemi deux fois avec des armes légères ou à une main de la Griffe du tigre (kukri, kama, hachette, mains nues, griffe) ; au tour suivant, +2 aux jets d’attaque contre lui par ennemi qui vous menace.\n• Bouclier de serres : même déclencheur ; au tour suivant, si vous combattez sur la défensive ou prenez la défense totale, bonus de bouclier de +2 à la CA contre cet ennemi, en plus du bonus habituel."
+      },
+      "prerequisite": "has('feat.two_weapon_fighting') and @bab >= 6 and @maneuvers.count[discipline.tiger_claw] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.scorching_sirocco",
+      "type": "feat",
+      "name": {
+        "fr": "Sirocco brûlant",
+        "en": "Scorching Sirocco"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee",
+        "movement"
+      ],
+      "description": {
+        "fr": "Le vent brûlant du désert répond à l’appel de l’élève du Vent du désert : il brûle l’ennemi et vous rend plus vif.\n\nEn jeu\n• Condition : Esquive du vent du désert, bonus de base à l’attaque de +6, connaître deux manœuvres du Vent du désert.\n• Attiser les flammes : infligez des dégâts de feu à un ennemi ; au tour suivant, s’il est adjacent, test d’Acrobaties DD 20 (action de mouvement) : s’il réussit, l’ennemi prend feu.\n• Marque du feu : infligez des dégâts de feu avec un coup du Vent du désert ; au tour suivant, infligez-lui encore des dégâts de feu et réussissez un test d’Art de la magie DD 20 : vos alliés ont +2 aux jets d’attaque contre lui pendant 1 round.\n• Danse des flammes : bougez d’au moins 3 m et adoptez une posture du Vent du désert ; au tour suivant, +2 aux tests d’Acrobaties, et chaque ennemi dont vous évitez l’attaque d’opportunité par Acrobaties subit 1d6 dégâts de feu."
+      },
+      "prerequisite": "has('feat.desert_wind_dodge') and @bab >= 6 and @maneuvers.count[discipline.desert_wind] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.shards_of_granite",
+      "type": "feat",
+      "name": {
+        "fr": "Éclats de granit",
+        "en": "Shards of Granite"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee"
+      ],
+      "description": {
+        "fr": "À l’image du Dragon de pierre, vous brisez les défenses à force brute, et chaque coup frappe plus lourd que le précédent.\n\nEn jeu\n• Condition : Puissance de la pierre, bonus de base à l’attaque de +6, connaître deux manœuvres du Dragon de pierre.\n• Les armes de prédilection du Dragon de pierre : épée à deux mains, grande hache, masse d’armes lourde, mains nues.\n• Coup de bélier : touchez au corps à corps avec l’une d’elles en prenant –5 avec Puissance de la pierre ; vous ignorez la solidité de la cible.\n• Coup éventreur : touchez la même créature au moins deux fois dans le round avec l’une d’elles ; au tour suivant, le malus de Puissance de la pierre ne s’applique pas aux jets de confirmation de critique.\n• Assaut irrésistible : touchez avec l’une d’elles en prenant –5 avec Puissance de la pierre ; au tour suivant, vos attaques de corps à corps contre cette créature ignorent sa réduction des dégâts."
+      },
+      "prerequisite": "has('feat.stone_power') and @bab >= 6 and @maneuvers.count[discipline.stone_dragon] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant."
+    },
+    {
+      "id": "feat.stormguard_warrior",
+      "type": "feat",
+      "name": {
+        "fr": "Guerrier garde-tempête",
+        "en": "Stormguard Warrior"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "general",
+        "tactical",
+        "melee"
+      ],
+      "description": {
+        "fr": "Ce don rassemble les tactiques avancées de l’école du Cœur de fer, où la patience d’un instant se paie en coups dévastateurs.\n\nEn jeu\n• Condition : maniement d’une arme de prédilection du Cœur de fer (épée bâtarde, hache de guerre naine, épée longue, épée double), Aura du cœur de fer, bonus de base à l’attaque de +6, connaître deux manœuvres du Cœur de fer.\n• Canaliser l’orage : renoncez à une ou plusieurs attaques d’opportunité contre un ennemi ; au tour suivant, +4 aux jets d’attaque et de dégâts contre lui par attaque à laquelle vous avez renoncé.\n• Rythme de combat : attaquez un ennemi par des attaques de contact sans dégâts ; au tour suivant, +5 aux dégâts de corps à corps contre lui par contact réussi.\n• Affronter la horde : blessez au moins deux ennemis dans le tour (corps à corps ou coups du Cœur de fer) ; au tour suivant, si vous combattez sur la défensive ou prenez –4 avec Expertise du combat, +2 aux jets d’attaque contre ces ennemis."
+      },
+      "prerequisite": "has('feat.ironheart_aura') and @bab >= 6 and @maneuvers.count[discipline.iron_heart] >= 2",
+      "note": "Don tactique : chaque option se prépare sur un tour et se déclenche au tour suivant. Condition non vérifiée par la fiche : maniement d’une arme de prédilection du Cœur de fer."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.clarion_commander",
+      "relation": "requires",
+      "to": "feat.white_raven_defense"
+    },
+    {
+      "from": "feat.distant_horizon",
+      "relation": "requires",
+      "to": "feat.falling_sun_attack"
+    },
+    {
+      "from": "feat.faith_unswerving",
+      "relation": "requires",
+      "to": "feat.devoted_bulwark"
+    },
+    {
+      "from": "feat.gloom_razor",
+      "relation": "requires",
+      "to": "feat.shadow_blade"
+    },
+    {
+      "from": "feat.perfect_clarity_of_mind_and_body",
+      "relation": "requires",
+      "to": "feat.unnerving_calm"
+    },
+    {
+      "from": "feat.scorching_sirocco",
+      "relation": "requires",
+      "to": "feat.desert_wind_dodge"
+    },
+    {
+      "from": "feat.shards_of_granite",
+      "relation": "requires",
+      "to": "feat.stone_power"
+    },
+    {
+      "from": "feat.stormguard_warrior",
+      "relation": "requires",
+      "to": "feat.ironheart_aura"
+    }
+  ]
+}

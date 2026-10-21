@@ -1,0 +1,679 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.steely_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe d’acier",
+        "en": "Steely Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Tout le reste s’efface : il n’y a plus qu’un adversaire, et vous lui portez un coup net sans plus vous soucier de votre garde.\n\nEn jeu\n• Une attaque au corps à corps, avec un bonus de +4 au jet d’attaque.\n• Pendant 1 round, tous les adversaires autres que votre cible gagnent +4 aux jets d’attaque contre vous."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round (voir texte)"
+      }
+    },
+    {
+      "id": "stance.punishing_stance",
+      "type": "stance",
+      "name": {
+        "fr": "Posture punitive",
+        "en": "Punishing Stance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Arme levée au-dessus de la tête, vous abattez chaque coup de toute votre masse, quitte à laisser vos flancs exposés.\n\nEn jeu\n• Toutes vos attaques au corps à corps infligent 1d6 points de dégâts supplémentaires.\n• Vous subissez un malus de –2 à la CA."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "dice",
+          "value": "1d6",
+          "condition": "active('toggle.punishing_stance')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.punishing_stance')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.disarming_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe désarmante",
+        "en": "Disarming Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre lame vise la main qui tient l’arme ; la blessure est telle que l’ennemi n’a d’autre choix que de lâcher prise.\n\nEn jeu\n• Une attaque au corps à corps.\n• Si elle touche et inflige des dégâts, vous pouvez aussi tenter un désarmement.\n• Ce désarmement ne provoque pas d’attaque d’opportunité et l’adversaire ne peut pas vous désarmer en retour."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 2,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.wall_of_blades",
+      "type": "maneuver",
+      "name": {
+        "fr": "Mur de lames",
+        "en": "Wall of Blades"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Votre arme oscille sans cesse devant vous et vient heurter celle de l’ennemi à l’instant précis où elle s’abat.\n\nEn jeu\n• Quand un ennemi vous vise d’une attaque au corps à corps ou à distance, faites un jet d’attaque avec une arme de corps à corps que vous tenez.\n• Votre CA contre cette attaque devient la plus haute valeur entre votre CA et ce jet.\n• Vous pouvez décider après avoir appris le résultat de l’attaque adverse.\n• Impossible si vous êtes privé de votre bonus de Dextérité à la CA face à cet attaquant."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 2,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.exorcism_of_steel",
+      "type": "maneuver",
+      "name": {
+        "fr": "Exorcisme d’acier",
+        "en": "Exorcism of Steel"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous ne frappez pas l’ennemi mais son arme, et l’onde de choc remonte jusqu’à son épaule, lui ôtant toute sa force.\n\nEn jeu\n• Vous attaquez l’arme de l’adversaire (règles de destruction d’objet) sans provoquer d’attaque d’opportunité.\n• En cas de réussite, le porteur subit un malus de –4 aux jets de dégâts au corps à corps pendant 1 minute.\n• Jet de Volonté (DD 13 + modificateur de Force) pour réduire ce malus de moitié.\n• Seulement contre des armes manufacturées, pas contre des armes naturelles."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 3,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 minute",
+        "savingThrow": "Volonté, ½ dégâts"
+      }
+    },
+    {
+      "id": "stance.absolute_steel",
+      "type": "stance",
+      "name": {
+        "fr": "Acier absolu",
+        "en": "Absolute Steel"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Le poids sur les talons, la lame pointée en avant, vous restez prêt à bondir de côté au moindre geste adverse.\n\nEn jeu\n• Bonus d’altération de +3 m à votre vitesse.\n• Si vous vous déplacez d’au moins 3 m pendant votre tour, vous gagnez un bonus d’esquive de +2 à la CA jusqu’au début de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 3,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.absolute_steel')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "dodge",
+          "situation": "situation.after_moving_3m",
+          "condition": "active('toggle.absolute_steel')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.lightning_recovery",
+      "type": "maneuver",
+      "name": {
+        "fr": "Reprise éclair",
+        "en": "Lightning Recovery"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Votre coup manque, mais la lame repart aussitôt dans l’autre sens, si vite que l’ennemi n’a pas le temps de s’en réjouir.\n\nEn jeu\n• Quand l’une de vos attaques au corps à corps rate, vous pouvez relancer ce jet d’attaque avec un bonus de +2."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 4,
+        "kind": "counter",
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.mithral_tornado",
+      "type": "maneuver",
+      "name": {
+        "fr": "Tornade de mithral",
+        "en": "Mithral Tornado"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous faites tournoyer votre arme au-dessus de votre tête jusqu’à ce qu’elle devienne un cercle flou, puis la lâchez sur tout ce qui vous entoure.\n\nEn jeu\n• Une attaque au corps à corps contre chaque adversaire adjacent, résolue séparément.\n• Chaque attaque se fait à votre bonus d’attaque le plus élevé, avec +2."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 4,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "tous les adversaires adjacents"
+      }
+    },
+    {
+      "id": "maneuver.dazing_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe étourdissante",
+        "en": "Dazing Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup placé exactement au bon endroit, et l’ennemi recule en titubant, l’esprit vide.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, dégâts normaux.\n• La cible doit réussir un jet de Vigueur (DD 15 + modificateur de Force) ou être hébétée pendant 1 round."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 5,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round",
+        "savingThrow": "Vigueur, partiel"
+      }
+    },
+    {
+      "id": "maneuver.iron_heart_focus",
+      "type": "maneuver",
+      "name": {
+        "fr": "Concentration du Cœur de fer",
+        "en": "Iron Heart Focus"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Au dernier instant, vous puisez dans vos réserves de volonté et rejetez l’effet qui allait vous terrasser.\n\nEn jeu\n• Relancez un jet de sauvegarde que vous venez de faire.\n• Vous devez garder le second résultat, même s’il est plus bas."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 5,
+        "kind": "counter",
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "stance.dancing_blade_form",
+      "type": "stance",
+      "name": {
+        "fr": "Forme de la lame dansante",
+        "en": "Dancing Blade Form"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous vous fendez comme un serpent qui frappe, si loin que l’adversaire n’en croit pas ses yeux.\n\nEn jeu\n• Pendant votre tour, votre allonge augmente de 1,50 m pour vos attaques au corps à corps.\n• Pas d’allonge accrue hors de votre tour (attaques d’opportunité, par exemple).\n• Combinée à d’autres manœuvres, cette posture ne peut pas augmenter votre allonge de plus de 1,50 m."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 5,
+        "kind": "stance",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.iron_heart_endurance",
+      "type": "maneuver",
+      "name": {
+        "fr": "Endurance du Cœur de fer",
+        "en": "Iron Heart Endurance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Vous repoussez la douleur de vos blessures et continuez à vous battre bien au-delà de ce qu’un corps devrait supporter.\n\nEn jeu\n• Utilisable seulement si vous avez la moitié ou moins de vos points de vie maximum.\n• Vous récupérez un nombre de points de vie égal à 2 × votre niveau."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 6,
+        "kind": "boost",
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.manticore_parry",
+      "type": "maneuver",
+      "name": {
+        "fr": "Parade de la manticore",
+        "en": "Manticore Parry"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "D’une parade fulgurante, vous détournez le coup de l’ennemi, qui part s’écraser sur quelqu’un d’autre.\n\nEn jeu\n• Contre une attaque au corps à corps armée qui vous vise : faites un jet d’attaque au corps à corps.\n• S’il dépasse le jet de l’adversaire, l’attaque est déviée vers une cible de votre choix adjacente à vous ; le jet de l’adversaire sert à voir si elle la touche.\n• À décider après l’attaque mais avant de savoir si elle touche ; une attaque ratée peut aussi être déviée.\n• Inutilisable contre les attaques à mains nues, les armes naturelles et les sorts de contact."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 6,
+        "kind": "counter",
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.finishing_move",
+      "type": "maneuver",
+      "name": {
+        "fr": "Coup de grâce",
+        "en": "Finishing Move"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous vous jetez sur l’ennemi blessé sans penser à votre défense, décidé à en finir sur-le-champ.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 4d6 points de dégâts supplémentaires.\n• 6d6 à la place si la cible n’a plus tous ses points de vie.\n• 14d6 à la place si elle a la moitié ou moins de ses points de vie maximum."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 7,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.scything_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame faucheuse",
+        "en": "Scything Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Votre revers large traverse un premier ennemi et poursuit sa course jusqu’au suivant.\n\nEn jeu\n• Si la première attaque au corps à corps de votre tour touche, vous faites aussitôt une attaque gratuite, à votre meilleur bonus, contre un autre ennemi que vous menacez.\n• Une seule attaque gratuite par utilisation."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 7,
+        "kind": "boost",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.adamantine_hurricane",
+      "type": "maneuver",
+      "name": {
+        "fr": "Ouragan d’adamantium",
+        "en": "Adamantine Hurricane"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous bondissez en tournoyant et votre arme balaie le cercle autour de vous comme une comète ; en retombant, vous laissez vos ennemis à terre.\n\nEn jeu\n• Deux attaques au corps à corps contre chaque adversaire adjacent que vous menacez.\n• Chaque attaque se fait à votre bonus d’attaque le plus élevé, avec +4."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 8,
+        "kind": "strike",
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une ou plusieurs créatures adjacentes que vous menacez"
+      }
+    },
+    {
+      "id": "maneuver.lightning_throw",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lancer de l’éclair",
+        "en": "Lightning Throw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous projetez votre arme qui file en tournoyant sur une ligne droite, fauchant tous ceux qui se trouvent sur son passage avant de revenir dans votre main.\n\nEn jeu\n• Faites une seule attaque au corps à corps (même si vous lancez l’arme) : chaque créature dans une ligne de 9 m subit vos dégâts normaux au corps à corps + 12d6.\n• Jet de Réflexes (DD égal au résultat de votre jet d’attaque) pour moitié dégâts.\n• Fonctionne avec presque n’importe quelle arme de corps à corps ; elle revient dans votre main à la fin du round."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 8,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "9 m",
+        "area": "ligne de 9 m",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, ½ dégâts"
+      }
+    },
+    {
+      "id": "stance.supreme_blade_parry",
+      "type": "stance",
+      "name": {
+        "fr": "Parade suprême",
+        "en": "Supreme Blade Parry"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Détendu, presque nonchalant, vous déviez chaque coup d’un simple tour de poignet, et les attaques ennemies n’arrivent plus qu’affaiblies.\n\nEn jeu\n• Réduction des dégâts 5/— contre tout adversaire qui ne vous prend pas au dépourvu.\n• Vous devez être formé au maniement de l’arme que vous portez ; à mains nues, il faut le don Science du combat à mains nues."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 8,
+        "kind": "stance",
+        "requires": 3,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": 5,
+          "condition": "active('toggle.supreme_blade_parry')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.strike_of_perfect_clarity",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de clarté parfaite",
+        "en": "Strike of Perfect Clarity"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Toute votre maîtrise se résume en un seul geste parfait, une coupe qui tranche presque n’importe quelle vie.\n\nEn jeu\n• Une attaque au corps à corps.\n• Si elle touche, elle inflige 100 points de dégâts supplémentaires en plus des dégâts normaux."
+      },
+      "maneuver": {
+        "discipline": "discipline.iron_heart",
+        "level": 9,
+        "kind": "strike",
+        "requires": 4,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.counter_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Contre-charge",
+        "en": "Counter Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Un pas de côté au dernier moment, et l’ennemi qui chargeait se retrouve emporté par son propre élan.\n\nEn jeu\n• Juste avant une charge contre vous, faites au choix un test opposé de Force ou de Dextérité ; la cible utilise la même caractéristique.\n• +4 au test de Force si vous êtes d’une catégorie de taille plus grande, +4 au test de Dextérité si vous êtes plus petit.\n• En cas de réussite, la créature ne vous attaque pas et vous pouvez la déplacer de 2 cases au plus en l’éloignant de vous.\n• En cas d’échec, elle gagne +2 à son attaque de charge, en plus du +2 normal de la charge."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 1,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.mighty_throw",
+      "type": "maneuver",
+      "name": {
+        "fr": "Projection puissante",
+        "en": "Mighty Throw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous saisissez l’élan de l’adversaire et, d’un mouvement de levier, l’envoyez rouler au sol.\n\nEn jeu\n• Réussissez une attaque de contact au corps à corps, puis résolvez un croc-en-jambe sans attaque d’opportunité et sans risque d’être renversé en retour.\n• Vous utilisez le plus haut de vos modificateurs de Force ou de Dextérité, avec +4 au test.\n• En cas de réussite, vous projetez la cible jusqu’à 3 m dans une case libre de votre choix, où elle tombe à terre ; sinon, elle tombe dans sa case.\n• La projection ne provoque pas d’attaque d’opportunité et peut traverser des cases occupées."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée"
+      }
+    },
+    {
+      "id": "stance.step_of_the_wind",
+      "type": "stance",
+      "name": {
+        "fr": "Pas du vent",
+        "en": "Step of the Wind"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Vous traversez gravats et sol défoncé avec une aisance trompeuse, et tirez parti de chaque ennemi qui trébuche.\n\nEn jeu\n• Vous ignorez les malus de vitesse, de déplacement et de tests de compétence liés au terrain difficile (Acrobaties, Saut, Escalade…).\n• Contre un adversaire ralenti par un terrain difficile : +2 aux jets d’attaque et +4 aux tests de Force ou de Dextérité de bousculade ou de croc-en-jambe, pour les réussir comme pour y résister."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_foe_in_difficult_terrain",
+          "condition": "active('toggle.step_of_the_wind')"
+        },
+        {
+          "target": "check.bull_rush",
+          "op": "add",
+          "value": 4,
+          "situation": "situation.vs_foe_in_difficult_terrain",
+          "condition": "active('toggle.step_of_the_wind')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.baffling_defense",
+      "type": "maneuver",
+      "name": {
+        "fr": "Défense déroutante",
+        "en": "Baffling Defense"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Perché sur un pied, les mains levées très haut, vous adoptez une pose si étrange que l’ennemi hésite sur la manière de frapper.\n\nEn jeu\n• Quand un adversaire vous attaque pendant son tour, remplacez votre CA par le résultat d’un test de Psychologie.\n• À décider après la déclaration de l’attaque mais avant d’en connaître le résultat ; s’applique à une seule attaque.\n• Vous devez être conscient de l’attaque ; impossible si vous êtes pris au dépourvu."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 2,
+        "kind": "counter",
+        "requires": 1,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.clever_positioning",
+      "type": "maneuver",
+      "name": {
+        "fr": "Placement habile",
+        "en": "Clever Positioning"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre coup déséquilibre l’ennemi ; vous en profitez pour vous glisser à sa place et le pousser dans la vôtre.\n\nEn jeu\n• Une attaque au corps à corps ; si elle touche, dégâts normaux et jet de Réflexes (DD 12 + modificateur de Dextérité).\n• En cas d’échec, vous échangez vos positions ; face à une cible de grande taille ou plus, vous pouvez occuper n’importe laquelle de ses cases.\n• Impossible si l’un de vous devait partager sa case avec une autre créature ou un obstacle infranchissable."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 2,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "savingThrow": "Réflexes, partiel"
+      }
+    },
+    {
+      "id": "maneuver.devastating_throw",
+      "type": "maneuver",
+      "name": {
+        "fr": "Projection dévastatrice",
+        "en": "Devastating Throw"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous agrippez l’ennemi par le bras, pivotez d’un demi-tour et le lancez tête la première loin de vous.\n\nEn jeu\n• Comme Projection puissante, mais vous devez d’abord vous déplacer d’au moins 4,50 m.\n• Attaque de contact au corps à corps, puis croc-en-jambe avec +4 au test.\n• En cas de réussite, la cible est projetée jusqu’à 3 m (+1,50 m par tranche de 5 points d’écart au test), tombe à terre et subit 2d6 points de dégâts.\n• Elle doit atterrir dans une case libre, sinon elle tombe dans sa case."
+      },
+      "maneuver": {
+        "discipline": "discipline.setting_sun",
+        "level": 3,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée"
+      }
+    }
+  ]
+}

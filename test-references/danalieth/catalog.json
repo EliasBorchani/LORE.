@@ -2985,34 +2985,6 @@
       },
       "status": "draft",
       "note": "stacks = true ; sinon Int 2 + 4 + 2 ne s'additionneraient pas"
-    },
-    {
-      "id": "stance.danalieth_attack_stance",
-      "type": "stance",
-      "name": {
-        "fr": "Posture de Danalieth (à identifier)",
-        "en": "Danalieth's stance (to identify)"
-      },
-      "provenance": "to confirm",
-      "source": "Book of Nine Swords ?",
-      "labels": [
-        "stance"
-      ],
-      "description": {
-        "fr": "+10 à l'attaque d'après la fiche (« Stance crit »)."
-      },
-      "effects": [
-        {
-          "target": "attack.melee",
-          "op": "add",
-          "value": 10,
-          "bonusType": "untyped",
-          "condition": "active('toggle.stance.danalieth_attack_stance')",
-          "status": "to confirm"
-        }
-      ],
-      "status": "to complete",
-      "note": "Which stance gives +10 attack?"
     }
   ],
   "progressions": [

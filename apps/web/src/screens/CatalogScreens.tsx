@@ -209,7 +209,7 @@ function FacetGroup(props: { facet: Facet; values: FacetValue[]; chosen: string[
   for (const value of chosen) {
     if (!values.some((v) => String(v.value) === value)) values.push({ value, count: 0 })
   }
-  if (facet === 'level') values.sort((a, b) => Number(a.value) - Number(b.value))
+  if (facet === 'level' || facet === 'maneuver_level') values.sort((a, b) => Number(a.value) - Number(b.value))
   const shown = all ? values : values.filter((v, i) => i < FACET_SHOWN || chosen.includes(String(v.value)))
   return (
     <fieldset className="facet">

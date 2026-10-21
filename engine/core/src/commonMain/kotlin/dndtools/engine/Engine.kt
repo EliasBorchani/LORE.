@@ -13,6 +13,13 @@ class Engine(catalog: Catalog) {
     /** Classes that cast spells, with their casting ability, kind and default mode. */
     internal val casters get() = compiled.casters
 
+    /** Classes that initiate maneuvers, with their key ability. */
+    internal val initiators get() = compiled.initiators
+
+    internal fun entity(id: String) = compiled.entity(id)
+
+    internal fun disciplines(classId: String) = compiled.disciplines(classId)
+
     /** Skills of the catalog, with their ability and armor check penalty. */
     internal val skills get() = compiled.skills
 

@@ -748,10 +748,6 @@
       "toggle": "toggle.spell_resistance",
       "spell": "spell.spell_resistance",
       "casterClass": "class.wizard"
-    },
-    {
-      "toggle": "toggle.stance.danalieth_attack_stance",
-      "entity": "stance.danalieth_attack_stance"
     }
   ],
   "choices": {

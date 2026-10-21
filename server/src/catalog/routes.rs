@@ -106,6 +106,46 @@ pub async fn spell_list(
     Ok(Json(spells))
 }
 
+#[derive(Serialize, sqlx::FromRow)]
+pub struct ManeuverEntry {
+    id: String,
+    r#type: String,
+    name: Option<Value>,
+    maneuver: Option<Value>,
+}
+
+/// The maneuvers and stances a class may learn (the disciplines it `initiates`), with their `maneuver` block, for
+/// picking them on the sheet.
+pub async fn maneuver_list(
+    State(pool): State<PgPool>,
+    user: CurrentUser,
+    Path((group_id, class_id)): Path<(String, String)>,
+) -> Result<Json<Vec<ManeuverEntry>>, AppError> {
+    let layers = layers(&pool, user, &group_id).await?;
+    let classes = vec![class_id.clone(), layers.stored(&class_id).to_owned()];
+    let mut maneuvers: Vec<ManeuverEntry> = bind_visible(
+        sqlx::query_as(&format!(
+            "SELECT e.id, e.type, v.content -> 'name' AS name, v.content -> 'maneuver' AS maneuver
+             FROM entity e
+             JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version
+             WHERE v.facet_discipline IN (
+                 SELECT r.to_id FROM entity_relation r WHERE r.from_id = ANY($1) AND r.relation = 'initiates'
+             ) AND {}",
+            Layers::visible("e", 2)
+        ))
+        .bind(&classes),
+        &layers,
+    )
+    .fetch_all(&pool)
+    .await?;
+    for maneuver in &mut maneuvers {
+        maneuver.id = layers.canonical(&maneuver.id).to_owned();
+    }
+    maneuvers.sort_by(|a, b| a.id.cmp(&b.id));
+    maneuvers.dedup_by(|a, b| a.id == b.id);
+    Ok(Json(maneuvers))
+}
+
 #[derive(Deserialize)]
 pub struct ListQuery {
     r#type: Option<String>,

@@ -43,8 +43,9 @@ rule sections plus the closure of its character's entities, and later only what 
   id, including inside formulas), outgoing relations except `on_spell_list`, and class table rows. Danalieth's closure
   (80 of 92 entities) gives the same 20 verified values in the reference runner. `{character}` instead of `{roots}`
   gives a draft character's closure (as `GET /characters/{id}/catalog`, every skill included), for the level-up preview.
-- Search (`server/src/catalog/search.rs`, `migrations/0004_search.sql` and `0007_search_filters.sql`): text plus
-  filters, as in the Catalog model. The values it reads are stored generated columns of `entity_version`
+- Search (`server/src/catalog/search.rs`, `migrations/0004_search.sql`, `0007_search_filters.sql` and
+  `0010_maneuver_filters.sql`): text plus filters, as in the Catalog model (maneuvers: `discipline`, `maneuver_level`,
+  read from the `maneuver` block). The values it reads are stored generated columns of `entity_version`
   (`search_*`, `facet_*`): Postgres computes them when a version is written, so import, restore and the editor need
   no extra step, and the export leaves them out. Computing them from the JSON at query time was several times too
   slow.
@@ -76,12 +77,13 @@ rule sections plus the closure of its character's entities, and later only what 
   shows who changed a level and when; versions from an import have none. A change of levels alone is a new version.
   Re-importing `lists.json` would overwrite levels edited in the app.
 - `GET /catalog/spell-list/{classId}`: the spells on a class's list with their level and name (for picking spells
-  known; the closure leaves `on_spell_list` out).
+  known; the closure leaves `on_spell_list` out). `GET /catalog/maneuvers/{classId}`: the maneuvers and stances of the
+  disciplines the class `initiates`, with their `maneuver` block (for picking them on the Build screen).
 - Endpoints: `GET /health`. Catalog reads go through a group (members only): `GET /groups/{g}/catalog/core`,
   `POST /groups/{g}/catalog/closure`, `GET /groups/{g}/entities?type=&after=&limit=` (paged by id, max 200; each item
   has `id`, `type`, `name`, `labels`, `houseRule?`), `GET /groups/{g}/search?…` (same items),
   `GET /groups/{g}/entities/{id}` (+ `overrides`, `ruleset`, `editable`), `…/versions`,
-  `GET /groups/{g}/catalog/spell-list/{class}`, `GET /groups/{g}/catalog/states` (the `toggle.*` and `situation.*`
+  `GET /groups/{g}/catalog/spell-list/{class}`, `GET /groups/{g}/catalog/maneuvers/{class}`, `GET /groups/{g}/catalog/states` (the `toggle.*` and `situation.*`
   ids the group's content names, from the stored column `facet_states`, `migrations/0009_cms.sql`). Atelier
   (`atelier.rs`, `docs/prd-cms.md`): `GET|POST /groups/{g}/drafts`, `GET|PUT|DELETE /groups/{g}/drafts/{id}` (the
   author's only, an opaque `payload`, 256 KB and 200 per account at most; archived group: delete only),

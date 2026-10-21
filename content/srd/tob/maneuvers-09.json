@@ -1,0 +1,29 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.war_masters_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge du maître de guerre",
+        "en": "War Master’s Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre cri de ralliement soulève toute la ligne : vous fondez sur l’ennemi en tête d’un coin humain que rien n’arrête, chaque compagnon porté par votre élan.\n\nEn jeu\n• Vous chargez un adversaire ; chaque allié à 9 m ou moins de vous au début de votre tour peut charger la même cible par une action immédiate, et vous ne vous gênez pas entre vous pour charger.\n• Votre attaque de charge inflige 50 points de dégâts en plus, celle de chaque allié 25 points en plus.\n• Chaque participant (vous compris) donne +2 cumulatif aux jets d’attaque de toutes ces charges, en plus du bonus normal de charge.\n• Une cible touchée par vous et par au moins un allié est étourdie pendant 1 round.\n• Ni vous ni vos alliés ne provoquez d’attaque d’opportunité en vous déplaçant pendant cette charge."
+      },
+      "maneuver": {
+        "discipline": "discipline.white_raven",
+        "level": 9,
+        "kind": "strike",
+        "requires": 4,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps (voir texte)",
+        "target": "une créature (voir texte)"
+      }
+    }
+  ]
+}

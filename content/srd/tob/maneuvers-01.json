@@ -1,0 +1,784 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.blistering_flourish",
+      "type": "maneuver",
+      "name": {
+        "fr": "Floraison ardente",
+        "en": "Blistering Flourish"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Votre lame s’embrase et tournoie au-dessus de votre tête, puis la flamme éclate en un éclair aveuglant qui laisse vos ennemis clignant des yeux.\n\nEn jeu\n• Toutes les autres créatures dans une explosion de 9 m de rayon centrée sur vous font un jet de Vigueur (DD 11 + modificateur de Sagesse).\n• En cas d’échec, elles sont éblouies pendant 1 minute.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "9 m",
+        "area": "explosion de 9 m de rayon centrée sur vous",
+        "duration": "1 minute",
+        "savingThrow": "Vigueur, annule"
+      }
+    },
+    {
+      "id": "maneuver.burning_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame brûlante",
+        "en": "Burning Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "D’une torsion du poignet, vous libérez le feu caché dans votre arme : chaque arc qu’elle trace laisse une traînée de flammes.\n\nEn jeu\n• Jusqu’à la fin de votre tour, vos attaques au corps à corps infligent 1d6 points de dégâts de feu supplémentaires + 1 par niveau d’initiateur.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 1,
+        "kind": "boost",
+        "descriptors": [
+          "feu"
+        ],
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "dice",
+          "value": "1d6 fire",
+          "condition": "active('toggle.burning_blade')"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@initiator_level",
+          "condition": "active('toggle.burning_blade')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.distracting_ember",
+      "type": "maneuver",
+      "name": {
+        "fr": "Braise de diversion",
+        "en": "Distracting Ember"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Un tourbillon de poussière brûlante se lève près de votre adversaire et prend feu, donnant forme à un petit esprit de flammes qui le menace.\n\nEn jeu\n• Vous faites apparaître un petit élémentaire de feu (taille P) dans une case à 9 m ou moins.\n• Il menace les créatures à son allonge, ce qui peut vous offrir, à vous ou à un allié, une position de prise en tenaille.\n• Il ne fait aucune action ni attaque d’opportunité et disparaît à la fin de votre tour.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 1,
+        "kind": "boost",
+        "initiationAction": "1 action rapide",
+        "range": "9 m",
+        "effect": "un élémentaire de feu convoqué",
+        "duration": "jusqu’à la fin du tour"
+      }
+    },
+    {
+      "id": "maneuver.wind_stride",
+      "type": "maneuver",
+      "name": {
+        "fr": "Foulée du vent",
+        "en": "Wind Stride"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Un souffle chaud vous soulève presque du sol et vous emporte entre les combattants, plus vite que le regard ne peut suivre.\n\nEn jeu\n• Jusqu’à la fin de votre tour, bonus d’altération de +3 m à votre vitesse de déplacement au sol."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 1,
+        "kind": "boost",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 3,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.wind_stride')"
+        }
+      ]
+    },
+    {
+      "id": "stance.flames_blessing",
+      "type": "stance",
+      "name": {
+        "fr": "Bénédiction des flammes",
+        "en": "Flame’s Blessing"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Le feu vous reconnaît comme l’un des siens : les flammes vous lèchent sans vous mordre tant que vous gardez cette posture.\n\nEn jeu\n• Résistance au feu selon vos degrés de maîtrise en Acrobaties : 4 à 8 degrés, 5 ; 9 à 13, 10 ; 14 à 18, 20.\n• À partir de 19 degrés, immunité contre le feu.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 1,
+        "kind": "stance",
+        "descriptors": [
+          "feu"
+        ],
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.burning_brand",
+      "type": "maneuver",
+      "name": {
+        "fr": "Tison ardent",
+        "en": "Burning Brand"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Votre arme se change en une langue de feu rugissante qui s’étire au-delà de sa portée habituelle pour lécher l’ennemi.\n\nEn jeu\n• Jusqu’à la fin de votre tour, votre allonge augmente de 1,50 m.\n• Les dégâts de vos attaques au corps à corps avec cette arme deviennent des dégâts de feu, sans rien perdre (Force, dons, autres bonus).\n• Vous attaquez sinon normalement.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 2,
+        "kind": "boost",
+        "descriptors": [
+          "feu"
+        ],
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      }
+    },
+    {
+      "id": "maneuver.fire_riposte",
+      "type": "maneuver",
+      "name": {
+        "fr": "Riposte de feu",
+        "en": "Fire Riposte"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "La douleur du coup reçu se change aussitôt en colère brûlante, que vous renvoyez à celui qui vous a blessé.\n\nEn jeu\n• Quand une créature vous touche avec une arme de corps à corps ou une arme naturelle, vous pouvez faire immédiatement une attaque de contact au corps à corps.\n• Si elle touche, la cible subit 4d6 points de dégâts de feu.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 2,
+        "kind": "counter",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 1,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée"
+      }
+    },
+    {
+      "id": "maneuver.flashing_sun",
+      "type": "maneuver",
+      "name": {
+        "fr": "Soleil éclatant",
+        "en": "Flashing Sun"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre lame n’est plus qu’un reflet de lumière : les coups s’enchaînent si vite qu’un de plus se glisse dans la série.\n\nEn jeu\n• Dans le cadre d’une attaque à outrance, vous faites une attaque supplémentaire à votre meilleur bonus d’attaque.\n• Toutes vos attaques de ce round, y compris celle-ci, subissent un malus de –2."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 2,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action complexe",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.hatchlings_flame",
+      "type": "maneuver",
+      "name": {
+        "fr": "Flamme du dragonnet",
+        "en": "Hatchling’s Flame"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Une boule d’énergie bouillonnante se forme au bout de votre lame, puis se déchire en une vague de feu qui balaie vos ennemis.\n\nEn jeu\n• Cône de feu de 9 m : 2d6 points de dégâts de feu.\n• Jet de Réflexes pour moitié.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 2,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "9 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, ½ dégâts"
+      }
+    },
+    {
+      "id": "maneuver.death_mark",
+      "type": "maneuver",
+      "name": {
+        "fr": "Marque de mort",
+        "en": "Death Mark"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Le feu coule le long de votre lame jusque dans le corps de l’ennemi, qui luit un instant de l’intérieur avant d’exploser en flammes.\n\nEn jeu\n• Votre attaque au corps à corps inflige ses dégâts normaux, puis le feu jaillit de la cible en une étendue centrée sur elle.\n• Toutes les créatures dans la zone, cible comprise, subissent 6d6 points de dégâts de feu (Réflexes DD 13 + modificateur de Sagesse pour moitié).\n• Rayon selon la taille de la cible : P ou moins 1,50 m, M 3 m, G 6 m, TG 9 m, Gig 12 m, C 15 m.\n• Vous êtes immunisé contre ce feu.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 3,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "area": "étendue variable (voir texte)",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, ½ dégâts (voir texte)"
+      }
+    },
+    {
+      "id": "maneuver.fan_the_flames",
+      "type": "maneuver",
+      "name": {
+        "fr": "Attiser les flammes",
+        "en": "Fan the Flames"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Des flammes dansent sur votre lame, puis d’un revers sec vous projetez vers l’ennemi une boule de feu blanc grosse comme un poing.\n\nEn jeu\n• Attaque de contact à distance contre une créature à 9 m ou moins.\n• Si elle touche, 6d6 points de dégâts de feu.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 3,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "9 m",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.zephyr_dance",
+      "type": "maneuver",
+      "name": {
+        "fr": "Danse du zéphyr",
+        "en": "Zephyr Dance"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Vous pivotez avec la légèreté d’une brise du désert : l’arme ennemie ne fait qu’effleurer votre cape.\n\nEn jeu\n• Bonus d’esquive de +4 à la CA contre une seule attaque.\n• Vous pouvez décider de l’utiliser après le jet d’attaque adverse, mais avant les dégâts."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 3,
+        "kind": "counter",
+        "requires": 1,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée (voir texte)"
+      }
+    },
+    {
+      "id": "stance.holocaust_cloak",
+      "type": "stance",
+      "name": {
+        "fr": "Manteau de flammes",
+        "en": "Holocaust Cloak"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Le feu qui s’échappe de votre lame reste suspendu dans l’air autour de vous, prêt à mordre quiconque ose vous frapper.\n\nEn jeu\n• Tant que vous gardez cette posture, un adversaire adjacent qui vous touche au corps à corps subit 5 points de dégâts de feu.\n• Ne touche pas une créature qui vous attaque avec une arme à allonge.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 3,
+        "kind": "stance",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.firesnake",
+      "type": "maneuver",
+      "name": {
+        "fr": "Serpent de feu",
+        "en": "Firesnake"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Vous plantez votre arme dans le sol : un jet de feu en jaillit, retombe et rampe comme un serpent vers vos ennemis.\n\nEn jeu\n• Une ligne de feu de 18 m part d’une case adjacente et peut se courber librement ; elle se déplace de 18 m maximum par round, au sol uniquement.\n• Elle peut sortir de votre ligne de vue, sans vous apprendre ce qu’elle y trouve.\n• Une créature dont elle traverse l’espace subit 6d6 points de dégâts de feu (Réflexes DD 14 + modificateur de Sagesse pour moitié), une seule fois par round.\n• Après ce premier contact, elle n’a plus d’effet sur cette créature.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 4,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "18 m",
+        "area": "spéciale",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, ½ dégâts"
+      }
+    },
+    {
+      "id": "maneuver.searing_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame incandescente",
+        "en": "Searing Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Votre ki se change en feu, coule le long de vos bras et transforme votre arme en torrent de flammes dont la chaleur fait reculer ceux qui vous entourent.\n\nEn jeu\n• Jusqu’à la fin de votre tour, vos attaques au corps à corps infligent 2d6 points de dégâts de feu supplémentaires + 1 par niveau d’initiateur.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 4,
+        "kind": "boost",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "dice",
+          "value": "2d6 fire",
+          "condition": "active('toggle.searing_blade')"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@initiator_level",
+          "condition": "active('toggle.searing_blade')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.searing_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge incandescente",
+        "en": "Searing Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Vous fendez l’air vers votre adversaire, une traîne de flammes dans votre sillage.\n\nEn jeu\n• Vous devez charger un adversaire ; pendant la charge, vous volez à votre vitesse au sol avec une manœuvrabilité parfaite.\n• Si l’attaque de charge touche, elle inflige 5d6 points de dégâts de feu supplémentaires.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 4,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 1,
+        "initiationAction": "1 action complexe",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée"
+      }
+    },
+    {
+      "id": "maneuver.dragons_flame",
+      "type": "maneuver",
+      "name": {
+        "fr": "Flamme du dragon",
+        "en": "Dragon’s Flame"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Dans un rugissement de défi, vous enflammez votre ki et le crachez comme le souffle d’un dragon.\n\nEn jeu\n• Cône de feu de 9 m : 6d6 points de dégâts de feu.\n• Jet de Réflexes (DD 15 + modificateur de Sagesse) pour moitié.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 5,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "9 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, ½ dégâts"
+      }
+    },
+    {
+      "id": "maneuver.leaping_flame",
+      "type": "maneuver",
+      "name": {
+        "fr": "Flamme bondissante",
+        "en": "Leaping Flame"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Au moment où l’ennemi frappe, vous disparaissez dans un éclat de feu et de fumée pour surgir juste à côté de lui.\n\nEn jeu\n• Après la résolution d’une attaque au corps à corps ou à distance contre vous, vous vous téléportez dans une case adjacente à l’attaquant, jusqu’à 30 m.\n• La case doit être libre de toute créature ou objet.\n• Si aucune case adjacente n’est possible, la manœuvre échoue mais compte comme utilisée.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 5,
+        "kind": "counter",
+        "descriptors": [
+          "téléportation"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée"
+      }
+    },
+    {
+      "id": "maneuver.lingering_inferno",
+      "type": "maneuver",
+      "name": {
+        "fr": "Brasier persistant",
+        "en": "Lingering Inferno"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Une flamme bleue glisse de votre arme sur l’ennemi et s’accroche à lui comme une seconde peau.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 2d6 points de dégâts de feu supplémentaires.\n• Si elle touche, la cible subit encore 2d6 points de dégâts de feu au début de chacun de ses tours, pendant 3 rounds.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 5,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "3 rounds (voir texte)"
+      }
+    },
+    {
+      "id": "maneuver.desert_tempest",
+      "type": "maneuver",
+      "name": {
+        "fr": "Tempête du désert",
+        "en": "Desert Tempest"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous filez à travers le champ de bataille en tourbillon, laissant des traces de brûlure et des entailles derrière vous.\n\nEn jeu\n• Vous vous déplacez jusqu’à votre vitesse.\n• Chaque fois que vous quittez une case adjacente à un ennemi, vous pouvez d’abord lui porter une attaque au corps à corps, une seule fois par ennemi.\n• Ce déplacement provoque des attaques d’opportunité normalement."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "personnelle",
+        "target": "vous"
+      }
+    },
+    {
+      "id": "maneuver.ring_of_fire",
+      "type": "maneuver",
+      "name": {
+        "fr": "Anneau de feu",
+        "en": "Ring of Fire"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Vos pieds s’embrasent et vous courez autour de votre ennemi : la traînée de feu que vous laissez se referme en un brasier.\n\nEn jeu\n• Vous vous déplacez jusqu’à deux fois votre vitesse, sur un sol continu et solide, en laissant une traînée de flammes.\n• Si votre trajet forme une zone fermée, un brasier y éclate : 12d6 points de dégâts de feu à toutes les créatures à l’intérieur (Réflexes DD 16 + modificateur de Sagesse pour moitié).\n• Une seule zone par déplacement, au premier bouclage.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 6,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "spéciale (voir texte)",
+        "area": "spéciale (voir texte)",
+        "savingThrow": "Réflexes, ½ dégâts"
+      }
+    },
+    {
+      "id": "stance.fiery_assault",
+      "type": "stance",
+      "name": {
+        "fr": "Assaut ardent",
+        "en": "Fiery Assault"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Le feu court le long de vos bras et habille votre arme, et chacun de vos coups porte une brûlure.\n\nEn jeu\n• Tant que vous gardez cette posture, chaque attaque au corps à corps inflige 1d6 points de dégâts de feu supplémentaires.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 6,
+        "kind": "stance",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "dice",
+          "value": "1d6 fire",
+          "condition": "active('toggle.fiery_assault')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.inferno_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame infernale",
+        "en": "Inferno Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Un éclair aveuglant jaillit de votre arme qui, l’espace d’un instant, semble faite de magma en fusion.\n\nEn jeu\n• Jusqu’à la fin de votre tour, vos attaques au corps à corps infligent 3d6 points de dégâts de feu supplémentaires + 1 par niveau d’initiateur.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 7,
+        "kind": "boost",
+        "descriptors": [
+          "feu"
+        ],
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "jusqu’à la fin du tour"
+      },
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "dice",
+          "value": "3d6 fire",
+          "condition": "active('toggle.inferno_blade')"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "@initiator_level",
+          "condition": "active('toggle.inferno_blade')"
+        }
+      ]
+    },
+    {
+      "id": "maneuver.salamander_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge de la salamandre",
+        "en": "Salamander Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Vous roulez et zigzaguez à travers la mêlée, et chacun de vos pas fait naître derrière vous un mur de flammes spectrales.\n\nEn jeu\n• Charge : jusqu’à deux fois votre vitesse et une attaque, +2 à l’attaque et –2 à la CA jusqu’à votre prochain tour.\n• Le trajet peut tourner librement, ignore le terrain difficile et les créatures ; vous pouvez utiliser Acrobaties pour éviter les attaques d’opportunité ou traverser des cases ennemies.\n• Un mur de feu occupe chaque case du trajet pendant 5 rounds au maximum : 6d6 points de dégâts de feu à qui s’y tient au début de son tour ou le traverse, 3d6 à qui est adjacent au début de son tour.\n• Le mur ne bloque ni la ligne de vue ni la ligne d’effet ; vous pouvez le dissiper par une action rapide, et une nouvelle charge de la salamandre le dissipe.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 7,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 3,
+        "initiationAction": "1 action complexe",
+        "range": "spéciale",
+        "area": "une case de 1,50 m par 1,50 m de déplacement",
+        "duration": "instantanée ; 5 rounds (voir texte) (T)"
+      }
+    },
+    {
+      "id": "maneuver.wyrms_flame",
+      "type": "maneuver",
+      "name": {
+        "fr": "Flamme du grand dragon",
+        "en": "Wyrm’s Flame"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Votre lame tournoie et se charge de feu à chaque révolution ; d’un coup sec vous la pointez vers l’ennemi et libérez un mur de flammes rugissant.\n\nEn jeu\n• Cône de feu de 9 m : 10d6 points de dégâts de feu.\n• Jet de Réflexes (DD 18 + modificateur de Sagesse) pour moitié.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 8,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 3,
+        "initiationAction": "1 action simple",
+        "range": "9 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, ½ dégâts"
+      }
+    }
+  ]
+}

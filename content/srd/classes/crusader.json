@@ -1,0 +1,602 @@
+{
+  "entities": [
+    {
+      "id": "class.crusader",
+      "type": "class",
+      "name": {
+        "fr": "Croisé",
+        "en": "Crusader"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial",
+        "initiator"
+      ],
+      "description": {
+        "fr": "Le croisé ne doute pas. Il s’est donné tout entier à une cause ou à un dieu, et cette foi le porte au premier rang de chaque bataille. Les coups qu’il reçoit ne l’arrêtent pas : ils nourrissent sa colère et la rendent au centuple. Ses manœuvres lui viennent comme des éclairs d’inspiration, jamais tout à fait choisies, toujours au bon moment.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous sauf neutre strict.\n• Formé aux armes courantes et de guerre, à toutes les armures et à tous les boucliers, pavois compris.\n• Initiateur : manœuvres de Corbeau blanc, Dragon de pierre et Esprit dévoué ; caractéristique clé Charisme.\n• Aptitudes : contre-attaque furieuse et résolution d’acier (1) ; âme indomptable (2) ; élan fervent (3) ; châtiment (6, 2 par jour au niveau 18) ; Dur à cuire (10) ; endurance de l’âme (13)."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "source": "Book of Nine Swords",
+      "initiating": {
+        "ability": "cha"
+      },
+      "effects": [],
+      "note": "Pas de table épique dans le livre : au-delà du niveau 20, les manœuvres connues, préparées et les postures restent celles du niveau 20."
+    },
+    {
+      "id": "power.crusader_maneuvers",
+      "type": "class_power",
+      "name": {
+        "fr": "Manœuvres",
+        "en": "Maneuvers"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Le croisé prie cinq minutes et laisse sa foi choisir : au combat, ses manœuvres lui sont accordées une à une, au hasard de l’inspiration.\n\nEn jeu\n• Connaît 5 manœuvres et 1 posture au niveau 1, puis davantage selon la table ; il doit remplir le prérequis de chacune.\n• Niveau de manœuvre maximal : la moitié de son niveau d’initiateur, arrondie au supérieur (9 au plus).\n• Prépare ses manœuvres en 5 minutes de prière. Au début d’une rencontre, 2 d’entre elles, tirées au hasard, lui sont accordées (3 au niveau 10, 4 au niveau 20) ; les autres sont retenues.\n• Il ne peut initier qu’une manœuvre accordée. À la fin de chacun de ses tours, une manœuvre retenue (au hasard) lui est accordée.\n• Quand plus aucune ne peut lui être accordée, il récupère toutes ses manœuvres dépensées et un nouveau tirage commence.\n• Aux niveaux pairs à partir de 4, peut échanger une manœuvre connue contre une autre. Les postures ne s’échangent pas et ne se dépensent jamais.\n• Ses manœuvres ignorent la résistance à la magie et ne provoquent pas d’attaque d’opportunité."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.crusader_steely_resolve",
+      "type": "class_power",
+      "name": {
+        "fr": "Résolution d’acier",
+        "en": "Steely resolve"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Les blessures ne l’atteignent pas tout de suite : il les met de côté et continue de se battre.\n\nEn jeu\n• Réserve de dégâts différés, vide au début de chaque rencontre : les dégâts des coups reçus y vont au lieu de lui faire perdre des points de vie.\n• Capacité : 5 points, puis +5 aux niveaux 4, 8, 12, 16 et 20 (30 au niveau 20). Au-delà, les dégâts s’appliquent normalement.\n• À la fin de son tour suivant, il subit le total de la réserve, qui revient à 0.\n• Un soin peut réduire la réserve, ses points de vie, ou les deux. Les effets liés à l’attaque (poison, étourdissement…) s’appliquent tout de suite."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.crusader_furious_counterstrike",
+      "type": "class_power",
+      "name": {
+        "fr": "Contre-attaque furieuse",
+        "en": "Furious counterstrike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Chaque coup encaissé attise sa colère, et sa lame frappe d’autant plus fort.\n\nEn jeu\n• Pendant son tour, bonus à l’attaque et aux dégâts égal à sa réserve de dégâts différés divisée par 5 (au moins +1, au plus +6).\n• Sur la fiche : choisir la valeur du bonus en activant l’aptitude."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "@toggle.crusader_furious_counterstrike.value",
+          "condition": "active('toggle.crusader_furious_counterstrike')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "@toggle.crusader_furious_counterstrike.value",
+          "condition": "active('toggle.crusader_furious_counterstrike')"
+        }
+      ],
+      "tableValue": {
+        "max": 6
+      }
+    },
+    {
+      "id": "power.crusader_indomitable_soul",
+      "type": "class_power",
+      "name": {
+        "fr": "Âme indomptable",
+        "en": "Indomitable soul"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Sa foi fait de sa volonté un rempart que les charmes et les terreurs n’entament pas.\n\nEn jeu\n• Ajoute son bonus de Charisme aux jets de Volonté.\n• Ne se cumule pas avec la grâce divine du paladin."
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)"
+        }
+      ],
+      "note": "Le non-cumul avec la grâce divine n’est pas encore vérifié par la fiche."
+    },
+    {
+      "id": "power.crusader_zealous_surge",
+      "type": "class_power",
+      "name": {
+        "fr": "Élan fervent",
+        "en": "Zealous surge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Au moment où le sort allait le briser, sa ferveur le relève.\n\nEn jeu\n• Une fois par jour, relance un jet de sauvegarde après avoir vu le résultat, avant de savoir s’il est réussi ; le second jet compte."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.crusader_smite",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment",
+        "en": "Smite"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Toute sa colère et sa conviction dans une seule attaque.\n\nEn jeu\n• Une fois par jour (deux au niveau 18), sur sa prochaine attaque au corps à corps : bonus à l’attaque égal à son bonus de Charisme et bonus aux dégâts égal à son niveau de croisé."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.crusader') >= 18, 2, 1)"
+    },
+    {
+      "id": "power.crusader_die_hard",
+      "type": "class_power",
+      "name": {
+        "fr": "Dur à cuire",
+        "en": "Die hard"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Là où un autre s’effondrerait, il reste debout.\n\nEn jeu\n• Don supplémentaire : Dur à cuire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.crusader_mettle",
+      "type": "class_power",
+      "name": {
+        "fr": "Endurance de l’âme",
+        "en": "Mettle"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "class_power",
+        "crusader"
+      ],
+      "description": {
+        "fr": "Ce qui devrait l’affaiblir glisse sur lui sans prise.\n\nEn jeu\n• Quand il réussit un jet de Vigueur ou de Volonté contre un effet qui en a un moindre en cas de réussite (moitié, partiel), il n’en subit aucun.\n• Sans effet s’il est inconscient ou endormi."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.crusader",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.crusader_maneuvers",
+        "power.crusader_steely_resolve",
+        "power.crusader_furious_counterstrike"
+      ],
+      "maneuversKnown": 5,
+      "maneuversReadied": 5,
+      "stancesKnown": 1
+    },
+    {
+      "classId": "class.crusader",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.crusader_indomitable_soul"
+      ],
+      "maneuversKnown": 5,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.crusader",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.crusader_zealous_surge"
+      ],
+      "maneuversKnown": 6,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.crusader",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [],
+      "maneuversKnown": 6,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.crusader",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [],
+      "maneuversKnown": 7,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.crusader",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.crusader_smite"
+      ],
+      "maneuversKnown": 7,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.crusader",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "maneuversKnown": 8,
+      "maneuversReadied": 5,
+      "stancesKnown": 2
+    },
+    {
+      "classId": "class.crusader",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "maneuversKnown": 8,
+      "maneuversReadied": 5,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.crusader",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "maneuversKnown": 9,
+      "maneuversReadied": 5,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.crusader",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.crusader_die_hard"
+      ],
+      "maneuversKnown": 9,
+      "maneuversReadied": 6,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.crusader",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "maneuversKnown": 10,
+      "maneuversReadied": 6,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.crusader",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "maneuversKnown": 10,
+      "maneuversReadied": 6,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.crusader",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.crusader_mettle"
+      ],
+      "maneuversKnown": 11,
+      "maneuversReadied": 6,
+      "stancesKnown": 3
+    },
+    {
+      "classId": "class.crusader",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "maneuversKnown": 11,
+      "maneuversReadied": 6,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.crusader",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "maneuversKnown": 12,
+      "maneuversReadied": 6,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.crusader",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "maneuversKnown": 12,
+      "maneuversReadied": 6,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.crusader",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "maneuversKnown": 13,
+      "maneuversReadied": 6,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.crusader",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "maneuversKnown": 13,
+      "maneuversReadied": 6,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.crusader",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "maneuversKnown": 14,
+      "maneuversReadied": 6,
+      "stancesKnown": 4
+    },
+    {
+      "classId": "class.crusader",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "maneuversKnown": 14,
+      "maneuversReadied": 7,
+      "stancesKnown": 4
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.martial_lore"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "initiates",
+      "to": "discipline.devoted_spirit"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "initiates",
+      "to": "discipline.stone_dragon"
+    },
+    {
+      "from": "class.crusader",
+      "relation": "initiates",
+      "to": "discipline.white_raven"
+    },
+    {
+      "from": "power.crusader_die_hard",
+      "relation": "grants",
+      "to": "feat.diehard"
+    }
+  ]
+}

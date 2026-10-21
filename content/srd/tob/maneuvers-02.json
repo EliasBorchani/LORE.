@@ -1,0 +1,663 @@
+{
+  "entities": [
+    {
+      "id": "maneuver.inferno_blast",
+      "type": "maneuver",
+      "name": {
+        "fr": "Explosion infernale",
+        "en": "Inferno Blast"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike",
+        "supernatural"
+      ],
+      "description": {
+        "fr": "Une odeur de soufre monte, l’air se met à trembler, puis tout le ki du maître jaillit d’un coup en une fournaise qui fait couler l’acier et fendre la pierre.\n\nEn jeu\n• Explosion de 18 m de rayon centrée sur vous : 100 points de dégâts de feu à toutes les créatures de la zone.\n• Jet de Réflexes pour réduire les dégâts de moitié.\n• Vous n’êtes pas touché par votre propre explosion.\n• Capacité surnaturelle."
+      },
+      "maneuver": {
+        "discipline": "discipline.desert_wind",
+        "level": 9,
+        "kind": "strike",
+        "descriptors": [
+          "feu"
+        ],
+        "requires": 5,
+        "initiationAction": "1 action complexe",
+        "range": "18 m",
+        "area": "explosion de 18 m de rayon centrée sur vous",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, ½ dégâts"
+      }
+    },
+    {
+      "id": "maneuver.crusaders_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe du croisé",
+        "en": "Crusader’s Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Une lueur sacrée enveloppe l’arme ; au moment de l’impact, elle reflue vers le croisé ou un compagnon et referme les plaies.\n\nEn jeu\n• Attaque au corps à corps contre un ennemi dont l’alignement diffère du vôtre sur au moins une composante et qui menace directement vous ou vos alliés.\n• Si elle touche, vous ou un allié à 3 m ou moins récupérez 1d6 points de vie + 1 par niveau d’initiateur (+5 au maximum)."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.vanguard_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe d’avant-garde",
+        "en": "Vanguard Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un coup brutal fait voler la garde de l’adversaire en éclats et le laisse grand ouvert aux lames des compagnons.\n\nEn jeu\n• Attaque au corps à corps contre un adversaire que vous menacez.\n• Si elle touche, tous vos alliés gagnent +4 aux jets d’attaque au corps à corps et à distance contre cette cible jusqu’au début de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 1,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.iron_guards_glare",
+      "type": "stance",
+      "name": {
+        "fr": "Regard de la garde de fer",
+        "en": "Iron Guard’s Glare"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Un grognement, un regard noir, et l’ennemi qui visait votre compagnon hésite : c’est désormais vous qu’il doit surveiller.\n\nEn jeu\n• Tout adversaire que vous menacez subit −4 aux jets d’attaque contre vos alliés.\n• Ce malus ne s’applique pas à ses attaques contre vous.\n• Les ennemis menacés savent quel effet produit cette posture."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.martial_spirit",
+      "type": "stance",
+      "name": {
+        "fr": "Esprit martial",
+        "en": "Martial Spirit"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Chaque coup porté par le croisé fait passer une vague de vigueur dans les rangs de ses compagnons, comme si sa foi se changeait en souffle.\n\nEn jeu\n• Chaque fois que vous touchez au corps à corps, vous ou un allié à 9 m ou moins récupérez 2 points de vie.\n• Vous pouvez choisir un bénéficiaire différent à chaque attaque réussie."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 1,
+        "kind": "stance",
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.foehammer",
+      "type": "maneuver",
+      "name": {
+        "fr": "Marteau de l’ennemi",
+        "en": "Foehammer"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Tout le poids du corps suit la lame, et le coup traverse les protections magiques comme si elles n’existaient pas.\n\nEn jeu\n• Attaque au corps à corps contre un adversaire.\n• Cette attaque ignore la réduction des dégâts de la cible et inflige 2d6 points de dégâts en plus."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 2,
+        "kind": "strike",
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.shield_block",
+      "type": "maneuver",
+      "name": {
+        "fr": "Blocage au bouclier",
+        "en": "Shield Block"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "D’un élan désespéré, vous jetez votre bouclier entre un compagnon sans défense et la lame qui allait le frapper.\n\nEn jeu\n• Action immédiate : un allié adjacent gagne un bonus à la CA égal au bonus de bouclier de votre bouclier + 4.\n• Le bonus vaut contre une seule attaque au corps à corps ou à distance qui le vise.\n• À utiliser après le jet d’attaque de l’adversaire, mais avant d’en connaître le résultat."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 2,
+        "kind": "counter",
+        "initiationAction": "1 action immédiate",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "instantanée"
+      }
+    },
+    {
+      "id": "maneuver.defensive_rebuke",
+      "type": "maneuver",
+      "name": {
+        "fr": "Riposte défensive",
+        "en": "Defensive Rebuke"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "boost"
+      ],
+      "description": {
+        "fr": "Vos coups larges rappellent à chaque ennemi touché qu’il ne peut pas vous tourner le dos sans le payer.\n\nEn jeu\n• Jusqu’à la fin de la durée (1 round), chaque ennemi que vous touchez devient vulnérable.\n• Si un tel ennemi attaque au corps à corps quelqu’un d’autre que vous, chacune de ces attaques provoque une attaque d’opportunité de votre part.\n• Les ennemis touchés savent quel effet produit cette manœuvre."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 3,
+        "kind": "boost",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.revitalizing_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe revigorante",
+        "en": "Revitalizing Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Une aura divine se forme au moment où l’arme se lève, puis éclate à l’impact et recoud les blessures du croisé ou d’un proche.\n\nEn jeu\n• Attaque au corps à corps contre un ennemi dont l’alignement diffère du vôtre sur au moins une composante et qui menace directement vous ou vos alliés.\n• Si elle touche, vous ou un allié à 3 m ou moins récupérez 3d6 points de vie + 1 par niveau d’initiateur (+10 au maximum)."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 3,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.thicket_of_blades",
+      "type": "stance",
+      "name": {
+        "fr": "Hallier de lames",
+        "en": "Thicket of Blades"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Garde haute, regard aux aguets, vous transformez chaque mouvement adverse en ouverture pour votre lame.\n\nEn jeu\n• Tout adversaire que vous menacez provoque une attaque d’opportunité de votre part dès qu’il se déplace, même d’un pas de placement de 1,50 m.\n• L’attaque a lieu avant qu’il ne quitte la zone que vous menacez.\n• Vos adversaires ne peuvent pas utiliser l’action de retraite pour considérer leur case de départ comme non menacée par vous."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 3,
+        "kind": "stance",
+        "requires": 1,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.divine_surge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Déferlante divine",
+        "en": "Divine Surge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Une énergie divine sans frein secoue votre corps, jaillit de l’arme et s’abat sur l’ennemi en vous laissant vidé.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 8d8 points de dégâts en plus."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 4,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.entangling_blade",
+      "type": "maneuver",
+      "name": {
+        "fr": "Lame entravante",
+        "en": "Entangling Blade"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Vous taillez dans les jambes de l’adversaire, et chacun de ses pas devient lourd et hésitant.\n\nEn jeu\n• Attaque au corps à corps qui inflige 2d6 points de dégâts en plus.\n• Si elle touche, toutes les vitesses de la cible sont réduites de 6 m jusqu’à la fin de son prochain tour, ce qui peut l’immobiliser.\n• Une créature volante dont la vitesse de vol tombe à 0 chute (et subit les dégâts de chute)."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 4,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "voir texte"
+      }
+    },
+    {
+      "id": "maneuver.daunting_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe intimidante",
+        "en": "Daunting Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Le coup traverse bouclier et armure avec une telle sauvagerie que l’adversaire recule, la peur dans les yeux.\n\nEn jeu\n• Attaque au corps à corps contre un adversaire que vous menacez.\n• Si elle touche, la cible fait un jet de Volonté (DD égal aux dégâts infligés) ou est secouée pendant 1 minute."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 5,
+        "kind": "strike",
+        "requires": 1,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 minute",
+        "savingThrow": "Volonté, annule"
+      }
+    },
+    {
+      "id": "maneuver.doom_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge funeste",
+        "en": "Doom Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Une aura noire de mépris et de rancœur vous enveloppe tandis que vous fondez sur votre proie.\n\nEn jeu\n• Vous devez faire une charge.\n• Contre une cible d’alignement bon, l’attaque inflige 6d6 points de dégâts en plus.\n• Si l’attaque touche une cible bonne, vous gagnez RD 10/— jusqu’au début de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 5,
+        "kind": "strike",
+        "descriptors": [
+          "mal"
+        ],
+        "requires": 1,
+        "prerequisite": "alignement mauvais",
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.law_bearer",
+      "type": "maneuver",
+      "name": {
+        "fr": "Porteur de la loi",
+        "en": "Law Bearer"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’air vibre d’une énergie cosmique : l’espace d’un instant, vous incarnez l’ordre parfait et chargez pour le faire respecter.\n\nEn jeu\n• Vous devez faire une charge.\n• Contre une cible d’alignement chaotique : +8 au jet d’attaque (en plus du bonus de charge) et 4d6 points de dégâts en plus.\n• Si l’attaque touche une cible chaotique, vous gagnez +5 aux jets de sauvegarde et à la CA jusqu’au début de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 5,
+        "kind": "strike",
+        "descriptors": [
+          "loi"
+        ],
+        "requires": 1,
+        "prerequisite": "alignement loyal",
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.radiant_charge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Charge radieuse",
+        "en": "Radiant Charge"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Votre foi et votre discipline se changent en une gloire aveuglante qui vous entoure au moment de charger.\n\nEn jeu\n• Vous devez faire une charge.\n• Contre une cible d’alignement mauvais, l’attaque inflige 6d6 points de dégâts en plus.\n• Si l’attaque touche une cible mauvaise, vous gagnez RD 10/— jusqu’au début de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 5,
+        "kind": "strike",
+        "descriptors": [
+          "bien"
+        ],
+        "requires": 1,
+        "prerequisite": "alignement bon",
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.tide_of_chaos",
+      "type": "maneuver",
+      "name": {
+        "fr": "Marée du chaos",
+        "en": "Tide of Chaos"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Le chaos tourbillonne autour de vous et vous vous en remettez au hasard, qui guide votre charge mieux que n’importe quel plan.\n\nEn jeu\n• Vous devez faire une charge.\n• Contre une cible d’alignement loyal : +8 au jet d’attaque (en plus du bonus de charge) et 4d6 points de dégâts en plus.\n• Si l’attaque touche une cible loyale, vous bénéficiez d’un camouflage total contre toutes les attaques qui vous visent jusqu’au début de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 5,
+        "kind": "strike",
+        "descriptors": [
+          "chaos"
+        ],
+        "requires": 1,
+        "prerequisite": "alignement chaotique",
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round"
+      }
+    },
+    {
+      "id": "maneuver.rallying_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de ralliement",
+        "en": "Rallying Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "L’arme flamboie, et l’énergie libérée à l’impact se répand en une onde qui soigne toute la troupe.\n\nEn jeu\n• Attaque au corps à corps contre un ennemi dont l’alignement diffère du vôtre sur au moins une composante et qui menace directement vous ou vos alliés.\n• Si elle touche, vous et tous les alliés à 9 m ou moins récupérez 3d6 points de vie + 1 par niveau d’initiateur (+15 au maximum)."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 6,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "stance.aura_of_chaos",
+      "type": "stance",
+      "name": {
+        "fr": "Aura du chaos",
+        "en": "Aura of Chaos"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Une lueur violette et changeante vous entoure ; vos coups deviennent imprévisibles, parfois dévastateurs.\n\nEn jeu\n• Pour les dégâts au corps à corps, chaque dé qui donne son résultat maximal est relancé et le nouveau résultat s’ajoute aux dégâts.\n• On continue de relancer tant qu’un dé donne son maximum."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 6,
+        "kind": "stance",
+        "descriptors": [
+          "chaos"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.aura_of_perfect_order",
+      "type": "stance",
+      "name": {
+        "fr": "Aura d’ordre parfait",
+        "en": "Aura of Perfect Order"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Un carré de lumière dorée vous encadre ; ici, l’ordre règne et le hasard n’a plus sa place.\n\nEn jeu\n• Une fois par round, juste avant de lancer un d20 (attaque, sauvegarde, test…), vous pouvez décider que le résultat vaut 11 au lieu de lancer.\n• Ce choix ne demande aucune action."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 6,
+        "kind": "stance",
+        "descriptors": [
+          "loi"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.aura_of_triumph",
+      "type": "stance",
+      "name": {
+        "fr": "Aura de triomphe",
+        "en": "Aura of Triumph"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Une douce clarté dorée émane de vous, et chaque coup porté contre le mal vous donne un nouvel élan.\n\nEn jeu\n• Vous et un allié à 3 m ou moins récupérez chacun 4 points de vie chaque fois que l’un de vous deux touche au corps à corps une cible mauvaise."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 6,
+        "kind": "stance",
+        "descriptors": [
+          "bien"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous et un allié à 3 m ou moins",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "stance.aura_of_tyranny",
+      "type": "stance",
+      "name": {
+        "fr": "Aura de tyrannie",
+        "en": "Aura of Tyranny"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [],
+      "description": {
+        "fr": "Une lueur grise et maladive vous entoure et aspire la force de ceux qui vous suivent pour vous la rendre.\n\nEn jeu\n• À la fin de votre tour, vous pouvez infliger 2 points de dégâts à chaque allié consentant à 3 m ou moins.\n• Vous récupérez 1 point de vie par allié ainsi blessé."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 6,
+        "kind": "stance",
+        "descriptors": [
+          "mal"
+        ],
+        "requires": 2,
+        "initiationAction": "1 action rapide",
+        "range": "personnelle",
+        "target": "vous",
+        "duration": "posture"
+      }
+    },
+    {
+      "id": "maneuver.castigating_strike",
+      "type": "maneuver",
+      "name": {
+        "fr": "Frappe de châtiment",
+        "en": "Castigating Strike"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Avec un cri de guerre, l’arme crépite puis explose au point d’impact en une vague d’énergie divine qui fauche les ennemis de votre cause.\n\nEn jeu\n• Une attaque au corps à corps ; l’effet ne se produit que si elle touche un ennemi dont l’alignement diffère du vôtre sur au moins une composante.\n• La cible subit 8d6 points de dégâts en plus et fait un jet de Vigueur (DD 17 + modificateur de Charisme) ou subit −2 aux jets d’attaque pendant 1 minute.\n• Chaque adversaire dans une explosion de 9 m de rayon autour de la cible fait le même jet de Vigueur : en cas d’échec, 5d6 points de dégâts et −2 aux jets d’attaque pendant 1 minute ; en cas de réussite, moitié des dégâts et pas de malus."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 7,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action simple",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "area": "explosion de 9 m de rayon (voir texte)",
+        "duration": "1 minute",
+        "savingThrow": "Vigueur, partiel (voir texte)"
+      }
+    },
+    {
+      "id": "maneuver.shield_counter",
+      "type": "maneuver",
+      "name": {
+        "fr": "Contre au bouclier",
+        "en": "Shield Counter"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "counter"
+      ],
+      "description": {
+        "fr": "Au moment où l’adversaire arme son coup, vous lui assénez un revers de bouclier qui ruine son geste.\n\nEn jeu\n• Action immédiate, juste après qu’un adversaire que vous menacez a déclaré une attaque et avant son résultat : coup de bouclier contre lui avec un malus de −2.\n• Si le coup de bouclier touche, sa prochaine attaque rate automatiquement."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 7,
+        "kind": "counter",
+        "requires": 2,
+        "initiationAction": "1 action immédiate",
+        "range": "attaque au corps à corps",
+        "target": "une créature"
+      }
+    },
+    {
+      "id": "maneuver.greater_divine_surge",
+      "type": "maneuver",
+      "name": {
+        "fr": "Déferlante divine supérieure",
+        "en": "Divine Surge, Greater"
+      },
+      "provenance": "official",
+      "source": "Book of Nine Swords",
+      "labels": [
+        "strike"
+      ],
+      "description": {
+        "fr": "Un torrent d’énergie divine vous traverse ; par pure volonté vous le canalisez dans un coup terrible, au prix de votre propre chair.\n\nEn jeu\n• Une attaque au corps à corps qui inflige 6d8 points de dégâts en plus.\n• Avant l’attaque, vous pouvez subir un affaiblissement temporaire de Constitution, jusqu’à votre niveau d’initiateur  : chaque point donne +1 au jet d’attaque et 2d8 points de dégâts en plus.\n• Ensuite, vous êtes pris au dépourvu jusqu’au début de votre prochain tour."
+      },
+      "maneuver": {
+        "discipline": "discipline.devoted_spirit",
+        "level": 8,
+        "kind": "strike",
+        "requires": 2,
+        "initiationAction": "1 action complexe",
+        "range": "attaque au corps à corps",
+        "target": "une créature",
+        "duration": "1 round (voir texte)"
+      }
+    }
+  ]
+}

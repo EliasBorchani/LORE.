@@ -64,6 +64,8 @@ export interface Character {
   activeToggles?: ToggleChoice[]
   /** Class id to how it casts and the spells it knows (or its spellbook). */
   spellcasting?: Record<string, { mode: string; known?: string[] }>
+  /** Initiator class id to the maneuvers and stances it learned. */
+  maneuvers?: Record<string, { known?: string[] }>
   variants?: SpellVariant[]
   /** Skill id to ranks, for the whole character. */
   skillRanks?: Record<string, number>
@@ -144,6 +146,10 @@ export interface ProgressionRow {
   /** By spell level from 0; null = « — ». */
   spellsPerDay?: (number | null)[]
   spellsKnown?: (number | null)[]
+  /** Initiator classes (Tome of Battle). */
+  maneuversKnown?: number
+  maneuversReadied?: number
+  stancesKnown?: number
 }
 
 export interface Relation {
@@ -191,13 +197,21 @@ export interface SpellListEntry {
   name: Localized | null
 }
 
+/** A maneuver or stance a class may learn (`catalog/maneuvers/{class}`). */
+export interface ManeuverEntry {
+  id: string
+  type: string
+  name: Localized | null
+  maneuver: { discipline: string; level: number; kind: string; requires?: number } | null
+}
+
 export interface EntityPage {
   items: EntitySummary[]
   next?: string
 }
 
-/** The search filters; their values come from the content (`server/migrations/0007_search_filters.sql`). */
-export const FACETS = ['school', 'descriptor', 'list', 'level', 'affects'] as const
+/** The search filters; their values come from the content (`server/migrations/0007_search_filters.sql`, `0010`). */
+export const FACETS = ['school', 'descriptor', 'list', 'level', 'affects', 'discipline', 'maneuver_level'] as const
 export type Facet = (typeof FACETS)[number]
 export type SearchFilters = Partial<Record<Facet, string[]>>
 

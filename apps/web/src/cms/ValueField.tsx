@@ -23,7 +23,7 @@ function sourceKey(source: LevelSource): string {
 }
 
 function sourceOf(key: string): LevelSource {
-  return key === 'character' || key === 'caster' ? { kind: key } : { kind: 'class', classId: key }
+  return key === 'character' || key === 'caster' || key === 'initiator' ? { kind: key } : { kind: 'class', classId: key }
 }
 
 function Int({ value, onChange, label, min }: { value: number; onChange: (n: number) => void; label: string; min?: number }) {
@@ -68,6 +68,7 @@ export function ValueField({ value, onChange, dice }: { value: string | number; 
           <select className="input" value={sourceKey(model.source)} aria-label={t.source} onChange={(e) => emit({ ...model, source: sourceOf(e.target.value) })}>
             <option value="character">{t.character}</option>
             <option value="caster">{t.caster}</option>
+            <option value="initiator">{t.initiator}</option>
             <optgroup label={t.classes}>
               {model.source.kind === 'class' && !classes.some((c) => c.key === sourceKey(model.source)) && (
                 <option value={sourceKey(model.source)}>{sourceKey(model.source)}</option>

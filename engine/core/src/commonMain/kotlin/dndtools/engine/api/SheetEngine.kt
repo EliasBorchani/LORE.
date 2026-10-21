@@ -7,6 +7,7 @@ import dndtools.engine.formula.Value
 import dndtools.engine.json.EngineJson
 import dndtools.engine.math.Fraction
 import dndtools.engine.model.Character
+import dndtools.engine.model.ManeuverKind
 import dndtools.engine.model.SpellVariant
 import dndtools.engine.model.ToggleChoice
 import dndtools.engine.resolve.BreakdownLine
@@ -91,6 +92,57 @@ class CharacterSheet internal constructor(private val engine: Engine, private va
                 spells = choice?.known.orEmpty(),
             )
         }
+
+    /**
+     * Each initiator the character has (a class, or a feat such as Martial Study): initiator level, highest maneuver
+     * level, its counts, the disciplines it may learn from, the maneuvers and stances learned through it, and what
+     * breaks the rules.
+     */
+    val initiators: List<InitiatorLine>
+        get() {
+            val levels = character.levels.let { if (atLevel == null) it else it.take(atLevel) }
+            val had = engine.initiators.filterKeys { id -> levels.any { it.classId == id } || session.isSource(id) }
+            val allKnown = session.knownManeuvers()
+            return had.map { (classId, def) ->
+                val short = CompiledCatalog.initiatorKey(classId)
+                val known = character.maneuvers[classId]?.known.orEmpty()
+                val infos = known.associateWith { engine.entity(it)?.maneuver }
+                val (stances, maneuvers) = known.partition { infos[it]?.kind == ManeuverKind.STANCE }
+                val disciplines = engine.disciplines(classId)
+                val maxLevel = number("maneuvers.max_level.$short")
+                val issues = buildList {
+                    for (id in known) {
+                        val info = infos[id]
+                        when {
+                            info == null -> add(ManeuverIssue(id, "unknown"))
+                            info.discipline !in disciplines -> add(ManeuverIssue(id, "discipline"))
+                            maxLevel != null && info.level > maxLevel -> add(ManeuverIssue(id, "level"))
+                            else -> {
+                                val sameDiscipline = allKnown.count { it != id && engine.entity(it)?.maneuver?.discipline == info.discipline }
+                                if (sameDiscipline < info.requires) add(ManeuverIssue(id, "requires"))
+                            }
+                        }
+                    }
+                    number("maneuvers.known.$short")?.let { if (maneuvers.size > it) add(ManeuverIssue(null, "too_many")) }
+                    number("maneuvers.stances.$short")?.let { if (stances.size > it) add(ManeuverIssue(null, "too_many_stances")) }
+                }
+                InitiatorLine(
+                    classId = classId,
+                    ability = def.ability?.name?.lowercase(),
+                    initiatorLevel = statistic("initiator_level.$short")?.text,
+                    maxManeuverLevel = statistic("maneuvers.max_level.$short")?.text,
+                    maneuversKnown = statistic("maneuvers.known.$short")?.text,
+                    maneuversReadied = statistic("maneuvers.readied.$short")?.text,
+                    stancesKnown = statistic("maneuvers.stances.$short")?.text,
+                    disciplines = disciplines,
+                    maneuvers = maneuvers,
+                    stances = stances,
+                    issues = issues,
+                )
+            }
+        }
+
+    private fun number(key: String): Long? = (session.sheet.values[key] as? Value.Num)?.value?.floor()
 
     /** Every skill of the catalog with the character's ranks, maximum ranks and total. */
     val skills: List<SkillLine>
@@ -246,6 +298,34 @@ data class CasterLine(
     /** Spells known or in the spellbook. */
     val spells: List<String>,
 )
+
+/**
+ * One initiator: a class, or a feat that gives maneuvers ([classId] is then the feat's id). Counts are exact text.
+ * Save DCs are written in each maneuver, which names its own ability.
+ */
+@JsExport
+data class InitiatorLine(
+    val classId: String,
+    /** The class's key ability, when it has one. */
+    val ability: String?,
+    val initiatorLevel: String?,
+    val maxManeuverLevel: String?,
+    val maneuversKnown: String?,
+    val maneuversReadied: String?,
+    val stancesKnown: String?,
+    val disciplines: List<String>,
+    val maneuvers: List<String>,
+    val stances: List<String>,
+    val issues: List<ManeuverIssue>,
+)
+
+/**
+ * A learned maneuver that breaks a rule: `unknown` (not a maneuver of the catalog), `discipline` (the class does not
+ * initiate it), `level` (above the highest level), `requires` (too few known of its discipline); or, with no
+ * [entity], `too_many` / `too_many_stances` (more than the table gives).
+ */
+@JsExport
+data class ManeuverIssue(val entity: String?, val code: String)
 
 @JsExport
 data class VariantLine(

@@ -26,6 +26,10 @@ pub struct SearchQuery {
     /// Spell levels; with `list`, both on the same spell list entry.
     level: Option<String>,
     affects: Option<String>,
+    /// Discipline ids of maneuvers and stances.
+    discipline: Option<String>,
+    /// Maneuver levels (1 to 9).
+    maneuver_level: Option<String>,
     offset: Option<i64>,
     limit: Option<i64>,
     /// Adds the count of each filter value (the app asks for it with the first page).
@@ -77,6 +81,8 @@ enum Facet {
     List,
     Level,
     Affects,
+    Discipline,
+    ManeuverLevel,
 }
 
 struct Filters {
@@ -86,6 +92,8 @@ struct Filters {
     /// Kept as text: compared with the relation's `level` read as text, so a malformed stored level never errors.
     level: Vec<String>,
     affects: Vec<String>,
+    discipline: Vec<String>,
+    maneuver_level: Vec<i32>,
 }
 
 impl Filters {
@@ -99,12 +107,22 @@ impl Filters {
                     .map_err(|_| AppError::BadRequest(format!("level: {level} is not a number")))
             })
             .collect::<Result<_, _>>()?;
+        let maneuver_level = values(&query.maneuver_level)
+            .into_iter()
+            .map(|level| {
+                level.parse::<i32>().map_err(|_| {
+                    AppError::BadRequest(format!("maneuver_level: {level} is not a number"))
+                })
+            })
+            .collect::<Result<_, _>>()?;
         Ok(Self {
             school: values(&query.school),
             descriptor: values(&query.descriptor),
             list: values(&query.list),
             level,
             affects: values(&query.affects),
+            discipline: values(&query.discipline),
+            maneuver_level,
         })
     }
 
@@ -114,6 +132,8 @@ impl Filters {
             && self.list.is_empty()
             && self.level.is_empty()
             && self.affects.is_empty()
+            && self.discipline.is_empty()
+            && self.maneuver_level.is_empty()
     }
 
     /// The filters on the rows of `base b`, except `skip`. List and level live on one relation row, so a facet
@@ -133,6 +153,16 @@ impl Filters {
             sql.push(" AND b.facet_affects && ")
                 .push_bind(self.affects.clone())
                 .push("::text[]");
+        }
+        if skip != Some(Facet::Discipline) && !self.discipline.is_empty() {
+            sql.push(" AND b.facet_discipline = ANY(")
+                .push_bind(self.discipline.clone())
+                .push("::text[])");
+        }
+        if skip != Some(Facet::ManeuverLevel) && !self.maneuver_level.is_empty() {
+            sql.push(" AND b.facet_maneuver_level = ANY(")
+                .push_bind(self.maneuver_level.clone())
+                .push("::integer[])");
         }
         let on_list = !matches!(skip, Some(Facet::List | Facet::Level));
         if on_list && (!self.list.is_empty() || !self.level.is_empty()) {
@@ -267,7 +297,10 @@ fn push_base(
     text: &Option<Text>,
     ranked: bool,
 ) {
-    sql.push("WITH base AS (SELECT e.id, v.facet_school, v.facet_descriptors, v.facet_affects");
+    sql.push(
+        "WITH base AS (SELECT e.id, v.facet_school, v.facet_descriptors, v.facet_affects, \
+         v.facet_discipline, v.facet_maneuver_level",
+    );
     if ranked {
         sql.push(", e.type, v.content -> 'name' AS name, v.content -> 'labels' AS labels, v.search_sort, ");
         match text {
@@ -366,9 +399,9 @@ pub async fn search(
     })
 }
 
-/// `{school, descriptor, list, level, affects}`: each a list of `{value, count}` (with `name` when the value is an
-/// entity id), most results first. A facet is counted without its own filter, so choosing Fire still shows how many
-/// Cold spells there are; values with no result are absent.
+/// `{school, descriptor, list, level, affects, discipline, maneuver_level}`: each a list of `{value, count}` (with
+/// `name` when the value is an entity id), most results first. A facet is counted without its own filter, so choosing
+/// Fire still shows how many Cold spells there are; values with no result are absent.
 async fn facets(
     pool: &PgPool,
     layers: &Layers,
@@ -421,6 +454,22 @@ async fn facets(
         Facet::Affects,
         "to_jsonb(a)",
         ", unnest(b.facet_affects) a",
+    );
+    sql.push(", ");
+    counted(
+        &mut sql,
+        "discipline",
+        Facet::Discipline,
+        "to_jsonb(b.facet_discipline)",
+        "",
+    );
+    sql.push(", ");
+    counted(
+        &mut sql,
+        "maneuver_level",
+        Facet::ManeuverLevel,
+        "to_jsonb(b.facet_maneuver_level)",
+        "",
     );
     sql.push(", ");
     let spell_lists =
