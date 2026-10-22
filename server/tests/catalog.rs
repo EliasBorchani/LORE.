@@ -579,6 +579,56 @@ async fn search_finds_words_in_descriptions_after_names(pool: PgPool) {
 }
 
 #[sqlx::test(migrator = "server::MIGRATOR")]
+async fn results_bring_their_card_and_the_names_it_needs(pool: PgPool) {
+    let mut catalog = search_catalog();
+    catalog["entities"].as_array_mut().unwrap().push(json!({
+        "id": "feat.mobility", "type": "feat", "name": { "fr": "Souplesse du serpent" },
+        "prerequisite": "has('feat.dodge')", "note": "not on the card",
+        "description": { "fr": "Esquiver en mouvement.\n\nEn jeu\n• +4 à la CA." }
+    }));
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
+
+    let page = search_page(&pool, "/search?q=boule").await;
+    let card = &page["items"][0]["card"];
+    assert_eq!(card["spell"]["school"], "Évocation");
+    assert_eq!(card["blurb"]["fr"], "Une explosion de flammes.");
+    assert_eq!(
+        card["spellLevels"],
+        json!([{ "list": "class.cleric", "level": 8 }, { "list": "class.wizard", "level": 3 }])
+    );
+    let names: Vec<&str> = page["references"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|r| r["id"].as_str().unwrap())
+        .collect();
+    assert_eq!(names, ["class.cleric", "class.wizard"]);
+
+    let page = search_page(&pool, "/entities?type=feat&card=true").await;
+    let mobility = page["items"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|item| item["id"] == "feat.mobility")
+        .unwrap();
+    assert_eq!(mobility["card"]["prerequisite"], "has('feat.dodge')");
+    assert_eq!(mobility["card"]["blurb"]["fr"], "Esquiver en mouvement.");
+    assert!(mobility["card"].get("note").is_none());
+    assert!(mobility["card"].get("description").is_none());
+    assert_eq!(page["references"][0]["name"]["fr"], "Esquive");
+    let plain = search_page(&pool, "/entities?type=feat").await;
+    assert!(plain["items"][0].get("card").is_none());
+
+    let counts = search_page(&pool, "/catalog/counts").await;
+    assert_eq!(
+        counts,
+        json!({ "class": 2, "class_power": 1, "feat": 3, "spell": 5 })
+    );
+}
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
 async fn search_filters_spells_by_school_descriptor_and_list(pool: PgPool) {
     import(&pool, &official(), &search_catalog(), "test", None)
         .await

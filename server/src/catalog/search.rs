@@ -5,6 +5,8 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sqlx::{PgPool, Postgres, QueryBuilder};
 
+use super::cards;
+use super::routes::Reference;
 use super::stack::{HouseRule, Layers};
 use crate::error::AppError;
 
@@ -45,6 +47,8 @@ pub struct SearchPage {
     next: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     facets: Option<Value>,
+    /// The entities the cards name.
+    references: Vec<Reference>,
 }
 
 #[derive(Serialize)]
@@ -60,6 +64,8 @@ struct SearchItem {
     /// The group's house rule shown in place of the official entity.
     #[serde(skip_serializing_if = "Option::is_none")]
     house_rule: Option<HouseRule>,
+    /// What its result card shows (`cards.rs`).
+    card: Value,
 }
 
 #[derive(sqlx::FromRow)]
@@ -68,6 +74,7 @@ struct Row {
     r#type: String,
     name: Option<Value>,
     labels: Option<Value>,
+    content: Value,
     tier: i32,
 }
 
@@ -302,7 +309,7 @@ fn push_base(
          v.facet_discipline, v.facet_maneuver_level",
     );
     if ranked {
-        sql.push(", e.type, v.content -> 'name' AS name, v.content -> 'labels' AS labels, v.search_sort, ");
+        sql.push(", e.type, v.content -> 'name' AS name, v.content -> 'labels' AS labels, v.content, v.search_sort, ");
         match text {
             Some(text) => {
                 sql.push("CASE WHEN NOT ");
@@ -361,7 +368,7 @@ pub async fn search(
 
     let mut sql = QueryBuilder::new("");
     push_base(&mut sql, layers, &query.r#type, &text, true);
-    sql.push(" SELECT b.id, b.type, b.name, b.labels, b.tier FROM base b WHERE TRUE");
+    sql.push(" SELECT b.id, b.type, b.name, b.labels, b.content, b.tier FROM base b WHERE TRUE");
     filters.push(&mut sql, None);
     sql.push(" ORDER BY b.tier, CASE WHEN b.tier = ")
         .push_bind(DESCRIPTION_TIER)
@@ -376,15 +383,22 @@ pub async fn search(
     } else {
         None
     };
+    let contents = rows
+        .iter_mut()
+        .map(|row| (row.id.clone(), row.content.take()))
+        .collect();
+    let (cards, references) = cards::cards(pool, layers, contents).await?;
     let items = rows
         .into_iter()
-        .map(|row| SearchItem {
+        .zip(cards)
+        .map(|(row, card)| SearchItem {
             matched_in: (row.tier == DESCRIPTION_TIER).then_some("description"),
             house_rule: layers.house_rule(layers.canonical(&row.id)).cloned(),
             id: layers.canonical(&row.id).to_owned(),
             r#type: row.r#type,
             name: row.name,
             labels: row.labels,
+            card,
         })
         .collect();
     let facets = if query.facets {
@@ -396,6 +410,7 @@ pub async fn search(
         items,
         next,
         facets,
+        references,
     })
 }
 

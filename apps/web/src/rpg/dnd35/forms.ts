@@ -116,7 +116,7 @@ FORMS.push(
 )
 
 /** The nine disciplines of the Tome of Battle; a ruleset's own discipline is written in « Avancé ». */
-const DISCIPLINES = [
+export const DISCIPLINES = [
   ['desert_wind', 'Vent du désert'], ['devoted_spirit', 'Esprit dévoué'], ['diamond_mind', 'Esprit de diamant'],
   ['iron_heart', 'Cœur de fer'], ['setting_sun', 'Soleil couchant'], ['shadow_hand', 'Main de l’ombre'],
   ['stone_dragon', 'Dragon de pierre'], ['tiger_claw', 'Griffe du tigre'], ['white_raven', 'Corbeau blanc'],

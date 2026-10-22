@@ -62,7 +62,16 @@ from here: **no raw text to type anywhere — every choice is a dropdown**, as t
    multiplier, duration / range / area); repeatable entries (`repeatable`, a choice per take in the level-up); the skill
    form (ability, trained only, armor check penalty, synergies, which may also hold only in a situation); an effect
    with no statistic blocks « Publier ».
-3. Search cards.
+3. Search cards. **Written (2026-10-22), waiting for review.** Owner's choices: cards in one column (never a grid);
+   the catalog home as the Atelier's type cards, with each type's count. Each result is a card (`cms/EntityCard.tsx`,
+   generic) whose content its type decides (`rpg/dnd35/cards.ts`): a band in the type's, school's or first label's
+   colour with its mark, a kicker (school, labels, discipline), a large badge (hit die, key ability, maneuver level),
+   fact chips (spell: levels by list, casting time, range, duration, save, SR, components; weapon: damage, critical,
+   type, range; armor: bonus, max Dex, penalty, spell failure; cost and weight; feat: prerequisite in words,
+   repeatable, uses per day; class: skill points, spellcasting; race: ability adjustments, speed), the effects in
+   words, and the description's first paragraph. The server sends each result's `card` (content without description
+   or note, `blurb`, `spellLevels`) and the page's `references`. The editor's preview shows the same card above the
+   full one.
 4. Spell and item forms.
 5. Class and class table.
 

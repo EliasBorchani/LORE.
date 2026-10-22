@@ -189,6 +189,21 @@ export interface EntitySummary {
   name: Localized | null
   labels?: string[] | null
   houseRule?: HouseRule
+  /** What its result card shows: in search results, and in lists asked with `card`. */
+  card?: CardContent
+}
+
+/** The entity without its long text: the description's first paragraph instead, and a spell's levels. */
+export interface CardContent {
+  provenance?: string
+  source?: string
+  prerequisite?: string
+  usesPerDay?: string | number
+  repeatable?: { choose?: ChoiceKind }
+  effects?: Effect[]
+  blurb?: Localized
+  spellLevels?: { list: string; level: number | null }[]
+  [field: string]: unknown
 }
 
 export interface SpellListEntry {
@@ -208,6 +223,8 @@ export interface ManeuverEntry {
 export interface EntityPage {
   items: EntitySummary[]
   next?: string
+  /** The entities the cards name (lists asked with `card`). */
+  references?: EntityReference[]
 }
 
 /** The search filters; their values come from the content (`server/migrations/0007_search_filters.sql`, `0010`). */
@@ -233,6 +250,8 @@ export interface SearchPage {
   /** The `offset` of the next page. */
   next?: number
   facets?: Record<Facet, FacetValue[]>
+  /** The entities the cards name. */
+  references?: EntityReference[]
 }
 
 export interface EntityDetail {

@@ -76,7 +76,11 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   checkbox: a button placed before it would become the label's control. Every `Picker` row has one.
 - Catalog (`src/screens/CatalogScreens.tsx`): a search field on the catalog home (every type) and on each type's list
   (that type), sent to `/search` once typing pauses (250 ms). It finds names, ids and descriptions; a result found
-  only in its description says so. On a type's list, « Filtres » opens chips per filter the server returns (École,
+  only in its description says so. Results and type lists are one column of cards (`src/cms/EntityCard.tsx`, owner's
+  choice: never a grid); what a card shows is the RPG module's (`src/rpg/dnd35/cards.ts`, `cardOf`: per type a
+  colour and mark, a kicker, a large badge, fact chips, the effects in words, the description's first paragraph),
+  from the server's `card` and the page's `references`. The catalog home is the Atelier's type cards with counts
+  (`/catalog/counts`). The editor's preview shows the same card above the full one. On a type's list, « Filtres » opens chips per filter the server returns (École,
   Registre, Liste de sorts, Niveau de sort, Affecte), each with its count; a tap toggles it. Text and filters are
   copied to the address (`?q=…&level=8`), so back keeps the results. « Affecte » names: `affectsNames` in `fr.ts`.
   Prerequisites are readable (`src/content/prerequisite.ts`: `has('feat.x')` becomes the name from the server's

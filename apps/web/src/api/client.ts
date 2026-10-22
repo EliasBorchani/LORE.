@@ -244,8 +244,10 @@ export class GroupApi {
     this.client.request<SpellListEntry[]>('GET', `${this.base}/catalog/spell-list/${encodeURIComponent(classId)}`)
   maneuverList = (classId: string) =>
     this.client.request<ManeuverEntry[]>('GET', `${this.base}/catalog/maneuvers/${encodeURIComponent(classId)}`)
-  entities = (type: string, after?: string, limit = 50) =>
-    this.client.request<EntityPage>('GET', `${this.base}/entities?type=${encodeURIComponent(type)}&limit=${limit}${after ? `&after=${encodeURIComponent(after)}` : ''}`)
+  entities = (type: string, after?: string, limit = 50, card = false) =>
+    this.client.request<EntityPage>('GET', `${this.base}/entities?type=${encodeURIComponent(type)}&limit=${limit}${after ? `&after=${encodeURIComponent(after)}` : ''}${card ? '&card=true' : ''}`)
+  /** How many entries of each type the group sees. */
+  counts = () => this.client.request<Record<string, number>>('GET', `${this.base}/catalog/counts`)
   /** Words in names, ids and descriptions, plus filters; `facets` adds the count of each filter value. */
   search = (params: SearchParams) => this.client.request<SearchPage>('GET', this.base + searchPath(params))
   core = () => this.client.request<CoreSections>('GET', `${this.base}/catalog/core`)

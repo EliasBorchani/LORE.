@@ -154,7 +154,10 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
    recent changes routes. Checked: server fmt / clippy / tests, web tsc / tests (every official effect round-trips
    through the recipes) / build. Reviewed by the owner on 2026-10-21. **Phase 2 written (2026-10-21), not reviewed,
    not deployed:** « dropdowns everywhere » (`docs/prd-cms.md`). Production needs `sources.json`, `situations.json`
-   and `feats/srd-01.json` (Power Attack's `tableValue`) imported. Next: phase 3, search cards.
+   and `feats/srd-01.json` (Power Attack's `tableValue`) imported. **Phase 3 written (2026-10-22), not reviewed:**
+   search cards (each result shows its type's facts; catalog home as type cards with counts). Next: phase 4, spell
+   and item forms. Three server tests that count Danalieth's closure and archive (80 → 79 entities) fail since
+   `test-references/danalieth/catalog.json` changed on 2026-10-21; to look at.
 5. Agreed with the owner, for later: automatic backups (nightly `pg_dump` with rotation, a copy off the machine, a
    restore tested regularly) and content migrations as code (when the engine model first changes, a versioned script
    upgrades each entity's current content as a new version authored "migration").

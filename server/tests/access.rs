@@ -84,6 +84,7 @@ async fn a_stranger_gets_404_everywhere(pool: PgPool) {
         ),
         ("GET", format!("/groups/{g}/changes"), None),
         ("GET", format!("/groups/{g}/catalog/states"), None),
+        ("GET", format!("/groups/{g}/catalog/counts"), None),
         ("GET", format!("/groups/{g}/catalog/core"), None),
         (
             "POST",

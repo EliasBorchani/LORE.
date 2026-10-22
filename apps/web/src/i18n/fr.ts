@@ -352,6 +352,8 @@ export const fr = {
     noRights: 'Pour créer, il faut un ensemble de règles du groupe ouvert en écriture.',
   },
   cms: {
+    inCatalog: 'Dans le catalogue',
+    fullCard: 'Sa fiche',
     add: (label: string) => `+ ${label}`,
     remove: 'Retirer',
     translation: 'Traduction anglaise',
@@ -676,7 +678,8 @@ export const fr = {
     searchAll: 'Un sort, un don, un objet…',
     searchIn: (type: string) => `Rechercher dans : ${type}`,
     noResult: 'Aucun résultat.',
-    inDescription: 'dans la description',
+    inDescription: 'Trouvé dans la description',
+    entries: (n: number) => (n === 0 ? 'aucune entrée' : `${formatNumber(String(n))} entrée${n > 1 ? 's' : ''}`),
     filters: 'Filtres',
     filtersCount: (n: number) => (n ? `Filtres (${n})` : 'Filtres'),
     clearFilters: 'Effacer les filtres',

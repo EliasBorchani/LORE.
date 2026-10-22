@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
-import { FACETS, type EntityDetail, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
+import { FACETS, type EntityDetail, type EntityReference, type EntitySummary, type Facet, type FacetValue, type SearchFilters, type SearchItem, type SearchPage } from '../api/types'
+import { slugOf } from '../cms/entries'
+import { EntityCard } from '../cms/EntityCard'
+import { TypeBanner } from '../cms/TypeBanner'
 import { Badge, ErrorNotice, Icon, Loading, StatBlock } from '../components/grimoire'
 import { formatNumber } from '../format'
 import { affectsNames, entityTypes, fr, typeName } from '../i18n/fr'
+import { cardOf } from '../rpg/dnd35/cards'
+import type { Names } from '../rpg/dnd35/describe'
 import { sourceId } from '../rpg/dnd35/sources'
 import { entityName, localized } from '../sheet/names'
 import { messageOf, useLoad } from '../useLoad'
@@ -99,10 +104,10 @@ function SearchField({ text, onChange, label, placeholder }: { text: string; onC
  */
 function SearchResults({ search, type, showFilters }: { search: SearchState; type?: string; showFilters?: boolean }) {
   const groupApi = useGroupApi()
-  const groupPath = useGroupPath()
   const q = search.text.trim()
   const { filters, filtersKey } = search
   const [items, setItems] = useState<SearchItem[]>([])
+  const [names, setNames] = useState<Names>(new Map())
   const [facets, setFacets] = useState<SearchPage['facets']>()
   const [next, setNext] = useState<number | undefined>()
   const [loading, setLoading] = useState(true)
@@ -122,6 +127,7 @@ function SearchResults({ search, type, showFilters }: { search: SearchState; typ
         (page) => {
           if (!current) return
           setItems(page.items)
+          setNames(namesOf(page.references))
           setFacets(page.facets)
           setNext(page.next)
           setLoading(false)
@@ -145,6 +151,7 @@ function SearchResults({ search, type, showFilters }: { search: SearchState; typ
       (page) => {
         if (latest.current !== queryKey) return
         setItems((shown) => [...shown, ...page.items])
+        setNames((known) => namesOf(page.references, known))
         setNext(page.next)
         setLoading(false)
       },
@@ -161,19 +168,10 @@ function SearchResults({ search, type, showFilters }: { search: SearchState; typ
       {showFilters && facets && <FilterPanel facets={facets} search={search} />}
       {error && <ErrorNotice message={error} onRetry={() => setAttempt((n) => n + 1)} />}
       {items.length > 0 && (
-        <div className="list">
-          {items.map((e) => {
-            const sub = [!type && typeName(e.type), e.houseRule && fr.catalog.houseRule, e.matchedIn === 'description' && fr.catalog.inDescription].filter(Boolean).join(' · ')
-            return (
-              <Link key={e.id} className="list-row" to={groupPath(`/catalog/entity/${e.id}`)}>
-                <span className="list-row-text">
-                  <span className="list-row-title">{localized(e.name) ?? e.id}</span>
-                  {sub && <span className="list-row-sub">{sub}</span>}
-                </span>
-                <Icon name="chevron" />
-              </Link>
-            )
-          })}
+        <div className="card-list">
+          {items.map((e) => (
+            <ResultCard key={e.id} item={e} names={names} withType={!type} note={e.matchedIn === 'description' ? fr.catalog.inDescription : undefined} />
+          ))}
         </div>
       )}
       {!loading && !error && items.length === 0 && <p className="muted">{fr.catalog.noResult}</p>}
@@ -259,21 +257,47 @@ export function CatalogScreen() {
 
 function TypeList() {
   const groupPath = useGroupPath()
+  const groupApi = useGroupApi()
+  const { group } = useGroup()
+  // The counts are a bonus: the cards show without them while they load, or if they fail.
+  const { data: counts } = useLoad(() => groupApi.counts(), group.id)
   return (
-    <>
-      <nav className="list" aria-label={fr.catalog.title}>
-        {entityTypes.map((t) => (
-          <Link key={t.type} className="list-row" to={groupPath(`/catalog/${t.type}`)}>
-            <span className="list-row-text">
-              <span className="list-row-title">{t.name}</span>
-              <span className="list-row-sub">{t.hint}</span>
-            </span>
-            <Icon name="chevron" />
-          </Link>
-        ))}
-      </nav>
-    </>
+    <nav className="type-cards" aria-label={fr.catalog.title}>
+      {entityTypes.map((t) => (
+        <Link key={t.type} className="type-card" to={groupPath(`/catalog/${t.type}`)}>
+          <TypeBanner type={t.type} size="small" />
+          <span className="type-card-text">
+            <strong>{t.name}</strong>
+            <span className="muted">{t.hint}</span>
+          </span>
+          {counts && <span className="type-card-count">{fr.catalog.entries(counts[t.type] ?? 0)}</span>}
+        </Link>
+      ))}
+    </nav>
   )
+}
+
+/** A result as its type's card: the facts `cardOf` picks, the house rule or ruleset it comes from. */
+function ResultCard({ item, names, withType, note }: { item: EntitySummary; names: Names; withType?: boolean; note?: string }) {
+  const groupPath = useGroupPath()
+  const { group } = useGroup()
+  const title = localized(item.name ?? undefined) ?? item.id
+  // A state is named after the entry that defines it, often this one (`toggle.manyshot` ← Feu nourri).
+  const model = cardOf(item, new Map(names).set(item.id, title), localized(item.card?.blurb) ?? undefined)
+  if (withType) model.kicker = [typeName(item.type), model.kicker].filter(Boolean).join(' · ')
+  const slug = slugOf(item.id)
+  const ruleset = slug ? (group.rulesets.find((r) => r.slug === slug)?.name ?? slug) : undefined
+  return (
+    <EntityCard model={model} title={title} to={groupPath(`/catalog/entity/${item.id}`)} note={note}
+      aside={(item.houseRule || ruleset) && <Badge houseRule={item.houseRule != null} ruleset={ruleset} />} />
+  )
+}
+
+/** The references of a page as names by id, added to those already known. */
+function namesOf(references: EntityReference[] | undefined, known: Names = new Map()): Names {
+  const names = new Map(known)
+  for (const r of references ?? []) names.set(r.id, localized(r.name) ?? r.id)
+  return names
 }
 
 /** One type, a page of 50 at a time, or the search within that type, with its filters. */
@@ -305,8 +329,8 @@ export function CatalogListScreen() {
 
 function TypePage({ type }: { type: string }) {
   const groupApi = useGroupApi()
-  const groupPath = useGroupPath()
   const [items, setItems] = useState<EntitySummary[]>([])
+  const [names, setNames] = useState<Names>(new Map())
   const [next, setNext] = useState<string | undefined>()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -314,9 +338,10 @@ function TypePage({ type }: { type: string }) {
   const load = (after?: string) => {
     setLoading(true)
     setError(null)
-    groupApi.entities(type, after).then(
+    groupApi.entities(type, after, 50, true).then(
       (page) => {
         setItems((current) => (after ? [...current, ...page.items] : page.items))
+        setNames((known) => namesOf(page.references, after ? known : undefined))
         setNext(page.next)
         setLoading(false)
       },
@@ -333,16 +358,8 @@ function TypePage({ type }: { type: string }) {
     <>
       {error && <ErrorNotice message={error} onRetry={() => load(items.at(-1)?.id)} />}
       {items.length > 0 && (
-        <div className="list">
-          {items.map((e) => (
-            <Link key={e.id} className="list-row" to={groupPath(`/catalog/entity/${e.id}`)}>
-              <span className="list-row-text">
-                <span className="list-row-title">{localized(e.name) ?? e.id}</span>
-                {e.houseRule && <span className="list-row-sub">{fr.catalog.houseRule}</span>}
-              </span>
-              <Icon name="chevron" />
-            </Link>
-          ))}
+        <div className="card-list">
+          {items.map((e) => <ResultCard key={e.id} item={e} names={names} />)}
         </div>
       )}
       {!loading && !error && items.length === 0 && <p className="muted">{fr.catalog.empty}</p>}

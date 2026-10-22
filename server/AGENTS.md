@@ -80,8 +80,12 @@ rule sections plus the closure of its character's entities, and later only what 
   known; the closure leaves `on_spell_list` out). `GET /catalog/maneuvers/{classId}`: the maneuvers and stances of the
   disciplines the class `initiates`, with their `maneuver` block (for picking them on the Build screen).
 - Endpoints: `GET /health`. Catalog reads go through a group (members only): `GET /groups/{g}/catalog/core`,
-  `POST /groups/{g}/catalog/closure`, `GET /groups/{g}/entities?type=&after=&limit=` (paged by id, max 200; each item
-  has `id`, `type`, `name`, `labels`, `houseRule?`), `GET /groups/{g}/search?…` (same items),
+  `POST /groups/{g}/catalog/closure`, `GET /groups/{g}/entities?type=&after=&limit=&card=` (paged by id, max 200; each
+  item has `id`, `type`, `name`, `labels`, `houseRule?`; with `card=true` also `card` and the page's `references`),
+  `GET /groups/{g}/search?…` (same items, always with `card` and `references`; `catalog/cards.rs`: the content
+  without `description` and `note`, the description's first paragraph as `blurb`, a spell's `spellLevels`, and the
+  names of the ids in prerequisites, effects and maneuver blocks, one lookup per page), `GET /groups/{g}/catalog/counts`
+  (`{type: count}` the group sees),
   `GET /groups/{g}/entities/{id}` (+ `overrides`, `ruleset`, `editable`), `…/versions`,
   `GET /groups/{g}/catalog/spell-list/{class}`, `GET /groups/{g}/catalog/maneuvers/{class}`, `GET /groups/{g}/catalog/states` (the `toggle.*` and `situation.*`
   ids the group's content names, from the stored column `facet_states`, `migrations/0009_cms.sql`). Atelier

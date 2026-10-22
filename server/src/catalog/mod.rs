@@ -1,6 +1,7 @@
 //! The catalog as the engine reads it: top-level `entities`, `relations` and `progressions` live in their own tables;
 //! every other top-level key is a section stored as is.
 
+pub mod cards;
 pub mod closure;
 pub mod edit;
 pub mod export;

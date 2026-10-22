@@ -5,6 +5,7 @@ import { EntityName } from '../components/EntityPanel'
 import { prerequisiteParts } from '../content/prerequisite'
 import { fr, statLabels } from '../i18n/fr'
 import { effectText } from '../rpg/dnd35/describe'
+import { DISCIPLINES } from '../rpg/dnd35/forms'
 import { localized } from '../sheet/names'
 import { useGroupPath } from '../group/GroupContext'
 
@@ -86,7 +87,10 @@ interface ManeuverInfo {
 }
 
 function ManeuverFacts({ maneuver, detail }: { maneuver: ManeuverInfo; detail: EntityDetail }) {
-  const discipline = localized(detail.references?.find((r) => r.id === maneuver.discipline)?.name) ?? maneuver.discipline
+  // A draft in the editor has no references yet: the nine disciplines still get their name.
+  const discipline = localized(detail.references?.find((r) => r.id === maneuver.discipline)?.name)
+    ?? DISCIPLINES.find(([id]) => `discipline.${id}` === maneuver.discipline)?.[1]
+    ?? maneuver.discipline
   const prerequisite = [
     maneuver.requires ? fr.catalog.maneuverRequires(maneuver.requires, discipline) : null,
     maneuver.prerequisite,

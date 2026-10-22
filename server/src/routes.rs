@@ -42,6 +42,7 @@ pub fn app(state: AppState) -> Router {
         .route("/groups/{group}/changes", get(atelier::changes))
         .route("/groups/{group}/catalog/core", get(catalog::core))
         .route("/groups/{group}/catalog/states", get(catalog::states))
+        .route("/groups/{group}/catalog/counts", get(catalog::counts))
         .route(
             "/groups/{group}/catalog/closure",
             post(catalog::catalog_closure),

@@ -10,6 +10,7 @@ use serde_json::{Map, Value};
 use sqlx::PgPool;
 use time::OffsetDateTime;
 
+use super::cards;
 use super::closure::{self, Closure};
 use super::edit::VARIANT_OF;
 use super::refs::collect_candidate_ids;
@@ -151,6 +152,9 @@ pub struct ListQuery {
     r#type: Option<String>,
     after: Option<String>,
     limit: Option<i64>,
+    /// Adds each item's `card` and the page's `references`; lists for pickers do without.
+    #[serde(default)]
+    card: bool,
 }
 
 #[derive(Serialize, sqlx::FromRow)]
@@ -163,6 +167,12 @@ pub struct EntitySummary {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[sqlx(skip)]
     house_rule: Option<super::stack::HouseRule>,
+    /// What its result card shows (`cards.rs`), when asked.
+    #[sqlx(skip)]
+    #[serde(skip_serializing_if = "Value::is_null")]
+    card: Value,
+    #[serde(skip)]
+    content: Value,
 }
 
 #[derive(Serialize)]
@@ -171,6 +181,9 @@ pub struct Page {
     /// Pass as `after` to get the next page; absent on the last page.
     #[serde(skip_serializing_if = "Option::is_none")]
     next: Option<String>,
+    /// The entities the cards name.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    references: Vec<Reference>,
 }
 
 /// The group's entities, paged by the id the group knows them by (a house rule by its official id).
@@ -185,7 +198,7 @@ pub async fn list_entities(
     let mut items: Vec<EntitySummary> = bind_visible(
         sqlx::query_as(&format!(
             "SELECT coalesce(e.overrides, e.id) AS id, e.type, v.content -> 'name' AS name,
-                    v.content -> 'labels' AS labels
+                    v.content -> 'labels' AS labels, v.content
              FROM entity e JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version
              WHERE ($1::text IS NULL OR e.type = $1) AND ($5::text IS NULL OR coalesce(e.overrides, e.id) > $5)
                AND {}
@@ -205,10 +218,49 @@ pub async fn list_entities(
     } else {
         None
     };
+    let mut references = Vec::new();
+    if query.card {
+        let rows = items
+            .iter_mut()
+            .map(|item| (layers.stored(&item.id).to_owned(), item.content.take()))
+            .collect();
+        let found;
+        (found, references) = cards::cards(&pool, &layers, rows).await?;
+        for (item, card) in items.iter_mut().zip(found) {
+            item.card = card;
+        }
+    }
     for item in &mut items {
         item.house_rule = layers.house_rule(&item.id).cloned();
     }
-    Ok(Json(Page { items, next }))
+    Ok(Json(Page {
+        items,
+        next,
+        references,
+    }))
+}
+
+/// `{type: count}` of the entities the group sees, a house rule counted once (its official entity is hidden).
+pub async fn counts(
+    State(pool): State<PgPool>,
+    user: CurrentUser,
+    Path(group_id): Path<String>,
+) -> Result<Json<Map<String, Value>>, AppError> {
+    let layers = layers(&pool, user, &group_id).await?;
+    let rows: Vec<(String, i64)> = bind_visible(
+        sqlx::query_as(&format!(
+            "SELECT e.type, count(*) FROM entity e WHERE {} GROUP BY e.type ORDER BY e.type",
+            Layers::visible("e", 1)
+        )),
+        &layers,
+    )
+    .fetch_all(&pool)
+    .await?;
+    Ok(Json(
+        rows.into_iter()
+            .map(|(r#type, count)| (r#type, count.into()))
+            .collect(),
+    ))
 }
 
 pub async fn catalog_search(
@@ -352,7 +404,11 @@ pub async fn entity(
 }
 
 /// `{id, type, name}` of the entities the group sees among these stored ids, under the ids the group uses.
-async fn names(pool: &PgPool, layers: &Layers, ids: &[String]) -> Result<Vec<Reference>, AppError> {
+pub(super) async fn names(
+    pool: &PgPool,
+    layers: &Layers,
+    ids: &[String],
+) -> Result<Vec<Reference>, AppError> {
     let mut references: Vec<Reference> = bind_visible(
         sqlx::query_as(&format!(
             "SELECT e.id, e.type, coalesce(v.content -> 'name', 'null') AS name
