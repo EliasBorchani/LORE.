@@ -134,7 +134,15 @@ cannot be sent, the command prints the link anyway.
 An account created before invitations, with a login that is not an email:
 `docker compose -f compose.prod.yaml exec server server user rename <old login> <email>`. Characters stay attached;
 the edit history keeps the old name. `import-content.sh` is for the first import only:
-it refuses a database that already has entities. A later batch is imported on its own:
+it refuses a database that already has entities. Later, after a `git pull` that brings new or changed batches:
+
+```sh
+deploy/import-update.sh --dry-run    # what would change, nothing written
+deploy/import-update.sh              # every batch; unchanged entities get no new version
+```
+
+It stops first if an official entity was last edited in the app (by an admin): its batch would replace the edit,
+spell levels included (`lists.json`). Check them in the app's history, then add `--force`. One batch on its own:
 `docker compose -f compose.prod.yaml exec server server import /content/srd/<file>.json --author srd-import --dry-run`,
 then the same without `--dry-run`.
 

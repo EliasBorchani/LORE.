@@ -21,7 +21,7 @@ a document disagree, ask.
 | `apps/android/`, `apps/ios/` | later (mobile milestone) | |
 | `content/` | official catalog batches, the scripts that built them, Danalieth's spreadsheet | `content/AGENTS.md` |
 | `test-references/` | hand-checked sheets the engine must keep giving (Danalieth level 59 + six small cases) | `test-references/README.md` |
-| `deploy/` | production: `Caddyfile`, `import-content.sh` (first import), `backup.sh` (nightly export) | `docs/deploy.md` |
+| `deploy/` | production: `Caddyfile`, `import-content.sh` (first import), `import-update.sh` (later imports), `backup.sh` (nightly export) | `docs/deploy.md` |
 | `docs/` | `status.md`: where the project stands, next steps, decisions, known limits; `deploy.md`: the VPS guide; `prd-multi.md`: PRD for multi-RPG, groups and rulesets | |
 
 ## Current phase: PoC (server + web app), before the first commit
