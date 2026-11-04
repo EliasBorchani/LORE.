@@ -1,0 +1,366 @@
+{
+  "entities": [
+    {
+      "id": "class.war_chanter",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chantre de guerre",
+        "en": "War Chanter"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "bard"
+      ],
+      "description": {
+        "fr": "Le fracas des armes, les cris des mourants : le chantre de guerre en fait une musique. Son chant court dans la mêlée, galvanise ses alliés et brise le courage de ses adversaires.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non loyal ; bonus de base à l'attaque +4 ; Représentation (chant ou déclamation) 6 rangs ; dons Arme de prédilection et Expertise du combat ; musique de barde d'inspiration vaillante.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Artisanat, Concentration, Diplomatie, Équilibre, Escalade, Évasion, Intimidation, Profession, Renseignements, Représentation, Saut.\n• Aptitudes : inspiration robuste et musique de chantre de guerre (1) ; inspiration téméraire (3) ; chants combinés (5) ; inspiration terrifiante (7) ; chant hurlé (8) ; inspiration coordonnée (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 4 and @skill.perform.ranks >= 6 and has('feat.combat_expertise')",
+      "note": "Condition dans la formule : bonus de base, Représentation, Expertise du combat. En texte seulement : alignement non loyal, Arme de prédilection, inspiration vaillante."
+    },
+    {
+      "id": "power.war_chanter_inspire_toughness",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration robuste",
+        "en": "Inspire toughness"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "war_chanter"
+      ],
+      "description": {
+        "fr": "Son chant met dans ses alliés l'énergie des berserkers.\n\nEn jeu\n• Capacité surnaturelle, Représentation 9 rangs ou plus (chant ou déclamation).\n• Les alliés qui l'entendent (lui aussi) gagnent 2 points de vie temporaires par niveau de chantre.\n• Durée : tant qu'il chante ou parle, plus 5 rounds.\n• Dès le niveau 6, ils profitent aussi du don Dur à cuire pendant l'effet."
+      },
+      "effects": [],
+      "note": "Points de vie temporaires : le modèle ne les porte pas."
+    },
+    {
+      "id": "power.war_chanter_music",
+      "type": "class_power",
+      "name": {
+        "fr": "Musique de chantre de guerre",
+        "en": "War chanter music"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "war_chanter"
+      ],
+      "description": {
+        "fr": "Il chante comme un barde, mais ses chansons sont faites pour la guerre.\n\nEn jeu\n• Suit les règles de la musique de barde et permet les inspirations robuste, téméraire, terrifiante et coordonnée.\n• Ses niveaux de chantre s'ajoutent à ceux de barde pour le nombre d'utilisations par jour (pas pour les effets accessibles aux deux classes)."
+      },
+      "effects": [],
+      "usesPerDay": "level('class.war_chanter')",
+      "note": "Les utilisations forment ici une réserve à part, à ajouter à celle du barde."
+    },
+    {
+      "id": "power.war_chanter_inspire_recklessness",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration téméraire",
+        "en": "Inspire recklessness"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "war_chanter"
+      ],
+      "description": {
+        "fr": "Il lâche la bride de ses alliés : plus de frappe, moins de défense.\n\nEn jeu\n• Capacité surnaturelle, niveau 3, Représentation 12 rangs.\n• Un allié à 18 m ou moins (ou lui-même) peut, à son tour avant d'attaquer, choisir un nombre jusqu'à son bonus de base à l'attaque : malus à la CA et bonus de moral à ses jets d'attaque du même montant, jusqu'au début du round suivant.\n• Durée : tant que l'allié entend, plus 5 rounds."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.war_chanter_combined_songs",
+      "type": "class_power",
+      "name": {
+        "fr": "Chants combinés",
+        "en": "Combined songs"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "war_chanter"
+      ],
+      "description": {
+        "fr": "Deux mélodies en même temps.\n\nEn jeu\n• Capacité surnaturelle, niveau 5, Représentation 12 rangs : combine deux types de musique de barde ou de chantre et profite des deux effets (règles de cumul habituelles)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.war_chanter_inspire_fear",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration terrifiante",
+        "en": "Inspire fear"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "war_chanter"
+      ],
+      "description": {
+        "fr": "Son chant fait trembler ceux qui l'entendent du mauvais côté.\n\nEn jeu\n• Capacité surnaturelle, niveau 7, Représentation 15 rangs.\n• Adversaires dans un rayon de 18 m : jet de Volonté, DD 10 + niveau de classe + modificateur de Charisme.\n• Raté, selon (DV du chantre − DV de la créature) : +10 ou plus = paralysée de peur ; +1 à +9 = paniquée ; 0 à −5 = effrayée ; −6 ou moins = secouée.\n• Durée : tant qu'elle entend, plus 1 round. Une créature qui sort de la zone puis revient refait un jet."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.war_chanter_howling_song",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant hurlé",
+        "en": "Howling song"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "war_chanter"
+      ],
+      "description": {
+        "fr": "Un long hurlement qui galvanise tout le monde.\n\nEn jeu\n• Capacité surnaturelle, niveau 8, action simple.\n• +4 en Force (bonus d'altération) à lui-même et aux alliés qui l'entendent dans 18 m.\n• Durée : la moitié de son niveau de classe, en rounds."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.war_chanter_howling_song')"
+        }
+      ],
+      "note": "Toggle pour le chantre lui-même ; les alliés profitent du même bonus."
+    },
+    {
+      "id": "power.war_chanter_inspire_coordination",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration coordonnée",
+        "en": "Inspire coordination"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "war_chanter"
+      ],
+      "description": {
+        "fr": "Ses alliés frappent comme un seul homme.\n\nEn jeu\n• Capacité surnaturelle, niveau 10, Représentation 18 rangs.\n• Alliés à 18 m ou moins qui l'entendent (au début du chant) : tous utilisent le plus haut bonus de base à l'attaque du groupe (ou le niveau du chantre s'il est plus grand) et gagnent +2 aux dégâts.\n• Les créatures qui sortent de la portée ou n'entendent plus perdent l'effet pour de bon."
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "competence",
+          "condition": "active('toggle.war_chanter_inspire_coordination')"
+        }
+      ],
+      "note": "Le bonus de dégâts est dans le toggle. Le bonus de base partagé n'est pas dans le modèle. Le livre dit « bonus d'aptitude » : ici competence."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.war_chanter",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.war_chanter_inspire_toughness",
+        "power.war_chanter_music"
+      ]
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": []
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.war_chanter_inspire_recklessness"
+      ]
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.war_chanter_combined_songs"
+      ]
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.war_chanter_inspire_fear"
+      ]
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.war_chanter_howling_song"
+      ]
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.war_chanter",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.war_chanter_inspire_coordination"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.war_chanter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

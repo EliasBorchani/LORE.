@@ -1,0 +1,368 @@
+{
+  "entities": [
+    {
+      "id": "class.nightsong_enforcer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Exécutant du Noctechant",
+        "en": "Nightsong Enforcer"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "skills"
+      ],
+      "description": {
+        "fr": "Là où le silence du Noctechant guette seul, l’exécutant travaille en équipe : il frappe les adversaires distraits, veille sur ses compagnons dans l’ombre et ne laisse personne cerné sans qu’il le sache. Une guilde l’entraîne durement, et seuls ceux qui passent ses épreuves apprennent ses secrets.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : bonus de base à l’attaque +5 ; 10 rangs en Déplacement silencieux et 10 rangs en Discrétion ; don Science de l’initiative ; esquive totale ; formation et épreuves de la guilde du Noctechant.\n• Formé aux armures légères, pas aux armes ni aux boucliers.\n• Compétences de classe : Acrobaties, Crochetage, Déguisement, Déplacement silencieux, Désamorçage/sabotage, Détection, Discrétion, Équilibre, Équitation, Escalade, Évasion, Fouille, Intimidation, Natation, Perception auditive, Profession, Saut.\n• Pas de progression de sorts.\n• Aptitudes : attaque sournoise (+1d6 aux niveaux 1, 4, 7, 10), travail d’équipe (niv. 1 et 9), seconde peau (niv. 2), talent d’équipe (niv. 3 et 7), tenaille d’équipe (niv. 5), opportunisme (niv. 6), esquive extraordinaire (niv. 8)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.move_silently.ranks >= 10 and @skill.hide.ranks >= 10 and has('feat.improved_initiative')",
+      "note": "Conditions : l’esquive totale et les épreuves de la guilde du Noctechant : texte seul."
+    },
+    {
+      "id": "power.nightsong_enforcer_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_enforcer"
+      ],
+      "description": {
+        "fr": "Il frappe là où l’adversaire ne regarde pas, avec l’aide d’un allié ou d’un défaut de garde.\n\nEn jeu\n• Comme l’attaque sournoise du roublard : +1d6 au niveau 1, puis +1d6 aux niveaux 4, 7 et 10 (+4d6 au niveau 10).\n• À distance, seulement si la cible est à 9 m ou moins.\n• S’ajoute à l’attaque sournoise donnée par d’autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(1 + floor((level('class.nightsong_enforcer') - 1) / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.nightsong_enforcer_teamwork",
+      "type": "class_power",
+      "name": {
+        "fr": "Travail d’équipe",
+        "en": "Teamwork"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_enforcer"
+      ],
+      "description": {
+        "fr": "Il ne perd jamais ses partenaires de vue, ni d’oreille.\n\nEn jeu\n• Capacité extraordinaire.\n• Bonus de circonstances de +20 aux tests de Détection et de Perception auditive pour voir ou entendre ses alliés.\n• Au niveau 9 : il connaît la position et l’état de santé de ses alliés dans 30 m, même sans les voir (comme le sort rapport)."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Bonus visant les alliés seulement : texte seul (pas de situation dédiée)."
+    },
+    {
+      "id": "power.nightsong_enforcer_second_skin",
+      "type": "class_power",
+      "name": {
+        "fr": "Seconde peau",
+        "en": "Second skin"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_enforcer"
+      ],
+      "description": {
+        "fr": "Son armure légère se fait oublier tant elle lui va bien.\n\nEn jeu\n• Capacité extraordinaire.\n• Le malus d’armure aux tests de son armure légère baisse de 2 (minimum 0)."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Le modèle ne lit pas encore le malus d’armure : texte seul."
+    },
+    {
+      "id": "power.nightsong_enforcer_team_talent",
+      "type": "class_power",
+      "name": {
+        "fr": "Talent d’équipe",
+        "en": "Team talent"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_enforcer"
+      ],
+      "description": {
+        "fr": "Sa formation déteint sur ceux qui l’entourent : l’équipe entière se déplace plus discrètement.\n\nEn jeu\n• Capacité extraordinaire.\n• Alliés dans 9 m qui le voient directement : bonus d’aptitude de +2 aux tests de Déplacement silencieux, Détection, Discrétion, Équilibre, Escalade, Évasion et Perception auditive.\n• +4 au niveau 7."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Bonus donné aux alliés : texte seul."
+    },
+    {
+      "id": "power.nightsong_enforcer_team_flanking",
+      "type": "class_power",
+      "name": {
+        "fr": "Tenaille d’équipe",
+        "en": "Team flanking"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_enforcer"
+      ],
+      "description": {
+        "fr": "Quand il encercle un adversaire, tout le groupe en profite.\n\nEn jeu\n• Capacité extraordinaire.\n• Quand il prend un adversaire en tenaille, lui et les alliés qui contrôlent l’espace de la cible gagnent un bonus de circonstances de +1 aux jets d’attaque contre elle.\n• S’ajoute au bonus de prise en tenaille."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Bonus donné aux alliés : texte seul."
+    },
+    {
+      "id": "power.nightsong_enforcer_opportunism",
+      "type": "class_power",
+      "name": {
+        "fr": "Opportunisme",
+        "en": "Opportunism"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_enforcer"
+      ],
+      "description": {
+        "fr": "Il saute sur l’ouverture qu’un autre vient de créer.\n\nEn jeu\n• Capacité extraordinaire.\n• Une fois par round : attaque d’opportunité contre une créature qui vient d’être blessée par un autre personnage (comme l’aptitude du même nom du roublard)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.nightsong_enforcer_improved_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive extraordinaire",
+        "en": "Improved evasion"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_enforcer"
+      ],
+      "description": {
+        "fr": "Même l’explosion qui le rattrape lui laisse de quoi s’en tirer.\n\nEn jeu\n• Capacité extraordinaire.\n• Contre une attaque qui permet un jet de Réflexes pour moitié dégâts : aucun dégât s’il réussit, la moitié s’il échoue."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.nightsong_enforcer_sneak_attack",
+        "power.nightsong_enforcer_teamwork"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.nightsong_enforcer_second_skin"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.nightsong_enforcer_team_talent"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.nightsong_enforcer_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.nightsong_enforcer_team_flanking"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.nightsong_enforcer_opportunism"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.nightsong_enforcer_sneak_attack",
+        "power.nightsong_enforcer_team_talent"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.nightsong_enforcer_improved_evasion"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.nightsong_enforcer_teamwork"
+      ]
+    },
+    {
+      "classId": "class.nightsong_enforcer",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.nightsong_enforcer_sneak_attack"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.nightsong_enforcer",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    }
+  ]
+}

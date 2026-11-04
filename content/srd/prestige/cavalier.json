@@ -1,0 +1,418 @@
+{
+  "entities": [
+    {
+      "id": "class.cavalier",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Preux cavalier",
+        "en": "Cavalier"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "mounted",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il incarne l'idéal du combat monté : sans peur et sans reproche, il charge à la tête de sa lance et sert son seigneur, sa foi ou sa cause. Noble au grand cœur ou tyran fanfaron, il ne vaut jamais autant que sur le dos de son destrier.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal ; bonus de base à l'attaque +8 ; Connaissances (noblesse et royauté) 4 rangs, Dressage 4 rangs, Équitation 6 rangs ; dons Arme de prédilection (lance d'arçon), Attaque au galop, Charge dévastatrice et Combat monté.\n• Formé aux armes courantes et de guerre, aux boucliers (pavois compris) et aux armures légères, intermédiaires et lourdes.\n• Compétences de classe : Connaissances (noblesse et royauté), Diplomatie, Dressage, Équitation, Intimidation, Profession.\n• Aptitudes : bonus au combat monté (lance d'arçon aux niveaux 1, 5, 9 ; épée aux niveaux 2, 6, 10) ; bonus d'Équitation (1, 4, 7, 9) ; connaissance courtoise et destrier de paladin (1) ; charge mortelle (2) ; grand galop (3) ; maîtrise du combat monté (6) ; charge irrépressible (10)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 8 and @skill.knowledge_nobility.ranks >= 4 and @skill.handle_animal.ranks >= 4 and @skill.ride.ranks >= 6 and has('feat.weapon_focus') and has('feat.ride_by_attack') and has('feat.spirited_charge') and has('feat.mounted_combat')",
+      "note": "Conditions en formule : bonus de base, rangs, dons (Arme de prédilection sans le choix de la lance d'arçon). Alignement loyal : relations alignment. Un paladin peut prendre ces niveaux sans perdre sa progression de paladin."
+    },
+    {
+      "id": "power.cavalier_paladin_mount",
+      "type": "class_power",
+      "name": {
+        "fr": "Destrier de paladin",
+        "en": "Paladin's mount"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Un cheval de guerre hors du commun reconnaît son cavalier.\n\nEn jeu\n• Capacité magique, niveau 1 : les niveaux de preux cavalier s'ajoutent à ceux de paladin pour déterminer les pouvoirs du destrier spécial (voir le destrier spécial du paladin).\n• Un personnage qui n'est pas déjà paladin n'obtient pas de destrier."
+      },
+      "effects": [],
+      "note": "Texte seul : le destrier spécial du paladin (power.paladin_special_mount) est déjà donné par la classe de paladin ; on ne l'ajoute pas ici pour ne pas le donner à un non-paladin. L'addition des niveaux de classe n'est pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_mounted_lance_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus au combat monté (lance d'arçon)",
+        "en": "Mounted weapon bonus (lance)"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Sur sa selle, sa lance semble guidée par la monture elle-même.\n\nEn jeu\n• Capacité extraordinaire, monté : bonus d'aptitude aux jets d'attaque avec une lance d'arçon, +1 au niveau 1, puis +1 tous les quatre niveaux (+2 au niveau 5, +3 au niveau 9)."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "if(level('class.cavalier') >= 1, 1 + floor((level('class.cavalier') - 1) / 4), 0)",
+          "bonusType": "competence",
+          "condition": "active('toggle.cavalier_mounted_lance_bonus')"
+        }
+      ],
+      "note": "Toggle « monté » : à activer quand il est en selle et attaque à la lance d'arçon. L'arme précise n'est pas vérifiée par la fiche. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_mounted_sword_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus au combat monté (épée)",
+        "en": "Mounted weapon bonus (sword)"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Au galop, son épée trouve la faille d'un geste sûr.\n\nEn jeu\n• Capacité extraordinaire, monté : bonus d'aptitude aux jets d'attaque avec une épée, +1 au niveau 2, puis +1 tous les quatre niveaux (+2 au niveau 6, +3 au niveau 10)."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "if(level('class.cavalier') >= 2, 1 + floor((level('class.cavalier') - 2) / 4), 0)",
+          "bonusType": "competence",
+          "condition": "active('toggle.cavalier_mounted_sword_bonus')"
+        }
+      ],
+      "note": "Toggle « monté » : à activer quand il est en selle et attaque à l'épée. Ne pas activer en même temps que celui de la lance. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_ride_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus d'Équitation",
+        "en": "Ride bonus"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "La selle est son second domicile.\n\nEn jeu\n• Capacité extraordinaire : bonus d'aptitude aux tests d'Équitation, +2 au niveau 1, +4 au niveau 4, +6 au niveau 7, +8 au niveau 9."
+      },
+      "effects": [
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": "if(level('class.cavalier') >= 9, 8, if(level('class.cavalier') >= 7, 6, if(level('class.cavalier') >= 4, 4, 2)))",
+          "bonusType": "competence"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_courtly_knowledge",
+      "type": "class_power",
+      "name": {
+        "fr": "Connaissance courtoise",
+        "en": "Courtly knowledge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Il connaît les blasons, les lignées et les usages des cours.\n\nEn jeu\n• Capacité extraordinaire : bonus d'aptitude égal à son niveau de preux cavalier aux tests de Connaissances (noblesse et royauté)."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_nobility",
+          "op": "add",
+          "value": "level('class.cavalier')",
+          "bonusType": "competence"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_deadly_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge mortelle",
+        "en": "Deadly charge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Le choc d'un cavalier lancé à pleine vitesse fait bien plus que l'addition du cheval et de la lance.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : monté, en chargeant avec une arme de corps à corps, il déclare une charge mortelle avant son jet d'attaque.\n• Si l'attaque échoue, l'utilisation est quand même décomptée. Si elle réussit, les dégâts sont triplés (quadruplés avec une lance d'arçon).\n• Utilisations : 1 par jour au niveau 2, une de plus à chaque niveau pair (5 au niveau 10).\n• Ne se cumule pas avec le don Charge dévastatrice."
+      },
+      "effects": [],
+      "usesPerDay": "floor(level('class.cavalier') / 2)",
+      "note": "Multiplicateur de dégâts : pas dans le modèle, à compter à la main. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_great_gallop",
+      "type": "class_power",
+      "name": {
+        "fr": "Grand galop",
+        "en": "Great gallop"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Il lance sa monture bien au-delà de l'allure normale, au risque de l'épuiser.\n\nEn jeu\n• Capacité extraordinaire, niveau 3 : lors d'une charge, la monture peut doubler son déplacement habituel de charge, jusqu'à quatre fois sa vitesse.\n• Première utilisation du jour sans risque. Ensuite, la monture doit réussir un jet de Volonté DD 20 juste après la charge, sinon elle subit 2d6 points de dégâts."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_mounted_combat_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise du combat monté",
+        "en": "Mounted combat mastery"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Même lancé au pas de course, il garde le temps de frapper à plusieurs reprises.\n\nEn jeu\n• Capacité extraordinaire, niveau 6 : monté, il peut faire une attaque à outrance même si sa monture s'est déplacée de l'équivalent d'une action de mouvement (normalement impossible au-delà de 1,50 m).\n• Impossible à combiner avec une charge."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.cavalier_unstoppable_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge irrépressible",
+        "en": "Unstoppable charge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "cavalier"
+      ],
+      "description": {
+        "fr": "Rien ne retient plus la charge d'un grand cavalier.\n\nEn jeu\n• Capacité extraordinaire, niveau 10 : une charge mortelle réussie inflige des dégâts quadruplés avec une arme de corps à corps, quintuplés avec une lance d'arçon."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.cavalier",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.cavalier_paladin_mount",
+        "power.cavalier_mounted_lance_bonus",
+        "power.cavalier_ride_bonus",
+        "power.cavalier_courtly_knowledge"
+      ]
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.cavalier_mounted_sword_bonus",
+        "power.cavalier_deadly_charge"
+      ]
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.cavalier_great_gallop"
+      ]
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.cavalier_mounted_combat_mastery"
+      ]
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.cavalier",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.cavalier_unstoppable_charge"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.cavalier",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.cavalier",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    }
+  ]
+}

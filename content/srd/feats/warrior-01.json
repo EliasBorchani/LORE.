@@ -1,0 +1,783 @@
+{
+  "entities": [
+    {
+      "id": "feat.throw_anything",
+      "type": "feat",
+      "name": {
+        "fr": "Art du lancer",
+        "en": "Throw Anything"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Entre ses mains, n'importe quel objet un peu lourd devient un projectile redoutable.\n\nEn jeu\n• Condition : Dex 15, bonus de base à l'attaque +2.\n• Il peut lancer toute arme qu'il sait manier comme une arme à distance, avec un facteur de portée de 3 m.\n• Normal : une arme de corps à corps sans facteur de portée se lance avec un malus de -4 à l'attaque."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and @bab >= 2",
+      "note": "Le facteur de portée n'est pas modélisé."
+    },
+    {
+      "id": "feat.prone_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque au sol",
+        "en": "Prone Attack"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Même plaqué au sol, il frappe sans se laisser dominer, puis se redresse d'un bond.\n\nEn jeu\n• Condition : Dex 15, Réflexes surhumains, bonus de base à l'attaque +2.\n• À terre, il n'a aucun malus à l'attaque et ses adversaires n'ont aucun bonus pour le toucher.\n• S'il touche, il se relève par une action libre sans provoquer d'attaque d'opportunité.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and has('feat.lightning_reflexes') and @bab >= 2"
+    },
+    {
+      "id": "feat.favored_power_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque en puissance sur ennemi juré",
+        "en": "Favored Power Attack"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Contre l'ennemi qu'il traque depuis toujours, il met bien plus de poids dans chaque coup.\n\nEn jeu\n• Condition : pouvoir d'ennemi juré, Attaque en puissance, bonus de base à l'attaque +4.\n• Contre un ennemi juré, ses dégâts d'Attaque en puissance valent le double du malus à l'attaque qu'il s'impose (le triple avec une arme à deux mains qui n'est pas double).\n• Les limites habituelles de l'Attaque en puissance s'appliquent."
+      },
+      "prerequisite": "has('power.ranger_favored_enemy') and has('feat.power_attack') and @bab >= 4",
+      "note": "Effet non modélisé : il dépend de l'ennemi juré visé."
+    },
+    {
+      "id": "feat.shield_charge",
+      "type": "feat",
+      "name": {
+        "fr": "Charge au bouclier",
+        "en": "Shield Charge"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "shield"
+      ],
+      "description": {
+        "fr": "Lancé à pleine vitesse, son bouclier devient un bélier qui jette l'adversaire à terre.\n\nEn jeu\n• Condition : Science du coup de bouclier, bonus de base à l'attaque +3.\n• Un coup de bouclier à la fin d'une charge inflige ses dégâts normaux et permet un croc-en-jambe immédiat, sans attaque d'opportunité.\n• Même si la tentative échoue, le défenseur ne peut pas tenter de croc-en-jambe en retour.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.improved_shield_bash') and @bab >= 3"
+    },
+    {
+      "id": "feat.extra_smiting",
+      "type": "feat",
+      "name": {
+        "fr": "Châtiments supplémentaires",
+        "en": "Extra Smiting"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Sa colère sacrée ne s'éteint pas : il frappe le mal une fois de plus, puis encore une fois.\n\nEn jeu\n• Condition : pouvoir de châtiment, bonus de base à l'attaque +4.\n• +2 utilisations par jour de son pouvoir de châtiment (châtiment du Mal, châtiment des morts-vivants…).\n• Peut être pris plusieurs fois : les effets s'additionnent."
+      },
+      "prerequisite": "(has('power.paladin_smite_evil') or has('power.hunter_of_the_dead_undead_smite') or has('power.blackguard_smite_good') or has('power.crusader_smite') or has('power.samurai_kiai_smite') or has('power.vigilante_smite_the_guilty')) and @bab >= 4",
+      "note": "Les utilisations par jour du châtiment ne sont pas modélisées.",
+      "repeatable": {}
+    },
+    {
+      "id": "feat.swarm_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Combat en nuée",
+        "en": "Swarm Fighting"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Petit et vif, il se glisse dans la mêlée avec ses compagnons pour harceler la même cible.\n\nEn jeu\n• Condition : taille P, Dex 13, bonus de base à l'attaque +1.\n• Lui et un allié qui a aussi ce don peuvent occuper la même case sans malus.\n• Contre une créature de taille M ou plus, il gagne un bonus de moral à l'attaque égal au nombre d'alliés avec ce don qui contrôlent l'espace de la cible.\n• Ce bonus ne dépasse pas son bonus de Dextérité."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and @bab >= 1",
+      "note": "Condition non vérifiée par la fiche : taille P. Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.phalanx_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Combat en phalange",
+        "en": "Phalanx Fighting"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "shield"
+      ],
+      "description": {
+        "fr": "Épaule contre épaule, boucliers serrés : la ligne tient là où un homme seul plierait.\n\nEn jeu\n• Condition : Formation au maniement de l'écu, bonus de base à l'attaque +1.\n• Avec un écu et une arme légère, il gagne +1 à la CA.\n• À 1,50 m ou moins d'un allié qui a ce don et se bat de la même façon, ils forment un mur de boucliers : chacun gagne +2 à la CA et +1 aux jets de Réflexes en plus.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.shield_proficiency') and @bab >= 1",
+      "note": "Bonus de CA non modélisés : ils dépendent de l'arme, de l'écu et d'un allié voisin."
+    },
+    {
+      "id": "feat.debilitating_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Contact affaiblissant",
+        "en": "Debilitating Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Un coup bien placé ne blesse pas, mais draine la force de la victime.\n\nEn jeu\n• Condition : Sag 17, Coup étourdissant, Science du combat à mains nues, bonus de base à l'attaque +2.\n• Il annonce l'usage avant le jet d'attaque (un échec gâche l'utilisation) ; chaque usage compte comme un Coup étourdissant.\n• S'il touche : aucun dégât, mais la victime subit -6 en Force pendant 1 minute. Les contacts successifs ne se cumulent pas.\n• Les créatures immunisées à l'étourdissement le sont aussi.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.wis.score >= 17 and has('feat.stunning_fist') and has('feat.improved_unarmed_strike') and @bab >= 2"
+    },
+    {
+      "id": "feat.pain_touch",
+      "type": "feat",
+      "name": {
+        "fr": "Contact douloureux",
+        "en": "Pain Touch"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Ses coups étourdissants laissent derrière eux une douleur qui retourne l'estomac.\n\nEn jeu\n• Condition : Sag 15, Coup étourdissant, bonus de base à l'attaque +2.\n• Sur un coup étourdissant réussi contre une créature d'une catégorie de taille de plus que lui au plus, la cible est étourdie 1 round, puis nauséeuse le round suivant.\n• Les créatures immunisées au Coup étourdissant le sont aussi."
+      },
+      "prerequisite": "@ability.wis.score >= 15 and has('feat.stunning_fist') and @bab >= 2"
+    },
+    {
+      "id": "feat.counter_charge",
+      "type": "feat",
+      "name": {
+        "fr": "Contre-charge",
+        "en": "Charge Counter"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il sait accueillir celui qui fonce sur lui avant qu'il n'arrive.\n\nEn jeu\n• Condition : Attaques réflexes, bonus de base à l'attaque +2.\n• Il a une attaque d'opportunité contre une créature qui charge et entre dans une case qu'il contrôle, résolue avant l'attaque de fin de charge.\n• Normal : charger ne provoque pas d'attaque d'opportunité en soi, seul le fait de quitter une case contrôlée en provoque."
+      },
+      "prerequisite": "has('feat.combat_reflexes') and @bab >= 2",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.shield_slam",
+      "type": "feat",
+      "name": {
+        "fr": "Coup brutal de bouclier",
+        "en": "Shield Slam"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "shield"
+      ],
+      "description": {
+        "fr": "D'un coup de bouclier asséné de toute sa masse, il laisse son adversaire groggy.\n\nEn jeu\n• Condition : Charge au bouclier, Science du coup de bouclier, bonus de base à l'attaque +6.\n• Par une action complexe, ou pendant une charge, il porte un coup brutal de bouclier : dégâts normaux.\n• La cible fait un jet de Vigueur (DD 10 + moitié du niveau global + mod. de Force) ou est hébétée 1 round.\n• Artificiels, plantes, morts-vivants, vases, intangibles et créatures immunisées aux critiques ne peuvent pas être hébétés.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.shield_charge') and has('feat.improved_shield_bash') and @bab >= 6"
+    },
+    {
+      "id": "feat.roundhouse_kick",
+      "type": "feat",
+      "name": {
+        "fr": "Coup de pied circulaire",
+        "en": "Roundhouse Kick"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Un coup critique à mains nues le lance dans une rotation complète, et son pied suit.\n\nEn jeu\n• Condition : For 15, Attaque en puissance, Science du combat à mains nues.\n• Sur un coup critique à mains nues, il porte aussitôt une attaque à mains nues de plus contre la même cible, avec le même bonus d'attaque que le critique."
+      },
+      "prerequisite": "@ability.str.score >= 15 and has('feat.power_attack') and has('feat.improved_unarmed_strike')"
+    },
+    {
+      "id": "feat.flying_kick",
+      "type": "feat",
+      "name": {
+        "fr": "Coup de pied en vol",
+        "en": "Flying Kick"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Il bondit sur l'ennemi comme un oiseau de proie, le pied en avant.\n\nEn jeu\n• Condition : For 13, 4 degrés en Saut, Attaque en puissance, Science du combat à mains nues.\n• À mains nues, il inflige 1d12 points de dégâts supplémentaires lors d'une charge."
+      },
+      "prerequisite": "@ability.str.score >= 13 and @skill.jump.ranks >= 4 and has('feat.power_attack') and has('feat.improved_unarmed_strike')"
+    },
+    {
+      "id": "feat.numbing_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Coup engourdissant",
+        "en": "Numbing Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Un poing placé sur le bon nerf, et les muscles de l'humanoïde se figent.\n\nEn jeu\n• Condition : Sag 17, Coup étourdissant, Science du combat à mains nues, bonus de base à l'attaque +10.\n• Il annonce l'usage avant l'attaque (un échec gâche l'utilisation) ; chaque usage compte comme un Coup étourdissant.\n• S'il touche : aucun dégât, mais la victime humanoïde fait un jet de Vigueur (DD 10 + moitié du niveau global + mod. de Sagesse) ou est paralysée 1d4+1 rounds.\n• Les créatures immunisées à l'étourdissement, ou non humanoïdes, ne sont pas affectées.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.wis.score >= 17 and has('feat.stunning_fist') and has('feat.improved_unarmed_strike') and @bab >= 10"
+    },
+    {
+      "id": "feat.hamstring",
+      "type": "feat",
+      "name": {
+        "fr": "Coupe-jarret",
+        "en": "Hamstring"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Une lame glissée derrière le genou, et la proie ne court plus.\n\nEn jeu\n• Condition : attaque sournoise +2d6, bonus de base à l'attaque +4.\n• Sur une attaque sournoise au corps à corps, il peut renoncer à 2d6 de dégâts sournois pour blesser la jambe : la vitesse au sol de la victime est divisée par 2 (autres déplacements inchangés).\n• Dure 24 heures ; fin par un test de Premiers secours DD 15 ou une guérison magique.\n• Impossible contre les créatures immunisées aux attaques sournoises, sans jambes ou à plus de 4 jambes. Un quadrupède demande 2 blessures.\n• Une seule par round."
+      },
+      "prerequisite": "has('power.rogue_sneak_attack') and @bab >= 4",
+      "note": "Condition non vérifiée par la fiche : au moins +2d6 d'attaque sournoise."
+    },
+    {
+      "id": "feat.rapid_stunning",
+      "type": "feat",
+      "name": {
+        "fr": "Coups étourdissants rapides",
+        "en": "Rapid Stunning"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Il enchaîne plusieurs coups étourdissants dans le même round.\n\nEn jeu\n• Condition : Attaques réflexes, Coup étourdissant, bonus de base à l'attaque +6.\n• Le nombre maximal de coups étourdissants (ou assimilés) par round augmente de 1.\n• Normal : un seul coup étourdissant par round.\n• Peut être pris plusieurs fois : les effets s'additionnent.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.combat_reflexes') and has('feat.stunning_fist') and @bab >= 6",
+      "repeatable": {}
+    },
+    {
+      "id": "feat.extra_stunning",
+      "type": "feat",
+      "name": {
+        "fr": "Coups étourdissants supplémentaires",
+        "en": "Extra Stunning"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Son souffle et sa concentration lui permettent plus de coups étourdissants dans la journée.\n\nEn jeu\n• Condition : Coup étourdissant, bonus de base à l'attaque +2.\n• +3 utilisations par jour du Coup étourdissant.\n• Peut être pris plusieurs fois : les effets s'additionnent."
+      },
+      "prerequisite": "has('feat.stunning_fist') and @bab >= 2",
+      "note": "Utilisations par jour non modélisées.",
+      "repeatable": {}
+    },
+    {
+      "id": "feat.kiai_shout",
+      "type": "feat",
+      "name": {
+        "fr": "Cri kiaï",
+        "en": "Kiai Shout"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Son hurlement de guerre glace le sang des ennemis les plus faibles.\n\nEn jeu\n• Condition : Cha 13, bonus de base à l'attaque +1.\n• Action simple, 3 fois par jour : tous les ennemis dans 9 m qui entendent le cri font un jet de Volonté (DD 10 + moitié du niveau global + mod. de Charisme) ou sont secoués 1d6 rounds.\n• N'affecte que les créatures dont les DV sont inférieurs à son niveau global."
+      },
+      "prerequisite": "@ability.cha.score >= 13 and @bab >= 1"
+    },
+    {
+      "id": "feat.greater_kiai_shout",
+      "type": "feat",
+      "name": {
+        "fr": "Grand cri kiaï",
+        "en": "Greater Kiai Shout"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Son cri ne fait plus trembler : il jette les ennemis dans la panique.\n\nEn jeu\n• Condition : Cha 13, Cri kiaï, bonus de base à l'attaque +9.\n• Quand il pousse un cri kiaï, les ennemis qui ratent leur jet de Volonté (DD 10 + moitié du niveau global + mod. de Charisme) sont paniqués 2d6 rounds.\n• N'affecte que les créatures dont les DV sont inférieurs à son niveau global."
+      },
+      "prerequisite": "@ability.cha.score >= 13 and has('feat.kiai_shout') and @bab >= 9"
+    },
+    {
+      "id": "feat.ranged_disarm",
+      "type": "feat",
+      "name": {
+        "fr": "Désarmement à distance",
+        "en": "Ranged Disarm"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "D'un trait ou d'un jet précis, il arrache l'arme des mains de l'adversaire.\n\nEn jeu\n• Condition : Dex 15, formation à l'arme à distance choisie, Tir à bout portant, Tir de précision, bonus de base à l'attaque +5.\n• Il peut tenter une manœuvre de désarmement avec l'arme choisie contre une cible à 9 m ou moins.\n• Il ne profite pas de Science du désarmement pour cette manœuvre.\n• Peut être pris plusieurs fois, avec une nouvelle arme à chaque fois ; les effets ne se cumulent pas.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and has('feat.point_blank_shot') and has('feat.precise_shot') and @bab >= 5",
+      "note": "Condition non vérifiée par la fiche : formation à l'arme choisie. Arme choisie non modélisée."
+    },
+    {
+      "id": "feat.ranged_sunder",
+      "type": "feat",
+      "name": {
+        "fr": "Destruction à distance",
+        "en": "Ranged Sunder"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Une flèche bien placée brise l'arme ou le bouclier de l'adversaire.\n\nEn jeu\n• Condition : For 13, Tir à bout portant, Tir de précision, bonus de base à l'attaque +5.\n• Avec une arme à distance tranchante ou contondante, il inflige des dégâts normaux aux objets (au lieu de la moitié) ; avec une arme perforante (flèches), il peut aussi tenter la destruction, mais à demi-dégâts.\n• La cible doit être à 9 m ou moins.\n• Il ne profite pas de Science de la destruction pour cette manœuvre.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.point_blank_shot') and has('feat.precise_shot') and @bab >= 5"
+    },
+    {
+      "id": "feat.earths_embrace",
+      "type": "feat",
+      "name": {
+        "fr": "Étreinte de la terre",
+        "en": "Earth’s Embrace"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Une fois la proie prise, il serre jusqu'à lui briser les côtes.\n\nEn jeu\n• Condition : For 15, Science de la lutte (ou étreinte), Science du combat à mains nues.\n• Quand il immobilise un adversaire en lutte, il lui inflige 1d12 points de dégâts de plus chaque round tant que la prise tient (test de lutte opposé réussi).\n• Il doit rester immobile : les autres ennemis gagnent +4 pour le toucher, sans qu'il soit sans défense.\n• Les créatures immunisées aux critiques ignorent ces dégâts.\n• Normal : il faut réussir un test de lutte opposé pour infliger des dégâts à son prisonnier."
+      },
+      "prerequisite": "@ability.str.score >= 15 and has('feat.improved_grapple') and has('feat.improved_unarmed_strike')"
+    },
+    {
+      "id": "feat.improved_familiar",
+      "type": "feat",
+      "name": {
+        "fr": "Familier supérieur",
+        "en": "Improved Familiar"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Au lieu d'un petit compagnon ordinaire, le lanceur de sorts appelle une bête de combat qui se bat à ses côtés.\n\nEn jeu\n• Condition : pouvoir d'appeler un nouveau familier, alignement compatible, niveau de lanceur de sorts profanes et bonus de base à l'attaque suffisants.\n• Le familier supérieur remplace un familier normal. Ce don est déjà décrit dans le Guide du Maître ; ce livre ajoute ces créatures :\n• Kenshar (neutre) et worg (neutre mauvais) : niveau de lanceur profane 3, BBA +3.\n• Chien esquiveur (loyal bon) et molosse satanique (loyal mauvais) : niveau 5, BBA +5.\n• Hippogriffe (neutre), hurleur (chaotique mauvais) et loup arctique (neutre mauvais) : niveau 7, BBA +7.\n• L'alignement du familier ne doit être opposé à celui du maître sur aucun axe.\n• Les règles habituelles des familiers s'appliquent, avec les mêmes bénéfices pour le maître (Vigilance, lien télépathique, transfert de sorts) ; esquive extraordinaire."
+      },
+      "note": "Don réimprimé du Guide du Maître (« Improved Familiar ») avec de nouveaux familiers. Condition non modélisée (dépend du familier choisi)."
+    },
+    {
+      "id": "feat.axiomatic_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe axiomatique",
+        "en": "Axiomatic Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Ses poings portent le poids de la Loi et châtient les créatures du chaos.\n\nEn jeu\n• Condition : Coup étourdissant, pouvoir de frappe ki (loyal).\n• Ses attaques à mains nues infligent 2d6 de dégâts de plus aux créatures chaotiques.\n• Il annonce l'usage avant l'attaque (un échec gâche l'utilisation) ; chaque usage compte comme un Coup étourdissant.\n• Les créatures immunisées à l'étourdissement ignorent ces dégâts."
+      },
+      "prerequisite": "has('feat.stunning_fist') and has('power.monk_ki_strike')",
+      "note": "Condition non vérifiée par la fiche : frappe ki loyale."
+    },
+    {
+      "id": "feat.defensive_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe défensive",
+        "en": "Defensive Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il se couvre, attend l'erreur, puis la fait payer.\n\nEn jeu\n• Condition : Dex 13, Int 13, Esquive, Expertise du combat.\n• Après une défense totale, si une créature l'attaque et le rate, il gagne +4 à l'attaque contre elle au round suivant (une seule attaque).\n• Aucun bonus contre les créatures qui ne l'attaquent pas ou dont l'attaque touche.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and @ability.int.score >= 13 and has('feat.dodge') and has('feat.combat_expertise')"
+    },
+    {
+      "id": "feat.arterial_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe hémorragique",
+        "en": "Arterial Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Sa lame cherche les artères et laisse des plaies qui ne cessent pas de saigner.\n\nEn jeu\n• Condition : attaque sournoise, bonus de base à l'attaque +4.\n• Sur une attaque sournoise réussie, il peut renoncer à 1d6 de dégâts sournois pour infliger une blessure qui coûte 1 point de vie de plus par round.\n• Fin par un test de Premiers secours DD 15 ou une guérison magique.\n• Les blessures se cumulent (2 blessures, 2 points par round).\n• Une seule frappe hémorragique par attaque sournoise réussie."
+      },
+      "prerequisite": "has('power.rogue_sneak_attack') and @bab >= 4"
+    },
+    {
+      "id": "feat.karmic_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe karmique",
+        "en": "Karmic Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il laisse l'ennemi s'ouvrir pour mieux le frapper.\n\nEn jeu\n• Condition : Dex 13, Esquive, Expertise du combat.\n• À son tour, il désigne un adversaire. Jusqu'à son prochain tour, il subit -4 à la CA, mais a une attaque d'opportunité si cet adversaire l'attaque au corps à corps (même de contact).\n• Les règles habituelles des attaques d'opportunité s'appliquent (zone de contrôle, une attaque par round…)."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.dodge') and has('feat.combat_expertise')",
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -4,
+          "bonusType": "untyped",
+          "condition": "active('toggle.karmic_strike')"
+        }
+      ]
+    },
+    {
+      "id": "feat.arcane_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe profane",
+        "en": "Arcane Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "magic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il verse la puissance d'un sort dans son arme et frappe avec une force magique.\n\nEn jeu\n• Condition : lancer des sorts profanes de niveau 3, bonus de base à l'attaque +4.\n• Action libre sans attaque d'opportunité : il sacrifie un sort préparé ou un emplacement de niveau 1 ou plus pour un round.\n• Avec une arme de corps à corps choisie, il gagne à l'attaque un bonus égal au niveau du sort (sans dépasser son BBA) et +1d4 de dégâts par niveau du sort.\n• Exemple : sort de niveau 4 sacrifié, +4 à l'attaque et +4d4 aux dégâts."
+      },
+      "prerequisite": "@bab >= 4",
+      "note": "Condition non vérifiée par la fiche : lancer des sorts profanes de niveau 3."
+    },
+    {
+      "id": "feat.monkey_grip",
+      "type": "feat",
+      "name": {
+        "fr": "Grande poigne",
+        "en": "Monkey Grip"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il manie sans gêne des armes taillées pour des géants.\n\nEn jeu\n• Condition : bonus de base à l'attaque +1.\n• Il peut manier une arme de corps à corps (non double) d'une catégorie de taille au-dessus de la sienne avec -2 à l'attaque, sans qu'elle change de catégorie (légère, une main, deux mains).\n• Il doit la tenir de sa main directrice (ou à deux mains).\n• Normal : une arme d'une catégorie de taille au-dessus se manie avec -2 mais devient une arme à une main ou à deux mains selon le cas."
+      },
+      "prerequisite": "@bab >= 1"
+    },
+    {
+      "id": "feat.improved_damage_reduction",
+      "type": "feat",
+      "name": {
+        "fr": "Grande vitalité",
+        "en": "Improved Damage Reduction"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Sa peau déjà dure encaisse encore un peu mieux.\n\nEn jeu\n• Condition : aptitude de classe ou pouvoir inné de réduction des dégâts.\n• +1 à sa réduction des dégâts, sans changer ce qui l'ignore ; le bonus s'ajoute après la valeur du niveau.\n• Ne se prend qu'une fois. S'il a plusieurs réductions des dégâts, il choisit une fois pour toutes celle qui reçoit le bonus."
+      },
+      "note": "Réduction des dégâts non modélisée."
+    },
+    {
+      "id": "feat.faster_healing",
+      "type": "feat",
+      "name": {
+        "fr": "Guérison rapide",
+        "en": "Faster Healing"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Son corps referme ses plaies bien plus vite que la moyenne.\n\nEn jeu\n• Condition : bonus de base de Vigueur +5.\n• Il récupère points de vie et points de caractéristique perdus plus vite (table de la page 102).\n• Points de vie, après 8 h de sommeil : 1,5 x niveau global (3 x avec Premiers secours réussis) ; après 24 h de repos complet : 3 x niveau global (6 x avec soins).\n• Caractéristiques, après 8 h de sommeil : 2 (3 avec soins) ; après 24 h de repos complet : 4 (6 avec soins)."
+      },
+      "note": "Condition (bonus de base de Vigueur +5) non vérifiée par la fiche."
+    },
+    {
+      "id": "feat.ranged_pin",
+      "type": "feat",
+      "name": {
+        "fr": "Immobilisation à distance",
+        "en": "Ranged Pin"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Il cloue le vêtement de sa cible à un mur d'un trait, la retenant sans la toucher.\n\nEn jeu\n• Condition : Dex 15, Tir à bout portant, Tir de précision, bonus de base à l'attaque +5.\n• Il engage une lutte à distance en fixant les vêtements de la cible à une surface proche : elle doit être à 1,50 m ou moins d'un arbre, d'un mur ou d'une surface que le projectile peut percer, et porter tissu ou armure.\n• Il réussit d'abord une attaque à distance (pas de contact), puis gagne un test de lutte opposé (sans modificateur de taille).\n• Par une action simple, la victime se libère par un test de Force ou d'Évasion de DD 15.\n• Il ne profite pas de Science de la lutte pour cette manœuvre.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and has('feat.point_blank_shot') and has('feat.precise_shot') and @bab >= 5"
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.prone_attack",
+      "relation": "requires",
+      "to": "feat.lightning_reflexes"
+    },
+    {
+      "from": "feat.favored_power_attack",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.shield_charge",
+      "relation": "requires",
+      "to": "feat.improved_shield_bash"
+    },
+    {
+      "from": "feat.phalanx_fighting",
+      "relation": "requires",
+      "to": "feat.shield_proficiency"
+    },
+    {
+      "from": "feat.debilitating_strike",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.debilitating_strike",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.pain_touch",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.counter_charge",
+      "relation": "requires",
+      "to": "feat.combat_reflexes"
+    },
+    {
+      "from": "feat.shield_slam",
+      "relation": "requires",
+      "to": "feat.shield_charge"
+    },
+    {
+      "from": "feat.shield_slam",
+      "relation": "requires",
+      "to": "feat.improved_shield_bash"
+    },
+    {
+      "from": "feat.roundhouse_kick",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.roundhouse_kick",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.flying_kick",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.flying_kick",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.numbing_strike",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.numbing_strike",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.rapid_stunning",
+      "relation": "requires",
+      "to": "feat.combat_reflexes"
+    },
+    {
+      "from": "feat.rapid_stunning",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.extra_stunning",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.greater_kiai_shout",
+      "relation": "requires",
+      "to": "feat.kiai_shout"
+    },
+    {
+      "from": "feat.ranged_disarm",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.ranged_disarm",
+      "relation": "requires",
+      "to": "feat.precise_shot"
+    },
+    {
+      "from": "feat.ranged_sunder",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.ranged_sunder",
+      "relation": "requires",
+      "to": "feat.precise_shot"
+    },
+    {
+      "from": "feat.earths_embrace",
+      "relation": "requires",
+      "to": "feat.improved_grapple"
+    },
+    {
+      "from": "feat.earths_embrace",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.axiomatic_strike",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.defensive_strike",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.defensive_strike",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.karmic_strike",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.karmic_strike",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.ranged_pin",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.ranged_pin",
+      "relation": "requires",
+      "to": "feat.precise_shot"
+    }
+  ]
+}

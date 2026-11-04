@@ -1,0 +1,277 @@
+{
+  "entities": [
+    {
+      "id": "class.entropomancer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Entropomancien",
+        "en": "Entropomancer"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Quelque part au cœur de l'univers sommeille un grand néant. L'entropomancien s'y accorde : il en détache des éclats qui rongent tout ce qu'ils touchent, et ceux qui vont assez loin finissent par plier les lois du hasard.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non bon ; Concentration 5 rangs, Connaissances (mystères) 5 rangs ; savoir lancer des sorts divins de 4e niveau.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (folklore local, mystères, religion), Intimidation, Premiers secours, Profession.\n• Sorts : +1 niveau de lanceur de sorts divins aux niveaux 2, 4, 6, 8 et 10.\n• Aptitudes : fragment d'entropie (1, 5, 9) ; champ entropique (3, 5, 7) ; contrôle de sphère (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@skill.concentration.ranks >= 5 and @skill.knowledge_arcana.ranks >= 5",
+      "note": "Conditions d'accès : alignement non bon et sorts divins de 4e niveau en texte. Connaissances (mystères) lue comme skill.knowledge_arcana. Dégâts du fragment (3d6, 5d6, 7d6) et DD (12/14/16 + Sagesse) en texte, car sans cible propre sur la fiche. Spellcasting : à choisir dans le niveau du personnage."
+    },
+    {
+      "id": "power.entropomancer_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts d'entropomancien",
+        "en": "Entropomancer spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "entropomancer"
+      ],
+      "description": {
+        "fr": "Chaque pas dans le néant coûte un peu de sa magie ordinaire.\n\nEn jeu\n• Aux niveaux 2, 4, 6, 8 et 10 : +1 niveau de lanceur de sorts divins dans une classe qui lance déjà des sorts de 4e niveau (au choix si plusieurs).\n• Gagne les sorts par jour, sorts connus et niveau de lanceur de ce niveau effectif, mais aucune autre aptitude."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.entropomancer_entropy_fragment",
+      "type": "class_power",
+      "name": {
+        "fr": "Fragment d'entropie",
+        "en": "Entropy shard"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "entropomancer"
+      ],
+      "description": {
+        "fr": "Une écharde de néant, noire et minuscule, qui ronge tout ce qui croise sa route.\n\nEn jeu\n• Capacité surnaturelle, 2 fois par jour : crée dans une case adjacente un fragment qui dure 1 round par niveau de classe.\n• Il se déplace de 9 m (action simple) ou 1,50 m (action de mouvement) ; il frappe les objets pour 3d6 sans tenir compte de la solidité.\n• Sur une créature : attaque de contact à distance, 3d6 de dégâts, Vigueur pour moitié (DD 12 + Sagesse). Toute créature qui traverse ou occupe sa case au début de son tour subit les mêmes dégâts.\n• Niveau 5 : 5d6 et DD 14 + Sagesse. Niveau 9 : 7d6 et DD 16 + Sagesse ; en fin de tour, il tente d'attirer les créatures à 4,50 m (bousculade, bonus +11)."
+      },
+      "effects": [],
+      "usesPerDay": "2",
+      "note": "Dégâts non modélisés (le fragment est une créature-case)."
+    },
+    {
+      "id": "power.entropomancer_entropic_field",
+      "type": "class_power",
+      "name": {
+        "fr": "Champ entropique",
+        "en": "Entropic field"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "entropomancer"
+      ],
+      "description": {
+        "fr": "Autour de lui, les probabilités se dérèglent et la guérison s'éteint.\n\nEn jeu\n• Capacité surnaturelle, niveau 3, action simple, 2 fois par jour : champ invisible de 1,50 m de rayon par niveau, pendant 1 round par niveau (il peut y mettre fin d'une action simple). Toute guérison magique y échoue.\n• Niveau 5 : une fois par round, en action libre, impose de refaire un jet d'attaque, de sauvegarde ou un test (celui qui le fait garde le nouveau résultat).\n• Niveau 7 : les blessures reçues dans le champ saignent (1 point de dégâts par round et par blessure, fin de tour) jusqu'à sortie du champ ou un test de Premiers secours (DD 15). Il y est lui-même soumis."
+      },
+      "effects": [],
+      "usesPerDay": "2"
+    },
+    {
+      "id": "power.entropomancer_sphere_control",
+      "type": "class_power",
+      "name": {
+        "fr": "Contrôle de sphère",
+        "en": "Sphere control"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "entropomancer"
+      ],
+      "description": {
+        "fr": "Il dompte les sphères d'annihilation comme avec un talisman, sans craindre leur appétit.\n\nEn jeu\n• Capacité surnaturelle, niveau 10 : contrôle une sphère d'annihilation comme avec un talisman des sphères.\n• La sphère le traverse sans l'affecter."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.entropomancer",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.entropomancer_entropy_fragment"
+      ]
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.entropomancer_spells"
+      ]
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.entropomancer_entropic_field"
+      ]
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.entropomancer",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.entropomancer_sphere_control"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.entropomancer",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

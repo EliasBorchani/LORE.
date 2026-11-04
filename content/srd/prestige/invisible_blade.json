@@ -1,0 +1,263 @@
+{
+  "entities": [
+    {
+      "id": "class.invisible_blade",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Lame invisible",
+        "en": "Invisible Blade"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Il se bat comme un tricheur qui aurait appris le métier à la dague : une lame courte, un geste sec, et l'adversaire ne voit rien venir. La lame invisible laisse croire qu'elle est mal armée, attend l'instant où la garde s'ouvre et l'achève d'un seul coup.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : 8 rangs en Bluff et 6 en Psychologie ; dons Arme de prédilection (dague, kukri ou dague coup-de-poing), Attaque en finesse et Expertise du combat ; avoir vaincu en combat singulier un adversaire de sa valeur avec ces seules armes.\n• Aucune formation nouvelle aux armes ni aux armures. Toutes ses aptitudes exigent une dague, un kukri ou une dague coup-de-poing.\n• Compétences de classe : Acrobaties, Artisanat, Bluff, Déplacement silencieux, Détection, Discrétion, Équilibre, Escalade, Évasion, Perception auditive, Profession, Psychologie, Représentation, Saut.\n• Aptitudes : attaque sournoise à la dague +1d6 et défense décontractée (1) ; blessure hémorragique (2) ; attaque sournoise +2d6 et feinte prodigieuse en action de mouvement (3) ; maîtrise de la feinte (4) ; attaque sournoise +3d6 et feinte en action libre (5)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "prerequisite": "@skill.bluff.ranks >= 8 and @skill.sense_motive.ranks >= 6 and has('feat.weapon_focus') and has('feat.weapon_finesse') and has('feat.combat_expertise')",
+      "note": "Conditions en formule : rangs et dons. L'arme de l'Arme de prédilection (dague, kukri ou dague coup-de-poing) et le combat singulier gagné : texte seulement. Dé de vie d6 lu sur la page (PDF 57)."
+    },
+    {
+      "id": "power.invisible_blade_dagger_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise à la dague",
+        "en": "Dagger sneak attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "invisible_blade"
+      ],
+      "description": {
+        "fr": "Un coup bref à la dague, là où la garde est ouverte.\n\nEn jeu\n• Capacité extraordinaire : +1d6 de dégâts au niveau 1, +2d6 au niveau 3, +3d6 au niveau 5.\n• Mêmes règles que l'attaque sournoise du roublard, mais seulement avec une dague, un kukri ou une dague coup-de-poing.\n• Se cumule avec l'attaque sournoise d'une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor((level('class.invisible_blade') + 1) / 2))d6"
+        }
+      ],
+      "note": "Le modèle ne vérifie pas l'arme : les dés s'ajoutent toujours à damage.sneak_attack. À la charge du joueur : dague, kukri ou dague coup-de-poing seulement."
+    },
+    {
+      "id": "power.invisible_blade_unfettered_defense",
+      "type": "class_power",
+      "name": {
+        "fr": "Défense décontractée",
+        "en": "Unfettered defense"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "invisible_blade"
+      ],
+      "description": {
+        "fr": "Une seule lame à la main, aucune armure : il danse hors de portée des coups.\n\nEn jeu\n• Capacité extraordinaire : s'il tient au moins une dague, un kukri ou une dague coup-de-poing et aucune autre arme, bonus d'esquive à la CA égal à son niveau de classe, limité à son bonus d'Intelligence.\n• Perdu s'il porte une armure (quelle qu'elle soit), s'il est pris au dépourvu ou privé de son bonus de Dextérité à la CA."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "min(level('class.invisible_blade'), max(0, @ability.int.mod))",
+          "bonusType": "dodge",
+          "condition": "active('toggle.invisible_blade_unfettered_defense')"
+        }
+      ],
+      "note": "Case à cocher : à activer seulement quand la lame invisible tient sa dague (et rien d'autre), sans armure. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.invisible_blade_bleeding_wound",
+      "type": "class_power",
+      "name": {
+        "fr": "Blessure hémorragique",
+        "en": "Bleeding wound"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "invisible_blade"
+      ],
+      "description": {
+        "fr": "Sa lame ne se contente pas de frapper : elle ouvre une plaie qui ne se referme pas.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : après une attaque sournoise à la dague réussie, il peut retirer 1d6 aux dégâts sournois pour infliger une blessure hémorragique.\n• Dès le round suivant, la victime perd 1 pv par round et par blessure ; plusieurs blessures s'additionnent.\n• Arrêt : test de Premiers secours DD 15 ou sort de guérison.\n• Les créatures immunisées contre l'attaque sournoise le sont aussi contre ces blessures."
+      },
+      "effects": [],
+      "note": "Nom anglais lu dans l'exemple du livre (« blessure sanglante »)."
+    },
+    {
+      "id": "power.invisible_blade_sudden_feint",
+      "type": "class_power",
+      "name": {
+        "fr": "Feinte prodigieuse",
+        "en": "Sudden feint"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "invisible_blade"
+      ],
+      "description": {
+        "fr": "Un clin d'œil, une fausse ouverture : l'adversaire a déjà mordu.\n\nEn jeu\n• Capacité extraordinaire : niveau 3, la feinte en combat se fait par une action de mouvement (au lieu d'une action simple) ; niveau 5, par une action libre.\n• Seulement avec une dague, un kukri ou une dague coup-de-poing."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.invisible_blade_feint_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise de la feinte",
+        "en": "Feint mastery"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "invisible_blade"
+      ],
+      "description": {
+        "fr": "Sa tromperie est si rodée qu'elle ne rate plus.\n\nEn jeu\n• Capacité extraordinaire, niveau 4 : il peut faire 10 sur ses tests de Bluff pour feinter, même en plein combat.\n• Seulement armé d'une dague, d'un kukri ou d'une dague coup-de-poing."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.invisible_blade",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.invisible_blade_dagger_sneak_attack",
+        "power.invisible_blade_unfettered_defense"
+      ]
+    },
+    {
+      "classId": "class.invisible_blade",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.invisible_blade_bleeding_wound"
+      ]
+    },
+    {
+      "classId": "class.invisible_blade",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.invisible_blade_sudden_feint"
+      ]
+    },
+    {
+      "classId": "class.invisible_blade",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.invisible_blade_feint_mastery"
+      ]
+    },
+    {
+      "classId": "class.invisible_blade",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.invisible_blade",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

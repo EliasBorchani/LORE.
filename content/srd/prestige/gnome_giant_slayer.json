@@ -1,0 +1,392 @@
+{
+  "entities": [
+    {
+      "id": "class.gnome_giant_slayer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Gnome tueur de géants",
+        "en": "Gnome Giant-Slayer"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Quelques gnomes, pas plus, ont le cran de s'en prendre aux géants. Ils comptent sur l'agilité, la ruse et un coup d'avance : plus l'adversaire est grand, plus il tombe de haut.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : gnome ; bonus de base à l'attaque +5 ; 3 rangs en Acrobaties, 3 en Évasion, Langue (géant) ; dons Attaque éclair, Esquive, Souplesse du serpent.\n• Formé aux armes courantes et de guerre, aux armures légères et intermédiaires et aux boucliers (sauf pavois).\n• Compétences de classe : Acrobaties, Artisanat, Déplacement silencieux, Discrétion, Escalade, Évasion, Intimidation, Maîtrise des cordes, Saut.\n• Aptitudes : ennemi juré (géant) +2 (1), +4 (4), +6 (7), +8 (10) ; combattant rusé (2) ; insaisissable (3) ; tir rapproché (5) ; déplacement accéléré (6) ; science de la souplesse du serpent (8) ; frappe agaçante (9) ; roulé-boulé (10)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.tumble.ranks >= 3 and @skill.escape_artist.ranks >= 3 and has('feat.spring_attack') and has('feat.dodge') and has('feat.mobility')",
+      "note": "Conditions hors formule : race gnome ; Langue (géant) (pas de formule pour une langue)."
+    },
+    {
+      "id": "power.gnome_giant_slayer_favored_enemy_giant",
+      "type": "class_power",
+      "name": {
+        "fr": "Ennemi juré (géant)",
+        "en": "Favored enemy (giant)"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Il a appris où frapper un géant, et comment lire ses humeurs.\n\nEn jeu\n• Capacité extraordinaire : +2 aux tests de Bluff, Détection, Perception auditive et Psychologie contre les créatures de type géant, et +2 aux dégâts des armes contre un géant.\n• Le bonus passe à +4 au niveau 4, +6 au niveau 7 et +8 au niveau 10."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": "2 * (1 + floor((level('class.gnome_giant_slayer') - 1) / 3))",
+          "situation": "situation.vs_giants"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": "2 * (1 + floor((level('class.gnome_giant_slayer') - 1) / 3))",
+          "situation": "situation.vs_giants"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": "2 * (1 + floor((level('class.gnome_giant_slayer') - 1) / 3))",
+          "situation": "situation.vs_giants"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": "2 * (1 + floor((level('class.gnome_giant_slayer') - 1) / 3))",
+          "situation": "situation.vs_giants"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "2 * (1 + floor((level('class.gnome_giant_slayer') - 1) / 3))",
+          "situation": "situation.vs_giants"
+        }
+      ],
+      "note": "Le livre ne limite pas les dégâts aux armes de mêlée ; la ligne « tous dégâts » du modèle compte aussi les sorts (à retirer à la main). Le rôdeur ajoute son propre ennemi juré séparément."
+    },
+    {
+      "id": "power.gnome_giant_slayer_canny_fighter",
+      "type": "class_power",
+      "name": {
+        "fr": "Combattant rusé",
+        "en": "Canny fighter"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Les coups des géants lui passent par-dessus la tête.\n\nEn jeu\n• Capacité extraordinaire : +4 à la CA (esquive) contre les attaques des géants, ou +2 contre les créatures d'un autre type mais d'au moins deux catégories de taille de plus que lui.\n• Perdu quand il perd son bonus de Dextérité à la CA, ou en armure lourde (ou avec une charge lourde)."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "situation": "situation.vs_giants"
+        }
+      ],
+      "note": "Seul le +4 contre les géants est calculé ; le +2 contre les autres grandes créatures est dans le texte. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.gnome_giant_slayer_slippery",
+      "type": "class_power",
+      "name": {
+        "fr": "Insaisissable",
+        "en": "Slippery"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Quand une main immense se referme, il est déjà ailleurs.\n\nEn jeu\n• Capacité extraordinaire : agrippé par une créature d'au moins deux catégories de taille de plus que lui, il ajoute son niveau de gnome tueur de géants à ses tests de lutte et d'Évasion pour échapper à la prise.\n• Il traverse l'espace d'une créature d'au moins deux catégories de plus que lui (au lieu de trois), sauf si elle remplit totalement son espace (cube gélatineux)."
+      },
+      "effects": [
+        {
+          "target": "check.grapple",
+          "op": "add",
+          "value": "level('class.gnome_giant_slayer')",
+          "situation": "situation.resisting_grapple"
+        },
+        {
+          "target": "skill.escape_artist",
+          "op": "add",
+          "value": "level('class.gnome_giant_slayer')",
+          "situation": "situation.resisting_grapple"
+        }
+      ],
+      "note": "Le bonus ne vaut que contre une créature d'au moins deux catégories de plus : à la charge du joueur. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.gnome_giant_slayer_close_shot",
+      "type": "class_power",
+      "name": {
+        "fr": "Tir rapproché",
+        "en": "Close shot"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Les géants ne peuvent plus le punir de tirer à bout portant.\n\nEn jeu\n• Capacité extraordinaire : tirer avec une arme à distance dans l'espace contrôlé par un géant ne provoque pas d'attaque d'opportunité de sa part."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.gnome_giant_slayer_fast_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Déplacement accéléré",
+        "en": "Fast movement"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Léger, vif, et plus rapide d'un cran.\n\nEn jeu\n• Capacité extraordinaire : +3 m à la vitesse au sol à partir du niveau 6.\n• Perdu en armure ou avec une charge lourde ; la réduction due à une armure ou une charge intermédiaire s'applique après ce bonus."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 3,
+          "condition": "level('class.gnome_giant_slayer') >= 6"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.gnome_giant_slayer_improved_mobility",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la souplesse du serpent",
+        "en": "Improved mobility"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Passer sous les jambes d'un géant devient un art.\n\nEn jeu\n• Capacité extraordinaire : +4 à la CA (esquive) quand il se déplace dans ou hors d'un espace contrôlé par un géant (contre les attaques d'opportunité).\n• Se cumule avec Souplesse du serpent."
+      },
+      "effects": [],
+      "note": "Bonus conditionné à un déplacement : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.gnome_giant_slayer_aggravating_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe agaçante",
+        "en": "Aggravating strike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Ses coups déstabilisent même un colosse.\n\nEn jeu\n• Capacité extraordinaire : au niveau 9, un géant auquel il inflige des dégâts est secoué pendant 1 round."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.gnome_giant_slayer_roll_with_the_blow",
+      "type": "class_power",
+      "name": {
+        "fr": "Roulé-boulé",
+        "en": "Roll with the blow"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_giant_slayer"
+      ],
+      "description": {
+        "fr": "Il se laisse emporter par le coup pour en encaisser moins.\n\nEn jeu\n• Capacité extraordinaire : 1 fois par jour, quand une attaque d'un géant le ferait tomber à 0 point de vie ou moins (pas un sort ou un pouvoir spécial), il fait un jet de Réflexes (DD = dégâts subis) avec un bonus égal à son niveau de classe : s'il réussit, les dégâts sont réduits de moitié.\n• Il doit voir venir l'attaque et pouvoir réagir (impossible sans son bonus de Dextérité à la CA).\n• Pas d'esquive totale sur ce jet : ce n'est pas un jet pour demi-dégâts."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.gnome_giant_slayer_favored_enemy_giant"
+      ]
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.gnome_giant_slayer_canny_fighter"
+      ]
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.gnome_giant_slayer_slippery"
+      ]
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.gnome_giant_slayer_close_shot"
+      ]
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.gnome_giant_slayer_fast_movement"
+      ]
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.gnome_giant_slayer_improved_mobility"
+      ]
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.gnome_giant_slayer_aggravating_strike"
+      ]
+    },
+    {
+      "classId": "class.gnome_giant_slayer",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.gnome_giant_slayer_roll_with_the_blow"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.gnome_giant_slayer",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

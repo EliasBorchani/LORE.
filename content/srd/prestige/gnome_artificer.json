@@ -1,0 +1,197 @@
+{
+  "entities": [
+    {
+      "id": "class.gnome_artificer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître créateur",
+        "en": "Gnome Artificer"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Chez les gnomes, c’est lui que l’on consulte quand il faut concevoir un objet magique. Mi-ingénieur, mi-mage, il travaille dans son atelier et fait de la confection d’objets à la fois un art et un métier.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : gnome ; Artisanat 8 rangs (une spécialité), Utilisation d’objets magiques 4 rangs ; deux dons de création d’objet ; niveau 5 de lanceur de sorts profanes.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (architecture et ingénierie), Connaissances (mystères), Désamorçage/sabotage, Estimation, Utilisation d’objets magiques.\n• Sorts : +1 niveau de lanceur de sorts profanes aux niveaux 2 à 5, dans une classe profane déjà possédée.\n• Aptitudes : création accélérée (1) ; don de création d’objet supplémentaire (1, 5) ; identification (3)."
+      },
+      "hitDie": 4,
+      "skillPoints": 4,
+      "prerequisite": "@skill.craft.ranks >= 8 and @skill.use_magic_device.ranks >= 4",
+      "note": "Conditions hors formule : race gnome, deux dons de création d’objet, niveau 5 de lanceur de sorts profanes."
+    },
+    {
+      "id": "power.gnome_artificer_accelerated_creation",
+      "type": "class_power",
+      "name": {
+        "fr": "Création accélérée",
+        "en": "Accelerated creation"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_artificer"
+      ],
+      "description": {
+        "fr": "Son savoir-faire lui fait gagner un temps précieux : ses objets sortent de l’atelier deux fois plus vite.\n\nEn jeu\n• Pouvoir extraordinaire, niveau 1.\n• Il confectionne un objet magique en deux fois moins de temps : 1 jour par tranche de 2 000 po du prix de base, minimum 1 jour."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.gnome_artificer_bonus_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire",
+        "en": "Bonus feat"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_artificer"
+      ],
+      "description": {
+        "fr": "Un nouveau tour de main, une nouvelle façon de lier le métal et la magie.\n\nEn jeu\n• Aux niveaux 1 et 5 : un don de création d’objet supplémentaire.\n• Il doit en remplir les conditions."
+      },
+      "note": "Don au choix du joueur dans la fiche de niveau (pas de relation grants).",
+      "effects": []
+    },
+    {
+      "id": "power.gnome_artificer_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_artificer"
+      ],
+      "description": {
+        "fr": "Chaque objet façonné approfondit un peu plus sa magie.\n\nEn jeu\n• Aux niveaux 2 à 5 : +1 niveau effectif de lanceur de sorts dans une classe profane déjà possédée (choisie dans la fiche de niveau ; une seule classe si plusieurs).\n• Il gagne les sorts par jour, les sorts connus et le niveau de lanceur de ce niveau effectif, rien d’autre (pas de dons de métamagie ni de création d’objets en plus)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.gnome_artificer_identify",
+      "type": "class_power",
+      "name": {
+        "fr": "Identification",
+        "en": "Identify"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "gnome_artificer"
+      ],
+      "description": {
+        "fr": "Un objet entre les doigts, et il en lit les secrets.\n\nEn jeu\n• Niveau 3 : détermine les propriétés d’un objet magique en le tenant 1 minute (action de 1 minute).\n• Test d’Art de la magie DD 10 + niveau de lanceur de l’objet.\n• Pas de 10 ni de 20, pas de deuxième essai.\n• Fonctionne comme le sort identification."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.gnome_artificer",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.gnome_artificer_accelerated_creation",
+        "power.gnome_artificer_bonus_feat"
+      ]
+    },
+    {
+      "classId": "class.gnome_artificer",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.gnome_artificer_spells"
+      ]
+    },
+    {
+      "classId": "class.gnome_artificer",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.gnome_artificer_identify"
+      ]
+    },
+    {
+      "classId": "class.gnome_artificer",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.gnome_artificer",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.gnome_artificer_bonus_feat"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_architecture"
+    },
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.gnome_artificer",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    }
+  ]
+}

@@ -1,0 +1,1259 @@
+{
+  "entities": [
+    {
+      "id": "class.spirit_shaman",
+      "type": "class",
+      "name": {
+        "fr": "Chaman spiritiste",
+        "en": "Spirit Shaman"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "divine",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Le chaman spiritiste est le go-between entre le monde des vivants et celui des esprits : fées, éléments, ancêtres. Il ne prie aucun dieu, il négocie avec ce qui habite les arbres, les pierres et les tombes. Sa magie est celle du druide, mais il la choisit chaque matin en envoyant son esprit-guide discuter à sa place.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : au choix.\n• Formé à l’arc court, au bâton, à la dague, au dard, à l’épieu, à la fronde, au gourdin, à la hachette, à la hache de lancer, au javelot, à la lance et à la pique ; aux armures légères et aux boucliers (sauf le pavois).\n• Sorts divins de la liste du druide, basés sur la Sagesse (le DD utilise le Charisme), du niveau 0 au niveau 9. Il les lance spontanément, mais son répertoire n’est pas fixe : chaque jour, pendant 1 heure de méditation, il « recueille » dans toute la liste des druides un nombre de sorts donné par la Table 1-2 (3, 1 au niveau 1…). Les dons de métamagie s’appliquent quand il recueille le sort, jamais à la volée.\n• Aptitudes : empathie sauvage et esprit-guide (1) ; correction des esprits (2) ; détection des esprits (3) ; bénédiction des esprits (4) ; soutien spirituel (5) ; guerrier spectral (6) ; protection des esprits (7) ; forme spirituelle 1/jour (9), 2 (15), 3 (20) ; assistant magique (10) ; rappel de l’esprit (11) ; exorcisme (13) ; affaiblissement des esprits (16) ; voyage spirituel (17) ; élu des esprits (19) ; esprit incarné (20).\n• Au-delà du niveau 20 : un don supplémentaire tous les 3 niveaux (23, 26, 29…)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "source": "Complete Divine",
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "spontaneous"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.spirit_shaman') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Sorts : le livre donne les sorts recueillis par jour (Table 1-2) ; ils servent ici de « sorts connus » et la liste change chaque jour. Le chaman choisit ses sorts du jour dans toute la liste des druides (relations de liste copiées plus tard). Le livre ne donne pas de règle épique propre au chaman spiritiste : un don supplémentaire tous les 3 niveaux au-delà du 20 (maison)."
+    },
+    {
+      "id": "power.spirit_shaman_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de chaman spiritiste",
+        "en": "Spirit shaman spells"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Le matin, le chaman médite une heure et envoie son esprit-guide négocier avec les esprits : ils lui « recueillent » les sorts de druide du jour. Une fois la journée commencée, il les lance comme un ensorceleur, sans préparation.\n\nEn jeu\n• Sorts divins de la liste du druide, du niveau 0 au niveau 9. Caractéristique : Sagesse (10 + niveau du sort minimum pour recueillir et lancer). DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour selon le niveau (Table 1-1), plus des sorts en bonus grâce à une Sagesse élevée.\n• Sorts recueillis (Table 1-2, repris dans les « sorts connus ») : chaque jour il choisit, dans toute la liste du druide, autant de sorts de chaque niveau. La liste change donc tous les jours.\n• Il lance librement les sorts recueillis, tant qu’il lui reste un emplacement du niveau voulu : cinq fois le même tour de magie est possible.\n• Les dons de métamagie s’appliquent au moment de recueillir le sort (un emplacement recueilli du niveau final) ; pas de métamagie à la volée, et le temps d’incantation ne rallonge pas."
+      },
+      "effects": [],
+      "note": "Les sorts connus de la fiche sont ceux du jour : ils sont à refaire à chaque méditation. La liste complète des sorts de druide est celle de la classe (relations ajoutées plus tard)."
+    },
+    {
+      "id": "power.spirit_shaman_wild_empathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Empathie sauvage",
+        "en": "Wild empathy"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Guidé par les esprits des bêtes, le chaman calme ou amadoue un animal d’un regard, d’une posture, d’un grognement bien placé.\n\nEn jeu\n• Test d’empathie sauvage : 1d20 + niveau de chaman + modificateur de Charisme, comme un test de Diplomatie pour changer l’attitude d’un animal.\n• Il faut se voir à 9 m ou moins ; compter environ une minute.\n• Ne marche pas sur les créatures magiques."
+      },
+      "effects": [
+        {
+          "target": "check.wild_empathy",
+          "op": "add",
+          "value": "level('class.spirit_shaman') + @ability.cha.mod"
+        }
+      ]
+    },
+    {
+      "id": "power.spirit_shaman_spirit_guide",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit-guide",
+        "en": "Spirit guide"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Le chaman a un esprit-guide, une présence que lui seul perçoit, qui ne se confond avec aucune créature. Son aspect (aigle, loup, ours, tortue…) ne change rien aux règles : il traduit ce que le chaman est ou ce qu’il aime.\n\nEn jeu\n• Il choisit la forme de son esprit-guide au niveau 1 (aigle, araignée, blaireau, buffle, corneille, coyote, élan, faucon, grue, hibou, lapin, lézard, loup, loutre, ours, puma, ragondin, renard, scorpion, serpent, tortue, vautour).\n• Don Vigilance gratuit, tant qu’il a son esprit-guide.\n• Aux niveaux 5 et 10, l’esprit-guide donne soutien spirituel et assistant magique."
+      },
+      "effects": [],
+      "note": "La forme de l’esprit-guide est à noter sur la fiche (sans effet de jeu). Don Vigilance donné par la relation de la capacité."
+    },
+    {
+      "id": "power.spirit_shaman_chastise_spirits",
+      "type": "class_power",
+      "name": {
+        "fr": "Correction des esprits",
+        "en": "Chastise spirits"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Le chaman lâche une onde de magie divine qui blesse les esprits hostiles autour de lui : fées, élémentaires, morts-vivants intangibles et autres créatures spirituelles.\n\nEn jeu\n• Action simple, un nombre de fois par jour égal à 3 + modificateur de Charisme.\n• Inflige 1d6 par niveau de chaman à tous les esprits dans 9 m ; jet de Volonté (DD 10 + niveau de chaman + modificateur de Charisme) pour moitié.\n• Atteint automatiquement les créatures intangibles (pas de 50 % d’échec).\n• Sont des « esprits » : morts-vivants intangibles, fées, élémentaires, créatures sous forme astrale, créatures du sous-type esprit, hommes-esprits et telthors, créatures spirituelles créées par certains sorts."
+      },
+      "effects": [],
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "power.spirit_shaman_detect_spirits",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection des esprits",
+        "en": "Detect spirits"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "L’esprit-guide sent les esprits alentour et prévient le chaman de leur présence.\n\nEn jeu\n• À volonté, comme détection des morts-vivants, mais pour les esprits."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spirit_shaman_blessing_of_the_spirits",
+      "type": "class_power",
+      "name": {
+        "fr": "Bénédiction des esprits",
+        "en": "Blessing of the spirits"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Après un petit rite méditatif, le chaman se met à l’abri des esprits hostiles.\n\nEn jeu\n• Rite de 10 minutes, sur lui seul.\n• Fonctionne comme protection contre le Mal, mais contre les esprits, jusqu’à ce qu’il y mette fin ou que l’effet soit dissipé. Un nouveau rite de 10 minutes le recrée."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spirit_shaman_follow_the_guide",
+      "type": "class_power",
+      "name": {
+        "fr": "Soutien spirituel",
+        "en": "Follow the guide"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "L’esprit-guide aide le chaman à garder la tête froide quand un charme essaie de le dominer.\n\nEn jeu\n• Si un sort ou pouvoir d’enchantement le touche et qu’il rate son jet de sauvegarde, il peut le retenter 1 round plus tard avec le même DD.\n• Une seule nouvelle tentative par jet de sauvegarde raté."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spirit_shaman_ghost_warrior",
+      "type": "class_power",
+      "name": {
+        "fr": "Guerrier spectral",
+        "en": "Ghost warrior"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Quand il se bat, ses armes frappent comme celles d’un fantôme et les spectres peinent à le toucher.\n\nEn jeu\n• Toute arme qu’il tient a la propriété spectrale (elle blesse les créatures intangibles).\n• Contre les attaques de contact des créatures intangibles, sa CA normale compte (et non sa CA de contact)."
+      },
+      "effects": [],
+      "note": "Propriété d’arme (spectrale, « ghost touch ») et CA contre les attaques de contact intangibles : pas dans le modèle."
+    },
+    {
+      "id": "power.spirit_shaman_ward_of_the_spirits",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection des esprits",
+        "en": "Ward of the spirits"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Un rite d’une minute dresse autour du chaman et de ses compagnons une barrière contre les esprits hostiles.\n\nEn jeu\n• Une fois par jour, rite de 1 minute.\n• Dure 10 minutes par niveau de chaman, comme cercle magique contre le Mal mais contre les esprits ; protège aussi ses compagnons."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.spirit_shaman_spirit_form",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme spirituelle",
+        "en": "Spirit form"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Le chaman devient esprit lui-même, un instant : intangible, léger, difficile à toucher, mais dangereux à son tour.\n\nEn jeu\n• Action simple, 1 fois par jour (2 au niveau 15, 3 au niveau 20). Dure 1 minute au plus.\n• Sous-type intangible : immunité aux attaques non magiques, 50 % d’ignorer les dégâts d’une source tangible, traverse les objets solides.\n• Perd les bonus d’armure, de bouclier et d’armure naturelle à la CA ; gagne un bonus de parade égal à son modificateur de Charisme (au moins +1).\n• Pas de Force contre les créatures tangibles, mais attaque de contact au corps à corps (Dextérité) : 1d6 de dégâts ; compte comme arme magique pour passer la réduction des dégâts."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.spirit_shaman') >= 20, 3, if(level('class.spirit_shaman') >= 15, 2, 1))",
+      "note": "Immunité, 50 % d’échec et dégâts de la forme : pas d’effet chiffré ; le bonus de parade et la perte des bonus d’armure dépendent de l’état actif."
+    },
+    {
+      "id": "power.spirit_shaman_guide_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Assistant magique",
+        "en": "Guide magic"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "L’esprit-guide peut tenir à sa place un sort qui demande de la concentration, pendant que le chaman fait autre chose.\n\nEn jeu\n• Action libre : l’esprit-guide maintient la concentration d’un sort ou pouvoir magique, un seul à la fois ; le chaman peut agir librement.\n• L’esprit fait les tests de Concentration avec le bonus du chaman ; aucun test quand le chaman subit des dégâts, et il ne peut pas être interrompu."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.spirit_shaman_spirit_recall",
+      "type": "class_power",
+      "name": {
+        "fr": "Rappel de l’esprit",
+        "en": "Recall spirit"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Juste après une mort, le chaman rattache l’esprit d’un défunt à son corps.\n\nEn jeu\n• Une fois par semaine, dans le round qui suit la mort de la victime.\n• Fonctionne comme rappel à la vie, sans perte de niveau, de Constitution ni de sorts ; la créature revient à −1 pv et stabilisée."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer (peut-être « Revenance »). Usage hebdomadaire : le modèle ne tient que des usages par jour, texte seul."
+    },
+    {
+      "id": "power.spirit_shaman_exorcism",
+      "type": "class_power",
+      "name": {
+        "fr": "Exorcisme",
+        "en": "Exorcism"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Le chaman chasse l’esprit qui occupe un corps qui n’est pas le sien.\n\nEn jeu\n• Action complexe contre une créature ou un esprit possédant.\n• Test de niveau de chaman + modificateur de Charisme contre DD 10 + DV de la créature possédante + son modificateur de Charisme.\n• Si réussi, le possédant quitte le corps ; il ne peut pas le reprendre pendant 24 heures."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spirit_shaman_weaken_spirits",
+      "type": "class_power",
+      "name": {
+        "fr": "Affaiblissement des esprits",
+        "en": "Weaken spirits"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Au lieu de blesser les esprits avec sa correction, le chaman préfère les dépouiller de leurs défenses.\n\nEn jeu\n• Avec la correction des esprits, il peut infliger moins de dégâts : chaque tranche de 3d6 abandonnée affaiblit les esprits touchés 1 round de plus (niveau 16 : 7d6 de dégâts au lieu de 16d6 = 3 rounds).\n• Un esprit affaibli perd sa résistance à la magie et la réduction des dégâts que les armes magiques, en argent, en fer froid ou alignées ignorent ; les intangibles perdent leurs immunités et leurs 50 % d’échec.\n• Les esprits qui réussissent leur jet de Volonté échappent aussi à l’affaiblissement."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spirit_shaman_spirit_journey",
+      "type": "class_power",
+      "name": {
+        "fr": "Voyage spirituel",
+        "en": "Spirit journey"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Le chaman fait disparaître son corps et passe par le monde des esprits.\n\nEn jeu\n• Une fois par jour. Comme traversée des ombres, mais pour lui seul, depuis n’importe quel endroit, par le plan des Esprits."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.spirit_shaman_spirit_chosen",
+      "type": "class_power",
+      "name": {
+        "fr": "Élu des esprits",
+        "en": "Chosen of the spirits"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Au bout d’un long rite, le chaman acquiert une protection contre la mort.\n\nEn jeu\n• Rite de 8 heures, qui coûte 1 000 points d’expérience.\n• Reçoit l’équivalent de guérison suprême (niveau de lanceur = niveau de chaman) s’il tombe à 0 pv ou moins, ou si une caractéristique tombe à 0 ; effet immédiat, même sous −10 pv.\n• Le rite est épuisé à l’activation : il faut en refaire un."
+      },
+      "effects": [],
+      "note": "Protection à usage unique, hors modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.spirit_shaman_embodied_spirit",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit incarné",
+        "en": "Embodied spirit"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "spirit_shaman"
+      ],
+      "description": {
+        "fr": "Le chaman ne fait plus qu’un avec le monde des esprits : pour les sorts et les effets, il est une fée.\n\nEn jeu\n• Compte comme une créature du type fée (plus un humanoïde) pour les sorts et les effets magiques.\n• Réduction des dégâts 5/fer froid."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Réduction des dégâts /fer froid : le modèle ne tient que la réduction sans type (damage_reduction.none), texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.spirit_shaman",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.spirit_shaman_spells",
+        "power.spirit_shaman_wild_empathy",
+        "power.spirit_shaman_spirit_guide"
+      ],
+      "spellsPerDay": [
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.spirit_shaman_chastise_spirits"
+      ],
+      "spellsPerDay": [
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.spirit_shaman_detect_spirits"
+      ],
+      "spellsPerDay": [
+        5,
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.spirit_shaman_blessing_of_the_spirits"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.spirit_shaman_follow_the_guide"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.spirit_shaman_ghost_warrior"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.spirit_shaman_ward_of_the_spirits"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        2,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        2,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.spirit_shaman_spirit_form"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        4,
+        2,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        2,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.spirit_shaman_guide_magic"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        2,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 11,
+      "bab": 8,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.spirit_shaman_spirit_recall"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        2,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        2,
+        1,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 12,
+      "bab": 9,
+      "fort": 8,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 13,
+      "bab": 9,
+      "fort": 8,
+      "ref": 4,
+      "will": 8,
+      "grants": [
+        "power.spirit_shaman_exorcism"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        2,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 14,
+      "bab": 10,
+      "fort": 9,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 15,
+      "bab": 11,
+      "fort": 9,
+      "ref": 5,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        2,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 16,
+      "bab": 12,
+      "fort": 10,
+      "ref": 5,
+      "will": 10,
+      "grants": [
+        "power.spirit_shaman_weaken_spirits"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 17,
+      "bab": 12,
+      "fort": 10,
+      "ref": 5,
+      "will": 10,
+      "grants": [
+        "power.spirit_shaman_spirit_journey"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        2
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 18,
+      "bab": 13,
+      "fort": 11,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 19,
+      "bab": 14,
+      "fort": 11,
+      "ref": 6,
+      "will": 11,
+      "grants": [
+        "power.spirit_shaman_spirit_chosen"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "classId": "class.spirit_shaman",
+      "level": 20,
+      "bab": 15,
+      "fort": 12,
+      "ref": 6,
+      "will": 12,
+      "grants": [
+        "power.spirit_shaman_embodied_spirit"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5
+      ],
+      "spellsKnown": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.shortbow"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.quarterstaff"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.dagger"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.dart"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.shortspear"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.sling"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.club"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.handaxe"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.throwing_axe"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.javelin"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.spear"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "item.longspear"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.spirit_shaman",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.spirit_shaman_spirit_guide",
+      "relation": "grants",
+      "to": "feat.alertness"
+    }
+  ]
+}

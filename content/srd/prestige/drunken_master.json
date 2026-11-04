@@ -1,0 +1,476 @@
+{
+  "entities": [
+    {
+      "id": "class.drunken_master",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître de l'ivresse",
+        "en": "Drunken Master"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Il titube, il tangue, il renverse la chope : et c'est le coup qu'on n'avait pas vu venir. Le maître de l'ivresse a fait d'une gueule de bois permanente une école de combat, où chaque faux pas cache une esquive.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : 8 rangs en Acrobaties ; dons Esquive, Science du combat à mains nues et Vigueur surhumaine ; déluge de coups et esquive totale ; être choisi par des maîtres de l'ivresse après avoir survécu à une nuit de débauche avec eux.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Artisanat, Bluff, Déplacement silencieux, Discrétion, Équilibre, Escalade, Évasion, Natation, Perception auditive, Profession, Représentation, Saut.\n• Aptitudes : armes improvisées (1d4) et beuverie démoniaque (1) ; attaque chancelante (2) ; balancement défensif (3) ; science des armes improvisées et +1 en CA (4) ; armes improvisées (1d8) (5) ; science de la feinte (6) ; science de la lutte (7) ; alcool médicinal (8) ; armes improvisées (1d12), +2 en CA et charge du tire-bouchon (9) ; haleine ardente (10).\n• Un moine peut prendre des niveaux de maître de l'ivresse sans interrompre sa carrière de moine."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "note": "Conditions « déluge de coups, esquive totale » et « choisi par des maîtres de l'ivresse » : texte seul. Aucun niveau de moine n'est requis par le texte du Codex, mais les pouvoirs de déluge de coups et d'esquive totale viennent en pratique du moine. Noms anglais des aptitudes de mémoire, à confirmer.",
+      "prerequisite": "@skill.tumble.ranks >= 8 and has('feat.dodge') and has('feat.improved_unarmed_strike') and has('feat.great_fortitude')"
+    },
+    {
+      "id": "power.drunken_master_drunken_strength",
+      "type": "class_power",
+      "name": {
+        "fr": "Beuverie démoniaque",
+        "en": "Drunken strength"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Son foie digère ce qui terrasserait un autre, et la bouteille lui rend en force ce qu'elle lui prend en lucidité.\n\nEn jeu\n• Capacité extraordinaire : une action de mouvement pour boire une grande chope, une bouteille de vin ou l'équivalent.\n• Chaque dose : −2 en Intelligence et en Sagesse (minimum 1), +2 en Force ou en Constitution (au choix). Durée : 3 rounds + niveau de classe.\n• Doses par jour : autant que son niveau de classe (les suivantes ne font que le souler)."
+      },
+      "effects": [
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.drunken_master_brew_strength')"
+        },
+        {
+          "target": "ability.wis.score",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.drunken_master_brew_strength')"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.drunken_master_brew_strength')"
+        },
+        {
+          "target": "ability.int.score",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.drunken_master_brew_constitution')"
+        },
+        {
+          "target": "ability.wis.score",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.drunken_master_brew_constitution')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.drunken_master_brew_constitution')"
+        }
+      ],
+      "usesPerDay": "level('class.drunken_master')",
+      "note": "Deux cases : « force » et « constitution » (une seule à la fois). Le minimum de 1 aux caractéristiques n'est pas appliqué. Les doses déjà bues sont à compter à la main."
+    },
+    {
+      "id": "power.drunken_master_improvised_weapons",
+      "type": "class_power",
+      "name": {
+        "fr": "Armes improvisées",
+        "en": "Improvised weapons"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Chopes, tabourets, manches de balai : tout ce qui tombe sous la main devient une arme redoutable.\n\nEn jeu\n• Capacité extraordinaire : une arme improvisée inflige les dégâts de ses attaques à mains nues, plus 1d4. Le bonus passe à 1d8 au niveau 5, puis à 1d12 au niveau 9.\n• La plupart des armes improvisées font des dégâts contondants ; un tesson de bouteille peut percer ou trancher. Selon sa forme, elle permet des manœuvres spéciales.\n• Sur un 1 naturel au jet d'attaque, l'objet se brise et devient inutilisable."
+      },
+      "effects": [
+        {
+          "target": "damage.drunken_master_improvised",
+          "op": "dice",
+          "value": "if(level('class.drunken_master') >= 9, 1d12, if(level('class.drunken_master') >= 5, 1d8, 1d4))"
+        }
+      ],
+      "note": "Dés en plus sur une statistique à part, damage.drunken_master_improvised (comme damage.deadly_aim) : à ajouter aux dégâts à mains nues quand il frappe avec une arme improvisée. L'arme brisée sur un 1 naturel : à la charge du joueur."
+    },
+    {
+      "id": "power.drunken_master_lurching_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque chancelante",
+        "en": "Lurching charge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Il fonce en zigzag, trébuche vers vous, et frappe quand vous croyez qu'il va tomber.\n\nEn jeu\n• Capacité extraordinaire : sa charge n'a pas besoin d'aller en ligne droite, tant qu'il parcourt au plus le double de sa vitesse.\n• Il annule les attaques d'opportunité provoquées par ce déplacement avec un test d'Acrobaties de DD 15, pour chacune."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.drunken_master_swaying_waist",
+      "type": "class_power",
+      "name": {
+        "fr": "Balancement défensif",
+        "en": "Swaying waist"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Il ondule sans cesse, et le coup tombe toujours un peu à côté.\n\nEn jeu\n• Capacité extraordinaire : +2 en CA (bonus d'esquive) contre un adversaire qu'il désigne pendant son tour de jeu.\n• Ce bonus ne se cumule pas avec celui du don Esquive."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "dodge",
+          "situation": "situation.vs_designated_opponent"
+        }
+      ],
+      "note": "Le non-cumul avec Esquive n'est pas géré : si le personnage a aussi le don, ne compter qu'un des deux bonus contre l'adversaire désigné."
+    },
+    {
+      "id": "power.drunken_master_improved_improvised_weapons",
+      "type": "class_power",
+      "name": {
+        "fr": "Science des armes improvisées",
+        "en": "Improved improvised weapons"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Un tabouret bien tenu vaut bien une technique : il sait renverser, désarmer et faire trébucher avec n'importe quoi.\n\nEn jeu\n• Capacité extraordinaire : quand il utilise une arme improvisée pour une manœuvre spéciale, il bénéficie des avantages de Science de la bousculade, Science du désarmement ou Science du croc-en-jambe, selon la manœuvre tentée."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.drunken_master_ac_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à la CA",
+        "en": "AC bonus"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "À force de se balancer, il finit par ne plus être là où on le vise.\n\nEn jeu\n• Capacité extraordinaire : +1 en CA au niveau 4, +2 au niveau 9."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "if(level('class.drunken_master') >= 9, 2, if(level('class.drunken_master') >= 4, 1, 0))"
+        }
+      ],
+      "note": "Le livre ne donne pas le type du bonus : sans type ici."
+    },
+    {
+      "id": "power.drunken_master_feint_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la feinte",
+        "en": "Improved feint"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Faire semblant de tomber est son meilleur coup préparatoire.\n\nEn jeu\n• Il obtient le don Science de la feinte en don supplémentaire, même s'il n'en remplit pas les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.drunken_master_grapple_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la lutte",
+        "en": "Improved grapple"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Une prise de bar lui suffit : il a lutté avec bien pire qu'un adversaire sobre.\n\nEn jeu\n• Il obtient le don Science de la lutte en don supplémentaire, même s'il n'en remplit pas les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.drunken_master_medicinal_alcohol",
+      "type": "class_power",
+      "name": {
+        "fr": "Alcool médicinal",
+        "en": "Medicinal alcohol"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Un verre de trop, et voilà ses blessures qui se referment : il appelle ça de la médecine.\n\nEn jeu\n• Capacité magique, 3 fois par jour, action simple, sans attaque d'opportunité : il convertit une dose d'alcool récemment bue en effets de potion de soins modérés.\n• Il doit avoir une dose active (beuverie démoniaque). La conversion met fin aux effets de la dose comme si elle arrivait à échéance (+2 en Intelligence et Sagesse, −2 en Force ou Constitution)."
+      },
+      "effects": [],
+      "usesPerDay": 3
+    },
+    {
+      "id": "power.drunken_master_corkscrew_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge du tire-bouchon",
+        "en": "Corkscrew charge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Il tourbillonne, saute sur l'adversaire et le heurte de la tête : le bouchon saute, le malheureux aussi.\n\nEn jeu\n• Capacité extraordinaire : lors d'une charge, il inflige ses dégâts normaux à mains nues et engage une bousculade sans provoquer d'attaque d'opportunité.\n• Si la bousculade réussit, la victime est repoussée et étourdie (jet de Volonté, DD 10 + niveau de classe + modificateur de Sagesse, pour annuler). Si elle échoue, il tombe face contre terre devant l'adversaire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.drunken_master_breath_of_flame",
+      "type": "class_power",
+      "name": {
+        "fr": "Haleine ardente",
+        "en": "Breath of flame"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "drunken_master"
+      ],
+      "description": {
+        "fr": "Il crache l'alcool qu'il a bu, une flamme au bout : la taverne s'en souvient.\n\nEn jeu\n• Capacité magique, action libre : il enflamme l'alcool stocké et en asperge un cône de 6 m de rayon : 3d12 dégâts de feu, Réflexes (DD 10 + niveau de classe + modificateur de Constitution) pour demi-dégâts.\n• Chaque emploi consomme une dose d'alcool active, ce qui annule ses effets (+2 en Intelligence et Sagesse, −2 en Force ou Constitution)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.drunken_master",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.drunken_master_improvised_weapons",
+        "power.drunken_master_drunken_strength"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.drunken_master_lurching_charge"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.drunken_master_swaying_waist"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.drunken_master_improved_improvised_weapons",
+        "power.drunken_master_ac_bonus"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.drunken_master_feint_mastery"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.drunken_master_grapple_mastery"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.drunken_master_medicinal_alcohol"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.drunken_master_corkscrew_charge"
+      ]
+    },
+    {
+      "classId": "class.drunken_master",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.drunken_master_breath_of_flame"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.drunken_master",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "power.drunken_master_feint_mastery",
+      "relation": "grants",
+      "to": "feat.improved_feint"
+    },
+    {
+      "from": "power.drunken_master_grapple_mastery",
+      "relation": "grants",
+      "to": "feat.improved_grapple"
+    }
+  ]
+}

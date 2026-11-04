@@ -1,0 +1,264 @@
+{
+  "entities": [
+    {
+      "id": "class.master_of_the_unseen_hand",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître de la main subtile",
+        "en": "Master of the Unseen Hand"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Un geste du doigt, et une enclume décolle ; un regard, et l'épée de l'adversaire change de main. Le maître de la main subtile a fait de la télékinésie un art martial : il frappe, désarme et projette à distance sans jamais toucher personne.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : 8 rangs en Concentration ; pouvoir lancer télékinésie ou en avoir l'équivalent (pouvoir magique ou surnaturel).\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Intimidation, Profession.\n• Aptitudes : niveau de lanceur de sorts virtuel et télékinésie polyvalente (1) ; concentration progressive et maniement télékinétique (2) ; attaque télékinétique à outrance (3) ; science de la poussée subite et vol télékinétique (4) ; projection dans les airs (5)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "note": "Condition : savoir lancer télékinésie ou en avoir l'équivalent : texte seul (pas de formule pour les sorts connus). Noms anglais à confirmer pour toutes les aptitudes (sauf Telekinesis et Sudden Thrust).",
+      "prerequisite": "@skill.concentration.ranks >= 8"
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_virtual_spellcaster_level",
+      "type": "class_power",
+      "name": {
+        "fr": "Niveau de lanceur de sorts virtuel",
+        "en": "Virtual spellcaster level"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "Chaque niveau de cette classe nourrit sa télékinésie, qu'elle vienne d'un sort ou d'un don de naissance.\n\nEn jeu\n• Capacité extraordinaire : son niveau de classe s'ajoute à son niveau de lanceur de sorts, pour télékinésie uniquement (sort, pouvoir magique ou surnaturel).\n• Exemple : ensorceleur 10 / maître de la main subtile 3 lance télékinésie au niveau 13."
+      },
+      "effects": [],
+      "note": "Niveau de lanceur de sorts pour un seul sort : le modèle ne sait pas le porter, texte seul."
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_versatile_telekinesis",
+      "type": "class_power",
+      "name": {
+        "fr": "Télékinésie polyvalente",
+        "en": "Versatile telekinesis"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "Il passe d'une façon de pousser les objets à une autre aussi facilement qu'on change de main.\n\nEn jeu\n• Capacité extraordinaire : il combine les trois applications de télékinésie (force graduelle, manœuvre de combat, poussée subite) et passe de l'une à l'autre à volonté pendant la durée du sort.\n• Le sort cesse tout de suite après une poussée subite, s'il cesse de se concentrer ou à la fin de sa durée normale."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_progressive_concentration",
+      "type": "class_power",
+      "name": {
+        "fr": "Concentration progressive",
+        "en": "Progressive concentration"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "Se battre en gardant les objets en l'air devient pour lui une seconde nature.\n\nEn jeu\n• Capacité extraordinaire : une action de mouvement (au lieu d'une action simple) suffit pour la force graduelle de télékinésie, ou simplement pour maintenir sa concentration.\n• Il peut lancer un autre sort en maintenant télékinésie, avec un test de Concentration comme s'il était distrait par un sort sans dégâts (DD = celui de télékinésie).\n• La poussée subite et les manœuvres de combat demandent toujours une action simple."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_telekinetic_wielding",
+      "type": "class_power",
+      "name": {
+        "fr": "Maniement télékinétique",
+        "en": "Telekinetic wielding"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "Une arme lâchée n'est pas perdue : elle flotte, obéit, et frappe à sa place.\n\nEn jeu\n• Capacité extraordinaire : tant qu'il se concentre sur la manœuvre de combat de télékinésie, il déplace de 6 m une arme que personne ne tient et l'utilise pour une seule attaque.\n• L'attaque est résolue normalement, mais le déplacement de l'arme ne provoque pas d'attaque d'opportunité.\n• Bonus de base à l'attaque : son niveau de lanceur de sorts + modificateur d'Intelligence (magicien) ou de Charisme (ensorceleur ou créature à pouvoir magique). Ses dons de combat (Attaque en puissance, Arme de prédilection…) ne s'appliquent pas.\n• Il peut animer ainsi une arme prise à un adversaire lors d'un désarmement."
+      },
+      "effects": [],
+      "note": "L'attaque télékinétique utilise le niveau de lanceur de sorts à la place du bonus de base à l'attaque : pas de statistique pour cela, texte seul."
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_telekinetic_full_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque télékinétique à outrance",
+        "en": "Telekinetic full attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "Là où un autre lâcherait un coup, lui en enchaîne plusieurs sans bouger un orteil.\n\nEn jeu\n• Capacité extraordinaire : avec la manœuvre de combat de télékinésie ou une arme maniée par télékinésie, il peut porter une attaque à outrance, et tenter plusieurs fois bousculade, croc-en-jambe, désarmement ou lutte par round.\n• Comme pour les attaques normales : une attaque en plus tous les 5 points de bonus de base à l'attaque au-dessus de +1, en prenant son niveau de lanceur de sorts comme bonus de base."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_improved_sudden_thrust",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la poussée subite",
+        "en": "Improved sudden thrust"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "La poussée subite devient un coup de bélier invisible.\n\nEn jeu\n• Capacité extraordinaire : pour le jet d'attaque de la poussée subite, son niveau de lanceur de sorts remplace son bonus de base à l'attaque.\n• S'il projette une arme sur la cible, son modificateur d'Intelligence (magicien) ou de Charisme (ensorceleur, pouvoir magique) s'ajoute aux dégâts.\n• Une poussée subite ne met plus fin à télékinésie : elle ferme seulement l'accès à cette option pendant 1d4 rounds (force graduelle et manœuvres de combat restent possibles)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_telekinetic_flight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vol télékinétique",
+        "en": "Telekinetic flight"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "Il se soulève lui-même, et emporte ses compagnons dans son sillage.\n\nEn jeu\n• Capacité extraordinaire : avec la force graduelle de télékinésie, il se déplace dans les airs avec des alliés. Action de mouvement : vitesse 6 m, manœuvrabilité parfaite, avec des créatures consentantes.\n• Les créatures soulevées doivent rester à 12 m au plus de lui, sinon elles s'écrasent. Une créature de taille M (ou plus petite) par tranche de 3 niveaux de lanceur de sorts. Taille G : compte pour 2 de taille M, TG pour 4, Gig pour 8, C pour 16. Chacune peut porter une charge maximale selon sa Force.\n• Pas de chute en feuille morte : quand l'effet s'arrête (dissipation de la magie, concentration perdue), les passagers tombent d'un coup et subissent 1d6 de dégâts par 3 m de chute (20d6 maximum)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_the_unseen_hand_hurl_through_the_air",
+      "type": "class_power",
+      "name": {
+        "fr": "Projection dans les airs",
+        "en": "Hurl through the air"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_the_unseen_hand"
+      ],
+      "description": {
+        "fr": "Au lieu de lancer un objet sur l'ennemi, il lance l'ennemi vers le ciel.\n\nEn jeu\n• Capacité extraordinaire : avec la poussée subite de télékinésie, il projette un adversaire dans les airs, jusqu'à 3 m de haut par niveau de lanceur de sorts. Jet de Volonté (et résistance à la magie) pour annuler.\n• Au début de sa prochaine action, la victime retombe et subit 1d6 de dégâts par 3 m de chute.\n• Cette projection met immédiatement fin au sort ou pouvoir de télékinésie, contrairement aux autres poussées subites."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.master_of_the_unseen_hand",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.master_of_the_unseen_hand_virtual_spellcaster_level",
+        "power.master_of_the_unseen_hand_versatile_telekinesis"
+      ]
+    },
+    {
+      "classId": "class.master_of_the_unseen_hand",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.master_of_the_unseen_hand_progressive_concentration",
+        "power.master_of_the_unseen_hand_telekinetic_wielding"
+      ]
+    },
+    {
+      "classId": "class.master_of_the_unseen_hand",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.master_of_the_unseen_hand_telekinetic_full_attack"
+      ]
+    },
+    {
+      "classId": "class.master_of_the_unseen_hand",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.master_of_the_unseen_hand_improved_sudden_thrust",
+        "power.master_of_the_unseen_hand_telekinetic_flight"
+      ]
+    },
+    {
+      "classId": "class.master_of_the_unseen_hand",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.master_of_the_unseen_hand_hurl_through_the_air"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.master_of_the_unseen_hand",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.master_of_the_unseen_hand",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.master_of_the_unseen_hand",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.master_of_the_unseen_hand",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.master_of_the_unseen_hand",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.master_of_the_unseen_hand",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

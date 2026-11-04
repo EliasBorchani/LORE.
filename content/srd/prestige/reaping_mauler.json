@@ -1,0 +1,307 @@
+{
+  "entities": [
+    {
+      "id": "class.reaping_mauler",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Pugiliste intrépide",
+        "en": "Reaping Mauler"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "unarmed",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un bagarreur sans finesse mais sans faiblesse : il casse les os, tord les articulations et brise les cous. Pas besoin d'armes pour lui, il préfère chuchoter ses menaces à l'oreille de l'adversaire en lui écrasant le dos.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; Acrobaties 5 rangs, Évasion 5 rangs ; dons Lutteur habile et Science du combat à mains nues ; avoir vaincu à mains nues au moins 3 créatures plus grandes (d'une catégorie de taille ou plus).\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Acrobaties, Artisanat, Escalade, Évasion, Intimidation, Natation, Profession, Représentation, Saut.\n• Aptitudes : science de la lutte et souplesse du serpent (1) ; lutteur aguerri (2, 4) ; prise foudroyante et retournement de lutte (3) ; prise dévastatrice (5)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.tumble.ranks >= 5 and @skill.escape_artist.ranks >= 5 and has('feat.clever_wrestling') and has('feat.improved_unarmed_strike')",
+      "note": "Conditions en formule : bonus de base, rangs, Lutteur habile (feat.clever_wrestling), Science du combat à mains nues. En texte seul : avoir vaincu à mains nues 3 créatures plus grandes. Nom anglais de la classe : Reaping Mauler (sûr) ; les noms anglais des aptitudes sont à confirmer."
+    },
+    {
+      "id": "power.reaping_mauler_improved_grapple",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la lutte",
+        "en": "Improved grapple"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "reaping_mauler"
+      ],
+      "description": {
+        "fr": "Il agrippe sans craindre les ripostes.\n\nEn jeu\n• Reçoit le don Science de la lutte, même sans en remplir les conditions, tant qu'il ne porte pas d'armure intermédiaire ou lourde (ni de charge intermédiaire ou lourde)."
+      },
+      "effects": [],
+      "note": "Don accordé sans la restriction d'armure, que la fiche ne vérifie pas."
+    },
+    {
+      "id": "power.reaping_mauler_mobility",
+      "type": "class_power",
+      "name": {
+        "fr": "Souplesse du serpent",
+        "en": "Mobility"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "reaping_mauler"
+      ],
+      "description": {
+        "fr": "Il se glisse entre les coups.\n\nEn jeu\n• Reçoit le don Souplesse du serpent (Mobility), même sans en remplir les conditions, tant qu'il ne porte pas d'armure intermédiaire ou lourde (ni de charge intermédiaire ou lourde)."
+      },
+      "effects": [],
+      "note": "Don accordé sans la restriction d'armure, que la fiche ne vérifie pas."
+    },
+    {
+      "id": "power.reaping_mauler_skilled_wrestler",
+      "type": "class_power",
+      "name": {
+        "fr": "Lutteur aguerri",
+        "en": "Skilled wrestler"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "reaping_mauler"
+      ],
+      "description": {
+        "fr": "L'expérience lui apprend les contre-prises.\n\nEn jeu\n• Capacité extraordinaire : sans armure intermédiaire ou lourde (ni charge), +1 à tous les tests de lutte et aux tests opposés de Dextérité et de Force au niveau 2, +2 au niveau 4."
+      },
+      "effects": [
+        {
+          "target": "check.grapple",
+          "op": "add",
+          "value": "if(level('class.reaping_mauler') >= 4, 2, if(level('class.reaping_mauler') >= 2, 1, 0))"
+        }
+      ],
+      "note": "Seuls les tests de lutte sont comptés ; les tests opposés de Dextérité et de Force et la restriction d'armure ne sont pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.reaping_mauler_lightning_grip",
+      "type": "class_power",
+      "name": {
+        "fr": "Prise foudroyante",
+        "en": "Lightning grip"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "reaping_mauler"
+      ],
+      "description": {
+        "fr": "Un point vital pressé, et l'adversaire s'éteint.\n\nEn jeu\n• Capacité extraordinaire, niveau 3 : s'il immobilise une créature en lutte pendant un round entier, elle doit réussir un jet de Vigueur (DD 10 + niveau de pugiliste + modificateur de Sagesse) à la fin du round, sinon elle tombe inconsciente pendant 1d3 rounds.\n• Sans effet sur les créatures sans organes vitaux."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.reaping_mauler_wrestler_reversal",
+      "type": "class_power",
+      "name": {
+        "fr": "Retournement de lutte",
+        "en": "Grapple reversal"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "reaping_mauler"
+      ],
+      "description": {
+        "fr": "Quand une prise se retourne contre lui, il tente l'une ou l'autre échappatoire.\n\nEn jeu\n• Capacité extraordinaire, niveau 3 : agrippé ou immobilisé, il tente de s'échapper par un test de lutte ou un test d'Évasion opposé au test de lutte de l'adversaire.\n• Si le test choisi échoue, il peut tenter l'autre tout de suite par une action libre."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.reaping_mauler_devastating_grip",
+      "type": "class_power",
+      "name": {
+        "fr": "Prise dévastatrice",
+        "en": "Devastating grip"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "reaping_mauler"
+      ],
+      "description": {
+        "fr": "La prise la plus cruelle : celle dont on ne se relève pas.\n\nEn jeu\n• Capacité extraordinaire, niveau 5 : s'il immobilise une créature en lutte pendant 3 rounds consécutifs, elle doit réussir un jet de Vigueur (DD 10 + niveau de pugiliste + modificateur de Sagesse) à la fin du troisième round, sinon elle meurt.\n• Sans effet sur les créatures sans organes vitaux."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.reaping_mauler",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.reaping_mauler_improved_grapple",
+        "power.reaping_mauler_mobility"
+      ]
+    },
+    {
+      "classId": "class.reaping_mauler",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.reaping_mauler_skilled_wrestler"
+      ]
+    },
+    {
+      "classId": "class.reaping_mauler",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.reaping_mauler_lightning_grip",
+        "power.reaping_mauler_wrestler_reversal"
+      ]
+    },
+    {
+      "classId": "class.reaping_mauler",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.reaping_mauler",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.reaping_mauler_devastating_grip"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.reaping_mauler",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.reaping_mauler_improved_grapple",
+      "relation": "grants",
+      "to": "feat.improved_grapple"
+    },
+    {
+      "from": "power.reaping_mauler_mobility",
+      "relation": "grants",
+      "to": "feat.mobility"
+    }
+  ]
+}

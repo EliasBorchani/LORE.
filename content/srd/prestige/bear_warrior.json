@@ -1,0 +1,339 @@
+{
+  "entities": [
+    {
+      "id": "class.bear_warrior",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Guerrier ursidé",
+        "en": "Bear Warrior"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "nature"
+      ],
+      "description": {
+        "fr": "Dans les contrées les plus rudes, on honore l'ours comme l'image de la force pure. Le guerrier ursidé lie sa colère à l'esprit de l'ours, et quand la rage monte, c'est un ours qui se dresse.\n\nEn jeu\n• Dé de vie : d12. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +7 ; don Attaque en puissance ; pouvoir de rage de berserker ou de frénésie.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Dressage, Équitation, Escalade, Intimidation, Natation, Perception auditive, Saut, Survie.\n• Aptitudes : transformation ursidée en ours noir (1), brun (5) et sanguinaire (10) ; odorat (3) ; rage supplémentaire (7)."
+      },
+      "hitDie": 12,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 7 and has('feat.power_attack')",
+      "note": "Condition hors formule : pouvoir de rage de berserker ou de frénésie (de n'importe quelle classe)."
+    },
+    {
+      "id": "power.bear_warrior_black_bear_form",
+      "type": "class_power",
+      "name": {
+        "fr": "Transformation ursidée (ours noir)",
+        "en": "Bear form (black bear)"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bear_warrior"
+      ],
+      "description": {
+        "fr": "Il se courbe, ses épaules s'élargissent et un ours noir surgit de l'homme.\n\nEn jeu\n• Capacité surnaturelle, action libre, quand il est enragé ou en frénésie ; autant de fois qu'il veut. Fonctionne comme métamorphose en ours noir, et prend fin avec la rage.\n• Bonus remplaçant ceux de la rage : +8 en Force, +2 en Dextérité, +4 en Constitution. Armure naturelle +2.\n• Il garde le +2 de Volonté et le −2 de CA de la rage.\n• Taille, vitesse, armes naturelles (griffes, morsure), espace et allonge de l'ours."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": "8 - if(active('toggle.barbarian_rage'), if(has('power.barbarian_mighty_rage'), 8, if(has('power.barbarian_greater_rage'), 6, 4)), 0)",
+          "condition": "active('toggle.bear_warrior_black_bear_form') and not active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.bear_warrior_black_bear_form') and not active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": "4 - if(active('toggle.barbarian_rage'), if(has('power.barbarian_mighty_rage'), 8, if(has('power.barbarian_greater_rage'), 6, 4)), 0)",
+          "condition": "active('toggle.bear_warrior_black_bear_form') and not active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.bear_warrior_black_bear_form') and not active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        }
+      ],
+      "note": "À activer pendant la rage (toggle de rage de la classe qui la donne). Si le barbare est en rage, la forme remplace les bonus de Force et de Constitution de la rage : l'effet retranche donc le bonus de rage (+4/+6/+8) du total de la forme. Taille, attaques naturelles, vitesse, étreinte ne sont pas dans le modèle ; une seule forme à la fois (la plus grande l'emporte). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bear_warrior_brown_bear_form",
+      "type": "class_power",
+      "name": {
+        "fr": "Transformation ursidée (ours brun)",
+        "en": "Bear form (brown bear)"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bear_warrior"
+      ],
+      "description": {
+        "fr": "Un grondement de plus, et l'ours est plus grand : un ours brun, bien plus fort.\n\nEn jeu\n• Au niveau 5 : en plus de la forme d'ours noir, il peut devenir ours brun.\n• Bonus remplaçant ceux de la rage : +16 en Force, +2 en Dextérité, +8 en Constitution. Armure naturelle +5.\n• Étreinte (extraordinaire) comme l'ours brun ; taille Grande."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": "16 - if(active('toggle.barbarian_rage'), if(has('power.barbarian_mighty_rage'), 8, if(has('power.barbarian_greater_rage'), 6, 4)), 0)",
+          "condition": "active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": "8 - if(active('toggle.barbarian_rage'), if(has('power.barbarian_mighty_rage'), 8, if(has('power.barbarian_greater_rage'), 6, 4)), 0)",
+          "condition": "active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 5,
+          "condition": "active('toggle.bear_warrior_brown_bear_form') and not active('toggle.bear_warrior_dire_bear_form')"
+        }
+      ],
+      "note": "À activer pendant la rage (toggle de rage de la classe qui la donne). Si le barbare est en rage, la forme remplace les bonus de Force et de Constitution de la rage : l'effet retranche donc le bonus de rage (+4/+6/+8) du total de la forme. Taille, attaques naturelles, vitesse, étreinte ne sont pas dans le modèle ; une seule forme à la fois (la plus grande l'emporte). Armure naturelle : valeur de l'ours brun du Manuel des Monstres (+5), cohérente avec l'exemple du livre. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bear_warrior_dire_bear_form",
+      "type": "class_power",
+      "name": {
+        "fr": "Transformation ursidée (ours sanguinaire)",
+        "en": "Bear form (dire bear)"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bear_warrior"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, l'ours qui sort de lui est un monstre de légende, un ours sanguinaire.\n\nEn jeu\n• Au niveau 10 : il peut aussi devenir ours sanguinaire.\n• Bonus remplaçant ceux de la rage : +20 en Force, +2 en Dextérité, +8 en Constitution. Armure naturelle +7.\n• Étreinte (extraordinaire) comme l'ours sanguinaire ; taille Grande."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": "20 - if(active('toggle.barbarian_rage'), if(has('power.barbarian_mighty_rage'), 8, if(has('power.barbarian_greater_rage'), 6, 4)), 0)",
+          "condition": "active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": "8 - if(active('toggle.barbarian_rage'), if(has('power.barbarian_mighty_rage'), 8, if(has('power.barbarian_greater_rage'), 6, 4)), 0)",
+          "condition": "active('toggle.bear_warrior_dire_bear_form')"
+        },
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 7,
+          "condition": "active('toggle.bear_warrior_dire_bear_form')"
+        }
+      ],
+      "note": "À activer pendant la rage (toggle de rage de la classe qui la donne). Si le barbare est en rage, la forme remplace les bonus de Force et de Constitution de la rage : l'effet retranche donc le bonus de rage (+4/+6/+8) du total de la forme. Taille, attaques naturelles, vitesse, étreinte ne sont pas dans le modèle ; une seule forme à la fois (la plus grande l'emporte). Armure naturelle +7 : valeur de l'ours sanguinaire du Manuel des Monstres (le livre ne donne pas ce chiffre dans les pages lues). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bear_warrior_scent",
+      "type": "class_power",
+      "name": {
+        "fr": "Odorat",
+        "en": "Scent"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bear_warrior"
+      ],
+      "description": {
+        "fr": "Son nez rivalise désormais avec celui d'un ours, transformé ou non.\n\nEn jeu\n• Au niveau 3 : pouvoir extraordinaire d'odorat (flairer les ennemis proches, repérer les cachés, suivre une piste à l'odeur), en forme humaine comme en forme d'ours."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bear_warrior_extra_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage supplémentaire",
+        "en": "Extra rage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bear_warrior"
+      ],
+      "description": {
+        "fr": "Une colère de plus pour la journée.\n\nEn jeu\n• Capacité extraordinaire : au niveau 7, une utilisation quotidienne supplémentaire de rage de berserker ou de frénésie (par exemple, barbare 7 / guerrier ursidé 7 : 3 rages par jour)."
+      },
+      "effects": [],
+      "note": "Le nombre d'utilisations de la rage est calculé dans la classe qui la donne : cette utilisation en plus est à ajouter à la main. Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.bear_warrior",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.bear_warrior_black_bear_form"
+      ]
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": []
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.bear_warrior_scent"
+      ]
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.bear_warrior_brown_bear_form"
+      ]
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.bear_warrior_extra_rage"
+      ]
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.bear_warrior",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.bear_warrior_dire_bear_form"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.bear_warrior",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

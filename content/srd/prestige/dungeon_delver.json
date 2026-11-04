@@ -1,0 +1,486 @@
+{
+  "entities": [
+    {
+      "id": "class.dungeon_delver",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Fouilleur de donjon",
+        "en": "Dungeon Delver"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "skills"
+      ],
+      "description": {
+        "fr": "Le fouilleur de donjon est le roublard des profondeurs poussé à bout : il avance seul devant le groupe, trouve les pièges, force les serrures, flaire le trésor et sait se faufiler là où personne d’autre ne passe. Les plus doués deviennent des légendes ; les autres finissent en ossements au fond d’une galerie.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 8 + modificateur d’Intelligence par niveau.\n• Conditions : 10 rangs en Crochetage, Désamorçage/sabotage, Escalade et Fouille ; 5 rangs en Artisanat (maçonnerie), Connaissances (exploration souterraine), Déplacement silencieux et Discrétion ; dons Combat en aveugle et Vigilance ; recherche des pièges ; survivre à une épreuve souterraine (expédition solo d’une semaine pour la moitié de l’expérience du niveau suivant, éboulement, ou un an sans soleil).\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Acrobaties, Artisanat, Connaissances (exploration souterraine), Crochetage, Déplacement silencieux, Désamorçage/sabotage, Détection, Discrétion, Équilibre, Escalade, Estimation, Fouille, Maîtrise des cordes, Natation, Perception auditive, Saut, Survie, Utilisation d’objets magiques.\n• Pas de progression de sorts.\n• Aptitudes : sens des pièges (+1, puis +1 tous les 3 niveaux), survie dans les profondeurs et vision dans le noir (niv. 1), connaissance de la pierre et rapetissement (niv. 2), augure et maîtrise des compétences (niv. 3), esquive totale (niv. 4), perception aveugle (niv. 5), passe-muraille (niv. 6), orientation (niv. 8), porte de phase (niv. 9).\n• Au-delà du niveau 10 (niveaux épiques) : sens des pièges +1 tous les 3 niveaux ; augure +1 utilisation/jour tous les 3 niveaux ; maîtrise des compétences : +1 compétence par niveau gagné ; perception aveugle +1 utilisation/jour tous les 5 niveaux ; un don supplémentaire tous les 3 niveaux. 8 points de compétence par niveau, d6 de vie."
+      },
+      "hitDie": 6,
+      "skillPoints": 8,
+      "prerequisite": "@skill.open_lock.ranks >= 10 and @skill.disable_device.ranks >= 10 and @skill.climb.ranks >= 10 and @skill.search.ranks >= 10 and @skill.craft.ranks >= 5 and @skill.knowledge_dungeoneering.ranks >= 5 and @skill.move_silently.ranks >= 5 and @skill.hide.ranks >= 5 and has('feat.blind_fight') and has('feat.alertness')",
+      "note": "Conditions : Artisanat (maçonnerie) précisément, la recherche des pièges et l’épreuve souterraine : texte seul. Progression épique (PDF p. 191–192, exemple « explorateur de donjon ») : en texte dans la description et les aptitudes ; sens des pièges suit déjà le niveau de classe dans ses effets."
+    },
+    {
+      "id": "power.dungeon_delver_trap_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens des pièges",
+        "en": "Trap sense"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Il sent d’avance le déclic du piège et s’écarte avant qu’il parte.\n\nEn jeu\n• Contre les pièges : +1 aux jets de Réflexes et +1 d’esquive à la CA au niveau 1, puis +1 tous les 3 niveaux (+2 au niv. 4, +3 au niv. 7, +4 au niv. 10).\n• Se cumule avec le sens des pièges des autres classes.\n• Niveaux épiques : +1 tous les 3 niveaux au-delà du 10 (+5 au niv. 13, +6 au niv. 16, +7 au niv. 19)."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "1 + floor((level('class.dungeon_delver') - 1) / 3)",
+          "situation": "situation.vs_traps"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "1 + floor((level('class.dungeon_delver') - 1) / 3)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_traps"
+        }
+      ]
+    },
+    {
+      "id": "power.dungeon_delver_underground_survival",
+      "type": "class_power",
+      "name": {
+        "fr": "Survie dans les profondeurs",
+        "en": "Underground survival"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Les galeries sombres sont son terrain de jeu.\n\nEn jeu\n• Capacité extraordinaire.\n• Bonus à Survie égal à son niveau de classe, en milieu souterrain."
+      },
+      "effects": [
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": "level('class.dungeon_delver')",
+          "situation": "situation.underground"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.dungeon_delver_darkvision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision dans le noir",
+        "en": "Darkvision"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Ses yeux ont fini par se faire à l’obscurité totale.\n\nEn jeu\n• Capacité extraordinaire.\n• Vision dans le noir sur 18 m.\n• S’il l’a déjà : sa portée augmente de 9 m."
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        }
+      ],
+      "note": "Le +9 m quand le personnage a déjà la vision dans le noir n’est pas modélisé (le modèle prend 18 m)."
+    },
+    {
+      "id": "power.dungeon_delver_stonecunning",
+      "type": "class_power",
+      "name": {
+        "fr": "Connaissance de la pierre",
+        "en": "Stonecunning"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Il lit la pierre comme un livre.\n\nEn jeu\n• Capacité extraordinaire, niveau 2.\n• Comme le trait des nains, mais avec des bonus d’aptitude (pas raciaux) ; se cumule avec celui de la race."
+      },
+      "effects": [],
+      "note": "Texte seul (le détail du trait racial n’est pas repris)."
+    },
+    {
+      "id": "power.dungeon_delver_squeeze",
+      "type": "class_power",
+      "name": {
+        "fr": "Rapetissement",
+        "en": "Squeeze"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Quand le passage est étroit, il se rend plus petit.\n\nEn jeu\n• Capacité magique, niveau 2.\n• Rapetissement (comme le sort) 3 fois par jour, sur lui-même, quel que soit son type de créature.\n• Niveau de lanceur de sorts égal à son niveau de classe."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer (sort Reduce Person)."
+    },
+    {
+      "id": "power.dungeon_delver_augury",
+      "type": "class_power",
+      "name": {
+        "fr": "Augure",
+        "en": "Augury"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Il devine à l’avance si la prochaine action risque de mal tourner.\n\nEn jeu\n• Capacité magique, niveau 3.\n• Augure (comme le sort) par une action libre : 1 fois par jour, 2 au niveau 6, 3 au niveau 9.\n• Niveau de lanceur de sorts égal à son niveau de classe.\n• Niveaux épiques : +1 utilisation par jour tous les 3 niveaux au-delà du 10 (4 au niv. 12, 5 au niv. 15, 6 au niv. 18)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dungeon_delver_skill_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences",
+        "en": "Skill mastery"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Il garde le calme là où d’autres paniquent.\n\nEn jeu\n• Capacité extraordinaire, niveau 3.\n• Choisit 3 + modificateur d’Intelligence compétences : il peut faire 10 même en situation de stress ou distrait (comme le roublard).\n• Niveaux épiques : une compétence de classe de plus à chaque niveau gagné."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dungeon_delver_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Quand le couloir s’embrase, il est déjà derrière le coin.\n\nEn jeu\n• Capacité extraordinaire, niveau 4.\n• Contre une attaque qui permet un jet de Réflexes pour moitié dégâts : aucun dégât s’il réussit.\n• S’il l’a déjà par une autre classe, il gagne l’esquive extraordinaire (aucun dégât s’il réussit, moitié s’il échoue)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dungeon_delver_blindsense",
+      "type": "class_power",
+      "name": {
+        "fr": "Perception aveugle",
+        "en": "Blindsense"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Il perçoit sons, odeurs et mouvements autour de lui, même sans voir.\n\nEn jeu\n• Capacité extraordinaire, niveau 5.\n• Comme la capacité des monstres : rayon de 9 m, 1 minute par niveau de classe.\n• 1 fois par jour au niveau 5, 2 fois au niveau 10.\n• Niveaux épiques : +1 utilisation par jour tous les 5 niveaux au-delà du 10 (3 au niv. 15, 4 au niv. 20)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dungeon_delver_pass_wall",
+      "type": "class_power",
+      "name": {
+        "fr": "Passe-muraille",
+        "en": "Pass wall"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Une paroi trop épaisse ? Il passe à travers.\n\nEn jeu\n• Capacité magique, niveau 6.\n• Passe-muraille (comme le sort) 1 fois par jour ; niveau de lanceur de sorts égal à son niveau de classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dungeon_delver_find_the_path",
+      "type": "class_power",
+      "name": {
+        "fr": "Orientation",
+        "en": "Find the path"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Dans un labyrinthe, il trouve toujours son chemin.\n\nEn jeu\n• Capacité magique, niveau 8.\n• Orientation (comme le sort) 2 fois par jour, sur lui-même seulement ; niveau de lanceur de sorts égal à son niveau de classe."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.dungeon_delver_phase_door",
+      "type": "class_power",
+      "name": {
+        "fr": "Porte de phase",
+        "en": "Phase door"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dungeon_delver"
+      ],
+      "description": {
+        "fr": "Un mur de moins entre lui et le butin.\n\nEn jeu\n• Capacité magique, niveau 9.\n• Porte de phase (comme le sort) 1 fois par jour ; niveau 18 de lanceur de sorts."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.dungeon_delver",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.dungeon_delver_trap_sense",
+        "power.dungeon_delver_underground_survival",
+        "power.dungeon_delver_darkvision"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.dungeon_delver_stonecunning",
+        "power.dungeon_delver_squeeze"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.dungeon_delver_augury",
+        "power.dungeon_delver_skill_mastery"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.dungeon_delver_evasion",
+        "power.dungeon_delver_trap_sense"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.dungeon_delver_blindsense"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.dungeon_delver_augury",
+        "power.dungeon_delver_pass_wall"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.dungeon_delver_trap_sense"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.dungeon_delver_find_the_path"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.dungeon_delver_augury",
+        "power.dungeon_delver_phase_door"
+      ]
+    },
+    {
+      "classId": "class.dungeon_delver",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.dungeon_delver_blindsense",
+        "power.dungeon_delver_trap_sense"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.knowledge_dungeoneering"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.dungeon_delver",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    }
+  ]
+}

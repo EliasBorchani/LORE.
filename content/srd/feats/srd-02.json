@@ -124,7 +124,8 @@
         "general",
         "fighter_bonus",
         "warblade_bonus",
-        "melee"
+        "melee",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Les yeux bandés, il entend le cuir qui grince et sent l’air qui bouge. L’ennemi invisible croit avoir l’avantage ; il vient surtout de se rapprocher d’une lame qui le cherche.\n\nEn jeu\n• Au corps à corps, quand il rate à cause du camouflage, il relance une fois les chances de rater.\n• Au corps à corps, l’invisibilité d’un ennemi ne lui sert à rien : pas de +2 à l’attaque pour lui, et le personnage conserve son bonus de Dextérité à la CA. À distance, l’ennemi invisible garde ses avantages.\n• Dans le noir ou par mauvaise visibilité, il se déplace à 75 % de sa vitesse au lieu de 50 %.\n• Inutile contre une créature sous clignotement."

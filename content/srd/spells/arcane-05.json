@@ -1,0 +1,666 @@
+{
+  "entities": [
+    {
+      "id": "spell.ghost_light",
+      "type": "spell",
+      "name": {
+        "fr": "Lumière spectrale",
+        "en": "Ghost Light"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une lueur verdâtre, froide comme un feu follet, s'allume où le wu jen le veut. Elle prend la silhouette qu'il lui donne, et ceux qui la voient sentent un frisson de mort.\n\nEn jeu\n• Crée une lumière fantomatique aussi vive qu'une torche, de taille M au plus, n'importe où dans la portée.\n• Les créatures à 9 m ou moins de la lueur doivent réussir un jet de Volonté ou être secouées.\n• Le wu jen lui donne la forme qu'il veut (taille M au plus) et la change par une action libre.\n• Tant qu'il se concentre, elle se déplace de 9 m par round (elle peut sembler marcher ou voler).\n• Dure tant que le wu jen se concentre. Composante : un morceau de phosphore."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "une lumière spectrale de taille M ou inférieure",
+        "duration": "concentration",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ill_fortune",
+      "type": "spell",
+      "name": {
+        "fr": "Malchance",
+        "en": "Ill Fortune"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le lanceur tord le fil du hasard autour de sa victime : pour un temps, chaque coup du sort tourne contre elle.\n\nEn jeu\n• Jet de Volonté pour annuler.\n• Pour tout jet de dé (attaque, dégâts, sauvegarde, etc.), la cible lance deux fois et garde le moins bon résultat.\n• Une créature qui porte une pierre porte-bonheur est immunisée ; si elle rate son jet de sauvegarde, la pierre cesse de fonctionner pendant la durée du sort.\n• Dure 1 round/niveau. Composante : un éclat de miroir brisé."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wind_messenger",
+      "type": "spell",
+      "name": {
+        "fr": "Messager aérien",
+        "en": "Wind Messenger"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le wu jen murmure ses mots à la brise, qui part les porter au loin, invisible, jusqu'aux oreilles qu'il a choisies.\n\nEn jeu\n• Jusqu'à 10 destinataires/niveau, à 15 km/niveau au plus ; le wu jen les désigne par leur lieu, leur rang ou un autre trait (pas par race ni par classe), sans connaître leur nom.\n• Porte au choix un message de 25 mots au plus, 1 round d'autres sons, ou seulement un souffle de vent.\n• Le vent doit trouver un chemin jusqu'à chaque destinataire (il ne traverse pas les murs) ; vitesse choisie entre 1,5 et 9 km/h ; personne ne le remarque avant son arrivée.\n• Comme bouche magique : il ne peut pas prononcer de composante verbale, de mot de commande ni activer d'effet magique.\n• Incantation : 10 minutes."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "15 km/niveau",
+        "target": "jusqu'à 10 créatures/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fiendform",
+      "type": "spell",
+      "name": {
+        "fr": "Métamorphose diabolique",
+        "en": "Fiendform"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les os craquent, la peau s'assombrit, des cornes ou des ailes percent : le mage devient pour un temps l'un des fiélons qu'il saurait convoquer.\n\nEn jeu\n• Comme modification d'apparence, mais le mage prend la forme d'un fiélon, démon ou diable qu'on peut appeler avec convocation de monstres I à IV ; une seule forme par incantation.\n• Il gagne les pouvoirs extraordinaires, magiques et surnaturels de cette créature.\n• Il a le type Extérieur : les effets qui touchent ou protègent contre les Extérieurs mauvais l'affectent.\n• Un effet qui le renverrait dans son plan met fin au sort et le rend chancelant 1 round/niveau de lanceur, sans le déplacer.\n• Dure 1 minute/niveau. Composante : un os de fiélon, de demi-fiélon, de démon ou de diable."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau"
+      },
+      "effects": [],
+      "note": "Le Codex n'imprime ni jet de sauvegarde ni résistance à la magie pour ce sort. Les pouvoirs de la forme prise dépendent de la créature : en texte."
+    },
+    {
+      "id": "spell.spirit_wall",
+      "type": "spell",
+      "name": {
+        "fr": "Mur d'esprits",
+        "en": "Spirit Wall"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un rideau d'âmes tourmentées, d'un blanc verdâtre, tourbillonne sur place en gémissant. Sa plainte fait fuir, et son contact arrache un peu de vie.\n\nEn jeu\n• Mur de 3 m de côté/niveau, ou sphère ou hémisphère de 30 cm de rayon/niveau, immobile.\n• Le côté choisi par le mage gronde : les créatures à 18 m ou moins de ce côté doivent réussir un jet de Volonté ou fuir, paniquées, pendant 1d4 rounds.\n• Une créature vivante qui touche le mur subit 1d10 points de dégâts.\n• Une créature vivante qui le traverse subit 1d10 points de dégâts et doit réussir un jet de Vigueur ou recevoir un niveau négatif.\n• Le mur est opaque : il donne un abri et un camouflage total contre les attaques physiques et bloque sorts, pouvoirs magiques et surnaturels.\n• Dure 1 minute/niveau (T). Composante : une gemme taillée et transparente."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "15 m",
+        "effect": "un mur de 3 m de côté/niveau ou une sphère/hémisphère de 30 cm de rayon/niveau",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d10",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le bloc indique « Jet de sauvegarde : aucun », mais le texte demande des jets de Volonté (terreur) et de Vigueur (niveau négatif)."
+    },
+    {
+      "id": "spell.wall_of_bones",
+      "type": "spell",
+      "name": {
+        "fr": "Mur d'ossements",
+        "en": "Wall of Bones"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un enchevêtrement d'os de toutes sortes de créatures jaillit du sol, hérissé de pointes et d'angles absurdes. On peut s'y faufiler, mais rarement sans y laisser du sang.\n\nEn jeu\n• Mur de 3 m de côté/niveau, de la forme voulue, ancré au sol ; il ne peut pas apparaître dans l'espace d'une créature ou d'un objet.\n• Ajouré : les créatures derrière lui ont un abri et un camouflage contre les attaques venues de l'autre côté.\n• Le traverser demande une action complexe ; les créatures de taille P ou M subissent 1d8 points de dégâts.\n• Taille P : passe sans autre problème. Taille M : test d'Évasion DD 20, sinon dégâts et prise au piège ; chaque round suivant, elle doit avancer ou reculer (dégâts à chaque fois) ou rester immobile jusqu'à la fin du sort.\n• Taille TP ou moins : se faufile à demi-vitesse. Taille G ou plus : enjambe le mur ou force le passage, sans dégâts.\n• Épaisseur : 18 cm/niveau ; chaque case de 1,50 m a 10 points de résistance par tranche de 18 cm ; armes perforantes et tranchantes : demi-dégâts.\n• Forcer le passage : test de Force DD 15 + 2/niveau de lanceur (+10 au plus), au prix d'une attaque.\n• Les os ne peuvent être ni animés ni interrogés (animation des morts, communication avec les morts).\n• Dure 10 minutes. Composante : une branche flétrie coupée dans un cimetière."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "mur d'os de 3 m de côté/niveau (F)",
+        "duration": "10 minutes",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le « +2 par niveau » du DD de Force est lu tel qu'imprimé (plafond +10)."
+    },
+    {
+      "id": "spell.wall_of_gloom",
+      "type": "spell",
+      "name": {
+        "fr": "Mur de ténèbres",
+        "en": "Wall of Gloom"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Un voile d'ombre menaçante se dresse, si épais qu'on voit mal à travers. Il n'a aucune substance, mais les esprits faibles n'osent pas le franchir.\n\nEn jeu\n• Voile de 12 m de long au plus, ou anneau de 4,50 m de rayon au plus ; 6 m de haut.\n• Contre les attaques venues de l'autre côté : camouflage pour une créature adjacente au mur, camouflage total au-delà.\n• Une créature de 6 DV ou moins qui veut le traverser doit réussir un jet de Volonté, sinon elle ne passe pas et son action de mouvement s'arrête.\n• Elle peut réessayer autant qu'elle veut, avec −1 au jet de Volonté par échec précédent.\n• Contre et dissipe les sorts de lumière de niveau inférieur ou égal.\n• Dure le temps de la concentration + 1 round/niveau. Composante : un bout de toison de mouton noir."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "descriptors": [
+          "mental",
+          "obscurité",
+          "terreur"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "voile de ténèbres semi-opaque de 12 m de long max. ou anneau de 4,50 m de rayon max. ; 6 m de haut",
+        "duration": "concentration + 1 round/niveau",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.swim",
+      "type": "spell",
+      "name": {
+        "fr": "Nage",
+        "en": "Swim"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le sujet glisse dans l'eau comme un poisson, sans effort ni éclaboussure, tant qu'il ne porte pas trop lourd.\n\nEn jeu\n• La cible gagne une vitesse de nage égale à sa vitesse normale ; elle ne respire pas sous l'eau pour autant.\n• Avec une charge légère, elle nage sans test de Natation.\n• +8 (aptitude) aux tests de Natation pour une action spéciale ou éviter un danger ; −1 par tranche de 2,5 kg portés.\n• Elle peut toujours faire 10 en Natation, même pressée ou menacée, et courir en nageant en ligne droite.\n• Au-delà d'une charge légère, elle fait des tests de Natation pour avancer (malus de charge normal), mais garde les autres avantages.\n• Dure 10 minutes/niveau (T). Composante : une écaille de poisson rouge."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "eau"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "skill.swim",
+          "op": "add",
+          "value": 8,
+          "bonusType": "competence",
+          "situation": "situation.swim_special_action_or_hazard",
+          "condition": "active('toggle.swim')"
+        }
+      ],
+      "note": "Vitesse de nage et malus de −1 par 2,5 kg : en texte, le modèle ne tient pas de vitesse de nage."
+    },
+    {
+      "id": "spell.earth_wave",
+      "type": "spell",
+      "name": {
+        "fr": "Onde tellurique",
+        "en": "Earth Wave"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_earth"
+      ],
+      "description": {
+        "fr": "D'un cri, le wu jen frappe le sol : une vague de terre, de pierres et de sable se soulève et balaie tout ce qui se trouve sur sa ligne.\n\nEn jeu\n• Ligne jusqu'à portée courte : 1d6 points de dégâts par niveau de lanceur (10d6 au plus) ; Réflexes pour moitié.\n• Ne marche que si le wu jen se tient sur de la terre, de l'argile, du sable ou de la pierre (sol dallé compris), pas sur du bois ou une autre matière."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "ligne jusqu'à courte portée (7,50 m + 1,50 m/2 niveaux)",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d6",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.orb_of_acid",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe d'acide",
+        "en": "Orb of Acid"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une sphère d'acide grosse comme un poing jaillit de la paume et éclabousse la cible, qui suffoque dans des vapeurs âcres.\n\nEn jeu\n• Attaque de contact à distance ; orbe d'acide qui inflige 1d6 points de dégâts d'acide par niveau de lanceur (15d6 au maximum).\n• Une créature touchée doit réussir un jet de Vigueur ou être fiévreuse pendant 1 round ; le jet ne réduit pas les dégâts.\n• Aucune résistance à la magie : c'est une création, pas une énergie qui agit sur la cible."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "acide"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe d'acide",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6 acid",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.lesser_orb_of_acid",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe d'acide mineur",
+        "en": "Lesser Orb of Acid"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une petite bille d'acide file de la main du lanceur et grésille en touchant la cible.\n\nEn jeu\n• Attaque de contact à distance ; 1d8 points de dégâts d'acide.\n• +1d8 tous les deux niveaux de lanceur au-delà du 1er : 2d8 au niveau 3, 3d8 au niveau 5, 4d8 au niveau 7, 5d8 au maximum à partir du niveau 9.\n• Aucun jet de sauvegarde, aucune résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "acide"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe d'acide",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor((@spell.caster_level + 1) / 2), 5))d8 acid",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.orb_of_electricity",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe d'électricité",
+        "en": "Orb of Electricity"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une boule d'éclairs crépitants part de la paume et frappe la cible ; si elle porte du métal, ses muscles se nouent sous la décharge.\n\nEn jeu\n• Attaque de contact à distance ; orbe d'électricité qui inflige 1d6 points de dégâts d'électricité par niveau de lanceur (15d6 au maximum).\n• Une créature touchée qui porte une armure en métal doit réussir un jet de Vigueur ou être enchevêtrée pendant 1 round.\n• Aucune résistance à la magie : c'est une création, pas une énergie qui agit sur la cible."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe d'électricité",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6 electricity",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le Codex écrit « frappée par l'orbe de froid » dans ce sort : erreur de copie, lue comme l'orbe d'électricité."
+    },
+    {
+      "id": "spell.lesser_orb_of_electricity",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe d'électricité mineur",
+        "en": "Lesser Orb of Electricity"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une étincelle ronde et bourdonnante file de la main du lanceur et claque sur la cible.\n\nEn jeu\n• Attaque de contact à distance ; 1d8 points de dégâts d'électricité.\n• +1d8 tous les deux niveaux de lanceur au-delà du 1er : 2d8 au niveau 3, 3d8 au niveau 5, 4d8 au niveau 7, 5d8 au maximum à partir du niveau 9.\n• Aucun jet de sauvegarde, aucune résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe d'électricité",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor((@spell.caster_level + 1) / 2), 5))d8 electricity",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.orb_of_force",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe d'énergie",
+        "en": "Orb of Force"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une sphère de force pure, invisible ou presque, part de la paume et frappe la cible comme un boulet.\n\nEn jeu\n• Attaque de contact à distance ; 1d6 points de dégâts de force par niveau de lanceur (10d6 au maximum).\n• Portée moyenne ; aucun jet de sauvegarde, aucune résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "un orbe d'énergie",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d6 force",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.orb_of_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe de feu",
+        "en": "Orb of Fire"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une boule de flammes ronflantes part de la paume et explose contre la cible dans un éclat aveuglant.\n\nEn jeu\n• Attaque de contact à distance ; orbe de feu qui inflige 1d6 points de dégâts de feu par niveau de lanceur (15d6 au maximum).\n• Une créature touchée doit réussir un jet de Vigueur ou être éblouie pendant 1 round.\n• Aucune résistance à la magie : c'est une création, pas une énergie qui agit sur la cible."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe de feu",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.lesser_orb_of_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe de feu mineur",
+        "en": "Lesser Orb of Fire"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une petite boule de feu file de la main du lanceur et roussit la cible.\n\nEn jeu\n• Attaque de contact à distance ; 1d8 points de dégâts de feu.\n• +1d8 tous les deux niveaux de lanceur au-delà du 1er : 2d8 au niveau 3, 3d8 au niveau 5, 4d8 au niveau 7, 5d8 au maximum à partir du niveau 9.\n• Aucun jet de sauvegarde, aucune résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe de feu",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor((@spell.caster_level + 1) / 2), 5))d8 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.orb_of_cold",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe de froid",
+        "en": "Orb of Cold"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une sphère de glace bleutée part de la paume et se brise sur la cible ; le givre lui couvre les yeux.\n\nEn jeu\n• Attaque de contact à distance ; orbe de froid qui inflige 1d6 points de dégâts de froid par niveau de lanceur (15d6 au maximum).\n• Une créature touchée doit réussir un jet de Vigueur ou être aveuglée pendant 1 round.\n• Aucune résistance à la magie : c'est une création, pas une énergie qui agit sur la cible."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe de froid",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6 cold",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.lesser_orb_of_cold",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe de froid mineur",
+        "en": "Lesser Orb of Cold"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une petite bille de glace file de la main du lanceur et mord la cible de son froid.\n\nEn jeu\n• Attaque de contact à distance ; 1d8 points de dégâts de froid.\n• +1d8 tous les deux niveaux de lanceur au-delà du 1er : 2d8 au niveau 3, 3d8 au niveau 5, 4d8 au niveau 7, 5d8 au maximum à partir du niveau 9.\n• Aucun jet de sauvegarde, aucune résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe de froid",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor((@spell.caster_level + 1) / 2), 5))d8 cold",
+          "scope": "spell"
+        }
+      ]
+    }
+  ]
+}

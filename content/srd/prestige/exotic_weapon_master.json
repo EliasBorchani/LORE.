@@ -1,0 +1,97 @@
+{
+  "entities": [
+    {
+      "id": "class.exotic_weapon_master",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître d'armes exotiques",
+        "en": "Exotic Weapon Master"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Pour lui, une arme étrange n'est pas une curiosité mais un instrument à maîtriser. Le maître d'armes exotiques passe sa vie à comprendre chaque lame courbe, chaque chaîne cloutée, chaque arme double, et en tire des tours que personne d'autre ne sait faire. Les humains y sont nombreux, mais n'importe qui, de n'importe quelle race, peut y arriver à force de persévérance.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +6 ; 3 rangs en Artisanat (fabrication d'armes) ; dons Arme de prédilection (une arme exotique) et Maniement d'une arme exotique (une arme exotique). Les races familières d'une arme exotique (nains et hache de guerre naine, par exemple) comptent comme remplissant la seconde condition.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Intimidation, Profession.\n• Aptitudes : une prouesse à l'arme exotique à chaque niveau (1, 2, 3)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 6 and @skill.craft.ranks >= 3 and has('feat.weapon_focus') and has('feat.exotic_weapon_proficiency')",
+      "note": "Conditions en formule : bonus de base à l'attaque, rangs et dons. L'arme exotique choisie et les races familières d'une arme ne sont pas modélisées. Dé de vie d10 lu sur la page (PDF 65). Rangs en Artisanat : fabrication d'armes (sous-spécialité non modélisée)."
+    },
+    {
+      "id": "power.exotic_weapon_master_exotic_weapon_stunt",
+      "type": "class_power",
+      "name": {
+        "fr": "Prouesse à l'arme exotique",
+        "en": "Exotic weapon stunt"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exotic_weapon_master"
+      ],
+      "description": {
+        "fr": "Chaque niveau lui apprend un tour propre à son arme de prédilection exotique.\n\nEn jeu\n• Capacité extraordinaire : une prouesse par niveau, à choisir définitivement ; jamais deux fois la même. Elles s'utilisent avec toute arme exotique pour laquelle il a Arme de prédilection.\n• Allonge exotique (arme à allonge) : attaques d'opportunité contre les adversaires à portée même derrière un abri (pas un abri total).\n• Arme de lancer exotique : il la lance sans malus ; arme double : une seule tête frappe ; facteur de portée 3 m.\n• Attaque de croc-en-jambe (arme de corps à corps à une ou deux mains) : il peut lâcher l'arme pour éviter un croc-en-jambe en retour ; +2 si elle faisait déjà des crocs-en-jambe.\n• Combat à deux armes exotiques jumelles (arme légère de corps à corps) : avantages du combat à deux armes avec une arme dans chaque main ; avec le don, le malus passe de −2 à −1.\n• Coup prodigieux (arme exotique à une main) : tenue à deux mains, il ajoute deux fois son bonus de Force aux dégâts ; elle compte comme à deux mains pour Attaque en puissance.\n• Défense à l'arme double (arme double) : à deux mains, +1 de bonus de bouclier à la CA.\n• Déluge de frappes (arme double ou chaîne cloutée) : à deux mains, action complexe ; une attaque en plus avec son bonus maximal, −2 à toutes ses attaques du round.\n• Désarmement à distance (arme à distance) : désarmer à distance sans attaque d'opportunité ; l'arme compte comme légère ; l'adversaire ne peut pas riposter.\n• Destruction exotique : +1d6 de dégâts lors d'une manœuvre de destruction.\n• Esbroufe : action simple, Intimidation contre un ennemi à 9 m ou moins avec son bonus de base à l'attaque en plus ; s'il gagne, la cible est secouée pendant un nombre de rounds égal à son niveau de classe.\n• Frappe étourdissante (arme de corps à corps) : permet d'utiliser Coup étourdissant avec cette arme.\n• Tir rapproché (arme à distance) : pas d'attaque d'opportunité en tirant."
+      },
+      "effects": [],
+      "note": "Choix de prouesses : texte seulement. Noms anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.exotic_weapon_master",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.exotic_weapon_master_exotic_weapon_stunt"
+      ]
+    },
+    {
+      "classId": "class.exotic_weapon_master",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.exotic_weapon_master_exotic_weapon_stunt"
+      ]
+    },
+    {
+      "classId": "class.exotic_weapon_master",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.exotic_weapon_master_exotic_weapon_stunt"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.exotic_weapon_master",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.exotic_weapon_master",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.exotic_weapon_master",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

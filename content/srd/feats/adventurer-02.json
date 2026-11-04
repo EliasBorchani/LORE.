@@ -1,0 +1,787 @@
+{
+  "entities": [
+    {
+      "id": "feat.quick_reconnoiter",
+      "type": "feat",
+      "name": {
+        "fr": "Inspection instantanée",
+        "en": "Quick Reconnoiter"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill",
+        "scout_bonus"
+      ],
+      "description": {
+        "fr": "Un simple regard sur une pièce ou un objet lui livre une foule de détails, et ses sens ne le laissent jamais en retard.\n\nEn jeu\n• Condition : 5 degrés en Détection et 5 degrés en Perception auditive.\n• Chaque round, un test de Détection et un test de Perception auditive voulus coûtent une action libre (au lieu d’une action de mouvement).\n• +2 aux tests d’initiative."
+      },
+      "prerequisite": "@skill.spot.ranks >= 5 and @skill.listen.ranks >= 5",
+      "effects": [
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.brutal_throw",
+      "type": "feat",
+      "name": {
+        "fr": "Lancer brutal",
+        "en": "Brutal Throw"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "ranged",
+        "fighter_bonus"
+      ],
+      "description": {
+        "fr": "Il lance ses armes de jet avec la force d’un bûcheron plutôt que la grâce d’un archer.\n\nEn jeu\n• Avec une arme de jet, le modificateur de Force remplace celui de Dextérité au jet d’attaque.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "note": "Le modificateur de Force au lieu de Dextérité pour les armes de jet n’est pas tenu par la fiche : il reste dans le texte."
+    },
+    {
+      "id": "feat.power_throw",
+      "type": "feat",
+      "name": {
+        "fr": "Lancer en puissance",
+        "en": "Power Throw"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "ranged",
+        "fighter_bonus"
+      ],
+      "description": {
+        "fr": "Comme Attaque en puissance, mais pour les armes de jet : il sacrifie sa précision pour frapper plus fort.\n\nEn jeu\n• Conditions : For 13, Attaque en puissance, Lancer brutal.\n• Avant ses jets d’attaque du tour, il choisit un nombre, au plus égal à son bonus de base à l’attaque.\n• Ce nombre est un malus à toutes ses attaques avec armes de jet et un bonus à leurs dégâts, jusqu’à son prochain tour.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack') and has('feat.brutal_throw')",
+      "note": "Nombre choisi chaque tour : pas modélisé pour les armes de jet, il reste dans le texte."
+    },
+    {
+      "id": "feat.natural_bond",
+      "type": "feat",
+      "name": {
+        "fr": "Lien naturel",
+        "en": "Natural Bond"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Entre lui et son compagnon animal, le lien est devenu presque aussi fort que chez un vrai druide.\n\nEn jeu\n• Condition : avoir un compagnon animal.\n• Son niveau de druide effectif pour le compagnon (dés de vie en plus, tours, pouvoirs spéciaux, bonus) monte de 3.\n• Il ne peut jamais dépasser son niveau global.\n• Avec plusieurs compagnons animaux, le don ne vaut que pour un seul."
+      },
+      "effects": [
+        {
+          "target": "animal_companion.level",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Le plafond (niveau global) n’est pas tenu.",
+      "prerequisite": "(has('power.druid_animal_companion') or has('power.ranger_animal_companion'))"
+    },
+    {
+      "id": "feat.ascetic_mage",
+      "type": "feat",
+      "name": {
+        "fr": "Mage ascétique",
+        "en": "Ascetic Mage"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "magic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un art martial peu commun qui marie les sorts spontanés aux coups de poing et aux coups de pied.\n\nEn jeu\n• Conditions : Coup étourdissant, lancer spontanément des sorts profanes de 2e niveau.\n• Action rapide sans attaque d’opportunité : il sacrifie un emplacement de sort pour un bonus aux attaques à mains nues et aux dégâts, égal au niveau du sort, pendant 1 round.\n• Ses niveaux d’ensorceleur et de moine s’additionnent pour le bonus à la CA du moine (le Charisme remplace la Sagesse).\n• Il peut prendre des niveaux de moine et d’ensorceleur sans restriction, tant qu’il reste loyal pour progresser en moine."
+      },
+      "prerequisite": "has('feat.stunning_fist')",
+      "note": "Conditions non vérifiées : lancer spontanément des sorts profanes de 2e niveau. Le cumul des niveaux pour la CA de moine et le sacrifice d’emplacement ne sont pas modélisés."
+    },
+    {
+      "id": "feat.extra_music",
+      "type": "feat",
+      "name": {
+        "fr": "Musica additius",
+        "en": "Extra Music"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music"
+      ],
+      "description": {
+        "fr": "Il ne se lasse pas de jouer : son répertoire d’inspirations dure bien au-delà de la journée normale.\n\nEn jeu\n• Condition : pouvoir de musique de barde.\n• Quatre utilisations quotidiennes de musique de barde en plus.\n• Se prend plusieurs fois, les effets s’additionnent.\n• Normal : un barde dispose d’une utilisation par jour et par niveau de barde."
+      },
+      "prerequisite": "(has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))",
+      "repeatable": {},
+      "note": "Utilisations de musique de barde en plus (+4 par prise) : pas encore une statistique de la fiche, à ajouter à la main."
+    },
+    {
+      "id": "feat.lingering_song",
+      "type": "feat",
+      "name": {
+        "fr": "Musique persistante",
+        "en": "Lingering Song"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music"
+      ],
+      "description": {
+        "fr": "Quand la dernière note s’éteint, l’élan qu’elle a donné aux auditeurs ne retombe pas tout de suite.\n\nEn jeu\n• Condition : pouvoir de musique de barde.\n• Inspiration héroïque, intrépide ou vaillante : les alliés gardent l’effet 1 minute après la dernière note entendue.\n• Normal : l’effet ne dure que tant qu’ils entendent le barde et 5 rounds après."
+      },
+      "prerequisite": "(has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))"
+    },
+    {
+      "id": "feat.subsonics",
+      "type": "feat",
+      "name": {
+        "fr": "Musique subliminale",
+        "en": "Subsonics"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music"
+      ],
+      "description": {
+        "fr": "Sa musique et ses récits agissent sans que l’ennemi comprenne d’où vient l’effet.\n\nEn jeu\n• Conditions : 10 degrés en Représentation (une forme), pouvoir de musique de barde.\n• Il joue ou récite sans que ses adversaires s’en aperçoivent, alors que ses alliés profitent normalement de la musique.\n• Il peut aussi affecter des adversaires dans la zone ; sauf s’ils le voient ou détectent sa musique autrement, ils ne trouvent pas l’origine des effets."
+      },
+      "prerequisite": "@skill.perform.ranks >= 10 and (has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))",
+      "note": "Une seule forme de Représentation à 10 degrés : la fiche compte la compétence Représentation en général."
+    },
+    {
+      "id": "feat.green_ear",
+      "type": "feat",
+      "name": {
+        "fr": "Oreille verte",
+        "en": "Green Ear"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music"
+      ],
+      "description": {
+        "fr": "Sa musique parle aussi aux plantes, d’ordinaire sourdes à toute influence de l’esprit.\n\nEn jeu\n• Conditions : 10 degrés en Représentation (une forme), pouvoir de musique de barde.\n• Ses effets mentaux issus de la musique de barde (ou d’un pouvoir de Représentation similaire) peuvent viser uniquement les plantes.\n• Les plantes ont +5 à leur jet de Volonté contre ces effets.\n• Normal : les plantes sont immunisées contre les effets mentaux."
+      },
+      "prerequisite": "@skill.perform.ranks >= 10 and (has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))",
+      "note": "Une seule forme de Représentation à 10 degrés : la fiche compte la compétence Représentation en général."
+    },
+    {
+      "id": "feat.feline_hearing",
+      "type": "feat",
+      "name": {
+        "fr": "Ouïe féline",
+        "en": "Feline Hearing"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill",
+        "scout_bonus"
+      ],
+      "description": {
+        "fr": "Son oreille est si fine qu’il situe ses adversaires au son, même caché ou dans le noir.\n\nEn jeu\n• Conditions : 5 degrés en Perception auditive, Combat en aveugle.\n• Action de mouvement sans attaque d’opportunité : test de Perception auditive DD 25.\n• S’il réussit, il localise précisément tous ses adversaires à 9 m ou moins (avec ligne d’effet) et frappe la bonne case.\n• Il ne retire pas le risque normal d’échec contre le camouflage.\n• Inutilisable s’il est assourdi ou dans le silence.\n• Un adversaire invisible ou caché qui se déplace sans bruit oppose son Déplacement silencieux (+15) à la Perception auditive du personnage.\n• Sans effet contre les créatures parfaitement silencieuses (intangibles par exemple)."
+      },
+      "prerequisite": "@skill.listen.ranks >= 5 and has('feat.blind_fight')",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.open_minded",
+      "type": "feat",
+      "name": {
+        "fr": "Ouvert d’esprit",
+        "en": "Open Minded"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Une mémoire vive et un esprit curieux : il apprend plus de choses que les autres.\n\nEn jeu\n• Il reçoit tout de suite 5 points de compétence en plus.\n• Les règles habituelles s’appliquent : 1 degré par point (classe) ou demi-degré (hors classe), sans dépasser le maximum de son niveau.\n• Se prend plusieurs fois : 5 nouveaux points à chaque fois."
+      },
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "skill_points.total",
+          "op": "add",
+          "value": 5,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.dive_for_cover",
+      "type": "feat",
+      "name": {
+        "fr": "Plongeon salvateur",
+        "en": "Dive for Cover"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il se jette au sol ou derrière un abri en un clin d’œil, loin des effets de zone.\n\nEn jeu\n• Condition : bonus de base de Réflexes +4.\n• Quand il rate un jet de Réflexes, il peut le relancer aussitôt et doit garder le second résultat.\n• Il se retrouve à terre juste après le second jet."
+      },
+      "note": "Condition non vérifiée par la fiche : bonus de base de Réflexes +4. Le jet relancé n’est pas modélisé."
+    },
+    {
+      "id": "feat.tactile_trapsmith",
+      "type": "feat",
+      "name": {
+        "fr": "Prospection tactile",
+        "en": "Tactile Trapsmith"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il fouille une pièce et désarme un piège du bout des doigts, sans trop réfléchir.\n\nEn jeu\n• Le modificateur de Dextérité remplace celui d’Intelligence aux tests de Fouille et de Désamorçage/sabotage.\n• Aucun malus à ces tests dans l’obscurité ou quand il ne voit pas ce qu’il fait."
+      },
+      "note": "Dextérité au lieu d’Intelligence sur ces deux compétences : pas modélisé, il reste dans le texte."
+    },
+    {
+      "id": "feat.goad",
+      "type": "feat",
+      "name": {
+        "fr": "Provocateur",
+        "en": "Goad"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus"
+      ],
+      "description": {
+        "fr": "Il sait pousser les ennemis à s’en prendre à lui plutôt qu’à ses compagnons.\n\nEn jeu\n• Conditions : Cha 13, bonus de base à l’attaque +1.\n• Action de mouvement : il pique au vif un adversaire qui contrôle son espace, le voit, l’entend et a Int 3 ou plus (pouvoir mental).\n• Si, à son tour, l’adversaire contrôle toujours l’espace du personnage et le voit, jet de Volonté DD 10 + moitié du niveau + modificateur de Cha.\n• Échec : il ne peut attaquer au corps à corps que le personnage, tant que celui-ci est vivant, conscient et à portée de vue.\n• Il peut toujours lancer des sorts, tirer ou se déplacer.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.cha.score >= 13 and @bab >= 1"
+    },
+    {
+      "id": "feat.ascetic_rogue",
+      "type": "feat",
+      "name": {
+        "fr": "Roublard ascétique",
+        "en": "Ascetic Rogue"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un moine qui a pris les ruses du roublard : il frappe juste et met vite ses ennemis hors d’état de nuire.\n\nEn jeu\n• Conditions : Coup étourdissant, attaque sournoise.\n• Un coup étourdissant donné à mains nues en attaque sournoise : +2 au DD d’étourdissement.\n• Ses niveaux de roublard et de moine s’additionnent pour les dégâts à mains nues.\n• Il peut prendre des niveaux de moine et de roublard sans restriction, tant qu’il reste loyal pour progresser en moine."
+      },
+      "prerequisite": "has('feat.stunning_fist') and has('power.rogue_sneak_attack')",
+      "note": "Le cumul des dégâts à mains nues et le +2 au DD ne sont pas modélisés."
+    },
+    {
+      "id": "feat.obscure_lore",
+      "type": "feat",
+      "name": {
+        "fr": "Savoir rare",
+        "en": "Obscure Lore"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill",
+        "bardic_music"
+      ],
+      "description": {
+        "fr": "Il est un puits de science sur des sujets que presque personne ne connaît.\n\nEn jeu\n• Condition : pouvoir de savoir (de classe) ou de savoir bardique.\n• +4 (intuition) à tous les tests de savoir ou de savoir bardique."
+      },
+      "effects": [
+        {
+          "target": "check.bardic_knowledge",
+          "op": "add",
+          "value": 4,
+          "bonusType": "insight"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : pouvoir de savoir ou de savoir bardique. Le bonus ne vaut ici que pour le savoir bardique ; le savoir d’autres classes (érudit) reste dans le texte."
+    },
+    {
+      "id": "feat.improved_diversion",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la diversion",
+        "en": "Improved Diversion"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill",
+        "fighter_bonus"
+      ],
+      "description": {
+        "fr": "Il crée une diversion bien plus vite que n’importe qui pour disparaître aux regards.\n\nEn jeu\n• Condition : 4 degrés en Bluff.\n• Créer une diversion pour se cacher avec Bluff coûte une action de mouvement (au lieu d’une action simple).\n• +4 aux tests de Bluff faits dans ce cadre.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@skill.bluff.ranks >= 4",
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.to_hide_after_diversion"
+        }
+      ]
+    },
+    {
+      "id": "feat.improved_swimming",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la nage",
+        "en": "Improved Swimming"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill",
+        "scout_bonus"
+      ],
+      "description": {
+        "fr": "Il fend l’eau bien plus vite qu’un nageur ordinaire.\n\nEn jeu\n• Condition : 6 degrés en Natation.\n• Il nage à la moitié de sa vitesse par action de mouvement, ou à pleine vitesse par action complexe.\n• Normal : un quart et la moitié."
+      },
+      "prerequisite": "@skill.swim.ranks >= 6"
+    },
+    {
+      "id": "feat.improved_flight",
+      "type": "feat",
+      "name": {
+        "fr": "Science du vol",
+        "en": "Improved Flight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Il vole avec plus d’agilité que les créatures de son espèce.\n\nEn jeu\n• Condition : pouvoir de voler (naturel, magique ou par changement de forme).\n• Sa manœuvrabilité en vol monte d’un cran (déplorable, médiocre, moyenne, bonne, parfaite)."
+      },
+      "note": "Condition non vérifiée par la fiche : pouvoir de voler."
+    },
+    {
+      "id": "feat.opportunity_sense",
+      "type": "feat",
+      "name": {
+        "fr": "Sens de l’opportunité",
+        "en": "Opportunity Sense"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il ne laisse jamais passer une ouverture.\n\nEn jeu\n• Conditions : Dex 15, Attaques réflexes.\n• +4 aux jets d’attaque des attaques d’opportunité."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and has('feat.combat_reflexes')",
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "situation": "situation.making_attack_of_opportunity"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.danger_sense",
+      "type": "feat",
+      "name": {
+        "fr": "Sens du danger",
+        "en": "Danger Sense"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "defense",
+        "scout_bonus"
+      ],
+      "description": {
+        "fr": "Il est toujours sur le qui-vive, prêt à réagir avant les autres.\n\nEn jeu\n• Condition : Science de l’initiative.\n• Une fois par jour, il relance un test d’initiative qu’il vient de faire et garde le meilleur résultat.\n• Il doit choisir avant le début du premier round du combat."
+      },
+      "prerequisite": "has('feat.improved_initiative')",
+      "usesPerDay": "1"
+    },
+    {
+      "id": "feat.disguise_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort déguisé",
+        "en": "Disguise Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il noie ses paroles et ses gestes d’incantation dans son spectacle : nul ne devine qu’il lance un sort.\n\nEn jeu\n• Conditions : 9 degrés en Représentation (une forme), pouvoir de musique de barde.\n• Il fait un test de Représentation pendant l’incantation ; pour comprendre qu’il lance un sort, un observateur doit l’égaler en Détection.\n• Si la source du sort n’est pas visible, personne ne sait d’où il vient.\n• Un sort déguisé ne peut pas être identifié par Art de la magie.\n• Il provoque toujours des attaques d’opportunité."
+      },
+      "prerequisite": "@skill.perform.ranks >= 9 and (has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))",
+      "note": "Une seule forme de Représentation à 9 degrés : la fiche compte la compétence Représentation en général."
+    },
+    {
+      "id": "feat.jack_of_all_trades",
+      "type": "feat",
+      "name": {
+        "fr": "Touche-à-tout",
+        "en": "Jack-of-All-Trades"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il a des notions de tout, même des savoirs les plus obscurs.\n\nEn jeu\n• Condition : Int 13.\n• Il peut utiliser toute compétence comme s’il avait 1/2 degré, même celles qui exigent normalement une formation.\n• Sans effet sur les compétences qui n’appellent pas de test (Langue)."
+      },
+      "prerequisite": "@ability.int.score >= 13",
+      "note": "Les compétences réservées aux personnages formés ne sont pas modélisées."
+    },
+    {
+      "id": "feat.devoted_tracker",
+      "type": "feat",
+      "name": {
+        "fr": "Traqueur dévot",
+        "en": "Devoted Tracker"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Il réunit son amour des forêts et sa foi en un même élan.\n\nEn jeu\n• Conditions : Pistage, châtiment du Mal, empathie sauvage.\n• Ses niveaux de paladin et de rôdeur s’additionnent pour les dégâts du châtiment du Mal et le bonus d’empathie sauvage.\n• Pas d’utilisation quotidienne en plus du châtiment du Mal.\n• Avec destrier de paladin et compagnon animal, il peut faire du destrier son compagnon : celui-ci cumule les avantages des deux.\n• Il peut prendre des niveaux de rôdeur et de paladin sans restriction, tant qu’il reste loyal bon pour progresser en paladin."
+      },
+      "prerequisite": "has('feat.track') and has('power.paladin_smite_evil') and has('power.ranger_wild_empathy')",
+      "note": "Le cumul des niveaux et l’accord du destrier ne sont pas modélisés."
+    },
+    {
+      "id": "feat.extraordinary_spell_aim",
+      "type": "feat",
+      "name": {
+        "fr": "Visée magique extraordinaire",
+        "en": "Extraordinary Spell Aim"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il façonne la zone de ses sorts pour épargner une créature.\n\nEn jeu\n• Condition : 15 degrés en Art de la magie.\n• Sur un sort de zone, test d’Art de la magie DD 25 + niveau du sort pour qu’une créature de la zone ne soit pas affectée.\n• L’incantation devient une action complexe, sauf si le temps normal est plus long."
+      },
+      "prerequisite": "@skill.spellcraft.ranks >= 15"
+    },
+    {
+      "id": "feat.quick_wits",
+      "type": "feat",
+      "name": {
+        "fr": "Vivacité d’esprit",
+        "en": "Quick Wits"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Son esprit vif anticipe les effets néfastes mieux que ses reflexes.\n\nEn jeu\n• Le modificateur d’Intelligence remplace celui de Dextérité aux jets de Réflexes."
+      },
+      "note": "Nom anglais à confirmer. Intelligence au lieu de Dextérité aux jets de Réflexes : pas modélisé."
+    },
+    {
+      "id": "feat.fortifying_chant",
+      "type": "feat",
+      "name": {
+        "fr": "Cantilène de vigueur",
+        "en": "Fortifying Chant"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music"
+      ],
+      "description": {
+        "fr": "Sa musique soutient ses alliés au point qu’ils agissent encore alors que leurs blessures devraient les avoir abattus.\n\nEn jeu\n• Conditions : pouvoir de musique de barde, 9 degrés en Concentration, 9 degrés en Représentation (une forme).\n• Action immédiate, une utilisation de musique de barde : lui et ses alliés se battent comme avec Dur à cuire jusqu’à la fin de son prochain tour.\n• Il peut l’enchaîner round après round.\n• Les personnages meurent toujours à –10 pv ou moins.\n• Inutilisable dans un silence magique."
+      },
+      "prerequisite": "@skill.concentration.ranks >= 9 and @skill.perform.ranks >= 9 and (has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))",
+      "note": "Nom anglais à confirmer. Une seule forme de Représentation : la fiche compte la compétence en général."
+    },
+    {
+      "id": "feat.shell_chant",
+      "type": "feat",
+      "name": {
+        "fr": "Mélopée de la carapace",
+        "en": "Shell Chant"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il chante une berceuse qui durcit la peau et fait glisser les coups les moins graves.\n\nEn jeu\n• Conditions : pouvoir de musique de barde, 12 degrés en Concentration, 12 degrés en Représentation (une forme).\n• Action rapide sans attaque d’opportunité, une utilisation de musique de barde : réduction des dégâts 5/— jusqu’au début de son prochain tour.\n• Il peut en faire profiter un allié à 9 m ou moins qui l’entend, au lieu de lui.\n• Inutilisable dans un silence magique."
+      },
+      "prerequisite": "@skill.concentration.ranks >= 12 and @skill.perform.ranks >= 12 and (has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))",
+      "note": "Nom anglais à confirmer. Réduction des dégâts : pas une statistique de la fiche (elle dure un round ou quelques instants)."
+    },
+    {
+      "id": "feat.lyric_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort lyrique",
+        "en": "Lyric Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "bardic_music",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il puise dans sa musique pour lancer des sorts qu’il connaît sans les avoir préparés.\n\nEn jeu\n• Conditions : pouvoir de musique de barde, 9 degrés en Représentation (une forme), lancer spontanément des sorts profanes de 2e niveau.\n• Il dépense des utilisations de musique de barde pour lancer un sort profane qu’il connaît et lance spontanément.\n• Coût : 1 utilisation plus 1 par niveau du sort (un sort de 3e niveau en coûte 4).\n• Le temps d’incantation normal reste ; le don ne l’allonge pas.\n• Son instrument sert de focaliseur profane.\n• Impossible avec Incantation silencieuse."
+      },
+      "prerequisite": "@skill.perform.ranks >= 9 and (has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))",
+      "note": "Condition non vérifiée par la fiche : sorts profanes spontanés de 2e niveau. Une seule forme de Représentation : la fiche compte la compétence en général."
+    },
+    {
+      "id": "feat.savage_grapple",
+      "type": "feat",
+      "name": {
+        "fr": "Lutte sauvage",
+        "en": "Savage Grapple"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Sous forme animale, il déchire ceux qu’il tient à bras-le-corps.\n\nEn jeu\n• Conditions : forme animale, attaque sournoise.\n• Sous forme animale, un test de lutte réussi pour infliger des dégâts à son adversaire ajoute ses dégâts d’attaque sournoise.\n• Sans effet sur les créatures immunisées contre l’attaque sournoise.\n• Aucune activation : toujours actif sous forme animale."
+      },
+      "prerequisite": "has('power.druid_wild_shape') and has('power.rogue_sneak_attack')",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.baboon_mobility",
+      "type": "feat",
+      "name": {
+        "fr": "Mobilité du babouin",
+        "en": "Baboon Mobility"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Il peut grimper avec l’aisance d’un singe.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Une utilisation de forme animale donne une vitesse d’escalade égale à sa vitesse au sol pendant 10 minutes par dé de vie.\n• +8 racial aux tests d’Escalade, et il peut faire 10 même sous la menace.\n• Il garde ces avantages sous toute forme."
+      },
+      "prerequisite": "has('power.druid_wild_shape')",
+      "effects": [
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 8,
+          "bonusType": "racial",
+          "condition": "active('toggle.baboon_mobility')"
+        }
+      ],
+      "note": "Nom anglais à confirmer. L’interrupteur marque que l’effet est actif. La vitesse d’escalade n’est pas modélisée."
+    },
+    {
+      "id": "feat.animal_scent",
+      "type": "feat",
+      "name": {
+        "fr": "Odorat",
+        "en": "Animal Scent"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Son nez devient celui d’un chasseur.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Une utilisation de forme animale donne le pouvoir d’odorat pendant 1 heure par dé de vie.\n• Il détecte les adversaires à l’odeur à 9 m ; avec Pistage, il suit une piste à l’odeur.\n• Il garde cet avantage sous toute forme."
+      },
+      "prerequisite": "has('power.druid_wild_shape')",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.wild_blindsense",
+      "type": "feat",
+      "name": {
+        "fr": "Perception aveugle",
+        "en": "Wild Blindsense"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Il perçoit des créatures qu’il ne voit pas.\n\nEn jeu\n• Conditions : pouvoir de forme animale, 4 degrés en Perception auditive.\n• Une utilisation de forme animale donne la perception aveugle (9 m) pendant 1 minute par dé de vie.\n• Il localise précisément toute créature à 9 m avec ligne d’effet.\n• Il garde cet avantage sous toute forme."
+      },
+      "prerequisite": "@skill.listen.ranks >= 4 and has('power.druid_wild_shape')",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.hawk_vision",
+      "type": "feat",
+      "name": {
+        "fr": "Vision du faucon",
+        "en": "Hawk Vision"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Sa vue devient celle d’un rapace.\n\nEn jeu\n• Conditions : pouvoir de forme animale, 4 degrés en Détection.\n• Une utilisation de forme animale : +8 aux tests de Détection pendant 1 heure par dé de vie.\n• Les malus de distance sont réduits de moitié : –1 par facteur de portée au lieu de –2 ; pour la Détection, un malus tous les 6 m au lieu de 3 m.\n• Il garde ces avantages sous toute forme."
+      },
+      "prerequisite": "@skill.spot.ranks >= 4 and has('power.druid_wild_shape')",
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 8,
+          "bonusType": "untyped",
+          "condition": "active('toggle.hawk_vision')"
+        }
+      ],
+      "note": "Nom anglais à confirmer. L’interrupteur marque que l’effet est actif. Les malus de portée ne sont pas modélisés."
+    },
+    {
+      "id": "feat.jaguar_vision",
+      "type": "feat",
+      "name": {
+        "fr": "Vision du jaguar",
+        "en": "Jaguar Vision"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Il voit dans la pénombre comme un félin.\n\nEn jeu\n• Conditions : pouvoir de forme animale, 2 degrés en Détection.\n• Une utilisation de forme animale : vision nocturne pendant 1 heure par dé de vie, et +4 aux tests de Détection.\n• Il garde ces avantages sous toute forme."
+      },
+      "prerequisite": "@skill.spot.ranks >= 2 and has('power.druid_wild_shape')",
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "condition": "active('toggle.jaguar_vision')"
+        }
+      ],
+      "note": "Nom anglais à confirmer. L’interrupteur marque que l’effet est actif. La vision nocturne n’est pas modélisée."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.power_throw",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.power_throw",
+      "relation": "requires",
+      "to": "feat.brutal_throw"
+    },
+    {
+      "from": "feat.ascetic_mage",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.feline_hearing",
+      "relation": "requires",
+      "to": "feat.blind_fight"
+    },
+    {
+      "from": "feat.ascetic_rogue",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.opportunity_sense",
+      "relation": "requires",
+      "to": "feat.combat_reflexes"
+    },
+    {
+      "from": "feat.danger_sense",
+      "relation": "requires",
+      "to": "feat.improved_initiative"
+    },
+    {
+      "from": "feat.devoted_tracker",
+      "relation": "requires",
+      "to": "feat.track"
+    }
+  ]
+}

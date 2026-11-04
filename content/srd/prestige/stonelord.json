@@ -1,0 +1,603 @@
+{
+  "entities": [
+    {
+      "id": "class.stonelord",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Seigneur de la pierre",
+        "en": "Stonelord"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Les nains connaissent les secrets de la roche mieux que quiconque, et certains savent en écouter les murmures. Reliés à la terre, ils puisent une part de son énergie infinie pour des exploits hors du commun, et deviennent les protecteurs des cités où ils vivent.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : race naine ; bonus de base à l'attaque +5 ; Artisanat (travail de la pierre) 6 rangs ; Langue (terreux) ; don Endurance ; avoir enduré un long rituel d'immersion, de jeûne et d'isolement, avec l'ingestion de gemmes pour 1 000 po (le type de gemmes compte : il doit les porter sur lui pour utiliser ses pouvoirs magiques).\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (toutes), Détection, Escalade, Profession, Survie.\n• Aptitudes : sang de la terre (1) ; pouvoir de la pierre (2, 4, 6, 8, 10) ; façonnage de la pierre (3) ; fusion dans la pierre (5) ; pierres commères (7) ; tremblement de terre (9)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.craft.ranks >= 6 and has('feat.endurance')",
+      "note": "Conditions en formule : bonus de base, Artisanat en général (travail de la pierre précisément : texte), Endurance. Race naine, Langue (terreux) et rituel : texte seul. Pouvoir de la pierre : le texte imprimé dit « chaque niveau impair » mais la table (niveaux 2, 4, 6, 8, 10) et les aptitudes nommées aux niveaux 3, 5, 7, 9 montrent que c'est bien chaque niveau pair (erreur du texte) ; la table est suivie."
+    },
+    {
+      "id": "power.stonelord_earth_blood",
+      "type": "class_power",
+      "name": {
+        "fr": "Sang de la terre",
+        "en": "Earth blood"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord"
+      ],
+      "description": {
+        "fr": "Un peu de boue sur les plaies, et la chair se referme.\n\nEn jeu\n• Pouvoir magique, niveau 1 : une fois par jour, action simple, il se soigne de 1d8 points de vie + son niveau de seigneur de la pierre."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_stone_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Pouvoir de la pierre",
+        "en": "Stone power"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord"
+      ],
+      "description": {
+        "fr": "Chaque niveau pair, il choisit l'un des neuf pouvoirs de la terre.\n\nEn jeu\n• À chaque niveau de classe pair (2, 4, 6, 8, 10), il choisit un pouvoir de la liste : convocation d'élémentaire de la Terre, endurance de la terre, force de la terre, gravité, liens de la terre, magie de la terre, ombres de la terre, peau de pierre, puissance de la terre.\n• Sauf précision contraire : niveau de lanceur de sorts égal à son niveau de classe, DD liés à la Constitution, utilisation par une action simple."
+      },
+      "effects": [],
+      "note": "Le choix est noté dans « gained » du niveau, comme les grands arcanes de l'archimage. Chaque pouvoir est une entité à part, en relation « choice » depuis la classe. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_summon_earth_elemental",
+      "type": "class_power",
+      "name": {
+        "fr": "Convocation d'élémentaire de la Terre",
+        "en": "Summon earth elemental"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "Un élémentaire de pierre répond à son appel.\n\nEn jeu\n• Pouvoir magique, une fois par jour : convoque un élémentaire de Terre comme le sort convocation de monstres.\n• Taille : P aux niveaux 1 à 3, M aux niveaux 4 à 6, G aux niveaux 7 à 9, TG au niveau 10."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_earth_endurance",
+      "type": "class_power",
+      "name": {
+        "fr": "Endurance de la terre",
+        "en": "Earth endurance"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "La terre elle-même le soutient.\n\nEn jeu\n• Pouvoir magique, une fois par jour : comme le sort endurance de l'ours (+4 en Constitution, bonus d'altération)."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.stonelord_earth_endurance')"
+        }
+      ],
+      "note": "Toggle : à activer quand le pouvoir est en cours. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_earth_strength",
+      "type": "class_power",
+      "name": {
+        "fr": "Force de la terre",
+        "en": "Earth strength"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "Il emprunte sa force à la roche.\n\nEn jeu\n• Pouvoir magique, une fois par jour : comme le sort force de taureau (+4 en Force, bonus d'altération)."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.stonelord_earth_strength')"
+        }
+      ],
+      "note": "Toggle : à activer quand le pouvoir est en cours. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_gravity",
+      "type": "class_power",
+      "name": {
+        "fr": "Gravité",
+        "en": "Gravity"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "Le sol devient lourd pour tous ceux qui l'entourent.\n\nEn jeu\n• Pouvoir magique, une fois par jour : un effet de lenteur, comme le sort."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_earth_bonds",
+      "type": "class_power",
+      "name": {
+        "fr": "Liens de la terre",
+        "en": "Earth bonds"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "La terre retient sa proie.\n\nEn jeu\n• Pouvoir magique, une fois par jour : comme le sort immobilisation de personne, sur une cible en contact avec le sol. Sans effet sur une créature dans les airs ou dans l'eau."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_earth_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Magie de la terre",
+        "en": "Earth magic"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "Sa magie s'enracine et gagne en force.\n\nEn jeu\n• Pouvoir surnaturel, une fois par jour : lance un sort comme s'il avait le don de métamagie Quintessence des sorts, sans changer son niveau ni son temps d'incantation.\n• Seulement sur un sort de niveau au plus égal à son niveau de classe. Action libre."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_earth_shadows",
+      "type": "class_power",
+      "name": {
+        "fr": "Ombres de la terre",
+        "en": "Earth shadows"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "Une ombre de pierre prend l'ennemi en tenaille.\n\nEn jeu\n• Pouvoir surnaturel, une fois par jour par niveau de classe : crée une chimère d'élémentaire de Terre de taille M qui prend un adversaire en tenaille avec lui, pendant 1 round.\n• Il profite alors d'une prise en tenaille : +2 à l'attaque, attaque sournoise possible. Action libre."
+      },
+      "effects": [],
+      "usesPerDay": "level('class.stonelord')",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_stone_skin",
+      "type": "class_power",
+      "name": {
+        "fr": "Peau de pierre",
+        "en": "Stone skin"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "Sa chair se fait granit.\n\nEn jeu\n• Pouvoir magique, une fois par jour : comme le sort peau de pierre ; il fournit les composantes matérielles comme s'il lançait vraiment le sort."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_earth_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Puissance de la terre",
+        "en": "Earth power"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord",
+        "stone_power"
+      ],
+      "description": {
+        "fr": "Un round de force brute, tirée du sol.\n\nEn jeu\n• Pouvoir surnaturel, une fois par jour, pendant 1 round : toutes ses attaques ont +2 au jet d'attaque et infligent 2d6 points de dégâts supplémentaires (si elles touchent). Action libre."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.stonelord_earth_power')"
+        },
+        {
+          "target": "damage.all",
+          "op": "dice",
+          "value": "2d6",
+          "condition": "active('toggle.stonelord_earth_power')"
+        }
+      ],
+      "note": "Toggle : à activer quand le pouvoir est en cours. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_stone_shaping",
+      "type": "class_power",
+      "name": {
+        "fr": "Façonnage de la pierre",
+        "en": "Stone shaping"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord"
+      ],
+      "description": {
+        "fr": "La pierre prend la forme qu'il veut.\n\nEn jeu\n• Pouvoir magique, niveau 3 : une fois par jour, comme le sort façonnage de la pierre (niveau de lanceur = son niveau de classe)."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_meld_into_stone",
+      "type": "class_power",
+      "name": {
+        "fr": "Fusion dans la pierre",
+        "en": "Meld into stone"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord"
+      ],
+      "description": {
+        "fr": "Il se glisse dans la roche et y disparaît.\n\nEn jeu\n• Pouvoir magique, niveau 5 : une fois par jour par niveau de classe, comme le sort fusion dans la pierre (niveau de lanceur = son niveau de classe)."
+      },
+      "effects": [],
+      "usesPerDay": "level('class.stonelord')",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_stone_tell",
+      "type": "class_power",
+      "name": {
+        "fr": "Pierres commères",
+        "en": "Stone tell"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord"
+      ],
+      "description": {
+        "fr": "Il interroge les pierres, qui se souviennent de tout.\n\nEn jeu\n• Pouvoir magique, niveau 7 : une fois par jour, comme le sort pierres commères (niveau de lanceur = son niveau de classe)."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.stonelord_earthquake",
+      "type": "class_power",
+      "name": {
+        "fr": "Tremblement de terre",
+        "en": "Earthquake"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stonelord"
+      ],
+      "description": {
+        "fr": "Le sol tremble à sa demande.\n\nEn jeu\n• Pouvoir magique, niveau 9 : une fois par jour, comme le sort tremblement de terre (niveau de lanceur = son niveau de classe)."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.stonelord",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.stonelord_earth_blood"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.stonelord_stone_power"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.stonelord_stone_shaping"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.stonelord_stone_power"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.stonelord_meld_into_stone"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.stonelord_stone_power"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.stonelord_stone_tell"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.stonelord_stone_power"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.stonelord_earthquake"
+      ]
+    },
+    {
+      "classId": "class.stonelord",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.stonelord_stone_power"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.stonelord",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_summon_earth_elemental",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_earth_endurance",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_earth_strength",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_gravity",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_earth_bonds",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_earth_magic",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_earth_shadows",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_stone_skin",
+      "note": "Stone power option, one per even class level"
+    },
+    {
+      "from": "class.stonelord",
+      "relation": "choice",
+      "to": "power.stonelord_earth_power",
+      "note": "Stone power option, one per even class level"
+    }
+  ]
+}

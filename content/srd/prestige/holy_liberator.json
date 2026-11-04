@@ -1,0 +1,512 @@
+{
+  "entities": [
+    {
+      "id": "class.holy_liberator",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Libérateur sacré",
+        "en": "Holy Liberator"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "martial",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Cousin lointain du paladin, le libérateur sacré se bat pour renverser toutes les tyrannies. Champion de la liberté et de l'égalité, indépendant et vertueux, il traque les despotes, les marchands d'esclaves et les gouvernements corrompus, sans oublier les abus de l'anarchie où seule compte la loi du plus fort.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement chaotique bon ; bonus de base à l'attaque +5 ; Diplomatie 5 rangs, Psychologie 5 rangs ; Volonté de fer.\n• Armes courantes et de guerre, boucliers (sauf pavois), toutes les armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (religion), Diplomatie, Dressage, Équitation, Intimidation, Premiers secours, Profession, Psychologie.\n• Sorts : sorts divins préparés du 1er au 4e niveau, basés sur la Sagesse, d'une liste proche de celle du paladin, sans les sorts de la Loi.\n• Aptitudes : aura de Bien, châtiment du Mal et détection du Mal (1) ; récupération (2) ; aura de détermination (3) ; grâce divine et annulation d'enchantement (4) ; compagnon céleste (6).\n• Un ancien paladin cumule ses niveaux de paladin avec ceux de libérateur pour le châtiment du Mal et le niveau de lanceur de sorts."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@bab >= 5 and @skill.diplomacy.ranks >= 5 and @skill.sense_motive.ranks >= 5 and has('feat.iron_will')",
+      "note": "Conditions d'accès : alignement chaotique bon (relations) : texte seul. Sorts par jour : 0 = seulement les sorts en bonus (valeur imprimée), null pour « — ». Niveau de lanceur de sorts : égal au niveau de classe (page 89, progression épique) ; les niveaux de paladin s'ajoutent pour le châtiment et le niveau de lanceur (page 47). Niveaux épiques : un don supplémentaire tous les 3 niveaux après le 10 (page 89), compté dans feat_slots.epic_bonus sans filtre de liste. La liste de sorts est celle du paladin du Manuel des joueurs sans les sorts de la Loi, plus les 5 sorts de la page 46 (le Codex ne l'imprime pas en entier). Liste de sorts : content/tools/out/codex/divin/lists/holy_liberator.json.",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.holy_liberator') - 10) / 3))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.holy_liberator_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de libérateur sacré",
+        "en": "Holy liberator spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Peu de sorts, mais taillés pour la liberté : protéger, soutenir, rompre les chaînes.\n\nEn jeu\n• Sorts divins préparés, du niveau 1 au niveau 4, comme un prêtre, sans transformer ses sorts en soins.\n• Liste : celle du paladin du Manuel des joueurs, sans les sorts de la Loi, avec protection contre la Loi (1), héroïsme (2), cercle magique contre la Loi (3), liberté de mouvement et rejet de la Loi (4).\n• Caractéristique : Sagesse (au moins 10 + niveau du sort). DD : 10 + niveau du sort + modificateur de Sagesse. Sorts en bonus grâce à la Sagesse.\n• Un « 0 » dans la table veut dire seulement les sorts en bonus d'une Sagesse élevée."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.holy_liberator_aura_of_good",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de Bien",
+        "en": "Aura of good"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Sa foi rayonne comme celle d'un prêtre.\n\nEn jeu\n• Capacité extraordinaire : l'intensité de son aura de Bien (détection du Mal) est fondée sur son niveau de libérateur sacré + son niveau de prêtre."
+      },
+      "effects": [],
+      "note": "Texte seul."
+    },
+    {
+      "id": "power.holy_liberator_detect_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Mal",
+        "en": "Detect evil"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Il reconnaît le mal à vue.\n\nEn jeu\n• Capacité magique : à volonté, comme le sort détection du Mal."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.holy_liberator_smite_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment du Mal",
+        "en": "Smite evil"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Il charge son coup d'un serment contre le tyran.\n\nEn jeu\n• Capacité surnaturelle : une attaque au corps à corps contre une créature mauvaise ajoute son bonus de Charisme (s'il est positif) au jet d'attaque et 1 point de dégâts par niveau de libérateur (ses niveaux de paladin s'ajoutent).\n• Si la cible n'est pas mauvaise, l'utilisation est perdue sans effet.\n• 1 fois par jour au niveau 1, 2 au niveau 5, 3 au niveau 10."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.holy_liberator_smite_evil')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.holy_liberator') + level('class.paladin')",
+          "condition": "active('toggle.holy_liberator_smite_evil')"
+        }
+      ],
+      "usesPerDay": "1 + floor(level('class.holy_liberator') / 5)",
+      "note": "Le texte du livre dit « niveau 2 ou plus » mais la table donne 1/jour dès le niveau 1 : la table est suivie. Un ancien paladin ne doit pas activer aussi le toggle du châtiment du paladin (même aptitude, les niveaux sont déjà cumulés ici)."
+    },
+    {
+      "id": "power.holy_liberator_recuperation",
+      "type": "class_power",
+      "name": {
+        "fr": "Récupération",
+        "en": "Recuperation"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Une main posée, et la fatigue s'en va.\n\nEn jeu\n• Capacité surnaturelle (niveau 2) : dissipe la fatigue de toute créature qu'il touche, par une action simple.\n• Utilisations par jour : 3 + modificateur de Charisme."
+      },
+      "effects": [],
+      "usesPerDay": "3 + @ability.cha.mod",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.holy_liberator_aura_of_determination",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de détermination",
+        "en": "Aura of determination"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Nul ne contrôle son esprit, et ses amis le sentent.\n\nEn jeu\n• Capacité extraordinaire (niveau 3) : immunisé contre tous les effets de charme et de coercition.\n• Ses alliés à 3 m ou moins gagnent +4 (moral) aux jets de sauvegarde contre le charme et la coercition, tant qu'il est conscient."
+      },
+      "effects": [],
+      "note": "Immunité et bonus des alliés : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.holy_liberator_divine_grace",
+      "type": "class_power",
+      "name": {
+        "fr": "Grâce divine",
+        "en": "Divine grace"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "La chance n'a rien à y voir : sa foi le protège.\n\nEn jeu\n• Capacité surnaturelle (niveau 4) : ajoute son bonus de Charisme (s'il est positif) à tous ses jets de sauvegarde."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.holy_liberator_break_enchantment",
+      "type": "class_power",
+      "name": {
+        "fr": "Annulation d'enchantement",
+        "en": "Break enchantment"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Il brise les chaînes que la magie a posées sur les corps et les esprits.\n\nEn jeu\n• Capacité magique (niveau 4) : annulation d'enchantement, 1 fois par semaine ; 2 fois par semaine à partir du niveau 8."
+      },
+      "effects": [],
+      "note": "Utilisations par semaine : texte seul."
+    },
+    {
+      "id": "power.holy_liberator_celestial_companion",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon céleste",
+        "en": "Celestial companion"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Un animal venu des royaumes célestes se bat à ses côtés contre la tyrannie.\n\nEn jeu\n• Capacité magique (niveau 6) : appelle un compagnon céleste (aigle, chat, cheval de guerre, chien de selle, faucon, hibou, loup ou poney) avec l'archétype créature céleste ; l'appel est une invocation.\n• 1 fois par jour, action complexe ; le compagnon reste 2 heures par niveau de classe ; renvoi par action libre. Il revient en pleine santé et avec son équipement.\n• Niveau global 12 ou moins : +2 DV, +1 armure naturelle, +1 Dex, Int 6, esquive extraordinaire, lien télépathique, transfert d'effet magique et de jet de sauvegarde, +3 m de vitesse.\n• 13–15 : +4 DV, +3 armure naturelle, +2 Dex, Int 7, communication avec le libérateur.\n• 16–18 : +6 DV, +5 armure naturelle, +3 Dex, Int 8, pacte de sang (+2 aux attaques, tests et sauvegardes quand le libérateur est menacé ou blessé), +6 m de vitesse.\n• 19–20 : +8 DV, +7 armure naturelle, +4 Dex, Int 9, résistance à la magie égale à son niveau de classe + 10.\n• S'il meurt, impossible d'en appeler un autre pendant 30 jours ou jusqu'à un nouveau niveau de classe (−1 aux attaques et dégâts pendant ce temps)."
+      },
+      "effects": [],
+      "note": "Compagnon : texte seul (pas de statistique de niveau de compagnon céleste dans le modèle). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.holy_liberator_code_of_conduct",
+      "type": "class_power",
+      "name": {
+        "fr": "Code de conduite",
+        "en": "Code of conduct"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "holy_liberator"
+      ],
+      "description": {
+        "fr": "Sa liberté est celle du Bien.\n\nEn jeu\n• Alignement obligatoire : chaotique bon. Un acte mauvais commis sciemment lui fait perdre aussitôt ses pouvoirs.\n• Aucune autre obligation de conduite."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.holy_liberator",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.holy_liberator_spells",
+        "power.holy_liberator_aura_of_good",
+        "power.holy_liberator_detect_evil",
+        "power.holy_liberator_smite_evil",
+        "power.holy_liberator_code_of_conduct"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.holy_liberator_recuperation"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.holy_liberator_aura_of_determination"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.holy_liberator_divine_grace",
+        "power.holy_liberator_break_enchantment"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.holy_liberator_celestial_companion"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.holy_liberator",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.holy_liberator",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    }
+  ]
+}

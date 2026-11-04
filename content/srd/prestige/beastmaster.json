@@ -1,0 +1,348 @@
+{
+  "entities": [
+    {
+      "id": "class.beastmaster",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître des bêtes",
+        "en": "Beastmaster"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "nature"
+      ],
+      "description": {
+        "fr": "Il se sent plus à l’aise parmi les bêtes que parmi les gens. À force de vivre à leurs côtés, il s’entoure de compagnons de toutes tailles et finit par leur ressembler : sens affûtés, instincts sûrs.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : Dressage 8 rangs, Survie 4 rangs ; don Talent (Dressage).\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Connaissances (nature), Détection, Discrétion, Dressage, Équitation, Escalade, Natation, Perception auditive, Premiers secours, Saut, Survie.\n• Aptitudes : compagnon animal (1) ; empathie sauvage (1) ; Vigilance (2) ; communication avec les animaux 1/jour (3), 2 (6), 3 (9) ; compagnon animal supplémentaire (4, 7, 10) ; vision nocturne (5) ; odorat (8)."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "prerequisite": "@skill.handle_animal.ranks >= 8 and @skill.survival.ranks >= 4 and has('feat.skill_focus_handle_animal')",
+      "note": "Conditions : tout est dans la formule."
+    },
+    {
+      "id": "power.beastmaster_animal_companion",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon animal",
+        "en": "Animal companion"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "beastmaster"
+      ],
+      "description": {
+        "fr": "Une bête fidèle le suit partout, comme celle d’un druide, mais un peu plus vite à la hauteur.\n\nEn jeu\n• Niveau 1 : comme le compagnon du druide, avec un niveau de druide effectif égal à son niveau de maître des bêtes + 3.\n• Il choisit un animal de la liste du druide de niveau 1 et lui applique les améliorations d’un druide de niveau 4 (ou prend directement un animal de niveau 4).\n• Si une autre classe lui donne déjà un compagnon, les niveaux de druide effectifs s’additionnent."
+      },
+      "effects": [
+        {
+          "target": "animal_companion.level",
+          "op": "add",
+          "value": "level('class.beastmaster') + 3"
+        }
+      ]
+    },
+    {
+      "id": "power.beastmaster_wild_empathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Empathie sauvage",
+        "en": "Wild empathy"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "beastmaster"
+      ],
+      "description": {
+        "fr": "Il lit les bêtes comme d’autres lisent une page, et sait en changer l’humeur d’un geste.\n\nEn jeu\n• Niveau 1 : comme l’empathie sauvage du druide (1d20 + niveau de maître des bêtes + modificateur de Charisme).\n• Si une autre classe donne déjà l’empathie sauvage, les niveaux des classes s’additionnent (le Charisme ne compte qu’une fois)."
+      },
+      "effects": [
+        {
+          "target": "check.wild_empathy",
+          "op": "add",
+          "value": "level('class.beastmaster') + if(has('power.druid_wild_empathy') or has('power.ranger_wild_empathy'), 0, @ability.cha.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.beastmaster_alertness",
+      "type": "class_power",
+      "name": {
+        "fr": "Vigilance",
+        "en": "Alertness"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "beastmaster"
+      ],
+      "description": {
+        "fr": "Ses sens s’aiguisent au contact de la forêt.\n\nEn jeu\n• Niveau 2 : gagne le don Vigilance comme don supplémentaire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.beastmaster_animal_speech",
+      "type": "class_power",
+      "name": {
+        "fr": "Communication avec les animaux",
+        "en": "Speak with animals"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "beastmaster"
+      ],
+      "description": {
+        "fr": "Les bêtes lui répondent, un peu.\n\nEn jeu\n• Pouvoir magique, à partir du niveau 3 : comme le sort communication avec les animaux, niveau de lanceur égal à son niveau de classe.\n• 1 fois par jour au niveau 3, 2 au niveau 6, 3 au niveau 9."
+      },
+      "usesPerDay": "floor(level('class.beastmaster') / 3)",
+      "effects": []
+    },
+    {
+      "id": "power.beastmaster_extra_companion",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon animal supplémentaire",
+        "en": "Extra animal companion"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "beastmaster"
+      ],
+      "description": {
+        "fr": "Sa meute s’agrandit, mais les derniers venus sont moins aguerris.\n\nEn jeu\n• Niveau 4 : second compagnon animal de la liste du druide de niveau 1, avec un niveau de druide effectif égal à son niveau de classe − 3.\n• Niveau 7 : troisième compagnon, niveau effectif − 6. Niveau 10 : quatrième compagnon, niveau effectif − 9.\n• Les niveaux d’autres classes qui donnent un compagnon ne comptent pas pour ces compagnons supplémentaires, et ne donnent pas accès à d’autres listes."
+      },
+      "note": "Un seul compagnon animal est modélisé (animal_companion.level) ; les compagnons supplémentaires sont du texte.",
+      "effects": []
+    },
+    {
+      "id": "power.beastmaster_low_light_vision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision nocturne",
+        "en": "Low-light vision"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "beastmaster"
+      ],
+      "description": {
+        "fr": "Il voit dans la pénombre comme un chat de gouttière.\n\nEn jeu\n• Niveau 5 : voit deux fois plus loin que les humains en faible éclairage.\n• S’il l’a déjà (race, par exemple), la portée passe à trois fois celle des humains."
+      },
+      "note": "Le triplement de la portée avec une vision nocturne déjà acquise est du texte seulement.",
+      "effects": [
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "id": "power.beastmaster_scent",
+      "type": "class_power",
+      "name": {
+        "fr": "Odorat",
+        "en": "Scent"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "beastmaster"
+      ],
+      "description": {
+        "fr": "Le nez au vent, il suit une odeur comme un chien de chasse.\n\nEn jeu\n• Niveau 8 : gagne l’aptitude d’odorat (détecte les créatures proches, repère leur direction, suit une piste à l’odeur)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.beastmaster",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.beastmaster_animal_companion",
+        "power.beastmaster_wild_empathy"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.beastmaster_alertness"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.beastmaster_animal_speech"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.beastmaster_extra_companion"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.beastmaster_low_light_vision"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.beastmaster_animal_speech"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.beastmaster_extra_companion"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.beastmaster_scent"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.beastmaster_animal_speech"
+      ]
+    },
+    {
+      "classId": "class.beastmaster",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.beastmaster_extra_companion"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.beastmaster",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "power.beastmaster_alertness",
+      "relation": "grants",
+      "to": "feat.alertness"
+    }
+  ]
+}

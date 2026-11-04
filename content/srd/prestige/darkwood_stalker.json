@@ -1,0 +1,428 @@
+{
+  "entities": [
+    {
+      "id": "class.darkwood_stalker",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Traqueur du bois obscur",
+        "en": "Darkwood Stalker"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "L'inimitié entre elfes et orques est plus vieille que l'homme. Quelques elfes en ont fait leur vie : ils traquent la peau verte avec une détermination farouche, et finissent par voir dans le noir aussi bien qu'elle.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : race elfe ou demi-elfe ; bonus de base à l'attaque +5 ; Déplacement silencieux 5 rangs, Détection 5 rangs, Discrétion 5 rangs, Survie 5 rangs ; Langue (orque) ; dons Esquive et Pistage.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Artisanat, Connaissances (nature), Déplacement silencieux, Détection, Discrétion, Équitation, Escalade, Fouille, Maîtrise des cordes, Natation, Perception auditive, Premiers secours, Profession, Saut, Survie.\n• Aptitudes : ennemi ancestral (+2 au niveau 1, +4 au 4, +6 au 7, +8 au 10) ; esquive instinctive (2) ; attaque sournoise (+1d6 au niveau 3, puis tous les 3 niveaux) ; vision dans le noir (4, 7) ; esquive instinctive supérieure (5) ; esquive des critiques (8) ; attaque mortelle (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.move_silently.ranks >= 5 and @skill.spot.ranks >= 5 and @skill.hide.ranks >= 5 and @skill.survival.ranks >= 5 and has('feat.dodge') and has('feat.track')",
+      "note": "Conditions en formule : bonus de base, rangs, dons. Race elfe ou demi-elfe et Langue (orque) : texte seul."
+    },
+    {
+      "id": "power.darkwood_stalker_ancestral_enemy",
+      "type": "class_power",
+      "name": {
+        "fr": "Ennemi ancestral",
+        "en": "Ancestral enemy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "darkwood_stalker"
+      ],
+      "description": {
+        "fr": "Il a étudié les orques et leurs façons de se battre.\n\nEn jeu\n• Capacité extraordinaire : contre les orques, bonus de +2 aux tests de Bluff, Détection, Perception auditive et Psychologie, et aux jets de dégâts des armes. Le bonus passe à +4 au niveau 4, +6 au niveau 7 et +8 au niveau 10.\n• Se cumule avec le bonus d'ennemi juré."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": "if(level('class.darkwood_stalker') >= 10, 8, if(level('class.darkwood_stalker') >= 7, 6, if(level('class.darkwood_stalker') >= 4, 4, 2)))",
+          "situation": "situation.vs_orcs"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": "if(level('class.darkwood_stalker') >= 10, 8, if(level('class.darkwood_stalker') >= 7, 6, if(level('class.darkwood_stalker') >= 4, 4, 2)))",
+          "situation": "situation.vs_orcs"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": "if(level('class.darkwood_stalker') >= 10, 8, if(level('class.darkwood_stalker') >= 7, 6, if(level('class.darkwood_stalker') >= 4, 4, 2)))",
+          "situation": "situation.vs_orcs"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": "if(level('class.darkwood_stalker') >= 10, 8, if(level('class.darkwood_stalker') >= 7, 6, if(level('class.darkwood_stalker') >= 4, 4, 2)))",
+          "situation": "situation.vs_orcs"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "if(level('class.darkwood_stalker') >= 10, 8, if(level('class.darkwood_stalker') >= 7, 6, if(level('class.darkwood_stalker') >= 4, 4, 2)))",
+          "situation": "situation.vs_orcs"
+        }
+      ],
+      "note": "Nouvelle situation : situation.vs_orcs. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.darkwood_stalker_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "darkwood_stalker"
+      ],
+      "description": {
+        "fr": "Il sent le danger avant que ses sens ne le voient.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : il garde son bonus de Dextérité à la CA même pris au dépourvu ou attaqué par un adversaire invisible. Il le perd s'il est immobilisé.\n• Avec déjà esquive instinctive par une autre classe (4 niveaux de roublard par exemple), il obtient l'esquive instinctive supérieure à la place."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.darkwood_stalker_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "darkwood_stalker"
+      ],
+      "description": {
+        "fr": "Un coup au point sensible quand la cible est sans défense.\n\nEn jeu\n• Capacité extraordinaire, niveau 3 : +1d6 de dégâts contre une créature incapable de se défendre efficacement ; +1d6 de plus tous les 3 niveaux (+3d6 au niveau 9).\n• Mêmes règles que l'attaque sournoise du roublard."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(1 + floor((level('class.darkwood_stalker') - 3) / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.darkwood_stalker_darkvision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision dans le noir",
+        "en": "Darkvision"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "darkwood_stalker"
+      ],
+      "description": {
+        "fr": "Un rituel elfique ancien lui permet de voir dans l'obscurité des orques.\n\nEn jeu\n• Capacité extraordinaire : vision dans le noir jusqu'à 9 m au niveau 4, 18 m au niveau 7.\n• Sans effet de plus s'il l'a déjà par sa race."
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": "if(level('class.darkwood_stalker') >= 7, 18, 9)"
+        }
+      ],
+      "note": "Deux « set » sur la même statistique : le plus haut gagne, donc une vision dans le noir raciale plus longue n'est pas écrasée. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.darkwood_stalker_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "darkwood_stalker"
+      ],
+      "description": {
+        "fr": "Il pare comme s'ils venaient tous d'un seul côté.\n\nEn jeu\n• Capacité extraordinaire, niveau 5 : il ne peut plus être pris en tenaille, sauf par un roublard d'au moins 4 niveaux de plus que son niveau de traqueur.\n• Avec l'esquive instinctive déjà acquise ailleurs, il l'a dès le niveau 2 et les niveaux des classes s'additionnent pour ce calcul."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.darkwood_stalker_critical_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive des critiques",
+        "en": "Critical dodge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "darkwood_stalker"
+      ],
+      "description": {
+        "fr": "Il évite le coup de grâce que ses camarades ont subi.\n\nEn jeu\n• Capacité extraordinaire, niveau 8 : une fois par jour, jet de Réflexes DD 20 + bonus d'altération de l'arme pour transformer un coup critique en attaque normale (décompté même en cas d'échec).\n• Il doit être conscient de l'attaque, non pris au dépourvu, et déclarer l'emploi avant les dégâts."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.darkwood_stalker_death_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque mortelle",
+        "en": "Death attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "darkwood_stalker"
+      ],
+      "description": {
+        "fr": "Après trois rounds à étudier un orque, un seul coup suffit.\n\nEn jeu\n• Capacité extraordinaire, niveau 10 : après avoir observé un orque au moins 3 rounds, une attaque sournoise réussie au corps à corps peut le tuer.\n• Jet de Vigueur DD 10 + niveau de traqueur + modificateur d'Intelligence ; réussi, la cible subit seulement les dégâts normaux d'une attaque sournoise.\n• Il doit frapper dans les 3 rounds après l'étude, sinon recommencer ; après un jet réussi, il faut 3 nouveaux rounds."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.darkwood_stalker_ancestral_enemy"
+      ]
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.darkwood_stalker_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.darkwood_stalker_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.darkwood_stalker_darkvision"
+      ]
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.darkwood_stalker_improved_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.darkwood_stalker_critical_dodge"
+      ]
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.darkwood_stalker",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.darkwood_stalker_death_attack"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.darkwood_stalker",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

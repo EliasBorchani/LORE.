@@ -1,0 +1,271 @@
+{
+  "entities": [
+    {
+      "id": "class.geomancer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Géomancien",
+        "en": "Geomancer"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Pour le géomancien, toutes les magies sont une seule et même source, qu'il puise dans la terre elle-même. Il mêle les sorts divins et profanes comme un seul art, tire de son milieu un surcroît de puissance, et paie ce pouvoir en ressemblant peu à peu aux bêtes et aux plantes.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : Connaissances (mystères) 6 rangs, Connaissances (nature) 6 rangs ; savoir lancer des sorts divins et des sorts profanes de niveau 2.\n• Aucune formation aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (géographie), Connaissances (mystères), Connaissances (nature), Diplomatie, Dressage, Escalade, Natation, Premiers secours, Survie.\n• Sorts : +1 niveau effectif de lanceur de sorts à chaque niveau, pour une classe existante.\n• Aptitudes : changement (chaque niveau) ; versatilité magique (chaque niveau, valeur = niveau de géomancien − 1) ; lignes telluriques (2, 6, 10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 6 and @skill.knowledge_nature.ranks >= 6",
+      "note": "Conditions d'accès : sorts divins et profanes de niveau 2 : texte seul. Niveau de lanceur de sorts, sorts par jour et sorts connus : +1 niveau effectif dans une classe de lanceur de sorts existante (choix fait dans le niveau du personnage), rien dans les lignes de la table. Un niveau de géomancien avance une classe de lanceur de sorts : le choix se fait dans le niveau du personnage."
+    },
+    {
+      "id": "power.geomancer_versatile_spellcasting",
+      "type": "class_power",
+      "name": {
+        "fr": "Versatilité magique",
+        "en": "Versatile spellcasting"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geomancer"
+      ],
+      "description": {
+        "fr": "Magie divine et magie profane, pour lui, ne font qu'un seul tour de main.\n\nEn jeu\n• Capacité surnaturelle : il acquiert et prépare ses sorts séparément pour chaque classe, mais peut mêler les paramètres d'incantation de tous ses sorts dont le niveau ne dépasse pas sa valeur de versatilité.\n• Valeur : 0 au niveau 1, puis +1 par niveau (9 au niveau 10).\n• Exemples : ses sorts profanes ignorent l'échec lié à l'armure s'ils ne dépassent pas cette valeur ; une composante matérielle ou un focaliseur divin comptent indifféremment ; Sagesse fixe le DD de ses sorts profanes, Charisme ou Intelligence le DD de ses sorts divins.\n• Peut convertir spontanément un sort préparé (pas de domaine) jusqu'à cette valeur en sort de soins ou de blessure de niveau inférieur ou égal, s'il sait les lancer comme prêtre.\n• L'interdiction des armures métalliques du druide reste en vigueur."
+      },
+      "effects": [],
+      "note": "Valeur de versatilité = niveau de géomancien − 1 : texte seul. Nom anglais Versatile spellcasting (à confirmer)."
+    },
+    {
+      "id": "power.geomancer_shifting",
+      "type": "class_power",
+      "name": {
+        "fr": "Changement",
+        "en": "Shifting"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geomancer"
+      ],
+      "description": {
+        "fr": "Chaque niveau passé dans la terre le rend un peu plus bête, un peu plus plante.\n\nEn jeu\n• À chaque niveau de classe, choisit un changement du stade correspondant : les 2 premiers du stade 1, les 2 suivants du stade 2, et ainsi de suite jusqu'au stade 5 (2 changements par stade ; il est toujours possible de prendre un changement d'un stade déjà ouvert à la place).\n• Stade 1 : traits purement esthétiques (taches, queue, plumes, fourrure, peau verte…), sans effet de jeu.\n• Stade 2 : petits bonus extraordinaires (+4 à Escalade, Diplomatie ou Équilibre ; +8 à Discrétion dans la neige ; +1,5 m de vitesse ; vision nocturne ; camouflage naturel +4 à Discrétion ; se passer d'eau 5 jours ; photosynthèse ; sang lent).\n• Stade 3 : armes naturelles et sens : corne 1d6, épines (dégâts perforants), constriction 1d3, toile, branchies, +4 à Détection de jour ou à la nuit, serres (2 griffes 1d3, Attaque en finesse), morsure 1d6, griffes de pattes arrière 1d4.\n• Stade 4 : dard acide 1d4 + 1d4 d'acide, croc-en-jambe, rage de glouton, férocité, étreinte d'ours, bond de léopard, +2 en Force pour briser, accroche de belette, nuage d'encre, odorat 18 m.\n• Stade 5 : corne de licorne (1d8, +4 aux jets de Vigueur contre le poison), ailes (vol 18 m), boule de hérisson (+4 CA naturelle), +2 aux jets de Réflexes, sens des vibrations (9 m), crocs empoisonnés, perception aveugle 18 m, piétinement 2d4, charge de guépard, écorce (+1 CA naturelle).\n• Le bonus de Force s'applique aux attaques naturelles (sauf poison et acide). Les dégâts naturels donnés sont ceux d'une créature M ; Petite : une catégorie en dessous, Grande : une au-dessus."
+      },
+      "effects": [],
+      "note": "Un changement par niveau à choisir parmi ~40 : choix pas encore modélisés (texte seul). Source : pages 38 à 40."
+    },
+    {
+      "id": "power.geomancer_telluric_lines",
+      "type": "class_power",
+      "name": {
+        "fr": "Lignes telluriques",
+        "en": "Telluric lines"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geomancer"
+      ],
+      "description": {
+        "fr": "Dans le milieu qu'il a choisi, la terre lui prête sa force.\n\nEn jeu\n• Capacité surnaturelle : au niveau 2, choisit un milieu naturel (aquatique, collines, désert, forêt, marécages, montagnes ou plaines) ; son niveau de lanceur de sorts y gagne +1.\n• Aux niveaux 6 et 10, choisit un nouveau milieu (+1) ou ajoute +1 à un milieu déjà choisi."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.geomancer",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting",
+        "power.geomancer_telluric_lines"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting",
+        "power.geomancer_telluric_lines"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting"
+      ]
+    },
+    {
+      "classId": "class.geomancer",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.geomancer_versatile_spellcasting",
+        "power.geomancer_shifting",
+        "power.geomancer_telluric_lines"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.geomancer",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

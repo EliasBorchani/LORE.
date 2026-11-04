@@ -1,0 +1,370 @@
+{
+  "entities": [
+    {
+      "id": "class.rainbow_servant",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Serviteur arc-en-ciel",
+        "en": "Rainbow Servant"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Au fond de la jungle, des serpents ailés, les couatls, enseignent à des lanceurs de sorts profanes un savoir venu des cieux. Ceux qui l'acceptent en deviennent les serviteurs : ils parcourent le monde sous un panache de plumes, redressent les torts et savent qu'un couatl peut surgir à tout moment pour leur confier une nouvelle mission.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement ni mauvais ni chaotique ; Connaissances (mystères) 4 rangs ; sorts profanes du 3e niveau ; avoir découvert les temples secrets des couatls dans la jungle.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (plans), Diplomatie, Profession, Psychologie.\n• Sorts : +1 niveau effectif de lanceur de sorts profanes aux niveaux 2, 3, 5, 6, 8 et 9.\n• Aptitudes : détection du Mal et domaine du Bien (1) ; ailes éphémères et domaine de l'Air (4) ; détection du Chaos et domaine de la Loi (7) ; accès aux sorts de prêtre et détection de pensées (10)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 4",
+      "note": "Conditions d'accès : alignement (relations), sorts profanes du 3e niveau et temples des couatls : texte seul. Lancement de sorts : +1 niveau effectif aux niveaux 2, 3, 5, 6, 8, 9, choix fait dans le niveau du personnage, rien dans la table."
+    },
+    {
+      "id": "power.rainbow_servant_detect_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Mal",
+        "en": "Detect evil"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Il sent le Mal comme d'autres sentent la pluie.\n\nEn jeu\n• Pouvoir magique, à volonté : comme le sort détection du Mal."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rainbow_servant_bonus_domain_good",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine supplémentaire : Bien",
+        "en": "Bonus domain: Good"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Les couatls lui prêtent d'abord la lumière du Bien.\n\nEn jeu\n• Niveau 1 : reçoit le pouvoir accordé et les sorts du domaine du Bien.\n• Il lance ces sorts comme un non-prêtre (sorts de domaine ajoutés à sa liste, voir Domaines supplémentaires du chapitre).\n• Focaliseur divin habituel : une plume multicolore de couatl."
+      },
+      "effects": [],
+      "note": "Domaines supplémentaires : texte seul. Domaine Bien : domain.good. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.rainbow_servant_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Progression des sorts",
+        "en": "Spell progression"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Les secrets des couatls rendent ses sorts plus profonds, sans l'équiper de talents annexes.\n\nEn jeu\n• Niveaux 2, 3, 5, 6, 8 et 9 : +1 niveau effectif dans une classe qui lance déjà des sorts profanes du 3e niveau (une seule, au choix).\n• Il gagne les sorts par jour, les sorts connus et le niveau de lanceur de sorts de ce niveau effectif ; rien d'autre (pas de dons de métamagie, de création d'objets ni de familier plus puissant)."
+      },
+      "effects": [],
+      "note": "Se choisit dans le niveau du personnage (spellcasting.advances), rien dans la table."
+    },
+    {
+      "id": "power.rainbow_servant_ephemeral_wings",
+      "type": "class_power",
+      "name": {
+        "fr": "Ailes éphémères",
+        "en": "Ephemeral wings"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Dans son dos s'ouvrent de grandes ailes de plumes colorées, comme celles d'un couatl.\n\nEn jeu\n• Capacité surnaturelle, action simple pour les déployer ou les faire disparaître : vitesse de vol 18 m (bonne manœuvrabilité).\n• Durée : jusqu'à 1 minute par niveau de classe et par jour, en plusieurs fois.\n• Les vêtements encombrants et les armures les empêchent de se déployer ; impossible de les déclencher en combat."
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "add",
+          "value": 18,
+          "condition": "active('toggle.rainbow_servant_ephemeral_wings')"
+        }
+      ],
+      "usesPerDay": "level('class.rainbow_servant')",
+      "note": "Case à cocher quand les ailes sont déployées. Limite de durée (minutes par jour) : texte seul. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.rainbow_servant_bonus_domain_air",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine supplémentaire : Air",
+        "en": "Bonus domain: Air"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Le vent des couatls lui est confié au niveau 4.\n\nEn jeu\n• Niveau 4 : reçoit le pouvoir accordé et les sorts du domaine de l'Air."
+      },
+      "effects": [],
+      "note": "Domaine Air : domain.air. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.rainbow_servant_detect_chaos",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Chaos",
+        "en": "Detect chaos"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Il reconnaît ceux qui rompent l'ordre.\n\nEn jeu\n• Pouvoir magique, à volonté : comme le sort détection du Chaos."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rainbow_servant_bonus_domain_law",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine supplémentaire : Loi",
+        "en": "Bonus domain: Law"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "La Loi des couatls couronne le tout, au niveau 7.\n\nEn jeu\n• Niveau 7 : reçoit le pouvoir accordé et les sorts du domaine de la Loi."
+      },
+      "effects": [],
+      "note": "Domaine Loi : domain.law. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.rainbow_servant_cleric_spell_access",
+      "type": "class_power",
+      "name": {
+        "fr": "Accès aux sorts de prêtre",
+        "en": "Access to cleric spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Au sommet de la voie, les prières des prêtres lui sont aussi ouvertes.\n\nEn jeu\n• Niveau 10 : peut apprendre et lancer des sorts de la liste du prêtre, même s'ils ne figurent sur aucune de ses listes ; ils sont lancés comme des sorts divins s'ils ne sont pas de la liste d'ensorceleur/magicien ou de barde.\n• Pas d'utilisations quotidiennes en plus. Peut aussi lire les parchemins de prêtre et utiliser baguettes et bâtons qui contiennent ces sorts."
+      },
+      "effects": [],
+      "note": "Utilise toute la liste du prêtre : à rattacher à class.cleric au moment de la fusion. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.rainbow_servant_detect_thoughts",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection de pensées",
+        "en": "Detect thoughts"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rainbow_servant"
+      ],
+      "description": {
+        "fr": "Les pensées proches lui murmurent à l'oreille.\n\nEn jeu\n• Pouvoir magique, à volonté : comme le sort détection de pensées. DD de sauvegarde lié au Charisme."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.rainbow_servant",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.rainbow_servant_detect_evil",
+        "power.rainbow_servant_bonus_domain_good"
+      ]
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.rainbow_servant_spells"
+      ]
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.rainbow_servant_ephemeral_wings",
+        "power.rainbow_servant_bonus_domain_air"
+      ]
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.rainbow_servant_detect_chaos",
+        "power.rainbow_servant_bonus_domain_law"
+      ]
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.rainbow_servant",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.rainbow_servant_cleric_spell_access",
+        "power.rainbow_servant_detect_thoughts"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.rainbow_servant",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    }
+  ]
+}

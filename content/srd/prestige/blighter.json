@@ -1,0 +1,548 @@
+{
+  "entities": [
+    {
+      "id": "class.blighter",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Saccageur tellurique",
+        "en": "Blighter"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Un druide qui tourne le dos à la terre finit parfois par la haïr. Le saccageur tellurique tire sa magie de la vie qu'il arrache, laisse derrière lui des clairières brûlées et ne se sent chez lui que là où il n'y aura bientôt plus d'arbres.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non bon ; bonus de base à l'attaque +4 ; avoir été druide, capable de lancer des sorts de druide du 3e niveau.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (nature), Détection, Diplomatie, Dressage, Natation, Perception auditive, Premiers secours, Profession, Survie.\n• Sorts : divins préparés du niveau 0 au niveau 9, d'une liste propre, basés sur la Sagesse. Il perd ses sorts de druide.\n• Aptitudes : déforestation (1) ; feu de joie funeste et sustentation (2) ; forme animale morte-vivante (3 puis tous les niveaux pairs) ; communication avec les animaux morts (4) ; contact contagieux (5, 7, 9) ; animation d'animaux morts (6) ; délier (8) ; peste (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@bab >= 4",
+      "note": "Conditions d'accès : alignement non bon (relations) et avoir été druide capable de lancer des sorts de druide du 3e niveau : texte seul. Sorts par jour : null pour « — »."
+    },
+    {
+      "id": "power.blighter_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de saccageur tellurique",
+        "en": "Blighter spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Il a renoncé au druidisme : ses prières ne caressent plus la nature, elles la brûlent, la flétrissent et la pourrissent.\n\nEn jeu\n• Sorts divins préparés du niveau 0 au niveau 9, d'une liste propre (destruction, feu, mort, maladie). Il perd ses sorts de druide.\n• Niveau de lanceur de sorts : niveau de druide + niveau de saccageur tellurique.\n• Caractéristique : Sagesse (au moins 10 + niveau du sort). DD : 10 + niveau du sort + modificateur de Sagesse. Sorts en bonus grâce à la Sagesse ; un « 0 » dans la table veut dire seulement ces sorts en bonus.\n• Il prépare et lance comme un druide, sans pouvoir convertir ses sorts en convocations.\n• Focaliseur divin : un brin séché de houx ou de gui. Les composantes matérielles doivent être mortes depuis au moins un jour.\n• Il ne retrouve ses sorts du jour qu'en ayant détruit une zone boisée dans les dernières 24 heures (voir déforestation) ; sans végétation (désert, glace), rien à récupérer."
+      },
+      "effects": [],
+      "note": "La liste des sorts est dans content/tools/out/codex/divin/lists/blighter.json (à fusionner dans lists.json). Sorts par jour au niveau 10, 5e niveau : l'image du livre donne 3, après un 4 au niveau 9 ; lu 4 (coquille probable du livre)."
+    },
+    {
+      "id": "power.blighter_deforestation",
+      "type": "class_power",
+      "name": {
+        "fr": "Déforestation",
+        "en": "Defoliation"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Là où il passe, la forêt meurt : ce pouvoir est la source même de sa magie quotidienne.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour, action complexe : tue toute plante non intelligente dans un rayon de 6 m par niveau de classe.\n• Une plante contrôlée par un autre (chêne animé, arbre de dryade) fait un jet de Vigueur (DD 10 + niveau de classe + modificateur de Sagesse) pour survivre.\n• Les plantes touchées ne peuvent plus pousser dans la zone avant un sort de sanctification et de nouvelles graines.\n• Débloque ses sorts du jour : sans elle depuis 24 heures, plus de sorts."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.blighter_baleful_bonfire",
+      "type": "class_power",
+      "name": {
+        "fr": "Feu de joie funeste",
+        "en": "Baleful bonfire"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Il libère une déflagration de flammes pour le plaisir de voir brûler.\n\nEn jeu\n• Capacité surnaturelle, action simple, à volonté : 5d6 dégâts de feu à toutes les créatures dans un rayon de 3 m (Réflexes demi, DD 10 + niveau de classe + modificateur de Sagesse).\n• Met aussi le feu aux objets inflammables de la zone."
+      },
+      "effects": [],
+      "note": "Nombre d'utilisations : non limité par le texte (pas de « par jour »). Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.blighter_sustenance",
+      "type": "class_power",
+      "name": {
+        "fr": "Sustentation",
+        "en": "Sustenance"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "La terre ne lui offre plus rien, mais il n'en a plus besoin.\n\nEn jeu\n• Capacité extraordinaire : plus besoin de manger ni de boire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.blighter_undead_animal_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale morte-vivante",
+        "en": "Undead animal shape"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Il prend la forme d'un animal squelettique, comme un druide change de forme.\n\nEn jeu\n• Pouvoir magique : comme forme animale du druide, avec l'archétype squelette : type mort-vivant, armure naturelle +0 (TP), +1 (P), +2 (M, G) ou +3 (TG), Dextérité +2, pas de Constitution, immunité contre le froid, réduction des dégâts 5/contondant.\n• 1 fois par jour au niveau 3, puis 1 fois de plus tous les niveaux pairs (5 par jour au niveau 10).\n• Squelette d'animal de taille G au niveau 5, TG au niveau 9."
+      },
+      "effects": [],
+      "usesPerDay": "floor(level('class.blighter') / 2)",
+      "note": "Forme et statistiques du squelette : texte seul (pas de toggle de forme). Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.blighter_speak_with_dead_animals",
+      "type": "class_power",
+      "name": {
+        "fr": "Communication avec les animaux morts",
+        "en": "Speak with dead animals"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Même la bête morte lui parle, pour peu qu'elle ait encore quelque chose à dire.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : comme communication avec les morts, niveau de lanceur = niveau de druide + niveau de saccageur, mais seulement sur des cadavres d'animaux."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.blighter_contagious_touch",
+      "type": "class_power",
+      "name": {
+        "fr": "Contact contagieux",
+        "en": "Contagious touch"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Une main posée, et la maladie suit.\n\nEn jeu\n• Capacité surnaturelle : reproduit le sort contact contagieux, 1 fois par jour au niveau 5, 2 au niveau 7, 3 au niveau 9."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.blighter') - 3) / 2)",
+      "note": "Le sort « contact contagieux » est un sort de ce livre (chapitre 7) : lire sa description. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.blighter_animate_dead_animals",
+      "type": "class_power",
+      "name": {
+        "fr": "Animation d'animaux morts",
+        "en": "Animate dead animals"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Il relève les bêtes tombées sans même devoir payer les composantes.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : comme animation des morts, mais seulement sur des cadavres d'animaux, sans composante matérielle."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.blighter_sever",
+      "type": "class_power",
+      "name": {
+        "fr": "Délier",
+        "en": "Sever"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "Il coupe, pour un temps, le lien qui unit un maître à sa bête.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : suspend le lien entre un maître et son animal ou sa créature magique (compagnon, familier, destrier…), comme si la créature était morte (sans perte de PX pour un familier).\n• La créature doit être à 12 m du saccageur et de son maître ; le maître fait un jet de Volonté (DD 10 + niveau de classe + modificateur de Sagesse) pour l'éviter.\n• Un maître hostile attaque normalement, sans autre effet. Le lien revient après 1 minute par niveau de classe."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.blighter_pestilence",
+      "type": "class_power",
+      "name": {
+        "fr": "Peste",
+        "en": "Pestilence"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blighter"
+      ],
+      "description": {
+        "fr": "À la fin, une seule de ses colères suffit à frapper toute une meute de malades.\n\nEn jeu\n• Capacité surnaturelle, 1 fois par jour : comme contact contagieux, mais sans jet d'attaque, sur toutes les créatures désignées dans un rayon de 6 m."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.blighter",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.blighter_deforestation"
+      ],
+      "spellsPerDay": [
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.blighter_baleful_bonfire",
+        "power.blighter_sustenance"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.blighter_undead_animal_shape"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.blighter_speak_with_dead_animals"
+      ],
+      "spellsPerDay": [
+        6,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.blighter_contagious_touch"
+      ],
+      "spellsPerDay": [
+        6,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.blighter_animate_dead_animals"
+      ],
+      "spellsPerDay": [
+        6,
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.blighter_sever"
+      ],
+      "spellsPerDay": [
+        6,
+        4,
+        4,
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.blighter",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.blighter_pestilence"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.blighter",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

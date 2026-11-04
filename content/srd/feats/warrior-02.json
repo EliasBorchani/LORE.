@@ -1,0 +1,881 @@
+{
+  "entities": [
+    {
+      "id": "feat.extend_rage",
+      "type": "feat",
+      "name": {
+        "fr": "Longue rage",
+        "en": "Extend Rage"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Sa colère met plus de temps à retomber, et l'ennemi n'a pas fini de la subir.\n\nEn jeu\n• Condition : rage de berserker ou frénésie.\n• Chaque rage (ou frénésie) dure 5 rounds de plus.\n• Peut être pris plusieurs fois : les rounds s'additionnent."
+      },
+      "prerequisite": "has('power.barbarian_rage') or has('power.frenzied_berserker_frenzy')",
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "rage.duration",
+          "op": "add",
+          "value": 5,
+          "bonusType": "untyped",
+          "condition": "active('toggle.barbarian_rage') or active('toggle.frenzied_berserker_frenzy')"
+        }
+      ],
+      "note": "Seule la rage du barbare lit cette durée ; la frénésie n'est pas calculée."
+    },
+    {
+      "id": "feat.clever_wrestling",
+      "type": "feat",
+      "name": {
+        "fr": "Lutteur habile",
+        "en": "Clever Wrestling"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Une grande brute l'a saisi ? Il sait glisser entre les doigts de bien plus gros que lui.\n\nEn jeu\n• Conditions : taille P ou M, Science du combat à mains nues.\n• Agrippé ou immobilisé par un adversaire de taille G ou plus, il gagne un bonus de circonstances aux tests de lutte pour s'échapper.\n• Bonus selon la taille de l'adversaire : G +2, TG +4, Gig +6, C +8."
+      },
+      "prerequisite": "has('feat.improved_unarmed_strike')",
+      "note": "Taille et bonus (qui dépend de l'adversaire) non calculés par la fiche."
+    },
+    {
+      "id": "feat.improved_two_weapon_defense",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la défense à deux armes",
+        "en": "Improved Two-Weapon Defense"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "two_weapon",
+        "defense"
+      ],
+      "description": {
+        "fr": "Ses deux lames forment un rempart qui avance avec lui.\n\nEn jeu\n• Conditions : Dex 17, Combat à deux armes, Défense à deux armes, bonus de base à l'attaque +6.\n• Avec une arme double ou deux armes (ni armes naturelles ni mains nues), +2 de bonus de bouclier à la CA.\n• Ce bonus passe à +4 en attaque sur la défensive ou en défense totale.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 17 and has('feat.two_weapon_fighting') and has('feat.two_weapon_defense') and @bab >= 6",
+      "note": "Bonus de bouclier : le catalogue n'a pas encore ce type de bonus, donc pas d'effet sur la CA (comme Défense à deux armes)."
+    },
+    {
+      "id": "feat.greater_two_weapon_defense",
+      "type": "feat",
+      "name": {
+        "fr": "Maîtrise de la défense à deux armes",
+        "en": "Greater Two-Weapon Defense"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "two_weapon",
+        "defense"
+      ],
+      "description": {
+        "fr": "Entre ses deux armes, plus rien ne passe : c'est un cercle d'acier.\n\nEn jeu\n• Conditions : Dex 19, Combat à deux armes, Défense à deux armes, Science de la défense à deux armes, bonus de base à l'attaque +11.\n• Avec une arme double ou deux armes (ni armes naturelles ni mains nues), +3 de bonus de bouclier à la CA.\n• Ce bonus passe à +6 en attaque sur la défensive ou en défense totale.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 19 and has('feat.two_weapon_fighting') and has('feat.two_weapon_defense') and has('feat.improved_two_weapon_defense') and @bab >= 11",
+      "note": "Bonus de bouclier : pas d'effet sur la CA, le catalogue n'a pas ce type de bonus."
+    },
+    {
+      "id": "feat.power_critical",
+      "type": "feat",
+      "name": {
+        "fr": "Maîtrise du critique",
+        "en": "Power Critical"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Avec son arme fétiche, il sait où frapper pour que le coup compte.\n\nEn jeu\n• Conditions : Arme de prédilection (arme choisie), bonus de base à l'attaque +4.\n• +4 aux jets d'attaque pour confirmer un coup critique avec l'arme choisie.\n• Un guerrier peut le prendre comme don supplémentaire.\n• Peut être pris plusieurs fois, pour la même arme (les bonus s'additionnent) ou pour une autre."
+      },
+      "prerequisite": "has('feat.weapon_focus') and @bab >= 4",
+      "repeatable": {},
+      "note": "La confirmation des critiques et l'arme choisie ne sont pas calculées par la fiche."
+    },
+    {
+      "id": "feat.sharp_shooting",
+      "type": "feat",
+      "name": {
+        "fr": "Œil de faucon",
+        "en": "Sharp-Shooting"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Aucun feuillage, aucun créneau ne protège vraiment une cible face à un tireur comme lui.\n\nEn jeu\n• Conditions : Tir à bout portant, Tir de précision, bonus de base à l'attaque +3.\n• Contre une cible à l'abri (abri partiel), l'abri ne donne que +2 à la CA au lieu de +4.\n• Sans effet sur l'abri total ou l'absence d'abri.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.point_blank_shot') and has('feat.precise_shot') and @bab >= 3",
+      "note": "Le bonus d'abri de la cible n'est pas calculé par la fiche."
+    },
+    {
+      "id": "feat.close_quarters_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Pancrace",
+        "en": "Close-Quarters Fighting"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Le corps à corps est son terrain : qui tente de l'agripper le regrette.\n\nEn jeu\n• Condition : bonus de base à l'attaque +3.\n• Il a une attaque d'opportunité contre qui tente de l'agripper, même si l'adversaire a un don ou un pouvoir qui l'en dispense.\n• Si l'adversaire n'a pas Science de la lutte ou un pouvoir comme l'étreinte, sa tentative échoue d'office quand l'attaque d'opportunité inflige des dégâts.\n• Sinon, le personnage gagne au prochain test de lutte un bonus égal aux dégâts infligés.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@bab >= 3"
+    },
+    {
+      "id": "feat.pin_shield",
+      "type": "feat",
+      "name": {
+        "fr": "Passe-garde",
+        "en": "Pin Shield"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "D'un coup d'arme secondaire, il écarte le bouclier d'en face et ouvre la voie à la lame principale.\n\nEn jeu\n• Conditions : Combat à deux armes, bonus de base à l'attaque +4.\n• Contre une créature avec un bouclier, d'au plus une catégorie de taille de plus que lui.\n• En attaque à outrance, il sacrifie toutes ses attaques secondaires pour repousser le bouclier de l'adversaire avec l'arme secondaire.\n• Ses attaques principales ignorent alors le bouclier de la cible."
+      },
+      "prerequisite": "has('feat.two_weapon_fighting') and @bab >= 4",
+      "note": "Le bouclier de la cible n'est pas modélisé."
+    },
+    {
+      "id": "feat.fleet_of_foot",
+      "type": "feat",
+      "name": {
+        "fr": "Pied léger",
+        "en": "Fleet of Foot"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il vire en pleine course sans casser son élan.\n\nEn jeu\n• Conditions : Dex 15, Course.\n• Action libre : un virage pendant une course ou une charge, sauf en armure intermédiaire ou lourde (ou avec une charge de ce niveau).\n• Il doit parcourir au moins 3 m en ligne droite avant d'attaquer à la fin d'une charge.\n• Un seul virage par round, de 90° au plus.\n• Normal : on ne court ou charge qu'en ligne droite."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and has('feat.run')"
+    },
+    {
+      "id": "feat.flick_of_the_wrist",
+      "type": "feat",
+      "name": {
+        "fr": "Poignet rapide",
+        "en": "Flick of the Wrist"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Le fourreau à peine vide, la lame touche déjà : l'adversaire n'a rien vu venir.\n\nEn jeu\n• Conditions : Dex 17, 5 degrés en Escamotage, Arme en main.\n• Quand il attaque avec une arme légère dégainée dans le même round, la cible est prise au dépourvu (pour cette attaque seulement).\n• Une fois par round, et une seule fois par adversaire et par rencontre."
+      },
+      "prerequisite": "@ability.dex.score >= 17 and @skill.sleight_of_hand.ranks >= 5 and has('feat.quick_draw')",
+      "note": "Le « dégainé ce round » n'est pas suivi."
+    },
+    {
+      "id": "feat.fists_of_iron",
+      "type": "feat",
+      "name": {
+        "fr": "Poings de fer",
+        "en": "Fists of Iron"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Il met toute sa force dans le poing, et le coup frappe comme un marteau.\n\nEn jeu\n• Conditions : Coup étourdissant, Science du combat à mains nues, bonus de base à l'attaque +2.\n• Il annonce l'usage avant le jet d'attaque ; une attaque à mains nues inflige alors 1d6 dégâts de plus.\n• Un coup raté est perdu. Chaque usage compte comme une utilisation de Coup étourdissant."
+      },
+      "prerequisite": "has('feat.stunning_fist') and has('feat.improved_unarmed_strike') and @bab >= 2",
+      "note": "Dégâts de dés non calculés par la fiche."
+    },
+    {
+      "id": "feat.defensive_throw",
+      "type": "feat",
+      "name": {
+        "fr": "Projection défensive",
+        "en": "Defensive Throw"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "L'élan de l'agresseur se retourne contre lui : il part au tapis.\n\nEn jeu\n• Conditions : Dex 13, Attaques réflexes, Esquive, Science du combat à mains nues, Science du croc-en-jambe.\n• Quand l'adversaire désigné par Esquive l'attaque et rate, il peut tenter aussitôt un croc-en-jambe sur lui, comme une attaque d'opportunité."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.combat_reflexes') and has('feat.dodge') and has('feat.improved_unarmed_strike') and has('feat.improved_trip')"
+    },
+    {
+      "id": "feat.destructive_rage",
+      "type": "feat",
+      "name": {
+        "fr": "Rage destructive",
+        "en": "Destructive Rage"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Furieux, il fracasse les portes et les coffres comme du bois sec.\n\nEn jeu\n• Condition : rage de berserker ou frénésie.\n• En rage ou frénésie, +8 aux tests de Force pour briser un objet inanimé ou enfoncer une porte."
+      },
+      "prerequisite": "has('power.barbarian_rage') or has('power.frenzied_berserker_frenzy')",
+      "note": "Les tests de Force pour briser ne sont pas calculés par la fiche."
+    },
+    {
+      "id": "feat.instantaneous_rage",
+      "type": "feat",
+      "name": {
+        "fr": "Rage instantanée",
+        "en": "Instantaneous Rage"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "La colère monte en un clin d'œil, même quand ce n'est pas à lui de jouer.\n\nEn jeu\n• Condition : rage de berserker ou frénésie.\n• Il peut entrer en rage à tout moment, même hors de son tour ou surpris, en réaction à l'action d'un autre.\n• Il peut ainsi profiter de la Constitution et des points de vie de la rage avant de subir un coup ou un sort.\n• Il doit être conscient de l'attaque, mais peut être pris au dépourvu.\n• Normal : on n'entre en rage que pendant son tour."
+      },
+      "prerequisite": "has('power.barbarian_rage') or has('power.frenzied_berserker_frenzy')"
+    },
+    {
+      "id": "feat.intimidating_rage",
+      "type": "feat",
+      "name": {
+        "fr": "Rage intimidante",
+        "en": "Intimidating Rage"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Sa rage glace le sang : il lui suffit d'un regard pour briser un adversaire.\n\nEn jeu\n• Condition : rage de berserker ou frénésie.\n• Action libre en rage ou frénésie : il désigne un adversaire à 9 m ou moins et tente de le démoraliser (règles d'Intimidation).\n• S'il réussit, la victime est secouée pendant toute la rage.\n• Une seule fois par adversaire et par rencontre."
+      },
+      "prerequisite": "has('power.barbarian_rage') or has('power.frenzied_berserker_frenzy')"
+    },
+    {
+      "id": "feat.extra_rage",
+      "type": "feat",
+      "name": {
+        "fr": "Rages supplémentaires",
+        "en": "Extra Rage"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Sa colère ne s'épuise pas : il a toujours une rage de plus en réserve.\n\nEn jeu\n• Condition : rage de berserker ou frénésie.\n• +2 utilisations par jour de la rage (ou de la frénésie).\n• Peut être pris plusieurs fois : les utilisations s'additionnent."
+      },
+      "prerequisite": "has('power.barbarian_rage') or has('power.frenzied_berserker_frenzy')",
+      "repeatable": {},
+      "note": "Le nombre de rages par jour ne lit pas encore ce don : le catalogue ne permet pas d'y ajouter des utilisations."
+    },
+    {
+      "id": "feat.improved_buckler_defense",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la défense à la targe",
+        "en": "Improved Buckler Defense"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il frappe de sa main faible sans jamais baisser sa targe.\n\nEn jeu\n• Condition : Maniement des boucliers.\n• Quand il attaque avec l'arme de sa main non directrice (celle qui porte la targe), il garde le bonus de bouclier de la targe à la CA.\n• Normal : cette main perd le bonus de bouclier de la targe quand elle attaque.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.shield_proficiency')"
+    },
+    {
+      "id": "feat.improved_toughness",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la robustesse",
+        "en": "Improved Toughness"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il est taillé dans un bloc : les années ne font que le rendre plus dur.\n\nEn jeu\n• Condition : bonus de base en Vigueur +2.\n• +1 point de vie par dé de vie, et de même pour chaque dé de vie gagné par la suite.\n• Perdre un dé de vie fait perdre 1 point de vie de façon définitive.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "effects": [
+        {
+          "target": "hp.max",
+          "op": "add",
+          "value": "level()",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : bonus de base en Vigueur +2. Les dés de vie raciaux ne sont pas comptés."
+    },
+    {
+      "id": "feat.improved_favored_enemy_warrior",
+      "type": "feat",
+      "name": {
+        "fr": "Science de l'ennemi juré",
+        "en": "Improved Favored Enemy"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il connaît les points faibles de ses proies mieux que n'importe quel rôdeur.\n\nEn jeu\n• Conditions : pouvoir d'ennemi juré, bonus de base à l'attaque +5.\n• +3 aux dégâts contre ses ennemis jurés, en plus des bonus d'ennemi juré des classes."
+      },
+      "prerequisite": "has('power.ranger_favored_enemy') and @bab >= 5",
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "situation": "situation.vs_favored_enemy"
+        }
+      ],
+      "note": "Même nom français que le don épique feat.improved_favored_enemy (autre don) ; l'id garde un suffixe pour les distinguer."
+    },
+    {
+      "id": "feat.improved_combat_expertise",
+      "type": "feat",
+      "name": {
+        "fr": "Science de l'expertise du combat",
+        "en": "Improved Combat Expertise"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il règle sa prudence au cran près, du coup léger au bouclier total.\n\nEn jeu\n• Conditions : Int 13, Expertise du combat, bonus de base à l'attaque +6.\n• Avec Expertise du combat, le nombre retranché à l'attaque et ajouté à la CA va de 0 jusqu'à son bonus de base à l'attaque.\n• Normal : ce nombre est limité à 5.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.int.score >= 13 and has('feat.combat_expertise') and @bab >= 6"
+    },
+    {
+      "id": "feat.improved_weapon_familiarity",
+      "type": "feat",
+      "name": {
+        "fr": "Science des armes familières",
+        "en": "Improved Weapon Familiarity"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus"
+      ],
+      "description": {
+        "fr": "Les armes étranges de son peuple n'ont plus de secret pour lui.\n\nEn jeu\n• Condition : bonus de base à l'attaque +1.\n• Les armes exotiques de sa race (dont le nom contient celui de la race, comme la finelame elfe) comptent comme des armes de guerre.\n• Normal : il faut Maniement d'une arme exotique pour les manier sans malus.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@bab >= 1",
+      "note": "La race de l'arme n'est pas suivie."
+    },
+    {
+      "id": "feat.improved_mounted_archery",
+      "type": "feat",
+      "name": {
+        "fr": "Science du tir monté",
+        "en": "Improved Mounted Archery"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged",
+        "mounted"
+      ],
+      "description": {
+        "fr": "En selle, son arc tire aussi droit qu'à pied.\n\nEn jeu\n• Conditions : 1 degré en Équitation, Combat monté, Tir monté.\n• Quand sa monture fait un double mouvement, plus de malus aux attaques à distance.\n• Quand elle court ou charge, le malus est de -2 au lieu de -4.\n• Il peut tirer à n'importe quel moment du déplacement de sa monture.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@skill.ride.ranks >= 1 and has('feat.mounted_combat') and has('feat.mounted_archery')"
+    },
+    {
+      "id": "feat.improved_rapid_shot",
+      "type": "feat",
+      "name": {
+        "fr": "Science du tir rapide",
+        "en": "Improved Rapid Shot"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Les flèches partent en rafale sans qu'il perde en précision.\n\nEn jeu\n• Conditions : Feu nourri, Tir à bout portant, Tir rapide.\n• Plus de malus de -2 aux jets d'attaque à distance de Tir rapide.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('feat.manyshot') and has('feat.point_blank_shot') and has('feat.rapid_shot')",
+      "note": "Le malus de Tir rapide n'est pas calculé par la fiche."
+    },
+    {
+      "id": "feat.eagle_claw_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Serre de l'aigle",
+        "en": "Eagle Claw Attack"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Il sait où presser pour que la pierre se fende et le coffre cède.\n\nEn jeu\n• Conditions : Sag 13, Science de la destruction, Science du combat à mains nues.\n• Quand il frappe un objet à mains nues, il ajoute son bonus de Sagesse aux dégâts."
+      },
+      "prerequisite": "@ability.wis.score >= 13 and has('feat.improved_sunder') and has('feat.improved_unarmed_strike')",
+      "note": "Les dégâts contre les objets ne sont pas calculés par la fiche."
+    },
+    {
+      "id": "feat.eyes_in_the_back_of_your_head",
+      "type": "feat",
+      "name": {
+        "fr": "Sixième sens",
+        "en": "Eyes in the Back of Your Head"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Un instinct de bataille le prévient quand on tente de l'encercler.\n\nEn jeu\n• Conditions : Sag 13, bonus de base à l'attaque +1.\n• Pris en tenaille, ses attaquants n'ont pas le +2 habituel à l'attaque (mais peuvent toujours l'attaquer en sournois).\n• Il perd ce don quand il perd son bonus de Dextérité à la CA (pris au dépourvu par exemple).\n• Normal : deux alliés qui prennent une créature en tenaille ont +2 à l'attaque."
+      },
+      "prerequisite": "@ability.wis.score >= 13 and @bab >= 1"
+    },
+    {
+      "id": "feat.zen_archery",
+      "type": "feat",
+      "name": {
+        "fr": "Tir instinctif",
+        "en": "Zen Archery"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Ses flèches suivent son intuition plus que ses yeux.\n\nEn jeu\n• Conditions : Sag 13, bonus de base à l'attaque +1.\n• Il peut utiliser son bonus de Sagesse à la place de celui de Dextérité pour ses jets d'attaque à distance."
+      },
+      "prerequisite": "@ability.wis.score >= 13 and @bab >= 1",
+      "note": "Le remplacement du bonus de Dextérité par celui de Sagesse n'est pas calculé par la fiche."
+    },
+    {
+      "id": "feat.dash",
+      "type": "feat",
+      "name": {
+        "fr": "Vélocité",
+        "en": "Dash"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il court plus vite que son ombre, pourvu qu'il ne soit pas alourdi.\n\nEn jeu\n• +1,50 m de vitesse au sol, sauf en armure intermédiaire ou lourde (ou avec une charge de ce niveau)."
+      },
+      "note": "Bonus de vitesse non calculé : la fiche ne teste pas encore le type d'armure."
+    },
+    {
+      "id": "feat.divine_shield",
+      "type": "feat",
+      "name": {
+        "fr": "Bouclier divin",
+        "en": "Divine Shield"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il fait passer l'énergie sacrée dans son bouclier, qui devient plus sûr.\n\nEn jeu\n• Dépense : une tentative de renvoi ou d'intimidation des morts-vivants.\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants, Maniement des boucliers.\n• Action simple : bonus de sainteté égal à son bonus de Charisme au bonus de bouclier à la CA.\n• Durée : la moitié de son niveau global, en rounds."
+      },
+      "prerequisite": "@turn_undead.level >= 1 and has('feat.shield_proficiency')",
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "bonusType": "sacred",
+          "condition": "active('toggle.divine_shield')"
+        }
+      ],
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées. Le bonus suppose un bouclier porté ; la fiche ne le vérifie pas. L'interrupteur marque que l'effet est actif."
+    },
+    {
+      "id": "feat.divine_might",
+      "type": "feat",
+      "name": {
+        "fr": "Puissance divine",
+        "en": "Divine Might"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Sa foi donne du poids à son arme : chaque coup frappe plus fort.\n\nEn jeu\n• Dépense : une tentative de renvoi ou d'intimidation des morts-vivants.\n• Conditions : For 13, pouvoir de renvoi ou d'intimidation des morts-vivants, Attaque en puissance.\n• Action libre : bonus de Charisme aux dégâts de son arme pendant un round entier."
+      },
+      "prerequisite": "@ability.str.score >= 13 and @turn_undead.level >= 1 and has('feat.power_attack')",
+      "effects": [
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_might')"
+        }
+      ],
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées. L'interrupteur marque que l'effet est actif."
+    },
+    {
+      "id": "feat.divine_cleansing",
+      "type": "feat",
+      "name": {
+        "fr": "Purge divine",
+        "en": "Divine Cleansing"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Une vague d'énergie sacrée raffermit la santé de tous ses compagnons.\n\nEn jeu\n• Dépense : une tentative de renvoi ou d'intimidation des morts-vivants.\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants.\n• Action simple : lui et ses alliés dans 18 m gagnent +2 de sainteté aux jets de Vigueur.\n• Durée : son bonus de Charisme en rounds (minimum 1)."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 2,
+          "bonusType": "sacred",
+          "condition": "active('toggle.divine_cleansing')"
+        }
+      ],
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées. Les alliés ne sont pas modélisés, seul le personnage. L'interrupteur marque que l'effet est actif."
+    },
+    {
+      "id": "feat.divine_resistance",
+      "type": "feat",
+      "name": {
+        "fr": "Résistance divine",
+        "en": "Divine Resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Le souffle sacré fait écran contre la foudre, la flamme et la glace.\n\nEn jeu\n• Dépense : une tentative de renvoi ou d'intimidation des morts-vivants.\n• Conditions : pouvoir de renvoi ou d'intimidation des morts-vivants, Purge divine.\n• Action simple : lui et ses alliés dans 18 m ont résistance 5 à l'électricité, au feu et au froid.\n• Durée : son bonus de Charisme en rounds (minimum 1).\n• Ne se cumule pas avec les autres résistances (sorts, objets)."
+      },
+      "prerequisite": "@turn_undead.level >= 1 and has('feat.divine_cleansing')",
+      "effects": [
+        {
+          "target": "energy_resistance.electricity",
+          "op": "add",
+          "value": 5,
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_resistance')"
+        },
+        {
+          "target": "energy_resistance.fire",
+          "op": "add",
+          "value": 5,
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_resistance')"
+        },
+        {
+          "target": "energy_resistance.cold",
+          "op": "add",
+          "value": 5,
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_resistance')"
+        }
+      ],
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées. Les alliés ne sont pas modélisés. Le non-cumul avec d'autres résistances n'est pas vérifié. L'interrupteur marque que l'effet est actif."
+    },
+    {
+      "id": "feat.sacred_vengeance",
+      "type": "feat",
+      "name": {
+        "fr": "Vengeance divine",
+        "en": "Sacred Vengeance"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Son arme brûle d'une lumière qui ne pardonne pas aux morts.\n\nEn jeu\n• Dépense : une tentative de renvoi ou d'intimidation des morts-vivants.\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants.\n• Action libre : +2d6 aux dégâts de ses attaques de corps à corps contre les morts-vivants pendant un round entier.\n• N'est pas une attaque en soi."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées. Les +2d6 contre les morts-vivants restent en texte : le catalogue ne calcule pas les dés de dégâts supplémentaires par type de créature (situation.vs_undead existe)."
+    },
+    {
+      "id": "feat.divine_vigor",
+      "type": "feat",
+      "name": {
+        "fr": "Vigueur divine",
+        "en": "Divine Vigor"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "L'énergie sacrée le rend plus vif et plus coriace.\n\nEn jeu\n• Dépense : une tentative de renvoi ou d'intimidation des morts-vivants.\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants.\n• Action simple : +3 m de vitesse au sol et 2 points de vie temporaires par dé de vie.\n• Durée : son bonus de Charisme en minutes (minimum 1)."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_vigor')"
+        },
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "2 * level()",
+          "bonusType": "untyped",
+          "condition": "active('toggle.divine_vigor')"
+        }
+      ],
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées. L'interrupteur marque que l'effet est actif."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.clever_wrestling",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.improved_two_weapon_defense",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.improved_two_weapon_defense",
+      "relation": "requires",
+      "to": "feat.two_weapon_defense"
+    },
+    {
+      "from": "feat.greater_two_weapon_defense",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.greater_two_weapon_defense",
+      "relation": "requires",
+      "to": "feat.two_weapon_defense"
+    },
+    {
+      "from": "feat.greater_two_weapon_defense",
+      "relation": "requires",
+      "to": "feat.improved_two_weapon_defense"
+    },
+    {
+      "from": "feat.power_critical",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.sharp_shooting",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.sharp_shooting",
+      "relation": "requires",
+      "to": "feat.precise_shot"
+    },
+    {
+      "from": "feat.pin_shield",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.fleet_of_foot",
+      "relation": "requires",
+      "to": "feat.run"
+    },
+    {
+      "from": "feat.flick_of_the_wrist",
+      "relation": "requires",
+      "to": "feat.quick_draw"
+    },
+    {
+      "from": "feat.fists_of_iron",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.fists_of_iron",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.defensive_throw",
+      "relation": "requires",
+      "to": "feat.combat_reflexes"
+    },
+    {
+      "from": "feat.defensive_throw",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.defensive_throw",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.defensive_throw",
+      "relation": "requires",
+      "to": "feat.improved_trip"
+    },
+    {
+      "from": "feat.improved_buckler_defense",
+      "relation": "requires",
+      "to": "feat.shield_proficiency"
+    },
+    {
+      "from": "feat.improved_favored_enemy_warrior",
+      "relation": "requires",
+      "to": "power.ranger_favored_enemy"
+    },
+    {
+      "from": "feat.improved_combat_expertise",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.improved_mounted_archery",
+      "relation": "requires",
+      "to": "feat.mounted_combat"
+    },
+    {
+      "from": "feat.improved_mounted_archery",
+      "relation": "requires",
+      "to": "feat.mounted_archery"
+    },
+    {
+      "from": "feat.improved_rapid_shot",
+      "relation": "requires",
+      "to": "feat.manyshot"
+    },
+    {
+      "from": "feat.improved_rapid_shot",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    },
+    {
+      "from": "feat.improved_rapid_shot",
+      "relation": "requires",
+      "to": "feat.rapid_shot"
+    },
+    {
+      "from": "feat.eagle_claw_attack",
+      "relation": "requires",
+      "to": "feat.improved_sunder"
+    },
+    {
+      "from": "feat.eagle_claw_attack",
+      "relation": "requires",
+      "to": "feat.improved_unarmed_strike"
+    },
+    {
+      "from": "feat.divine_shield",
+      "relation": "requires",
+      "to": "feat.shield_proficiency"
+    },
+    {
+      "from": "feat.divine_might",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.divine_resistance",
+      "relation": "requires",
+      "to": "feat.divine_cleansing"
+    }
+  ]
+}

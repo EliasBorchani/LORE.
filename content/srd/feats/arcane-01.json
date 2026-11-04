@@ -1,0 +1,234 @@
+{
+  "entities": [
+    {
+      "id": "feat.energy_admixture",
+      "type": "feat",
+      "name": {
+        "fr": "Ajout d’énergie destructive",
+        "en": "Energy Admixture"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Là où d’autres se contentent de changer la nature d’une flamme, lui en tresse deux ensemble : le feu ronge et l’acide brûle dans la même explosion.\n\nEn jeu\n• Condition : Substitution d’énergie destructive.\n• Choisir un type d’énergie (acide, électricité, feu ou froid) déjà choisi pour Substitution d’énergie destructive.\n• Un sort qui porte un registre d’énergie inflige en plus autant de dés de dégâts de l’énergie choisie (boule de feu niveau 6 : 6d6 feu + 6d6 acide, dés lancés à part).\n• Le sort prend les deux registres (boule de feu acide : évocation [acide, feu]). Des énergies opposées se combinent aussi.\n• Possible sur un sort déjà modifié par Substitution d’énergie destructive, ou avec l’énergie que le sort a déjà (ses dés de dégâts doublent alors).\n• Le sort utilise un emplacement de 4 niveaux de plus que son niveau réel.\n• Spécial : peut être pris plusieurs fois, chaque fois pour une autre énergie choisie avec Substitution d’énergie destructive."
+      },
+      "prerequisite": "has('feat.energy_substitution')",
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Énergie choisie et dés de dégâts ajoutés : pas encore dans le modèle (seul le coût en emplacement est calculé). Condition non vérifiée par la fiche : l’énergie doit être une de celles prises avec Substitution d’énergie destructive."
+    },
+    {
+      "id": "feat.sculpt_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Altération de zone d’effet",
+        "en": "Sculpt Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il ne subit pas la forme d’un sort, il la pétrit : l’éclair s’enroule en sphère, le cône se déplie en ligne, au gré du champ de bataille.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• Un sort à zone d’effet prend une de ces formes : cylindre (3 m de rayon, 9 m de haut), cône de 12 m, quatre cubes de 3 m d’arête, étendue de 6 m de rayon, ou ligne de 36 m.\n• Le reste du sort ne change pas (un éclair en boule inflige ses dégâts habituels sur 6 m de rayon).\n• Le sort utilise un emplacement de 1 niveau de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Forme de zone : pas encore dans le modèle (seul le coût en emplacement est calculé)."
+    },
+    {
+      "id": "feat.soul_of_the_north",
+      "type": "feat",
+      "name": {
+        "fr": "Âme du nord",
+        "en": "Soul of the North"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le froid ne lui est pas étranger : il le sent courir sous sa peau, et un geste suffit pour en tirer un frisson ou un éclat de givre.\n\nEn jeu\n• Pouvoirs magiques, 1 fois par jour chacun (niveau 1 de lanceur de sorts) : contact glacial, rayon de givre, résistance.\n• DD de sauvegarde : 10 + niveau du sort + modificateur de Charisme."
+      },
+      "note": "Nom anglais à confirmer. Pouvoirs magiques : texte seulement."
+    },
+    {
+      "id": "feat.communicator",
+      "type": "feat",
+      "name": {
+        "fr": "Communicateur",
+        "en": "Communicator"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Les langues étrangères ne sont pour lui qu’un voile à écarter, et ses mots savent trouver une oreille lointaine ou s’inscrire là où il le veut.\n\nEn jeu\n• Pouvoirs magiques, 1 fois par jour chacun (niveau 1 de lanceur de sorts) : compréhension des langages, message, signature magique."
+      },
+      "note": "Nom anglais à confirmer. Pouvoirs magiques : texte seulement."
+    },
+    {
+      "id": "feat.lore_of_moil",
+      "type": "feat",
+      "name": {
+        "fr": "Connaissances occultes de Moil",
+        "en": "Lore of Moil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il a étudié les secrets des Seigneurs de la Nuit de Moil : ses nécromancies se chargent d’un froid de tombe qui ronge la vie de ceux qu’elles touchent.\n\nEn jeu\n• Condition : École renforcée (Nécromancie), niveau 7 de lanceur de sorts.\n• Un sort de Nécromancie peut devenir un sort de Moil : +1d6 dégâts d’énergie négative, puis +1d6 tous les deux niveaux de sort (1er : +1d6 ; 2e et 3e : +2d6 ; 7e : +4d6).\n• Si le sort permet un jet de sauvegarde, une réussite divise ces dégâts d’énergie négative par deux, quel que soit l’effet du jet sur le reste du sort.\n• Composante en plus : un os runique de Moil (petit os humain gravé), détruit au lancement.\n• Fabriquer l’os : 1 heure et 25 po par dé d’énergie négative ; seul un adepte de ce don sait le faire.\n• Les dés ajoutés ne dépassent jamais ceux de l’os utilisé (os de 75 po : +3d6 au plus).\n• Le sort utilise un emplacement de son niveau normal."
+      },
+      "prerequisite": "has('feat.spell_focus_necromancy')",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Condition non vérifiée par la fiche : niveau 7 de lanceur de sorts. Dés d’énergie négative : pas encore dans le modèle (texte seulement)."
+    },
+    {
+      "id": "feat.cooperative_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Coordination de sort",
+        "en": "Cooperative Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Deux voix, un même sort, un même instant : en unissant leurs incantations, des lanceurs de sorts côte à côte forgent une magie plus dure à repousser.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• Deux personnages adjacents qui ont ce don lancent le même sort au même moment du round.\n• On prend le DD de base et le niveau de lanceur de sorts les plus élevés des deux : +2 au DD de sauvegarde, +1 aux tests de niveau de lanceur de sorts contre la résistance à la magie.\n• Spécial : chaque lanceur de plus qui a ce don et lance le même sort ajoute +1 au DD et au test. À plus de deux, chacun doit être adjacent à au moins deux autres lanceurs.\n• Les participants se calent en général en préparant une action pour lancer au tour du dernier."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Le livre n’indique pas de hausse de niveau d’emplacement. Bonus au DD et au test : pas dans le modèle (ils dépendent des autres lanceurs)."
+    },
+    {
+      "id": "feat.wandstrike",
+      "type": "feat",
+      "name": {
+        "fr": "Coup de baguette",
+        "en": "Wandstrike"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Sa baguette n’est pas qu’un bout de bois à pointer : il en frappe l’ennemi, et la magie se décharge dans le coup.\n\nEn jeu\n• Condition : 4 degrés de maîtrise en Utilisation d’objets magiques.\n• Action simple : attaque de contact au corps à corps avec une baguette, qui dépense 1 charge et inflige 1d6 dégâts.\n• Aucun dégât en plus (attaque sournoise, ennemi juré, châtiment…) sur cette attaque.\n• Il peut activer la baguette dans le même coup : un sort à rayon ou à cible vise la créature frappée (un rayon touche automatiquement).\n• Sort à zone ou à étendue : point d’origine sur n’importe quelle intersection de l’espace de la cible ; le porteur peut être dans la zone.\n• Un sort sans zone ni cible (convocation de monstres…) ne marche pas avec ce don."
+      },
+      "prerequisite": "@skill.use_magic_device.ranks >= 4"
+    },
+    {
+      "id": "feat.craft_contingent_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Création de sorts de prévoyance",
+        "en": "Craft Contingent Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "item_creation",
+        "wizard_bonus",
+        "creation",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il lie un sort à une créature comme on arme un piège : le sort dort, presque permanent, jusqu’à ce que la condition fixée le réveille.\n\nEn jeu\n• Condition : niveau 11 de lanceur de sorts.\n• Permet de créer tout sort de prévoyance d’un sort qu’il connaît, avec ses conditions de déclenchement.\n• Prix de base : niveau du sort × niveau de lanceur de sorts × 100 po.\n• Coût : 1 jour par tranche de 1 000 po du prix de base, des PX égaux à 1/25 du prix de base et des matières premières pour la moitié du prix de base.\n• Composantes matérielles coûteuses et PX propres au sort : payés en plus au moment de la création.\n• Règles des sorts de prévoyance : Codex Profane, page 139."
+      },
+      "note": "Condition non vérifiée par la fiche : niveau 11 de lanceur de sorts."
+    },
+    {
+      "id": "feat.split_ray",
+      "type": "feat",
+      "name": {
+        "fr": "Dédoublement de rayon",
+        "en": "Split Ray"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le rayon quitte ses doigts et se fend en deux traits jumeaux qui filent chacun vers sa proie.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• Un sort qui crée un rayon en crée un de plus, avec son propre jet d’attaque de contact à distance et ses dégâts habituels.\n• Les deux rayons peuvent viser la même cible ; sinon, les cibles sont à 9 m ou moins l’une de l’autre. Les deux partent en même temps.\n• Le sort utilise un emplacement de 2 niveaux de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Rayon en plus : texte seulement (seul le coût en emplacement est calculé)."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.energy_admixture",
+      "relation": "requires",
+      "to": "feat.energy_substitution"
+    },
+    {
+      "from": "feat.lore_of_moil",
+      "relation": "requires",
+      "to": "feat.spell_focus_necromancy"
+    }
+  ]
+}

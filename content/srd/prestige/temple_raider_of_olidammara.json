@@ -1,0 +1,492 @@
+{
+  "entities": [
+    {
+      "id": "class.temple_raider_of_olidammara",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Pilleur de temple d'Olidammara",
+        "en": "Temple Raider of Olidammara"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Les fidèles d'Olidammara ont peu de temples à eux, mais certains passent leur vie dans ceux des autres dieux, à vider les coffres et à lire les secrets. Ces voleurs d'élite savent qu'on ne profane pas impunément un saint des saints : leur dieu leur prête donc quelques sorts pour y entrer, y rester et en sortir.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement chaotique ; bonus de base à l'attaque +5 ; Connaissances (religion) 1 rang, Crochetage 4, Désamorçage/sabotage 4, Fouille 8 ; vénérer Olidammara et être invité par au moins trois pilleurs de temple.\n• Formé à toutes les armes courantes, à la rapière, aux armures légères et intermédiaires.\n• Compétences de classe : Acrobaties, Artisanat, Connaissances (religion), Crochetage, Décryptage, Déplacement silencieux, Désamorçage/sabotage, Détection, Discrétion, Escalade, Estimation, Fouille, Maîtrise des cordes, Perception auditive, Saut, Utilisation d'objets magiques.\n• Sorts : divins préparés du 1er au 4e niveau, basés sur la Sagesse, d'une liste propre ; pas de transformation en soins ou en blessures.\n• Aptitudes : recherche des pièges (1) ; sens des pièges (1, 4, 7, 10) ; attaque sournoise (2, 5, 8) ; esquive instinctive (3) ; esquive instinctive supérieure (6) ; maîtrise des compétences (9) ; domaine de la Chance (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@bab >= 5 and @skill.knowledge_religion.ranks >= 1 and @skill.open_lock.ranks >= 4 and @skill.disable_device.ranks >= 4 and @skill.search.ranks >= 8",
+      "note": "Alignement chaotique, vénérer Olidammara et l'invitation de trois membres : texte seul. Sorts par jour : 0 = seulement les sorts en bonus (valeur imprimée), null pour « — ». Liste des sorts dans content/tools/out/codex/divin/lists/temple_raider_of_olidammara.json."
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de pilleur de temple",
+        "en": "Temple raider spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "Olidammara ne prête que de petites prières, mais taillées pour le vol et l'infiltration.\n\nEn jeu\n• Sorts divins préparés, du niveau 1 au niveau 4, comme un prêtre, sans les transformer en soins ou en blessures.\n• Liste propre à la classe. Caractéristique : Sagesse (au moins 10 + niveau du sort). DD : 10 + niveau du sort + modificateur de Sagesse. Sorts en bonus grâce à la Sagesse.\n• Un « 0 » dans la table veut dire seulement les sorts en bonus d'une Sagesse élevée.\n• Pour retrouver ses sorts, il prie Olidammara 1 heure chaque nuit ; le repos seul ne suffit pas."
+      },
+      "effects": [],
+      "note": "Niveau de lanceur de sorts : niveau de pilleur de temple."
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_trapfinding",
+      "type": "class_power",
+      "name": {
+        "fr": "Recherche des pièges",
+        "en": "Trapfinding"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "Une dalle un peu trop propre, un fil dans la poussière : il lit les pièges avant d'y poser le pied.\n\nEn jeu\n• Capacité extraordinaire : trouve par la Fouille les pièges dont le DD dépasse 20 ; peut désamorcer les pièges magiques avec Désamorçage/sabotage.\n• S'il bat le DD d'un piège de 10 ou plus, il peut le contourner (et faire passer le groupe) sans le désamorcer."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_trap_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens des pièges",
+        "en": "Trap sense"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "Son corps esquive les pièges avant que l'esprit ne comprenne.\n\nEn jeu\n• Capacité extraordinaire : contre les pièges, bonus aux jets de Réflexes et bonus d'esquive à la CA.\n• +1 au niveau 1, puis +1 tous les 3 niveaux (+4 au niveau 10).\n• Se cumule avec le sens des pièges d'autres classes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "1 + floor((level('class.temple_raider_of_olidammara') - 1) / 3)",
+          "situation": "situation.vs_traps"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "1 + floor((level('class.temple_raider_of_olidammara') - 1) / 3)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_traps"
+        }
+      ]
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "Un coup au bon endroit, quand l'adversaire regarde ailleurs.\n\nEn jeu\n• Capacité extraordinaire : comme celle du roublard. +1d6 de dégâts au niveau 2, puis +1d6 tous les 3 niveaux (+3d6 au niveau 8).\n• Sur une cible qui a perdu son bonus de Dextérité ou qu'il prend en tenaille ; à distance, seulement à 9 m ou moins.\n• Se cumule avec l'attaque sournoise d'autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor((level('class.temple_raider_of_olidammara') + 1) / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "On ne le surprend pas.\n\nEn jeu\n• Garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible ; il le perd s'il est immobilisé.\n• S'il l'a déjà par une autre classe, il gagne à la place l'esquive instinctive supérieure."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "Il pare de tous les côtés à la fois.\n\nEn jeu\n• Ne peut plus être pris en tenaille, sauf par un roublard d'au moins 4 niveaux de plus que son niveau de pilleur de temple.\n• Les niveaux des classes qui donnent esquive instinctive s'additionnent pour ce calcul."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_skill_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences",
+        "en": "Skill mastery"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "Certains gestes sont devenus si sûrs que même la panique ne les trouble plus.\n\nEn jeu\n• Capacité extraordinaire : il choisit 3 + son modificateur d'Intelligence compétences.\n• Avec elles, il peut faire 10 même sous pression ou distrait."
+      },
+      "effects": [],
+      "note": "Choix des compétences : texte seul."
+    },
+    {
+      "id": "power.temple_raider_of_olidammara_luck_domain",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine de la Chance",
+        "en": "Luck domain"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "temple_raider_of_olidammara"
+      ],
+      "description": {
+        "fr": "Un peu de la chance d'Olidammara finit par lui rester collée aux doigts.\n\nEn jeu\n• Il reçoit le pouvoir accordé du domaine de la Chance et ajoute ses sorts du 1er au 4e niveau à sa liste de pilleur de temple (pas aux autres listes).\n• S'il avait déjà ce domaine, il peut utiliser le pouvoir accordé 1 fois de plus par jour."
+      },
+      "effects": [],
+      "note": "Sorts du domaine de la Chance du 1er au 4e niveau : à ajouter à la liste de la classe à la fusion."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.temple_raider_of_olidammara_spells",
+        "power.temple_raider_of_olidammara_trapfinding",
+        "power.temple_raider_of_olidammara_trap_sense"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.temple_raider_of_olidammara_sneak_attack"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.temple_raider_of_olidammara_uncanny_dodge"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.temple_raider_of_olidammara_improved_uncanny_dodge"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.temple_raider_of_olidammara_skill_mastery"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.temple_raider_of_olidammara",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.temple_raider_of_olidammara_luck_domain"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "proficiency",
+      "to": "item.rapier"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.temple_raider_of_olidammara",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "entities": [
+    {
+      "id": "class.ur_priest",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Prêtre déicide",
+        "en": "Ur-Priest"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Le prêtre déicide méprise les dieux, mais il a trouvé le moyen de se servir chez eux. Chaque jour, il glisse dans une transe et vole un peu de la puissance divine que les cieux versent à leurs fidèles, sans jamais prier. Les plus grands finissent par arracher aux autres leurs pouvoirs magiques.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement mauvais ; bonus de base de Vigueur +3 et de Volonté +3 ; Art de la magie 8 rangs, Bluff 6, Connaissances (mystères) 5, Connaissances (plans) 5, Connaissances (religion) 8 ; dons Alignement renforcé (Mal), Volonté de fer ; incapable de lancer des sorts divins (un ancien prêtre y renonce à jamais) ; formé par un autre prêtre déicide.\n• Formé aux armes courantes, ni aux boucliers ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Bluff, Concentration, Connaissances (mystères), Connaissances (plans), Connaissances (religion), Profession.\n• Sorts : divins préparés du 0 au 9e niveau, basés sur la Sagesse, de la liste du prêtre, sans domaines.\n• Aptitudes : intimidation des morts-vivants (2) ; résistance à la magie divine (4, 8) ; siphon de puissance magique (6) ; vol de pouvoir magique (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@skill.spellcraft.ranks >= 8 and @skill.bluff.ranks >= 6 and @skill.knowledge_arcana.ranks >= 5 and @skill.knowledge_planes.ranks >= 5 and @skill.knowledge_religion.ranks >= 8 and has('feat.alignment_focus') and has('feat.iron_will')",
+      "note": "Alignement mauvais, bonus de base de Vigueur et de Volonté +3, Alignement renforcé (Mal) précisément, incapacité de lancer des sorts divins et formation par un pair : texte seul. Sorts par jour : 0 = seulement les sorts en bonus, null pour « — ». Sa liste est celle du prêtre : à copier à la fusion."
+    },
+    {
+      "id": "power.ur_priest_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de prêtre déicide",
+        "en": "Ur-priest spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ur_priest"
+      ],
+      "description": {
+        "fr": "Il prépare chaque matin des sorts de prêtre qu'il n'a demandés à personne.\n\nEn jeu\n• Sorts divins préparés, du niveau 0 au niveau 9, de la liste du prêtre ; il lance comme un prêtre mais ne transforme pas ses sorts en soins ou en blessures.\n• Ni domaines ni pouvoirs accordés ; pas de restriction d'alignement sur les sorts.\n• Caractéristique : Sagesse (au moins 10 + niveau du sort). DD : 10 + niveau du sort + modificateur de Sagesse. Sorts en bonus grâce à la Sagesse.\n• Niveau de lanceur de sorts : niveau de prêtre déicide + la moitié de ses niveaux dans les autres classes de lanceur de sorts (les niveaux de prêtre d'un ancien prêtre ne comptent pas)."
+      },
+      "effects": [],
+      "note": "Niveau de lanceur de sorts : formule du livre à saisir à la main dans les fiches de niveau."
+    },
+    {
+      "id": "power.ur_priest_turn_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Intimidation des morts-vivants",
+        "en": "Rebuke undead"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ur_priest"
+      ],
+      "description": {
+        "fr": "Comme un prêtre mauvais, il plie les morts à sa volonté.\n\nEn jeu\n• Capacité surnaturelle : intimide ou contrôle les morts-vivants comme un prêtre mauvais de son niveau de prêtre déicide."
+      },
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": "level('class.ur_priest')"
+        }
+      ]
+    },
+    {
+      "id": "power.ur_priest_divine_spell_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance à la magie divine",
+        "en": "Divine spell resistance"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ur_priest"
+      ],
+      "description": {
+        "fr": "Les sorts divins et les pouvoirs des Extérieurs glissent sur lui.\n\nEn jeu\n• Capacité extraordinaire : résistance à la magie 15 au niveau 4, 20 au niveau 8.\n• Elle ne vaut que contre les sorts divins et les pouvoirs magiques des Extérieurs."
+      },
+      "effects": [],
+      "note": "Texte seul : la résistance à la magie du modèle vaut contre tout, ce qui serait faux ici."
+    },
+    {
+      "id": "power.ur_priest_siphon_spell_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Siphon de puissance magique",
+        "en": "Siphon spell power"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ur_priest"
+      ],
+      "description": {
+        "fr": "Il sacrifie des emplacements de sorts pour en forger un plus puissant.\n\nEn jeu\n• Capacité extraordinaire : 1 fois par jour, il sacrifie 2 emplacements de sorts (ou plus) pour préparer un sort d'un niveau qu'il peut lancer.\n• Niveau du nouvel emplacement : somme des niveaux sacrifiés × 0,75, arrondi à l'inférieur (3 + 5 = 8, donc niveau 6)."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.ur_priest_steal_spell_like_ability",
+      "type": "class_power",
+      "name": {
+        "fr": "Vol de pouvoir magique",
+        "en": "Steal spell-like ability"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ur_priest"
+      ],
+      "description": {
+        "fr": "Près d'une créature magique, il lui emprunte l'un de ses dons.\n\nEn jeu\n• Capacité surnaturelle, 1 fois par jour : une créature à 15 m ou moins qui a des pouvoirs magiques lui en laisse un.\n• Il l'utilise aussi souvent que la créature, ou 3 fois par jour (le plus bas des deux), avec son niveau de lanceur de sorts et son DD. Il dure 24 heures.\n• La créature ne le perd pas. Échec automatique si elle n'a pas ce pouvoir ou s'il est surnaturel et non magique."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.ur_priest",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.ur_priest_spells"
+      ],
+      "spellsPerDay": [
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.ur_priest_turn_undead"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        5,
+        3,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.ur_priest_divine_spell_resistance"
+      ],
+      "spellsPerDay": [
+        6,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.ur_priest_siphon_spell_power"
+      ],
+      "spellsPerDay": [
+        6,
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        4,
+        3,
+        3,
+        3,
+        2,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.ur_priest",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.ur_priest_steal_spell_like_ability"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.ur_priest",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

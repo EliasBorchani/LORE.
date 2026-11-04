@@ -1,0 +1,249 @@
+{
+  "entities": [
+    {
+      "id": "class.master_thrower",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Lanceur virtuose",
+        "en": "Master Thrower"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Un lanceur virtuose ne jette pas une hachette, il la fait chanter. Précis, vif, jamais pris sans arme, il transforme dagues, javelines et couteaux en une pluie ordonnée où chaque projectile a un rôle. Ils forment une confrérie qui préfère régler ses querelles sans verser de sang.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; 4 rangs en Escamotage ; dons Arme de prédilection (une arme de jet), Tir à bout portant et Tir de précision.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Artisanat, Bluff, Concentration, Détection, Escalade, Escamotage, Maîtrise des cordes, Profession, Représentation, Saut.\n• Aptitudes : Arme en main (1) ; prouesse de lancer (1, 3, 5) ; esquive totale (2) ; interception de projectiles (4) ; lancer critique (5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.sleight_of_hand.ranks >= 4 and has('feat.weapon_focus') and has('feat.point_blank_shot') and has('feat.precise_shot')",
+      "note": "Conditions en formule : bonus de base à l'attaque, rangs et dons. Dé de vie d8 lu sur la page (PDF 60). Escamotage = Sleight of Hand ; l'arme de l'Arme de prédilection n'est pas modélisée. Noms anglais à confirmer : Quick draw pour Arme en main, Improved Critical pour Science du critique."
+    },
+    {
+      "id": "power.master_thrower_quick_draw",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme en main",
+        "en": "Quick draw"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_thrower"
+      ],
+      "description": {
+        "fr": "Sa main trouve l'arme avant même qu'il y pense.\n\nEn jeu\n• Au niveau 1, il reçoit le don Arme en main en don supplémentaire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_thrower_throwing_stunt",
+      "type": "class_power",
+      "name": {
+        "fr": "Prouesse de lancer",
+        "en": "Throwing stunt"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_thrower"
+      ],
+      "description": {
+        "fr": "Chaque palier lui apprend un tour de plus, utilisable avec toute arme de jet pour laquelle il a Arme de prédilection.\n\nEn jeu\n• Capacité extraordinaire, niveaux 1, 3 et 5 : une prouesse à choisir, définitivement ; jamais deux fois la même.\n• Croc-en-jambe à distance : attaque normale, puis test de Dextérité (+4) opposé au test de Dextérité ou de Force de la cible ; la cible tombe s'il gagne. Ne se cumule pas avec Science du croc-en-jambe.\n• Deux d'un coup : un seul jet, à −4, contre deux cibles adjacentes ; dégâts et confirmation de critique séparés.\n• Double jet : une arme de jet de chaque main par action simple, cibles à 9 m ou moins, bonus de Force complet aux deux ; malus normaux du combat à deux armes.\n• Lancer acrobatique : sans armure lourde, il lance au milieu d'une acrobatie ; Acrobaties 25 ou plus, aucune attaque d'opportunité.\n• Lancer groupé : deux petites armes de jet (dard, shuriken, dague) d'une main par jet d'attaque ; dégâts des deux, sans bonus de Force du moindre.\n• Lancer sournois : action de mouvement ; Escamotage contre Détection de la cible, qui perd son bonus de Dextérité à la CA contre l'attaque suivante.\n• Lancer sur la défensive : pas d'attaque d'opportunité s'il réussit Concentration (DD 10 + nombre d'ennemis qui le menacent).\n• Point faible (niveau 5 seulement) : attaques de contact à distance contre créatures de sa taille ou plus grandes, sans bonus de Force aux dégâts.\n• Tir mortel : facteur de critique de l'arme +1 ; ne se cumule pas avec d'autres augmentations."
+      },
+      "effects": [],
+      "note": "Choix de prouesses : texte seulement. Noms anglais à confirmer."
+    },
+    {
+      "id": "power.master_thrower_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_thrower"
+      ],
+      "description": {
+        "fr": "Quand l'explosion arrive, il est déjà ailleurs.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : jet de Réflexes réussi contre un effet à demi-dégâts = aucun dégât.\n• Perdue en armure ou charge intermédiaire ou lourde, ou s'il est sans défense.\n• S'il l'a déjà d'une autre classe, il gagne l'esquive extraordinaire à la place (demi-dégâts même s'il rate)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_thrower_snatch_arrows",
+      "type": "class_power",
+      "name": {
+        "fr": "Interception de projectiles",
+        "en": "Snatch arrows"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_thrower"
+      ],
+      "description": {
+        "fr": "Il cueille en vol ce qu'on lui jette.\n\nEn jeu\n• Au niveau 4, il reçoit le don Interception de projectiles en don supplémentaire, même sans en remplir les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_thrower_critical_throw",
+      "type": "class_power",
+      "name": {
+        "fr": "Lancer critique",
+        "en": "Critical throw"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_thrower"
+      ],
+      "description": {
+        "fr": "Ses lancers visent les points faibles.\n\nEn jeu\n• Capacité extraordinaire, niveau 5 : il bénéficie des effets de Science du critique pour toute arme de jet pour laquelle il a Arme de prédilection."
+      },
+      "effects": [],
+      "note": "Science du critique = feat.improved_critical (l'arme choisie n'est pas modélisée). Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.master_thrower",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.master_thrower_quick_draw",
+        "power.master_thrower_throwing_stunt"
+      ]
+    },
+    {
+      "classId": "class.master_thrower",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.master_thrower_evasion"
+      ]
+    },
+    {
+      "classId": "class.master_thrower",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.master_thrower_throwing_stunt"
+      ]
+    },
+    {
+      "classId": "class.master_thrower",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.master_thrower_snatch_arrows"
+      ]
+    },
+    {
+      "classId": "class.master_thrower",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.master_thrower_critical_throw",
+        "power.master_thrower_throwing_stunt"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.master_thrower",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "power.master_thrower_quick_draw",
+      "relation": "grants",
+      "to": "feat.quick_draw"
+    },
+    {
+      "from": "power.master_thrower_snatch_arrows",
+      "relation": "grants",
+      "to": "feat.snatch_arrows"
+    },
+    {
+      "from": "power.master_thrower_critical_throw",
+      "relation": "grants",
+      "to": "feat.improved_critical"
+    }
+  ]
+}

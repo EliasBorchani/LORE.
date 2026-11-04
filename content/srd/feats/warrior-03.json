@@ -1,0 +1,602 @@
+{
+  "entities": [
+    {
+      "id": "feat.cavalry_charger",
+      "type": "feat",
+      "name": {
+        "fr": "Cavalier chevronné",
+        "en": "Cavalry Charger"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "mounted",
+        "melee"
+      ],
+      "description": {
+        "fr": "Se battre en selle est devenu pour lui une seconde nature, et sa monture ne fait plus qu'un avec sa lance.\n\nEn jeu\n• Condition : 1 degré en Équitation, Charge dévastatrice, Combat monté, Piétinement, bonus de base à l'attaque +6.\n• Charge sautée : à cheval, charge contre un adversaire d'au moins une catégorie de taille de moins que la monture. Test d'Équitation à la fin du mouvement, DD 10 (+2 aux dégâts de charge) ou DD 20 (+4). Échec de 1 à 4 : l'attaque rate automatiquement ; échec de 5 ou plus : elle rate et le personnage tombe dans une case adjacente à la monture.\n• Désarçonnement : à cheval, charge contre un adversaire lui aussi monté. Si l'attaque touche, bousculade gratuite ; si elle réussit, l'adversaire recule mais sa monture reste sur place, il est donc désarçonné.\n• Piétinement terrible : à cheval, il tente plusieurs renversements contre des adversaires différents, et la monture peut porter une attaque de sabots contre chaque adversaire renversé.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@skill.ride.ranks >= 1 and has('feat.spirited_charge') and has('feat.mounted_combat') and has('feat.trample') and @bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table."
+    },
+    {
+      "id": "feat.elusive_target",
+      "type": "feat",
+      "name": {
+        "fr": "Cible mouvante",
+        "en": "Elusive Target"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "defense",
+        "melee"
+      ],
+      "description": {
+        "fr": "Viser cet adversaire est une épreuve : il se glisse, se tord et retourne la force de ses ennemis contre eux.\n\nEn jeu\n• Condition : Dex 13, Esquive, Souplesse du serpent, bonus de base à l'attaque +6.\n• Annulation d'attaque en puissance : il utilise Esquive contre un adversaire qui lui porte une attaque en puissance ; l'adversaire perd le bonus aux dégâts mais subit quand même le malus à l'attaque.\n• Diversion désolante : pris en tenaille et utilisant Esquive contre l'un des deux, la première attaque de celui-ci rate automatiquement, mais un jet est fait contre l'autre assaillant, pris au dépourvu. Les attaques suivantes ne sont pas touchées.\n• Fuite tentante : après avoir provoqué une attaque d'opportunité en quittant une case contrôlée, si l'adversaire la rate, il peut tenter un croc-en-jambe immédiat sans risquer de croc-en-jambe en retour.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.dodge') and has('feat.mobility') and @bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table."
+    },
+    {
+      "id": "feat.combat_brute",
+      "type": "feat",
+      "name": {
+        "fr": "Combattant brutal",
+        "en": "Combat Brute"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il sait donner toute sa force et son élan au combat, et chaque coup pousse l'ennemi un peu plus vers la défaite.\n\nEn jeu\n• Condition : For 13, Attaque en puissance, Science de la destruction, bonus de base à l'attaque +6.\n• Avancée à grands coups : après une bousculade réussie, au round suivant il gagne contre cet adversaire un bonus aux attaques et aux dégâts égal au nombre de cases dont il l'a repoussé (3 m = 2 cases = +2).\n• Élan puissant : il charge au premier round, puis fait une attaque en puissance au second avec un nombre supérieur à 4. Le bonus aux dégâts est alors 1,5 fois ce nombre (3 fois pour une arme à deux mains qui n'est pas double) et remplace celui d'Attaque en puissance.\n• Enchaînement destructeur : après avoir détruit l'arme ou le bouclier d'un adversaire, il porte une attaque de corps à corps supplémentaire contre lui, avec le même bonus que l'attaque de destruction.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack') and has('feat.improved_sunder') and @bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table."
+    },
+    {
+      "id": "feat.raptor_school",
+      "type": "feat",
+      "name": {
+        "fr": "École du rapace",
+        "en": "Raptor School"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "melee",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il a appris des techniques de combat inspirées des oiseaux de proie : plongeon, feinte d'ailes et patience du chasseur.\n\nEn jeu\n• Condition : Sag 13, 5 degrés en Saut, bonus de base à l'attaque +6.\n• Piqué de l'aigle : charge, ou saut d'au moins 3 m de haut, contre un adversaire. Test de Saut à la fin du mouvement, DD 15 (+2 aux dégâts) ou DD 25 (+4). Échec de 1 à 4 : l'attaque rate automatiquement ; échec de 5 ou plus : elle rate et il tombe dans une case adjacente à la cible.\n• Plumes du faucon : avec une cape, action simple pour la faire tournoyer et tenter une feinte en combat (bonus de base à l'attaque à la place du modificateur de Bluff). S'il réussit, la cible est prise au dépourvu par sa prochaine attaque.\n• Yeux de l'épervier : il observe un adversaire 1 à 3 rounds complets sans rien faire d'autre. Sa prochaine attaque de corps à corps contre lui gagne +2 à l'attaque et aux dégâts par round d'observation (+6 au maximum). Il perd l'avantage s'il est attaqué pendant l'observation ou s'il n'attaque pas dans les 3 rounds suivants.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.wis.score >= 13 and @skill.jump.ranks >= 5 and @bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table."
+    },
+    {
+      "id": "feat.sun_school",
+      "type": "feat",
+      "name": {
+        "fr": "École du soleil",
+        "en": "Sun School"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "melee",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Il connaît plusieurs techniques de combat à mains nues qui portent la clarté, l'élan et l'éblouissement du soleil.\n\nEn jeu\n• Condition : déluge de coups, bonus de base à l'attaque +6.\n• Avancée inexorable de l'aube : les deux premières attaques à mains nues d'un déluge de coups touchent le même adversaire. Il recule alors de 1,50 m et le personnage peut avancer de 1,50 m, sans attaque d'opportunité pour l'un ni pour l'autre.\n• Lueur du coucher : après s'être déplacé instantanément (porte dimensionnelle, pas chassé…) vers une case adjacente à un ennemi, il peut porter une seule attaque contre lui, à son meilleur bonus de base à l'attaque.\n• Soleil aveuglant de midi : il étourdit le même adversaire deux rounds de suite à mains nues ; celui-ci est alors confus pendant 1d4 rounds après le second round d'étourdissement.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "has('power.monk_flurry_of_blows') and @bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table."
+    },
+    {
+      "id": "feat.formation_expert",
+      "type": "feat",
+      "name": {
+        "fr": "Expert de l'ordre serré",
+        "en": "Formation Expert"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "melee",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il est rompu au combat en unité militaire et sait tenir sa place dans la formation.\n\nEn jeu\n• Condition : bonus de base à l'attaque +6.\n• Il profite de ces manœuvres même si ses alliés n'ont pas le don.\n• Boucliers joints : lui et deux alliés adjacents, placés de part et d'autre, ont chacun un bouclier préparé : +1 à la CA.\n• Combler la brèche : quand un allié tombe à une distance qu'il pourrait parcourir en action de mouvement, et si chaque case entre eux est occupée par un allié, il effectue ce déplacement immédiatement, comme s'il l'avait préparé.\n• Mur d'armes d'hast : lui et deux alliés adjacents, placés de part et d'autre, manient chacun un épieu, une pique, un trident, une coutille, une guisarme, une hallebarde ou une corsèque : +2 aux jets d'attaque.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table."
+    },
+    {
+      "id": "feat.giantbane",
+      "type": "feat",
+      "name": {
+        "fr": "Géanticide",
+        "en": "Giantbane"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "melee",
+        "defense",
+        "skill"
+      ],
+      "description": {
+        "fr": "On l'a entraîné à affronter des adversaires bien plus grands que lui et à retourner leur taille contre eux.\n\nEn jeu\n• Condition : taille M ou plus petite, 5 degrés en Acrobaties, bonus de base à l'attaque +6.\n• Embarquement clandestin : il se déplace vers une case adjacente à une créature d'au moins deux catégories de taille de plus. Au round suivant, test d'Escalade DD 10 en action libre pour s'accrocher à elle (il occupe une de ses cases). La créature subit -4 à ses attaques contre lui et peut le faire tomber par un test de lutte opposé à son Escalade.\n• Entre les jambes : défense totale, attaqué par une créature d'au moins deux catégories de plus ; il gagne +4 de bonus d'esquive à la CA (cumulable avec la défense totale). S'il évite l'attaque, il peut au tour suivant faire un test d'Acrobaties DD 15 pour passer entre ses jambes. Échec ou aucune case libre : il reste sur place.\n• Mort venue d'en bas : après avoir réussi « entre les jambes », une attaque unique avec +4, contre une créature qui est alors prise au dépourvu.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@skill.tumble.ranks >= 5 and @bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table. La condition de taille (M ou plus petit) n'est pas vérifiée par la fiche."
+    },
+    {
+      "id": "feat.shock_trooper",
+      "type": "feat",
+      "name": {
+        "fr": "Soldat de brèche",
+        "en": "Shock Trooper"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "tactical",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Aucune formation de soldats ne résiste à ses assauts : il enfonce les lignes ennemies comme un bélier.\n\nEn jeu\n• Condition : For 13, Attaque en puissance, Science de la bousculade, bonus de base à l'attaque +6.\n• Bousculade dirigée : après une bousculade réussie pendant une charge, pour chaque case de recul il peut aussi pousser l'adversaire d'une case vers la gauche ou la droite.\n• Bousculade en cascade : une bousculade réussie qui fait reculer l'adversaire sur une case déjà occupée par un autre ennemi lui permet de tenter un croc-en-jambe contre les deux à la fois, sans croc-en-jambe en retour possible en cas d'échec.\n• Charge inconsidérée : charge qui se termine par une attaque en puissance avec un nombre supérieur à 4. Il subit les effets habituels de la charge (-2 en CA, +2 en attaque), mais peut convertir une partie du malus en bonus de CA plutôt qu'en dégâts (malus de -7 : +3 en CA et 4 dégâts, ou 8 à deux mains).\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.power_attack') and has('feat.improved_bull_rush') and @bab >= 6",
+      "note": "Don tactique : les manœuvres ne sont pas gérées par la fiche, à jouer à la table."
+    },
+    {
+      "id": "feat.quick_staff",
+      "type": "feat",
+      "name": {
+        "fr": "Bâton véloce",
+        "en": "Quick Staff"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon",
+        "defense"
+      ],
+      "description": {
+        "fr": "Le bâton tourne autour de lui comme un écran mouvant, et celui qui l'approche se heurte à une garde mobile.\n\nEn jeu\n• Condition : Arme de prédilection (bâton), Combat à deux armes, Esquive, Expertise du combat.\n• Quand il utilise Expertise du combat avec un malus d'au moins -1 à l'attaque, il gagne +2 de bonus d'esquive à la CA en plus de celui d'Expertise du combat."
+      },
+      "prerequisite": "has('feat.weapon_focus') and has('feat.two_weapon_fighting') and has('feat.dodge') and has('feat.combat_expertise')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.crescent_moon",
+      "type": "feat",
+      "name": {
+        "fr": "Croissant de lune",
+        "en": "Crescent Moon"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Maître de l'épée et de la dague, il enchaîne les deux lames en un geste gracieux qui arrache l'arme des mains adverses.\n\nEn jeu\n• Condition : Arme de prédilection (dague), Arme de prédilection (épée bâtarde, épée courte, épée longue ou cimeterre), Combat à deux armes, Science du combat à deux armes, Science du désarmement.\n• Quand il touche une créature à l'épée et à la dague dans le même round, il peut tenter de la désarmer immédiatement, par une action libre."
+      },
+      "prerequisite": "has('feat.weapon_focus') and has('feat.two_weapon_fighting') and has('feat.improved_two_weapon_fighting') and has('feat.improved_disarm')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.anvil_of_thunder",
+      "type": "feat",
+      "name": {
+        "fr": "Enclume du tonnerre",
+        "en": "Anvil of Thunder"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "La hache et le marteau frappent tour à tour comme l'orage sur l'enclume, et leur cible reste assommée.\n\nEn jeu\n• Condition : For 13, Arme de prédilection (hache d'armes, hachette ou hache de guerre naine), Arme de prédilection (marteau de guerre ou marteau léger), Attaque en puissance, Combat à deux armes, Science de la destruction.\n• Quand il touche une créature à la hache et au marteau dans le même round, elle doit réussir un jet de Vigueur (DD 10 + moitié de son niveau + son modificateur de Force) ou être hébétée 1 round."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.weapon_focus') and has('feat.power_attack') and has('feat.two_weapon_fighting') and has('feat.improved_sunder')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.net_and_trident",
+      "type": "feat",
+      "name": {
+        "fr": "Filet et trident",
+        "en": "Net and Trident"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "ranged",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Il lance son filet, puis fond sur sa proie empêtrée et la transperce de son trident.\n\nEn jeu\n• Condition : Dex 15, Arme de prédilection (trident), Combat à deux armes, Maniement d'une arme exotique (filet).\n• Action complexe : attaque combinée. Il lance d'abord le filet ; si l'attaque touche et que le test de Force opposé maîtrise la cible, il fait un pas de placement de 1,50 m vers elle et porte une attaque à outrance au trident."
+      },
+      "prerequisite": "@ability.dex.score >= 15 and has('feat.weapon_focus') and has('feat.two_weapon_fighting') and has('feat.exotic_weapon_proficiency')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.spinning_halberd",
+      "type": "feat",
+      "name": {
+        "fr": "Hallebarde tournoyante",
+        "en": "Spinning Halberd"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Tranchant, pointe, crochet et manche : chaque partie de la hallebarde devient une arme entre ses mains.\n\nEn jeu\n• Condition : Arme de prédilection (hallebarde), Attaques réflexes, Combat à deux armes.\n• Quand il fait une attaque à outrance à la hallebarde, il gagne +1 de bonus d'esquive à la CA et une attaque supplémentaire à -5.\n• Cette attaque inflige 1d6 dégâts contondants + moitié du modificateur de Force."
+      },
+      "prerequisite": "has('feat.weapon_focus') and has('feat.combat_reflexes') and has('feat.two_weapon_fighting')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.high_sword_low_axe",
+      "type": "feat",
+      "name": {
+        "fr": "Lame haute, hache basse",
+        "en": "High Sword Low Axe"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "L'épée attire le regard en haut, la hache fauche les jambes en bas : l'adversaire perd l'équilibre.\n\nEn jeu\n• Condition : Arme de prédilection (épée bâtarde, épée courte, épée longue ou cimeterre), Arme de prédilection (hache d'armes, hachette ou hache de guerre naine), Combat à deux armes, Science du croc-en-jambe.\n• Quand il touche une créature à l'épée et à la hache dans le même round, il peut tenter immédiatement un croc-en-jambe par une action libre.\n• S'il réussit, Science du croc-en-jambe lui donne une attaque supplémentaire contre elle."
+      },
+      "prerequisite": "has('feat.weapon_focus') and has('feat.two_weapon_fighting') and has('feat.improved_trip')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.lightning_mace",
+      "type": "feat",
+      "name": {
+        "fr": "Masses foudroyantes",
+        "en": "Lightning Mace"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Deux masses d'armes légères qui s'abattent à une rapidité incroyable : un coup trop bien placé et la suivante frappe déjà.\n\nEn jeu\n• Condition : Arme de prédilection (masse d'armes légère), Attaques réflexes, Combat à deux armes.\n• En combattant avec une masse d'armes légère dans chaque main, il porte une attaque supplémentaire, au même bonus, chaque fois qu'un jet d'attaque donne un critique possible."
+      },
+      "prerequisite": "has('feat.weapon_focus') and has('feat.combat_reflexes') and has('feat.two_weapon_fighting')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.bear_fang",
+      "type": "feat",
+      "name": {
+        "fr": "Morsure de l'ours",
+        "en": "Bear Fang"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Hache et dague : il arrive au corps à corps en un clin d'œil et empoigne l'adversaire comme un ours.\n\nEn jeu\n• Condition : For 15, Arme de prédilection (dague), Arme de prédilection (hache d'armes, hachette ou hache de guerre naine), Attaque en puissance, Combat à deux armes.\n• Quand il touche une créature à la dague et à la hache dans le même round, il inflige des dégâts normaux et peut engager une lutte par une action libre, sans attaque d'opportunité et sans attaque de contact (comme avec le pouvoir d'étreinte).\n• S'il maintient sa prise, il lâche la hache mais porte aussitôt une attaque de dague contre l'adversaire (bonus de base maximal, malus habituel de -4 en lutte), et il peut continuer à la dague les rounds suivants."
+      },
+      "prerequisite": "@ability.str.score >= 15 and has('feat.weapon_focus') and has('feat.power_attack') and has('feat.two_weapon_fighting')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.hammers_edge",
+      "type": "feat",
+      "name": {
+        "fr": "Tranchant du marteau",
+        "en": "Hammer's Edge"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Le marteau et l'épée s'abattent avec une telle puissance que l'ennemi est enfoncé dans le sol.\n\nEn jeu\n• Condition : For 15, Arme de prédilection (épée bâtarde, épée courte, épée longue ou cimeterre), Arme de prédilection (marteau de guerre ou marteau léger), Combat à deux armes, Science de la bousculade.\n• Quand il touche une créature à l'épée et au marteau dans le même round, elle doit réussir un jet de Vigueur (DD 10 + moitié de son niveau + son modificateur de Force) ou tomber à terre."
+      },
+      "prerequisite": "@ability.str.score >= 15 and has('feat.weapon_focus') and has('feat.two_weapon_fighting') and has('feat.improved_bull_rush')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    },
+    {
+      "id": "feat.three_mountains",
+      "type": "feat",
+      "name": {
+        "fr": "Trois montagnes",
+        "en": "Three Mountains"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "general",
+        "weapon_style",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il manie les armes contondantes lourdes comme si elles étaient des pans de montagne qui s'abattent sur l'adversaire.\n\nEn jeu\n• Condition : For 13, Arme de prédilection (masse d'armes lourde, massue ou morgenstern), Attaque en puissance, Enchaînement.\n• Quand il touche une créature deux fois avec une masse d'armes lourde, une massue ou une morgenstern dans le même round, elle doit réussir un jet de Vigueur (DD 10 + moitié de son niveau + son modificateur de Force) ou être nauséeuse 1 round."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.weapon_focus') and has('feat.power_attack') and has('feat.cleave')",
+      "note": "Le choix des armes de Arme de prédilection n'est pas vérifié par la fiche."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.cavalry_charger",
+      "relation": "requires",
+      "to": "feat.spirited_charge"
+    },
+    {
+      "from": "feat.cavalry_charger",
+      "relation": "requires",
+      "to": "feat.mounted_combat"
+    },
+    {
+      "from": "feat.cavalry_charger",
+      "relation": "requires",
+      "to": "feat.trample"
+    },
+    {
+      "from": "feat.elusive_target",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.elusive_target",
+      "relation": "requires",
+      "to": "feat.mobility"
+    },
+    {
+      "from": "feat.combat_brute",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.combat_brute",
+      "relation": "requires",
+      "to": "feat.improved_sunder"
+    },
+    {
+      "from": "feat.shock_trooper",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.shock_trooper",
+      "relation": "requires",
+      "to": "feat.improved_bull_rush"
+    },
+    {
+      "from": "feat.quick_staff",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.quick_staff",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.quick_staff",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.quick_staff",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.crescent_moon",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.crescent_moon",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.crescent_moon",
+      "relation": "requires",
+      "to": "feat.improved_two_weapon_fighting"
+    },
+    {
+      "from": "feat.crescent_moon",
+      "relation": "requires",
+      "to": "feat.improved_disarm"
+    },
+    {
+      "from": "feat.anvil_of_thunder",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.anvil_of_thunder",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.anvil_of_thunder",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.anvil_of_thunder",
+      "relation": "requires",
+      "to": "feat.improved_sunder"
+    },
+    {
+      "from": "feat.net_and_trident",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.net_and_trident",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.net_and_trident",
+      "relation": "requires",
+      "to": "feat.exotic_weapon_proficiency"
+    },
+    {
+      "from": "feat.spinning_halberd",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.spinning_halberd",
+      "relation": "requires",
+      "to": "feat.combat_reflexes"
+    },
+    {
+      "from": "feat.spinning_halberd",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.high_sword_low_axe",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.high_sword_low_axe",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.high_sword_low_axe",
+      "relation": "requires",
+      "to": "feat.improved_trip"
+    },
+    {
+      "from": "feat.lightning_mace",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.lightning_mace",
+      "relation": "requires",
+      "to": "feat.combat_reflexes"
+    },
+    {
+      "from": "feat.lightning_mace",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.bear_fang",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.bear_fang",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.bear_fang",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.hammers_edge",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.hammers_edge",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.hammers_edge",
+      "relation": "requires",
+      "to": "feat.improved_bull_rush"
+    },
+    {
+      "from": "feat.three_mountains",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.three_mountains",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.three_mountains",
+      "relation": "requires",
+      "to": "feat.cleave"
+    }
+  ]
+}

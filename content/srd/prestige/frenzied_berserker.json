@@ -1,0 +1,385 @@
+{
+  "entities": [
+    {
+      "id": "class.frenzied_berserker",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Berserker frénétique",
+        "en": "Frenzied Berserker"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "melee"
+      ],
+      "description": {
+        "fr": "La bataille est sa drogue. Il ne se bat pour aucune cause : c'est le frisson du combat qui le pousse, et il cherche la prochaine guerre comme d'autres cherchent la prochaine bouteille.\n\nEn jeu\n• Dé de vie : d12. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non loyal ; bonus de base à l'attaque +6 ; dons Attaque en puissance, Enchaînement, Rage destructrice et Rage intimidante.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Équitation, Escalade, Intimidation, Natation, Saut.\n• Aptitudes : dur à cuire et frénésie (1) ; enchaînement suprême (2) ; frénésie immortelle (4) ; science de l'attaque en puissance (5) ; inspiration frénétique (6) ; frénésie aggravée (8) ; frénésie sans fatigue et maîtrise de l'attaque en puissance (10)."
+      },
+      "hitDie": 12,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 6 and has('feat.power_attack') and has('feat.cleave') and has('feat.destructive_rage') and has('feat.intimidating_rage')",
+      "note": "Condition dans la formule : bonus de base et les quatre dons (Rage destructrice et Rage intimidante sont des dons du Codex Martial, ids feat.destructive_rage et feat.intimidating_rage). En texte seulement : alignement non loyal."
+    },
+    {
+      "id": "power.frenzied_berserker_toughness",
+      "type": "class_power",
+      "name": {
+        "fr": "Dur à cuire",
+        "en": "Toughness"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Un corps habitué aux coups.\n\nEn jeu\n• Reçoit le don Dur à cuire en don supplémentaire, même sans en remplir les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.frenzied_berserker_frenzy",
+      "type": "class_power",
+      "name": {
+        "fr": "Frénésie",
+        "en": "Frenzy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Plus aucun contrôle, plus aucune défense : seulement la force brute.\n\nEn jeu\n• Capacité extraordinaire, pendant le combat. Entrer en frénésie est une action libre (pendant son tour seulement), une seule fois par rencontre.\n• +6 en Force ; une attaque supplémentaire au plus haut bonus de base lors d'une attaque à outrance (ne se cumule pas avec rapidité) ; −4 en CA ; 2 points de dégâts non-létaux par round.\n• Durée : 3 rounds + modificateur de Constitution. Arrêt volontaire une fois par round : jet de Volonté DD 20.\n• Utilisations : 1 par jour, une de plus à chaque niveau impair (5 au niveau 9).\n• S'il subit des dégâts avec des utilisations restantes, il entre en frénésie au début de son tour suivant, sauf jet de Volonté DD 10 + dégâts subis.\n• Pas de compétences de Dextérité, Intelligence ou Charisme (sauf Intimidation), pas de Concentration, de sorts ni d'objets magiques à activer ; ni Expertise du combat, ni dons de création ou de métamagie.\n• Il doit attaquer les ennemis qu'il perçoit, sinon la créature la plus proche, ami ou non.\n• À la fin : fatigué jusqu'à la fin de la rencontre (épuisé s'il sortait aussi d'une rage). Cumulable avec la rage du barbare."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.frenzied_berserker_frenzy') and not has('power.frenzied_berserker_greater_frenzy')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -4,
+          "condition": "active('toggle.frenzied_berserker_frenzy')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.frenzied_berserker') + 1) / 2)",
+      "note": "Comme la rage du barbare : toggle. L'attaque supplémentaire, les dégâts non-létaux, la durée et la fatigue ne sont pas dans le modèle."
+    },
+    {
+      "id": "power.frenzied_berserker_supreme_cleave",
+      "type": "class_power",
+      "name": {
+        "fr": "Enchaînement suprême",
+        "en": "Supreme cleave"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Il avance d'un pas entre deux coups.\n\nEn jeu\n• Niveau 2 : un pas de placement de 1,50 m avant une attaque d'enchaînement (don Enchaînement ou Succession d'enchaînements).\n• Un seul pas par round ; impossible s'il s'est déjà déplacé ce round."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.frenzied_berserker_deathless_frenzy",
+      "type": "class_power",
+      "name": {
+        "fr": "Frénésie immortelle",
+        "en": "Deathless frenzy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Même mort, il continue.\n\nEn jeu\n• Capacité extraordinaire, niveau 4 : pendant la frénésie, il n'est ni hors de combat à 0 pv ni mourant, et ne meurt pas même à −10 pv ou moins ; il combat jusqu'à la fin de la frénésie.\n• Ensuite ses blessures s'appliquent normalement.\n• Sans effet contre la mort par dégâts massifs, exécution ou désintégration."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.frenzied_berserker_improved_power_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de l'attaque en puissance",
+        "en": "Improved power attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Chaque point sacrifié en précision se paie en dégâts, avec intérêt.\n\nEn jeu\n• Niveau 5 : avec Attaque en puissance, +3 aux dégâts au corps à corps par −2 imposé à l'attaque (−1 seulement avec une arme à deux mains, sauf arme double). Ne se cumule pas avec l'effet normal du don."
+      },
+      "effects": [],
+      "note": "Non modélisé : le nombre de points mis dans Attaque en puissance est un choix du joueur ; à compter à la main."
+    },
+    {
+      "id": "power.frenzied_berserker_inspire_frenzy",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration frénétique",
+        "en": "Inspire frenzy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Sa folie est contagieuse.\n\nEn jeu\n• Capacité surnaturelle, niveau 6 : s'il est en frénésie, ses alliés consentants à 3 m ou moins reçoivent les effets (bons et mauvais) de la frénésie.\n• Durée : 3 rounds + modificateur de Constitution du berserker, même s'ils s'éloignent ensuite.\n• Utilisations : 1 par jour au niveau 6, une de plus à chaque niveau pair ; une fois par rencontre."
+      },
+      "effects": [],
+      "usesPerDay": "floor(level('class.frenzied_berserker') / 2) - 2",
+      "note": "Non modélisé : la durée et le partage de la frénésie sont à suivre à la main."
+    },
+    {
+      "id": "power.frenzied_berserker_greater_frenzy",
+      "type": "class_power",
+      "name": {
+        "fr": "Frénésie aggravée",
+        "en": "Greater frenzy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "La tempête monte d'un cran.\n\nEn jeu\n• Niveau 8 : le bonus de Force de la frénésie passe de +6 à +10."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.frenzied_berserker_frenzy')"
+        }
+      ]
+    },
+    {
+      "id": "power.frenzied_berserker_tireless_frenzy",
+      "type": "class_power",
+      "name": {
+        "fr": "Frénésie sans fatigue",
+        "en": "Tireless frenzy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Il ne s'écroule plus.\n\nEn jeu\n• Niveau 10 : la fin de la frénésie ne le fatigue plus (les dégâts non-létaux restent)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.frenzied_berserker_supreme_power_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise de l'attaque en puissance",
+        "en": "Supreme power attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "frenzied_berserker"
+      ],
+      "description": {
+        "fr": "Le sommet de la brutalité.\n\nEn jeu\n• Niveau 10 : avec Attaque en puissance, +2 aux dégâts au corps à corps (+4 avec une arme à deux mains, sauf arme double) par −1 imposé à l'attaque. Ne se cumule pas avec l'effet normal ni avec la science."
+      },
+      "effects": [],
+      "note": "Non modélisé, comme la science de l'attaque en puissance. Le Codex imprime « −4 » pour l'arme à deux mains : lu comme +4."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.frenzied_berserker_toughness",
+        "power.frenzied_berserker_frenzy"
+      ]
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.frenzied_berserker_supreme_cleave"
+      ]
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.frenzied_berserker_deathless_frenzy"
+      ]
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.frenzied_berserker_improved_power_attack"
+      ]
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.frenzied_berserker_inspire_frenzy"
+      ]
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.frenzied_berserker_greater_frenzy"
+      ]
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.frenzied_berserker",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.frenzied_berserker_tireless_frenzy",
+        "power.frenzied_berserker_supreme_power_attack"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.frenzied_berserker",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.frenzied_berserker_toughness",
+      "relation": "grants",
+      "to": "feat.toughness"
+    }
+  ]
+}

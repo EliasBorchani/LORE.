@@ -111,7 +111,8 @@
       "source": "SRD",
       "labels": [
         "general",
-        "magic"
+        "magic",
+        "hexblade_bonus"
       ],
       "description": {
         "fr": "Les protections magiques ne l’impressionnent plus. Ses sorts trouvent la faille, comme une lame qui glisse entre deux plaques d’armure.\n\nEn jeu\n• +2 au test de niveau de lanceur (1d20 + niveau de lanceur de sorts) pour passer la résistance à la magie d’une cible.\n• Vaut pour tous ses sorts : le bonus apparaît sur chaque variante."
@@ -137,7 +138,8 @@
       "source": "SRD",
       "labels": [
         "general",
-        "magic"
+        "magic",
+        "hexblade_bonus"
       ],
       "description": {
         "fr": "À force de percer les défenses magiques, il ne cherche même plus la faille : il la crée. Les résistances les plus solides cèdent sous la pression.\n\nEn jeu\n• Condition : Efficacité des sorts accrue.\n• +2 de plus au test de niveau de lanceur pour passer la résistance à la magie, soit +4 avec Efficacité des sorts accrue.\n• Vaut pour tous ses sorts : le bonus apparaît sur chaque variante."
@@ -211,7 +213,8 @@
       "labels": [
         "general",
         "warblade_bonus",
-        "defense"
+        "defense",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Marches forcées, nuits glacées, jours sans eau : il encaisse tout. Son corps tient bien après le moment où les autres auraient abandonné.\n\nEn jeu\n• +4 aux tests de Natation contre les dégâts non létaux de l’épuisement.\n• +4 aux tests de Constitution pour courir plus longtemps, retenir son souffle, et tenir face aux dégâts non létaux d’une marche forcée, de la faim ou de la soif.\n• +4 aux jets de Vigueur contre les dégâts non létaux de la chaleur ou du froid, et contre l’asphyxie.\n• Il dort en armure légère ou intermédiaire et se réveille sans être fatigué.\n• Normal : une nuit en armure intermédiaire ou lourde laisse fatigué le lendemain.\n• Un rôdeur l’obtient gratuitement au niveau 3."
@@ -246,7 +249,8 @@
       "labels": [
         "general",
         "fighter_bonus",
-        "defense"
+        "defense",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Il garde un œil sur l’ennemi le plus dangereux, lit ses épaules, anticipe ses coups. Quand la lame arrive, il n’est déjà plus tout à fait là.\n\nEn jeu\n• Condition : Dextérité 13.\n• À son tour, le personnage désigne un adversaire : +1 d’esquive à la CA contre ses attaques.\n• Il perd ce bonus quand il perd son bonus de Dextérité à la CA.\n• Les bonus d’esquive se cumulent entre eux.\n• Un guerrier peut le prendre comme don supplémentaire."

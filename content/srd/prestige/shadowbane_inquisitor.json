@@ -1,0 +1,473 @@
+{
+  "entities": [
+    {
+      "id": "class.shadowbane_inquisitor",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Inquisiteur fléombre",
+        "en": "Shadowbane Inquisitor"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "divine"
+      ],
+      "prerequisite": "@bab >= 5 and @skill.knowledge_religion.ranks >= 2 and @skill.sense_motive.ranks >= 8 and @skill.gather_information.ranks >= 4 and has('feat.power_attack')",
+      "description": {
+        "fr": "Armure d’un blanc d’os et conviction sans faille : il traque le Mal pour l’abattre, pas pour le comprendre. Chevalier de l’ordre de l’Illumination, il laisse aux traqueurs fléombres la patience de l’enquête et se charge de l’épée, de la lumière et des flammes purificatrices.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : alignement loyal bon ; bonus de base à l’attaque +5 ; 2 rangs en Connaissances (religion), 8 rangs en Psychologie, 4 rangs en Renseignements ; don Attaque en puissance ; pouvoir de détection du Mal ou capacité de lancer détection du Mal comme sort divin ; pouvoir de renvoi des morts-vivants ; attaque sournoise +1d6.\n• Formé aux armes courantes et de guerre, à toutes les armures et aux boucliers (sauf le pavois).\n• Compétences de classe : Artisanat, Concentration, Connaissances (religion), Décryptage, Déplacement silencieux, Discrétion, Escalade, Fouille, Natation, Premiers secours, Profession, Psychologie, Renseignements, Saut.\n• Aucun sort propre : la discrétion sacrée sacrifie un sort divin déjà acquis.\n• Aptitudes : intime conviction, percer les ténèbres (1) ; châtiment, discrétion sacrée (2) ; Science de la destruction (3) ; attaque sournoise (4) ; pureté impitoyable (5) ; ferveur de la vertu (8) ; lumière ardente (9).\n• Paladin devenu inquisiteur : peut continuer à monter en paladin, tant qu’il reste loyal bon."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "note": "Conditions en formule : bonus de base, rangs, Attaque en puissance. Alignement (loyal bon), pouvoir de détection du Mal, renvoi des morts-vivants et attaque sournoise +1d6 : texte seulement. Dé de vie d10 lu sur la page (PDF 44). Noms anglais à confirmer : Unyielding conviction, Zeal of virtue, Blazing light."
+    },
+    {
+      "id": "power.shadowbane_inquisitor_unyielding_conviction",
+      "type": "class_power",
+      "name": {
+        "fr": "Intime conviction",
+        "en": "Unyielding conviction"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Sa foi ne vacille pas : même s’il change de camp, ce qu’il a appris ne le quitte pas.\n\nEn jeu\n• Si l’inquisiteur change d’alignement, il ne peut plus gagner de niveau dans cette classe.\n• Il garde les aptitudes des niveaux déjà acquis."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.shadowbane_inquisitor_pierce_the_darkness",
+      "type": "class_power",
+      "name": {
+        "fr": "Percer les ténèbres",
+        "en": "Pierce the darkness"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Il fait de sa foi une lampe : une lueur sainte l’entoure et révèle tout ce qui se cache dans l’ombre.\n\nEn jeu\n• Dépense une utilisation de renvoi des morts-vivants du jour.\n• Lumière vive dans un rayon de 6 m + 1,50 m par niveau d’inquisiteur, centrée sur lui, sans lueur au-delà.\n• Dure 10 minutes par niveau de classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.shadowbane_inquisitor_judgment",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment",
+        "en": "Judgment"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Il n’a pas besoin de la bénédiction d’un dieu pour savoir qui doit tomber : son jugement lui suffit, et sa lame suit.\n\nEn jeu\n• 1 fois par jour au niveau 2, 2 au niveau 6, 3 au niveau 10.\n• Une attaque au corps à corps contre une créature qu’il juge corrompue (quel que soit son alignement) : ajoute son bonus de Charisme (s’il est positif) au jet d’attaque et son niveau d’inquisiteur aux dégâts.\n• Contrairement au châtiment du Mal du paladin, la cible n’a pas besoin d’être mauvaise : c’est son propre jugement qui compte."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.shadowbane_inquisitor_judgment')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.shadowbane_inquisitor')",
+          "condition": "active('toggle.shadowbane_inquisitor_judgment')"
+        }
+      ],
+      "usesPerDay": "1 + floor((level('class.shadowbane_inquisitor') - 2) / 4)"
+    },
+    {
+      "id": "power.shadowbane_inquisitor_sacred_stealth",
+      "type": "class_power",
+      "name": {
+        "fr": "Discrétion sacrée",
+        "en": "Sacred stealth"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Un murmure de prière, un sort offert en sacrifice, et le chevalier en armure blanche devient aussi discret qu’une ombre.\n\nEn jeu\n• Action rapide (sans attaque d’opportunité) : sacrifie un sort divin préparé (ou un emplacement s’il lance ses sorts sans préparation).\n• Bonus de sainteté de +4 aux tests de Déplacement silencieux et de Discrétion (+8 à partir du niveau 7).\n• Dure autant de minutes que le niveau du sort sacrifié plus son bonus de Charisme (s’il est positif)."
+      },
+      "effects": [
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": "if(level('class.shadowbane_inquisitor') >= 7, 8, 4)",
+          "condition": "active('toggle.shadowbane_inquisitor_sacred_stealth')"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": "if(level('class.shadowbane_inquisitor') >= 7, 8, 4)",
+          "condition": "active('toggle.shadowbane_inquisitor_sacred_stealth')"
+        }
+      ],
+      "note": "Le sort sacrifié et la durée ne sont pas dans le modèle."
+    },
+    {
+      "id": "power.shadowbane_inquisitor_improved_sunder",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la destruction",
+        "en": "Improved Sunder"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Briser une arme maudite ou un objet corrompu, c’est lui qui sait le mieux comment s’y prendre.\n\nEn jeu\n• Gagne le don Science de la destruction comme don supplémentaire."
+      },
+      "effects": [],
+      "note": "Bonus feat : Science de la destruction (Improved Sunder)."
+    },
+    {
+      "id": "power.shadowbane_inquisitor_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Il ne méprise pas les coups bas quand ils servent à abattre un monstre : il apprend à frapper là où la cuirasse ne couvre plus.\n\nEn jeu\n• +1d6 aux dégâts au niveau 4, 2d6 au niveau 7, 3d6 au niveau 10.\n• Mêmes règles que l’attaque sournoise du roublard : cible prise en tenaille ou privée de son bonus de Dextérité à la CA, à 9 m au plus à distance.\n• Se cumule avec l’attaque sournoise d’une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor((level('class.shadowbane_inquisitor') - 1) / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.shadowbane_inquisitor_merciless_purity",
+      "type": "class_power",
+      "name": {
+        "fr": "Pureté impitoyable",
+        "en": "Merciless purity"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Chaque ennemi corrompu qui tombe lui laisse un peu de la clarté qu’il cherchait.\n\nEn jeu\n• Quand une créature qu’il a désignée par son châtiment meurt, bonus de sainteté de +1 aux jets de Réflexes et de Vigueur pendant 24 heures.\n• Il n’a pas besoin de tuer lui-même la créature.\n• Une seule fois par jour : les morts suivantes ne donnent rien de plus."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "1",
+          "condition": "active('toggle.shadowbane_inquisitor_merciless_purity')"
+        },
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": "1",
+          "condition": "active('toggle.shadowbane_inquisitor_merciless_purity')"
+        }
+      ]
+    },
+    {
+      "id": "power.shadowbane_inquisitor_zeal_of_virtue",
+      "type": "class_power",
+      "name": {
+        "fr": "Ferveur de la vertu",
+        "en": "Zeal of virtue"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Face à un ennemi qu’il a marqué de son jugement, sa conviction guide chaque coup.\n\nEn jeu\n• À partir du niveau 8 : après avoir désigné une créature par son châtiment, bonus de sainteté de +1 aux jets d’attaque et de dégâts contre elle jusqu’à la fin de la rencontre.\n• Le bonus ne s’applique pas à l’attaque de châtiment qui désigne la créature, seulement aux suivantes."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "1",
+          "condition": "active('toggle.shadowbane_inquisitor_zeal_of_virtue')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "1",
+          "condition": "active('toggle.shadowbane_inquisitor_zeal_of_virtue')"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le bonus ne vaut que contre la créature désignée : le toggle le suppose."
+    },
+    {
+      "id": "power.shadowbane_inquisitor_blazing_light",
+      "type": "class_power",
+      "name": {
+        "fr": "Lumière ardente",
+        "en": "Blazing light"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shadowbane_inquisitor"
+      ],
+      "description": {
+        "fr": "Sa lueur sainte cesse d’éclairer pour brûler : tout ce qui l’entoure sent la lumière mordre.\n\nEn jeu\n• Action simple, à partir du niveau 9 ; dépense une utilisation de renvoi des morts-vivants et demande que « percer les ténèbres » soit actif.\n• Toutes les créatures de la zone éclairée (sauf lui) subissent 4d6 dégâts.\n• Dégâts divins directs : aucune résistance aux énergies ne s’applique."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Dégâts non modélisés."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 1,
+      "bab": 1,
+      "ref": 0,
+      "fort": 2,
+      "will": 0,
+      "grants": [
+        "power.shadowbane_inquisitor_unyielding_conviction",
+        "power.shadowbane_inquisitor_pierce_the_darkness"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 2,
+      "bab": 2,
+      "ref": 0,
+      "fort": 3,
+      "will": 0,
+      "grants": [
+        "power.shadowbane_inquisitor_judgment",
+        "power.shadowbane_inquisitor_sacred_stealth"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 3,
+      "bab": 3,
+      "ref": 1,
+      "fort": 3,
+      "will": 1,
+      "grants": [
+        "power.shadowbane_inquisitor_improved_sunder"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 4,
+      "bab": 4,
+      "ref": 1,
+      "fort": 4,
+      "will": 1,
+      "grants": [
+        "power.shadowbane_inquisitor_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 5,
+      "bab": 5,
+      "ref": 1,
+      "fort": 4,
+      "will": 1,
+      "grants": [
+        "power.shadowbane_inquisitor_merciless_purity"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 6,
+      "bab": 6,
+      "ref": 2,
+      "fort": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 7,
+      "bab": 7,
+      "ref": 2,
+      "fort": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 8,
+      "bab": 8,
+      "ref": 2,
+      "fort": 6,
+      "will": 2,
+      "grants": [
+        "power.shadowbane_inquisitor_zeal_of_virtue"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 9,
+      "bab": 9,
+      "ref": 3,
+      "fort": 6,
+      "will": 3,
+      "grants": [
+        "power.shadowbane_inquisitor_blazing_light"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_inquisitor",
+      "level": 10,
+      "bab": 10,
+      "ref": 3,
+      "fort": 7,
+      "will": 3,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.shadowbane_inquisitor",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "power.shadowbane_inquisitor_improved_sunder",
+      "relation": "grants",
+      "to": "feat.improved_sunder"
+    }
+  ]
+}

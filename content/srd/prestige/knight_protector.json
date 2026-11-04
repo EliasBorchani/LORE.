@@ -1,0 +1,316 @@
+{
+  "entities": [
+    {
+      "id": "class.knight_protector",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chevalier protecteur",
+        "en": "Knight Protector"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Aristocrate hautain d'un temps qui s'efface, le chevalier protecteur a juré de faire revivre l'honneur et la chevalerie avant qu'ils ne disparaissent. Sa loyauté va à un code et à une nation, pas à un dieu : il protège les faibles, sert les nobles seigneurs et rend les coups pour ses compagnons.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal neutre ou loyal bon ; bonus de base à l'attaque +5 ; Connaissances (noblesse et royauté) 4 rangs, Diplomatie 6 rangs, Équitation 6 rangs ; dons Attaque en puissance, Combat monté, Enchaînement, Port des armures lourdes et Succession d'enchaînements.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Connaissances (noblesse et royauté), Détection, Diplomatie, Équitation, Intimidation.\n• Aptitudes : aura de valeur et position défensive (1, 4, 7, 10) ; grand effort (2, 5, 8) ; volonté de fer (2) ; enchaînement suprême (3) ; pas de quartier (6, 9) ; attaque vengeresse (10).\n• Code de la chevalerie : un chevalier qui le viole sciemment et sans raison valable perd les pouvoirs surnaturels de la classe et ne peut plus y gagner de niveau.\n• Un paladin peut prendre ces niveaux sans perdre ses niveaux de paladin."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.knowledge_nobility.ranks >= 4 and @skill.diplomacy.ranks >= 6 and @skill.ride.ranks >= 6 and has('feat.power_attack') and has('feat.mounted_combat') and has('feat.cleave') and has('feat.great_cleave') and has('proficiency.heavy_armor')",
+      "note": "Alignement (loyal neutre ou loyal bon) : texte seul. Le don Port des armures lourdes est lu comme la formation proficiency.heavy_armor."
+    },
+    {
+      "id": "power.knight_protector_aura_of_valor",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de valeur",
+        "en": "Aura of valor"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_protector"
+      ],
+      "description": {
+        "fr": "Il est l'idéal qu'il défend, et ceux qui l'entourent le sentent.\n\nEn jeu\n• Capacité surnaturelle : alliés à 3 m ou moins, +4 (moral) aux jets de sauvegarde contre la terreur.\n• Le bonus disparaît si le chevalier est paralysé, inconscient ou sans défense."
+      },
+      "effects": [],
+      "note": "Texte seul : l'aura profite aux alliés, pas à la feuille du chevalier."
+    },
+    {
+      "id": "power.knight_protector_defensive_stance",
+      "type": "class_power",
+      "name": {
+        "fr": "Position défensive",
+        "en": "Defensive stance"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_protector"
+      ],
+      "description": {
+        "fr": "Il se place devant le plus faible et prend le coup à sa place.\n\nEn jeu\n• Capacité extraordinaire : au début de son tour, il protège un allié à 1,50 m ou moins qui a moins de DV que lui.\n• Il choisit un nombre, qu'il retire à sa propre CA et que l'allié ajoute à la sienne.\n• Maximum 2 au niveau 1, puis +1 tous les 3 niveaux (3, 4, 5 aux niveaux 4, 7, 10)."
+      },
+      "effects": [],
+      "note": "Texte seul : le malus de CA change à chaque tour selon le choix du joueur."
+    },
+    {
+      "id": "power.knight_protector_extra_effort",
+      "type": "class_power",
+      "name": {
+        "fr": "Grand effort",
+        "en": "Extra effort"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_protector"
+      ],
+      "description": {
+        "fr": "Quand l'enjeu est trop haut, il trouve en lui un peu plus que ce qu'il avait.\n\nEn jeu\n• Capacité extraordinaire : une fois par jour, +2 à un test de compétence (à déclarer avant le jet).\n• Le bonus monte de +1 tous les 3 niveaux : +3 au niveau 5, +4 au niveau 8."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Nom anglais à confirmer. Texte seul : le test de compétence n'est pas fixé d'avance."
+    },
+    {
+      "id": "power.knight_protector_iron_will",
+      "type": "class_power",
+      "name": {
+        "fr": "Volonté de fer",
+        "en": "Iron will"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_protector"
+      ],
+      "description": {
+        "fr": "Son esprit est une forteresse.\n\nEn jeu\n• Capacité extraordinaire : niveau 2, il obtient le don Volonté de fer en don supplémentaire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.knight_protector_supreme_cleave",
+      "type": "class_power",
+      "name": {
+        "fr": "Enchaînement suprême",
+        "en": "Supreme cleave"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_protector"
+      ],
+      "description": {
+        "fr": "Il pousse son pas au bon moment pour enchaîner les ennemis.\n\nEn jeu\n• Capacité extraordinaire : niveau 3, un pas de placement de 1,50 m avant une attaque d'enchaînement (don Enchaînement ou Succession d'enchaînements).\n• Un seul pas de placement par round, et pas s'il s'est déjà déplacé ce round."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.knight_protector_no_quarter",
+      "type": "class_power",
+      "name": {
+        "fr": "Pas de quartier",
+        "en": "No quarter"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_protector"
+      ],
+      "description": {
+        "fr": "Personne ne passe à côté de lui sans y laisser un peu de sang.\n\nEn jeu\n• Capacité extraordinaire : une attaque d'opportunité supplémentaire par round au niveau 6, deux au niveau 9.\n• En plus de celles qu'il a normalement et de celles que donne Attaques réflexes.\n• Toujours une seule attaque par occasion."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.knight_protector_vengeful_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque vengeresse",
+        "en": "Vengeful strike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_protector"
+      ],
+      "description": {
+        "fr": "Celui qui a abattu un de ses compagnons ne va pas loin.\n\nEn jeu\n• Capacité surnaturelle : niveau 10. Contre une créature qui a abattu l'un de ses alliés (inconscient, mort ou sans défense) : son bonus de Charisme (s'il est positif) au jet d'attaque, +10 points de dégâts si le coup touche.\n• Une seule fois par round ; au plus autant de fois par jour que son bonus de Charisme (minimum 1).\n• Utilisable plusieurs fois sur la même créature."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.knight_protector_vengeful_strike')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.knight_protector_vengeful_strike')"
+        }
+      ],
+      "usesPerDay": "max(1, @ability.cha.mod)",
+      "note": "À cocher pour l'attaque concernée."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.knight_protector",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.knight_protector_aura_of_valor",
+        "power.knight_protector_defensive_stance"
+      ]
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.knight_protector_extra_effort",
+        "power.knight_protector_iron_will"
+      ]
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.knight_protector_supreme_cleave"
+      ]
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.knight_protector_no_quarter"
+      ]
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.knight_protector",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.knight_protector_vengeful_strike"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.knight_protector",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.knight_protector",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.knight_protector",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.knight_protector",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.knight_protector",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.knight_protector",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.knight_protector",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "power.knight_protector_iron_will",
+      "relation": "grants",
+      "to": "feat.iron_will"
+    }
+  ]
+}

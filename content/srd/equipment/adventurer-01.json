@@ -1,0 +1,278 @@
+{
+  "entities": [
+    {
+      "id": "item.barbed_dagger",
+      "type": "item",
+      "name": {
+        "fr": "Dague barbelée",
+        "en": "Barbed dagger"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "light"
+      ],
+      "description": {
+        "fr": "Une dague hérissée de barbillons, cruelle à retirer d’une plaie. Moins facile à manier qu’une dague, elle récompense ceux qui placent bien leur coup.\n\nEn jeu\n• Arme exotique légère.\n• Avec 5 degrés ou plus en Escamotage, +2 aux dégâts des attaques sournoises portées avec elle, coups critiques compris (le bonus est multiplié normalement).\n• Les personnages formés à son maniement la comptent comme une dague pour Arme de prédilection (et supérieure), Science du critique, Spécialisation martiale (et supérieure)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "35 po",
+        "weight": "500 g",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "19–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Le bonus de +2 aux dégâts des attaques sournoises (Escamotage 5 degrés) et l’équivalence avec la dague pour les dons ne sont pas modélisés."
+    },
+    {
+      "id": "item.wide_bladed_short_sword",
+      "type": "item",
+      "name": {
+        "fr": "Épée courte à lame large",
+        "en": "Wide-bladed short sword"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "light"
+      ],
+      "description": {
+        "fr": "Une épée courte à la lame et à la garde élargies : plus lourde à manier, mais pensée pour parer. Elle est très appréciée en main secondaire.\n\nEn jeu\n• Arme exotique légère.\n• Si l’on combat sur la défensive ou en défense totale, +1 d’esquive à la CA jusqu’à la fin du round, en plus du bonus habituel (+2 ou +4).\n• Même bonus avec Expertise du combat quand on convertit au moins 2 points d’attaque en CA.\n• Les personnages formés à son maniement la comptent comme une épée courte pour Arme de prédilection (et supérieure), Science du critique, Spécialisation martiale (et supérieure)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "75 po",
+        "weight": "1,5 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "19–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Le bonus d’esquive de +1 en combat défensif et l’équivalence avec l’épée courte pour les dons ne sont pas modélisés."
+    },
+    {
+      "id": "item.keen_rapier",
+      "type": "item",
+      "name": {
+        "fr": "Rapière vivelame",
+        "en": "Keen rapier"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Plus longue et plus fine qu’une rapière ordinaire, à la lame fuselée et au pommeau parfaitement équilibré. Difficile à bien tenir, elle sert à désarmer et à feinter. Beaucoup sont des armes de maître.\n\nEn jeu\n• Arme exotique à une main.\n• Formé à son maniement : +2 aux jets d’attaque opposés pour désarmer (ou pour résister à un désarmement) et +2 de circonstances aux tests de Bluff pour feinter en combat.\n• Attaque en finesse possible (Dextérité à l’attaque) si elle est faite pour la taille du porteur ; à deux mains, elle n’ajoute pas 1,5 × Force aux dégâts.\n• Les personnages formés à son maniement la comptent comme une rapière pour Arme de prédilection (et supérieure), Science du critique, Spécialisation martiale (et supérieure)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "75 po",
+        "weight": "1,5 kg",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "18–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Les bonus au désarmement et à la feinte, l’Attaque en finesse et l’équivalence avec la rapière pour les dons ne sont pas modélisés."
+    },
+    {
+      "id": "item.longstaff",
+      "type": "item",
+      "name": {
+        "fr": "Bâton long",
+        "en": "Longstaff"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double",
+        "monk"
+      ],
+      "description": {
+        "fr": "Une longue hampe de bois dur, sans fer ni lame : arme de pèlerin, de moine ou de mage prudent, que l’on fait tournoyer par les deux bouts. Bien tenue, elle protège contre les assaillants nombreux.\n\nEn jeu\n• Arme exotique à deux mains, arme double.\n• Combat à deux armes : chaque extrémité porte sa propre attaque, avec les malus habituels (une main et une arme légère).\n• Formé à son maniement, si l’on combat sur la défensive ou en défense totale, on ne peut pas être pris en tenaille jusqu’à la fin du round (même chose avec Expertise du combat en convertissant au moins 2 points d’attaque en CA).\n• Arme spéciale de moine (déluge de coups).\n• Tenu d’une seule main, il perd son statut d’arme double.\n• Les personnages formés à son maniement la comptent comme un bâton pour Arme de prédilection (et supérieure), Science du critique, Spécialisation martiale (et supérieure)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "15 po",
+        "weight": "3 kg",
+        "damage": "1d6/1d6",
+        "damageSmall": "1d4/1d4",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Une seule extrémité est modélisée (1d6) ; le combat à deux armes, l’immunité à la prise en tenaille et l’équivalence avec le bâton pour les dons ne sont pas modélisés. Nom anglais à confirmer (Longstaff ?)."
+    },
+    {
+      "id": "item.longaxe",
+      "type": "item",
+      "name": {
+        "fr": "Hache longue",
+        "en": "Longaxe"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed"
+      ],
+      "description": {
+        "fr": "Une grande hache au manche très allongé. Difficile à manier sans entraînement, elle permet à qui la maîtrise de frapper plus loin, au prix de la précision.\n\nEn jeu\n• Arme exotique à deux mains.\n• Formé à son maniement, avec Attaque en puissance (au moins 3 points d’attaque convertis en dégâts), on la manie comme une arme à allonge : elle atteint à 3 m, jamais au contact.\n• Le choix (allonge ou arme normale) dure jusqu’au début du tour suivant ; on ne peut pas utiliser les deux dans le même tour.\n• Les personnages formés à son maniement la comptent comme une grande hache pour Arme de prédilection (et supérieure), Science du critique, Spécialisation martiale (et supérieure)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "35 po",
+        "weight": "7,5 kg",
+        "damage": "1d12",
+        "damageSmall": "1d10",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d12",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "L’allonge avec Attaque en puissance et l’équivalence avec la grande hache pour les dons ne sont pas modélisées ; l’arme n’a pas l’étiquette reach car l’allonge est conditionnelle."
+    }
+  ]
+}

@@ -37,13 +37,21 @@ for (const file of files) {
     const at = `${at0} ${e.id}`
     mine.push(e)
     const s = skeletons.get(e.id)
-    if (!s) { problems.push(`${at}: unknown id (ids come from prepare.py)`); continue }
-    for (const k of ['type', 'provenance']) if (e[k] !== s[k]) problems.push(`${at}: ${k} must stay ${s[k]}`)
-    if (e.name?.en !== s.name.en || !e.name?.fr) problems.push(`${at}: name.en must stay "${s.name.en}", name.fr needed`)
-    for (const l of s.labels) if (!e.labels?.includes(l)) problems.push(`${at}: label ${l} missing`)
-    for (const [k, v] of Object.entries(s.item)) if (e.item?.[k] !== v) problems.push(`${at}: item.${k} must stay "${v}"`)
-    const fixed = s.effects ?? []
-    if (!same((e.effects ?? []).slice(0, fixed.length), fixed)) problems.push(`${at}: the table effects must come first, unchanged`)
+    if (s) {
+      for (const k of ['type', 'provenance']) if (e[k] !== s[k]) problems.push(`${at}: ${k} must stay ${s[k]}`)
+      if (e.name?.en !== s.name.en || !e.name?.fr) problems.push(`${at}: name.en must stay "${s.name.en}", name.fr needed`)
+      for (const l of s.labels) if (!e.labels?.includes(l)) problems.push(`${at}: label ${l} missing`)
+      for (const [k, v] of Object.entries(s.item)) if (e.item?.[k] !== v) problems.push(`${at}: item.${k} must stay "${v}"`)
+      const fixed = s.effects ?? []
+      if (!same((e.effects ?? []).slice(0, fixed.length), fixed)) problems.push(`${at}: the table effects must come first, unchanged`)
+    } else if (e.source === 'SRD' || !e.source) {
+      problems.push(`${at}: unknown id (SRD ids come from prepare.py)`)
+    } else {
+      // Items of other books (the Codex) have no prepare.py skeleton: check the shape only.
+      if (e.type !== 'item' || e.provenance !== 'official') problems.push(`${at}: type item, provenance official`)
+      if (!/^item\.[a-z0-9_]+$/.test(e.id) || !e.name?.fr || !e.name?.en) problems.push(`${at}: id item.<english name>, name.fr and name.en`)
+      if (!e.labels?.includes('item') || !e.item?.slot) problems.push(`${at}: label item and item.slot needed`)
+    }
     if (!/\n\nEn jeu\n• /.test(e.description?.fr ?? '')) problems.push(`${at}: description.fr must be a paragraph, then "\\n\\nEn jeu\\n• rule" lines`)
     for (const k of Object.keys(e)) if (!ENTITY_KEYS.has(k)) problems.push(`${at}: unexpected field ${k}`)
     if (/https?:\/\//.test(JSON.stringify(e))) problems.push(`${at}: no URLs`)

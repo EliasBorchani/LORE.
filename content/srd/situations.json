@@ -73,6 +73,15 @@
       "provenance": "official"
     },
     {
+      "id": "situation.climbing_in_trees",
+      "type": "situation",
+      "name": {
+        "fr": "pour grimper aux arbres",
+        "en": "when climbing trees"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.conceal_dagger",
       "type": "situation",
       "name": {
@@ -118,6 +127,15 @@
       "provenance": "official"
     },
     {
+      "id": "situation.feinting_in_combat",
+      "type": "situation",
+      "name": {
+        "fr": "pour feinter au combat",
+        "en": "when feinting in combat"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.following_tracks",
       "type": "situation",
       "name": {
@@ -127,11 +145,47 @@
       "provenance": "official"
     },
     {
+      "id": "situation.hiding_true_nature",
+      "type": "situation",
+      "name": {
+        "fr": "pour cacher sa vraie nature",
+        "en": "to hide one’s true nature"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.hunting_a_criminal",
+      "type": "situation",
+      "name": {
+        "fr": "à la recherche d’un criminel",
+        "en": "when hunting a criminal"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.identifying_spells",
+      "type": "situation",
+      "name": {
+        "fr": "pour identifier un sort en cours d’incantation",
+        "en": "to identify a spell being cast"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.items_of_your_craft",
       "type": "situation",
       "name": {
         "fr": "pour les objets de son artisanat",
         "en": "for items of your craft"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.maintaining_concentration",
+      "type": "situation",
+      "name": {
+        "fr": "pour maintenir sa concentration sur un sort",
+        "en": "to maintain concentration on a spell"
       },
       "provenance": "official"
     },
@@ -154,11 +208,38 @@
       "provenance": "official"
     },
     {
+      "id": "situation.near_stone_or_earth_wall",
+      "type": "situation",
+      "name": {
+        "fr": "près d’un mur de pierre ou de terre",
+        "en": "near a stone or earth wall"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.not_falling_when_hit",
+      "type": "situation",
+      "name": {
+        "fr": "pour ne pas tomber en subissant des dégâts",
+        "en": "to avoid falling when hit"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.not_getting_lost",
       "type": "situation",
       "name": {
         "fr": "pour ne pas se perdre",
         "en": "to avoid getting lost"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.on_chosen_terrain",
+      "type": "situation",
+      "name": {
+        "fr": "sur le terrain choisi",
+        "en": "on the chosen terrain"
       },
       "provenance": "official"
     },
@@ -186,6 +267,15 @@
       "name": {
         "fr": "pour résister à une tentative de lutte",
         "en": "to resist a grapple attempt"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.revealing_alien_nature",
+      "type": "situation",
+      "name": {
+        "fr": "en révélant sa nature aliénante",
+        "en": "when revealing one’s alien nature"
       },
       "provenance": "official"
     },
@@ -262,11 +352,29 @@
       "provenance": "official"
     },
     {
+      "id": "situation.swim_special_action_or_hazard",
+      "type": "situation",
+      "name": {
+        "fr": "pour une action spéciale ou éviter un danger en nageant",
+        "en": "for a special action or a hazard while swimming"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.thrown_or_sling",
       "type": "situation",
       "name": {
         "fr": "avec une arme de jet ou une fronde",
         "en": "with thrown weapons or slings"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.to_hide_after_diversion",
+      "type": "situation",
+      "name": {
+        "fr": "pour se cacher après une diversion",
+        "en": "to hide after a diversion"
       },
       "provenance": "official"
     },
@@ -334,6 +442,24 @@
       "provenance": "official"
     },
     {
+      "id": "situation.vs_charm",
+      "type": "situation",
+      "name": {
+        "fr": "contre les charmes",
+        "en": "against charm"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_charm_or_compulsion",
+      "type": "situation",
+      "name": {
+        "fr": "contre les charmes et la coercition",
+        "en": "against charm and compulsion"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.vs_charm_or_fear",
       "type": "situation",
       "name": {
@@ -352,11 +478,29 @@
       "provenance": "official"
     },
     {
+      "id": "situation.vs_death_effects",
+      "type": "situation",
+      "name": {
+        "fr": "contre les effets de mort",
+        "en": "against death effects"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.vs_designated_opponent",
       "type": "situation",
       "name": {
         "fr": "contre l’adversaire désigné",
         "en": "against the designated opponent"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_disease",
+      "type": "situation",
+      "name": {
+        "fr": "contre la maladie",
+        "en": "against disease"
       },
       "provenance": "official"
     },
@@ -375,6 +519,15 @@
       "name": {
         "fr": "contre le Mal",
         "en": "against evil"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_evil_outsiders",
+      "type": "situation",
+      "name": {
+        "fr": "contre les Extérieurs mauvais",
+        "en": "against evil outsiders"
       },
       "provenance": "official"
     },
@@ -532,6 +685,33 @@
       "provenance": "official"
     },
     {
+      "id": "situation.vs_necromancy",
+      "type": "situation",
+      "name": {
+        "fr": "contre la nécromancie",
+        "en": "against necromancy"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_non_pseudonatural",
+      "type": "situation",
+      "name": {
+        "fr": "envers les créatures non pseudo-naturelles",
+        "en": "with non-pseudonatural creatures"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_orcs",
+      "type": "situation",
+      "name": {
+        "fr": "contre les orques",
+        "en": "against orcs"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.vs_orcs_goblinoids",
       "type": "situation",
       "name": {
@@ -550,11 +730,47 @@
       "provenance": "official"
     },
     {
+      "id": "situation.vs_paralysis",
+      "type": "situation",
+      "name": {
+        "fr": "contre la paralysie",
+        "en": "against paralysis"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.vs_poison",
       "type": "situation",
       "name": {
         "fr": "contre le poison",
         "en": "against poison"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_scrying",
+      "type": "situation",
+      "name": {
+        "fr": "contre la scrutation",
+        "en": "against scrying"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_sleep",
+      "type": "situation",
+      "name": {
+        "fr": "contre le sommeil",
+        "en": "against sleep"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_sleep_or_paralysis",
+      "type": "situation",
+      "name": {
+        "fr": "contre le sommeil ou la paralysie",
+        "en": "against sleep or paralysis"
       },
       "provenance": "official"
     },
@@ -568,11 +784,74 @@
       "provenance": "official"
     },
     {
+      "id": "situation.vs_spells_of_chosen_school",
+      "type": "situation",
+      "name": {
+        "fr": "contre les sorts de l’école choisie",
+        "en": "against spells of the chosen school"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_stun",
+      "type": "situation",
+      "name": {
+        "fr": "contre l’étourdissement",
+        "en": "against stunning"
+      },
+      "provenance": "official"
+    },
+    {
       "id": "situation.vs_traps",
       "type": "situation",
       "name": {
         "fr": "contre les pièges",
         "en": "against traps"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_undead",
+      "type": "situation",
+      "name": {
+        "fr": "contre les morts-vivants",
+        "en": "against undead"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_disguise",
+      "type": "situation",
+      "name": {
+        "fr": "contre un déguisement",
+        "en": "against a disguise"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.vs_undead_effects",
+      "type": "situation",
+      "name": {
+        "fr": "contre les effets des morts-vivants",
+        "en": "against undead effects"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.when_taking_damage",
+      "type": "situation",
+      "name": {
+        "fr": "quand il subit des dégâts",
+        "en": "when taking damage"
+      },
+      "provenance": "official"
+    },
+    {
+      "id": "situation.with_light_or_finesse_weapon",
+      "type": "situation",
+      "name": {
+        "fr": "avec une arme légère ou maniable en finesse",
+        "en": "with a light or finesse weapon"
       },
       "provenance": "official"
     },

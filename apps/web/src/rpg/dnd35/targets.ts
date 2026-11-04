@@ -61,6 +61,11 @@ export const FEAT_SLOTS: TargetOption[] = [
   { key: 'feat_slots.wizard_bonus', label: 'Dons de magicien en bonus' },
   { key: 'feat_slots.monk_bonus', label: 'Dons de moine en bonus' },
   { key: 'feat_slots.rogue_special', label: 'Talents spéciaux de roublard' },
+  { key: 'feat_slots.scout_bonus', label: 'Dons d’éclaireur en bonus' },
+  { key: 'feat_slots.hexblade_bonus', label: 'Dons de tourmenteur en bonus' },
+  { key: 'feat_slots.spellsword_bonus', label: 'Dons de magelame en bonus' },
+  { key: 'feat_slots.hospitaler_bonus', label: 'Dons de chevalier hospitalier en bonus' },
+  { key: 'feat_slots.pious_templar_bonus', label: 'Dons de templier consacré en bonus' },
 ]
 
 const OTHER: TargetOption[] = [

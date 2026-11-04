@@ -1,0 +1,598 @@
+{
+  "entities": [
+    {
+      "id": "class.ranger_variant",
+      "type": "class",
+      "name": {
+        "fr": "Rôdeur (sans magie)",
+        "en": "Ranger (variant, no spellcasting)"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial"
+      ],
+      "description": {
+        "fr": "Dans une campagne centrée sur les combattants, le rôdeur laisse ses prières de côté. Il garde sa piste, son ennemi juré et son compagnon, et y gagne la vitesse du chasseur, une bénédiction de la nature et des soins qu’il tient de la forêt elle-même.\n\nEn jeu\n• Mêmes dé de vie, points de compétence, compétences, formation, alignement et progression d’attaque et de sauvegardes que le rôdeur du Manuel des Joueurs.\n• Pas de sorts divins, pas de niveau de lanceur.\n• Aptitudes du rôdeur conservées : ennemi juré, pistage et empathie sauvage (1) ; style de combat (2) ; endurance (3) ; compagnon animal (4) ; science du style de combat (6) ; déplacement facilité (7) ; pistage accéléré (8) ; esquive totale (9) ; maîtrise du style de combat (11) ; camouflage (13) ; discrétion totale (17).\n• Aptitudes ajoutées : déplacement accéléré (6) ; bénédiction de la nature (11) ; contact guérisseur (13) ; liberté de mouvement (16)."
+      },
+      "hitDie": 8,
+      "skillPoints": 6,
+      "source": "Complete Warrior",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.ranger_variant') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Variante du Codex Martial : le rôdeur du Manuel des Joueurs sans les sorts. Les aptitudes inchangées reprennent celles du rôdeur (mêmes ids) ; celles dont les formules lisent le niveau de classe sont recopiées pour lire le niveau de rôdeur sans magie."
+    },
+    {
+      "id": "power.ranger_variant_favored_enemy",
+      "type": "class_power",
+      "name": {
+        "fr": "Ennemi juré",
+        "en": "Favored enemy"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "ranger_variant"
+      ],
+      "description": {
+        "fr": "Le rôdeur a étudié son ennemi : ses ruses, sa démarche, l’endroit exact où l’armure s’arrête. Face à lui, chaque coup porte.\n\nEn jeu\n• Choisit un type de créature (aberrations, animaux, morts-vivants, humanoïdes d’un sous-type, extérieurs d’un sous-type…).\n• Contre lui : +2 aux tests de Bluff, Détection, Perception auditive, Psychologie et Survie, et +2 aux dégâts des armes (à distance, à 9 m ou moins).\n• Un nouvel ennemi juré aux niveaux 5, 10, 15 et 20 ; à chaque fois, le bonus contre un ennemi déjà choisi (même le nouveau) augmente de 2.\n• Pas de bonus de dégâts contre les créatures immunisées contre les coups critiques."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_favored_enemy"
+        },
+        {
+          "target": "favored_enemy.count",
+          "op": "add",
+          "value": "1 + floor(level('class.ranger_variant') / 5)"
+        }
+      ],
+      "note": "Bonus montré : +2 contre le premier ennemi juré. Les choix d’ennemis et les +2 supplémentaires ne sont pas encore dans le modèle."
+    },
+    {
+      "id": "power.ranger_variant_wild_empathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Empathie sauvage",
+        "en": "Wild empathy"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "ranger_variant"
+      ],
+      "description": {
+        "fr": "Le rôdeur sait approcher une bête sans l’effrayer, et repartir sans l’avoir énervée.\n\nEn jeu\n• Test d’empathie sauvage : 1d20 + niveau de rôdeur + modificateur de Charisme, comme un test de Diplomatie pour changer l’attitude d’un animal.\n• Il faut se voir à 9 m ou moins ; compter environ une minute.\n• Marche aussi sur une créature magique d’Intelligence 1 ou 2, avec un malus de −4."
+      },
+      "effects": [
+        {
+          "target": "check.wild_empathy",
+          "op": "add",
+          "value": "level('class.ranger_variant') + if(has('power.druid_wild_empathy'), 0, @ability.cha.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.ranger_variant_animal_companion",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon animal",
+        "en": "Animal companion"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "ranger_variant"
+      ],
+      "description": {
+        "fr": "Un loup, un faucon ou un ours fait la route avec lui. Moins puissant que celui du druide, mais tout aussi fidèle.\n\nEn jeu\n• Comme le compagnon animal du druide, avec un niveau de compagnon égal à la moitié de son niveau de rôdeur.\n• Ces niveaux s’ajoutent à ceux des autres classes qui donnent un compagnon."
+      },
+      "effects": [
+        {
+          "target": "animal_companion.level",
+          "op": "add",
+          "value": "floor(level('class.ranger_variant') / 2)"
+        }
+      ]
+    },
+    {
+      "id": "power.ranger_variant_fast_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Déplacement accéléré",
+        "en": "Fast movement"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "ranger_variant"
+      ],
+      "description": {
+        "fr": "Le rôdeur parcourt la nature d’un pas plus long que celui des autres.\n\nEn jeu\n• Vitesse au sol de base : +3 m.\n• Sans effet en armure lourde ou avec une charge lourde."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 3
+        }
+      ],
+      "note": "Perte en armure lourde ou chargé : l’équipement porté n’est pas encore dans le modèle, le bonus s’applique toujours."
+    },
+    {
+      "id": "power.ranger_variant_natures_blessing",
+      "type": "class_power",
+      "name": {
+        "fr": "Bénédiction de la nature",
+        "en": "Nature’s blessing"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "ranger_variant"
+      ],
+      "description": {
+        "fr": "La forêt lui prête un instant sa vigueur, sa vivacité ou sa sagesse.\n\nEn jeu\n• Une fois par jour, action simple : +4 en Dextérité, en Constitution ou en Sagesse (au choix) pendant 1 minute par niveau de rôdeur."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Choix de la caractéristique : pas encore dans le modèle (texte seulement)."
+    },
+    {
+      "id": "power.ranger_variant_healing_touch",
+      "type": "class_power",
+      "name": {
+        "fr": "Contact guérisseur",
+        "en": "Healing touch"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "ranger_variant"
+      ],
+      "description": {
+        "fr": "Une main posée sur un blessé, un peu d’herbe, et le poison ou la fièvre s’en vont.\n\nEn jeu\n• Une fois par jour, neutralisation du poison ou guérison des maladies (au choix), à un niveau de lanceur égal à la moitié de son niveau de rôdeur."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.ranger_variant_free_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Liberté de mouvement",
+        "en": "Free movement"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "ranger_variant"
+      ],
+      "description": {
+        "fr": "Cordes, poigne, magie qui entrave : rien ne le retient un instant.\n\nEn jeu\n• Une fois par jour, liberté de mouvement sur lui seul, à un niveau de lanceur égal à la moitié de son niveau de rôdeur."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.ranger_variant",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.ranger_variant_favored_enemy",
+        "power.ranger_track",
+        "power.ranger_variant_wild_empathy"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.ranger_combat_style"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.ranger_endurance"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.ranger_variant_animal_companion"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.ranger_improved_combat_style",
+        "power.ranger_variant_fast_movement"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.ranger_woodland_stride"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.ranger_swift_tracker"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.ranger_evasion"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.ranger_combat_style_mastery",
+        "power.ranger_variant_natures_blessing"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 8,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 8,
+      "will": 4,
+      "grants": [
+        "power.ranger_camouflage",
+        "power.ranger_variant_healing_touch"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 9,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 9,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 10,
+      "will": 5,
+      "grants": [
+        "power.ranger_variant_free_movement"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 10,
+      "will": 5,
+      "grants": [
+        "power.ranger_hide_in_plain_sight"
+      ]
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 11,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 11,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.ranger_variant",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 12,
+      "will": 6,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_dungeoneering"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.ranger_variant",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

@@ -1,0 +1,618 @@
+{
+  "entities": [
+    {
+      "id": "spell.orb_of_sound",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe de son",
+        "en": "Orb of Sound"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une sphère de vibration pure jaillit de la paume et éclate contre la cible dans un fracas qui lui vrille les tympans.\n\nEn jeu\n• Attaque de contact à distance ; orbe de son qui inflige 1d4 points de dégâts de son par niveau de lanceur (15d4 au maximum).\n• Une créature touchée doit réussir un jet de Vigueur ou être assourdie pendant 1 round.\n• Aucune résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe de son",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d4 sonic",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.lesser_orb_of_sound",
+      "type": "spell",
+      "name": {
+        "fr": "Orbe de son mineur",
+        "en": "Lesser Orb of Sound"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une petite bille de son condensé file vers la cible et lui claque au visage comme un coup de tonnerre miniature.\n\nEn jeu\n• Attaque de contact à distance ; 1d6 points de dégâts de son.\n• +1d6 tous les deux niveaux de lanceur au-delà du 1er : 2d6 au niveau 3, 3d6 au niveau 5, 4d6 au niveau 7, 5d6 au maximum à partir du niveau 9.\n• Aucun jet de sauvegarde, aucune résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un orbe de son",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor((@spell.caster_level + 1) / 2), 5))d6 sonic",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.thornskin",
+      "type": "spell",
+      "name": {
+        "fr": "Peau d'épines",
+        "en": "Thornskin"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_wood"
+      ],
+      "description": {
+        "fr": "Des épines dures comme du bois sec percent la peau du lanceur. Ses poings mordent, et quiconque l'empoigne s'y pique.\n\nEn jeu\n• Les attaques à mains nues du lanceur infligent 1d6 points de dégâts perforants létaux en plus.\n• Une créature qui le touche avec une arme naturelle ou à mains nues (lutte réussie comprise) subit 5 points de dégâts perforants.\n• Dure 1 round/niveau. Composante : une épine."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Les dégâts à mains nues en plus ne sont pas sur la feuille : le modèle n'a pas de cible pour les dégâts à mains nues."
+    },
+    {
+      "id": "spell.metal_skin",
+      "type": "spell",
+      "name": {
+        "fr": "Peau de métal",
+        "en": "Metal Skin"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "La peau du sujet prend l'éclat et la dureté du métal poli. Les coups glissent dessus, mais chaque geste devient raide.\n\nEn jeu\n• Le sujet gagne un bonus d'armure naturelle de +8.\n• Il subit un malus de -2 en Dextérité.\n• Dure 1 minute/niveau. Composante : un petit morceau de peau de rhinocéros."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 8,
+          "bonusType": "natural_armor",
+          "condition": "active('toggle.metal_skin')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "untyped",
+          "condition": "active('toggle.metal_skin')"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.hold_perimeter",
+      "type": "spell",
+      "name": {
+        "fr": "Périmètre d'immobilisation",
+        "en": "Hold Perimeter"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un cercle invisible se referme sur un groupe de gens, qui se figent sur place. Ils ne repartiront que lorsqu'une condition choisie par le lanceur sera remplie, même si elle ne peut jamais l'être.\n\nEn jeu\n• Paralyse les humanoïdes de taille M ou moins dans une émanation de 3 m de rayon (Volonté, annule).\n• À l'incantation, le lanceur fixe une condition de libération, réalisable ou non ; les victimes la connaissent mais ne peuvent pas la dire.\n• Chaque heure, une victime a droit à un nouveau jet de Volonté pour se libérer.\n• Tant que le sort dure, un humanoïde de taille M ou moins qui entre dans la zone doit faire le même jet ; une créature sortie de la zone est libérée.\n• Dure 1 heure/niveau. Composante : une goutte de résine de pin."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "1 ou plusieurs humanoïdes dans une émanation de 3 m de rayon",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.needle_rain",
+      "type": "spell",
+      "name": {
+        "fr": "Pluie d'aiguilles",
+        "en": "Needle Rain"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "Le wu jen lance une seule aiguille de métal ; en plein vol, elle se démultiplie en une averse qui crible ses ennemis.\n\nEn jeu\n• Jusqu'à 1 cible/niveau ; une attaque à distance normale contre chacune.\n• Total de 1d4 points de dégâts par niveau de lanceur (5d4 au maximum), réparti à son choix entre les cibles (par exemple 4d4 sur une cible ou 2d4 sur deux au niveau 4).\n• Composante : une longue aiguille de métal."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu'à 1 créature/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 5))d4",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.familiar_pocket",
+      "type": "spell",
+      "name": {
+        "fr": "Poche à familier",
+        "en": "Familiar Pocket"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Une poche de manteau ou une besace devient un petit refuge douillet, plus grand dedans que dehors, où le familier se glisse à l'abri.\n\nEn jeu\n• Un vêtement à poche ou un conteneur devient un espace extradimensionnel d'environ 30 cm d'arête, pour un familier de taille TP ou moins ; rien ne se voit de l'extérieur.\n• En contact avec son familier, le maître l'y fait entrer par un mot de commande (action libre) ; le familier peut le dire lui-même s'il parle. Il en sort, ou le maître l'en sort, par une action libre.\n• Dedans, le familier a un abri total (+4 CA) et un camouflage total.\n• Action libre : fermer la poche, étanche ; 1 heure d'air. Ouverte, le familier peut y rester sans limite.\n• De l'intérieur, pas d'attaque ni de sort ; pouvoirs magiques et surnaturels possibles s'ils ne demandent pas de ligne de vue.\n• Le sort cesse si la poche entre dans un autre espace extradimensionnel ; le familier réapparaît sans mal près du maître.\n• Dure 1 heure/niveau (T). Composantes : une petite aiguille dorée et un bout de tissu fin noué."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "un conteneur ou un vêtement avec une poche",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.stony_grasp",
+      "type": "spell",
+      "name": {
+        "fr": "Poigne de pierre",
+        "en": "Stony Grasp"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un bras de pierre brute surgit de n'importe quel sol naturel, roc compris, et saisit ce qui passe à sa portée.\n\nEn jeu\n• Comme poigne tellurienne, mais le bras peut surgir de toute surface naturelle (roche, terre, boue, herbe, sable).\n• Le bras a une CA de 18, une solidité de 8 et 4 points de résistance par niveau de lanceur.\n• Dure 1 round/niveau. Composante : une main miniature sculptée dans la pierre."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "bras de terre animé",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Le Codex n'imprime que niveau, effet et durée ; les autres lignes viennent de poigne tellurienne."
+    },
+    {
+      "id": "spell.earthen_grasp",
+      "type": "spell",
+      "name": {
+        "fr": "Poigne tellurienne",
+        "en": "Earthen Grasp"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La terre se soulève et prend la forme d'un bras massif, qui empoigne les ennemis du mage et les serre jusqu'à les broyer.\n\nEn jeu\n• Un bras de terre surgit d'un sol de terre, boue, herbe ou sable (le sort échoue sur la pierre) ; il ne quitte pas sa case.\n• Il agit comme une créature de taille M : bonus de base à l'attaque égal au niveau de lanceur, Force 14 (+2 tous les trois niveaux de lanceur).\n• Une tentative de lutte par round contre une créature dans sa case ou une case adjacente (ce qui provoque une attaque d'opportunité) ; le lanceur choisit la cible, sinon elle est prise au hasard, alliés compris.\n• Chaque round où il immobilise une cible, il inflige 1d6 points de dégâts létaux + son modificateur de Force.\n• CA 15, solidité 4, 3 points de résistance par niveau de lanceur ; à 0, il tombe en poussière.\n• Dure 2 rounds/niveau. Composante : une main miniature en argile."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "bras de terre animé",
+        "duration": "2 rounds/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.emerald_flame_fist",
+      "type": "spell",
+      "name": {
+        "fr": "Poing d'émeraude enflammé",
+        "en": "Emerald Flame Fist"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une flamme verte et froide pour son porteur enveloppe l'un de ses poings. Un seul contact suffit pour que la cible s'embrase à son tour.\n\nEn jeu\n• Le poing éclaire comme une torche, sans gêner ni blesser le lanceur.\n• Attaque de contact au corps à corps : 3d6 points de dégâts de feu + 1/niveau de lanceur (+20 au maximum).\n• La créature touchée fait un jet de Vigueur ; si elle le rate, elle prend feu et subit 3d6 + 1/niveau de feu chaque round jusqu'à la fin du sort (Vigueur, 1/2 dégâts à chaque round).\n• Le lanceur peut frapper jusqu'à ce qu'une cible prenne feu ; la flamme quitte alors son poing.\n• Un objet ordinaire non porté s'embrase sans jet et subit 3d6 + 1/niveau de feu par round.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créatures ou objets touchés",
+        "duration": "1 round/niveau ; voir description",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6 fire",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.fist_of_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Poing de pierre",
+        "en": "Fist of Stone"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une main du mage devient pierre vivante, sans rien perdre de sa souplesse. Elle frappe comme un marteau et serre comme un étau.\n\nEn jeu\n• Bonus d'altération de +6 en Force, seulement pour les attaques, les tests de lutte et pour briser des objets.\n• Attaque naturelle de coup (action simple) : 1d6 + le nouveau bonus de Force (1,5 fois s'il ne fait pas d'autre attaque ce round).\n• En attaque à outrance, le coup peut être une attaque secondaire (-5, ou -2 avec Attaques multiples) ; jamais plus d'un coup par round grâce à ce sort.\n• La main garde sa taille, sa forme et sa sensibilité.\n• Dure 1 minute. Composante : un galet gravé d'un poing."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute"
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "condition": "active('toggle.fist_of_stone')"
+        },
+        {
+          "target": "check.grapple",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "condition": "active('toggle.fist_of_stone')"
+        }
+      ],
+      "note": "Le +6 en Force ne vaut que pour les attaques, la lutte et briser des objets : la feuille ajoute +3 aux attaques au contact et à la lutte. Le bonus aux dégâts du coup, et le fait qu'un autre bonus d'altération en Force ne se cumule pas, restent dans le texte."
+    },
+    {
+      "id": "spell.wood_rot",
+      "type": "spell",
+      "name": {
+        "fr": "Pourriture végétale",
+        "en": "Wood Rot"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_wood"
+      ],
+      "description": {
+        "fr": "Au toucher du lanceur, le bois noircit, se ramollit et s'effrite. Les créatures végétales, elles, pourrissent sur pied.\n\nEn jeu\n• Un objet ordinaire en bois non porté, jusqu'à 1,80 m de diamètre ou un cube de 90 cm de côté (une porte), est détruit aussitôt.\n• En combat : attaque de contact au corps à corps pour détruire une arme en bois ou sa partie en bois (provoque une attaque d'opportunité, comme une destruction d'arme) ; sans effet sur une arme qui frappe le lanceur.\n• Bouclier ou armure en bois trop grands : attaque de contact, leur bonus à la CA baisse de 1d6 ; ils sont inutilisables si le résultat dépasse leur bonus.\n• Les objets magiques en bois sont immunisés.\n• Contre une créature végétale : 3d6 + 1/niveau de lanceur (+15 au maximum) ; le sort dure alors 1 round/niveau, une attaque de contact par round, et ne sert plus contre les objets.\n• Composante : un termite vivant."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "un objet en bois ordinaire, un volume de bois ou une créature végétale",
+        "duration": "instantanée ou 1 round/niveau ; voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.protection_from_charm",
+      "type": "spell",
+      "name": {
+        "fr": "Protection contre les charmes",
+        "en": "Protection from Charm"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le wu jen trace un signe protecteur sur le front du sujet : les voix douces et les ordres glissés à l'esprit trouvent porte close.\n\nEn jeu\n• Bonus de résistance de +1 tous les trois niveaux de lanceur (+5 au maximum) aux jets de Volonté contre les charmes et la coercition.\n• Dure 1 round/niveau. Composante : un cheveu ou un autre fragment d'une créature qui charme ou domine naturellement (succube, vampire)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": "min(floor(@spell.caster_level / 3), 5)",
+          "bonusType": "resistance",
+          "condition": "active('toggle.protection_from_charm')",
+          "situation": "situation.vs_charm_or_compulsion"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.duelward",
+      "type": "spell",
+      "name": {
+        "fr": "Protection duale",
+        "en": "Duelward"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un champ de magie vigilante entoure le mage et guette les sorts adverses, prêt à les couper net avant qu'ils ne partent.\n\nEn jeu\n• Le mage peut contrer un sort par une action immédiate, sans avoir préparé d'action et même hors de son tour.\n• Bonus d'aptitude de +4 aux tests d'Art de la magie pour identifier un sort en cours d'incantation.\n• Le sort prend fin dès que le mage contre un sort (par action immédiate ou non).\n• Dure 1 round/niveau ou jusqu'à utilisation (T). Composante : un gant de soie miniature."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau ou jusqu'à utilisation (T)"
+      },
+      "effects": [
+        {
+          "target": "skill.spellcraft",
+          "op": "add",
+          "value": 4,
+          "bonusType": "competence",
+          "condition": "active('toggle.duelward')",
+          "situation": "situation.identifying_spells"
+        }
+      ]
+    },
+    {
+      "id": "spell.prismatic_ray",
+      "type": "spell",
+      "name": {
+        "fr": "Rayon prismatique",
+        "en": "Prismatic Ray"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un rayon aux couleurs changeantes jaillit de la main tendue. La cible est éblouie de lumière, puis frappée par la couleur que le hasard choisit.\n\nEn jeu\n• Attaque de contact à distance ; une créature de 6 DV ou moins est aveuglée 2d4 rounds.\n• Puis un effet au hasard (1d6) : 1 rouge, 20 points de feu ; 2 orange, 40 points d'acide ; 3 jaune, 80 points d'électricité (Réflexes, 1/2 dégâts pour les trois).\n• 4 vert : poison, la mort (Vigueur, partiel : 1d6 points de Constitution temporaires perdus à la place) ; 5 bleu : pétrification (Vigueur, annule).\n• 6 indigo : aliénation, comme aliénation mentale (Volonté, annule)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Table relue sur l'image : les trois premières couleurs sont des dégâts (Réflexes, 1/2), l'effet vert est une mort avec Vigueur partiel."
+    },
+    {
+      "id": "spell.incandescent_radiance",
+      "type": "spell",
+      "name": {
+        "fr": "Rayonnement incandescent",
+        "en": "Incandescent Radiance"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur projette une boule de lumière brûlante qui s'arrête en l'air et irradie. Tout autour, on plisse les yeux et la peau cuit.\n\nEn jeu\n• Toutes les créatures dans l'émanation de 4,50 m de rayon sont éblouies (sans jet).\n• À chaque tour du lanceur, la chaleur inflige 2d6 points de dégâts aux créatures et objets de la zone (Vigueur, 1/2 dégâts).\n• Comme une boule de feu, la sphère éclate si elle touche un obstacle avant le point visé ; attaque de contact à distance pour passer une ouverture très étroite.\n• Contre ou dissipe les sorts d'obscurité de niveau égal ou inférieur.\n• Dure 1 round/niveau. Composantes : un morceau d'amadou et un bout de verre."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu",
+          "lumière"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "émanation de 4,50 m de rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun et Vigueur, partiel ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6 fire",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.refusal",
+      "type": "spell",
+      "name": {
+        "fr": "Refus",
+        "en": "Refusal"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le mage dresse autour d'un lieu une barrière invisible que seuls les porteurs de magie sentent : pour eux, la porte reste close, à moins de connaître le mot de passe.\n\nEn jeu\n• Zone de deux cubes de 3 m d'arête par niveau (F). Une créature qui a des sorts préparés, des emplacements libres ou des pouvoirs magiques doit réussir un jet de Volonté pour y entrer.\n• Le DD augmente du plus haut niveau de sort qu'elle peut encore lancer.\n• Le mage peut fixer un mot de passe ou une condition visible (race, alignement, objet…) qui laisse passer.\n• Passent librement : les créatures sans sorts ni pouvoirs magiques, y compris un lanceur qui a tout dépensé ou un porteur d'objets à potentiel magique ou à fin d'incantation.\n• Ceux déjà dedans à la création restent sans gêne, mais doivent faire le jet pour revenir s'ils sortent.\n• Sorts et pouvoirs magiques traversent la barrière dans les deux sens.\n• Une téléportation vers l'intérieur demande aussi le jet ; en cas d'échec, la créature arrive à l'extérieur, à l'endroit sûr le plus proche.\n• Dure 1 heure/niveau. Composante : une pincée de poussière de la tombe d'un magicien."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "deux cubes de 3 m d'arête/niveau (F)",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    }
+  ]
+}

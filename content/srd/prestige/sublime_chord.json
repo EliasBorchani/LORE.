@@ -1,0 +1,574 @@
+{
+  "entities": [
+    {
+      "id": "class.sublime_chord",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Accord sublime",
+        "en": "Sublime Chord"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Pour l’accord sublime, une mélodie est d’abord une équation : derrière chaque note, il entend l’écho du chant qui a fait le monde. Il a quitté les tavernes pour les observatoires, troqué les ballades contre les tables d’astronomie, et la magie qu’il en tire dépasse de loin celle des bardes ordinaires. On le prend volontiers pour un mage étrange qui chante ses sorts ; il ne corrige jamais.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : Art de la magie 6 rangs, Connaissances (mystères) 13 rangs, Profession (astrologue) 6 rangs, Représentation (au choix) 10 rangs ; savoir lancer des sorts profanes du 3e niveau ; avoir l’aptitude musique de barde.\n• Aucune formation nouvelle aux armes ni aux armures ; lance ses sorts d’accord sublime en armure légère sans risque d’échec.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (chaque domaine), Décryptage, Détection, Diplomatie, Fouille, Langue, Perception auditive, Profession, Représentation.\n• Sorts : ses propres sorts profanes spontanés, du 4e au 9e niveau, basés sur le Charisme, choisis dans les listes d’ensorceleur/magicien et de barde. Ne fait plus progresser sa classe de lanceur de sorts d’avant.\n• Aptitudes : musique de barde et savoir bardique (1) ; chant de puissance profane (2) ; chant d’intemporalité (6) ; chant de feu cosmique (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "prerequisite": "@skill.spellcraft.ranks >= 6 and @skill.knowledge_arcana.ranks >= 13 and @skill.profession.ranks >= 6 and @skill.perform.ranks >= 10",
+      "note": "Conditions dans la formule : les rangs (Profession et Représentation sans le domaine). En texte seulement : sorts profanes du 3e niveau, musique de barde, Profession (astrologue) précisément."
+    },
+    {
+      "id": "power.sublime_chord_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sublime_chord"
+      ],
+      "description": {
+        "fr": "L’accord sublime ne chante plus les petites formules des bardes : il va chercher plus haut, dans les sorts que seuls les grands mages osent toucher, et les plie à sa voix.\n\nEn jeu\n• Sorts profanes spontanés du 4e au 9e niveau, lancés comme un ensorceleur ; sorts par jour et sorts connus selon la table d’accord sublime.\n• Liste : sorts du 4e niveau ou plus des listes d’ensorceleur/magicien et de barde. Un sort présent sur les deux listes à des niveaux différents prend le niveau de la liste du barde.\n• Caractéristique : Charisme (au moins 10 + niveau du sort). DD : 10 + niveau du sort + modificateur de Charisme. Sorts en bonus grâce au Charisme.\n• Niveau de lanceur de sorts : niveaux d’accord sublime + niveaux d’une autre classe de lanceur de sorts profanes (au choix s’il en a plusieurs).\n• Pas de risque d’échec des sorts profanes en armure légère pour ces sorts.\n• Aux niveaux pairs à partir du 4, peut échanger un sort d’accord sublime connu contre un autre."
+      },
+      "effects": [
+        {
+          "target": "caster_level.sublime_chord",
+          "op": "add",
+          "value": "max(level('class.bard'), max(level('class.sorcerer'), max(level('class.wizard'), level('class.warlock'))))"
+        }
+      ],
+      "note": "Liste de sorts (sorts du 4e niveau et plus des listes d’ensorceleur/magicien et de barde) : pas encore de relations on_spell_list pour cette classe, à choisir à la main. Niveau de lanceur : le modèle prend la plus haute des classes barde, ensorceleur, magicien, sorcier ; une autre classe profane (wu jen, mage de bataille…) est à ajouter à la main."
+    },
+    {
+      "id": "power.sublime_chord_bardic_music",
+      "type": "class_power",
+      "name": {
+        "fr": "Musique de barde",
+        "en": "Bardic music"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sublime_chord"
+      ],
+      "description": {
+        "fr": "Ses chansons ont changé : on y entend des intervalles que nul luth n’avait jamais sonnés, et des effets qu’aucun barde ne connaît. Mais elles puisent dans la même réserve que les autres.\n\nEn jeu\n• Chaque chant d’accord sublime coûte une utilisation quotidienne de musique de barde (deux pour le chant de feu cosmique).\n• La moitié du niveau d’accord sublime (arrondie à l’inférieur) s’ajoute au niveau de barde pour le nombre d’utilisations quotidiennes de musique de barde.\n• Mêmes règles que la musique de barde du barde (action, concentration, pas de sorts en jouant)."
+      },
+      "effects": [],
+      "usesPerDay": "floor(level('class.sublime_chord') / 2)",
+      "note": "Les utilisations en plus forment ici une réserve à part, à ajouter à celle du barde."
+    },
+    {
+      "id": "power.sublime_chord_bardic_knowledge",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir bardique",
+        "en": "Bardic knowledge"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sublime_chord"
+      ],
+      "description": {
+        "fr": "À chaque étape de ses recherches, l’accord sublime retient une légende de plus, un nom oublié, une date que plus personne ne cite.\n\nEn jeu\n• Ajoute son niveau d’accord sublime à ses tests de savoir bardique (niveau de barde + niveau d’accord sublime + modificateur d’Intelligence)."
+      },
+      "effects": [
+        {
+          "target": "check.bardic_knowledge",
+          "op": "add",
+          "value": "level('class.sublime_chord') + if(has('power.bard_bardic_knowledge'), 0, @ability.int.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.sublime_chord_song_of_arcane_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de puissance profane",
+        "en": "Song of arcane power"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sublime_chord"
+      ],
+      "description": {
+        "fr": "Quelques mesures fredonnées avant l’incantation, et le sort qui suit sort plus fort, porté par l’harmonie qui l’a précédé.\n\nEn jeu\n• Demande 12 rangs en Représentation. Coûte une utilisation de musique de barde.\n• Action de mouvement : test de Représentation ; le prochain sort gagne un bonus au niveau de lanceur de sorts : résultat 9 ou moins +0, 10 à 19 +1, 20 à 29 +2, 30 ou plus +4.\n• Le sort doit être lancé avant la fin de son tour suivant, sinon le chant est perdu (l’utilisation aussi)."
+      },
+      "effects": [],
+      "note": "Bonus au niveau de lanceur d’un seul sort, selon un test : à appliquer à la main."
+    },
+    {
+      "id": "power.sublime_chord_song_of_timelessness",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant d’intemporalité",
+        "en": "Song of timelessness"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sublime_chord"
+      ],
+      "description": {
+        "fr": "Une note tenue, si pure qu’elle semble arrêter le temps autour de celui qui l’écoute : la cible se fige dans un halo irisé, hors d’atteinte de tout.\n\nEn jeu\n• Demande 16 rangs en Représentation. Coûte une utilisation de musique de barde. Action simple.\n• Une créature à 18 m au plus, en ligne d’effet. Volonté annule, DD 10 + niveau d’accord sublime + modificateur de Charisme.\n• En cas d’échec : paralysée et hors du temps ; rien ne peut l’affecter (armes, sorts ciblés, chute).\n• Dure tant qu’il continue de jouer, 1 minute par niveau au plus ; la cible ne se rend pas compte du temps passé."
+      },
+      "effects": [
+        {
+          "target": "dc.sublime_chord_song_of_timelessness",
+          "op": "set",
+          "value": "10 + level('class.sublime_chord') + @ability.cha.mod"
+        }
+      ],
+      "note": "« 1 minute par niveau » : le livre ne précise pas quel niveau (on lit le niveau d’accord sublime)."
+    },
+    {
+      "id": "power.sublime_chord_song_of_cosmic_fire",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de feu cosmique",
+        "en": "Song of cosmic fire"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sublime_chord"
+      ],
+      "description": {
+        "fr": "Le dernier accord du chant de création : un éclat de feu stellaire qui s’allume au loin et dévore tout ce qu’il touche.\n\nEn jeu\n• Demande 20 rangs en Représentation. Coûte deux utilisations de musique de barde.\n• Émanation de flammes de 6 m de rayon, centrée à 30 m au plus, en ligne d’effet.\n• Dégâts égaux au résultat de son test de Représentation. Réflexes réduit de moitié, DD 10 + niveau d’accord sublime + modificateur de Charisme."
+      },
+      "effects": [
+        {
+          "target": "dc.sublime_chord_song_of_cosmic_fire",
+          "op": "set",
+          "value": "10 + level('class.sublime_chord') + @ability.cha.mod"
+        }
+      ],
+      "note": "Dégâts = résultat d’un test de Représentation : pas de dés dans le modèle."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.sublime_chord",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.sublime_chord_spells",
+        "power.sublime_chord_bardic_music",
+        "power.sublime_chord_bardic_knowledge"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        3,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.sublime_chord_song_of_arcane_power"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        2,
+        2,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        2,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        3,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        3,
+        3,
+        2,
+        1,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.sublime_chord_song_of_timelessness"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        4,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.sublime_chord",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.sublime_chord_song_of_cosmic_fire"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        5,
+        4,
+        4,
+        3,
+        3,
+        2
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.sublime_chord",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    }
+  ]
+}

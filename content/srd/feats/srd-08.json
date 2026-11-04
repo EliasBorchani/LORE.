@@ -128,7 +128,8 @@
         "general",
         "fighter_bonus",
         "defense",
-        "movement"
+        "movement",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Il traverse la mêlée comme l’eau entre les pierres : une épaule qui s’efface, un pas de côté, et les lames qui le guettaient ne mordent que l’air.\n\nEn jeu\n• Condition : Dextérité 13, Esquive.\n• +4 d’esquive à la CA contre les attaques d’opportunité provoquées en entrant dans une zone contrôlée ou en en sortant.\n• Perdu dans toute situation où le personnage perd son bonus de Dextérité à la CA.\n• Les bonus d’esquive se cumulent entre eux."
@@ -235,7 +236,8 @@
       "labels": [
         "general",
         "fighter_bonus",
-        "ranged"
+        "ranged",
+        "scout_bonus"
       ],
       "description": {
         "fr": "À courte distance, il ne vise plus : il sait. La corde claque, et le trait se plante là où il regardait, avec toute la force qu’il n’a pas eu le temps de perdre.\n\nEn jeu\n• +1 aux jets d’attaque et de dégâts à distance contre une cible à 9 m ou moins."

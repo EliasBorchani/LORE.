@@ -1,0 +1,645 @@
+{
+  "entities": [
+    {
+      "id": "class.wu_jen",
+      "type": "class",
+      "name": {
+        "fr": "Wu jen",
+        "en": "Wu Jen"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "arcane",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Le wu jen vit loin des villes, dans une cabane de montagne ou une grotte, et converse avec les éléments, les esprits et les pierres. Ce qu’il apprend, il l’écrit dans un grimoire comme un magicien, mais il paie sa puissance en interdits étranges qu’il ne doit jamais briser. Qui dérange ses règles lui ôte la magie pour la journée.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tout sauf loyal.\n• Formé aux armes courantes ; ni armure ni bouclier (ils font échouer les sorts à composante gestuelle).\n• Sorts profanes préparés depuis son grimoire, basés sur l’Intelligence, du niveau 0 au niveau 9 ; liste propre au wu jen.\n• Aptitudes : don de métamagie supplémentaire et esprit veilleur (1), tabou (1) ; secret magique (3, 9, 12, 15, 18) ; maîtrise des éléments (6).\n• Au-delà du niveau 20 : un don supplémentaire tous les 3 niveaux (23, 26, 29…) ; 2 sorts de plus dans le grimoire par niveau ; un secret magique et un tabou tous les 3 niveaux (21, 24, 27…)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "source": "Complete Arcane",
+      "spellcasting": {
+        "ability": "int",
+        "kind": "arcane",
+        "mode": "prepared"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.wu_jen') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Épique (Codex Profane, chap. 7) : pas de sorts par jour en plus après le niveau 20, mais 2 sorts de plus dans le grimoire par niveau ; un secret magique tous les 3 niveaux à partir de 21 (Extension de durée, Extension de portée, Incantation silencieuse ou statique) avec un tabou de plus ; un don supplémentaire tous les 3 niveaux (23, 26, 29…)."
+    },
+    {
+      "id": "power.wu_jen_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de wu jen",
+        "en": "Wu Jen spells"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "wu_jen"
+      ],
+      "description": {
+        "fr": "Chaque matin, le wu jen relit son grimoire et y choisit les sorts du jour, qui s’éteignent une fois lancés. Sa liste est la sienne : beaucoup de ses sorts appartiennent à l’un des cinq éléments.\n\nEn jeu\n• Sorts profanes de la liste des wu jen, préparés chaque jour depuis son grimoire (seul lecture de la magie se prépare de mémoire).\n• Caractéristique : Intelligence. Il faut au moins 10 + niveau du sort en Intelligence pour le préparer ou le lancer. DD : 10 + niveau du sort + modificateur d’Intelligence.\n• Sorts par jour selon le niveau de wu jen ; sorts en bonus grâce à une Intelligence élevée.\n• Grimoire : au niveau 1, tous les sorts de niveau 0 et 3 sorts du 1er niveau, plus un par point de modificateur d’Intelligence ; 2 sorts de n’importe quel niveau qu’il peut lancer à chaque niveau gagné ; il peut en recopier d’autres.\n• Au-delà du niveau 20 : toujours 2 nouveaux sorts par niveau dans le grimoire, sans emplacement de plus."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.wu_jen_bonus_metamagic",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire",
+        "en": "Bonus feat"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "wu_jen"
+      ],
+      "description": {
+        "fr": "Le wu jen commence sa vie d’aventurier avec un tour de main de plus pour plier ses sorts.\n\nEn jeu\n• Un don de métamagie supplémentaire au niveau 1, au choix.\n• Au-delà du niveau 20 : un don supplémentaire tous les 3 niveaux (23, 26, 29…), choisi dans la liste épique du wu jen, sans en remplir les conditions."
+      },
+      "effects": [],
+      "note": "Le don de métamagie du niveau 1 se choisit sur la feuille."
+    },
+    {
+      "id": "power.wu_jen_spirit_watch",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit veilleur",
+        "en": "Watchful spirit"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "wu_jen"
+      ],
+      "description": {
+        "fr": "Un esprit surveille le wu jen : s’il lui arrive un mauvais lancer, il peut demander une seconde chance.\n\nEn jeu\n• Une fois par jour, il relance son initiative avant de connaître sa place dans l’ordre et garde le meilleur des deux jets."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.wu_jen_taboos",
+      "type": "class_power",
+      "name": {
+        "fr": "Tabous",
+        "en": "Taboos"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "wu_jen"
+      ],
+      "description": {
+        "fr": "Pour garder sa magie, le wu jen suit des interdits qui paraissent absurdes aux autres. Il les respecte, sinon plus aucun sort de la journée.\n\nEn jeu\n• Il choisit un tabou au niveau 1, puis un nouveau à chaque secret magique appris (au-delà du niveau 20 aussi).\n• S’il viole l’un d’eux, il ne peut plus lancer de sorts de la journée.\n• Exemples : ne pas manger de viande, ne pas posséder plus que ce qu’il peut porter, faire une offrande quotidienne, ne pas se baigner, ne pas se couper les cheveux, ne pas toucher un cadavre, ne pas boire d’alcool, ne pas porter une couleur, ne pas allumer de feu, ne pas s’asseoir face à une direction."
+      },
+      "effects": [],
+      "note": "Les tabous choisis restent à noter dans les notes de la fiche (aucune mécanique sur la feuille)."
+    },
+    {
+      "id": "power.wu_jen_magic_secret",
+      "type": "class_power",
+      "name": {
+        "fr": "Secret magique",
+        "en": "Spell secret"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "wu_jen"
+      ],
+      "description": {
+        "fr": "Le wu jen finit par modifier un de ses sorts pour toujours, comme s’il l’avait toujours lancé avec un don de métamagie.\n\nEn jeu\n• Aux niveaux 3, 9, 12, 15 et 18 (au niveau 6, la maîtrise des éléments le remplace), il choisit un sort qu’il connaît et lui applique de façon permanente Extension de portée, Extension de durée, Incantation statique ou Incantation silencieuse.\n• Le niveau du sort ne change pas. Le choix est définitif ; il peut cibler le même sort avec un autre don au niveau suivant. Il n’a pas besoin de connaître le don.\n• Épique : à partir du niveau 21, un secret magique tous les 3 niveaux (21, 24, 27…), avec un tabou de plus."
+      },
+      "effects": [],
+      "note": "Le secret se note dans le grimoire ou les notes de la fiche (pas de modèle pour un sort précis modifié)."
+    },
+    {
+      "id": "power.wu_jen_elemental_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des éléments",
+        "en": "Elemental mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "wu_jen"
+      ],
+      "description": {
+        "fr": "Au lieu d’un secret, il devient un maître d’un élément : bois, eau, feu, métal ou terre. Ses sorts de cet élément gagnent en puissance et le protègent des sorts du même élément.\n\nEn jeu\n• Il choisit un élément parmi bois, eau, feu, métal et terre.\n• Niveau de lanceur de sorts effectif +2 pour ses sorts de cet élément (variables numériques et tests de niveau de lanceur).\n• Bonus d’aptitude de +2 aux jets de sauvegarde contre les sorts de cet élément.\n• Les sorts d’élément « Tous » comptent pour chacun des cinq éléments."
+      },
+      "effects": [],
+      "note": "L’élément choisi se note sur la feuille ; le bonus dépend de l’élément de chaque sort lancé : pas dans le modèle."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.wu_jen",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.wu_jen_spells",
+        "power.wu_jen_bonus_metamagic",
+        "power.wu_jen_spirit_watch",
+        "power.wu_jen_taboos"
+      ],
+      "spellsPerDay": [
+        3,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.wu_jen_magic_secret"
+      ],
+      "spellsPerDay": [
+        4,
+        4,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.wu_jen_elemental_mastery"
+      ],
+      "spellsPerDay": [
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 11,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 12,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 13,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 14,
+      "bab": 7,
+      "fort": 4,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 15,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 16,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 17,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 18,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 19,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3
+      ]
+    },
+    {
+      "classId": "class.wu_jen",
+      "level": 20,
+      "bab": 10,
+      "fort": 6,
+      "ref": 6,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.wu_jen",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.wu_jen",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

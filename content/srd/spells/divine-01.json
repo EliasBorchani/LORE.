@@ -1,0 +1,830 @@
+{
+  "entities": [
+    {
+      "id": "spell.divine_agility",
+      "type": "spell",
+      "name": {
+        "fr": "Agilité divine",
+        "en": "Divine Agility"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le dieu protecteur du lanceur prête à une créature la vivacité et le sens du combat d'un maître de l'esquive.\n\nEn jeu\n• Créature vivante touchée ; Volonté, annule (inoffensif).\n• Bonus d'altération de +4 en Dextérité.\n• Bonus de base aux jets de Réflexes d'un roublard du niveau total du lanceur.\n• Elle gagne aussi le don Attaque éclair.\n• Dure 1 round par niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.divine_agility')"
+        }
+      ],
+      "note": "Le +4 en Dextérité compte si le lanceur peut se cibler lui-même. Le bonus de base aux Réflexes (comme un roublard de son niveau total) et le don Attaque éclair restent en texte."
+    },
+    {
+      "id": "spell.wings_of_flame",
+      "type": "spell",
+      "name": {
+        "fr": "Ailes de feu",
+        "en": "Wings of Flame"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les bras du lanceur se changent en ailes de flammes dorées qui ne brûlent ni lui ni son équipement. Il s'envole, mais ses mains ne tiennent plus rien.\n\nEn jeu\n• Vol à 18 m (12 m en armure intermédiaire ou lourde), manœuvrabilité bonne ; pas de course en vol, charge légère seulement.\n• Plus de mains : il ne tient rien et ne lance aucun sort à composante gestuelle (les anneaux et bracelets déjà portés fonctionnent).\n• Fin du sort en l'air : il descend de 18 m/round pendant 1d6 rounds, puis tombe ; une zone d'antimagie le fait tomber d'un coup.\n• Attaque à mains nues possible (−4, non formé) : +2d6 dégâts de feu en cas de réussite.\n• Éteintes par extinction des feux, l'immersion dans l'eau ou un vent de force ouragan.\n• Composante matérielle : une plume d'oiseau brûlée ; focaliseur : une amulette dorée en forme de phénix."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M, F",
+        "castingTime": "1 round entier",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mind_spider",
+      "type": "spell",
+      "name": {
+        "fr": "Araignée mentale",
+        "en": "Mind Spider"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le lanceur tisse une toile entre huit esprits et écoute tout ce qui s'y murmure. Les gardes ne savent pas qu'ils lui parlent, et leur langue importe peu.\n\nEn jeu\n• Jusqu'à huit créatures vivantes à portée ; Volonté, annule. Il choisit les cibles, même sans les connaître (« les huit gardes les plus proches »).\n• Action simple : il entend le chaos des pensées, leurs enchaînements dans l'ordre voulu, un élément d'information par niveau sur un sujet, ou il fouille la mémoire d'une cible.\n• Une fois par round (sans fouille), action simple : une suggestion à l'une des cibles ; nouveau jet de Volonté contre le DD du sort, sans libérer des autres effets.\n• Composante matérielle : une araignée (même morte) avec ses huit pattes."
+      },
+      "spell": {
+        "school": "Divination",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M, FD",
+        "castingTime": "1 round entier",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "jusqu'à huit créatures vivantes situées à portée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.hunters_mercy",
+      "type": "spell",
+      "name": {
+        "fr": "Arc tueur",
+        "en": "Hunter's Mercy"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur remplit une arme à distance d'une énergie divine, tournée vers l'ennemi qu'il a juré de traquer.\n\nEn jeu\n• Arme à distance touchée : bonus d'altération de +5 à l'attaque et aux dégâts.\n• Contre le type d'ennemi juré choisi à l'incantation, elle devient tueuse : +7 à l'attaque et aux dégâts, et +2d6 dégâts.\n• Le sort s'annule si le lanceur lâche l'arme plus d'un round ; un seul arc tueur à la fois.\n• Sur une arme magique, il prend le pas sur ses bonus et propriétés ; ne se cumule pas avec un autre sort modifiant les armes ; sans effet sur les artefacts.\n• Les munitions tirées prennent les propriétés du sort mais gardent leur matériau (flèches d'argent contre la réduction des dégâts)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme à distance touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Les bonus touchent l'arme, pas la fiche du personnage."
+    },
+    {
+      "id": "spell.weapon_of_the_deity",
+      "type": "spell",
+      "name": {
+        "fr": "Arme de la divinité",
+        "en": "Weapon of the Deity"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le fidèle serre l'arme que sa divinité aime entre toutes, et celle-ci s'éveille à son tour : un geste appris sur le tas, une lame bénie par le dieu.\n\nEn jeu\n• Le lanceur doit tenir l'arme de prédilection de sa divinité ; il peut s'en servir comme s'il la maîtrisait.\n• Bonus d'altération de +1 à l'attaque et aux dégâts, plus une propriété spéciale liée à la divinité (liste du livre ; le MD en choisit une de même puissance pour un autre dieu ou une autre divinité).\n• Le bonus monte à +2 (niveau 9), +3 (12), +4 (15) et +5 (18).\n• Une arme double n'en profite que d'un seul côté, au choix du lanceur."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, FD",
+        "castingTime": "1 action simple",
+        "range": "0 m",
+        "target": "l'arme du lanceur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [],
+      "note": "Les bonus touchent l'arme, pas la fiche du personnage ; la table des armes de prédilection par dieu n'est pas reprise."
+    },
+    {
+      "id": "spell.brilliant_aura",
+      "type": "spell",
+      "name": {
+        "fr": "Aura de lumière",
+        "en": "Brilliant Aura"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un halo bleu enveloppe les alliés du lanceur et transforme leurs coups en éclats de lumière qui ne s'arrêtent pas devant l'armure.\n\nEn jeu\n• Les créatures affectées éclairent comme une torche (6 m).\n• Leurs armes, au corps à corps et à distance, ignorent la matière non vivante et les bonus d'armure et de bouclier à la CA, comme des armes de lumière.\n• Elles ne peuvent pas blesser morts-vivants, créatures artificielles ni objets.\n• Bonus d'altération aux dégâts égal à la moitié du niveau de lanceur (+10 au plus)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 personne/2 niveaux, toutes à 9 m ou moins les unes des autres",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Les alliés reçoivent le bonus : rien sur la fiche du lanceur."
+    },
+    {
+      "id": "spell.halo_of_light",
+      "type": "spell",
+      "name": {
+        "fr": "Auréole de lumière",
+        "en": "Halo of Light"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une lueur dorée enveloppe le lanceur et grossit en silence, jusqu'à ce qu'il la jette sur un ennemi comme une boule d'énergie divine.\n\nEn jeu\n• Éclaire comme une lanterne : 9 m vifs, puis 9 m faibles.\n• Action de mouvement : il rassemble l'énergie autour de son bras ; action simple : il la lance à 9 m au plus (attaque de contact à distance).\n• Dégâts : 1d8, +1 par round écoulé depuis l'incantation (au plus son niveau de lanceur).\n• Toute attaque avec cette énergie met fin au sort, qu'elle touche ou non."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "lumière"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau ou jusqu'à utilisation (T)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le +1 par round écoulé depuis l'incantation n'est pas calculé par le modèle."
+    },
+    {
+      "id": "spell.avalanche",
+      "type": "spell",
+      "name": {
+        "fr": "Avalanche vengeresse",
+        "en": "Avalanche"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le ciel se vide sur les ennemis du lanceur : une masse de neige les écrase, les ensevelit, et ne laisse que des glaçons.\n\nEn jeu\n• Dans 6 m du centre : 1d8 par 2 niveaux (10d8 au plus) de dégâts d'impact et 1d6 de froid par 2 niveaux ; Réflexes, demi-dégâts. Qui rate son jet est enseveli (comme une avalanche) ; la zone devient une chute de neige lourde, aussi durable que la neige ordinaire.\n• Entre 6 et 12 m : dégâts d'impact réduits de moitié (Réflexes, annule) ; qui rate subit une bousculade de la neige (+13) ; la zone se couvre de neige ordinaire.\n• Déracine les arbustes, laisse des décombres ; les structures touchées subissent 1d6 × 10 dégâts.\n• Éteint les flammes, magiques ou non, qu'elle touche."
+      },
+      "spell": {
+        "school": "Invocation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "avalanche de neige de 6 m de rayon centrée n'importe où à portée ; voir description",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, demi-dégâts (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 10))d8 bludgeoning",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(floor(@spell.caster_level / 2))d6 cold",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le jet de Réflexes et la zone de 6 à 12 m (dégâts d'impact réduits de moitié) ne sont pas calculés par le modèle."
+    },
+    {
+      "id": "spell.natures_avatar",
+      "type": "spell",
+      "name": {
+        "fr": "Avatar de la nature",
+        "en": "Nature's Avatar"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur insuffle à un animal l'esprit même de la nature : la bête devient un fauve de légende, vif et presque invulnérable.\n\nEn jeu\n• Bonus de moral de +10 à l'attaque et aux dégâts.\n• 1d8 points de vie temporaires par niveau de lanceur.\n• Gagne aussi les effets de rapidité."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "animal touché",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Les effets touchent un animal, pas la fiche du personnage."
+    },
+    {
+      "id": "spell.greater_brambles",
+      "type": "spell",
+      "name": {
+        "fr": "Barbelures",
+        "en": "Greater Brambles"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le bois de l'arme se couvre d'épines vivantes qui mordent plus profond et plus souvent.\n\nEn jeu\n• Comme ronces, mais l'arme gagne un bonus d'altération de +2 à l'attaque.\n• Sa zone de critique possible est doublée."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme touchée, qui doit être en bois",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Les bonus touchent l'arme, pas la fiche du personnage."
+    },
+    {
+      "id": "spell.gleaming_barding",
+      "type": "spell",
+      "name": {
+        "fr": "Barde dorée",
+        "en": "Gleaming Barding"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une armure de lumière dorée se forme sur la monture du fidèle, sans le moindre poids pour elle.\n\nEn jeu\n• La barde n'impose aucun malus d'armure aux tests et ne ralentit pas la monture.\n• Bonus d'armure selon le niveau de lanceur : niv. 2–3 écailles +4, 4–5 cotte de mailles +5, 6–7 clibanion +6, 8–9 armure à plaques +7, 10+ harnois +8.\n• Faite de force : les créatures intangibles ne l'ignorent pas."
+      },
+      "spell": {
+        "school": "Invocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le destrier touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Les effets touchent la monture, pas la fiche du personnage. Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.bahamuts_blessing",
+      "type": "spell",
+      "name": {
+        "fr": "Bénédiction de Bahamut",
+        "en": "Bahamut's Blessing"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "La peau du lanceur prend l'éclat du platine, comme l'écaille du Dragon de platine, et les armes ordinaires s'y émoussent.\n\nEn jeu\n• Réduction des dégâts 10/magie.\n• Composante matérielle : une plume de canari jetée en l'air."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Bien"
+        ],
+        "components": "V, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.magic",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.bahamuts_blessing')"
+        }
+      ]
+    },
+    {
+      "id": "spell.purifying_mist",
+      "type": "spell",
+      "name": {
+        "fr": "Brume de pureté",
+        "en": "Purifying Mist"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un nuage de brume claire tourbillonne autour du lanceur et lave l'air de tout ce qui l'empoisonne.\n\nEn jeu\n• Nuage de 1,50 m de rayon par niveau, centré sur le lanceur.\n• Fumée, poussière et émanations non magiques (poisons inhalés compris) sont annulées dans le nuage.\n• Effets magiques (brume acide, brume mortelle, souffle de dragon vert) annulés seulement si le niveau du lanceur dépasse celui de l'effet (ou les DV du dragon) ; sinon, +4 aux jets de sauvegarde pour ceux qui s'y trouvent.\n• La brume dépose un voile d'humidité sur tout ce qu'elle touche."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)"
+      },
+      "effects": [],
+      "note": "Le +4 aux jets de sauvegarde bénéficie aux occupants du nuage selon les cas : non calculé. Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.murderous_mist",
+      "type": "spell",
+      "name": {
+        "fr": "Brume meurtrière",
+        "en": "Murderous Mist"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une vapeur brûlante avance en ligne droite et dévore la vue de tous ceux qu'elle englobe.\n\nEn jeu\n• Le nuage avance en ligne droite de 3 m/round ; le vent ne change ni direction ni vitesse (vent modéré : dissipé en 4 rounds, vent fort : en 1 round).\n• Les créatures dedans subissent 2d6 dégâts et sont aveuglées pour toujours ; Réflexes : demi-dégâts et pas d'aveuglement.\n• Elles bénéficient d'un camouflage."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "nuage sur une étendue de 9 m de rayon et 6 m de haut",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, demi-dégâts (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6",
+          "scope": "spell"
+        }
+      ],
+      "note": "L'aveuglement n'est pas calculé par le modèle."
+    },
+    {
+      "id": "spell.dark_mist",
+      "type": "spell",
+      "name": {
+        "fr": "Brume sombre",
+        "en": "Dark Mist"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Une brume noire et grouillante, comme faite de mille tentacules, avale la lumière autour du lanceur.\n\nEn jeu\n• Le lanceur et une créature touchée sont immunisés et y voient normalement.\n• La brume reste en place ou s'éloigne de 3 m/round (choix à l'incantation) ; vent modéré : dissipée en 4 rounds, vent fort : en 1 round.\n• Bloque toute vision (même dans le noir) au-delà de 1,50 m : abri à 1,50 m ou moins (20 % de rater), abri total plus loin (50 %).\n• Les créatures dans la zone sont hébétées tant qu'elles y restent, sauf jet de sauvegarde réussi.\n• Sans effet sous l'eau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "24 m",
+        "effect": "huit cubes de 3 m de côté s'étendant depuis le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.mass_camouflage",
+      "type": "spell",
+      "name": {
+        "fr": "Camouflage de groupe",
+        "en": "Mass Camouflage"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau et les vêtements de tout un groupe se fondent dans le décor, et suivent ses changements sans effort.\n\nEn jeu\n• Comme camouflage : bonus de circonstances de +10 aux tests de Discrétion.\n• L'effet suit le groupe ; qui s'éloigne de plus de 18 m du membre le plus proche perd le bénéfice du sort.\n• Si deux créatures seulement sont ciblées, elles redeviennent visibles quand elles se séparent de plus de 18 m."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "autant de créatures que désiré, aucune à plus de 18 m d'une autre",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 10,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.mass_camouflage')"
+        }
+      ]
+    },
+    {
+      "id": "spell.tortoise_shell",
+      "type": "spell",
+      "name": {
+        "fr": "Carapace de tortue",
+        "en": "Tortoise Shell"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une carapace épaisse recouvre le torse de la cible, un cuir de tortue protège le reste du corps. On encaisse bien, on avance moins vite.\n\nEn jeu\n• Bonus d'altération de +6 à l'armure naturelle, +1 par 3 niveaux au-dessus du niveau 11 (+9 au niveau 20).\n• Se cumule avec l'armure naturelle du sujet, pas avec un autre bonus d'altération à l'armure naturelle.\n• Ralentit comme une armure lourde (vitesse 6 m pour un elfe, 18 m en course), sans malus d'armure aux tests ni échec des sorts profanes."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature vivante touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "min(6 + floor(max(@spell.caster_level - 11, 0) / 3), 9)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.tortoise_shell')"
+        }
+      ],
+      "note": "Le ralentissement de la vitesse n'est pas calculé par le modèle."
+    },
+    {
+      "id": "spell.vigorous_circle",
+      "type": "spell",
+      "name": {
+        "fr": "Cercle de vigueur",
+        "en": "Vigorous Circle"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un cercle de force vitale se referme autour du groupe : les plaies se referment au fil des rounds.\n\nEn jeu\n• Comme vigueur mineure de groupe, mais confère la guérison accélérée (3).\n• Durée : 10 rounds + 1 round/niveau (40 rounds au plus)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une créature/niveau, aucune à plus de 9 m d'une autre",
+        "duration": "10 rounds + 1 round/niveau (40 rounds max.)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "fast_healing",
+          "op": "min",
+          "value": 3,
+          "condition": "active('toggle.vigorous_circle')"
+        }
+      ],
+      "note": "Le livre imprime ici seulement le niveau, l'école et la durée : les autres lignes (portée, cible, composantes) viennent de vigueur mineure de groupe, à confirmer. La guérison accélérée touche les cibles, pas la fiche du lanceur."
+    },
+    {
+      "id": "spell.phantom_stag",
+      "type": "spell",
+      "name": {
+        "fr": "Cerf fantôme",
+        "en": "Phantom Stag"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un grand cerf noir aux bois d'argent et aux sabots de vapeur surgit sans bruit et porte son cavalier où il le souhaite.\n\nEn jeu\n• Monture de taille G : CA 20 (−1 taille, +5 Dex, +6 naturelle), 40 PV +5 par niveau de lanceur. Attaque de bois +10 (1d8+9), dégâts doublés à la charge ; il piétine les créatures de taille M ou moins (Réflexes ou 1d8+9).\n• Vitesse 6 m par niveau de lanceur (90 m au plus) ; porte son cavalier + 5 kg d'équipement par niveau ; ignore végétation, décombres et boue.\n• Pouvoirs cumulatifs : niv. 12 marche dans les airs 1 round à la fois à volonté et parade +2 ; niv. 14 vol à vitesse du sol (manœuvrabilité moyenne), parade +4 ; niv. 16 bois sanglants et spectraux, parade +6 ; niv. 18 passage dans l'éther pour son cavalier, parade +8."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "0 m",
+        "effect": "un cerf quasi réel",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "La monture n'est pas sur la fiche du personnage."
+    },
+    {
+      "id": "spell.chain_of_eyes",
+      "type": "spell",
+      "name": {
+        "fr": "Chaîne de témoins",
+        "en": "Chain of Eyes"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le lanceur emprunte les yeux d'une autre créature et voit ce qu'elle voit, de loin, sans rien lui dicter.\n\nEn jeu\n• Il voit par les yeux de la cible à la place des siens, sans contrôler ses actes.\n• Quand elle touche un autre être vivant, il peut transférer sa perception à ce dernier : un coup d'œil dans un lieu bien gardé.\n• Action libre à son tour pour passer de la vision transférée à sa vision normale, et inversement."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.spiritual_chariot",
+      "type": "spell",
+      "name": {
+        "fr": "Char spirituel",
+        "en": "Spiritual Chariot"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un char d'énergie transparente se forme derrière la monture du lanceur, orné du symbole de sa foi.\n\nEn jeu\n• Le conducteur (en général le lanceur) plus une créature de taille M ou deux de taille P.\n• Ne pèse rien pour la monture, qui garde sa vitesse maximale ; détaché, il disparaît.\n• Le conducteur gagne +4 de sainteté aux tests de Dressage.\n• Fait de force : immunisé aux dégâts, il réagit aux sorts comme un mur de force.\n• Abri pour ses occupants (+4 à la CA, +2 aux Réflexes pour la taille M, en général)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "un destrier",
+        "duration": "1 heure/niveau"
+      },
+      "effects": [],
+      "note": "Les effets touchent le char, pas la fiche du personnage."
+    },
+    {
+      "id": "spell.cometfall",
+      "type": "spell",
+      "name": {
+        "fr": "Chute de comète",
+        "en": "Cometfall"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une comète scintillante surgit au-dessus des ennemis, tombe d'un coup et s'écrase en pluie de décombres.\n\nEn jeu\n• Apparaît à 1,50 m par niveau au-dessus du sol (ou du plafond, le plus bas) et tombe sur une zone de 3 m × 3 m.\n• 2d6 dégâts tous les 3 m de chute.\n• Qui rate son jet de Réflexes subit un croc-en-jambe (+11 au test).\n• La comète se brise et remplit la zone de décombres."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "masse de roche et de glace de 200 kilos",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, demi-dégâts",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(2 * floor(@spell.caster_level / 2))d6",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le calcul suppose une chute complète de 1,50 m par niveau (un plafond bas réduit les dégâts) ; le croc-en-jambe n'est pas calculé."
+    },
+    {
+      "id": "spell.rejuvenation_cocoon",
+      "type": "spell",
+      "name": {
+        "fr": "Cocon de jouvence",
+        "en": "Rejuvenation Cocoon"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un cocon d'énergie jaune-vert se referme autour de la cible, la protège et la soigne le temps de deux battements.\n\nEn jeu\n• Cocon souple de force : la cible peut agir à l'intérieur (fouiller un sac, sort gestuel, dégainer) mais pas se déplacer ; pour sortir, elle se téléporte ou détruit le cocon.\n• Solidité 10 et 10 PV par niveau de lanceur ; détruit, le sort prend fin.\n• 1 round après : soin de 10 PV par niveau et fin de tout poison ou maladie.\n• Fin du 2e round : le cocon se dissipe et la cible agit normalement.\n• Composante matérielle : un cocon de papillon."
+      },
+      "spell": {
+        "school": "Invocation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature consentante touchée",
+        "duration": "2 rounds",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.enveloping_cocoon",
+      "type": "spell",
+      "name": {
+        "fr": "Cocon enveloppant",
+        "en": "Enveloping Cocoon"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un cocon bleu-vert emprisonne la cible et la laisse à peine remuer, pendant que le lanceur peut y glisser un second maléfice.\n\nEn jeu\n• Solidité 10 et 10 PV par niveau de lanceur.\n• La victime ne peut ni se déplacer ni lancer de sorts à composante gestuelle ; elle ne peut frapper que le cocon avec des armes naturelles ou légères.\n• Un second sort lancé sur le cocon touche automatiquement la cible à la fin du cocon (pas de jet, mais résistance à la magie) ; cocon détruit, le second sort disparaît.\n• Sorts permis : colonne de feu, contagion, désorientation imaginaire, domination d'animal, empoisonnement, flétrissement végétal, infestation d'asticots, langueur, métamorphose funeste, miasme.\n• Composante matérielle : une chenille vivante."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "cocon de force autour d'une créature de taille G ou inférieure",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.touch_of_madness",
+      "type": "spell",
+      "name": {
+        "fr": "Contact aliénant",
+        "en": "Touch of Madness"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un simple contact embrouille les idées de la victime au point qu'elle ne sait plus rien faire.\n\nEn jeu\n• Attaque de contact au corps à corps sur une créature vivante ; Volonté, annule.\n• Hébétée pendant 1 round par niveau : aucune action possible, ni déplacement, ni sort, ni pouvoir mental.\n• Elle n'est pas étourdie : ses adversaires n'ont aucun avantage."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.contagious_touch",
+      "type": "spell",
+      "name": {
+        "fr": "Contact contagieux",
+        "en": "Contagious Touch"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Les mains du druide portent un mal qu'il choisit à l'avance, et qu'il transmet d'une poigne.\n\nEn jeu\n• Choix de la maladie à l'incantation : bouille-crâne, croupissure, fièvre des marais, fièvre gloussante, mal rouge, mort vaseuse ou tremblote.\n• Toute attaque de contact au corps à corps réussie sur une créature vivante l'infecte comme contagion ; Vigueur, annule.\n• Une seule créature infectée par round."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ]
+}

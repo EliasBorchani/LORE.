@@ -1,0 +1,595 @@
+{
+  "entities": [
+    {
+      "id": "class.swashbuckler",
+      "type": "class",
+      "name": {
+        "fr": "Spadassin",
+        "en": "Swashbuckler"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial",
+        "skills"
+      ],
+      "description": {
+        "fr": "Le spadassin se bat avec panache : il préfère l’agilité à la force brute, la rapière à la hache, et un bon mot à un grand coup. Il choisit son adversaire, l’énerve, tourne autour de lui et trouve l’endroit exact où la lame fera mal. Plus il progresse, plus il est difficile à immobiliser et plus ses critiques laissent des marques.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé à toutes les armes courantes et de guerre et aux armures légères ; pas aux boucliers.\n• La plupart des aptitudes se perdent en armure intermédiaire ou lourde, ou avec une charge intermédiaire ou lourde.\n• Aptitudes : attaque en finesse (1) ; style (2, 11, 20) ; frappe instinctive (3) ; bonus d’esquive (5, 10, 15, 20) ; charge acrobatique (7) ; science de la prise en tenaille (8) ; chanceux (11) ; maîtrise des compétences acrobatiques (13) ; critique affaiblissant (14) ; esprit fuyant (17) ; critique sanglant (19)."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "source": "Complete Warrior",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.swashbuckler') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Perte des aptitudes en armure ou chargé : l’équipement porté n’est pas encore dans le modèle, les bonus s’appliquent toujours. Le livre ne donne pas de règle épique propre au spadassin : un don supplémentaire tous les 3 niveaux au-delà du 20 (à confirmer)."
+    },
+    {
+      "id": "power.swashbuckler_weapon_finesse",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque en finesse",
+        "en": "Weapon finesse"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Le spadassin frappe avec la précision de sa main plus qu’avec la force de son bras.\n\nEn jeu\n• Don supplémentaire : Attaque en finesse, sans en remplir les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swashbuckler_grace",
+      "type": "class_power",
+      "name": {
+        "fr": "Style",
+        "en": "Grace"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Il se déplace comme s’il dansait, et les pièges comme les sorts ont du mal à l’attraper.\n\nEn jeu\n• Bonus d’aptitude de +1 aux jets de Réflexes, +2 au niveau 11, +3 au niveau 20.\n• Perdu en armure intermédiaire ou lourde, ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "1 + (if(level('class.swashbuckler') >= 11, 1, 0)) + (if(level('class.swashbuckler') >= 20, 1, 0))",
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.swashbuckler_insightful_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe instinctive",
+        "en": "Insightful strike"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Il sait d’instinct où la lame fera le plus de dégâts : sa ruse remplace la force.\n\nEn jeu\n• Ajoute son bonus d’Intelligence (s’il est positif) aux dégâts des armes légères et des armes utilisables avec Attaque en finesse (chaîne cloutée, rapière, fouet), en plus de son éventuel bonus de Force.\n• Sans effet sur les créatures immunisées aux attaques sournoises ou aux coups critiques.\n• Perdu en armure intermédiaire ou lourde, ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "max(0, @ability.int.mod)",
+          "situation": "situation.with_light_or_finesse_weapon"
+        }
+      ],
+      "note": "Situation « avec une arme légère ou maniable en finesse » : à activer pour ces armes ; l’immunité aux sournoises et aux critiques n’est pas dans le modèle."
+    },
+    {
+      "id": "power.swashbuckler_dodge_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus d’esquive",
+        "en": "Dodge bonus"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Le spadassin est un duelliste : il se concentre sur un seul adversaire et ne lui laisse plus de prise.\n\nEn jeu\n• Pendant son tour, il désigne un adversaire ; contre ses attaques de corps à corps, +1 à la CA (esquive).\n• Peut changer d’adversaire à chaque tour. Le bonus monte de +1 tous les 5 niveaux (+2 au niveau 10, +3 au niveau 15, +4 au niveau 20).\n• Cumulable avec le don Esquive, même sur un autre adversaire ; sur le même, les deux bonus s’additionnent.\n• Perdu en armure intermédiaire ou lourde, ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor(level('class.swashbuckler') / 5)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_designated_opponent"
+        }
+      ]
+    },
+    {
+      "id": "power.swashbuckler_acrobatic_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge acrobatique",
+        "en": "Acrobatic charge"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Un escalier à dévaler, un lustre où se balancer, un balcon d’où sauter : le spadassin y voit des chemins de charge.\n\nEn jeu\n• Peut charger même quand une charge est normalement impossible : terrain difficile, espace occupé par un allié.\n• Selon les circonstances, il doit réussir les tests adéquats (Saut, Acrobaties…)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swashbuckler_improved_flanking",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la prise en tenaille",
+        "en": "Improved flanking"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Quand il prend un adversaire en tenaille, le spadassin s’arrange pour que cela compte.\n\nEn jeu\n• Quand il prend un adversaire en tenaille, +4 à son jet d’attaque au lieu de +2.\n• Les alliés qui participent à la prise en tenaille ne profitent pas de cette augmentation."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.vs_flanked_foe"
+        }
+      ],
+      "note": "Montré comme +2 en plus du +2 habituel de la prise en tenaille."
+    },
+    {
+      "id": "power.swashbuckler_lucky",
+      "type": "class_power",
+      "name": {
+        "fr": "Chanceux",
+        "en": "Lucky"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Selon beaucoup de spadassins, mieux vaut être chanceux que talentueux, et la chance leur donne souvent raison.\n\nEn jeu\n• Une fois par jour, relance un jet d’attaque, un test de compétence, un test de caractéristique ou un jet de sauvegarde qui vient de rater.\n• Il doit garder le nouveau résultat, même s’il est pire."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.swashbuckler_acrobatic_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences acrobatiques",
+        "en": "Acrobatic mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "À ce niveau, le spadassin ne tremble plus sur une corde ni dans une chute.\n\nEn jeu\n• Peut faire 10 aux tests d’Acrobaties et de Saut, même si le stress ou les distractions devraient l’en empêcher."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swashbuckler_weakening_critical",
+      "type": "class_power",
+      "name": {
+        "fr": "Critique affaiblissant",
+        "en": "Weakening critical"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Un coup critique du spadassin ne fait pas que blesser : il laisse l’adversaire plus faible.\n\nEn jeu\n• Sur un coup critique : affaiblissement temporaire de 2 points de Force de la cible, en plus des dégâts.\n• Sans effet sur les créatures immunisées aux coups critiques."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swashbuckler_slippery_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit fuyant",
+        "en": "Slippery mind"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Un esprit qui danse aussi bien que le corps est difficile à saisir.\n\nEn jeu\n• S’il rate son jet de sauvegarde contre un sort ou effet d’Enchantement qui le cible, il peut en tenter un second, 1 round plus tard, avec le même DD (s’il est toujours en vie).\n• Une seule seconde chance par attaque."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.swashbuckler_wounding_critical",
+      "type": "class_power",
+      "name": {
+        "fr": "Critique sanglant",
+        "en": "Wounding critical"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "swashbuckler"
+      ],
+      "description": {
+        "fr": "Ses critiques font saigner l’adversaire longtemps après le coup.\n\nEn jeu\n• Sur un coup critique : affaiblissement temporaire de 2 points de Constitution, en plus des dégâts et de l’affaiblissement de Force du critique affaiblissant.\n• Sans effet sur les créatures immunisées aux coups critiques."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.swashbuckler",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.swashbuckler_weapon_finesse"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.swashbuckler_grace"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.swashbuckler_insightful_strike"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.swashbuckler_dodge_bonus"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.swashbuckler_acrobatic_charge"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.swashbuckler_improved_flanking"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.swashbuckler_lucky"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.swashbuckler_acrobatic_mastery"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.swashbuckler_weakening_critical"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.swashbuckler_slippery_mind"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.swashbuckler_wounding_critical"
+      ]
+    },
+    {
+      "classId": "class.swashbuckler",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.swashbuckler",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.swashbuckler_weapon_finesse",
+      "relation": "grants",
+      "to": "feat.weapon_finesse"
+    }
+  ]
+}

@@ -39,6 +39,9 @@ function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; cap
   const c = fr.catalog.tableColumns
   const maneuvers = rows.some((r) => r.maneuversKnown != null)
   const maneuverColumns = ['maneuversKnown', 'maneuversReadied', 'stancesKnown'] as const
+  const invocations = rows.some((r) => r.invocationsKnown != null)
+  // The grade is written only where it changes; each row shows the one reached so far.
+  const grades = rows.reduce<string[]>((all, r) => [...all, r.invocationGrade ?? all[all.length - 1] ?? ''], [])
   return (
     <section className="page-head">
       <h2 className="type-heading">{fr.catalog.table}</h2>
@@ -54,10 +57,12 @@ function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; cap
               <th scope="col">{c.will}</th>
               <th scope="col" className="special">{c.special}</th>
               {maneuvers && maneuverColumns.map((col) => <th key={col} scope="col">{c[col]}</th>)}
+              {invocations && <th scope="col">{c.invocationsKnown}</th>}
+              {invocations && <th scope="col">{c.invocationGrade}</th>}
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
+            {rows.map((row, i) => (
               <tr key={row.level}>
                 <th scope="row">{row.level}</th>
                 <td>{iterativeAttacks(row.bab)}</td>
@@ -73,6 +78,8 @@ function ProgressionTable({ rows, caption, name }: { rows: ProgressionRow[]; cap
                   ))}
                 </td>
                 {maneuvers && maneuverColumns.map((col) => <td key={col}>{row[col] ?? '—'}</td>)}
+                {invocations && <td>{row.invocationsKnown ?? '—'}</td>}
+                {invocations && <td>{fr.catalog.invocationGrades[grades[i]] ?? '—'}</td>}
               </tr>
             ))}
           </tbody>

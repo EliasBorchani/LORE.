@@ -1,0 +1,583 @@
+{
+  "entities": [
+    {
+      "id": "spell.absorption",
+      "type": "spell",
+      "name": {
+        "fr": "Absorption",
+        "en": "Absorption"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Les sorts lancés contre le personnage ne l’atteignent plus : ils se dissolvent dans sa peau, et leur énergie lui reste, prête à nourrir ses propres incantations.\n\nEn jeu\n• Absorbe 1d4+6 niveaux de sorts (le MD lance le dé en secret) ; chaque sort absorbé retire son niveau du total.\n• Ne marche que contre les sorts et pouvoirs magiques à distance qui ciblent directement le personnage : pas les sorts de contact, de zone ou à effet.\n• Si le reste ne suffit pas, seule une fraction passe (niveaux restants / niveau du sort) : cette fraction des dégâts, ou autant de chances d’être affecté (avec le jet de sauvegarde habituel).\n• Les niveaux absorbés servent à lancer un sort déjà préparé sans le dépenser (niveaux stockés ≥ niveau du sort ; composantes matérielles toujours nécessaires).\n• Dure jusqu’à épuisement des niveaux ou 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "jusqu’à épuisement ou 10 minutes/niveau"
+      },
+      "effects": [],
+      "note": "Le Codex n’imprime ni jet de sauvegarde ni résistance à la magie pour ce sort."
+    },
+    {
+      "id": "spell.spirit_needle",
+      "type": "spell",
+      "name": {
+        "fr": "Aiguille spirituelle",
+        "en": "Spirit Needle"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "Une longue aiguille de métal file de la main du wu jen et se plante dans l’aura d’un esprit, qui se retrouve épinglé au monde des vivants.\n\nEn jeu\n• Attaque à distance contre un esprit : touché, il perd son intangibilité et ne peut plus se déplacer.\n• Il perd son bonus de Dextérité à la CA ; ses assaillants ont +4 aux jets d’attaque.\n• Il peut encore faire des actions simples et complexes (attaques comprises), mais aucun pouvoir de téléportation ou de changement d’état (forme éthérée, état gazeux…).\n• Il ne peut pas retirer l’aiguille ; une autre créature le peut par une action simple.\n• Dure 1 round/niveau. Focaliseur : une longue aiguille en métal."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "un esprit",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.poison_needles",
+      "type": "spell",
+      "name": {
+        "fr": "Aiguilles empoisonnées",
+        "en": "Poison Needles"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "Le wu jen pointe un doigt et une volée d’aiguilles enduites de venin s’abat sur sa cible.\n\nEn jeu\n• Attaque à distance : 1d4 dégâts par niveau de lanceur (5d4 au plus).\n• Si elle est touchée, la cible choisit un effet (Vigueur, annule chaque fois) :\n• affaiblissement de 1d8 Constitution tout de suite, puis encore 1 minute plus tard ;\n• ou paralysie pendant 2d6 minutes ;\n• ou affaiblissement de 1d10 Dextérité tout de suite, puis encore 1 minute plus tard.\n• Composante : une longue aiguille en métal."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "aucun et Vigueur, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 5))d4",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.fire_wings",
+      "type": "spell",
+      "name": {
+        "fr": "Ailes de feu",
+        "en": "Fire Wings"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Les bras du wu jen deviennent de grandes ailes de flammes, comme celles du phénix. Le feu ne le brûle pas, ni lui ni ce qu’il porte.\n\nEn jeu\n• Vol à 18 m (manœuvrabilité bonne) avec une charge légère ; monte à demi-vitesse, descend à vitesse double ; peut charger, pas courir.\n• Les mains ne tiennent plus rien et les sorts à composante gestuelle sont impossibles ; les objets portés aux bras continuent de marcher.\n• Attaque à mains nues avec les ailes à −4 (arme non maîtrisée) : +2d6 dégâts de feu, et dégâts létaux.\n• S’éteint (fin du sort) avec extinction des feux, une immersion ou un vent d’ouragan ; en vol, le wu jen tombe.\n• Dure 10 minutes/niveau. Composante : une plume brûlée ; focaliseur : une amulette d’or en forme de phénix."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M, F",
+        "castingTime": "1 round",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6 fire",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Vitesse de vol et malus de −4 aux attaques à mains nues : en texte, le modèle ne tient pas de vitesse de vol."
+    },
+    {
+      "id": "spell.enhance_familiar",
+      "type": "spell",
+      "name": {
+        "fr": "Amélioration de familier",
+        "en": "Enhance Familiar"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Une vigueur nouvelle traverse le familier : il frappe plus fort, esquive mieux et résiste à tout.\n\nEn jeu\n• Le familier touché gagne +2 d’aptitude aux jets de sauvegarde, aux jets d’attaque et de dégâts au corps à corps.\n• Il gagne aussi +2 d’esquive à la CA.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le familier touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Les bonus vont au familier, pas à la feuille du personnage : en texte."
+    },
+    {
+      "id": "spell.programmed_amnesia",
+      "type": "spell",
+      "name": {
+        "fr": "Amnésie programmée",
+        "en": "Programmed Amnesia"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le mage fouille l’esprit de sa cible comme un livre ouvert, arrache des pages, en écrit d’autres, et peut même cacher un piège qui se refermera plus tard.\n\nEn jeu\n• Volonté, annule. Accès complet aux pensées et souvenirs de la cible.\n• Effacer des souvenirs (événements, personnes, lieux) ou en implanter de faux.\n• Donner des niveaux négatifs (au plus la moitié du niveau global de la cible) : ils ne deviennent jamais des pertes de niveau, restauration ne les retire pas, ils durent autant que le sort.\n• Refaire la personnalité : alignement, croyances, valeurs (certaines aptitudes de classe peuvent en dépendre).\n• Programmer un déclencheur (message codé, capture, lieu…) qui lance ou défait ces changements plus tard.\n• Un faux souvenir mal construit peut éveiller les soupçons de la cible, qui peut alors chercher à se soigner.\n• Permanent, sauf événement de fin prévu ; restauration suprême ou souhait l’annulent.\n• Incantation de 10 minutes. Composante : lentilles de cristal serties d’or (500 po)."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "permanente",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animate_wood",
+      "type": "spell",
+      "name": {
+        "fr": "Animation du bois",
+        "en": "Animate Wood"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_wood"
+      ],
+      "description": {
+        "fr": "Un tabouret, une canne, une statuette de bois se mettent à bouger et se jettent sur l’ennemi désigné.\n\nEn jeu\n• Anime un objet en bois de taille P ou moins : il attaque aussitôt la cible désignée.\n• Profil d’un objet animé de taille P (Manuel des Monstres), solidité 5.\n• Pas d’objet tenu ou porté par une créature.\n• Concentration, jusqu’à 1 round/niveau. Composante : poudre de cinabre et noyaux de pêche."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "1 objet en bois de taille P ou inférieure",
+        "duration": "concentration, jusqu’à 1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animate_water",
+      "type": "spell",
+      "name": {
+        "fr": "Animation de l’eau",
+        "en": "Animate Water"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_water"
+      ],
+      "description": {
+        "fr": "Une flaque se dresse, prend forme et s’avance pour frapper.\n\nEn jeu\n• Comme animation du bois, mais sur au plus un cube d’eau de 1,50 m d’arête.\n• L’eau animée a une solidité de 0 mais deux fois les points de résistance d’un objet animé de sa taille.\n• Concentration, jusqu’à 1 round/niveau. Composante : une fiole d’eau de source et d’huile de cinabre."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "eau"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 cube d’eau de 1,50 m d’arête au plus",
+        "duration": "concentration, jusqu’à 1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.animate_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Animation du feu",
+        "en": "Animate Fire"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Un brasier se détache de son foyer et marche sur l’ennemi, en laissant derrière lui une traînée de braises.\n\nEn jeu\n• Comme animation du bois, mais sur au plus un cube de flammes de 1,50 m de côté.\n• Le feu animé a le sous-type Feu et l’attaque de départ de feu d’un élémentaire de Feu : ses coups font des dégâts contondants plus du feu, et peuvent embraser (DD 12).\n• Solidité 0.\n• Concentration, jusqu’à 1 round/niveau. Composante : charbon de bois, soufre et cristaux de soude."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 cube de flammes de 1,50 m de côté au plus",
+        "duration": "concentration, jusqu’à 1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ring_of_blades",
+      "type": "spell",
+      "name": {
+        "fr": "Anneau de lames",
+        "en": "Ring of Blades"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un cercle de lames de métal se met à tourner autour du personnage et le suit partout, hachant tout ce qui s’approche trop.\n\nEn jeu\n• L’anneau couvre toutes les cases adjacentes au personnage et se déplace avec lui.\n• À chaque tour du personnage : 1d6 + 1 par niveau de lanceur (+10 au plus) aux créatures dans l’anneau.\n• Lames en fer froid pour un prêtre loyal, en argent pour un prêtre chaotique, en acier pour un prêtre neutre.\n• Dure 1 minute/niveau. Composante : une petite dague."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 10)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.arc_of_lightning",
+      "type": "spell",
+      "name": {
+        "fr": "Arc de foudre",
+        "en": "Arc of Lightning"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Entre deux ennemis, l’air devient conducteur et un éclair saute de l’un à l’autre, grillant tout ce qui se trouve sur son chemin.\n\nEn jeu\n• Choisir deux créatures à portée, ciblables comme pour un sort à cible : l’arc suit une ligne d’un coin de l’espace de l’une à un coin de l’espace de l’autre.\n• 1d6 dégâts d’électricité par niveau de lanceur (15d6 au plus) aux deux créatures et à tout ce qui est sur la ligne ; Réflexes, 1/2.\n• Pas de résistance à la magie. Composante : deux baguettes en métal."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "une ligne entre deux créatures",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6 electricity",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.greater_mage_armor",
+      "type": "spell",
+      "name": {
+        "fr": "Armure de mage suprême",
+        "en": "Greater Mage Armor"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le même champ de force qu’armure de mage, en plus dense : presque une armure de plates, sans le poids.\n\nEn jeu\n• Comme armure de mage, mais +6 d’armure à la CA pendant 1 heure/niveau.\n• Composante : une minuscule targe en platine (25 po)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ac.armor",
+          "op": "min",
+          "value": 6,
+          "condition": "active('toggle.greater_mage_armor')"
+        }
+      ]
+    },
+    {
+      "id": "spell.heartripper",
+      "type": "spell",
+      "name": {
+        "fr": "Arrache-cœur",
+        "en": "Heartripper"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "D’un revers de main, le personnage lance des traits invisibles qui arrachent le cœur des créatures les plus faibles autour de lui.\n\nEn jeu\n• Vigueur, annule ; sinon la créature meurt.\n• Touche des créatures (à 9 m au plus les unes des autres) dont le total de DV ne dépasse pas le niveau de lanceur ; aucune ne peut avoir plus de 4 DV.\n• Les plus faibles DV d’abord, puis les plus proches du point d’origine ; un reste de DV trop petit pour la créature suivante est perdu.\n• Sans effet sur les créatures sans anatomie ou sans cœur vital (vases, morts-vivants, créatures artificielles)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une ou plusieurs créatures, à 9 m au plus les unes des autres",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.phantasmal_assailants",
+      "type": "spell",
+      "name": {
+        "fr": "Assaillants imaginaires",
+        "en": "Phantasmal Assailants"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Des silhouettes de cauchemar naissent dans l’esprit de la cible et la lacèrent ; pour le mage, ce ne sont que des ombres.\n\nEn jeu\n• Volonté pour comprendre que c’est faux : réussi, le sort échoue.\n• Raté : affaiblissement de 4 Sagesse et 4 Dextérité ; Vigueur réussi, la moitié.\n• Si la cible réussit son jet de Volonté et porte un casque de télépathie, le sort se retourne contre le mage."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "fantasme",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, dévoile (en cas d’interaction) puis Vigueur, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Le Codex écrit « annule » pour le jet de Vigueur mais le texte dit que les affaiblissements sont réduits de moitié : la description suit le texte."
+    },
+    {
+      "id": "spell.mass_fire_shield",
+      "type": "spell",
+      "name": {
+        "fr": "Bouclier de feu de groupe",
+        "en": "Fire Shield, Mass"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le bouclier de flammes chaudes ou froides enveloppe d’un coup tout un groupe d’alliés.\n\nEn jeu\n• Comme bouclier de feu, mais sur plusieurs alliés à 9 m au plus les uns des autres.\n• Qui frappe un protégé au corps à corps subit 1d6 + 1 par niveau de lanceur (+15 au plus), en feu ou en froid.\n• Dure 1 round/niveau. Composante matérielle."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu ou froid"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "un ou plusieurs alliés, à 9 m au plus les uns des autres",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.freezing_fog",
+      "type": "spell",
+      "name": {
+        "fr": "Brouillard gelant",
+        "en": "Freezing Fog"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un banc de brume glacée envahit les lieux : on n’y voit plus à deux pas, on s’y gèle, et le sol se couvre de verglas.\n\nEn jeu\n• Vision (même dans le noir) limitée à 1,50 m : camouflage à 1,50 m, camouflage total au-delà.\n• À chaque tour du mage : 1d6 dégâts de froid aux créatures et objets dans la zone, et Réflexes sous peine de tomber.\n• Déplacement à 1,50 m par round au plus ; aucun pas de placement possible ; bouger debout demande un test d’Équilibre DD 10 (chute si raté de 5 ou plus).\n• −2 aux jets d’attaque et de dégâts au corps à corps, −6 aux attaques à distance (pas aux sorts).\n• Ralentit les chutes : 3 m de moins par tranche de 3 m de brume traversée.\n• Un vent violent (45 km/h ou plus) la disperse en 1 round ; ne marche pas sous l’eau. Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "émanation de brume de 6 m de rayon et 6 m de haut",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 cold",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le Codex n’imprime pas la composante matérielle de ce sort."
+    },
+    {
+      "id": "spell.corpse_candle",
+      "type": "spell",
+      "name": {
+        "fr": "Chandelle du cadavre",
+        "en": "Corpse Candle"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une main de spectre surgit, une chandelle allumée entre les doigts, et vogue à travers les murs : sa pâle lueur révèle ce qui se cache.\n\nEn jeu\n• La chandelle éclaire sur 1,50 m ; la main va où le lanceur veut, sans concentration, à 15 m par round, en traversant les objets (intangible).\n• Dans la lumière : les créatures et objets cachés, éthérés ou invisibles deviennent vaguement visibles.\n• Un invisible n’a plus qu’un camouflage (20 %) et perd son bonus d’attaque d’invisibilité ; un éthéré reste hors d’atteinte (sauf effets de force).\n• Un intangible n’a plus que 30 % de chances d’éviter les dégâts des créatures tangibles.\n• Main de taille Min : 1 pv par niveau de lanceur, CA 14 + modificateur de Charisme du lanceur (parade), jets de sauvegarde du lanceur, immunisée aux sorts sans dégâts.\n• Le sort finit si la main est détruite ou sort de portée. Dure 1 minute/niveau. Composante : un morceau de cadavre jamais embaumé."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "une main fantomatique et une chandelle",
+        "duration": "1 minute/niveau (T) (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

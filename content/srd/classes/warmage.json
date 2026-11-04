@@ -1,0 +1,735 @@
+{
+  "entities": [
+    {
+      "id": "class.warmage",
+      "type": "class",
+      "name": {
+        "fr": "Mage de bataille",
+        "en": "Warmage"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "arcane",
+        "free_slots"
+      ],
+      "description": {
+        "fr": "Le mage de bataille a fait ses classes dans un collège de guerre, pas dans une bibliothèque. Il a appris à lancer des sorts en cotte de mailles, entre deux exercices de formation, jusqu’à ce que quelques formules d’attaque soient gravées au fond de lui. Il en connaît peu, mais il les lance sans préparation, et chacune frappe plus fort que celle d’un magicien.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé aux armes courantes, aux rondaches (buckler), aux armures légères et, dès le niveau 8, aux armures intermédiaires ; pas aux autres boucliers.\n• Sorts profanes du mage de bataille, basés sur le Charisme, du niveau 0 au niveau 9 : il connaît tous les sorts de sa liste et les lance sans les préparer.\n• Aptitudes : armure de guerre (1 et 8), magie affilée (1), apprentissage avancé (3, 6, 11, 16) ; dons supplémentaires de métamagie soudaine (7, 10, 15, 20).\n• Au-delà du niveau 20 : un don supplémentaire tous les 3 niveaux (23, 26, 29…) ; un sort d’Évocation de plus dans sa liste aux niveaux 21, 25, 29…"
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "source": "Complete Arcane",
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "free_slots"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.warmage') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Épique (Codex Profane, chap. 7) : pas de sorts par jour en plus après le niveau 20 ; apprentissage avancé tous les 4 niveaux à partir de 21 (25, 29…) ; un don supplémentaire tous les 3 niveaux (23, 26, 29…) parmi la liste du Codex, sans en remplir les conditions (choisi au niveau de la fiche). Nom anglais de la classe : Warmage."
+    },
+    {
+      "id": "power.warmage_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de mage de bataille",
+        "en": "Warmage spells"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Pas de grimoire ni de préparation : le mage de bataille a tout son répertoire en tête, et il y puise à la demande tant qu’il lui reste des emplacements du bon niveau.\n\nEn jeu\n• Sorts profanes de sa propre liste, lancés sans préparation.\n• Caractéristique : Charisme. Il faut au moins 10 + niveau du sort en Charisme pour le lancer. DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour selon le niveau de mage de bataille ; sorts en bonus grâce à un Charisme élevé.\n• Dès qu’il accède à un niveau de sort, il connaît tous les sorts de ce niveau de sa liste : il peut en lancer n’importe lequel avec un emplacement libre de ce niveau.\n• Les parchemins qu’il écrit et les objets qu’il active (baguettes, potions) ne profitent pas de la magie affilée ; les bâtons, si."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warmage_armored_mage",
+      "type": "class_power",
+      "name": {
+        "fr": "Armure de guerre",
+        "en": "Armored Mage"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Le collège de guerre lui a fait porter des tenues lourdes dès les premiers jours : à force, le geste du sort passe à travers le cuir et la maille.\n\nEn jeu\n• Au niveau 1, il lance sans risque d’échec des sorts profanes en armure légère et avec une rondache (sorts du mage de bataille seulement).\n• Au niveau 8, la même chose en armure intermédiaire.\n• Une armure plus lourde ou un écu entraîne le risque d’échec habituel."
+      },
+      "effects": [],
+      "note": "Le risque d’échec des sorts profanes n’est pas encore dans le modèle."
+    },
+    {
+      "id": "power.warmage_warmage_edge",
+      "type": "class_power",
+      "name": {
+        "fr": "Magie affilée",
+        "en": "Warmage Edge"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Son métier, c’est de faire mal. Chaque sort qui inflige des dégâts frappe plus dur, guidé par son intelligence.\n\nEn jeu\n• Quand il lance un sort de mage de bataille qui inflige des dégâts, il ajoute son bonus d’Intelligence à ces dégâts (pas aux sorts d’une autre classe).\n• Une fois par incantation et par sort : une boule de feu en bénéficie pour toutes les créatures de la zone ; avec projectile magique, un seul projectile.\n• Si le sort inflige des dégâts sur plusieurs rounds, le bonus s’ajoute chaque round."
+      },
+      "effects": [],
+      "note": "Le bonus dépend du sort lancé (dégâts propres à chaque sort, une fois par incantation) : pas dans le modèle, à ajouter à la main."
+    },
+    {
+      "id": "power.warmage_advanced_learning",
+      "type": "class_power",
+      "name": {
+        "fr": "Apprentissage avancé",
+        "en": "Advanced Learning"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Entre deux campagnes, le mage de bataille ajoute à son répertoire une formule qu’il a étudiée ou mise au point lui-même.\n\nEn jeu\n• Aux niveaux 3, 6, 11 et 16, il ajoute définitivement un sort de la liste des ensorceleurs et magiciens à sa liste.\n• Le sort doit être de l’école d’Évocation et d’un niveau au plus égal au plus haut niveau de sort qu’il connaît déjà.\n• Épique : à partir du niveau 21, un sort d’Évocation de plus tous les 4 niveaux (25, 29…)."
+      },
+      "effects": [],
+      "note": "Les sorts ajoutés se choisissent dans la feuille (relations de liste) ; au niveau 21 et au-delà, la règle épique : 1 sort d’Évocation aux niveaux 21, 25, 29…"
+    },
+    {
+      "id": "power.warmage_sudden_empower",
+      "type": "class_power",
+      "name": {
+        "fr": "Extension d’effet soudaine",
+        "en": "Sudden Empower"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Une fois par jour, un sort de plus frappe de toute sa force, sans préparation.\n\nEn jeu\n• Don supplémentaire : Extension d’effet soudaine, sans en remplir les conditions.\n• S’il le possède déjà, il choisit un autre don de métamagie."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warmage_sudden_extend",
+      "type": "class_power",
+      "name": {
+        "fr": "Extension de portée soudaine",
+        "en": "Sudden Extend"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Un sort peut durer plus longtemps ou porter plus loin, sur un simple geste de volonté, une fois par jour.\n\nEn jeu\n• Don supplémentaire : Extension de portée soudaine (Sudden Extend dans le livre anglais), sans en remplir les conditions.\n• S’il le possède déjà, il choisit un autre don de métamagie."
+      },
+      "effects": [],
+      "note": "Le Codex imprime « Extension de portée soudaine » ; pas de don de ce nom dans Complete Arcane : relié à Sudden Extend (Extension de durée soudaine). À confirmer."
+    },
+    {
+      "id": "power.warmage_sudden_widen",
+      "type": "class_power",
+      "name": {
+        "fr": "Extension de zone d’effet soudaine",
+        "en": "Sudden Widen"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Quand l’ennemi s’étale sur le champ de bataille, le mage de bataille élargit la zone d’un seul geste.\n\nEn jeu\n• Don supplémentaire : Extension de zone d’effet soudaine, sans en remplir les conditions.\n• S’il le possède déjà, il choisit un autre don de métamagie."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warmage_sudden_maximize",
+      "type": "class_power",
+      "name": {
+        "fr": "Quintessence des sorts soudaine",
+        "en": "Sudden Maximize"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "warmage"
+      ],
+      "description": {
+        "fr": "Une fois par jour, un sort porte ses dégâts au maximum, sans préparation.\n\nEn jeu\n• Don supplémentaire : Quintessence des sorts soudaine, sans en remplir les conditions.\n• S’il le possède déjà, il choisit un autre don de métamagie."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.warmage",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.warmage_spells",
+        "power.warmage_armored_mage",
+        "power.warmage_warmage_edge"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.warmage_advanced_learning"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.warmage_sudden_empower"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.warmage_sudden_extend"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 11,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 12,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 13,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 14,
+      "bab": 7,
+      "fort": 4,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 15,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 9,
+      "grants": [
+        "power.warmage_sudden_widen"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 16,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 17,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 18,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 19,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4
+      ]
+    },
+    {
+      "classId": "class.warmage",
+      "level": 20,
+      "bab": 10,
+      "fort": 6,
+      "ref": 6,
+      "will": 12,
+      "grants": [
+        "power.warmage_sudden_maximize"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.warmage",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.warmage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.warmage_sudden_empower",
+      "relation": "grants",
+      "to": "feat.sudden_empower"
+    },
+    {
+      "from": "power.warmage_sudden_extend",
+      "relation": "grants",
+      "to": "feat.sudden_extend"
+    },
+    {
+      "from": "power.warmage_sudden_widen",
+      "relation": "grants",
+      "to": "feat.sudden_widen"
+    },
+    {
+      "from": "power.warmage_sudden_maximize",
+      "relation": "grants",
+      "to": "feat.sudden_maximize"
+    }
+  ]
+}

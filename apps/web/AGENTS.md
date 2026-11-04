@@ -45,6 +45,10 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   may learn now: its disciplines, the highest level, the prerequisite count; a feat such as Martial Study gets its own
   block) and adding or removing items. Taking one stance too many in « Effets » leaves the one taken first
   (`SheetContext`; one at a time, `stances.active_max` from the engine: two with Stance Mastery).
+  Invocations per invoker class (« Invocations (Sorcier) », count, highest grade and problems from the engine's
+  `invokers`; the picker lists the invocations of the grades reached, from `GET /catalog/invocations`). Catalog:
+  invocation facts (grade, equivalent level, essence or shape), the « Rang d’invocation » filter, and the Warlock's
+  table columns.
   Lists come from `GET /entities` (all pages, cached in `src/sheet/catalogLists.ts`); the shared `Picker` ignores
   accents and case. A save that brings new entities calls `reload()` (sheet context) to fetch the catalog again.
 - Content editor, the guided CMS (`docs/prd-cms.md`): the group's « Atelier » tab (`src/screens/AtelierScreen.tsx`:

@@ -1,0 +1,285 @@
+{
+  "entities": [
+    {
+      "id": "feat.legendary_tumbler",
+      "type": "feat",
+      "name": {
+        "fr": "Acrobate légendaire",
+        "en": "Legendary Tumbler"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il reste en équilibre et enchaîne les acrobaties bien au-delà de ce qu’un mortel peut espérer.\n\nEn jeu\n• Conditions : Dex 21, 24 degrés en Acrobaties, 24 degrés en Équilibre.\n• Il ignore les malus de déplacement accéléré, d’acrobaties accélérées, de course en équilibre ou en acrobaties.\n• Normal : –5 à Équilibre et –10 à Acrobaties à vitesse maximale, –20 en courant."
+      },
+      "prerequisite": "level() >= 21 and @ability.dex.score >= 21 and @skill.tumble.ranks >= 24 and @skill.balance.ranks >= 24",
+      "note": "Les malus de déplacement accéléré ne sont pas modélisés."
+    },
+    {
+      "id": "feat.improved_alchemy",
+      "type": "feat",
+      "name": {
+        "fr": "Alchimie améliorée",
+        "en": "Improved Alchemy"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Ses potions et substances alchimiques sont d’une puissance qui dépasse l’ordinaire.\n\nEn jeu\n• Conditions : Int 21, 21 degrés en Artisanat (alchimie).\n• À la création d’un objet ou d’une substance alchimique (poisons exclus) : +20 au DD de création et prix ×5.\n• L’objet fait le double de dégâts, dure deux fois plus, +2 au DD de sauvegarde, zone doublée (quand cela s’applique).\n• Exemple : un feu grégeois inflige 2d6 et brûle 2 rounds de plus (DD 17 pour l’éteindre)."
+      },
+      "prerequisite": "level() >= 21 and @ability.int.score >= 21 and @skill.craft.ranks >= 21",
+      "note": "Nom anglais à confirmer. Condition : Artisanat (alchimie) précisément ; la fiche compte Artisanat en général."
+    },
+    {
+      "id": "feat.epic_dodge",
+      "type": "feat",
+      "name": {
+        "fr": "Esquive épique",
+        "en": "Epic Dodge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "defense"
+      ],
+      "description": {
+        "fr": "Il évite les coups avec une adresse sans égale.\n\nEn jeu\n• Conditions : Dex 25, Esquive, 30 degrés en Acrobaties, roulé-boulé, esquive extraordinaire.\n• Une fois par round, quand l’adversaire désigné par Esquive le frappe, il évite automatiquement les dégâts de l’arme.\n• Cette version remplace toute autre du même don."
+      },
+      "prerequisite": "level() >= 21 and @ability.dex.score >= 25 and has('feat.dodge') and @skill.tumble.ranks >= 30",
+      "note": "Conditions non vérifiées : roulé-boulé et esquive extraordinaire. Évitement des dégâts : pas modélisé."
+    },
+    {
+      "id": "feat.legendary_climber",
+      "type": "feat",
+      "name": {
+        "fr": "Grimpeur légendaire",
+        "en": "Legendary Climber"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il escalade bien plus vite qu’un grimpeur ordinaire.\n\nEn jeu\n• Conditions : Dex 21, 12 degrés en Équilibre, 24 degrés en Escalade.\n• Il ignore les malus d’escalade accélérée, rapide ou en plein combat.\n• Normal : –5 pour une moitié de vitesse, –20 pour la vitesse entière ou en gardant son bonus de Dex."
+      },
+      "prerequisite": "level() >= 21 and @ability.dex.score >= 21 and @skill.balance.ranks >= 12 and @skill.climb.ranks >= 24",
+      "note": "Les malus d’escalade accélérée ne sont pas modélisés."
+    },
+    {
+      "id": "feat.group_inspiration",
+      "type": "feat",
+      "name": {
+        "fr": "Inspiration de groupe",
+        "en": "Group Inspiration"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "bardic_music"
+      ],
+      "description": {
+        "fr": "Ses chants atteignent d’un coup tout un groupe.\n\nEn jeu\n• Conditions : 30 degrés en Représentation, musique de barde.\n• Il double le nombre d’alliés touchés par inspiration talentueuse, héroïque et vaillante.\n• Inspiration talentueuse sur plusieurs alliés : une compétence différente pour chacun."
+      },
+      "prerequisite": "level() >= 21 and @skill.perform.ranks >= 30 and (has('power.bard_bardic_music') or has('power.sublime_chord_bardic_music'))"
+    },
+    {
+      "id": "feat.legendary_tracker",
+      "type": "feat",
+      "name": {
+        "fr": "Pisteur légendaire",
+        "en": "Legendary Tracker"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il suit une proie sur l’eau, sous l’eau, et même dans les airs.\n\nEn jeu\n• Conditions : Sag 25, 30 degrés en Connaissances (nature), 30 en Survie, Pistage.\n• Il suit des créatures sur l’eau, sous l’eau ou dans les airs d’après leurs infimes perturbations.\n• DD de Survie : sur l’eau 60, sous l’eau 80, dans les airs 120."
+      },
+      "prerequisite": "level() >= 21 and @ability.wis.score >= 25 and @skill.knowledge_nature.ranks >= 30 and @skill.survival.ranks >= 30 and has('feat.track')"
+    },
+    {
+      "id": "feat.polyglot",
+      "type": "feat",
+      "name": {
+        "fr": "Polyglotte",
+        "en": "Polyglot"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il parle, lit et écrit toutes les langues.\n\nEn jeu\n• Conditions : Int 25, Langue (cinq langues).\n• Il parle toutes les langues ; s’il sait lire, il les lit et les écrit (sauf les textes magiques)."
+      },
+      "prerequisite": "level() >= 21 and @ability.int.score >= 25",
+      "note": "Condition non vérifiée par la fiche : Langue (cinq langues). Les langues ne sont pas modélisées."
+    },
+    {
+      "id": "feat.epic_reputation",
+      "type": "feat",
+      "name": {
+        "fr": "Réputation épique",
+        "en": "Epic Reputation"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Sa renommée lui ouvre bien des portes et en ferme d’autres sans un mot.\n\nEn jeu\n• +4 aux tests de Bluff, Diplomatie, Intimidation, Renseignements et Représentation."
+      },
+      "prerequisite": "level() >= 21",
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.perform",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Le Codex ne donne aucune condition (page 193 vérifiée sur l’image), seulement le niveau épique."
+    },
+    {
+      "id": "feat.legendary_leaper",
+      "type": "feat",
+      "name": {
+        "fr": "Sauteur légendaire",
+        "en": "Legendary Leaper"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il franchit de grandes distances sans prendre d’élan.\n\nEn jeu\n• Condition : 24 degrés en Saut.\n• Un déplacement de 1,50 m en ligne droite suffit pour un saut avec élan."
+      },
+      "prerequisite": "level() >= 21 and @skill.jump.ranks >= 24"
+    },
+    {
+      "id": "feat.improved_skirmish",
+      "type": "feat",
+      "name": {
+        "fr": "Science de l’escarmouche",
+        "en": "Improved Skirmish"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il combat encore plus mobile.\n\nEn jeu\n• Condition : escarmouche (+4d6/+4 CA).\n• Si le bonus à la CA de l’escarmouche est au moins égal au nombre de dés de dégâts en plus, ses dégâts d’escarmouche montent de 1d6.\n• Sinon le bonus à la CA monte de +1.\n• Se prend plusieurs fois, les effets s’additionnent."
+      },
+      "prerequisite": "level() >= 21 and has('power.scout_skirmish') and level('class.scout') >= 15",
+      "repeatable": {},
+      "note": "Dégâts et CA d’escarmouche : pas modélisés, car le don alterne dés et CA selon l’état de la progression (règle du livre), ce que la fiche ne tient pas."
+    },
+    {
+      "id": "feat.improved_sudden_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la frappe éclair",
+        "en": "Improved Sudden Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Sa frappe sur un ennemi qui ne l’a pas vu venir est encore plus meurtrière.\n\nEn jeu\n• Condition : frappe éclair (+8d6).\n• Ajoute 1d6 aux dégâts de la frappe éclair.\n• Se prend plusieurs fois, les effets s’additionnent."
+      },
+      "prerequisite": "level() >= 21 and has('power.ninja_sudden_strike') and level('class.ninja') >= 15",
+      "repeatable": {},
+      "note": "Chaque prise ajoute 1d6 aux dégâts de frappe éclair (statistique damage.sudden_strike).",
+      "effects": [
+        {
+          "target": "damage.sudden_strike",
+          "op": "dice",
+          "value": "(count('feat.improved_sudden_strike'))d6"
+        }
+      ]
+    },
+    {
+      "id": "feat.epic_skill_focus",
+      "type": "feat",
+      "name": {
+        "fr": "Talent épique",
+        "en": "Epic Skill Focus"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Dans une compétence qu’il a choisie, il atteint une adresse de légende.\n\nEn jeu\n• Condition : 20 degrés dans la compétence choisie.\n• +10 aux tests de cette compétence.\n• Se prend plusieurs fois, pour des compétences différentes, sans cumul.\n• Compte comme Talent quand un autre don, une classe de prestige ou autre le demande."
+      },
+      "prerequisite": "level() >= 21",
+      "repeatable": {
+        "choose": "skill"
+      },
+      "note": "Condition non vérifiée par la fiche : 20 degrés dans la compétence choisie. Le +10 à la compétence choisie reste dans le texte (pas d’effet sur une compétence choisie par prise). Nom anglais à confirmer."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.epic_dodge",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.legendary_tracker",
+      "relation": "requires",
+      "to": "feat.track"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "entities": [
+    {
+      "id": "class.fochlucan_lyrist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Aède de Fochluchan",
+        "en": "Fochlucan Lyrist"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "nature",
+        "arcane",
+        "divine"
+      ],
+      "description": {
+        "fr": "Espion, diplomate, poète et protecteur des forêts, l'aède de Fochluchan sert les rois dans leurs salons et les bois dans leurs secrets. Le collège ne retient que les bardes qui savent aussi se battre, mentir, et écouter les druides : ceux qui passent l'épreuve en sortent avec une musique plus riche et deux traditions de magie qui progressent en même temps.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d'Intelligence par niveau.\n• Conditions : alignement neutre bon, neutre, chaotique neutre ou neutre mauvais ; Représentation (instruments à cordes) 13 rangs ; Connaissances (nature), Décryptage, Diplomatie, Escamotage et Renseignements 7 rangs chacun ; Langue (druidique) ; sorts divins et profanes de 1er niveau ; esquive totale ; savoir bardique.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Bluff, Concentration, Connaissances (chaque domaine), Décryptage, Déguisement, Déplacement silencieux, Diplomatie, Discrétion, Dressage, Équitation, Escamotage, Estimation, Langue, Natation, Perception auditive, Premiers secours, Profession, Psychologie, Renseignements, Représentation, Survie, Utilisation d'objets magiques.\n• Sorts : +1 niveau effectif de lanceur de sorts profanes et +1 niveau effectif de lanceur de sorts divins à chaque niveau.\n• Aptitudes : engagement éclairé, musique de barde, savoir bardique (1)."
+      },
+      "hitDie": 6,
+      "skillPoints": 6,
+      "prerequisite": "@skill.perform.ranks >= 13 and @skill.knowledge_nature.ranks >= 7 and @skill.decipher_script.ranks >= 7 and @skill.diplomacy.ranks >= 7 and @skill.sleight_of_hand.ranks >= 7 and @skill.gather_information.ranks >= 7",
+      "note": "Conditions dans la formule : les rangs (Représentation sans préciser les instruments à cordes). En texte seulement : Langue (druidique), sorts divins et profanes de 1er niveau, esquive totale, savoir bardique, alignement (relations alignment). Nom anglais : Fochlucan Lyrist. Bonus de base à l'attaque : table du Codex lue telle quelle (+1 par niveau, confirmé par l'exemple de personnage page 25)."
+    },
+    {
+      "id": "power.fochlucan_lyrist_enlightened_commitment",
+      "type": "class_power",
+      "name": {
+        "fr": "Engagement éclairé",
+        "en": "Enlightened commitment"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "fochlucan_lyrist"
+      ],
+      "description": {
+        "fr": "Les serments du collège sont souples : l'aède peut garder une cotte de mailles légère sans trahir la nature, et changer de voie sans que personne ne le lui reproche.\n\nEn jeu\n• Il peut porter une armure métallique légère sans perdre ses sorts de druide ni ses pouvoirs magiques et surnaturels.\n• Aucun malus d'expérience pour le multiclassage."
+      },
+      "effects": [],
+      "note": "Pas modélisé : le modèle ne retire pas les sorts de druide en armure métallique, ni l'XP de multiclassage. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.fochlucan_lyrist_bardic_music",
+      "type": "class_power",
+      "name": {
+        "fr": "Musique de barde",
+        "en": "Bardic music"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "fochlucan_lyrist"
+      ],
+      "description": {
+        "fr": "Sa musique est celle d'un barde, portée par vingt ans de leçons du collège : le même luth, mais bien plus de souffle.\n\nEn jeu\n• Ses niveaux d'aède s'ajoutent à ses niveaux de barde pour le nombre d'utilisations par jour de la musique de barde, les effets disponibles et leur puissance (nombre de cibles, DD…).\n• Il faut assez de rangs en Représentation pour chaque effet, comme pour un barde.\n• Exemple : roublard 2 / barde 5 / druide 4 / aède 3 = musique de barde 8 fois par jour, effets de barde de niveau 8."
+      },
+      "effects": [],
+      "usesPerDay": "level('class.fochlucan_lyrist')",
+      "note": "Les utilisations en plus forment ici une réserve à part, à ajouter à celle du barde."
+    },
+    {
+      "id": "power.fochlucan_lyrist_bardic_knowledge",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir bardique",
+        "en": "Bardic knowledge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "fochlucan_lyrist"
+      ],
+      "description": {
+        "fr": "À force de collecter ragots et légendes pour le collège, l'aède sait quelque chose sur presque tout, même s'il ne sait pas toujours d'où il le tient.\n\nEn jeu\n• Test pour se rappeler une légende, un personnage notable ou un lieu connu.\n• Bonus : niveau de barde + niveau d'aède + modificateur d'Intelligence."
+      },
+      "effects": [
+        {
+          "target": "check.bardic_knowledge",
+          "op": "add",
+          "value": "level('class.fochlucan_lyrist') + if(has('power.bard_bardic_knowledge'), 0, @ability.int.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.fochlucan_lyrist_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "fochlucan_lyrist"
+      ],
+      "description": {
+        "fr": "Chaque niveau d'aède prolonge à la fois la magie des bardes et celle des druides : l'aède ne choisit pas entre ses deux traditions, il les fait grandir ensemble.\n\nEn jeu\n• À chaque niveau : +1 niveau effectif de lanceur de sorts dans une classe profane précédente, et +1 dans une classe divine précédente.\n• Avec plusieurs classes profanes (ou divines), il choisit laquelle progresse.\n• Il gagne sorts par jour, sorts connus et niveau de lanceur de ce niveau effectif, mais pas les autres aptitudes de la classe (renvoi des morts-vivants, dons, etc.).\n• Exemple : roublard 2 / barde 5 / druide 4 / aède 3 lance comme un barde 8 et un druide 7."
+      },
+      "effects": [],
+      "note": "Deux progressions à la fois (profane et divine) : choisies dans la fiche de niveau, rien dans les lignes de la table."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.fochlucan_lyrist_enlightened_commitment",
+        "power.fochlucan_lyrist_bardic_music",
+        "power.fochlucan_lyrist_bardic_knowledge",
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    },
+    {
+      "classId": "class.fochlucan_lyrist",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.fochlucan_lyrist_spells"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.fochlucan_lyrist",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    }
+  ]
+}

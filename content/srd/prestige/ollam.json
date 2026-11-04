@@ -1,0 +1,264 @@
+{
+  "entities": [
+    {
+      "id": "class.ollam",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Ollam",
+        "en": "Ollam"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "bardic"
+      ],
+      "description": {
+        "fr": "Chez les nains, enseigner est un devoir sacré, et celui qui garde la mémoire du clan est entouré de respect. L’ollam est ce maître d’école et de légendes : il connaît l’histoire de son peuple, soigne ses élèves et sait, par la voix seule, leur donner de quoi réussir ou tenir bon.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : nain, loyal bon ; Connaissances (histoire) 10 rangs, Connaissances (un autre domaine) 10 rangs, Représentation (déclamation) 5 rangs.\n• Formé aux armes courantes, à tous les boucliers et à toutes les armures.\n• Sorts : aux niveaux 2, 3 et 4, +1 niveau de lanceur de sorts dans une classe de lanceur de sorts précédente (sans lanceur de sorts, il lance comme un prêtre d’un niveau de moins que son niveau d’ollam).\n• Aptitudes : savoir (1) ; inspiration talentueuse (3) ; inspiration vigoureuse (5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 6,
+      "prerequisite": "@skill.knowledge_history.ranks >= 10 and @skill.perform.ranks >= 5",
+      "note": "Conditions dans la formule : Connaissances (histoire) et Représentation (sans le domaine). En texte seulement : race naine, Connaissances dans un autre domaine (10 rangs), Représentation (déclamation) précisément."
+    },
+    {
+      "id": "power.ollam_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Progression des sorts",
+        "en": "Spellcasting progression"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ollam"
+      ],
+      "description": {
+        "fr": "Les leçons de l’ollam ne s’arrêtent pas au savoir : Moradin lui confie aussi de quoi guérir et protéger ses élèves.\n\nEn jeu\n• Aux niveaux 2, 3 et 4 : +1 niveau de lanceur de sorts dans une classe précédente capable de lancer des sorts (une seule, au choix, s’il en a plusieurs). Il gagne sorts par jour, sorts connus et niveau de lanceur d’un lanceur de ce niveau, mais rien d’autre (repousser les morts-vivants, dons de métamagie…).\n• Sans classe de lanceur de sorts : à partir du niveau 2, il lance comme un prêtre d’un niveau inférieur à son niveau d’ollam."
+      },
+      "effects": [],
+      "note": "Les progressions de sorts se choisissent dans les enregistrements de niveau ; rien dans les lignes de la table."
+    },
+    {
+      "id": "power.ollam_lore",
+      "type": "class_power",
+      "name": {
+        "fr": "Savoir",
+        "en": "Lore"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ollam"
+      ],
+      "description": {
+        "fr": "L’ollam a toujours une anecdote, une généalogie ou une vieille légende à portée de langue.\n\nEn jeu\n• Test de savoir (comme le savoir bardique) : niveau d’ollam + modificateur d’Intelligence.\n• Avec une aptitude de savoir d’une autre classe (le barde), son niveau d’ollam s’ajoute à son niveau dans cette classe pour le test."
+      },
+      "effects": [
+        {
+          "target": "check.bardic_knowledge",
+          "op": "add",
+          "value": "level('class.ollam') + if(has('power.bard_bardic_knowledge'), 0, @ability.int.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.ollam_inspire_competence",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration talentueuse",
+        "en": "Inspire competence"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ollam"
+      ],
+      "description": {
+        "fr": "Un mot juste au bon moment, et l’élève réussit ce qu’il tentait depuis des heures.\n\nEn jeu\n• Sur (aptitude surnaturelle), niveau 3 et plus : donne un bonus d’aptitude de +2 aux tests d’une compétence choisie d’un allié (+3 si c’est un nain).\n• Mêmes règles que l’inspiration talentueuse du barde.\n• S’il a déjà l’aptitude par la musique de barde, il peut dépenser une utilisation quotidienne de musique de barde pour passer à +4 (+6 pour un nain)."
+      },
+      "effects": [],
+      "note": "Allié : bonus sur la feuille de l’allié, pas sur celle de l’ollam."
+    },
+    {
+      "id": "power.ollam_inspire_fortitude",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration vigoureuse",
+        "en": "Inspire fortitude"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ollam"
+      ],
+      "description": {
+        "fr": "Les nains apprennent tôt à tenir bon. L’ollam sait réveiller cette endurance chez un compagnon, juste en haussant la voix.\n\nEn jeu\n• Sur, niveau 5 et plus, action simple : un allié nain à 9 m au plus (qui voit et entend l’ollam, et que l’ollam voit) gagne +4 d’aptitude aux tests de Constitution et aux jets de Vigueur, et une réduction des dégâts de 5/—.\n• Dure tant que l’ollam déclame, puis 1 minute de plus.\n• Sur un allié non nain : +2 seulement, pas de réduction des dégâts, et l’allié est fatigué à la fin des effets (les nains n’ont aucun contrecoup)."
+      },
+      "effects": [],
+      "note": "Allié : bonus sur la feuille de l’allié, pas sur celle de l’ollam."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.ollam",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.ollam_lore"
+      ]
+    },
+    {
+      "classId": "class.ollam",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.ollam_spells"
+      ]
+    },
+    {
+      "classId": "class.ollam",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.ollam_inspire_competence"
+      ]
+    },
+    {
+      "classId": "class.ollam",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.ollam",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.ollam_inspire_fortitude"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.ollam",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    }
+  ]
+}

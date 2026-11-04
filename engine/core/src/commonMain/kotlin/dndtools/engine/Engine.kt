@@ -16,6 +16,9 @@ class Engine(catalog: Catalog) {
     /** Classes that initiate maneuvers, with their key ability. */
     internal val initiators get() = compiled.initiators
 
+    /** Classes that learn warlock invocations, with their key ability. */
+    internal val invokers get() = compiled.invokers
+
     internal fun entity(id: String) = compiled.entity(id)
 
     internal fun disciplines(classId: String) = compiled.disciplines(classId)

@@ -1,0 +1,382 @@
+{
+  "entities": [
+    {
+      "id": "class.virtuoso",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Virtuose itinérant",
+        "en": "Virtuoso"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "bardic",
+        "skills"
+      ],
+      "hitDie": 6,
+      "skillPoints": 6,
+      "prerequisite": "@skill.diplomacy.ranks >= 4 and @skill.intimidate.ranks >= 4 and @skill.perform.ranks >= 10",
+      "description": {
+        "fr": "Pourquoi ramper dans les donjons quand on peut recevoir des ovations ? Le virtuose itinérant est un artiste qui traîne les foules : musicien, acteur, danseur ou jongleur, il fait de chaque salle une scène, et de son talent une forme de magie.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : Diplomatie 4 rangs, Intimidation 4 rangs, Représentation 10 rangs (au choix) ; capacité de lancer des sorts profanes de 1er niveau.\n• Aucune formation aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Art de la magie, Artisanat, Bluff, Concentration, Déguisement, Diplomatie, Équilibre, Évasion, Intimidation, Renseignements, Représentation, Saut.\n• Musique de barde : ses niveaux de virtuose s’ajoutent à ses niveaux de barde ; gagne fascination.\n• Sorts : un niveau de lanceur profane de plus à chaque niveau à partir du niveau 2.\n• Aptitudes : prouesse du virtuose (1 fois par jour et par niveau) : chant persuasif (1), chant du soutien (3), chant discordant (5), chant de fureur (7), mélodie de l’asservissement (9), mélodie de la révélation (10)."
+      },
+      "note": "Conditions dans la formule : les rangs (Représentation sans le choix de la spécialité). En texte seulement : capacité de lancer des sorts profanes de 1er niveau. Nom anglais du chant de fureur à confirmer. Fascination (power.bard_fascinate) : le nombre de cibles lit les niveaux de barde seulement, sans ajouter les niveaux de virtuose."
+    },
+    {
+      "id": "power.virtuoso_bardic_music",
+      "type": "class_power",
+      "name": {
+        "fr": "Musique de barde",
+        "en": "Bardic music"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Le virtuose joue de la scène comme d’autres de l’épée : sa musique de barde en profite.\n\nEn jeu\n• Ses niveaux de virtuose s’ajoutent à ses niveaux de barde pour le nombre d’utilisations par jour et le bonus d’inspiration vaillante.\n• Il gagne fascination s’il ne l’avait pas déjà (voir la musique de barde du barde)."
+      },
+      "effects": [],
+      "note": "Le modèle ne sait pas ajouter ces niveaux aux niveaux de barde : à compter à la main."
+    },
+    {
+      "id": "power.virtuoso_performance",
+      "type": "class_power",
+      "name": {
+        "fr": "Prouesse du virtuose",
+        "en": "Virtuoso performance"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Un spectacle bien mené vaut un sort : chaque numéro agit sur le public comme une magie, dans la musique, la danse, le théâtre ou la jonglerie.\n\nEn jeu\n• Utilisable 1 fois par jour et par niveau de virtuose.\n• Il faut une action simple pour la lancer ; certains effets demandent de la concentration, soit une action simple à chaque round.\n• Il peut lancer des sorts et activer des objets magiques en même temps. Sourd ou assourdi : 20 % d’échec pour les effets sonores, l’utilisation est perdue.\n• S’il a la musique de barde, il peut dépenser deux utilisations de musique de barde pour une utilisation de prouesse.\n• Chaque effet exige un niveau de virtuose et des rangs de Représentation minimums."
+      },
+      "effects": [],
+      "note": "Une utilisation consommée par spectacle.",
+      "usesPerDay": "level('class.virtuoso')"
+    },
+    {
+      "id": "power.virtuoso_persuasive_song",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant persuasif",
+        "en": "Persuasive song"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Une chanson bien tournée vaut mieux que mille compliments.\n\nEn jeu\n• Niveau 1 de virtuose et Représentation 11 rangs au moins, dans une compétence de Représentation.\n• Fonctionne comme un test de Diplomatie sur l’attitude de PNJ, mais avec un test de Représentation.\n• Spectateurs à 9 m au plus, qui voient et entendent, et s’y intéressent : 10 rounds de concentration, une même créature une fois par jour ; sans effet sur les hostiles."
+      },
+      "effects": [],
+      "note": "Une utilisation de la prouesse du virtuose par activation."
+    },
+    {
+      "id": "power.virtuoso_soothing_performance",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant du soutien",
+        "en": "Soothing performance"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Une berceuse pour tenir les mourants jusqu’à l’aube.\n\nEn jeu\n• Niveau 3 de virtuose et Représentation 13 rangs au moins, dans une compétence de Représentation.\n• Chaque round : les alliés à 9 m deviennent stables s’ils mouraient, ou regagnent 1 pv s’ils étaient stables (entre –1 et –9 pv).\n• Sans effet sur les ennemis ni sur les alliés à 0 pv ou plus. Dure 5 minutes. Effet mental."
+      },
+      "effects": [],
+      "note": "Une utilisation de la prouesse du virtuose par activation."
+    },
+    {
+      "id": "power.virtuoso_dirge_of_discord",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant discordant",
+        "en": "Dirge of discord"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Une fausse note, et plus un mage ne sait où il en est.\n\nEn jeu\n• Niveau 5 de virtuose et Représentation 15 rangs au moins, dans une compétence de Représentation.\n• Un ennemi à 9 m qui lance un sort doit réussir un test de Concentration contre le résultat du test de Représentation du virtuose, sinon il perd le sort.\n• Dure 10 rounds."
+      },
+      "effects": [],
+      "note": "Une utilisation de la prouesse du virtuose par activation."
+    },
+    {
+      "id": "power.virtuoso_frenzy_song",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de fureur",
+        "en": "Frenzy song"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Un rythme qui bat comme un cœur de guerre.\n\nEn jeu\n• Niveau 7 de virtuose et Représentation 17 rangs au moins, dans une compétence de Représentation.\n• Les alliés à 9 m qui le voient et l’entendent peuvent entrer en rage, comme la rage de berserker du barbare (elle prend fin si le virtuose arrête).\n• Un allié qui sait déjà faire rage peut profiter de sa propre rage sans dépenser d’utilisation. Le virtuose n’en bénéficie pas. Effet mental."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Une utilisation de la prouesse du virtuose par activation."
+    },
+    {
+      "id": "power.virtuoso_slave_melody",
+      "type": "class_power",
+      "name": {
+        "fr": "Mélodie de l’asservissement",
+        "en": "Slave melody"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Une mélodie douce comme un piège.\n\nEn jeu\n• Niveau 9 de virtuose et Représentation 19 rangs au moins, dans une compétence de Représentation.\n• Domine un humanoïde déjà fasciné, comme domination (niveau de lanceur égal au niveau de classe).\n• Jet de Volonté, DD 10 + niveau de virtuose + modificateur de Charisme ; enchantement mental (coercition) de langage."
+      },
+      "effects": [
+        {
+          "target": "dc.virtuoso_slave_melody",
+          "op": "set",
+          "value": "10 + level('class.virtuoso') + @ability.cha.mod"
+        }
+      ],
+      "note": "Une utilisation de la prouesse du virtuose par activation."
+    },
+    {
+      "id": "power.virtuoso_revealing_melody",
+      "type": "class_power",
+      "name": {
+        "fr": "Mélodie de la révélation",
+        "en": "Revealing melody"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "Tant que la musique joue, les illusions n’ont plus de secret.\n\nEn jeu\n• Niveau 10 de virtuose et Représentation 20 rangs au moins, dans une compétence de Représentation.\n• Les alliés à 9 m qui voient et entendent le spectacle gagnent les effets de vision lucide (niveau de lanceur égal au niveau de virtuose).\n• Dure tant que le virtuose joue."
+      },
+      "effects": [],
+      "note": "Une utilisation de la prouesse du virtuose par activation."
+    },
+    {
+      "id": "power.virtuoso_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Lancement de sorts",
+        "en": "Spellcasting"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "virtuoso"
+      ],
+      "description": {
+        "fr": "La scène n’empêche pas les études : le virtuose continue à progresser dans son art arcanique.\n\nEn jeu\n• À partir du niveau 2 et à chaque niveau suivant, gagne un niveau de lanceur de sorts dans une classe profane qu’il avait déjà (une seule, au choix).\n• Sorts par jour, sorts connus et niveau de lanceur de sorts de ce niveau effectif, sans rien d’autre (pas de dons de métamagie ni de création d’objets)."
+      },
+      "effects": [],
+      "note": "Les avancées de lanceur se choisissent dans les enregistrements de niveau."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.virtuoso",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.virtuoso_bardic_music",
+        "power.virtuoso_performance",
+        "power.virtuoso_persuasive_song",
+        "power.bard_fascinate"
+      ]
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.virtuoso_spells"
+      ]
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.virtuoso_soothing_performance"
+      ]
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.virtuoso_dirge_of_discord"
+      ]
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.virtuoso_frenzy_song"
+      ]
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.virtuoso_slave_melody"
+      ]
+    },
+    {
+      "classId": "class.virtuoso",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.virtuoso_revealing_melody"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.virtuoso",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

@@ -1,0 +1,483 @@
+{
+  "entities": [
+    {
+      "id": "class.spymaster",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître espion",
+        "en": "Spymaster"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "rogue"
+      ],
+      "description": {
+        "fr": "Il fuit la gloire. Pour passer inaperçu, il vit sous de fausses identités bien rodées, souvent sous le masque de son ancienne vocation, et ne reste loyal qu’à sa mission. Tout ce qu’on cherche à savoir sur lui se heurte à une façade.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 8 + modificateur d’Intelligence par niveau.\n• Conditions : Contrefaçon, Diplomatie, Psychologie et Renseignements 4 rangs chacun ; Bluff et Déguisement 8 rangs chacun ; don Talent (Bluff).\n• Armes et armures : armes courantes et de guerre, armures légères et intermédiaires.\n• Compétences de classe : Acrobaties, Bluff, Connaissances (folklore local, géographie, histoire, noblesse et royauté), Contrefaçon, Crochetage, Décryptage, Déguisement, Déplacement silencieux, Désamorçage/sabotage, Détection, Diplomatie, Discrétion, Équilibre, Escalade, Escamotage, Estimation, Évasion, Fouille, Intimidation, Langue, Maîtrise des cordes, Natation, Perception auditive, Psychologie, Renseignements, Saut, Utilisation d’objets magiques.\n• Aptitudes : alignement indétectable (1) ; couverture (1, 4, 7) ; habillage rapide (2) ; protection contre la scrutation (2) ; attaque sournoise +1d6 (3), +2d6 (6) ; aura magique (3) ; esprit fuyant (4) ; dissipation de la scrutation (5) ; couverture avancée (7)."
+      },
+      "hitDie": 6,
+      "skillPoints": 8,
+      "prerequisite": "@skill.forgery.ranks >= 4 and @skill.diplomacy.ranks >= 4 and @skill.sense_motive.ranks >= 4 and @skill.gather_information.ranks >= 4 and @skill.bluff.ranks >= 8 and @skill.disguise.ranks >= 8 and has('feat.skill_focus_bluff')",
+      "note": "Conditions : tout est dans la formule. Les compétences de classe Connaissances (folklore local) = skill.knowledge_local."
+    },
+    {
+      "id": "power.spymaster_undetectable_alignment",
+      "type": "class_power",
+      "name": {
+        "fr": "Alignement indétectable",
+        "en": "Undetectable alignment"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Aucune divination ne lit ce qu’il est vraiment.\n\nEn jeu\n• Pouvoir extraordinaire, niveau 1.\n• Son alignement ne peut être déterminé par aucune méthode de divination.\n• Comme le sort alignement indétectable, mais permanent."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spymaster_cover",
+      "type": "class_power",
+      "name": {
+        "fr": "Couverture",
+        "en": "Cover"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Il se fabrique une fausse identité complète, et la joue comme une seconde peau.\n\nEn jeu\n• Niveau 1 : une identité de couverture précise (par exemple « Murek, tailleur de Sombrebourg »).\n• Quand il agit sous cette identité : +4 de circonstances aux tests de Déguisement, +2 de circonstances aux tests de Bluff et de Renseignements.\n• Une couverture de plus aux niveaux 4 et 7.\n• Changer de couverture demande une semaine d’entraînement intensif (voix, gestes).\n• Une couverture ne donne ni compétences, ni formation aux armes ou armures, ni aptitudes de classe de la profession feinte."
+      },
+      "note": "Toggle à activer quand le maître espion agit sous sa fausse identité. Les couvertures supplémentaires (niveaux 4 et 7) sont du texte.",
+      "effects": [
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": 4,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.spymaster_cover')"
+        },
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.spymaster_cover')"
+        },
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.spymaster_cover')"
+        }
+      ]
+    },
+    {
+      "id": "power.spymaster_quick_change",
+      "type": "class_power",
+      "name": {
+        "fr": "Habillage rapide",
+        "en": "Quick change"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Il change de peau en un clin d’œil.\n\nEn jeu\n• Niveau 2 : se déguise en 1d3 minutes (dix fois plus vite).\n• Enfile ou retire une armure en deux fois moins de temps."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spymaster_scrying_ward",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection contre la scrutation",
+        "en": "Scrying ward"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Les yeux invisibles des devins le trouvent à peine.\n\nEn jeu\n• Niveau 2 : bonus égal à son niveau de classe aux jets de Volonté contre les sorts de divination (scrutation).\n• Même bonus aux tests de Détection pour remarquer les capteurs créés par ces sorts."
+      },
+      "note": "Le bonus aux tests de Détection pour repérer les capteurs : texte seulement. Nouvelle situation : vs_scrying.",
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": "level('class.spymaster')",
+          "situation": "situation.vs_scrying"
+        }
+      ]
+    },
+    {
+      "id": "power.spymaster_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Un coup bien placé, au moment où l’adversaire détourne le regard.\n\nEn jeu\n• Niveau 3 : +1d6 aux dégâts, +2d6 au niveau 6.\n• Comme l’attaque sournoise du roublard : cible prise en tenaille ou privée de son bonus de Dextérité à la CA ; à distance seulement à 9 m ou moins.\n• S’ajoute à l’attaque sournoise donnée par d’autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor(level('class.spymaster') / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.spymaster_magic_aura",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura magique",
+        "en": "Magic aura"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Il cache la magie de ses objets aussi bien que ses intentions.\n\nEn jeu\n• Pouvoir magique, niveau 3 : comme le sort aura magique de Nystul, à volonté.\n• Niveau de lanceur égal à son niveau de classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spymaster_slippery_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit fuyant",
+        "en": "Slippery mind"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Les sortilèges d’emprise glissent sur lui, ou presque.\n\nEn jeu\n• Niveau 4 : une seconde chance de jet de sauvegarde contre les sorts et effets de l’école des enchantements, comme l’esprit fuyant du roublard."
+      },
+      "note": "Seconde chance de jet : texte seulement.",
+      "effects": []
+    },
+    {
+      "id": "power.spymaster_scrying_dispel",
+      "type": "class_power",
+      "name": {
+        "fr": "Dissipation de la scrutation",
+        "en": "Dispel scrying"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Il retourne l’œil indiscret contre celui qui l’a posé.\n\nEn jeu\n• Pouvoir surnaturel, niveau 5 : dissipe un capteur de scrutation comme un sort de dissipation suprême ciblée.\n• Niveau de lanceur égal à son niveau de classe + 10.\n• Utilisations par jour : 3 + modificateur d’Intelligence."
+      },
+      "usesPerDay": "3 + @ability.int.mod",
+      "effects": []
+    },
+    {
+      "id": "power.spymaster_advanced_cover",
+      "type": "class_power",
+      "name": {
+        "fr": "Couverture avancée",
+        "en": "Advanced cover"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spymaster"
+      ],
+      "description": {
+        "fr": "Quand il joue son rôle, il y croit tout entier, au point que la magie elle-même s’y trompe.\n\nEn jeu\n• Niveau 7 : toute divination qui cherche à le connaître alors qu’il agit sous une couverture ne révèle que les informations propres à cette couverture."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.spymaster",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.spymaster_undetectable_alignment",
+        "power.spymaster_cover"
+      ]
+    },
+    {
+      "classId": "class.spymaster",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.spymaster_quick_change",
+        "power.spymaster_scrying_ward"
+      ]
+    },
+    {
+      "classId": "class.spymaster",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.spymaster_sneak_attack",
+        "power.spymaster_magic_aura"
+      ]
+    },
+    {
+      "classId": "class.spymaster",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.spymaster_slippery_mind",
+        "power.spymaster_cover"
+      ]
+    },
+    {
+      "classId": "class.spymaster",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.spymaster_scrying_dispel"
+      ]
+    },
+    {
+      "classId": "class.spymaster",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.spymaster_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.spymaster",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.spymaster_cover",
+        "power.spymaster_advanced_cover"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.forgery"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.spymaster",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    }
+  ]
+}

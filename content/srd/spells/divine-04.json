@@ -1,0 +1,717 @@
+{
+  "entities": [
+    {
+      "id": "spell.omen_of_peril",
+      "type": "spell",
+      "name": {
+        "fr": "Mauvais augure",
+        "en": "Omen of Peril"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une courte prière, et le lanceur entrevoit en songe-éclair ce que l'heure à venir lui réserve : calme, danger ordinaire ou péril mortel.\n\nEn jeu\n• Le MD fait le jet en secret : 70 % de réponse exacte, +1 % par niveau de lanceur (90 % au plus).\n• Trois visions possibles : sécurité (rien de notable pendant 1 heure), péril (monstres, pièges ordinaires) ou grand danger (PNJ puissants, pièges mortels).\n• En cas d'échec, le MD donne au hasard l'une des deux autres visions.\n• Ne répond à aucune question précise, ne donne que le niveau de danger de la prochaine heure.\n• Focaliseur : baguettes, os ou autres babioles d'au moins 25 po."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, F",
+        "castingTime": "1 round entier",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.miasma",
+      "type": "spell",
+      "name": {
+        "fr": "Miasme",
+        "en": "Miasma"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un gaz suffocant emplit la gorge de la victime : plus d'air, rien qu'une toux sèche et la panique de manquer de souffle.\n\nEn jeu\n• Cible : une créature vivante ; résistance à la magie : oui.\n• La cible peut retenir son souffle 2 rounds par point de Constitution, puis fait un test de Constitution par round (DD 10, +1 par succès déjà obtenu).\n• Au premier échec (ou si elle cesse de retenir son souffle), elle tombe inconsciente (0 pv) ; au round suivant elle est à -1 pv et mourante ; au troisième round elle suffoque.\n• Dure 3 rounds/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une créature vivante",
+        "duration": "3 rounds/niveau",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.travelers_mount",
+      "type": "spell",
+      "name": {
+        "fr": "Monture du voyageur",
+        "en": "Traveler's Mount"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La bête touchée oublie sa fureur de combat pour ne garder que l'endurance : elle dévore la route, au prix de ses armes.\n\nEn jeu\n• Cible : un animal ou une créature magique touché ; Volonté, annule.\n• Bonus d'altération de +3 m en vitesse de déplacement ; la monture peut se déplacer en mode footing sans dégâts ni fatigue.\n• Pendant la durée, la monture ne peut plus utiliser ses armes naturelles (elle porte toujours son cavalier au combat).\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "animal ou créature magique touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.otyugh_swarm",
+      "type": "spell",
+      "name": {
+        "fr": "Nuée d'otyughs",
+        "en": "Otyugh Swarm"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des immondices accumulées se soulèvent et prennent vie : une meute d'otyughs, fidèle à celui qui les a tirés de la fange.\n\nEn jeu\n• Ne peut être lancé que dans un lieu contenant au moins 3 tonnes d'ordures, de déchets ou de miasmes.\n• Crée 3d4 otyughs de taille normale ou 1d3+1 otyughs de taille TG, à 9 m les uns des autres.\n• Ils servent le lanceur (combat, missions, garde du corps) pendant sept jours, ou sept mois si on leur confie la garde d'un site précis ; dans ce cas ils ne s'éloignent pas de la portée du sort.\n• Les otyughs non désignés comme gardes peuvent quitter leur tas d'ordures sur ordre du lanceur.\n• Pas de jet de sauvegarde, pas de résistance à la magie."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "trois otyughs ou plus, aucun à plus de 9 m d'un autre",
+        "duration": "sept jours ou sept mois (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Description lue sur la page 178, sous l'entrée précédente (Miasme)."
+    },
+    {
+      "id": "spell.scent",
+      "type": "spell",
+      "name": {
+        "fr": "Odorat",
+        "en": "Scent"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le nez de la cible devient celui d'un fauve : elle lit le vent, repère les ennemis cachés et suit une piste froide à l'odeur.\n\nEn jeu\n• Cible : créature touchée ; inoffensif.\n• Détecte les adversaires dans 9 m (18 m au vent, 4,50 m sous le vent) ; odeurs fortes ×2, très fortes ×3.\n• Sans localiser avec précision : une action de mouvement donne la direction ; à moins de 4,50 m, la source est repérée aussitôt.\n• Suivre une piste : test de Sagesse, DD 10 pour une piste fraîche, +2 par heure écoulée ; règles du don Pistage, sans pénalités de surface ni de visibilité.\n• Dure 10 minutes/niveau. Composantes matérielles profanes : une cuillerée de moutarde, quelques grains de poivre, une goutte de sueur."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.storm_of_elemental_fury",
+      "type": "spell",
+      "name": {
+        "fr": "Orage de fureur élémentaire",
+        "en": "Storm of Elemental Fury"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un nuage noir se tend au-dessus des ennemis du druide et leur déverse, round après round, la colère des plans élémentaires.\n\nEn jeu\n• Nuage de 12 m de rayon, à 60 m au-dessus du sol ; concentration, 4 rounds au plus (T). Le lanceur peut le déplacer de 12 m par une action de mouvement.\n• 1er round : zone de tempête ; attaques à distance impossibles ; jet de Vigueur ou emportée (P ou moins), renversée (M) ou stoppée (G ou plus) ; les sorts lancés dans la zone sont perdus sauf test de Concentration réussi.\n• 2e round : pierres tombantes, 5d6 dégâts contondants, pas de jet de sauvegarde.\n• 3e round : averse qui éteint les flammes non protégées (50 % pour les autres) ; visibilité 1,50 m, déplacement réduit de moitié.\n• 4e round : flammes, 1d6 dégâts de feu par niveau de lanceur (Réflexes, demi-dégâts)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G",
+        "castingTime": "1 round entier",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "nuage menaçant de 12 m de rayon à 60 m au-dessus du sol",
+        "duration": "concentration (4 rounds maximum) (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Dégâts par round différents : non modélisés."
+    },
+    {
+      "id": "spell.phantom_bear",
+      "type": "spell",
+      "name": {
+        "fr": "Ours fantôme",
+        "en": "Phantom Bear"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un ours intangible, pelage de givre et gueule hurlante, surgit du brouillard pour terrifier tout ce qui se trouve près de lui.\n\nEn jeu\n• Comme loup fantôme, mais avec un ours intangible de taille TG : 14 DV, 113 pv, CA 25, vol 18 m.\n• Attaques : 2 griffes (+23 contact, 2d6 + 3d6 froid) et morsure (+21, 2d8 + 3d6 froid).\n• Rugissement terrifiant (tous les 1d4 rounds) : tout sauf le lanceur dans 36 m fait un jet de Volonté (DD 26) ou est effrayé 3d6 rounds ; dans 9 m, il est paniqué.\n• Intangible : 50 % d'ignorer les dégâts tangibles, ses attaques ignorent armure et armure naturelle, silence total.\n• Dure concentration, jusqu'à 1 round/niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round entier",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "un ours fantôme convoqué",
+        "duration": "concentration, jusqu'à 1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Créature convoquée : pas d'effet sur la fiche du lanceur."
+    },
+    {
+      "id": "spell.pact_of_return",
+      "type": "spell",
+      "name": {
+        "fr": "Pacte de regain",
+        "en": "Pact of Return"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le prêtre scelle un accord entre un fidèle et son dieu : au premier mal qui le frappe, la divinité le guérit.\n\nEn jeu\n• Cible : créature vivante et consentante touchée ; Volonté, annule (inoffensif). Coût en PX : 500.\n• Le pacte dort jusqu'à ce que la cible subisse affaiblissement de caractéristique, aveuglement, confusion, hébétement, éblouissement, assourdissement, maladie, épuisement, fatigue, débilité, aliénation, nausée, fièvre, étourdissement ou empoisonnement.\n• Un round plus tard, la cible reçoit un sort de guérison suprême (au niveau de lanceur du pacte).\n• Un seul pacte de regain par créature ; en lancer un nouveau annule le premier.\n• Durée : permanente jusqu'à déclenchement."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature vivante et consentante touchée",
+        "duration": "permanente jusqu'à déclenchement",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.pact_of_vigor",
+      "type": "spell",
+      "name": {
+        "fr": "Pacte de vigueur",
+        "en": "Pact of Vigor"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un dieu promet sa protection : quand son fidèle est à genoux, une force venue d'en haut le relève.\n\nEn jeu\n• Cible : créature vivante et consentante touchée ; Volonté, annule (inoffensif). Coût en PX : 250.\n• Le pacte dort jusqu'à ce que la cible perde au moins la moitié de ses points de vie.\n• Alors : 5 pv temporaires par niveau de lanceur, réduction des dégâts 5/magie, bonus de chance de +4 aux jets de sauvegarde.\n• Dure ensuite 1 round/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature vivante et consentante touchée",
+        "duration": "permanente jusqu'à déclenchement, puis 1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.zealot_pact",
+      "type": "spell",
+      "name": {
+        "fr": "Pacte du zélote",
+        "en": "Zealot Pact"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le dieu prête sa colère à son fidèle : au premier ennemi de camp opposé, la lame frappe comme un jugement.\n\nEn jeu\n• Cible : créature vivante et consentante touchée ; Volonté, annule (inoffensif). Coût en PX : 500.\n• Le pacte dort jusqu'à ce que la cible frappe un adversaire d'alignement strictement opposé à celui du dieu.\n• Alors : +4 à l'attaque, dégâts doublés, critiques confirmés automatiquement ; ses attaques de corps à corps prennent les registres d'alignement du dieu.\n• Il sent les créatures d'alignement opposé dans 18 m (comme détection) et doit les attaquer en priorité.\n• Dieu strictement neutre : choisir un alignement déclencheur parmi loyal bon, loyal mauvais, chaotique mauvais, chaotique bon.\n• Un seul pacte du zélote par créature ; un nouveau annule le premier. Dure ensuite 1 round/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature vivante et consentante touchée",
+        "duration": "permanente jusqu'à déclenchement, puis 1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.death_pact",
+      "type": "spell",
+      "name": {
+        "fr": "Pacte mortel",
+        "en": "Death Pact"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un accord sombre : si le fidèle tombe, son dieu le ramène, mais le marché lui coûte déjà un peu de sa vitalité.\n\nEn jeu\n• Cible : créature vivante et consentante touchée. Coût en PX : 250. Composante matérielle : un diamant d'au moins 500 po.\n• À l'incantation, la cible perd définitivement 2 points de Constitution.\n• Si elle meurt : téléportée en lieu sûr (mot de rappel), ressuscitée (rappel à la vie, avec la perte habituelle d'un niveau), puis guérison suprême. Elle ne regagne pas les 2 points de Constitution.\n• Si rappel à la vie est impossible (désintégration, vieillesse), le pacte échoue. S'il est dissipé avant la mort, la Constitution n'est pas rendue.\n• Durée : permanente jusqu'à utilisation."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "Mal"
+        ],
+        "components": "V, G, M, FD, PX",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "créature vivante et consentante touchée",
+        "duration": "permanente jusqu'à utilisation",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.pavilion_of_grandeur",
+      "type": "spell",
+      "name": {
+        "fr": "Pavillon de grandeur",
+        "en": "Pavilion of Grandeur"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une tente somptueuse aux couleurs du dieu apparaît, festin servi, où l'on se repose bien mieux que sous la pluie.\n\nEn jeu\n• Pavillon extradimensionnel de 5 cubes de 3 m de côté par niveau ; entrée de 3 m × 4,50 m, visible et ouverte seulement pour les créatures désignées, qui peuvent la refermer de l'intérieur.\n• Température de 4 à 32 °C au choix du lanceur ; luminosité entre jour et nuit.\n• Nourriture pour 12 créatures/niveau ; 1 heure à manger = effet de festin des héros.\n• Les créatures à l'intérieur guérissent au double du rythme habituel (pas la guérison accélérée ni la régénération).\n• Dure 1 jour/niveau (T) plus 12 heures."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "pavillon extradimensionnel, jusqu'à 5 cubes de 3 m de côté (F), plus festin pour 12 créatures/niveau",
+        "duration": "1 jour/niveau (T) plus 12 heures (voir description)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.shadow_landscape",
+      "type": "spell",
+      "name": {
+        "fr": "Paysage d'ombre",
+        "en": "Shadow Landscape"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le druide imprègne la région de l'énergie du plan de l'Ombre : la nature y devient hostile, tortueuse et traîtresse.\n\nEn jeu\n• Émanation de 1,5 km de rayon ; Réflexes, partiel ; dure 1 jour/niveau (T).\n• Effet selon le terrain : déserts (température ±15°, tempête de sable chaque heure), forêts et plaines (broussailles qui enchevêtrent), collines (pentes raides), marécages (sables mouvants), montagnes (Escalade DD 25, avalanche 10 %), souterrains naturels (déplacement ×4 en pierre).\n• Le climat est aggravé : on lance deux fois la table de climat et on garde le pire (trois fois en plaines).\n• Le lanceur ignore les effets de terrain, ainsi qu'une créature désignée tous les 4 niveaux (mais pas le mauvais temps).\n• Il peut désigner 1 DV de créatures d'origine par niveau comme gardiens d'ombre : amicaux, résistance au froid 10, vision dans le noir 18 m, réduction des dégâts 5/magie, esquive totale, vision nocturne."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G, FD",
+        "castingTime": "1 heure",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "émanation de 1,5 kilomètre de rayon centrée sur un point dans l'espace",
+        "duration": "1 jour/niveau (T)",
+        "savingThrow": "Réflexes, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.naturewatch",
+      "type": "spell",
+      "name": {
+        "fr": "Perception de la nature",
+        "en": "Naturewatch"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Comme la perception de la mort, mais tournée vers le vivant : le lanceur sent animaux et plantes d'un simple geste, et leur état de santé.\n\nEn jeu\n• Identique à perception de la mort, mais ne détecte que les animaux et les plantes.\n• Donne aussi un ensemble de renseignements sur cette faune et cette flore (plantes assoiffées, animaux sous-alimentés, etc.).\n• Zone : quart de cercle ; dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "quart de cercle partant du lanceur et s'étendant jusqu'à l'extrémité de la portée",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.weather_eye",
+      "type": "spell",
+      "name": {
+        "fr": "Perception du climat",
+        "en": "Weather Eye"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le prêtre lit les nuages et le vent pour prédire le temps de la semaine à venir.\n\nEn jeu\n• Prédit le climat dans un rayon de 1,5 km + 1,5 km/niveau, pour les 7 jours suivants.\n• Si des forces surnaturelles influent sur le climat, il donne les informations de détection de la magie.\n• Composante matérielle : de l'encens. Focaliseur divin : un objet de scrutation."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M, FD",
+        "castingTime": "1 heure",
+        "range": "1,5 km + 1,5 km/niveau",
+        "area": "rayon de 1,5 km + 1,5 km/niveau centré sur le lanceur",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.relentless_pursuit",
+      "type": "spell",
+      "name": {
+        "fr": "Poursuivant implacable",
+        "en": "Relentless Pursuit"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le chasseur se lie à sa proie : où qu'elle fuie, il sait dans quelle direction et à quelle distance elle court.\n\nEn jeu\n• Cible : 1 créature ; Volonté, annule (le DD augmente du bonus d'ennemi juré du lanceur, le cas échéant).\n• À la fin du tour de la cible, si elle s'est éloignée de plus de 3 m, le lanceur connaît direction et distance.\n• Reste valable tant que les deux sont sur le même plan ; si elle le quitte, le sort indique le nom du plan et se tait jusqu'à ce qu'ils se retrouvent.\n• Temps d'incantation : 1 minute. Dure 1 heure/niveau (T)."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 minute",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "1 créature",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.blessed_aim",
+      "type": "spell",
+      "name": {
+        "fr": "Précision bénie",
+        "en": "Blessed Aim"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Une bénédiction passe sur la troupe : les arcs se lèvent plus droit, les javelots filent plus juste.\n\nEn jeu\n• Les alliés du lanceur dans la zone de 18 m de rayon (centrée sur lui) gagnent un bonus de moral de +2 aux jets d'attaque à distance.\n• Dure tant que le lanceur se concentre."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "étendue de 18 m de rayon centrée sur le jeteur de sorts",
+        "duration": "concentration",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Bonus accordé aux alliés dans la zone : pas d'effet sur la fiche du lanceur."
+    },
+    {
+      "id": "spell.unyielding_roots",
+      "type": "spell",
+      "name": {
+        "fr": "Racines inébranlables",
+        "en": "Unyielding Roots"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les jambes de la cible deviennent racines profondes : plus rien ne la fait bouger, et la terre la nourrit comme un arbre.\n\nEn jeu\n• Cible : créature consentante touchée, en contact avec le sol ; Vigueur, annule (inoffensif).\n• La cible ne peut plus quitter son espace ni en être déplacée (bousculade, renversement, main impérieuse de Bigby, effets plus faibles qu'un tremblement de terre).\n• Elle regagne jusqu'à 30 pv par round, neutralise les poisons et efface les niveaux négatifs (comme restauration).\n• +4 aux jets de Vigueur et de Volonté, mais -4 aux jets de Réflexes.\n• Dure 1 minute/niveau (T)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature consentante touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.rain_squall",
+      "type": "spell",
+      "name": {
+        "fr": "Rafale de pluie",
+        "en": "Rain Squall"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "De lourds nuages se rassemblent et la pluie tombe en rideau, trempant tout ce qui brûle.\n\nEn jeu\n• Émanation de 30 m de rayon ; dure 10 minutes/niveau (T).\n• Distances de visibilité réduites de moitié : -4 aux tests de Détection et de Fouille ; -4 aux attaques à distance et aux tests de Perception auditive.\n• Éteint les flammes sans protection, 50 % pour les autres.\n• Sans effet en intérieur, sous terre, sous l'eau ou dans le désert ; l'eau s'évapore en 10 minutes et ne désaltère pas."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "eau"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round entier",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "émanation de 30 mètres de rayon",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.stormrage",
+      "type": "spell",
+      "name": {
+        "fr": "Rage tempête",
+        "en": "Stormrage"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lanceur se fait tempête : il vole sur le vent, ne craint plus les bourrasques et lance la foudre de ses yeux.\n\nEn jeu\n• Bénéficie d'un sort de vol et d'un mur de vent autour de lui ; insensible aux vents naturels et magiques.\n• Éclairs oculaires : autant de d6 d'électricité que son niveau de lanceur (20d6 au plus), en un ou plusieurs éclairs, répartis sur plusieurs rounds.\n• Un éclair est une action simple, sans attaque d'opportunité, par attaque de contact à distance (portée 30 m, +3 contre une cible en métal) ; un éclair touche une seule créature.\n• Dure 1 minute/niveau (T)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun"
+      },
+      "effects": [],
+      "note": "Les dés d'éclair dépendent du niveau et de leur répartition : non modélisés."
+    },
+    {
+      "id": "spell.bolts_of_bedevilment",
+      "type": "spell",
+      "name": {
+        "fr": "Rayons d'ensorcellement",
+        "en": "Bolts of Bedevilment"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un rayon par round jaillit de la main du lanceur et fige l'esprit de sa victime comme un mauvais sort.\n\nEn jeu\n• Une attaque de rayon par round ; une créature vivante touchée est hébétée (ne peut agir) pendant 1d3 rounds.\n• Volonté, annule. La victime n'est pas étourdie : ses adversaires n'ont aucun avantage ; elle ne peut ni se déplacer, ni lancer de sorts, ni utiliser ses pouvoirs mentaux.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.tidal_surge",
+      "type": "spell",
+      "name": {
+        "fr": "Raz-de-marée",
+        "en": "Tidal Surge"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une vague immense s'abat sur les cibles et les balaye, comme si l'océan lui-même avait répondu à l'appel.\n\nEn jeu\n• Dégâts : 1d8 par deux niveaux de lanceur (7d8 au plus) ; Réflexes, demi-dégâts.\n• Sans grande étendue d'eau naturelle à portée : une seule cible. Avec : rayonnement de 6 m de rayon.\n• Bousculade : test de Force opposé (Force 16, taille M ; Force 20, taille G près d'une grande source d'eau) ; repoussé de 1,50 m, +1,50 m par tranche de 5 de marge d'échec.\n• Éteint les flammes de taille G ou moins ; un feu magique subit une dissipation de la magie au niveau du lanceur."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "eau"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "une ou plusieurs créatures situées dans un rayonnement de 6 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 7))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.sacred_refuge",
+      "type": "spell",
+      "name": {
+        "fr": "Refuge sacré",
+        "en": "Sacred Refuge"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un linceul d'énergie sacrée enveloppe une créature et la garde même quand elle ne s'y attend pas.\n\nEn jeu\n• Cible : créature touchée ; Volonté, annule (inoffensif).\n• Bonus de sainteté de +2 à la CA ; la cible garde son bonus de Dextérité à la CA même prise au dépourvu.\n• Le lanceur sent l'état de la cible (comme rapport) et peut lui appliquer son imposition des mains à distance (action simple, même plan d'existence).\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "descriptors": [
+          "Bien"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.mass_spell_resistance",
+      "type": "spell",
+      "name": {
+        "fr": "Résistance à la magie de groupe",
+        "en": "Spell Resistance, Mass"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une protection sacrée se répand sur plusieurs alliés qui deviennent, un moment, difficiles à atteindre par la magie.\n\nEn jeu\n• Jusqu'à 1 créature/niveau, à 9 m les unes des autres ; Volonté, annule (inoffensif).\n• Elles gagnent une résistance à la magie de 12 + niveau de lanceur ; la durée (1 round/niveau) se répartit entre les sujets.\n• Les sorts du lanceur doivent vaincre cette résistance : test de niveau de lanceur contre la RM de la cible ; une action simple permet de renoncer volontairement à la protection."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu'à une créature/niveau, aucune à plus de 9 m d'une autre",
+        "duration": "1 round/niveau (voir description)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Résistance à la magie 12 + niveau de lanceur : pas de statistique sur la fiche."
+    }
+  ]
+}

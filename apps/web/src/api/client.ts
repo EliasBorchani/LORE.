@@ -27,6 +27,7 @@ import type {
   SpellLevel,
   SpellListEntry,
   ManeuverEntry,
+  InvocationEntry,
   StateUse,
   TokenPair,
 } from './types'
@@ -244,6 +245,7 @@ export class GroupApi {
     this.client.request<SpellListEntry[]>('GET', `${this.base}/catalog/spell-list/${encodeURIComponent(classId)}`)
   maneuverList = (classId: string) =>
     this.client.request<ManeuverEntry[]>('GET', `${this.base}/catalog/maneuvers/${encodeURIComponent(classId)}`)
+  invocationList = () => this.client.request<InvocationEntry[]>('GET', `${this.base}/catalog/invocations`)
   entities = (type: string, after?: string, limit = 50, card = false) =>
     this.client.request<EntityPage>('GET', `${this.base}/entities?type=${encodeURIComponent(type)}&limit=${limit}${after ? `&after=${encodeURIComponent(after)}` : ''}${card ? '&card=true' : ''}`)
   /** How many entries of each type the group sees. */

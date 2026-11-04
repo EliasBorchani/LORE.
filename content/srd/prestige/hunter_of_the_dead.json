@@ -1,0 +1,444 @@
+{
+  "entities": [
+    {
+      "id": "class.hunter_of_the_dead",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chasseur de morts-vivants",
+        "en": "Hunter of the Dead"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Nuit après nuit, il traque la même proie : le mort-vivant sous toutes ses formes. Marqué par une blessure que seule la non-vie inflige, il a juré de nettoyer le pays de leur présence.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non mauvais ; bonus de base à l'attaque +5 ; Connaissances (religion) 5 rangs ; savoir renvoyer les morts-vivants ; avoir subi une perte de niveau ou de caractéristique de la part d'un mort-vivant (la marque de la non-vie).\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Concentration, Connaissances (religion), Équitation, Fouille, Premiers secours, Profession.\n• Sorts divins préparés comme un prêtre, de sa propre liste, du niveau 1 au niveau 4 ; Sagesse ; pas de conversion en soins ou en blessures, pas de domaines.\n• Aptitudes : détection des morts-vivants et sorts (1) ; châtiment des morts-vivants (2, 6, 10) ; rejet de la mort (3) ; vraie mort (5) ; emprise sur les morts-vivants (6) ; explosion d'énergie positive (8) ; vie scellée (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.knowledge_religion.ranks >= 5",
+      "note": "Conditions de renvoi des morts-vivants et de marque de la non-vie : texte seul. Alignement non mauvais : relations alignment.",
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      }
+    },
+    {
+      "id": "power.hunter_of_the_dead_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de chasseur de morts-vivants",
+        "en": "Hunter of the Dead spells"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Quelques sorts divins, tous tournés contre la non-vie.\n\nEn jeu\n• Sorts divins de la liste du chasseur de morts-vivants, du niveau 1 au niveau 4, préparés chaque jour comme un prêtre.\n• Caractéristique : Sagesse (10 + niveau du sort minimum). DD : 10 + niveau du sort + modificateur de Sagesse.\n• Un « 0 » dans la table = seulement les sorts en bonus d'une Sagesse élevée.\n• Ni conversion spontanée en soins ou blessures, ni sorts de domaine.\n• Niveau de lanceur : son niveau de chasseur."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hunter_of_the_dead_detect_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection des morts-vivants",
+        "en": "Detect undead"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Il sent la non-vie avant de la voir.\n\nEn jeu\n• Pouvoir magique, à volonté : comme le sort détection des morts-vivants."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hunter_of_the_dead_undead_smite",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment des morts-vivants",
+        "en": "Smite undead"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Un coup, et la lumière passe dans la lame.\n\nEn jeu\n• Capacité surnaturelle, une attaque au corps à corps contre un mort-vivant.\n• Bonus d'attaque : son modificateur de Charisme ; dégâts : + son niveau de classe.\n• Utilisations : 1 par jour au niveau 2, 2 au niveau 6, 3 au niveau 10. Compté à part des autres châtiments, mais ils se cumulent.\n• Contre une créature qui n'est pas un mort-vivant : sans effet, mais l'utilisation est perdue."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.hunter_of_the_dead_undead_smite')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.hunter_of_the_dead')",
+          "condition": "active('toggle.hunter_of_the_dead_undead_smite')"
+        }
+      ],
+      "usesPerDay": "1 + floor((level('class.hunter_of_the_dead') - 2) / 4)",
+      "note": "Toggle à activer contre un mort-vivant, comme le châtiment du chevalier noir."
+    },
+    {
+      "id": "power.hunter_of_the_dead_rebuke_death",
+      "type": "class_power",
+      "name": {
+        "fr": "Rejet de la mort",
+        "en": "Rebuke death"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Il a déjà échappé à la mort une fois ; elle l'atteint moins bien.\n\nEn jeu\n• Capacité extraordinaire, niveau 3 : ajoute son bonus de Sagesse à tous ses jets de sauvegarde contre les sorts et effets des morts-vivants (soit deux fois aux jets de Volonté)."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "max(0, @ability.wis.mod)",
+          "situation": "situation.vs_undead_effects"
+        }
+      ],
+      "note": "Utilise la situation situation.vs_undead_effects."
+    },
+    {
+      "id": "power.hunter_of_the_dead_true_death",
+      "type": "class_power",
+      "name": {
+        "fr": "Vraie mort",
+        "en": "True death"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Ce qu'il abat ne se relève pas.\n\nEn jeu\n• Capacité surnaturelle, niveau 5 : les morts-vivants qu'il abat (corps à corps ou sorts) ne peuvent jamais renaître en mort-vivant."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hunter_of_the_dead_undead_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Emprise sur les morts-vivants",
+        "en": "Undead mastery"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Il fait taire les morts plus souvent.\n\nEn jeu\n• Niveau 6 : reçoit le don Emprise sur les morts-vivants : 4 renvois de plus par jour, cumulés avec ceux de ses autres classes."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hunter_of_the_dead_positive_energy_burst",
+      "type": "class_power",
+      "name": {
+        "fr": "Explosion d'énergie positive",
+        "en": "Burst of positive energy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Une onde de lumière qui disloque les morts.\n\nEn jeu\n• Capacité surnaturelle, niveau 8, action simple, au prix de deux renvois.\n• 1d6 de dégâts par niveau de classe à tous les morts-vivants dans 6 m.\n• Jet de Réflexes DD 10 + niveau de classe + modificateur de Charisme : demi-dégâts."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hunter_of_the_dead_sealed_life",
+      "type": "class_power",
+      "name": {
+        "fr": "Vie scellée",
+        "en": "Sealed life"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hunter_of_the_dead"
+      ],
+      "description": {
+        "fr": "Plus rien ne lui vole sa vie.\n\nEn jeu\n• Capacité surnaturelle, niveau 10 : l'absorption d'énergie ne peut plus lui faire perdre de niveaux (mais le rappel à la vie ou d'autres sources de perte le peuvent toujours)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.hunter_of_the_dead_spells",
+        "power.hunter_of_the_dead_detect_undead"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.hunter_of_the_dead_undead_smite"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.hunter_of_the_dead_rebuke_death"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.hunter_of_the_dead_true_death"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.hunter_of_the_dead_undead_mastery"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.hunter_of_the_dead_positive_energy_burst"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.hunter_of_the_dead",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.hunter_of_the_dead_sealed_life"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.hunter_of_the_dead",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "power.hunter_of_the_dead_undead_mastery",
+      "relation": "grants",
+      "to": "feat.improved_turning"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "entities": [
+    {
+      "id": "class.mindspy_warrior",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Mouchard mental",
+        "en": "Mindspy (Complete Warrior)"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Pour battre un adversaire, il faut savoir ce qu'il va faire. Le mouchard mental, lui, le lit dans sa tête une fraction de seconde avant que le bras ne bouge, et pare un coup que personne n'a encore porté.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +3 ; 8 rangs en Concentration ; pouvoir lancer détection de pensées ou avoir un pouvoir équivalent.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Bluff, Concentration, Intimidation, Profession, Psychologie.\n• Aptitudes : anticipation, sphère de détection de la pensée et télépathie de combat (1) ; sondage mental accéléré (2) ; pensées de surface multiples, 2 créatures (3) ; sondage mental instantané (4) ; pensées de surface multiples, 4 créatures (5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "note": "Même nom anglais « Mindspy » que la classe psionique de Complete Adventurer (class.mindspy, « Fureteur spirituel ») : nom anglais « Mindspy (Complete Warrior) » demandé pour éviter la confusion. Condition « pouvoir lancer détection de pensées » : texte seul. Noms anglais des aptitudes à confirmer.",
+      "prerequisite": "@bab >= 3 and @skill.concentration.ranks >= 8"
+    },
+    {
+      "id": "power.mindspy_warrior_anticipation",
+      "type": "class_power",
+      "name": {
+        "fr": "Anticipation",
+        "en": "Anticipation"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy_warrior"
+      ],
+      "description": {
+        "fr": "Il sait où sera le coup avant qu'il parte : sa garde est déjà au bon endroit.\n\nEn jeu\n• Capacité surnaturelle : contre un adversaire dont il lit les pensées de surface (après 3 rounds d'observation, si la cible rate son jet de sauvegarde), bonus d'intuition à la CA et aux jets d'attaque égal à son niveau de classe, dans la limite de son bonus de Charisme.\n• Il perd ce bonus s'il est pris au dépourvu ou privé de son bonus de Dextérité à la CA."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "min(level('class.mindspy_warrior'), max(0, @ability.cha.mod))",
+          "bonusType": "insight",
+          "condition": "active('toggle.mindspy_warrior_anticipation')"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "min(level('class.mindspy_warrior'), max(0, @ability.cha.mod))",
+          "bonusType": "insight",
+          "condition": "active('toggle.mindspy_warrior_anticipation')"
+        }
+      ],
+      "note": "Case à cocher quand il lit les pensées de surface de son adversaire. Le bonus contre « cet adversaire seulement » est à la charge du joueur. Perte quand il est pris au dépourvu : non gérée."
+    },
+    {
+      "id": "power.mindspy_warrior_thought_sphere",
+      "type": "class_power",
+      "name": {
+        "fr": "Sphère de détection de la pensée",
+        "en": "Detect thoughts sphere"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy_warrior"
+      ],
+      "description": {
+        "fr": "Au lieu d'un cône, c'est tout un cercle d'esprits qu'il perçoit autour de lui.\n\nEn jeu\n• Capacité surnaturelle : la zone de détection de pensées (sort ou pouvoir) devient une sphère centrée sur lui, au lieu d'un cône. Le rayon de la sphère est égal à la longueur du cône."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mindspy_warrior_combat_telepathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Télépathie de combat",
+        "en": "Combat telepathy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy_warrior"
+      ],
+      "description": {
+        "fr": "Il garde son esprit ouvert en plein combat, comme un autre garde son bouclier.\n\nEn jeu\n• Capacité surnaturelle : en lisant les pensées de surface d'un adversaire, il peut maintenir sa concentration sur détection de pensées par une action libre, avec un test de Concentration (DD 10 + dégâts subis au round précédent).\n• S'il lance un autre sort ou utilise un autre pouvoir magique, la détection de pensées s'arrête aussitôt."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mindspy_warrior_quickened_mind_probe",
+      "type": "class_power",
+      "name": {
+        "fr": "Sondage mental accéléré",
+        "en": "Quickened mind probe"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy_warrior"
+      ],
+      "description": {
+        "fr": "Une seule seconde d'attention, et il sait déjà qui pense et à quel point.\n\nEn jeu\n• Capacité surnaturelle : il détecte la présence ou l'absence de pensées et l'Intelligence de chaque créature pensante de la zone dès le premier round d'observation.\n• Au round suivant, il lit les pensées de surface."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mindspy_warrior_multiple_surface_thoughts",
+      "type": "class_power",
+      "name": {
+        "fr": "Pensées de surface multiples",
+        "en": "Multiple surface thoughts"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy_warrior"
+      ],
+      "description": {
+        "fr": "Il suit plusieurs esprits en même temps, et fait son choix du moment.\n\nEn jeu\n• Capacité surnaturelle : niveau 3, il lit à la fois les pensées de surface de 2 créatures (si elles ratent toutes leur jet de sauvegarde) et obtient son bonus d'anticipation contre chacune. Niveau 5 : 4 créatures.\n• Une fois par round, action libre : il choisit de nouveaux esprits à espionner."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mindspy_warrior_instant_mind_probe",
+      "type": "class_power",
+      "name": {
+        "fr": "Sondage mental instantané",
+        "en": "Instant mind probe"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy_warrior"
+      ],
+      "description": {
+        "fr": "L'esprit de l'ennemi s'ouvre en un éclair, juste le temps d'un sort.\n\nEn jeu\n• Capacité surnaturelle : niveau 4, il obtient les informations de détection de la pensée (présence d'esprits, Intelligence, pensées de surface) dans le round où il lance son sort ou active son pouvoir, si la cible rate son jet de sauvegarde."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.mindspy_warrior",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.mindspy_warrior_anticipation",
+        "power.mindspy_warrior_thought_sphere",
+        "power.mindspy_warrior_combat_telepathy"
+      ]
+    },
+    {
+      "classId": "class.mindspy_warrior",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.mindspy_warrior_quickened_mind_probe"
+      ]
+    },
+    {
+      "classId": "class.mindspy_warrior",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.mindspy_warrior_multiple_surface_thoughts"
+      ]
+    },
+    {
+      "classId": "class.mindspy_warrior",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.mindspy_warrior_instant_mind_probe"
+      ]
+    },
+    {
+      "classId": "class.mindspy_warrior",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.mindspy_warrior",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.mindspy_warrior",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.mindspy_warrior",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.mindspy_warrior",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.mindspy_warrior",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.mindspy_warrior",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    }
+  ]
+}

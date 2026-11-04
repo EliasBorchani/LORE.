@@ -1,0 +1,447 @@
+{
+  "entities": [
+    {
+      "id": "class.acolyte_of_the_skin",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Acolyte de la peau",
+        "en": "Acolyte of the Skin"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "transformation"
+      ],
+      "description": {
+        "fr": "Il a retrouvé, page après page, les fragments d’un rituel que toutes les bibliothèques ont voulu brûler, et il l’a accompli : dix rounds de brûlure pendant lesquels sa peau a laissé place à celle d’un fiélon vivant. Depuis, cette seconde peau fonce, se couvre d’épines et lui murmure des secrets. L’acolyte de la peau y gagne une puissance terrible, et ne commande jamais aussi bien que du fond d’une forteresse bien gardée.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non bon ; Connaissances (plans) 6 rangs ; niveau 5 de lanceur de sorts (sorts ou pouvoirs magiques) ; avoir eu un contact pacifique avec un Extérieur mauvais convoqué ; subir le Rituel du Lien (10 rounds, 1d4 dégâts par round, impossible à interrompre).\n• Alignement : tout sauf bon.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (plans), Intimidation, Profession.\n• Sorts : +1 niveau de lanceur de sorts aux niveaux 2, 4, 6, 8 et 10, dans une classe de lanceur de sorts qu’il avait déjà (sorts par jour et niveau de lanceur ; pas les autres aptitudes de cette classe).\n• Aptitudes : empoisonnement et vêture fiélonne (1) ; résistance au feu (2) ; menace du fiélon (3) ; adaptation de la peau (5) ; résistance au froid (6) ; regard de l’abîme (7) ; convocation de fiélon (9) ; symbiose du fiélon (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_planes.ranks >= 6",
+      "note": "Conditions dans la formule : les rangs. En texte seulement : niveau 5 de lanceur de sorts, contact avec un Extérieur mauvais, Rituel du Lien ; l’alignement passe par les relations alignment."
+    },
+    {
+      "id": "power.acolyte_of_the_skin_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "La peau fiélonne ne fait pas que protéger : elle nourrit la magie de son porteur, un peu plus à chaque étape de la fusion.\n\nEn jeu\n• Aux niveaux 2, 4, 6, 8 et 10 : +1 niveau effectif de lanceur de sorts dans une classe de lanceur de sorts qu’il avait déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres aptitudes de la classe (dons en bonus, renvoi des morts-vivants…)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.acolyte_of_the_skin_poison",
+      "type": "class_power",
+      "name": {
+        "fr": "Empoisonnement",
+        "en": "Poison"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "Un simple contact de cette main à la peau grasse, et le venin du fiélon passe dans le sang de la victime.\n\nEn jeu\n• Pouvoir magique : empoisonnement, 1 fois par jour, niveau 8 de lanceur de sorts ; 2 fois par jour à partir du niveau 5.\n• DD : 14 + modificateur de la caractéristique principale de sa classe de lanceur de sorts (Intelligence pour un magicien, Charisme pour un ensorceleur ou un sorcier, Sagesse pour un prêtre…)."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.acolyte_of_the_skin') >= 5, 2, 1)",
+      "note": "DD : la caractéristique de lancement dépend de la classe d’origine, à lire à la main."
+    },
+    {
+      "id": "power.acolyte_of_the_skin_wear_fiend",
+      "type": "class_power",
+      "name": {
+        "fr": "Vêture fiélonne",
+        "en": "Wear fiend"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "La peau du fiélon est maintenant la sienne, en tout point : plus dure que la chair humaine, plus vive, et capable de voir dans le noir.\n\nEn jeu\n• Bonus d’armure naturelle augmenté de +1 (+2 à partir du niveau 5, adaptation de la peau).\n• Bonus inné de +2 en Dextérité.\n• Vision dans le noir 18 m (36 m à partir du niveau 5).\n• Le MD décide de la nature du fiélon : démon, diable ou autre."
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "if(level('class.acolyte_of_the_skin') >= 5, 2, 1)"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "inherent"
+        },
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": "if(level('class.acolyte_of_the_skin') >= 5, 36, 18)"
+        }
+      ],
+      "note": "L’armure naturelle s’ajoute à celle que le personnage a déjà (pas de type de bonus)."
+    },
+    {
+      "id": "power.acolyte_of_the_skin_fire_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance aux flammes",
+        "en": "Fire resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "La peau s’épaissit et prend l’éclat terne du cuir brûlé : les flammes glissent dessus.\n\nEn jeu\n• Résistance au feu 10."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.fire",
+          "op": "add",
+          "value": 10
+        }
+      ],
+      "note": "Résistance aux énergies : cible energy_resistance.<énergie> (comme l’aliéniste), pas encore lue par la fiche."
+    },
+    {
+      "id": "power.acolyte_of_the_skin_fiendish_glare",
+      "type": "class_power",
+      "name": {
+        "fr": "Menace du fiélon",
+        "en": "Fiendish glare"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "Un regard chargé de toute la haine des Abysses suffit à glacer le sang de ses ennemis, même de ceux qui détournent les yeux.\n\nEn jeu\n• 1 fois par jour, action simple. Une créature en vue à 30 m au plus, en ligne d’effet ; ce n’est pas une attaque de regard.\n• La cible est secouée pendant 10 minutes. Volonté, DD 10 + niveau d’acolyte + modificateur de Charisme, sinon elle est aussi étourdie : 10 rounds (50 pv ou moins), 3 rounds (51 à 100), 2 rounds (101 à 150), 1 round (151 ou plus).\n• Effet mental et de terreur."
+      },
+      "effects": [
+        {
+          "target": "dc.acolyte_of_the_skin_fiendish_glare",
+          "op": "set",
+          "value": "10 + level('class.acolyte_of_the_skin') + @ability.cha.mod"
+        }
+      ],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.acolyte_of_the_skin_skin_adaptation",
+      "type": "class_power",
+      "name": {
+        "fr": "Adaptation de la peau",
+        "en": "Skin adaptation"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "La couture entre l’homme et le fiélon s’efface : on jurerait que cette peau a toujours été la sienne.\n\nEn jeu\n• Le bonus d’armure naturelle de vêture fiélonne passe à +2 et sa vision dans le noir à 36 m (comptés dans vêture fiélonne).\n• Bonus inné de +2 en Constitution."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 2,
+          "bonusType": "inherent"
+        }
+      ]
+    },
+    {
+      "id": "power.acolyte_of_the_skin_cold_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance au froid",
+        "en": "Cold resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "Le froid des plans infernaux n’a plus de prise sur lui.\n\nEn jeu\n• Résistance au froid 10."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.cold",
+          "op": "add",
+          "value": 10
+        }
+      ],
+      "note": "Résistance aux énergies : cible energy_resistance.<énergie> (comme l’aliéniste), pas encore lue par la fiche."
+    },
+    {
+      "id": "power.acolyte_of_the_skin_glare_of_the_pit",
+      "type": "class_power",
+      "name": {
+        "fr": "Regard de l’abîme",
+        "en": "Glare of the pit"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "Ses yeux s’embrasent et crachent deux traits de feu infernal.\n\nEn jeu\n• 1 fois par jour, action simple : deux rayons (un par œil), portée 30 m.\n• Chaque rayon : attaque de contact à distance, 8d6 points de dégâts de feu.\n• Les deux rayons peuvent viser la même cible ou deux cibles différentes, annoncées en même temps."
+      },
+      "effects": [
+        {
+          "target": "damage.acolyte_of_the_skin_glare_of_the_pit",
+          "op": "dice",
+          "value": "8d6"
+        }
+      ],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.acolyte_of_the_skin_summon_fiend",
+      "type": "class_power",
+      "name": {
+        "fr": "Convocation de fiélon",
+        "en": "Summon fiend"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "La peau se souvient d’où elle vient, et peut y appeler un cousin.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : convoque un babau (peau démoniaque) ou un diable à chaînes (peau diabolique).\n• Le fiélon obéit à l’acolyte et repart au bout de 1 heure. Il ne peut pas lui-même convoquer pendant cette heure.\n• Niveau de lanceur de sorts : celui de l’acolyte."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.acolyte_of_the_skin_fiendish_symbiosis",
+      "type": "class_power",
+      "name": {
+        "fr": "Symbiose du fiélon",
+        "en": "Fiendish symbiosis"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "acolyte_of_the_skin"
+      ],
+      "description": {
+        "fr": "La fusion est achevée : seule une mort définitive pourrait encore séparer l’acolyte de sa peau.\n\nEn jeu\n• Son type devient Extérieur ; il peut pourtant être rappelé à la vie ou ressuscité normalement.\n• Réduction des dégâts 10/Bien."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.good",
+          "op": "add",
+          "value": 10
+        }
+      ],
+      "note": "Type Extérieur : pas encore dans le modèle. Réduction des dégâts sur damage_reduction.good (contournée par les armes bonnes)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.acolyte_of_the_skin_poison",
+        "power.acolyte_of_the_skin_wear_fiend"
+      ]
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.acolyte_of_the_skin_spells",
+        "power.acolyte_of_the_skin_fire_resistance"
+      ]
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.acolyte_of_the_skin_fiendish_glare"
+      ]
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.acolyte_of_the_skin_skin_adaptation"
+      ]
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.acolyte_of_the_skin_cold_resistance"
+      ]
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.acolyte_of_the_skin_glare_of_the_pit"
+      ]
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.acolyte_of_the_skin_summon_fiend"
+      ]
+    },
+    {
+      "classId": "class.acolyte_of_the_skin",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.acolyte_of_the_skin_fiendish_symbiosis"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.acolyte_of_the_skin",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

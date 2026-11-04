@@ -1,0 +1,189 @@
+{
+  "entities": [
+    {
+      "id": "class.wayfarer_guide",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Guide-voyageur",
+        "en": "Wayfarer Guide"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Pour une bourse bien pleine, il vous dépose à l’autre bout du continent avant que votre thé ait refroidi. Le guide-voyageur ne cherche pas la maîtrise absolue de la magie : il apprend, auprès de l’Union des Voyageurs, les quelques secrets qui rendent ses téléportations plus lointaines, plus sûres et plus chargées.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : 10 rangs en Connaissances (géographie) et 10 rangs en Connaissances (mystères) ; capable de lancer téléportation ; membre de l’Union des Voyageurs (quitter l’Union ne fait pas perdre les niveaux).\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (chaque domaine à part), Langue, Profession.\n• Sorts : +1 niveau de lanceur de sorts aux niveaux 1 et 3, pour une classe de lanceur de sorts qu’il avait déjà (sorts par jour et niveau de lanceur ; pas les autres aptitudes).\n• Aptitudes : capacité de transport accrue et portée améliorée (niv. 1), téléportation supplémentaire (niv. 2), précision améliorée (niv. 3)."
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_geography.ranks >= 10 and @skill.knowledge_arcana.ranks >= 10",
+      "note": "Conditions : « capable de lancer téléportation » (magicien, ensorceleur ou prêtre du domaine du Voyage) et l’adhésion à l’Union : texte seul."
+    },
+    {
+      "id": "power.wayfarer_guide_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wayfarer_guide"
+      ],
+      "description": {
+        "fr": "Ses trajets lui apprennent toujours un peu de magie : aux étapes clés de sa formation, le guide-voyageur progresse dans la classe qui lui a ouvert la voie.\n\nEn jeu\n• Aux niveaux 1 et 3 : +1 niveau effectif de lanceur de sorts dans une classe de lanceur de sorts qu’il possède déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres aptitudes de la classe (renvoi des morts-vivants, don supplémentaire, etc.).\n• Pas de progression au niveau 2."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.wayfarer_guide_enhanced_capacity",
+      "type": "class_power",
+      "name": {
+        "fr": "Capacité de transport accrue",
+        "en": "Enhanced Capacity"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wayfarer_guide"
+      ],
+      "description": {
+        "fr": "Le guide-voyageur sait tasser ses passagers dans le sort comme dans une diligence bien remplie.\n\nEn jeu\n• Capacité extraordinaire.\n• Avec un sort du registre de la téléportation : +1 créature de taille M consentante, touchée, par niveau de guide-voyageur (chacune avec au plus sa charge maximale).\n• Les autres règles du sort ne changent pas.\n• Exemple : magicien 9 / guide-voyageur 2 : 5 créatures de taille M au lieu de 3."
+      },
+      "effects": [],
+      "note": "Nombre de passagers : texte seul (le modèle ne suit pas la cible des sorts)."
+    },
+    {
+      "id": "power.wayfarer_guide_extended_range",
+      "type": "class_power",
+      "name": {
+        "fr": "Portée améliorée",
+        "en": "Extended Range"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wayfarer_guide"
+      ],
+      "description": {
+        "fr": "Les routes invisibles qu’il emprunte vont plus loin que celles des autres mages.\n\nEn jeu\n• Capacité extraordinaire.\n• Avec un sort du registre de la téléportation : distance maximale +50 %.\n• Exemple : magicien 9 / guide-voyageur 1 : 2 250 km avec téléportation au lieu de 1 500 km."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Distance : texte seul."
+    },
+    {
+      "id": "power.wayfarer_guide_extra_teleport",
+      "type": "class_power",
+      "name": {
+        "fr": "Téléportation supplémentaire",
+        "en": "Extra Teleport"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wayfarer_guide"
+      ],
+      "description": {
+        "fr": "Un guide qui ne peut plus repartir n’est qu’un voyageur : il garde toujours un départ en réserve.\n\nEn jeu\n• Au niveau 2 : un emplacement de sort du 5e niveau en plus, réservé au sort téléportation."
+      },
+      "effects": [],
+      "note": "Emplacement réservé à un seul sort : pas encore dans le modèle, texte seul."
+    },
+    {
+      "id": "power.wayfarer_guide_improved_accuracy",
+      "type": "class_power",
+      "name": {
+        "fr": "Précision améliorée",
+        "en": "Improved Accuracy"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wayfarer_guide"
+      ],
+      "description": {
+        "fr": "Avec l’habitude, il sent la destination se dessiner et rate de moins en moins souvent sa cible.\n\nEn jeu\n• Capacité extraordinaire.\n• Au niveau 3 : avec un sort du registre de la téléportation qui laisse une chance d’arriver à côté (comme téléportation), il lance deux fois le dé et garde le résultat qu’il préfère."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.wayfarer_guide",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.wayfarer_guide_spells",
+        "power.wayfarer_guide_enhanced_capacity",
+        "power.wayfarer_guide_extended_range"
+      ]
+    },
+    {
+      "classId": "class.wayfarer_guide",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.wayfarer_guide_extra_teleport"
+      ]
+    },
+    {
+      "classId": "class.wayfarer_guide",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.wayfarer_guide_improved_accuracy"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.wayfarer_guide",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.wayfarer_guide",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.wayfarer_guide",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.wayfarer_guide",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.wayfarer_guide",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.wayfarer_guide",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

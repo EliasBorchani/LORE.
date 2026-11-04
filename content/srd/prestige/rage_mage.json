@@ -1,0 +1,360 @@
+{
+  "entities": [
+    {
+      "id": "class.rage_mage",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Mage-berserker",
+        "en": "Rage Mage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Là où le mage lit, lui hurle. Le mage-berserker nourrit ses sorts de sa propre fureur : plus il enrage, plus ses formules profanes frappent fort, flamboyantes et brutales. Il vient presque toujours d'un peuple peu raffiné et n'a que mépris pour les collèges de magie.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non loyal ; bonus de base à l'attaque +4 ; don Magie de guerre ; lancer des sorts profanes de niveau 2 ; pouvoir de rage de berserker ou de frénésie.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Concentration, Profession, Survie.\n• Sorts : +1 niveau de lanceur profane aux niveaux pairs (2 à 10), pour une classe profane dont il maîtrise le niveau 2.\n• Aptitudes : rage profane 1/jour (1), 2/jour (5), 3/jour (10) ; réduction du risque d'échec des sorts (2) ; rage supplémentaire (3 et 8) ; puissance de la rage +2 (5), +4 (10) ; incantation furieuse (7) ; rage sans fatigue (9) ; cri du guerrier (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 4 and has('feat.combat_casting')",
+      "note": "Conditions : Magie de guerre = feat.combat_casting. Alignement non loyal, sorts profanes de niveau 2 et pouvoir de rage de berserker ou de frénésie : texte seulement. Dé de vie d8 lu sur la page (PDF 62). Les niveaux de lanceur se choisissent dans la fiche de niveau, rien dans les lignes de la table."
+    },
+    {
+      "id": "power.rage_mage_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "Sa magie profane grandit au rythme de ses accès de fureur.\n\nEn jeu\n• Aux niveaux pairs : +1 niveau effectif de lanceur de sorts dans une classe profane déjà acquise dont il maîtrise le niveau 2 (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rage_mage_arcane_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage profane",
+        "en": "Arcane rage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "Une crise de rage où la magie ne se retient plus.\n\nEn jeu\n• Capacité extraordinaire : une fois par jour (2 au niveau 5, 3 au niveau 10) ; une seule rage par rencontre (profane ou de berserker).\n• Pendant la rage, il peut lancer des sorts dont le temps d'incantation ne dépasse pas 1 round entier.\n• Son niveau de lanceur de sorts pour les sorts d'abjuration, évocation, invocation, nécromancie et transmutation devient égal à son niveau global.\n• −2 à la CA ; pas de compétences de Dextérité, d'Intelligence ni de Charisme (sauf Équilibre, Équitation, Évasion, Intimidation) ; il peut faire des tests réactifs de Concentration.\n• Durée : 3 rounds + modificateur de Constitution ; il peut l'arrêter plus tôt. Ne demande aucune action, uniquement pendant son tour.\n• Ensuite : fatigué (−2 en Force et Dextérité, ni charge ni course) jusqu'à la fin de la rencontre, sauf à partir du niveau 9."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.rage_mage_arcane_rage')"
+        },
+        {
+          "target": "rage.duration",
+          "op": "set",
+          "value": "3 + @ability.con.mod",
+          "condition": "active('toggle.rage_mage_arcane_rage')"
+        }
+      ],
+      "usesPerDay": "1 + (if(level('class.rage_mage') >= 5, 1, 0)) + (if(level('class.rage_mage') >= 10, 1, 0))",
+      "note": "Pas de bonus de Force ni de Constitution : c'est la rage profane, pas la rage de berserker (celle-ci vient d'une autre classe). Niveau de lanceur de sorts égal au niveau global pendant la rage et fatigue : pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.rage_mage_spell_failure_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction du risque d'échec des sorts",
+        "en": "Reduced arcane spell failure"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "Il apprend à lancer ses sorts sans retirer sa cotte de mailles.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : −10 points au risque d'échec des sorts profanes en armure légère ou intermédiaire."
+      },
+      "effects": [],
+      "note": "Risque d'échec des sorts : le modèle n'applique pas encore de réduction (spell_failure.arcane). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.rage_mage_extra_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage supplémentaire",
+        "en": "Extra rage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "Sa fureur a plus de réserve.\n\nEn jeu\n• Capacité extraordinaire, niveaux 3 et 8 : une utilisation de plus par jour de sa rage de berserker (celle d'une autre classe)."
+      },
+      "effects": [],
+      "note": "Utilisations de la rage de berserker d'une autre classe : à compter à la main. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.rage_mage_power_of_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Puissance de la rage",
+        "en": "Power of rage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "Quand il enrage, ses sorts de bataille deviennent plus durs à repousser.\n\nEn jeu\n• Pendant une rage (profane ou de berserker) : +2 au DD des jets de sauvegarde contre ses sorts d'abjuration, évocation, invocation, nécromancie et transmutation à partir du niveau 5 ; +4 au niveau 10."
+      },
+      "effects": [
+        {
+          "target": "dc.school[abjuration]",
+          "op": "add",
+          "value": "if(level('class.rage_mage') >= 10, 4, 2)",
+          "condition": "(active('toggle.rage_mage_arcane_rage') or active('toggle.barbarian_rage')) and level('class.rage_mage') >= 5"
+        },
+        {
+          "target": "dc.school[conjuration]",
+          "op": "add",
+          "value": "if(level('class.rage_mage') >= 10, 4, 2)",
+          "condition": "(active('toggle.rage_mage_arcane_rage') or active('toggle.barbarian_rage')) and level('class.rage_mage') >= 5"
+        },
+        {
+          "target": "dc.school[evocation]",
+          "op": "add",
+          "value": "if(level('class.rage_mage') >= 10, 4, 2)",
+          "condition": "(active('toggle.rage_mage_arcane_rage') or active('toggle.barbarian_rage')) and level('class.rage_mage') >= 5"
+        },
+        {
+          "target": "dc.school[necromancy]",
+          "op": "add",
+          "value": "if(level('class.rage_mage') >= 10, 4, 2)",
+          "condition": "(active('toggle.rage_mage_arcane_rage') or active('toggle.barbarian_rage')) and level('class.rage_mage') >= 5"
+        },
+        {
+          "target": "dc.school[transmutation]",
+          "op": "add",
+          "value": "if(level('class.rage_mage') >= 10, 4, 2)",
+          "condition": "(active('toggle.rage_mage_arcane_rage') or active('toggle.barbarian_rage')) and level('class.rage_mage') >= 5"
+        }
+      ],
+      "note": "Les bonus de DD s'appliquent pendant la rage profane ou la rage du barbare. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.rage_mage_furious_casting",
+      "type": "class_power",
+      "name": {
+        "fr": "Incantation furieuse",
+        "en": "Furious casting"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "Un sort jeté en un souffle, au milieu de la tempête.\n\nEn jeu\n• Magique, niveau 7 : une fois par rage, il lance un sort de niveau 4 ou moins par une action libre, comme avec Incantation rapide, sans en augmenter le niveau ni le temps d'incantation."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.rage_mage_tireless_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage sans fatigue",
+        "en": "Tireless rage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "La tempête passe sans le laisser sur les genoux.\n\nEn jeu\n• Niveau 9 : il n'est plus fatigué à la fin de sa rage."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.rage_mage_warrior_cry",
+      "type": "class_power",
+      "name": {
+        "fr": "Cri du guerrier",
+        "en": "Warrior's cry"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "rage_mage"
+      ],
+      "description": {
+        "fr": "Un hurlement qui porte la magie jusqu'à ses ennemis.\n\nEn jeu\n• Magique, niveau 10 : une fois par jour, action libre, il pousse un hurlement qui produit les effets du sort transformation de Tenser (niveau de lanceur = son niveau global).\n• Particularité : il ne perd pas la faculté de lancer des sorts pendant la transformation."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.rage_mage",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.rage_mage_arcane_rage"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.rage_mage_spells",
+        "power.rage_mage_spell_failure_reduction"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.rage_mage_extra_rage"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.rage_mage_spells"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.rage_mage_power_of_rage"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.rage_mage_spells"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.rage_mage_furious_casting"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.rage_mage_spells",
+        "power.rage_mage_extra_rage"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.rage_mage_tireless_rage"
+      ]
+    },
+    {
+      "classId": "class.rage_mage",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.rage_mage_spells",
+        "power.rage_mage_power_of_rage",
+        "power.rage_mage_warrior_cry"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.rage_mage",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.rage_mage",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.rage_mage",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.rage_mage",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

@@ -1,0 +1,812 @@
+{
+  "entities": [
+    {
+      "id": "spell.mass_awaken",
+      "type": "spell",
+      "name": {
+        "fr": "Éveil de groupe",
+        "en": "Mass Awaken"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le druide offre un éclair de conscience à toute une troupe de bêtes ou à un bosquet entier, qui deviennent alors ses serviteurs bienveillants.\n\nEn jeu\n• Cibles : tous du même type (animaux ou arbres de la même espèce).\n• Le lanceur réussit un jet de Volonté (DD 10 + DV de la cible la plus forte, ou de l'arbre une fois éveillé) ; en cas d'échec, aucune cible n'est affectée.\n• Les éveillés sont amicaux et accomplissent les tâches que le lanceur leur donne, sans lien d'empathie.\n• Animal : Intelligence 3d6, +1d3 Charisme, +2 DV. Arbre : profil d'objet animé, Int, Sag et Cha 3d6. Ils parlent une langue du lanceur, plus une par point de bonus d'Intelligence.\n• Coût en PX : 250 PX par créature éveillée."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F, PX",
+        "castingTime": "24 heures",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 animal ou arbre/3 niveaux, aucun ne pouvant être séparé de plus de 9 m des autres",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Le coût en PX n'est pas géré par le modèle."
+    },
+    {
+      "id": "spell.probe_thoughts",
+      "type": "spell",
+      "name": {
+        "fr": "Exploration des pensées",
+        "en": "Probe Thoughts"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le lanceur plonge dans l'esprit d'autrui et en fouille chaque souvenir, même le plus frais.\n\nEn jeu\n• Concentration, 1 question par round, posée par télépathie ; la réponse vient aussi par l'esprit, sans langue commune nécessaire.\n• La cible répond au mieux de ses connaissances ; une créature peu intelligente peut ne répondre que par des images.\n• Une cible endormie peut tenter de se réveiller (Volonté, même DD) après chaque question.\n• Une cible qui refuse peut sortir de la zone, sauf si elle est retenue de force."
+      },
+      "spell": {
+        "school": "Divination",
+        "subschool": "mental",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 minute",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une créature vivante",
+        "duration": "concentration",
+        "savingThrow": "Vigueur, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.blast_of_force",
+      "type": "spell",
+      "name": {
+        "fr": "Explosion de force",
+        "en": "Blast of Force"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un coup de poing invisible de force pure frappe la cible à distance et peut la jeter au sol.\n\nEn jeu\n• Attaque de contact à distance : 1d6 dégâts de force tous les 2 niveaux (maximum 5d6).\n• Si l'attaque touche, jet de Vigueur sous peine d'être renversé (modificateurs de taille et de stabilité comme pour une bousculade)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "force"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.quillfire",
+      "type": "spell",
+      "name": {
+        "fr": "Explosion de piquants",
+        "en": "Quillfire"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des piquants jaillissent de la peau du druide et volent dans toutes les directions, criblant ceux qui l'entourent.\n\nEn jeu\n• Nombre de piquants selon la taille : TP ou moins 1, P 1d4, M 2d6, G 3d6, TG ou plus 4d6.\n• Un jet de Réflexes réussi réduit le nombre de piquants de moitié (une créature TP ou moins n'est alors pas touchée).\n• Chaque piquant inflige 1d6 dégâts perforants et reste planté : −1 aux jets d'attaque, jets de sauvegarde et tests par piquant.\n• Retirer un piquant : action simple et test de Premiers secours DD 20 ; un échec inflige 1d6 dégâts.\n• Composante matérielle : un piquant de porc-épic."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "area": "émanation de 6 m de rayon centrée sur le lanceur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, demi-dégâts (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.purifying_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Feux purificateurs",
+        "en": "Purifying Fire"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "La cible s'embrase sans souffrir, ses coups et son contact brûlent désormais ses ennemis.\n\nEn jeu\n• Durée 1 round/niveau.\n• Chaque attaque de corps à corps réussie de la cible inflige 1d6 dégâts de feu de plus, +1 par niveau (maximum +15) ; la résistance à la magie du défenseur s'applique.\n• Une créature qui touche la cible (sauf avec une arme à allonge exceptionnelle) subit les mêmes dégâts et doit réussir un jet de Réflexes sous peine de brûler 1d4 rounds (1d6 dégâts de feu par round).\n• La cible subit moitié moins de dégâts de feu (aucun si elle réussit un jet de Réflexes qui réduit déjà de moitié)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, annule (inoffensif ; voir description)",
+        "spellResistance": "oui (inoffensif ; voir description)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le bonus de dégâts s'applique aux attaques de la cible."
+    },
+    {
+      "id": "spell.bottle_of_smoke",
+      "type": "spell",
+      "name": {
+        "fr": "Flacon de fumée",
+        "en": "Bottle of Smoke"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un feu de camp se retrouve capturé dans un flacon, puis libère une monture de fumée silencieuse et intangible.\n\nEn jeu\n• Durée 1 heure/niveau (24 heures au maximum, même si le flacon reste bouché).\n• Le cavalier tient le flacon et réussit un test d'Équitation DD 10 pour monter ; sans le flacon, on traverse le cheval.\n• Vitesse 6 m par niveau (maximum 72 m). Le cheval peut laisser un panache de fumée (1,50 m x 6 m, 10 minutes) : camouflage 20 % derrière lui.\n• Immunisé contre les dégâts, incapable d'attaquer ; un vent magique ou violent (50 km/h) le dissipe.\n• Le cavalier peut le renvoyer dans le flacon (action de mouvement) ; si le flacon se brise, le sort prend fin.\n• Focaliseur : une bouteille bouchée et ouvragée d'au moins 50 po."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, F",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "effect": "une créature de fumée ressemblant à un cheval",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.flame_of_faith",
+      "type": "spell",
+      "name": {
+        "fr": "Flammes de la foi",
+        "en": "Flame of Faith"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le prêtre embrase une arme ordinaire d'un feu sacré qui ne s'éteint qu'à la fin du sort.\n\nEn jeu\n• Durée 1 round/niveau.\n• L'arme devient une arme magique +1 de feu intense : +1d6 dégâts de feu.\n• Sur coup critique : +1d10 de feu (×3 : +2d10, ×4 : +3d10).\n• Ne se cumule pas avec un bonus d'altération ni avec les propriétés de feu ou de feu intense.\n• Composante matérielle : un morceau de phosphore."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "l'arme non magique touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Les dégâts dépendent de l'arme touchée, non calculés par le modèle."
+    },
+    {
+      "id": "spell.scourge",
+      "type": "spell",
+      "name": {
+        "fr": "Fléau",
+        "en": "Scourge"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une maladie hideuse couvre le corps de furoncles et d'abcès chez tous ceux qui échouent à lui résister.\n\nEn jeu\n• Durée instantanée, maladie permanente.\n• Affaiblissement temporaire de 1d3 points de Force et de Dextérité par jour, sauf jet de Vigueur réussi (une fois par jour).\n• Comme la putréfaction des momies, les jets de Vigueur quotidiens réussis ne guérissent pas la maladie.\n• Il faut un traitement magique contre les maladies (guérison des maladies, guérison suprême, restauration).\n• Focaliseur : un fouet noir ou une cravache de la même teinte."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, F, FD",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "target": "une créature vivante/niveau, aucune ne devant se situer à plus de 15 m d'une autre",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.creeping_cold",
+      "type": "spell",
+      "name": {
+        "fr": "Froid rampant",
+        "en": "Creeping Cold"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La sueur de la cible se change en glace et les cloques de givre s'étendent un peu plus à chaque round.\n\nEn jeu\n• Durée 3 rounds.\n• Dégâts de froid cumulatifs : 1d6 au 1er round, 2d6 au 2e, 3d6 au 3e.\n• Un seul jet de Vigueur pour tout le sort ; en cas de réussite, les dégâts sont réduits de moitié à chaque round.\n• Focaliseur : un petit verre ou bol en terre d'au moins 25 po, rempli de glace, de neige ou d'eau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une créature",
+        "duration": "3 rounds",
+        "savingThrow": "Vigueur, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_creeping_cold",
+      "type": "spell",
+      "name": {
+        "fr": "Froid rampant suprême",
+        "en": "Greater Creeping Cold"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une version plus longue et plus cruelle du froid rampant, qui continue à mordre après le troisième round.\n\nEn jeu\n• Comme froid rampant, avec un 4e round à 4d6 dégâts de froid.\n• Lanceur de niveau 15 ou plus : un 5e round à 5d6.\n• Lanceur de niveau 20 ou plus : un 6e round à 6d6.\n• Durée 3 rounds + 1 par palier atteint (voir description)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une créature",
+        "duration": "voir description",
+        "savingThrow": "Vigueur, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Les composantes, le temps d'incantation, la portée, la cible, le jet et la résistance sont ceux de froid rampant (le Codex renvoie à ce sort)."
+    },
+    {
+      "id": "spell.righteous_wrath_of_the_faithful",
+      "type": "spell",
+      "name": {
+        "fr": "Fureur vertueuse des fidèles",
+        "en": "Righteous Wrath of the Faithful"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une fureur sacrée gagne les compagnons du prêtre et surtout les fidèles de son dieu, qui se battent avec une ardeur divine.\n\nEn jeu\n• Durée 1 round/niveau.\n• Tous les alliés combattant au côté du lanceur : comme aide (+1 moral aux attaques et aux jets contre la terreur) et 1d8 points de vie temporaires.\n• Alliés qui vénèrent le même dieu : une attaque de corps à corps supplémentaire par round (au bonus maximal), +2 moral aux attaques, dégâts et jets de sauvegarde, 1d8 pv temporaires de plus (2d8 au total) et +3 moral aux jets contre sorts et effets mentaux.\n• À la fin, ceux qui ont reçu la fureur complète sont fatigués 10 minutes."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "target": "tous les alliés situés dans un rayonnement de 9 m de rayon centré sur le lanceur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Les effets touchent les alliés, pas la fiche du lanceur."
+    },
+    {
+      "id": "spell.beast_claws",
+      "type": "spell",
+      "name": {
+        "fr": "Griffes bestiales",
+        "en": "Beast Claws"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les mains du lanceur se couvrent de griffes recourbées et de muscles puissants, sans rien lui ôter de son agilité.\n\nEn jeu\n• Durée 1 round/niveau.\n• Les mains deviennent des armes de corps à corps tranchantes : 1d6 dégâts (taille M) ou 1d4 (taille P), plus les bonus habituels (Force).\n• Zone de critique 19-20 ; les attaques ne provoquent pas d'attaque d'opportunité.\n• Dextérité manuelle et incantation inchangées.\n• Composante matérielle : la serre d'un rapace."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [],
+      "note": "Les dégâts de la griffe sont des attaques naturelles, non calculées par le modèle. Le Codex imprime « 1d6 pour taille M ou 1d6 pour taille P » (relu sur l'image) : sans doute une coquille, on garde 1d4 pour taille P comme en anglais."
+    },
+    {
+      "id": "spell.plague_of_rats",
+      "type": "spell",
+      "name": {
+        "fr": "Horde de rats",
+        "en": "Plague of Rats"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une marée de rats enragés se jette sur tout ce qui bouge dans la zone et propage la fièvre des marais.\n\nEn jeu\n• Durée 1 round/niveau.\n• Une créature qui ne fait que repousser les rats subit 1d4 dégâts par tour et un jet de Vigueur (DD 15 + bonus d'Int du lanceur) contre la fièvre des marais.\n• Toute autre action (même fuir) : 1d4 dégâts par niveau de lanceur et le jet de Vigueur a −4 ; impossible de lancer un sort ou de rester concentré.\n• Les attaques sont non magiques (intangibilité, réduction des dégâts protègent) ; la maladie, elle, est magique.\n• La nuée se disperse après 8 points de dégâts de zone par niveau (feu ou autre) ; un nuage nauséabond la dissipe aussitôt.\n• Action de mouvement : la déplacer de 12 m par round."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round entier",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "une nuée de rats sanguinaires sur une étendue de 6 m",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (voir description)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.maddening_scream",
+      "type": "spell",
+      "name": {
+        "fr": "Hurlement aliénant",
+        "en": "Maddening Scream"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un cri atroce fait basculer la cible dans une démence hurlante qui la rend incapable d'agir.\n\nEn jeu\n• Durée 1d4+1 rounds.\n• La cible ne peut rien faire d'autre que hurler et s'agiter ; elle peut courir en tous sens.\n• −4 à la CA, pas de bouclier, et les jets de Réflexes ne réussissent que sur un 20 naturel."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature vivante touchée",
+        "duration": "1d4+1 rounds",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.infestation_of_maggots",
+      "type": "spell",
+      "name": {
+        "fr": "Infestation d'asticots",
+        "en": "Infestation of Maggots"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une attaque de contact insère des vers dans la chair de la victime, qui la rongent de l'intérieur.\n\nEn jeu\n• Durée 1 round/2 niveaux. Nécessite une attaque de contact au corps à corps réussie.\n• Chaque round : affaiblissement temporaire de 1d4 Constitution, sauf jet de Vigueur réussi ce round-là.\n• Le sort s'achève si un seul jet est réussi.\n• Guérison des maladies ou guérison suprême arrête l'infestation.\n• Composantes matérielles : une poignée de mouches mortes et desséchées."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 round/2 niveaux",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.languor",
+      "type": "spell",
+      "name": {
+        "fr": "Langueur",
+        "en": "Languor"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un rayon d'épuisement ralentit et affaiblit sa cible, qui perd peu à peu toute sa force.\n\nEn jeu\n• Durée 1 round/niveau.\n• Effet de lenteur, plus un malus d'altération cumulatif à la Force de 1d6−1 tous les 2 niveaux (minimum 0, maximum −10) par round.\n• Si la Force tombe sous 1, la cible est sans défense.\n• Rapidité contre l'effet de lenteur (et inversement), mais pas le malus en Force."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.illusory_decoy",
+      "type": "spell",
+      "name": {
+        "fr": "Leurre imaginaire",
+        "en": "Illusory Decoy"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le lanceur glisse dans l'esprit de la cible l'image de son pire ennemi, qui n'existe que pour elle.\n\nEn jeu\n• Durée 1 round/niveau.\n• Seuls le lanceur et la cible voient la créature imaginaire (floue pour le lanceur).\n• Une créature d'Intelligence 3 ou moins s'en prend automatiquement au leurre ; les plus intelligentes aussi, si l'action leur semble sensée.\n• Action de mouvement : déplacer l'image de 18 m ; elle ignore le terrain difficile.\n• La cible a un jet de Volonté si elle frappe le leurre ou est adjacente."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "mirage",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "une créature vivante",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, dévoile (en cas d'interaction)",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.lesser_telepathic_bond",
+      "type": "spell",
+      "name": {
+        "fr": "Lien télépathique mineur",
+        "en": "Lesser Telepathic Bond"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un fil de pensée relie le lanceur à un autre esprit, sans barrière de langue.\n\nEn jeu\n• Durée 10 minutes/niveau.\n• Lien télépathique avec une créature consentante d'Intelligence 6 ou plus ; ni influence ni domination.\n• Le lien tient quelle que soit la distance, mais pas d'un plan à un autre."
+      },
+      "spell": {
+        "school": "Divination",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "target": "le personnage et une créature consentante située dans un rayon de 9 m",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.poison_ivy",
+      "type": "spell",
+      "name": {
+        "fr": "Lierre empoisonné",
+        "en": "Poison Ivy"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une version vénéneuse de bosquet de lierre : les plantes empoisonnent ceux qui y pénètrent.\n\nEn jeu\n• Comme bosquet de lierre, mais les plantes sont vénéneuses (contact, affaiblissement temporaire 1d6 Dex / 2d6 Dex).\n• Jet de Vigueur à la première entrée dans la zone, puis 1 minute plus tard ; pas de nouveau jet à chaque retour ou round.\n• Le lanceur est immunisé et peut conférer l'immunité à un nombre de créatures égal à son niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "savingThrow": "Vigueur, annule (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Le Codex ne donne que le niveau, le jet et la résistance : les autres lignes (composantes, portée, durée) sont celles du sort dont il dérive, à confirmer."
+    },
+    {
+      "id": "spell.phantom_wolf",
+      "type": "spell",
+      "name": {
+        "fr": "Loup fantôme",
+        "en": "Phantom Wolf"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un grand loup blanc intangible, aux mâchoires gelées, obéit aux ordres mentaux du lanceur.\n\nEn jeu\n• Durée : concentration, jusqu'à 1 round/niveau. Il agit à votre tour ; le sort s'arrête s'il sort de la portée.\n• Loup fantôme : créature magique intangible de taille G, 12d10+48 pv (113), CA 25, vol 18 m, vision dans le noir 18 m.\n• Morsure +21 (2d6 plus 3d6 froid) ; ses attaques ignorent armure, bouclier et armure naturelle.\n• Présence terrifiante : DD 24 de Volonté pour les créatures de moins de 12 DV à 9 m qui le voient attaquer, effrayées 3d6 rounds.\n• Intangible : touché seulement par des intangibles, armes magiques, sorts ; 50 % d'ignorer les dégâts tangibles (sauf force). Silencieux."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 round entier",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "un loup fantôme convoqué",
+        "duration": "concentration, jusqu'à 1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Le profil de la créature est résumé : les statistiques ne sont pas modélisées."
+    },
+    {
+      "id": "spell.energy_vortex",
+      "type": "spell",
+      "name": {
+        "fr": "Maelstrôm d'énergie destructive",
+        "en": "Energy Vortex"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un souffle d'énergie destructrice jaillit du lanceur et balaie tout autour de lui.\n\nEn jeu\n• Le lanceur choisit l'énergie : acide, électricité, feu, froid ou son.\n• Dégâts : 1d8 +1 par niveau (maximum +20) à toutes les créatures de la zone.\n• Le lanceur peut subir les dégâts lui aussi : les dégâts des cibles sont alors doublés ; il n'a pas de jet de Réflexes, mais sa résistance à la magie et ses résistances s'appliquent."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "acide",
+          "électricité",
+          "feu",
+          "froid",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "area": "toutes les créatures situées dans un rayonnement de 6 m de rayon centré sur le lanceur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le doublement volontaire n'est pas calculé."
+    },
+    {
+      "id": "spell.curse_of_lycanthropy",
+      "type": "spell",
+      "name": {
+        "fr": "Malédiction de la lycanthropie",
+        "en": "Curse of Lycanthropy"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une morsure de pleine lune donnée par simple contact : la victime deviendra un loup-garou ou une autre bête à la prochaine nuit sacrée.\n\nEn jeu\n• Durée permanente.\n• Si le jet est raté, la maladie se manifeste à la prochaine pleine lune.\n• Contrairement à la lycanthropie normale, délivrance des malédictions ou annulation d'enchantement la guérit.\n• Peut reproduire les formes courantes de lycanthropie ; la composante matérielle (un demi-litre de sang d'un animal) détermine l'animal."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "humanoïde touché",
+        "duration": "permanente (voir description)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.curse_of_ill_fortune",
+      "type": "spell",
+      "name": {
+        "fr": "Malédiction de la malchance",
+        "en": "Curse of Ill Fortune"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une poisse tenace s'abat sur la cible : tout lui devient plus difficile.\n\nEn jeu\n• Durée 1 minute/niveau.\n• −3 aux jets d'attaque, jets de sauvegarde, tests de caractéristique et tests de compétence.\n• Tout sort qui dissipe une malédiction l'annule."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "une créature vivante",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_bestow_curse",
+      "type": "spell",
+      "name": {
+        "fr": "Malédiction suprême",
+        "en": "Greater Bestow Curse"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une malédiction durable et puissante, que seul un miracle ou un souhait peut défaire, ou l'accomplissement d'un grand exploit.\n\nEn jeu\n• Durée permanente. Le lanceur choisit l'un des trois effets : une caractéristique réduite à 1 ou deux caractéristiques à −6 (minimum 1) ; −8 aux attaques, jets de sauvegarde, tests de caractéristique et de compétence ; 25 % de chances d'agir normalement chaque tour, sinon rien.\n• Impossible à dissiper ; annulation d'enchantement, délivrance des malédictions et souhait limité ne marchent pas ; miracle ou souhait oui.\n• Doit s'accompagner d'une condition d'annulation (une action réalisable en un an) fixée par le lanceur."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "permanente",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.cloudwalkers",
+      "type": "spell",
+      "name": {
+        "fr": "Marche des nuages",
+        "en": "Cloudwalkers"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Des coussins de nuage se forment sous les pieds des cibles et leur permettent de marcher dans le ciel.\n\nEn jeu\n• Durée 1 heure/niveau (T).\n• Déplacement vertical à 9 m/round, latéral à 18 m (manœuvrabilité parfaite) ; le vol latéral exige d'être à au moins 27 m du sol.\n• Pour redescendre, action simple : le sort prend fin pour cette cible seulement.\n• Le lanceur peut y mettre fin pour tous les sujets."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une créature/niveau, aucune ne devant se trouver à plus de 9 m d'une autre",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Réflexes, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mark_of_the_hunter",
+      "type": "spell",
+      "name": {
+        "fr": "Marque du chasseur",
+        "en": "Mark of the Hunter"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le rôdeur trace du doigt une rune luisante sur l'un de ses ennemis jurés, qui ne peut plus se cacher.\n\nEn jeu\n• Durée 10 minutes/niveau.\n• Les bonus d'ennemi juré augmentent de +4 contre la cible.\n• La cible n'a plus de bonus d'abri à la CA (sauf abri total) ni de chances de rater par camouflage (sauf camouflage total) contre le lanceur.\n• Composante matérielle : un bout de peau ou d'os issu du type d'ennemi juré."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "une créature, qui doit compter parmi les ennemis jurés du lanceur de sorts",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Les bonus d'ennemi juré ne sont pas calculés par le modèle."
+    }
+  ]
+}

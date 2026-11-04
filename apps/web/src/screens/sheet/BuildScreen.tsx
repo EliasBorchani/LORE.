@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { api } from '../../api/client'
-import type { EntitySummary, LevelRecord, ManeuverEntry, SpellListEntry } from '../../api/types'
+import type { EntitySummary, InvocationEntry, LevelRecord, ManeuverEntry, SpellListEntry } from '../../api/types'
 import { Loading, StatBlock } from '../../components/grimoire'
 import { EntityName, InfoButton } from '../../components/EntityPanel'
 import { Picker } from '../../components/Picker'
@@ -39,6 +39,7 @@ export function BuildScreen() {
       <Skills />
       <Spells />
       <Maneuvers />
+      <Invocations />
       <Items />
       <MoveCharacter />
     </>
@@ -355,6 +356,94 @@ function Maneuvers() {
               )
             ) : (
               <button className="btn btn-secondary btn-small" onClick={() => open(classId)}>{fr.editor.addManeuver}</button>
+            )}
+          </StatBlock>
+        )
+      })}
+      {message && <p role="status" className="muted">{message}</p>}
+    </>
+  )
+}
+
+const GRADES = ['least', 'lesser', 'greater', 'dark']
+
+/** Invocations of each invoker class (Warlock): count and highest grade from its table, problems, remove or learn. */
+function Invocations() {
+  const { record, sheet, name, saveCharacter, reload } = useSheet()
+  const groupApi = useGroupApi()
+  const invokers = sheet.invokers.asJsReadonlyArrayView()
+  const [list, setList] = useState<InvocationEntry[] | null>(null)
+  const [adding, setAdding] = useState<string | null>(null)
+  const [busy, setBusy] = useState(false)
+  const [message, setMessage] = useState<string | null>(null)
+  if (invokers.length === 0) return null
+
+  const info = (id: string) => list?.find((m) => m.id === id)
+
+  async function save(classId: string, known: string[]) {
+    setBusy(true)
+    setMessage(null)
+    const invocations = { ...(record.character.invocations ?? {}), [classId]: { known } }
+    try {
+      const result = await saveCharacter({ ...record.character, invocations })
+      setMessage(result === 'saved' ? fr.build.saved : fr.build.conflict)
+      setAdding(null)
+      reload()
+    } catch (error) {
+      setMessage(`${fr.build.saveFailed} ${messageOf(error)}`)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  function open(classId: string) {
+    setAdding(classId)
+    if (!list) groupApi.invocationList().then(setList, (error) => setMessage(messageOf(error)))
+  }
+
+  const gradeName = (grade: string) => fr.catalog.invocationGrades[grade] ?? grade
+  return (
+    <>
+      {invokers.map((line) => {
+        const classId = line.classId
+        const known = [...(record.character.invocations?.[classId]?.known ?? [])]
+        const issues = [...line.issues.asJsReadonlyArrayView()]
+        const reached = GRADES.indexOf(line.maxGrade ?? '')
+        const entryName = (id: string) => localized(info(id)?.name ?? undefined) ?? name(id)
+        // What the class may learn now: not known yet, of a grade it reached.
+        const learnable = (list ?? []).filter((m) => m.invocation && !known.includes(m.id) && GRADES.indexOf(m.invocation.grade) <= reached)
+        return (
+          <StatBlock key={classId} title={fr.editor.invocations(name(classId))}>
+            <p className="muted">
+              {fr.editor.invocationCounts(known.length, line.invocationsKnown ?? '0', gradeName(line.maxGrade ?? '—'), line.invokerLevel ?? '0')}
+            </p>
+            {issues.map((issue) => (
+              <p key={`${issue.entity}-${issue.code}`} className="muted" role="alert">
+                {issue.entity ? `${name(issue.entity)} ${fr.editor.invocationIssues[issue.code]}` : fr.editor.invocationIssues[issue.code]}
+              </p>
+            ))}
+            {known.length === 0 && <p className="muted">{fr.editor.noInvocations}</p>}
+            {known.map((id) => (
+              <div key={id} className="chosen">
+                <EntityName id={id}>{entryName(id)}</EntityName>
+                <button type="button" className="btn btn-secondary btn-small" disabled={busy} aria-label={fr.editor.remove(entryName(id))}
+                  onClick={() => void save(classId, known.filter((k) => k !== id))}>×</button>
+              </div>
+            ))}
+            {adding === classId ? (
+              list ? (
+                <Picker label={fr.editor.addInvocation}
+                  items={learnable.map((m) => ({
+                    id: m.id,
+                    name: localized(m.name ?? undefined) ?? m.id,
+                    sub: fr.editor.invocationSub(gradeName(m.invocation!.grade), m.invocation!.level),
+                  }))}
+                  onPick={(id) => void save(classId, [...known, id])} />
+              ) : (
+                <Loading />
+              )
+            ) : (
+              <button className="btn btn-secondary btn-small" onClick={() => open(classId)}>{fr.editor.addInvocation}</button>
             )}
           </StatBlock>
         )

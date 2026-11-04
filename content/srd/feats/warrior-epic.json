@@ -1,0 +1,370 @@
+{
+  "entities": [
+    {
+      "id": "feat.epic_weapon_focus",
+      "type": "feat",
+      "name": {
+        "fr": "Arme de prédilection épique",
+        "en": "Epic Weapon Focus"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Une seule arme, maniée depuis si longtemps qu’elle fait partie de lui.\n\nEn jeu\n• Conditions : Arme de prédilection et Arme de prédilection supérieure avec l’arme choisie.\n• +2 aux jets d’attaque avec l’arme choisie, cumulable avec Arme de prédilection et sa version supérieure.\n• Peut être pris plusieurs fois, pour une arme différente à chaque fois (les effets ne se cumulent pas)."
+      },
+      "prerequisite": "level() >= 21 and has('feat.weapon_focus') and has('feat.greater_weapon_focus')",
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "item"
+        }
+      ],
+      "note": "Arme choisie : pas encore dans le modèle ; le bonus s’applique à l’arme maniée (comme Arme de prédilection)."
+    },
+    {
+      "id": "feat.intuitive_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaques instinctives",
+        "en": "Intuitive Attack"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Son regard repère les failles de la garde adverse, et ses coups tombent exactement là où ils font le plus mal.\n\nEn jeu\n• Conditions : Expertise du combat, Prouesse épique, bonus de base à l’attaque +15.\n• Avec une arme de corps à corps, il peut ajouter son modificateur d’Intelligence aux dégâts à la place de son modificateur de Force."
+      },
+      "prerequisite": "level() >= 21 and has('feat.combat_expertise') and has('feat.epic_prowess') and @bab >= 15",
+      "note": "Intelligence aux dégâts à la place de Force : pas modélisé."
+    },
+    {
+      "id": "feat.legendary_rider",
+      "type": "feat",
+      "name": {
+        "fr": "Cavalier légendaire",
+        "en": "Legendary Rider"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il tient en selle comme s’il était né sur le dos de sa monture, selle ou pas.\n\nEn jeu\n• Condition : 24 degrés en Équitation.\n• Aucun malus aux tests d’Équitation en montant à cru.\n• Contrôler une monture non entraînée au combat ne demande aucune action.\n• Normal : −5 à cru, et un test d’Équitation pour contrôler la monture en combat (action de mouvement si elle n’est pas entraînée)."
+      },
+      "prerequisite": "level() >= 21 and @skill.ride.ranks >= 24",
+      "note": "Les tests d’Équitation sans selle ne sont pas modélisés."
+    },
+    {
+      "id": "feat.perfect_two_weapon_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Combat à deux armes parfait",
+        "en": "Perfect Two-Weapon Fighting"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Ses deux armes frappent au même rythme, d’égale force : la main faible n’existe plus.\n\nEn jeu\n• Conditions : Dex 25, Combat à deux armes, Science du combat à deux armes, Maîtrise du combat à deux armes.\n• À outrance, autant d’attaques avec l’arme secondaire qu’avec l’arme principale, avec la même suite de bonus de base à l’attaque (ex. +18/+13/+8/+3 : quatre attaques de chaque côté).\n• Les malus habituels du combat à deux armes s’appliquent toujours.\n• Normal : une attaque secondaire (deux avec Science, trois avec Maîtrise)."
+      },
+      "prerequisite": "level() >= 21 and @ability.dex.score >= 25 and has('feat.two_weapon_fighting') and has('feat.improved_two_weapon_fighting') and has('feat.greater_two_weapon_fighting')",
+      "note": "Attaques de l’arme secondaire : pas encore dans le modèle (une seule arme maniée)."
+    },
+    {
+      "id": "feat.epic_destruction",
+      "type": "feat",
+      "name": {
+        "fr": "Destruction épique",
+        "en": "Epic Destruction"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Contre les portes, les coffres et les boucliers, ses coups font voler le bois et plier le fer.\n\nEn jeu\n• Conditions : For 25, Attaque en puissance, Prouesse épique, Science de la destruction.\n• Contre un objet, les dégâts supplémentaires dus à la Force sont doublés.\n• S’il tente de briser un objet plutôt que de le frapper : +4 au test de Force."
+      },
+      "prerequisite": "level() >= 21 and @ability.str.score >= 25 and has('feat.power_attack') and has('feat.epic_prowess') and has('feat.improved_sunder')",
+      "note": "Nom anglais à confirmer. Dégâts contre les objets et test de Force : pas modélisés."
+    },
+    {
+      "id": "feat.epic_combat_expertise",
+      "type": "feat",
+      "name": {
+        "fr": "Expertise du combat épique",
+        "en": "Epic Combat Expertise"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il se couvre avec une maîtrise totale : chaque coup qu’il retient devient un mur de plus entre lui et ses ennemis.\n\nEn jeu\n• Conditions : Int 19, Expertise du combat, bonus de base à l’attaque +21.\n• Lors d’une attaque ou d’une attaque à outrance au corps à corps, il choisit un nombre de 1 à 5 : malus aux jets d’attaque, bonus d’esquive à sa CA et à celle d’une créature adjacente, jusqu’à son prochain tour.\n• Remplace les effets d’Expertise du combat : on ne peut pas cumuler les deux bonus d’esquive."
+      },
+      "prerequisite": "level() >= 21 and @ability.int.score >= 19 and has('feat.combat_expertise') and @bab >= 21",
+      "tableValue": {
+        "max": 5
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "-@toggle.epic_combat_expertise.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.epic_combat_expertise')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "@toggle.epic_combat_expertise.value",
+          "bonusType": "dodge",
+          "condition": "active('toggle.epic_combat_expertise')"
+        }
+      ],
+      "note": "Valeur choisie en début de tour, max 5. Le bonus à la CA de la créature adjacente n’est pas modélisé. Ne pas activer en même temps qu’Expertise du combat (les deux donneraient un bonus d’esquive)."
+    },
+    {
+      "id": "feat.oversized_weapon_wielding",
+      "type": "feat",
+      "name": {
+        "fr": "Maniement d’arme disproportionnée",
+        "en": "Oversized Weapon Wielding"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il brandit sans effort des armes taillées pour plus grand que lui.\n\nEn jeu\n• Conditions : For 25, Grande poigne, bonus de base à l’attaque +12.\n• Toute arme compte comme étant d’une catégorie de taille en dessous pour savoir à combien de mains on la porte (une épée courte M devient légère pour un halfelin ; la massue G d’un ogre se manie comme une arme à deux mains M pour un humain).\n• Les dégâts de l’arme ne changent pas.\n• Normal : seules les armes de sa catégorie de taille se manient sans malus."
+      },
+      "prerequisite": "level() >= 21 and @ability.str.score >= 25 and has('feat.monkey_grip') and @bab >= 12",
+      "note": "Nom anglais à confirmer. Maniement des armes trop grandes : pas modélisé."
+    },
+    {
+      "id": "feat.armor_skin",
+      "type": "feat",
+      "name": {
+        "fr": "Peau métallique",
+        "en": "Armor Skin"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "defense"
+      ],
+      "description": {
+        "fr": "Sa peau durcit et prend la dureté du métal.\n\nEn jeu\n• +1 au bonus d’armure naturelle à la CA (ou +1 à son bonus existant).\n• Peut être pris plusieurs fois, les effets se cumulent."
+      },
+      "prerequisite": "level() >= 21",
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Bonus sans type sur ac.natural pour qu’il s’ajoute à l’armure naturelle existante."
+    },
+    {
+      "id": "feat.epic_prowess",
+      "type": "feat",
+      "name": {
+        "fr": "Prouesse épique",
+        "en": "Epic Prowess"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Son adresse au combat dépasse ce que les mortels croient possible.\n\nEn jeu\n• +1 à tous les jets d’attaque.\n• Peut être pris plusieurs fois, les effets se cumulent."
+      },
+      "prerequisite": "level() >= 21",
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.damage_reduction",
+      "type": "feat",
+      "name": {
+        "fr": "Réduction des dégâts",
+        "en": "Damage Reduction"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "defense"
+      ],
+      "description": {
+        "fr": "Les coups qu’il reçoit s’émoussent sur lui et ne laissent que des bleus.\n\nEn jeu\n• Condition : Con 21.\n• Réduction des dégâts 3/–.\n• Ne se cumule pas avec la réduction des objets magiques ou des effets magiques temporaires, mais se cumule avec les effets magiques permanents, les aptitudes de classe et ce don.\n• Peut être pris plusieurs fois : +3 de plus à chaque fois."
+      },
+      "prerequisite": "level() >= 21 and @ability.con.score >= 21",
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": 3
+        }
+      ],
+      "note": "Le non-cumul avec les objets et effets magiques temporaires n’est pas modélisé."
+    },
+    {
+      "id": "feat.epic_toughness",
+      "type": "feat",
+      "name": {
+        "fr": "Robustesse épique",
+        "en": "Epic Toughness"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "defense"
+      ],
+      "description": {
+        "fr": "Son corps encaisse bien au-delà de la mesure humaine.\n\nEn jeu\n• +30 points de vie.\n• Peut être pris plusieurs fois, les effets se cumulent."
+      },
+      "prerequisite": "level() >= 21",
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "hp.max",
+          "op": "add",
+          "value": 30,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "feat.close_quarters_archery",
+      "type": "feat",
+      "name": {
+        "fr": "Tir à l’arc rapproché",
+        "en": "Close-Quarters Archery"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "epic",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Il garde son arc bandé même nez à nez avec l’ennemi, et personne n’en profite pour le frapper.\n\nEn jeu\n• Conditions : Esquive, Souplesse du serpent, Tir à bout portant.\n• Tirer à l’arc ne provoque pas d’attaque d’opportunité.\n• Normal : tirer à l’arc en provoque une de tous les adversaires qui contrôlent la case."
+      },
+      "prerequisite": "level() >= 21 and has('feat.dodge') and has('feat.mobility') and has('feat.point_blank_shot')",
+      "note": "Nom anglais à confirmer. Attaques d’opportunité : pas modélisées."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.epic_weapon_focus",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.epic_weapon_focus",
+      "relation": "requires",
+      "to": "feat.greater_weapon_focus"
+    },
+    {
+      "from": "feat.intuitive_attack",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.intuitive_attack",
+      "relation": "requires",
+      "to": "feat.epic_prowess"
+    },
+    {
+      "from": "feat.perfect_two_weapon_fighting",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.perfect_two_weapon_fighting",
+      "relation": "requires",
+      "to": "feat.improved_two_weapon_fighting"
+    },
+    {
+      "from": "feat.perfect_two_weapon_fighting",
+      "relation": "requires",
+      "to": "feat.greater_two_weapon_fighting"
+    },
+    {
+      "from": "feat.epic_destruction",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.epic_destruction",
+      "relation": "requires",
+      "to": "feat.epic_prowess"
+    },
+    {
+      "from": "feat.epic_destruction",
+      "relation": "requires",
+      "to": "feat.improved_sunder"
+    },
+    {
+      "from": "feat.epic_combat_expertise",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.oversized_weapon_wielding",
+      "relation": "requires",
+      "to": "feat.monkey_grip"
+    },
+    {
+      "from": "feat.close_quarters_archery",
+      "relation": "requires",
+      "to": "feat.dodge"
+    },
+    {
+      "from": "feat.close_quarters_archery",
+      "relation": "requires",
+      "to": "feat.mobility"
+    },
+    {
+      "from": "feat.close_quarters_archery",
+      "relation": "requires",
+      "to": "feat.point_blank_shot"
+    }
+  ]
+}

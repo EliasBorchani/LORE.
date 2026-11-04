@@ -1,0 +1,543 @@
+{
+  "entities": [
+    {
+      "id": "class.seeker_of_the_song",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Quêteur de chant",
+        "en": "Seeker of the Song"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Quelque part sous les mélodies des hommes court une musique plus ancienne, que les dieux eux-mêmes écoutent. Le quêteur de chant en a entendu un fragment et ne vit plus que pour en retrouver d'autres : sa voix protège ses alliés des éléments et frappe ses ennemis de feu, de glace ou de tonnerre.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : Connaissances (mystères) 13 rangs, Représentation 13 rangs (au choix), don Talent (Représentation) ; musique de barde ; avoir entendu la musique primale jouée par un quêteur de chant.\n• Aucune formation nouvelle aux armes, boucliers ou armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (mystères), Détection, Diplomatie, Équitation, Escalade, Natation, Perception auditive, Profession, Psychologie, Représentation, Saut.\n• Aptitudes : chant d'extase (1, 4, 7, 10) ; musique de quêteur (1) : un nouveau chant par niveau, chacun demandant un nombre de rangs de Représentation ; chants combinés (2) ; vocalise (5).\n• Ancien quêteur : s'il prend un niveau dans une autre classe après avoir commencé celle-ci, il ne peut plus jamais progresser en quêteur de chant."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 13 and @skill.perform.ranks >= 13 and has('feat.skill_focus_perform')",
+      "note": "Dans la formule : rangs et don Talent (Skill Focus) ; Représentation sans le domaine choisi. En texte seulement : musique de barde, avoir entendu la musique primale. Dé de vie d6 : l'OCR de la page est illisible sur ce point, valeur de Complete Arcane. Nom anglais du don : Skill Focus (Perform)."
+    },
+    {
+      "id": "power.seeker_of_the_song_ecstasy_song",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant d'extase",
+        "en": "Song of ecstasy"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Accordé à la musique primale, le quêteur devient plus vif, plus solide et plus difficile à atteindre tant qu'il chante.\n\nEn jeu\n• Tant qu'il utilise la musique de barde, la musique de quêteur ou un pouvoir semblable : bonus d'intuition de +2 à la CA (niveau 1).\n• Niveau 4 : aussi +2 d'intuition à tous les jets de sauvegarde.\n• Niveau 7 : aussi réduction des dégâts 2/—.\n• Niveau 10 : aussi liberté de mouvement."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "condition": "active('toggle.seeker_of_the_song_ecstasy_song')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "condition": "active('toggle.seeker_of_the_song_ecstasy_song') and level('class.seeker_of_the_song') >= 4"
+        },
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.seeker_of_the_song_ecstasy_song') and level('class.seeker_of_the_song') >= 7"
+        }
+      ],
+      "note": "L'interrupteur se coche tant que le quêteur chante. Liberté de mouvement (niveau 10) : texte seulement."
+    },
+    {
+      "id": "power.seeker_of_the_song_seeker_music",
+      "type": "class_power",
+      "name": {
+        "fr": "Musique de quêteur",
+        "en": "Seeker music"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Il tire de la musique primale des effets que nul barde ne connaît. Chaque chant se débloque avec les niveaux et un nombre de rangs de Représentation.\n\nEn jeu\n• Chaque utilisation coûte une utilisation quotidienne de musique de barde ; ses niveaux de quêteur s'ajoutent à ceux de barde pour le nombre d'utilisations.\n• Refrain : en dépensant une seconde utilisation, il active en action rapide (sans attaque d'opportunité) l'effet secondaire du chant, sans interrompre celui-ci.\n• Chants : mélodie embrasée (niv. 1, 14 rangs), chant de destruction (2, 15), mélodie glacée (3, 16), chant de vie (4, 17), hymne du tonnerre (5, 18), cantique magique (6, 19), ballade d'agonie (7, 20), aria universelle (8, 21), mélopée funèbre (9, 22), note de solitude (10, 23)."
+      },
+      "effects": [],
+      "note": "Les utilisations en plus ne sont pas calculées ici : à ajouter à la réserve de musique de barde du barde (niveaux de barde + niveaux de quêteur)."
+    },
+    {
+      "id": "power.seeker_of_the_song_flaming_melody",
+      "type": "class_power",
+      "name": {
+        "fr": "Mélodie embrasée",
+        "en": "Flaming melody"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Le chant devient une braise : les alliés qui l'entendent supportent le feu, et le refrain lâche une gerbe de flammes.\n\nEn jeu\n• Niveau 1, 14 rangs de Représentation. Alliés à 9 m (et lui) qui l'entendent : résistance au feu 15 tant qu'il chante.\n• Refrain : cône de feu de 9 m, 6d6 dégâts de feu, Réflexes (DD 10 + rangs de Représentation) pour moitié."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.fire",
+          "op": "add",
+          "value": 15,
+          "condition": "active('toggle.seeker_of_the_song_flaming_melody') and @skill.perform.ranks >= 14"
+        },
+        {
+          "target": "dc.seeker_of_the_song_flaming_melody",
+          "op": "set",
+          "value": "10 + @skill.perform.ranks"
+        }
+      ],
+      "note": "Pour ses alliés, le bonus se cumule sur leur propre fiche ; ici seul le quêteur est géré. Le modèle ne connaît peut-être pas encore la résistance au feu : voir le rapport."
+    },
+    {
+      "id": "power.seeker_of_the_song_song_of_destruction",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de destruction",
+        "en": "Song of destruction"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Une note qui fait vibrer les constructions jusqu'à les briser.\n\nEn jeu\n• Niveau 2, 15 rangs de Représentation. Coûte une utilisation de musique de barde.\n• Dégâts de 1d8 par niveau de quêteur aux créatures artificielles dans un rayon de 9 m, sans jet de sauvegarde."
+      },
+      "effects": [],
+      "note": "Test de Représentation mentionné par le livre sans effet chiffré sur la fiche : texte seulement."
+    },
+    {
+      "id": "power.seeker_of_the_song_frozen_melody",
+      "type": "class_power",
+      "name": {
+        "fr": "Mélodie glacée",
+        "en": "Frozen melody"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Le chant se fait givre : résistance au froid pour les alliés, et une ligne de glace en refrain.\n\nEn jeu\n• Niveau 3, 16 rangs de Représentation. Alliés à 9 m (et lui) qui l'entendent : résistance au froid 15 tant qu'il chante.\n• Refrain : ligne de froid de 18 m, 10d6 dégâts de froid et fatigue ; Vigueur (DD 10 + rangs de Représentation) réduit de moitié et annule la fatigue."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.cold",
+          "op": "add",
+          "value": 15,
+          "condition": "active('toggle.seeker_of_the_song_frozen_melody') and @skill.perform.ranks >= 16"
+        },
+        {
+          "target": "dc.seeker_of_the_song_frozen_melody",
+          "op": "set",
+          "value": "10 + @skill.perform.ranks"
+        }
+      ]
+    },
+    {
+      "id": "power.seeker_of_the_song_song_of_life",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de vie",
+        "en": "Song of life"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Un chant qui referme les plaies et repousse les fièvres.\n\nEn jeu\n• Niveau 4, 17 rangs de Représentation. Alliés à 9 m (et lui) qui l'entendent : immunité au poison et aux maladies tant qu'il chante.\n• Refrain : test de Représentation, action simple de contact ; la créature vivante touchée récupère autant de points de vie que le résultat (sans dépasser son maximum). Aucun effet sur les morts-vivants et non-vivants."
+      },
+      "effects": [],
+      "note": "Immunité au poison et aux maladies : le modèle ne la garde pas, texte seulement."
+    },
+    {
+      "id": "power.seeker_of_the_song_thunder_hymn",
+      "type": "class_power",
+      "name": {
+        "fr": "Hymne du tonnerre",
+        "en": "Hymn of thunder"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "L'orage dans la gorge : les alliés résistent à l'électricité, et le refrain lance un éclair qui saute d'ennemi en ennemi.\n\nEn jeu\n• Niveau 5, 18 rangs de Représentation. Alliés à 9 m (et lui) qui l'entendent : résistance à l'électricité 15 tant qu'il chante.\n• Refrain : rayon de 6 m (contact à distance), 10d6 dégâts d'électricité. Des arcs touchent d'autres cibles à 6 m de la première (contact à distance chacun, moitié dégâts) : 1 arc au niveau 5, 2 au niveau 6, 3 au niveau 9. Une créature ne subit qu'un arc par round."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.electricity",
+          "op": "add",
+          "value": 15,
+          "condition": "active('toggle.seeker_of_the_song_thunder_hymn') and @skill.perform.ranks >= 18"
+        }
+      ]
+    },
+    {
+      "id": "power.seeker_of_the_song_magic_canticle",
+      "type": "class_power",
+      "name": {
+        "fr": "Cantique magique",
+        "en": "Canticle of magic"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Un chant qui trouble la concentration de quiconque veut lancer un sort à portée d'oreille.\n\nEn jeu\n• Niveau 6, 19 rangs de Représentation. Pouvoir mental.\n• Toute créature qui l'entend doit gagner un test de Concentration opposé à son test de Représentation pour lancer un sort ; en cas d'échec le sort est perdu.\n• Refrain : dissipation de la magie de zone centrée sur lui (il peut exclure ses alliés et lui-même) ; test de niveau de lanceur avec ses niveaux de barde et de quêteur de chant en modificateur."
+      },
+      "effects": [],
+      "note": "Test opposé et dissipation : texte seulement."
+    },
+    {
+      "id": "power.seeker_of_the_song_ballad_of_agony",
+      "type": "class_power",
+      "name": {
+        "fr": "Ballade d'agonie",
+        "en": "Ballad of agony"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Le chant ronge comme l'acide : les alliés l'ignorent, le refrain frappe deux fois.\n\nEn jeu\n• Niveau 7, 20 rangs de Représentation. Alliés à 9 m (et lui) qui l'entendent : résistance à l'acide 15 tant qu'il chante.\n• Refrain : rayon de 6 m (contact à distance), 10d6 dégâts d'acide, puis encore 10d6 au round suivant."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.acid",
+          "op": "add",
+          "value": 15,
+          "condition": "active('toggle.seeker_of_the_song_ballad_of_agony') and @skill.perform.ranks >= 20"
+        }
+      ]
+    },
+    {
+      "id": "power.seeker_of_the_song_universal_aria",
+      "type": "class_power",
+      "name": {
+        "fr": "Aria universelle",
+        "en": "Universal aria"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Il se fond dans la mélodie et réapparaît ailleurs.\n\nEn jeu\n• Niveau 8, 21 rangs de Représentation. Coûte une utilisation de musique de barde.\n• Téléportation sur 7,5 m + 1,5 m par niveau, comme porte dimensionnelle, mais sans emmener de créature."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.seeker_of_the_song_dirge_of_the_dead",
+      "type": "class_power",
+      "name": {
+        "fr": "Mélopée funèbre",
+        "en": "Dirge"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Une complainte si lourde qu'elle étouffe les chants des autres.\n\nEn jeu\n• Niveau 9, 22 rangs de Représentation. Alliés à 9 m (et lui) qui l'entendent : résistance au son 15 tant qu'il chante.\n• Les autres créatures à 9 m qui veulent utiliser une musique de barde ou de quêteur doivent gagner un test de Représentation opposé au sien ; en cas d'échec le pouvoir est sans effet et une utilisation quotidienne est perdue.\n• Refrain : rayon de 6 m (contact à distance), 15d6 dégâts de son."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.sonic",
+          "op": "add",
+          "value": 15,
+          "condition": "active('toggle.seeker_of_the_song_dirge_of_the_dead') and @skill.perform.ranks >= 22"
+        }
+      ]
+    },
+    {
+      "id": "power.seeker_of_the_song_note_of_solitude",
+      "type": "class_power",
+      "name": {
+        "fr": "Note de solitude",
+        "en": "Note of solitude"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Une seule note qui coupe le fil entre une créature et son plan d'origine.\n\nEn jeu\n• Niveau 10, 23 rangs de Représentation. Instantané, ne peut pas être maintenu ; il peut le renouveler en dépensant d'autres utilisations de musique de barde.\n• Créatures extraplanaires à 18 m : Volonté (DD 10 + rangs de Représentation), avec en bonus leurs dés de vie. Échec : renvoyées sur leur plan d'origine."
+      },
+      "effects": [
+        {
+          "target": "dc.seeker_of_the_song_note_of_solitude",
+          "op": "set",
+          "value": "10 + @skill.perform.ranks"
+        }
+      ]
+    },
+    {
+      "id": "power.seeker_of_the_song_combined_songs",
+      "type": "class_power",
+      "name": {
+        "fr": "Chants combinés",
+        "en": "Combined songs"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Deux mélodies d'un seul souffle.\n\nEn jeu\n• Niveau 2. Il active deux musiques de barde ou de quêteur en une seule action simple.\n• Si elles demandent de la concentration, il les maintient avec une action simple par round.\n• Les règles de cumul des bonus s'appliquent."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.seeker_of_the_song_vocalise",
+      "type": "class_power",
+      "name": {
+        "fr": "Vocalise",
+        "en": "Vocalise"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "seeker_of_the_song"
+      ],
+      "description": {
+        "fr": "Il enchaîne les chants sans reprendre son souffle.\n\nEn jeu\n• Niveau 5. Action rapide : commence une musique de barde ou de quêteur quand une seule (exactement) est déjà active.\n• Combiné aux chants combinés : il commence un second chant, puis maintient chacun d'eux avec une action simple par round."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.seeker_of_the_song_ecstasy_song",
+        "power.seeker_of_the_song_seeker_music",
+        "power.seeker_of_the_song_flaming_melody"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.seeker_of_the_song_song_of_destruction",
+        "power.seeker_of_the_song_combined_songs"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.seeker_of_the_song_frozen_melody"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.seeker_of_the_song_song_of_life",
+        "power.seeker_of_the_song_ecstasy_song"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.seeker_of_the_song_thunder_hymn",
+        "power.seeker_of_the_song_vocalise"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.seeker_of_the_song_magic_canticle"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.seeker_of_the_song_ballad_of_agony",
+        "power.seeker_of_the_song_ecstasy_song"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.seeker_of_the_song_universal_aria"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.seeker_of_the_song_dirge_of_the_dead"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_song",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.seeker_of_the_song_note_of_solitude",
+        "power.seeker_of_the_song_ecstasy_song"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.seeker_of_the_song",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

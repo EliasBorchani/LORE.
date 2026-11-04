@@ -1,0 +1,395 @@
+{
+  "entities": [
+    {
+      "id": "class.master_transmogrifist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître transmogriffiste",
+        "en": "Master Transmogrifist"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "shapechange"
+      ],
+      "description": {
+        "fr": "Ce matin un faucon, à midi une méduse, ce soir un jeune dragon d’or : le maître transmogriffiste a fait du changement de forme sa spécialité et son art de vivre. Presque toujours ensorceleur ou magicien, il cultive quelques formes favorites qu’il connaît jusqu’au bout des griffes, et qui font de lui tour à tour un combattant redoutable, un voyageur infatigable et un espion insaisissable.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non loyal ; Bluff 2 rangs, Déguisement 5 rangs ; don Dispense de composantes matérielles ; pouvoir lancer métamorphose et modification d’apparence.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Bluff, Concentration, Connaissances (mystères), Déguisement, Profession.\n• Sorts : +1 niveau de lanceur de sorts profanes aux niveaux 2, 3, 5, 6, 8 et 9, dans une classe profane déjà possédée.\n• Aptitudes : changement à durée étendue et formes de prédilection (1) ; manifestation de sens (2) ; maîtrise des combats +2 (3), +4 (6), +6 (9) ; changement naturel (4) ; métamorphe (5) ; changement réflexe (7) ; manifestation de particularités (8) ; espèces infinies (10)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.bluff.ranks >= 2 and @skill.disguise.ranks >= 5 and has('feat.eschew_materials')",
+      "note": "Conditions hors formule : alignement (relations alignment) et pouvoir lancer métamorphose et modification d’apparence."
+    },
+    {
+      "id": "power.master_transmogrifist_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Chaque forme nouvelle approfondit aussi la magie profane qui la rend possible.\n\nEn jeu\n• Aux niveaux 2, 3, 5, 6, 8 et 9 : +1 niveau effectif de lanceur de sorts dans une classe profane déjà possédée (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe.\n• Pas de progression aux niveaux 1, 4, 7 et 10."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_favored_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme de prédilection",
+        "en": "Favored shape"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Le maître transmogriffiste a ses créatures fétiches : des formes qu’il a étudiées si longtemps qu’il les porte comme une seconde peau.\n\nEn jeu\n• Niveau 1 : choisit 3 formes de prédilection, chacune une espèce qu’il peut prendre avec métamorphose ; pas de créature de son propre type (en général humanoïde).\n• +1 forme aux niveaux 3, 5, 7 et 9 (7 formes au niveau 9).\n• À chaque niveau à partir du 2e, il peut remplacer une forme par une autre.\n• Les limites du sort (dés de vie, etc.) s’appliquent toujours ; les autres aptitudes de la classe ne jouent que dans ces formes."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_extended_change",
+      "type": "class_power",
+      "name": {
+        "fr": "Changement à durée étendue",
+        "en": "Extended change"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Ses formes favorites tiennent deux fois plus longtemps, sans effort particulier.\n\nEn jeu\n• Les sorts de transmutation lancés pour prendre une forme de prédilection bénéficient d’Extension de durée.\n• Ni niveau de sort en plus, ni temps d’incantation plus long, ni préparation spéciale.\n• Sorts concernés : changement de forme, métamorphose, métamorphose universelle, modification d’apparence."
+      },
+      "note": "Durée des sorts de forme : pas encore dans le modèle, texte seulement.",
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_manifest_senses",
+      "type": "class_power",
+      "name": {
+        "fr": "Manifestation de sens",
+        "en": "Manifest senses"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Dans une forme de prédilection, il ne se contente plus d’en avoir l’allure : il voit, sent et perçoit comme elle.\n\nEn jeu\n• Gagne les sens extraordinaires de sa forme de prédilection : odorat, perception aveugle, perception des vibrations, vision aveugle, vision dans le noir, vision nocturne."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_combat_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des combats",
+        "en": "Combat mastery"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Il connaît si bien le corps de ses formes favorites qu’il s’en sert d’instinct pour frapper.\n\nEn jeu\n• Dans une forme de prédilection : bonus d’aptitude de +2 aux jets d’attaque au niveau 3, +4 au niveau 6, +6 au niveau 9.\n• À activer dans la fiche quand il porte une de ces formes."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "2 * floor(level('class.master_transmogrifist') / 3)",
+          "bonusType": "competence",
+          "condition": "active('toggle.master_transmogrifist_combat_mastery')"
+        }
+      ]
+    },
+    {
+      "id": "power.master_transmogrifist_natural_change",
+      "type": "class_power",
+      "name": {
+        "fr": "Changement naturel",
+        "en": "Natural change"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Changer de forme ne lui demande plus ni geste ni parole : une simple pensée suffit.\n\nEn jeu\n• Les sorts de transmutation lancés pour prendre une forme de prédilection bénéficient d’Incantation silencieuse et d’Incantation statique, même sans ces dons.\n• Ni niveau de sort en plus, ni temps d’incantation plus long, ni préparation spéciale.\n• Sorts concernés : changement de forme, métamorphose, métamorphose universelle, modification d’apparence."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_shapechanger",
+      "type": "class_power",
+      "name": {
+        "fr": "Métamorphe",
+        "en": "Shapechanger"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Son corps a tant changé qu’il n’a plus vraiment de forme fixe.\n\nEn jeu\n• Gagne le sous-type métamorphe.\n• Sa modification d’apparence est permanente : il garde la forme choisie jusqu’à ce qu’il y renonce ou qu’elle soit dissipée."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_reflexive_change",
+      "type": "class_power",
+      "name": {
+        "fr": "Changement réflexe",
+        "en": "Reflexive change"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Une lame s’abat, un souffle de feu approche, et le voilà déjà carapacé ou couvert d’écailles rouges.\n\nEn jeu\n• 1/jour, action immédiate en réaction à l’action d’un adversaire : prend une forme de prédilection en dépensant un sort de transmutation adapté préparé ou connu.\n• Il perd sa prochaine action ; la forme dure comme le sort lancé normalement.\n• S’il porte déjà un changement de forme lancé par lui : utilisable à volonté, au plus 1 fois par round, en perdant chaque fois sa prochaine action."
+      },
+      "usesPerDay": "1",
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_manifest_qualities",
+      "type": "class_power",
+      "name": {
+        "fr": "Manifestation de particularités",
+        "en": "Manifest qualities"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Il ne prend plus seulement le corps de ses formes favorites, mais aussi leurs dons les plus étranges.\n\nEn jeu\n• Dans une forme de prédilection : gagne tous ses pouvoirs extraordinaires (par exemple la régénération d’un troll, la résistance à la magie d’une guenaude verte)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_transmogrifist_infinite_forms",
+      "type": "class_power",
+      "name": {
+        "fr": "Espèces infinies",
+        "en": "Infinite forms"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_transmogrifist"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, il invente des créatures que nul n’a jamais vues, en mêlant les traits de deux espèces.\n\nEn jeu\n• Avec changement de forme, métamorphose ou métamorphose universelle : part d’une forme de prédilection et lui ajoute un seul trait d’une seconde forme accessible avec le même sort.\n• Choix : armure naturelle de la seconde forme, ses modes de déplacement, un type d’attaque naturelle absent de la forme de base (avec son allonge), une attaque extraordinaire ou une particularité extraordinaire.\n• Ou une caractéristique physique de la seconde forme, si les deux formes sont de même taille."
+      },
+      "note": "Nom anglais à confirmer (Infinite Forms ?). Favored shape, Extended change, Manifest senses, Manifest qualities : noms anglais à confirmer aussi.",
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.master_transmogrifist_extended_change",
+        "power.master_transmogrifist_favored_shape"
+      ]
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.master_transmogrifist_manifest_senses",
+        "power.master_transmogrifist_spells"
+      ]
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.master_transmogrifist_combat_mastery"
+      ]
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.master_transmogrifist_natural_change"
+      ]
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.master_transmogrifist_shapechanger"
+      ]
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.master_transmogrifist_reflexive_change"
+      ]
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.master_transmogrifist_manifest_qualities"
+      ]
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.master_transmogrifist",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.master_transmogrifist_infinite_forms"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.master_transmogrifist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

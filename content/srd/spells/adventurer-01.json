@@ -1,0 +1,1140 @@
+{
+  "entities": [
+    {
+      "id": "spell.absorb_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Absorption d'arme",
+        "en": "Absorb Weapon"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage fait disparaître une arme dans la chair de son bras, sans trace ni blessure, pour la ressortir d'un geste au moment le plus vilain.\n\nEn jeu\n• Cible : une arme légère (pour le personnage) que personne d'autre ne porte, touchée ; Volonté, annule, seulement pour une arme magique intelligente.\n• L'arme absorbée est introuvable, même à la fouille ; la détection de la magie voit son aura.\n• La sortir est une action équivalente à dégainer et met fin au sort ; elle sort aussi à la fin de la durée.\n• Si le personnage attaque avec l'arme le round où il la sort : feinte en action libre avec +4 au test de Bluff.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 arme touchée qui n'est pas en possession d'une autre créature",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (objet) ; voir description",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dissonant_chord",
+      "type": "spell",
+      "name": {
+        "fr": "Accord dissonant",
+        "en": "Dissonant Chord"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le barde claque une note si violente qu'elle fait vibrer les os de tous ceux qui l'entourent.\n\nEn jeu\n• Rayonnement de 3 m centré sur le personnage, qui n'est pas touché.\n• Dégâts de son : 1d8 par tranche de 2 niveaux de lanceur (5d8 au plus).\n• Vigueur, demi-dégâts."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "rayonnement de 3 m de rayon, centré sur le lanceur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d8",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.iron_silence",
+      "type": "spell",
+      "name": {
+        "fr": "Acier silencieux",
+        "en": "Iron Silence"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le métal d'une armure cesse de cliqueter : son porteur peut se faufiler sans que la ferraille le trahisse.\n\nEn jeu\n• Une armure touchée par tranche de 3 niveaux.\n• Le malus d'armure ne s'applique plus au Déplacement silencieux et à la Discrétion ; il reste pour les autres tests.\n• Seuls les porteurs formés à cette armure en profitent.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "une armure touchée par tranche de trois niveaux",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.allegro",
+      "type": "spell",
+      "name": {
+        "fr": "Allegro",
+        "en": "Allegro"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un air vif et entraînant donne des ailes aux jambes du barde et de ses compagnons.\n\nEn jeu\n• Les créatures dans le rayonnement de 3 m gagnent +9 m en vitesse au sol, au plus le double de leur vitesse de base.\n• Elles gardent l'effet même si elles quittent la zone.\n• Dure 1 minute/niveau. Composante matérielle : une plume de queue d'oiseau de proie."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "rayonnement de 3 m de rayon, centré sur le personnage",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 9,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.allegro')"
+        }
+      ],
+      "note": "Le plafond « au plus le double de la vitesse de base » n'est pas modélisé."
+    },
+    {
+      "id": "spell.hymn_of_praise",
+      "type": "spell",
+      "name": {
+        "fr": "Alléluia",
+        "en": "Hymn of Praise"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un chant exalté monte sur le champ de bataille : les prêtres du Bien sont portés par la ferveur, ceux du Mal sont étouffés.\n\nEn jeu\n• Les lanceurs de sorts divins bons à portée gagnent +2 niveaux de lanceur (pas de sort en plus, mais les effets qui en dépendent grandissent).\n• Comme sanctification pour le renvoi et l'intimidation des morts-vivants : +4 de sainteté au test de Charisme des divins bons, -4 de sainteté pour les divins mauvais.\n• Zone : sphère centrée sur le personnage, de rayon égal à la portée ; Volonté, annule.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "bien",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "émanation en forme de sphère dont le rayon est égal à la portée, centrée sur le lanceur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.distort_speech",
+      "type": "spell",
+      "name": {
+        "fr": "Altération de la parole",
+        "en": "Distort Speech"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La voix de la cible se tord en bouillie de sons : parler devient une loterie.\n\nEn jeu\n• Vigueur, annule.\n• Chaque sort à composante verbale lancé par la cible a 50 % de rater.\n• Chaque fois qu'elle parle (mots de commande compris), 50 % que ce soit incompréhensible et sans effet.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 round/niveau",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.train_animal",
+      "type": "spell",
+      "name": {
+        "fr": "Animal de cirque",
+        "en": "Train Animal"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Quelques minutes de caresses et de mots doux, et la bête apprend à ses maîtres des tours qu'elle ne connaissait pas.\n\nEn jeu\n• Un animal touché gagne des tours en plus, égaux à la moitié du niveau de lanceur (5 au plus).\n• Ne change pas son attitude ni sa coopération.\n• Volonté, annule (inoffensif). Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "charme",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "animal touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sonic_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Arme sonique",
+        "en": "Sonic Weapon"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une arme se couvre d'un halo vibrant qui hurle à chaque impact.\n\nEn jeu\n• L'arme touchée inflige +1d6 de dégâts de son à chaque coup réussi.\n• Le porteur ne subit rien.\n• Arcs, arbalètes et frondes transmettent l'énergie aux projectiles.\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme touchée",
+        "duration": "1 minute/niveau (T)"
+      },
+      "effects": [],
+      "note": "Le +1d6 vise l'arme d'un porteur : non modélisé sur la fiche."
+    },
+    {
+      "id": "spell.spectral_weapon",
+      "type": "spell",
+      "name": {
+        "fr": "Arme spectrale",
+        "en": "Spectral Weapon"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le personnage tisse une arme avec la matière de l'Ombre : presque réelle, elle passe les défenses comme une ombre.\n\nEn jeu\n• Une arme de n'importe quel type qu'il sait manier apparaît dans sa main ; lui seul s'en sert, une seule à la fois.\n• Ses attaques avec elle sont des attaques de contact au corps à corps.\n• Un adversaire touché peut réussir un jet de Volonté : il ne subit alors que 1/5 des dégâts et n'a que 20 % de chances de subir les effets spéciaux (attaque mortelle…).\n• Disparaît quand il la lâche ou à la fin du sort. Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, partiel ; voir description",
+        "spellResistance": "oui ; voir description"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.sniper_shot",
+      "type": "spell",
+      "name": {
+        "fr": "Attaque du tireur d'élite",
+        "en": "Sniper's Shot"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage affine son regard et son souffle pour un seul tir, que la distance ne peut plus gêner.\n\nEn jeu\n• Sa prochaine attaque à distance avant son prochain tour peut être une attaque sournoise, quelle que soit la distance.\n• Ne donne pas l'attaque sournoise à qui n'en a pas.\n• Dure 1 round."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.wraithstrike",
+      "type": "spell",
+      "name": {
+        "fr": "Attaque spectrale",
+        "en": "Wraithstrike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les armes du personnage deviennent presque transparentes un instant et glissent sous les gardes.\n\nEn jeu\n• Ses attaques de corps à corps (armes ou armes naturelles) sont résolues comme des attaques de contact au corps à corps.\n• Dure 1 round."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.entangling_staff",
+      "type": "spell",
+      "name": {
+        "fr": "Bâton d'enchevêtrement",
+        "en": "Entangling Staff"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Des lianes vives jaillissent du bâton du personnage et saisissent ceux qu'il frappe.\n\nEn jeu\n• Quand il touche avec le bâton, il inflige les dégâts normaux et peut engager une lutte en action libre, sans attaque d'opportunité ni attaque de contact, avec +8 aux tests de lutte.\n• Peut saisir une créature d'une catégorie de taille de plus que lui.\n• Lutte réussie : 2d6 de dégâts (létaux ou non-létaux). Il relâche (la cible reste enchevêtrée jusqu'à la fin du sort) ou maintient (constriction aux rounds suivants).\n• Focaliseur : un bâton. Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, F",
+        "castingTime": "1 action rapide",
+        "range": "contact",
+        "target": "un bâton touché",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "oui (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.cacophonic_shield",
+      "type": "spell",
+      "name": {
+        "fr": "Bouclier cacophonique",
+        "en": "Cacophonic Shield"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une paroi de sons brutaux enveloppe le barde à 3 m : rien ne passe sans y laisser des plumes et des oreilles.\n\nEn jeu\n• Barrière à 3 m autour du personnage, qui la déplace avec lui ; il ne peut pas pousser un autre à la traverser.\n• Les sons non magiques ne la passent pas ; les sons magiques seulement si leur source réussit un test de niveau de lanceur (DD 11 + niveau du personnage).\n• Toute créature qui la franchit subit 1d6 + 1/niveau de dégâts de son (+20 au plus) et doit réussir un jet de Vigueur ou être assourdie 1 minute.\n• Les projectiles qui la traversent ont 20 % de rater.\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon, centrée sur le lanceur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.branch_to_branch",
+      "type": "spell",
+      "name": {
+        "fr": "Branche à branche",
+        "en": "Branch to Branch"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage grimpe aux arbres avec l'aisance d'un singe et file de branche en liane.\n\nEn jeu\n• +10 (aptitude) à l'Escalade dans les arbres.\n• À 3 m du sol au moins, en forêt dense ou intermédiaire (pas clairsemée) : il se balance, gagne +3 m de vitesse au sol et ignore les entraves du terrain ; il peut charger mais pas courir.\n• Les clairières ou larges cours d'eau peuvent le ramener au sol. Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "10 minutes/niveau (T)"
+      },
+      "effects": [
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": 10,
+          "bonusType": "competence",
+          "situation": "situation.climbing_in_trees",
+          "condition": "active('toggle.branch_to_branch')"
+        }
+      ],
+      "note": "Les listes des pages 138-143 donnent rôdeur 1, le bloc du sort imprime rôdeur 2 : on suit le bloc. Le +3 m de vitesse en se balançant n'est pas modélisé."
+    },
+    {
+      "id": "spell.wracking_touch",
+      "type": "spell",
+      "name": {
+        "fr": "Caresse des tourments",
+        "en": "Wracking Touch"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une main posée sur un point vital déclenche une douleur atroce, et le sournois y ajoute sa lame invisible.\n\nEn jeu\n• Dégâts : 1d6 + 1/niveau (+10 au plus) ; Vigueur, demi-dégâts.\n• S'il a l'attaque sournoise, il ajoute ses dés de sournoise, sans besoin de prise en tenaille ni de cible privée de sa Dextérité (sauf cible immunisée aux critiques, qui subit quand même le sort)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 10)",
+          "scope": "spell"
+        }
+      ],
+      "note": "Les dés d'attaque sournoise sont du texte."
+    },
+    {
+      "id": "spell.focusing_chant",
+      "type": "spell",
+      "name": {
+        "fr": "Chant serein",
+        "en": "Focusing Chant"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le barde psalmodie une mélopée monotone qui chasse les distractions, au prix de sa voix.\n\nEn jeu\n• +1 (circonstances) aux jets d'attaque, tests de compétence et tests de caractéristique.\n• Pas de concentration, mais il doit psalmodier : ni parole, ni musique de barde, ni sort à composante verbale.\n• Y mettre fin est une action immédiate. Dure 1 minute."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 minute (T)"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.focusing_chant')"
+        }
+      ],
+      "note": "Seul le bonus aux jets d'attaque est modélisé (compétences et caractéristiques : texte)."
+    },
+    {
+      "id": "spell.harmonic_chorus",
+      "type": "spell",
+      "name": {
+        "fr": "Chorus harmonieux",
+        "en": "Harmonic Chorus"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le barde accorde sa voix à un autre lanceur de sorts et amplifie son pouvoir.\n\nEn jeu\n• Le sujet gagne +2 (moral) au niveau de lanceur de sorts et +2 (moral) aux DD des jets de sauvegarde de ses sorts.\n• Concentration, jusqu'à 1 round/niveau. Volonté, annule (inoffensif).\n• Focaliseur : un diapason."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature vivante",
+        "duration": "concentration, jusqu'à 1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.critical_strike",
+      "type": "spell",
+      "name": {
+        "fr": "Coup critique",
+        "en": "Critical Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un éclair de lucidité montre au personnage où frapper : ses coups visent les points vitaux.\n\nEn jeu\n• Contre un adversaire pris en tenaille ou privé de sa Dextérité à la CA : +1d6 de dégâts, zone de critique doublée (comme affûtage, sans cumul) et +4 (intuition) pour confirmer les critiques.\n• Les créatures immunisées à l'attaque sournoise ignorent les dégâts en plus.\n• Dure 1 round."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round"
+      },
+      "effects": [],
+      "note": "Les bonus ne valent que contre une cible en tenaille ou sans Dextérité : texte seulement."
+    },
+    {
+      "id": "spell.easy_trail",
+      "type": "spell",
+      "name": {
+        "fr": "Création de sentier",
+        "en": "Easy Trail"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "La végétation s'écarte devant le personnage et ses compagnons, puis se referme sur leurs traces.\n\nEn jeu\n• Émanation de 12 m de rayon : les plantes s'écartent, ce qui réduit les malus de broussailles au déplacement.\n• Les plantes reprennent leur forme à la fin du sort.\n• Pister quelqu'un passé là est +5 au DD ; sans effet sur les créatures de type plante.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "12 m",
+        "area": "émanation de 12 m de rayon",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.war_cry",
+      "type": "spell",
+      "name": {
+        "fr": "Cri de guerre",
+        "en": "War Cry"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le personnage se rue en hurlant : ce cri le galvanise et glace le sang de ceux qu'il blesse.\n\nEn jeu\n• +2 (moral) aux jets d'attaque et de dégâts, +4 s'il charge.\n• Un adversaire blessé au corps à corps fait un jet de Volonté ou est paniqué 1 round (la résistance à la magie compte) ; celui qui réussit est immunisé à ce cri.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.war_cry')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.war_cry')"
+        }
+      ],
+      "note": "Le +4 en charge n'est pas modélisé."
+    },
+    {
+      "id": "spell.heralds_call",
+      "type": "spell",
+      "name": {
+        "fr": "Cri du héraut",
+        "en": "Herald’s Call"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un cri d'une autorité telle qu'une foule s'arrête net.\n\nEn jeu\n• Rayonnement de 6 m centré sur le personnage ; Volonté, annule.\n• Les créatures de 5 DV ou moins sont ralenties (comme lenteur) pendant 1 round.\n• Les créatures au-delà du rayon entendent mais ne sont pas ralenties."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "6 m",
+        "area": "rayonnement de 6 m de rayon, centré sur le lanceur de sorts",
+        "duration": "1 round",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.forestfold",
+      "type": "spell",
+      "name": {
+        "fr": "Dissimulation forestière",
+        "en": "Forestfold"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau et les pas du personnage prennent les couleurs et les bruits du terrain qu'il traverse.\n\nEn jeu\n• Il choisit un type de terrain : aquatique, désert, plaines, forêt, collines, montagnes, marais ou souterrain.\n• +20 (aptitude) au Déplacement silencieux et à la Discrétion sur ce terrain, même s'il en sort puis y revient pendant le sort.\n• Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "10 minutes/niveau (T)"
+      },
+      "effects": [
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": 20,
+          "bonusType": "competence",
+          "situation": "situation.on_chosen_terrain",
+          "condition": "active('toggle.forestfold')"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 20,
+          "bonusType": "competence",
+          "situation": "situation.on_chosen_terrain",
+          "condition": "active('toggle.forestfold')"
+        }
+      ]
+    },
+    {
+      "id": "spell.distract_assailant",
+      "type": "spell",
+      "name": {
+        "fr": "Distraction d'assaillant",
+        "en": "Distract Assailant"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Des ombres dansent au coin de l'oeil de la cible, qui ne voit plus venir les coups.\n\nEn jeu\n• La cible est prise au dépourvu jusqu'au début de son prochain tour ; Volonté, annule.\n• Composante matérielle : une aile de mouche séchée."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action rapide",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 round",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.gifted_pupil",
+      "type": "spell",
+      "name": {
+        "fr": "Élève doué",
+        "en": "Gifted Pupil"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le barde prête un éclat de son art à quelqu'un : pour un temps, l'élève chante et raconte presque comme lui.\n\nEn jeu\n• Le sujet agit comme un barde de la moitié du niveau du personnage pour la musique de barde et le savoir bardique.\n• Aucun sort ni accès à des sorts.\n• Pour les tests de Représentation de la musique, il prend son propre résultat ou la moitié du degré de maîtrise du personnage (avec son propre mod. de Charisme), le meilleur.\n• Volonté, annule (inoffensif). Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.inspirational_boost",
+      "type": "spell",
+      "name": {
+        "fr": "Enthousiasme",
+        "en": "Inspirational Boost"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le barde met un peu plus de coeur dans son chant, et ses alliés en reçoivent un peu plus de courage.\n\nEn jeu\n• Le bonus de moral de son inspiration vaillante augmente de 1.\n• Dure autant que l'inspiration vaillante ; si elle ne commence pas avant son prochain tour, le sort prend fin.\n• Dure 1 round ou spécial."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round ou spécial ; voir description"
+      },
+      "effects": [],
+      "note": "L'effet passe par l'inspiration vaillante, qui n'est pas un nombre de la fiche : texte seulement."
+    },
+    {
+      "id": "spell.balancing_lorecall",
+      "type": "spell",
+      "name": {
+        "fr": "Équilibre intuitif",
+        "en": "Balancing Lorecall"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage sent d'instinct où poser pied et corps pour tenir debout partout.\n\nEn jeu\n• +4 (intuition) aux tests d'Équilibre.\n• Degré de maîtrise 5 en Équilibre : tient sur des surfaces verticales (monter ou descendre en équilibre, avec Dex à la CA et attaques normales).\n• Degré de maîtrise 10 : tient sur des liquides ou surfaces molles ; le DD monte de 5 par round de suite.\n• Dure 1 minute/niveau. Composante matérielle profane : une cheville de bois de 8 cm."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 minute/niveau (T)"
+      },
+      "effects": [
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": 4,
+          "bonusType": "insight",
+          "condition": "active('toggle.balancing_lorecall')"
+        }
+      ]
+    },
+    {
+      "id": "spell.easy_climb",
+      "type": "spell",
+      "name": {
+        "fr": "Escalade facilitée",
+        "en": "Easy Climb"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une paroi lisse se couvre de prises : même un novice la grimpe.\n\nEn jeu\n• Une bande verticale de 3 m de large et 6 m de long par niveau devient aussi facile qu'un mur en ruines (DD 10 d'Escalade).\n• Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "une bande verticale de 3 m de large et de 6 m de long/niveau",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.arrow_mind",
+      "type": "spell",
+      "name": {
+        "fr": "Esprit de l'archer",
+        "en": "Arrow Mind"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage garde ses voisins sous la menace de son arc, comme d'autres le font avec une épée.\n\nEn jeu\n• Avec un arc court, long ou composite (ou grand arc), il contrôle les cases à portée de son allonge (1,50 m en taille P/M, 3 m en G) et peut y faire des attaques d'opportunité à l'arc.\n• Il ne provoque plus d'attaque d'opportunité en tirant à l'arc, même dans une case contrôlée par un autre.\n• Action immédiate. Dure 1 minute/niveau. Composante matérielle : une pointe de flèche en silex."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action immédiate",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 minute/niveau (T)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.embrace_the_wild",
+      "type": "spell",
+      "name": {
+        "fr": "Étreinte naturelle",
+        "en": "Embrace the Wild"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage emprunte les sens d'un animal : flair, ouïe, vue de prédateur.\n\nEn jeu\n• Il choisit un animal dont les DV sont au plus égaux à son niveau de lanceur.\n• Il garde sa forme, mais gagne ses sens naturels et extraordinaires (perception aveugle, vision aveugle, vision dans le noir, vision nocturne, odorat).\n• Il peut remplacer son modificateur de Perception auditive et/ou de Détection par ceux de l'animal.\n• Dure 10 minutes/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "10 minutes/niveau (T)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.natures_favor",
+      "type": "spell",
+      "name": {
+        "fr": "Faveur de la nature",
+        "en": "Nature's Favor"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur de sorts appelle la nature au chevet d'un animal, qui frappe avec plus de chance.\n\nEn jeu\n• Un animal touché gagne un bonus de chance de +1 aux jets d'attaque et de dégâts par tranche de 3 niveaux (+5 au plus, au niveau 15).\n• Volonté, annule (inoffensif). Dure 1 minute."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "animal touché",
+        "duration": "1 minute",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Le bonus va à l'animal, pas à la fiche du lanceur."
+    },
+    {
+      "id": "spell.insightful_feint",
+      "type": "spell",
+      "name": {
+        "fr": "Feinte intuitive",
+        "en": "Insightful Feint"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage devine comment son adversaire bouge et réagit, et sa feinte n'en est que plus trompeuse.\n\nEn jeu\n• +10 (intuition) à son prochain test de Bluff pour feinter en combat, s'il le fait avant son prochain tour.\n• Dure 1 round."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round"
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 10,
+          "bonusType": "insight",
+          "situation": "situation.feinting_in_combat",
+          "condition": "active('toggle.insightful_feint')"
+        }
+      ]
+    },
+    {
+      "id": "spell.vine_strike",
+      "type": "spell",
+      "name": {
+        "fr": "Fléau des plantes",
+        "en": "Vine Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un lien avec la nature rend le personnage capable de frapper les points faibles des plantes.\n\nEn jeu\n• Pendant 1 round, il peut faire des attaques sournoises contre les créatures de type plante, comme si elles n'étaient pas immunisées.\n• Les autres conditions de l'attaque sournoise restent nécessaires.\n• Aucun critique, aucune ignorance de réduction de dégâts."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, FD",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.grave_strike",
+      "type": "spell",
+      "name": {
+        "fr": "Fléau des tombeaux",
+        "en": "Grave Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un lien avec la lumière et l'énergie positive guide le coup du personnage vers les failles des morts-vivants.\n\nEn jeu\n• Pendant 1 round, il peut faire des attaques sournoises contre les morts-vivants, comme s'ils n'étaient pas immunisés.\n• Les autres conditions de l'attaque sournoise restent nécessaires.\n• Aucun critique, aucune ignorance de réduction de dégâts."
+      },
+      "spell": {
+        "school": "Divination",
+        "descriptors": [
+          "bien"
+        ],
+        "components": "V, FD",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.golem_strike",
+      "type": "spell",
+      "name": {
+        "fr": "Fléau du golem",
+        "en": "Golem Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage sent les forces occultes qui animent les créatures artificielles, et leurs points faibles.\n\nEn jeu\n• Pendant 1 round, il peut faire des attaques sournoises contre les créatures artificielles, comme si elles n'étaient pas immunisées.\n• Les autres conditions de l'attaque sournoise restent nécessaires.\n• Aucun critique, aucune ignorance de réduction de dégâts."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.shadow_form",
+      "type": "spell",
+      "name": {
+        "fr": "Forme d'ombre",
+        "en": "Shadow Form"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le personnage se drape d'un voile de ténèbres qui avale la lumière et le bruit, et peut même se glisser dans un mur.\n\nEn jeu\n• +4 (aptitude) au Déplacement silencieux, à la Discrétion et à l'Évasion, plus un camouflage (pas annulé par détection de l'invisibilité ; supprimé par le sort lumière du jour ou le plein soleil).\n• Évasion degré 5 : test d'Évasion DD 20 pour traverser une barrière solide de 1,50 m au plus ; degré 10 : 3 m ; degré 15 : une barrière de force. Le sort s'achève après la tentative, réussie ou non.\n• Dure 1 minute/niveau. Composante matérielle : un morceau d'étoffe noire de suaire."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le lanceur de sorts",
+        "duration": "1 minute/niveau (T)"
+      },
+      "effects": [
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": 4,
+          "bonusType": "competence",
+          "condition": "active('toggle.shadow_form')"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 4,
+          "bonusType": "competence",
+          "condition": "active('toggle.shadow_form')"
+        },
+        {
+          "target": "skill.escape_artist",
+          "op": "add",
+          "value": 4,
+          "bonusType": "competence",
+          "condition": "active('toggle.shadow_form')"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+{
+  "entities": [
+    {
+      "id": "class.kensai",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Kensaï",
+        "en": "Kensai"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Le kensaï maîtrise son corps, son esprit, son arme et sa volonté, puis les met au service d'un maître ou d'une cause plus grande que lui. Il prête un vœu de sujétion, et ce vœu fait sa force autant que sa laisse.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal ; bonus de base à l'attaque +5 ; 5 rangs en Concentration, 5 en Diplomatie, 5 en Équitation ; dons Arme de prédilection (une arme), Expertise du combat ; vœu de sujétion envers un seigneur ou un idéal.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (folklore local), Connaissances (noblesse et royauté), Diplomatie, Équilibre, Équitation, Escalade, Intimidation, Psychologie, Saut.\n• Aptitudes : arme distinctive (1) ; montée de puissance (2) ; influence du ki (4, 6, 8) ; stoïcisme (5) ; instillation (8) ; seigneur ki (10).\n• Vœu : prononcé devant témoins ; s'il le brise, il perd ses pouvoirs de classe jusqu'à une pénitence. Un kensaï qui perd son alignement loyal perd aussi ses pouvoirs jusqu'à ce qu'il le retrouve et fasse pénitence.\n• Multiclassage : un moine, un paladin ou un samouraï peut prendre des niveaux de kensaï sans interrompre sa progression."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.concentration.ranks >= 5 and @skill.diplomacy.ranks >= 5 and @skill.ride.ranks >= 5 and has('feat.weapon_focus') and has('feat.combat_expertise')",
+      "note": "Conditions hors formule : alignement loyal ; vœu de sujétion."
+    },
+    {
+      "id": "power.kensai_signature_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme distinctive",
+        "en": "Signature weapon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "kensai"
+      ],
+      "description": {
+        "fr": "Le kensaï verse un peu de sa vie dans une seule arme, qui devient plus qu'un outil : une part de lui-même.\n\nEn jeu\n• Capacité surnaturelle : il choisit une arme (ou une arme naturelle, ou ses poings) pour laquelle il a Arme de prédilection ; arme manufacturée = de maître. Un type précis, pas toutes les épées longues.\n• Rituel de 24 heures (méditation ou prière), sans interruption, puis il sacrifie des PX : l'arme devient magique, avec un bonus d'altération (et éventuellement des pouvoirs spéciaux) ; tant qu'elle est dans ses mains seulement.\n• Bonus virtuel maximal égal à son niveau de classe. Coût en PX (bonus virtuel) : +1 = 40, +2 = 160, +3 = 360, +4 = 640, +5 = 1 000, +6 = 1 440, +7 = 1 960, +8 = 2 560, +9 = 3 240, +10 = 4 000. Au-delà de +5, ce sont des pouvoirs spéciaux (un pouvoir à +1 vaut un bonus de +1).\n• Sur une arme déjà magique, il ne paie que la différence de PX.\n• Niveau de lanceur de l'arme : 10 + niveau de kensaï.\n• Arme double : on imprègne chaque tête séparément. Arme naturelle ou mains nues : même procédé ; +10 % du coût par arme affectée (2 poings = 120 %).\n• Arme perdue ou volée : il doit la récupérer. L'abandonner volontairement rompt le vœu. Détruite : seul lui peut la réparer (Artisanat comme un maître) et rien à repayer ; entièrement détruite, il en choisit une autre sans rompre son vœu."
+      },
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": "@toggle.kensai_signature_weapon.value",
+          "bonusType": "enhancement",
+          "scope": "item",
+          "condition": "active('toggle.kensai_signature_weapon')"
+        },
+        {
+          "target": "weapon.damage",
+          "op": "add",
+          "value": "@toggle.kensai_signature_weapon.value",
+          "bonusType": "enhancement",
+          "scope": "item",
+          "condition": "active('toggle.kensai_signature_weapon')"
+        }
+      ],
+      "note": "Le joueur choisit le bonus d'altération (valeur du toggle, jusqu'à son niveau de kensaï, et au plus +5 : au-delà ce sont des pouvoirs spéciaux, en texte). Une arme magique existante n'est pas retranchée. Nom anglais à confirmer.",
+      "tableValue": {
+        "max": "min(5, level('class.kensai'))"
+      }
+    },
+    {
+      "id": "power.kensai_power_surge",
+      "type": "class_power",
+      "name": {
+        "fr": "Montée de puissance",
+        "en": "Power surge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "kensai"
+      ],
+      "description": {
+        "fr": "Il rassemble son énergie, serre les dents, et sa force explose.\n\nEn jeu\n• Capacité extraordinaire, action de mouvement : test de Concentration DD 15 réussi, +8 en Force pendant un nombre de rounds égal à la moitié de son niveau de classe.\n• Plusieurs fois par période de 24 heures, mais le DD augmente de 5 à chaque fois (20, 25…)."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 8,
+          "condition": "active('toggle.kensai_power_surge')"
+        }
+      ],
+      "note": "À activer quand le test est réussi ; durée et DD croissant à la charge du joueur. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.kensai_ki_influence",
+      "type": "class_power",
+      "name": {
+        "fr": "Influence du ki",
+        "en": "Ki influence"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "kensai"
+      ],
+      "description": {
+        "fr": "Sa présence pèse sur ceux qu'il bluffe, persuade ou intimide.\n\nEn jeu\n• Capacité extraordinaire : à partir du niveau 4, bonus égal à la moitié de son niveau de classe aux tests de Bluff, Diplomatie, Intimidation et Renseignements.\n• À partir du niveau 8, bonus égal à son niveau entier.\n• Une personne qui comprend qu'il l'a bluffée gagne +10 contre ses futures tentatives d'influence (Bluff, Diplomatie, Intimidation, Renseignements), jusqu'à ce qu'il la ramène d'inamical à amical."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": "if(level('class.kensai') >= 8, level('class.kensai'), floor(level('class.kensai') / 2))",
+          "condition": "level('class.kensai') >= 4"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": "if(level('class.kensai') >= 8, level('class.kensai'), floor(level('class.kensai') / 2))",
+          "condition": "level('class.kensai') >= 4"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": "if(level('class.kensai') >= 8, level('class.kensai'), floor(level('class.kensai') / 2))",
+          "condition": "level('class.kensai') >= 4"
+        },
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": "if(level('class.kensai') >= 8, level('class.kensai'), floor(level('class.kensai') / 2))",
+          "condition": "level('class.kensai') >= 4"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.kensai_stoicism",
+      "type": "class_power",
+      "name": {
+        "fr": "Stoïcisme",
+        "en": "Stoicism"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "kensai"
+      ],
+      "description": {
+        "fr": "Quand le feu s'abat, il tient bon par la seule volonté.\n\nEn jeu\n• Capacité extraordinaire : face à une attaque autorisant un jet de Réflexes pour réduire les dégâts d'une zone (boule de feu), il peut faire un test de Concentration à la place du jet de sauvegarde, avec les mêmes effets.\n• Esquive totale ou extraordinaire s'appliquent aussi à ce test."
+      },
+      "effects": [],
+      "note": "Le test de Concentration à la place du jet de Réflexes n'est pas dans le modèle : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.kensai_instillation",
+      "type": "class_power",
+      "name": {
+        "fr": "Instillation",
+        "en": "Instillation"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "kensai"
+      ],
+      "description": {
+        "fr": "Il prête une part de ses talents à un allié, le temps d'une heure.\n\nEn jeu\n• Capacité extraordinaire, une fois par jour, action complexe : il touche un allié consentant et réussit un test de Concentration (DD 10 + dés de vie ou niveau de la cible).\n• Il transfère des points de bonus de base à l'attaque et de bonus de sauvegarde (total inférieur à son niveau de classe). Il les perd et la cible les gagne pendant 1 heure, puis il les récupère.\n• Si la cible meurt avant la fin, il fait un jet de Vigueur (DD 5 + DV ou niveau de la cible) : réussite, il récupère les points ; échec, il meurt."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Transfert vers un autre personnage : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.kensai_ki_lord",
+      "type": "class_power",
+      "name": {
+        "fr": "Seigneur ki",
+        "en": "Ki lord"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "kensai"
+      ],
+      "description": {
+        "fr": "Sa réputation le précède : on s'incline devant lui, même dans les autres camps.\n\nEn jeu\n• Au niveau 10 : les autres kensaïs du même alignement lui doivent hommage ; il peut requérir l'aide de kensaïs de niveau inférieur, tant que cela ne rompt pas leur vœu ni leur alignement.\n• Ses alliés à 9 m ou moins ont +1 de moral aux jets de Volonté, aux tests de Concentration et aux jets d'attaque (+2 pour les alliés loyaux)."
+      },
+      "effects": [],
+      "note": "Aura donnée aux alliés : pas sur sa propre fiche ; texte seul. Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.kensai",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.kensai_signature_weapon"
+      ]
+    },
+    {
+      "classId": "class.kensai",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.kensai_power_surge"
+      ]
+    },
+    {
+      "classId": "class.kensai",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.kensai",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.kensai_ki_influence"
+      ]
+    },
+    {
+      "classId": "class.kensai",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.kensai_stoicism"
+      ]
+    },
+    {
+      "classId": "class.kensai",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.kensai",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.kensai",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.kensai_instillation"
+      ]
+    },
+    {
+      "classId": "class.kensai",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.kensai",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.kensai_ki_lord"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.kensai",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

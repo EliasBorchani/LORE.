@@ -1,0 +1,407 @@
+{
+  "entities": [
+    {
+      "id": "class.knight_of_the_chalice",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chevalier du Calice",
+        "en": "Knight of the Chalice"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Un ordre de chevaliers d'élite s'est juré d'exterminer les démons. Ils prient le jour, s'entraînent la nuit, et savent mieux que personne par où l'enfer craque : rien de ce qui vient des abîmes ne leur échappe longtemps.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal bon ; bonus de base à l'attaque +8 ; Connaissances (plans) 5 rangs, Connaissances (religion) 10 rangs ; savoir lancer des sorts divins, dont protection contre le Mal.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (plans), Connaissances (religion), Diplomatie, Intimidation, Profession, Psychologie.\n• Sorts : sorts divins préparés du 1er au 4e niveau, basés sur la Sagesse, d'une liste propre.\n• Aptitudes : destruction des fiélons (1, 3, 6, 9) ; bravoure céleste (2, 5, 8) ; condamnation des démons (2, puis tous les 2 niveaux) ; incantations consacrées (4) ; aura sacrée (10).\n• Un paladin peut prendre ces niveaux sans perdre ses niveaux de paladin."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@bab >= 8 and @skill.knowledge_planes.ranks >= 5 and @skill.knowledge_religion.ranks >= 10",
+      "note": "Alignement loyal bon et lancer des sorts divins dont protection contre le Mal : texte seul. Sorts par jour : 0 = seulement les sorts en bonus (valeur imprimée), null pour « — »."
+    },
+    {
+      "id": "power.knight_of_the_chalice_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de chevalier du Calice",
+        "en": "Knight of the Chalice spells"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_of_the_chalice"
+      ],
+      "description": {
+        "fr": "Sa foi lui donne de quoi traquer l'enfer : de petites prières, mais taillées pour la guerre contre les démons.\n\nEn jeu\n• Sorts divins préparés, du niveau 1 au niveau 4, comme un prêtre, sans transformer ses sorts en soins ou en blessures et sans sorts de domaine.\n• Liste : celle du chevalier du Calice (sorts de prêtre choisis pour le combat). Il prépare chaque jour ceux qu'il veut.\n• Caractéristique : Sagesse (au moins 10 + niveau du sort). DD : 10 + niveau du sort + modificateur de Sagesse. Sorts en bonus grâce à la Sagesse.\n• Un « 0 » dans la table veut dire seulement les sorts en bonus d'une Sagesse élevée."
+      },
+      "effects": [],
+      "note": "La liste des sorts est dans content/tools/out/codex/martial/lists/knight_of_the_chalice.json (à fusionner dans lists.json). Niveau de lanceur de sorts : niveau de chevalier du Calice."
+    },
+    {
+      "id": "power.knight_of_the_chalice_smite_fiends",
+      "type": "class_power",
+      "name": {
+        "fr": "Destruction des fiélons",
+        "en": "Smite fiends"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_of_the_chalice"
+      ],
+      "description": {
+        "fr": "Des années à combattre l'enfer ont appris à ses coups où mordre un Extérieur mauvais.\n\nEn jeu\n• Capacité extraordinaire : +1 aux jets d'attaque (bonus d'aptitude) et +1d6 de dégâts sur chaque attaque réussie contre un Extérieur mauvais.\n• Niveau 3 : +2 et +2d6 ; niveau 6 : +3 et +3d6 ; niveau 9 : +4 et +4d6.\n• Le même bonus s'applique à ses tests de Détection, Intimidation, Perception auditive et Psychologie contre eux, à ses jets de sauvegarde contre leurs attaques et aux tests de caractéristique contre eux.\n• Se cumule avec le bonus d'ennemi juré."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "(1 + (if(level('class.knight_of_the_chalice') >= 3, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 6, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 9, 1, 0)))",
+          "situation": "situation.vs_evil_outsiders"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": "(1 + (if(level('class.knight_of_the_chalice') >= 3, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 6, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 9, 1, 0)))",
+          "situation": "situation.vs_evil_outsiders"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": "(1 + (if(level('class.knight_of_the_chalice') >= 3, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 6, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 9, 1, 0)))",
+          "situation": "situation.vs_evil_outsiders"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": "(1 + (if(level('class.knight_of_the_chalice') >= 3, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 6, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 9, 1, 0)))",
+          "situation": "situation.vs_evil_outsiders"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": "(1 + (if(level('class.knight_of_the_chalice') >= 3, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 6, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 9, 1, 0)))",
+          "situation": "situation.vs_evil_outsiders"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "(1 + (if(level('class.knight_of_the_chalice') >= 3, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 6, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 9, 1, 0)))",
+          "situation": "situation.vs_evil_outsiders"
+        },
+        {
+          "target": "damage.all",
+          "op": "dice",
+          "value": "(1 + (if(level('class.knight_of_the_chalice') >= 3, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 6, 1, 0)) + (if(level('class.knight_of_the_chalice') >= 9, 1, 0)))d6",
+          "situation": "situation.vs_evil_outsiders"
+        }
+      ],
+      "note": "Situation à ajouter : situation.vs_evil_outsiders (« contre les Extérieurs mauvais »). Bonus d'aptitude lu comme sans type, comme pour l'éclaireur."
+    },
+    {
+      "id": "power.knight_of_the_chalice_celestial_courage",
+      "type": "class_power",
+      "name": {
+        "fr": "Bravoure céleste",
+        "en": "Celestial courage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_of_the_chalice"
+      ],
+      "description": {
+        "fr": "Les démons n'ont aucune prise sur son courage, et bientôt sur celui de ses compagnons.\n\nEn jeu\n• Capacité surnaturelle : niveau 2, immunisé contre les sorts et effets de terreur lancés ou utilisés par des Extérieurs mauvais.\n• Niveau 5 : aussi contre leurs sorts et effets d'enchantement (charmes et suggestions compris).\n• Niveau 8 : ces immunités s'étendent aux alliés à 6 m ou moins."
+      },
+      "effects": [],
+      "note": "Immunités : texte seul."
+    },
+    {
+      "id": "power.knight_of_the_chalice_condemn_demons",
+      "type": "class_power",
+      "name": {
+        "fr": "Condamnation des démons",
+        "en": "Condemn demons"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_of_the_chalice"
+      ],
+      "description": {
+        "fr": "Comme un prêtre renvoie les morts-vivants, il condamne les démons avec la puissance des plans célestes.\n\nEn jeu\n• Capacité surnaturelle : niveau 2, 1 fois par jour, plus 1 utilisation tous les 2 niveaux (5 par jour au niveau 10).\n• Tous les démons à 9 m ou moins font un jet de Volonté (DD 10 + niveau de classe + modificateur de Charisme).\n• Raté : un démon dont le nombre de DV est supérieur ou égal au double de son niveau de classe est étourdi 1 round.\n• Raté : un démon avec moins de DV que cela est étourdi et doit faire un second jet de Volonté (même DD) pour ne pas être renvoyé sur son plan, comme avec renvoi.\n• Un seul démon est renvoyé par utilisation : celui qui a le moins de DV parmi ceux qui ratent leurs deux jets."
+      },
+      "effects": [],
+      "usesPerDay": "floor(level('class.knight_of_the_chalice') / 2)"
+    },
+    {
+      "id": "power.knight_of_the_chalice_hallowed_spellcasting",
+      "type": "class_power",
+      "name": {
+        "fr": "Incantations consacrées",
+        "en": "Hallowed spellcasting"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_of_the_chalice"
+      ],
+      "description": {
+        "fr": "Ses sorts mordent plus dur dans la chair des Extérieurs mauvais.\n\nEn jeu\n• Capacité extraordinaire : niveau 4. Quand un sort affecte un Extérieur mauvais, +2 à son niveau de lanceur de sorts pour passer la résistance à la magie, et +2 au DD du jet de sauvegarde."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Texte seul : le modèle n'a pas de DD ni de niveau de lanceur conditionnels."
+    },
+    {
+      "id": "power.knight_of_the_chalice_holy_aura",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura sacrée",
+        "en": "Holy aura"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "knight_of_the_chalice"
+      ],
+      "description": {
+        "fr": "Une auréole de lumière qui protège contre le Mal et aveugle ses créatures.\n\nEn jeu\n• Capacité surnaturelle : niveau 10, 1 fois par jour. Effets du sort aura sacrée, niveau de lanceur de sorts 10, avec ces différences.\n• Elle n'affecte que lui ; les bonus ne le protègent que contre les Extérieurs mauvais ; seuls eux peuvent être éblouis par l'aura."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.knight_of_the_chalice_spells",
+        "power.knight_of_the_chalice_smite_fiends"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.knight_of_the_chalice_celestial_courage",
+        "power.knight_of_the_chalice_condemn_demons"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.knight_of_the_chalice_hallowed_spellcasting"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.knight_of_the_chalice",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.knight_of_the_chalice_holy_aura"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.knight_of_the_chalice",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    }
+  ]
+}

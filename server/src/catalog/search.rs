@@ -32,6 +32,8 @@ pub struct SearchQuery {
     discipline: Option<String>,
     /// Maneuver levels (1 to 9).
     maneuver_level: Option<String>,
+    /// Invocation grades (`least`, `lesser`, `greater`, `dark`).
+    invocation_grade: Option<String>,
     offset: Option<i64>,
     limit: Option<i64>,
     /// Adds the count of each filter value (the app asks for it with the first page).
@@ -90,6 +92,7 @@ enum Facet {
     Affects,
     Discipline,
     ManeuverLevel,
+    InvocationGrade,
 }
 
 struct Filters {
@@ -101,6 +104,7 @@ struct Filters {
     affects: Vec<String>,
     discipline: Vec<String>,
     maneuver_level: Vec<i32>,
+    invocation_grade: Vec<String>,
 }
 
 impl Filters {
@@ -130,6 +134,7 @@ impl Filters {
             affects: values(&query.affects),
             discipline: values(&query.discipline),
             maneuver_level,
+            invocation_grade: values(&query.invocation_grade),
         })
     }
 
@@ -141,6 +146,7 @@ impl Filters {
             && self.affects.is_empty()
             && self.discipline.is_empty()
             && self.maneuver_level.is_empty()
+            && self.invocation_grade.is_empty()
     }
 
     /// The filters on the rows of `base b`, except `skip`. List and level live on one relation row, so a facet
@@ -170,6 +176,11 @@ impl Filters {
             sql.push(" AND b.facet_maneuver_level = ANY(")
                 .push_bind(self.maneuver_level.clone())
                 .push("::integer[])");
+        }
+        if skip != Some(Facet::InvocationGrade) && !self.invocation_grade.is_empty() {
+            sql.push(" AND b.facet_invocation_grade = ANY(")
+                .push_bind(self.invocation_grade.clone())
+                .push("::text[])");
         }
         let on_list = !matches!(skip, Some(Facet::List | Facet::Level));
         if on_list && (!self.list.is_empty() || !self.level.is_empty()) {
@@ -306,7 +317,7 @@ fn push_base(
 ) {
     sql.push(
         "WITH base AS (SELECT e.id, v.facet_school, v.facet_descriptors, v.facet_affects, \
-         v.facet_discipline, v.facet_maneuver_level",
+         v.facet_discipline, v.facet_maneuver_level, v.facet_invocation_grade",
     );
     if ranked {
         sql.push(", e.type, v.content -> 'name' AS name, v.content -> 'labels' AS labels, v.content, v.search_sort, ");
@@ -414,7 +425,7 @@ pub async fn search(
     })
 }
 
-/// `{school, descriptor, list, level, affects, discipline, maneuver_level}`: each a list of `{value, count}` (with
+/// `{school, descriptor, list, level, affects, discipline, maneuver_level, invocation_grade}`: each a list of `{value, count}` (with
 /// `name` when the value is an entity id), most results first. A facet is counted without its own filter, so choosing
 /// Fire still shows how many Cold spells there are; values with no result are absent.
 async fn facets(
@@ -484,6 +495,14 @@ async fn facets(
         "maneuver_level",
         Facet::ManeuverLevel,
         "to_jsonb(b.facet_maneuver_level)",
+        "",
+    );
+    sql.push(", ");
+    counted(
+        &mut sql,
+        "invocation_grade",
+        Facet::InvocationGrade,
+        "to_jsonb(b.facet_invocation_grade)",
         "",
     );
     sql.push(", ");

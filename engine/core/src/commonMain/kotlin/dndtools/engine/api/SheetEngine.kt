@@ -7,6 +7,7 @@ import dndtools.engine.formula.Value
 import dndtools.engine.json.EngineJson
 import dndtools.engine.math.Fraction
 import dndtools.engine.model.Character
+import dndtools.engine.model.InvocationGrade
 import dndtools.engine.model.ManeuverKind
 import dndtools.engine.model.SpellVariant
 import dndtools.engine.model.ToggleChoice
@@ -137,6 +138,39 @@ class CharacterSheet internal constructor(private val engine: Engine, private va
                     disciplines = disciplines,
                     maneuvers = maneuvers,
                     stances = stances,
+                    issues = issues,
+                )
+            }
+        }
+
+    /**
+     * Each invoker class the character has (Warlock): invoker level, invocations known and the highest grade it may
+     * learn (`least` … `dark`, null before the first), the invocations learned, and what breaks the rules.
+     */
+    val invokers: List<InvokerLine>
+        get() {
+            val levels = character.levels.let { if (atLevel == null) it else it.take(atLevel) }
+            return engine.invokers.filterKeys { id -> levels.any { it.classId == id } }.map { (classId, def) ->
+                val short = CompiledCatalog.initiatorKey(classId)
+                val known = character.invocations[classId]?.known.orEmpty()
+                val maxGrade = number("invocations.max_grade.$short")?.toInt() ?: 0
+                val issues = buildList {
+                    for (id in known) {
+                        val info = engine.entity(id)?.invocation
+                        when {
+                            info == null -> add(InvocationIssue(id, "unknown"))
+                            info.grade.ordinal + 1 > maxGrade -> add(InvocationIssue(id, "grade"))
+                        }
+                    }
+                    number("invocations.known.$short")?.let { if (known.size > it) add(InvocationIssue(null, "too_many")) }
+                }
+                InvokerLine(
+                    classId = classId,
+                    ability = def.ability?.name?.lowercase(),
+                    invokerLevel = statistic("invoker_level.$short")?.text,
+                    invocationsKnown = statistic("invocations.known.$short")?.text,
+                    maxGrade = InvocationGrade.entries.getOrNull(maxGrade - 1)?.name?.lowercase(),
+                    invocations = known,
                     issues = issues,
                 )
             }
@@ -318,6 +352,26 @@ data class InitiatorLine(
     val stances: List<String>,
     val issues: List<ManeuverIssue>,
 )
+
+/** One invoker class (Warlock). Counts are exact text; [maxGrade] is `least`, `lesser`, `greater` or `dark`. */
+@JsExport
+data class InvokerLine(
+    val classId: String,
+    /** The class's key ability, when it has one. */
+    val ability: String?,
+    val invokerLevel: String?,
+    val invocationsKnown: String?,
+    val maxGrade: String?,
+    val invocations: List<String>,
+    val issues: List<InvocationIssue>,
+)
+
+/**
+ * A learned invocation that breaks a rule: `unknown` (not an invocation of the catalog), `grade` (above the highest
+ * grade the class reached); or, with no [entity], `too_many` (more than the table and effects give).
+ */
+@JsExport
+data class InvocationIssue(val entity: String?, val code: String)
 
 /**
  * A learned maneuver that breaks a rule: `unknown` (not a maneuver of the catalog), `discipline` (the class does not

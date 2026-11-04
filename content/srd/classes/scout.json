@@ -1,0 +1,712 @@
+{
+  "entities": [
+    {
+      "id": "class.scout",
+      "type": "class",
+      "name": {
+        "fr": "Éclaireur",
+        "en": "Scout"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "skills"
+      ],
+      "description": {
+        "fr": "Là où une troupe avance à l’aveugle, l’éclaireur est déjà passé, a tout vu et revient en courant sans avoir fait craquer une branche. Il se bat en mouvement : il frappe, repart, frappe encore, et c’est cette course qui rend ses coups plus durs et sa défense plus fuyante. Avec les années, ses sens deviennent si fins qu’il combat aussi bien dans le noir complet.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 8 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé aux armes courantes, à l’arc court, à l’épée courte, à la hachette et à la hache de lancer ; aux armures légères, pas aux boucliers.\n• Aptitudes : escarmouche et recherche des pièges (1) ; esquive instinctive et fougue guerrière (2) ; déplacement accéléré et absence de traces (3) ; don supplémentaire (4, 8, 12, 16, 20) ; esquive totale (5) ; foulée inexorable (6) ; camouflage (8) ; perception aveugle (10) ; discrétion totale (14) ; liberté de mouvement (18) ; vision aveugle (20).\n• Les aptitudes d’armure légère maximum (fougue guerrière, déplacement accéléré, foulée inexorable, camouflage, discrétion totale, liberté de mouvement) sont perdues en armure plus lourde ou avec une charge intermédiaire ou lourde."
+      },
+      "hitDie": 8,
+      "skillPoints": 8,
+      "source": "Complete Adventurer",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.scout') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Perte des aptitudes en armure ou chargé : l’équipement porté n’est pas encore dans le modèle, les bonus s’appliquent toujours. Le livre ne donne pas de règle épique propre à l’éclaireur : un don supplémentaire tous les 3 niveaux au-delà du 20."
+    },
+    {
+      "id": "power.scout_skirmish",
+      "type": "class_power",
+      "name": {
+        "fr": "Escarmouche",
+        "en": "Skirmish"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "L’éclaireur ne combat pas planté sur ses jambes : il court, et chaque pas lui donne de l’élan. Quand il enchaîne déplacement et attaque, ses coups portent plus fort et il devient plus difficile à toucher.\n\nEn jeu\n• À activer quand il s’est déplacé d’au moins 3 m pendant son tour.\n• Dégâts supplémentaires au corps à corps : +1d6 au niveau 1, puis +1d6 tous les 4 niveaux (5d6 au niveau 17). Seulement sur les attaques faites après avoir quitté d’au moins 3 m sa case de départ.\n• À distance, seulement sur une cible à 9 m ou moins, pour une attaque faite en se déplaçant.\n• Mêmes limites que l’attaque sournoise : pas contre les créatures artificielles, morts-vivants, plantes, vases, intangibles ni immunisées aux coups critiques, ni si la cible est trop mal vue pour viser un point vital.\n• Dès le niveau 3 : bonus de +1 à la CA jusqu’au début de son prochain tour, puis +1 tous les 4 niveaux (+5 au niveau 19).\n• Perdu en armure autre que légère, avec une charge intermédiaire ou lourde, ou à cheval. Se cumule avec l’escarmouche d’une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.skirmish",
+          "op": "dice",
+          "value": "(1 + floor((level('class.scout') - 1) / 4))d6",
+          "condition": "active('toggle.scout_skirmish')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor((level('class.scout') + 1) / 4)",
+          "condition": "active('toggle.scout_skirmish')"
+        }
+      ],
+      "note": "Toggle « escarmouche » : à activer quand l’éclaireur s’est déplacé d’au moins 3 m ce tour. Les dés sont une statistique à part (damage.skirmish), comme l’attaque sournoise."
+    },
+    {
+      "id": "power.scout_trapfinding",
+      "type": "class_power",
+      "name": {
+        "fr": "Recherche des pièges",
+        "en": "Trapfinding"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Un déclencheur camouflé, un fil trop tendu : l’éclaireur repère ce que les autres ne voient qu’en l’activant.\n\nEn jeu\n• Peut trouver par la Fouille les pièges dont le DD dépasse 20 (pièges magiques compris).\n• Peut désamorcer les pièges magiques avec Désamorçage/sabotage."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_battle_fortitude",
+      "type": "class_power",
+      "name": {
+        "fr": "Fougue guerrière",
+        "en": "Battle fortitude"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Un bon éclaireur garde le corps vif et le souffle long, même quand tout s’agite autour de lui.\n\nEn jeu\n• Bonus d’aptitude aux jets de Vigueur et à l’initiative : +1, puis +2 au niveau 11, +3 au niveau 20.\n• Perdu en armure autre que légère ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": "1 + (if(level('class.scout') >= 11, 1, 0)) + (if(level('class.scout') >= 20, 1, 0))"
+        },
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": "1 + (if(level('class.scout') >= 11, 1, 0)) + (if(level('class.scout') >= 20, 1, 0))"
+        }
+      ]
+    },
+    {
+      "id": "power.scout_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Impossible de surprendre un éclaireur : il réagit avant même d’avoir compris ce qui l’approche.\n\nEn jeu\n• Ne peut plus être pris au dépourvu : il réagit avant même de sentir la menace.\n• Même aptitude que celle du barbare."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_fast_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Déplacement accéléré",
+        "en": "Fast movement"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "L’éclaireur parcourt la nature plus vite que ceux qu’il guide, et revient avant qu’ils aient fini de poser leurs sacs.\n\nEn jeu\n• Vitesse de déplacement : +3 m au niveau 3, +6 m au niveau 11.\n• Perdu en armure autre que légère ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": "if(level('class.scout') >= 11, 6, 3)"
+        }
+      ]
+    },
+    {
+      "id": "power.scout_trackless_step",
+      "type": "class_power",
+      "name": {
+        "fr": "Absence de traces",
+        "en": "Trackless step"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Dans la nature, l’éclaireur passe sans rien laisser : ni empreinte, ni herbe couchée, ni piste à suivre.\n\nEn jeu\n• En milieu naturel, ne laisse aucune trace : il est impossible de le pister."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_bonus_feats",
+      "type": "class_power",
+      "name": {
+        "fr": "Dons supplémentaires",
+        "en": "Bonus feats"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "L’éclaireur complète ses talents de terrain par des dons choisis dans une liste courte, taillée pour la mobilité, l’observation et le tir.\n\nEn jeu\n• Un don supplémentaire aux niveaux 4, 8, 12, 16 et 20, à choisir dans la liste de la classe ; il doit en remplir les conditions.\n• Liste (Talent : au choix de la compétence) : Agilité du singe, Arme en main, Athlétisme, Attaque éclair, Combat en aveugle, Endurance, Esquive, Expertise du combat, Funambule, Inspection instantanée, Ouïe féline, Pistage, Rechargement rapide, Réflexes surhumains, Science de l’initiative, Science de la nage, Sens du danger, Souplesse du serpent, Talent, Tir à bout portant, Tir de loin, Tir de précision, Tir en mouvement, Vigilance, Vigueur surhumaine, Volonté de fer, Voltigeur."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.scout_bonus",
+          "op": "add",
+          "value": "min(5, floor(level('class.scout') / 4))"
+        }
+      ],
+      "note": "Liste de dons : choix pas encore modélisé pour cette classe (texte seulement)."
+    },
+    {
+      "id": "power.scout_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "La déflagration balaie la clairière, et l’éclaireur est déjà derrière un tronc.\n\nEn jeu\n• Contre un effet qui permet un jet de Réflexes pour moitié dégâts, ne subit aucun dégât s’il réussit.\n• Seulement en armure légère ou sans armure, et s’il n’est pas sans défense."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_flawless_stride",
+      "type": "class_power",
+      "name": {
+        "fr": "Foulée inexorable",
+        "en": "Flawless stride"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Ronces, éboulis, sous-bois épais : l’éclaireur avance dedans comme sur une route.\n\nEn jeu\n• Traverse sans ralentir ni dégâts les terrains naturels qui gênent le déplacement (sous-bois, gravats).\n• Sans effet sur les terrains qui demandent un test d’Escalade ou de Natation, ni sur ceux entravés par magie.\n• Perdu en armure autre que légère ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_camouflage",
+      "type": "class_power",
+      "name": {
+        "fr": "Camouflage",
+        "en": "Camouflage"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "La nature elle-même lui sert d’abri : un tronc, une ombre, un peu de boue, et il disparaît.\n\nEn jeu\n• En terrain naturel, peut se cacher (Discrétion) même sans abri ni camouflage.\n• Perdu en armure autre que légère ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_blindsense",
+      "type": "class_power",
+      "name": {
+        "fr": "Perception aveugle",
+        "en": "Blindsense"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Il n’a plus besoin de voir ses ennemis pour savoir où ils sont : l’air, les bruits et les odeurs lui suffisent.\n\nEn jeu\n• Perception aveugle dans un rayon de 9 m : repère sans les voir les créatures proches (voir le Manuel des Monstres)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_hide_in_plain_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Discrétion totale",
+        "en": "Hide in plain sight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "En terrain naturel, l’éclaireur peut disparaître sous les yeux mêmes de celui qui le regarde.\n\nEn jeu\n• En terrain naturel, peut se cacher (Discrétion) même quand on l’observe.\n• Perdu en armure autre que légère ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_free_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Liberté de mouvement",
+        "en": "Free movement"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Cordes, poigne, filets, magie qui entrave : rien ne retient un éclaireur de ce niveau.\n\nEn jeu\n• Effet permanent du sort liberté de mouvement : se libère de liens, de prises et d’effets de confinement.\n• Perdu en armure autre que légère ou avec une charge intermédiaire ou lourde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.scout_blindsight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision aveugle",
+        "en": "Blindsight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "scout"
+      ],
+      "description": {
+        "fr": "Le noir, l’invisible, le brouillard : pour lui, plus rien de tout cela ne compte.\n\nEn jeu\n• Vision aveugle dans un rayon de 9 m : agit et combat avec précision même dans l’obscurité totale ; invisibilité, ténèbres et la plupart des camouflages sont ignorés.\n• Il lui faut une ligne d’effet vers la cible."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.scout",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.scout_skirmish",
+        "power.scout_trapfinding"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.scout_battle_fortitude",
+        "power.scout_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.scout_fast_movement",
+        "power.scout_trackless_step"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.scout_bonus_feats"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.scout_evasion"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.scout_flawless_stride"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.scout_camouflage"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.scout_blindsense"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 11,
+      "bab": 8,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 12,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 13,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 14,
+      "bab": 10,
+      "fort": 4,
+      "ref": 9,
+      "will": 4,
+      "grants": [
+        "power.scout_hide_in_plain_sight"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 15,
+      "bab": 11,
+      "fort": 5,
+      "ref": 9,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 16,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 17,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 18,
+      "bab": 13,
+      "fort": 6,
+      "ref": 11,
+      "will": 6,
+      "grants": [
+        "power.scout_free_movement"
+      ]
+    },
+    {
+      "classId": "class.scout",
+      "level": 19,
+      "bab": 14,
+      "fort": 6,
+      "ref": 11,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.scout",
+      "level": 20,
+      "bab": 15,
+      "fort": 6,
+      "ref": 12,
+      "will": 6,
+      "grants": [
+        "power.scout_blindsight"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.knowledge_dungeoneering"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.scout",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.scout",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.scout",
+      "relation": "proficiency",
+      "to": "item.shortbow"
+    },
+    {
+      "from": "class.scout",
+      "relation": "proficiency",
+      "to": "item.short_sword"
+    },
+    {
+      "from": "class.scout",
+      "relation": "proficiency",
+      "to": "item.handaxe"
+    },
+    {
+      "from": "class.scout",
+      "relation": "proficiency",
+      "to": "item.throwing_axe"
+    },
+    {
+      "from": "class.scout",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.scout",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

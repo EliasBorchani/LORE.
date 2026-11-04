@@ -1,0 +1,354 @@
+{
+  "entities": [
+    {
+      "id": "class.void_disciple",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Disciple du Vide",
+        "en": "Void Disciple"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Le Vide est ce qui sépare les éléments et les relie à la fois, comme le silence qui donne sa forme à la musique. Le disciple du Vide apprend à y plonger son esprit pour voir loin, lire les êtres, et plier un peu le destin.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : une composante neutre dans l'alignement ; Art de la magie 10 rangs ; Augmentation d'intensité, Efficacité des sorts accrue ; savoir lancer des sorts profanes ou divins de 3e niveau.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (toutes, séparément), Diplomatie, Premiers secours, Profession.\n• Sorts : +1 niveau de lanceur de sorts aux niveaux 2, 4, 5, 6, 8, 10, 11 et 12.\n• Aptitudes : sentir le Vide (1, puis aux niveaux impairs) ; moment de clairvoyance (4, 8, 12) ; altérer le destin (7) ; libération du Vide (10) ; suppression du Vide (12) ; morsure du Vide (13)."
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "prerequisite": "@skill.spellcraft.ranks >= 10 and has('feat.empower_spell') and has('feat.spell_penetration')",
+      "note": "Classe de 13 niveaux. Conditions d'accès : alignement (une composante neutre) et sorts de 3e niveau en texte ; Augmentation d'intensité = Empower Spell, Efficacité des sorts accrue = Spell Penetration. Spellcasting : à choisir dans le niveau du personnage."
+    },
+    {
+      "id": "power.void_disciple_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de disciple du Vide",
+        "en": "Void disciple spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "void_disciple"
+      ],
+      "description": {
+        "fr": "Son esprit s'affine : ses sorts aussi.\n\nEn jeu\n• Aux niveaux 2, 4, 5, 6, 8, 10, 11 et 12 : +1 niveau de lanceur de sorts dans une classe qui lance déjà des sorts de 3e niveau (au choix si plusieurs).\n• Gagne les sorts par jour, sorts connus et niveau de lanceur de ce niveau effectif, mais aucune autre aptitude de cette classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.void_disciple_sense_void",
+      "type": "class_power",
+      "name": {
+        "fr": "Sentir le Vide",
+        "en": "Sense the Void"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "void_disciple"
+      ],
+      "description": {
+        "fr": "Il lâche son corps et son attention voyage : il voit, entend, touche ce qui l'intéresse, loin d'ici.\n\nEn jeu\n• Capacité surnaturelle : test d'Art de la magie, DD selon la distance : 5 en vue, 10 jusqu'à 1,5 km, 15 jusqu'à 15 km, 20 jusqu'à 150 km, 25 jusqu'à 1 500 km. Ne franchit pas les barrières planaires.\n• Utilisations par jour : 1 au niveau 1, puis 1 de plus tous les 2 niveaux (7 au niveau 13).\n• Niveau 5 : détection de la magie et détection du Mal à volonté par ce moyen ; niveau 9 : détection du mensonge et lecture des émotions (+10 en Psychologie) ; niveau 13 : détection de pensées à volonté."
+      },
+      "effects": [],
+      "usesPerDay": "ceil(level('class.void_disciple') / 2)"
+    },
+    {
+      "id": "power.void_disciple_moment_of_prescience",
+      "type": "class_power",
+      "name": {
+        "fr": "Moment de clairvoyance",
+        "en": "Moment of prescience"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "void_disciple"
+      ],
+      "description": {
+        "fr": "Il prête à un compagnon une compétence qu'il ne connaît pas, le temps d'un éclair.\n\nEn jeu\n• Capacité surnaturelle, action simple, contact sur un allié.\n• La cible gagne un don ou un degré de maîtrise dans la compétence de son choix égal à son modificateur de la caractéristique associée.\n• Dure 1 round par niveau de disciple du Vide.\n• Utilisations par jour : 2 au niveau 4, plus 1 tous les 4 niveaux."
+      },
+      "effects": [],
+      "usesPerDay": "1 + floor(level('class.void_disciple') / 4)",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.void_disciple_alter_fate",
+      "type": "class_power",
+      "name": {
+        "fr": "Altérer le destin",
+        "en": "Alter fate"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "void_disciple"
+      ],
+      "description": {
+        "fr": "Un coup de pouce du Vide à son propre destin.\n\nEn jeu\n• Capacité surnaturelle, une fois par jour, sans action : +20 à un jet d'attaque, un test de compétence ou un test de caractéristique.\n• Ne profite qu'à lui, et seulement le temps du jet."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Bonus +20 une fois par jour : à appliquer à la main."
+    },
+    {
+      "id": "power.void_disciple_void_liberation",
+      "type": "class_power",
+      "name": {
+        "fr": "Libération du Vide",
+        "en": "Void liberation"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "void_disciple"
+      ],
+      "description": {
+        "fr": "Il décroche un allié des limites de son propre corps.\n\nEn jeu\n• Capacité surnaturelle, 3 fois par jour, au toucher sur un allié.\n• La cible utilise son meilleur modificateur de caractéristique à la place d'un modificateur plus faible (au choix de la cible) pendant un nombre de rounds égal à la moitié du niveau de disciple."
+      },
+      "effects": [],
+      "usesPerDay": "3"
+    },
+    {
+      "id": "power.void_disciple_void_suppression",
+      "type": "class_power",
+      "name": {
+        "fr": "Suppression du Vide",
+        "en": "Void suppression"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "void_disciple"
+      ],
+      "description": {
+        "fr": "Il réduit un adversaire à sa caractéristique la plus faible.\n\nEn jeu\n• Capacité surnaturelle, une fois par jour : attaque de contact au corps à corps.\n• Pendant 5 rounds, la cible doit utiliser son modificateur de caractéristique le plus bas à la place d'un modificateur plus élevé (au choix du disciple)."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.void_disciple_void_bite",
+      "type": "class_power",
+      "name": {
+        "fr": "Morsure du Vide",
+        "en": "Void bite"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "void_disciple"
+      ],
+      "description": {
+        "fr": "Il arrache à sa cible une part de sa vitalité.\n\nEn jeu\n• Capacité surnaturelle, une fois par jour : attaque de contact qui inflige 1d4 niveaux négatifs.\n• Le disciple gagne 5 points de vie temporaires par niveau négatif infligé.\n• La cible meurt si ses niveaux négatifs égalent ou dépassent ses dés de vie ; sinon, elle les retrouve au bout de 13 heures.\n• Repose sur le Vide, pas sur l'énergie négative : sans effet sur les morts-vivants."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.void_disciple",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.void_disciple_sense_void"
+      ]
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.void_disciple_spells"
+      ]
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.void_disciple_moment_of_prescience"
+      ]
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.void_disciple_alter_fate"
+      ]
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.void_disciple_void_liberation"
+      ]
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 11,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": []
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 12,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [
+        "power.void_disciple_void_suppression"
+      ]
+    },
+    {
+      "classId": "class.void_disciple",
+      "level": 13,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [
+        "power.void_disciple_void_bite"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.void_disciple",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.void_disciple",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    }
+  ]
+}

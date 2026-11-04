@@ -1,0 +1,294 @@
+{
+  "entities": [
+    {
+      "id": "class.occult_slayer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Pourfendeur de mages",
+        "en": "Occult Slayer"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Un sorcier a brûlé son village, un autre a tué les siens : le pourfendeur de mages en a conclu que la magie est un feu qu'on n'éteint qu'en tuant ceux qui le tiennent. Son acier, sa volonté et sa haine sont tournés vers une seule cible.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; 3 rangs en Art de la magie et 4 en Connaissances (mystères) ; dons Arme de prédilection (n'importe quelle arme) et Science de l'initiative.\n• Formé aux armes courantes, aux armes de guerre et aux boucliers (sauf le pavois), et au port des armures légères, intermédiaires et lourdes.\n• Compétences de classe : Art de la magie, Artisanat, Bluff, Connaissances (mystères), Profession, Psychologie, Renseignements.\n• Aptitudes : arme magicide et défense contre la magie +1 (1) ; frappe vicieuse et protection de la haine 1/jour (2) ; défense contre la magie +2 et perception des auras (3) ; manteau d'antidétection et protection de la haine 2/jour (4) ; défense contre la magie +3 et fermeture de l'esprit (5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "note": "Noms anglais à confirmer pour toutes les aptitudes. Le Codex donne 4 rangs en Connaissances (mystères) et 3 en Art de la magie.",
+      "prerequisite": "@bab >= 5 and @skill.spellcraft.ranks >= 3 and @skill.knowledge_arcana.ranks >= 4 and has('feat.weapon_focus') and has('feat.improved_initiative')"
+    },
+    {
+      "id": "power.occult_slayer_magebane_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme magicide",
+        "en": "Magebane weapon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "occult_slayer"
+      ],
+      "description": {
+        "fr": "Son arme boit sa haine des mages : elle mord plus fort dans la chair de ceux qui lancent des sorts.\n\nEn jeu\n• Capacité surnaturelle : il se lie avec une arme de maître pour laquelle il a le don Arme de prédilection. L'arme inflige +1d6 de dégâts aux lanceurs de sorts et aux créatures qui possèdent des pouvoirs magiques.\n• Si l'arme est perdue ou détruite, il peut se lier avec une autre arme (mêmes conditions), mais doit s'entraîner un jour par niveau global avec elle avant d'en tirer le bonus."
+      },
+      "effects": [
+        {
+          "target": "damage.occult_slayer_magebane",
+          "op": "dice",
+          "value": "1d6"
+        }
+      ],
+      "note": "Dés sur une statistique à part, damage.occult_slayer_magebane (comme damage.deadly_aim) : à ajouter seulement contre un lanceur de sorts ou une créature à pouvoirs magiques."
+    },
+    {
+      "id": "power.occult_slayer_defense_against_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Défense contre la magie",
+        "en": "Defense against magic"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "occult_slayer"
+      ],
+      "description": {
+        "fr": "Son entraînement le protège des sorts autant que son arme le rend dangereux pour ceux qui les lancent.\n\nEn jeu\n• Capacité extraordinaire : +1 aux jets de sauvegarde contre les sorts et les pouvoirs magiques, puis +1 à chaque niveau impair (+2 au niveau 3, +3 au niveau 5)."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "floor((level('class.occult_slayer') + 1) / 2)",
+          "situation": "situation.vs_spells"
+        }
+      ]
+    },
+    {
+      "id": "power.occult_slayer_vicious_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe vicieuse",
+        "en": "Vicious strike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "occult_slayer"
+      ],
+      "description": {
+        "fr": "Un lanceur qui prépare un sort ne remarque pas la lame qui vient.\n\nEn jeu\n• Capacité extraordinaire : quand il prépare une action pour troubler l'incantation d'un lanceur de sorts et que son attaque réussit, ses dégâts sont doublés."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.occult_slayer_hatred_ward",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection de la haine",
+        "en": "Hatred ward"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "occult_slayer"
+      ],
+      "description": {
+        "fr": "Le sort qui l'a visé retourne à celui qui l'a lancé.\n\nEn jeu\n• Capacité surnaturelle, action libre, une fois par jour : il renvoie vers son lanceur un sort ou un pouvoir magique dont il est la cible, comme le sort renvoi de sorts (niveau de lanceur de sorts : 5 + niveau de classe).\n• Deux fois par jour à partir du niveau 4."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.occult_slayer') >= 4, 2, 1)"
+    },
+    {
+      "id": "power.occult_slayer_aura_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Perception des auras",
+        "en": "Aura sight"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "occult_slayer"
+      ],
+      "description": {
+        "fr": "Pour lui, la magie a une lueur.\n\nEn jeu\n• Capacité surnaturelle : il voit les auras magiques dans un rayon de 18 m, comme avec détection de la magie, mais n'apprend jamais plus que le nombre d'auras présentes."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.occult_slayer_antidetection_mantle",
+      "type": "class_power",
+      "name": {
+        "fr": "Manteau d'antidétection",
+        "en": "Mantle of antidetection"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "occult_slayer"
+      ],
+      "description": {
+        "fr": "On ne peut pas le chercher : les divinations glissent sur lui.\n\nEn jeu\n• Capacité surnaturelle : lui et son équipement sont protégés comme par le sort antidétection (niveau de lanceur de sorts = niveau de classe), contre clairaudience / clairvoyance, localisation d'objet et les autres sorts de détection. Seulement sur lui et son équipement."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.occult_slayer_closed_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Fermeture de l'esprit",
+        "en": "Closed mind"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "occult_slayer"
+      ],
+      "description": {
+        "fr": "Il fait le vide dans sa tête, et plus rien n'y entre.\n\nEn jeu\n• Capacité extraordinaire : immunité contre tous les effets mentaux (charmes, coercitions, mirages, fantasmes, effets de moral).\n• Il peut la réprimer ou la réactiver à volonté, par une action libre."
+      },
+      "effects": [],
+      "note": "Immunité : texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.occult_slayer",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.occult_slayer_magebane_weapon",
+        "power.occult_slayer_defense_against_magic"
+      ]
+    },
+    {
+      "classId": "class.occult_slayer",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.occult_slayer_vicious_strike",
+        "power.occult_slayer_hatred_ward"
+      ]
+    },
+    {
+      "classId": "class.occult_slayer",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.occult_slayer_aura_sight"
+      ]
+    },
+    {
+      "classId": "class.occult_slayer",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.occult_slayer_antidetection_mantle"
+      ]
+    },
+    {
+      "classId": "class.occult_slayer",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.occult_slayer_closed_mind"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.occult_slayer",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.occult_slayer",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    }
+  ]
+}

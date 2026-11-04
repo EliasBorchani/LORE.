@@ -1,0 +1,527 @@
+{
+  "entities": [
+    {
+      "id": "class.sevenfold_veil",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "name": {
+        "fr": "Initié du voile septuple",
+        "en": "Initiate of the Sevenfold Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "abjuration"
+      ],
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 12 and @skill.knowledge_nature.ranks >= 4 and @skill.spellcraft.ranks >= 12 and has('feat.spell_focus_abjuration') and has('feat.greater_spell_focus_abjuration') and has('feat.skill_focus_spellcraft')",
+      "description": {
+        "fr": "Rouge, orange, jaune, vert, bleu, indigo, violet : là où d’autres voient un arc-en-ciel, l’initié voit sept murailles. Il a appris à séparer les couches d’un mur prismatique et à les dresser une par une autour de lui ou de ses amis, et ce qu’il sait des défenses magiques lui sert aussi à démonter celles des autres. Les initiés forment une petite confrérie de savants, presque tous magiciens, qui s’écrivent et se retrouvent pour parler magie et nature.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : Art de la magie 12 rangs ; Connaissances (mystères) 12 rangs ; Connaissances (nature) 4 rangs ; École renforcée (abjuration) ; École supérieure (abjuration) ; Talent (Art de la magie) ; savoir lancer au moins cinq sorts d’abjuration, dont deux du 4e niveau ou plus.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (chaque domaine), Décryptage, Estimation, Profession.\n• Aucune formation aux armes, aux armures ni aux boucliers.\n• Bonus de base à l’attaque faible ; Réflexes, Vigueur faibles ; Volonté forte.\n• Sorts : +1 niveau de lanceur de sorts profanes à chaque niveau (1 à 7).\n• Aptitudes : abjuration supérieure, protection et voile rouge (1) ; coup irréfutable et voile orange (2) ; voile jaune (3) ; protection réactive et voile vert (4) ; voile bleu (5) ; protection double et voile indigo (6) ; kaléidoscope lugubre et voile violet (7)."
+      },
+      "status": "draft",
+      "note": "Source : Codex Profane. Condition « cinq sorts d'abjuration » vérifiée à la main.",
+      "skillPoints": 2
+    },
+    {
+      "id": "power.sevenfold_veil_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Chaque voile appris est aussi un pas de plus dans l’art profane que l’initié pratiquait déjà.\n\nEn jeu\n• À chaque niveau (1 à 7) : +1 niveau effectif de lanceur de sorts dans une classe profane qu’il avait déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour (et sorts connus) et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres avantages de cette classe (dons supplémentaires, etc.).\n• Avec plusieurs classes profanes, une seule progresse à chaque niveau."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.sv_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection",
+        "en": "Warding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil",
+        "defense"
+      ],
+      "usesPerDay": "floor((level('class.sevenfold_veil') + 1) / 2)",
+      "description": {
+        "fr": "D’un geste, l’initié tend autour de lui une pellicule de lumière colorée : un seul des voiles qu’il maîtrise, mais qui suffit à faire réfléchir à deux fois quiconque voudrait le traverser.\n\nEn jeu\n• Pouvoir magique. 1 fois par jour au niveau 1, 2 fois au niveau 3, 3 fois au niveau 5, 4 fois au niveau 7.\n• Choisit un voile connu et une forme :\n• – personnelle : une sphère de la taille de son espace, qui bouge avec lui ; qui le frappe au corps à corps (sans allonge) subit le voile ; 1 minute par niveau ;\n• – zone : son espace et les cases adjacentes, bouge avec lui ; on en sort sans risque, on y entre en subissant le voile ; 1 minute par niveau ;\n• – mur : jusqu’à 3 m de long et 1,50 m de haut par niveau de classe, immobile, une extrémité à 9 m au plus ; il peut rendre un sens de passage sans danger et le traverse toujours sans risque ; 10 minutes par niveau.\n• Forcer quelqu’un à traverser la protection (en lutte, en se déplaçant) ne déclenche rien.\n• Camouflage pour les créatures protégées, sans gêne pour leur vue.\n• DD : 18 + modificateur de sa caractéristique de lanceur principale (Int pour un magicien, Cha pour un ensorceleur ou un barde).\n• Niveau de lanceur : son niveau de lanceur de sorts profanes ; niveau de sort équivalent selon le voile."
+      },
+      "effects": [
+        {
+          "target": "dc.warding",
+          "op": "set",
+          "value": "18 + @ability.int.mod",
+          "layer": "base",
+          "status": "draft",
+          "note": "Caractéristique principale de lanceur ; Intelligence pour l’instant (choix du propriétaire, 2026-11-02) : juste pour un magicien, pas pour un ensorceleur ou un barde."
+        }
+      ],
+      "status": "draft",
+      "note": "Les « wards » de la fiche."
+    },
+    {
+      "id": "power.sv_veil_red",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile rouge",
+        "en": "Red Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Le premier voile, le plus simple : une lueur rouge où les flèches s’arrêtent net et où la peau brûle.\n\nEn jeu\n• Appris au niveau 1 ; utilisable dans une protection.\n• Bloque les projectiles et attaques à distance non magiques.\n• Le traverser : 20 dégâts de feu (Réflexes pour moitié).\n• Un cône de froid le détruit (et s’annule).\n• Équivaut à un sort du 4e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_orange",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile orange",
+        "en": "Orange Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Une brume orangée qui avale les rayons et les traits magiques, et ronge ce qui la franchit.\n\nEn jeu\n• Appris au niveau 2 ; utilisable dans une protection.\n• Bloque les attaques à distance magiques : rayons et sorts qui lancent des projectiles avec un jet d’attaque (pas projectile magique).\n• Le traverser : 40 dégâts d’acide (Réflexes pour moitié).\n• Une bourrasque (ou un effet proche) le détruit (et s’annule).\n• Équivaut à un sort du 5e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_yellow",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile jaune",
+        "en": "Yellow Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Un rideau d’or crépitant : ni gaz ni regard pétrifiant ne passent, et la foudre attend qui s’y risque.\n\nEn jeu\n• Appris au niveau 3 ; utilisable dans une protection.\n• Bloque gaz, nuages et attaques de pétrification.\n• Protection personnelle ou de zone : immunité aux poisons venus de l’extérieur (une arme empoisonnée qui frappe à travers, par exemple).\n• Le traverser : 80 dégâts d’électricité (Réflexes pour moitié).\n• Une désintégration le détruit (et s’annule).\n• Équivaut à un sort du 6e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_green",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile vert",
+        "en": "Green Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Un vert de poison, épais comme un marais : les souffles de dragon s’y brisent, et le traverser peut tuer.\n\nEn jeu\n• Appris au niveau 4 ; utilisable dans une protection.\n• Bloque les souffles.\n• Le traverser : Vigueur ou mort ; en cas de réussite, 1d6 points d’affaiblissement temporaire de Constitution.\n• Effet de poison.\n• Un passe-muraille le détruit.\n• Équivaut à un sort du 6e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_blue",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile bleu",
+        "en": "Blue Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Un bleu froid et silencieux qui ferme l’esprit aux regards et aux murmures étrangers.\n\nEn jeu\n• Appris au niveau 5 ; utilisable dans une protection.\n• Bloque les divinations et les effets mentaux.\n• Le traverser : Vigueur ou pétrification.\n• Un projectile magique le détruit (et s’annule).\n• Équivaut à un sort du 6e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_indigo",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile indigo",
+        "en": "Indigo Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Un indigo profond où la magie elle-même s’éteint, et où l’esprit se perd.\n\nEn jeu\n• Appris au niveau 6 ; utilisable dans une protection.\n• Bloque sorts et pouvoirs magiques.\n• Le traverser : Volonté ou confusion (comme aliénation mentale).\n• Une lumière du jour le détruit (et s’annule).\n• Équivaut à un sort du 7e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_veil_violet",
+      "type": "class_power",
+      "name": {
+        "fr": "Voile violet",
+        "en": "Violet Veil"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil"
+      ],
+      "description": {
+        "fr": "Le dernier voile : ce qui le touche se défait, et ce qui vit peut se réveiller sur un autre plan.\n\nEn jeu\n• Appris au niveau 7 ; utilisable dans une protection.\n• Détruit les objets et effets qui le traversent, comme une désintégration.\n• Créature vivante qui le traverse : Volonté ou envoyée en un lieu et un plan au hasard (comme changement de plan).\n• Une dissipation de la magie le détruit.\n• Équivaut à un sort du 8e niveau."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_unimpeachable_abjuration",
+      "type": "class_power",
+      "name": {
+        "fr": "Abjuration supérieure",
+        "en": "Unimpeachable Abjuration"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil",
+        "dispel"
+      ],
+      "description": {
+        "fr": "Les protections de l’initié sont cousues serré : qui veut les défaire doit tirer beaucoup plus fort.\n\nEn jeu\n• Extraordinaire.\n• Ajoute son niveau de classe au DD pour dissiper ses abjurations."
+      },
+      "effects": [
+        {
+          "target": "dc.dispel_own_abjuration",
+          "op": "add",
+          "value": "level('class.sevenfold_veil')",
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "+7 pour Danalieth"
+        }
+      ],
+      "status": "draft",
+      "note": "Fiche : « DD dissipation +7 »."
+    },
+    {
+      "id": "power.sv_unanswerable_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Coup irréfutable",
+        "en": "Unanswerable Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil",
+        "dispel"
+      ],
+      "description": {
+        "fr": "À force d’étudier les défenses, l’initié en connaît les points faibles, y compris chez les autres.\n\nEn jeu\n• Extraordinaire.\n• +2 aux tests de niveau de lanceur pour contrer ou dissiper une abjuration ; +4 au niveau 6."
+      },
+      "effects": [
+        {
+          "target": "check.dispel_abjuration",
+          "op": "add",
+          "value": "if(level('class.sevenfold_veil') >= 6, 4, 2)",
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Fiche : « DD pour dissiper −4 »."
+    },
+    {
+      "id": "power.sv_reactive_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection réactive",
+        "en": "Reactive Warding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil",
+        "defense"
+      ],
+      "description": {
+        "fr": "L’ennemi charge, l’initié lève la main, et le voile est déjà là.\n\nEn jeu\n• Pouvoir magique, niveau 4.\n• Dresse une protection par une action immédiate, après le début de l’action d’un adversaire et avant sa fin.\n• L’adversaire peut poursuivre (et traverser le voile) ou s’arrêter.\n• Compte comme une utilisation de protection."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_double_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Protection double",
+        "en": "Double Warding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil",
+        "defense"
+      ],
+      "description": {
+        "fr": "Deux couleurs l’une dans l’autre : l’initié commence à retrouver le mur prismatique entier.\n\nEn jeu\n• Niveau 6.\n• Chaque protection porte deux voiles connus, pour une seule utilisation.\n• Le moins puissant (de rouge vers violet) est toujours à l’extérieur.\n• Pour annuler la protection, il faut défaire le voile extérieur puis l’intérieur."
+      },
+      "status": "draft"
+    },
+    {
+      "id": "power.sv_kaleidoscopic_doom",
+      "type": "class_power",
+      "name": {
+        "fr": "Kaléidoscope lugubre",
+        "en": "Kaleidoscopic Doom"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "sevenfold_veil",
+        "dispel"
+      ],
+      "usesPerDay": 1,
+      "description": {
+        "fr": "L’initié arrache les sorts qui protègent sa cible et les retourne en voiles contre elle : une couleur pour chaque magie perdue.\n\nEn jeu\n• Pouvoir magique, niveau 7, 1 fois par jour, action simple.\n• Une créature à 18 m au plus : comme une dissipation suprême ciblée.\n• Pour chaque sort ou effet dissipé, la cible subit un voile comme si elle le traversait, dans l’ordre (rouge, puis orange, jaune…) ; elle a droit au jet de sauvegarde de chaque voile.\n• Équivaut à un sort du 9e niveau."
+      },
+      "status": "draft"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.sv_warding",
+        "power.sv_unimpeachable_abjuration",
+        "power.sv_veil_red",
+        "power.sevenfold_veil_spells"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_warding (1/day); power.sv_unimpeachable_abjuration; power.sv_veil_red; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.sv_unanswerable_strike",
+        "power.sv_veil_orange"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_unanswerable_strike (+2); power.sv_veil_orange; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.sv_veil_yellow"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: warding 2/day; power.sv_veil_yellow; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.sv_reactive_warding",
+        "power.sv_veil_green"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_reactive_warding; power.sv_veil_green; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.sv_veil_blue"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: warding 3/day; power.sv_veil_blue; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.sv_double_warding",
+        "power.sv_veil_indigo"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: unanswerable strike +4; power.sv_double_warding; power.sv_veil_indigo; spellcasting +1 existing arcane class (chosen)"
+    },
+    {
+      "classId": "class.sevenfold_veil",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.sv_kaleidoscopic_doom",
+        "power.sv_veil_violet"
+      ],
+      "status": "draft",
+      "note": "Table du livre. Pris après le niveau 20 : règle épique (+½). | Grants text: power.sv_kaleidoscopic_doom; power.sv_veil_violet; warding 4/day; spellcasting +1 existing arcane class (chosen)"
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_warding"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_unimpeachable_abjuration"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_unanswerable_strike"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_reactive_warding"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_double_warding"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_kaleidoscopic_doom"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_red"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_orange"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_yellow"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_green"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_blue"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_indigo"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sv_veil_violet"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "grants",
+      "to": "power.sevenfold_veil_spells"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.sevenfold_veil",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "entities": [
+    {
+      "id": "class.bounty_hunter",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Justicier solitaire",
+        "en": "Bounty Hunter"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Écrire des lois ne suffit pas : il faut que quelqu'un les fasse respecter. Le justicier solitaire traque les criminels sans chercher ni argent ni gloire, et les ramène vivants devant un juge, ou règle l'affaire lui-même s'ils résistent.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal ; bonus de base à l'attaque +6 ; 5 rangs en Fouille, 5 en Renseignements, 5 en Survie ; dons Pistage, Talent (Renseignements).\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Bluff, Connaissances (toutes), Crochetage, Déguisement, Déplacement silencieux, Détection, Discrétion, Équitation, Escalade, Fouille, Intimidation, Maîtrise des cordes, Natation, Perception auditive, Premiers secours, Psychologie, Renseignements, Saut, Survie.\n• Aptitudes : attaque assommante +1d6 (1), +2d6 (4), +3d6 (7), +4d6 (10) ; frappe non-létale (1) ; attaque handicapante (2) ; science de la lutte (2) ; école de la rue +2 (3), +4 (6), +6 (9) ; maniement de menottes (3) ; ligotage (5) ; science du ligotage (8) ; intuition (10).\n• Multiclassage : un paladin peut prendre des niveaux de justicier solitaire sans interrompre sa progression de paladin."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 6 and @skill.search.ranks >= 5 and @skill.gather_information.ranks >= 5 and @skill.survival.ranks >= 5 and has('feat.track') and has('feat.skill_focus_gather_information')",
+      "note": "Condition hors formule : alignement loyal. Nom anglais Bounty Hunter : très probable (le livre anglais n'est pas sous la main), à confirmer. Situation situation.hunting_a_criminal à ajouter à situations.json."
+    },
+    {
+      "id": "power.bounty_hunter_dazing_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque assommante",
+        "en": "Dazing attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Il frappe là où l'adversaire ne l'attend pas, mais sans le tuer.\n\nEn jeu\n• Capacité extraordinaire : avec sa frappe non-létale sur un adversaire privé de son bonus de Dextérité à la CA ou pris en tenaille avec un allié : +1d6 de dégâts non-létaux supplémentaires.\n• +1d6 tous les 3 niveaux (+2d6 au niveau 4, +3d6 au niveau 7, +4d6 au niveau 10). Pas multiplié sur un critique.\n• Seulement sur un adversaire vivant dont on peut atteindre les organes vitaux ; pas contre une cible qui bénéficie d'un camouflage."
+      },
+      "effects": [
+        {
+          "target": "damage.dazing_attack",
+          "op": "dice",
+          "value": "(1 + floor((level('class.bounty_hunter') - 1) / 3))d6"
+        }
+      ],
+      "note": "Dés non-létaux sur une statistique à part, damage.dazing_attack (condition de tenaille ou de dépourvu à la charge du joueur). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bounty_hunter_nonlethal_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe non-létale",
+        "en": "Nonlethal strike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Il sait assommer plutôt que tuer.\n\nEn jeu\n• Capacité extraordinaire : avec une arme de corps à corps, il peut infliger des dégâts non-létaux sans le malus de −4 à l'attaque."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bounty_hunter_crippling_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque handicapante",
+        "en": "Crippling strike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Ses coups assomment et affaiblissent.\n\nEn jeu\n• Capacité extraordinaire : au niveau 2, quand il inflige des dégâts non-létaux à une créature, elle subit aussi un affaiblissement temporaire de 1 point de Force."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bounty_hunter_improved_grapple",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de la lutte",
+        "en": "Improved grapple"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Il sait maîtriser sans se faire mal.\n\nEn jeu\n• Au niveau 2 : don supplémentaire Science de la lutte, même sans en remplir les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bounty_hunter_street_smart",
+      "type": "class_power",
+      "name": {
+        "fr": "École de la rue",
+        "en": "Street smart"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Il connaît les repaires, les mots de passe et les vieilles habitudes des voleurs.\n\nEn jeu\n• Capacité extraordinaire : +2 de circonstances aux tests de Renseignements quand il cherche un criminel, au niveau 3 ; +4 au niveau 6 ; +6 au niveau 9."
+      },
+      "effects": [
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": "2 * floor(level('class.bounty_hunter') / 3)",
+          "bonusType": "circumstance",
+          "situation": "situation.hunting_a_criminal",
+          "condition": "level('class.bounty_hunter') >= 3"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bounty_hunter_manacles_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maniement de menottes",
+        "en": "Manacle mastery"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Entre ses mains, une paire de menottes devient une arme.\n\nEn jeu\n• Au niveau 3 : il manie des menottes d'une main comme un gourdin, sans le malus de −4 des armes improvisées.\n• Il peut aussi manier des menottes de maître comme un fléau d'armes léger de maître."
+      },
+      "effects": [],
+      "note": "Arme exotique : pas d'entité d'objet pour les menottes ; texte seul."
+    },
+    {
+      "id": "power.bounty_hunter_hogtie",
+      "type": "class_power",
+      "name": {
+        "fr": "Ligotage",
+        "en": "Hogtie"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Une corde, quelques nœuds, et l'adversaire n'ira plus nulle part.\n\nEn jeu\n• Capacité extraordinaire : au niveau 5, quand il immobilise un adversaire en lutte, il peut tenter de le ligoter (corde, chaîne ou menottes en main). L'adversaire doit être humanoïde et d'au plus une catégorie de taille de plus que lui.\n• Test de lutte opposé : il peut utiliser Maîtrise des cordes, son adversaire Évasion. Réussite : l'adversaire est ligoté et sans défense.\n• Pour se libérer : Évasion contre sa Maîtrise des cordes (+10), ou Force DD 23 (corde), 26 (chaîne ou menottes), 28 (menottes de maître)."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bounty_hunter_improved_hogtie",
+      "type": "class_power",
+      "name": {
+        "fr": "Science du ligotage",
+        "en": "Improved hogtie"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Plus besoin de préparer la prise : il ligote en pleine mêlée.\n\nEn jeu\n• Capacité extraordinaire : au niveau 8, il peut ligoter un adversaire non immobilisé, à la place d'une attaque au cours d'une lutte.\n• Avec Arme en main, il n'a plus besoin d'avoir la corde, la chaîne ou les menottes en main."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bounty_hunter_intuition",
+      "type": "class_power",
+      "name": {
+        "fr": "Intuition",
+        "en": "Intuition"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bounty_hunter"
+      ],
+      "description": {
+        "fr": "Il sent dans quelle direction a fui sa proie.\n\nEn jeu\n• Capacité surnaturelle : au niveau 10, test de Survie (DD 15 + dés de vie de la cible) pour deviner la direction générale d'une personne qu'il poursuit, si elle est à moins de 1,5 km.\n• Il doit déjà l'avoir affrontée en combat ; un essai par cible et par jour ; le MD fait le test en secret."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.bounty_hunter",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.bounty_hunter_dazing_attack",
+        "power.bounty_hunter_nonlethal_strike"
+      ]
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.bounty_hunter_crippling_strike",
+        "power.bounty_hunter_improved_grapple"
+      ]
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.bounty_hunter_street_smart",
+        "power.bounty_hunter_manacles_mastery"
+      ]
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.bounty_hunter_hogtie"
+      ]
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.bounty_hunter_improved_hogtie"
+      ]
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.bounty_hunter",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.bounty_hunter_intuition"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.bounty_hunter",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "power.bounty_hunter_improved_grapple",
+      "relation": "grants",
+      "to": "feat.improved_grapple"
+    }
+  ]
+}

@@ -29,6 +29,7 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
     .sort((a, b) => (a.level ?? 0) - (b.level ?? 0) || a.name.localeCompare(b.name, 'fr'))
   const spell = entity.type === 'spell' ? ((entity.spell ?? {}) as Record<string, unknown>) : null
   const maneuver = entity.maneuver as ManeuverInfo | undefined
+  const invocation = entity.invocation as InvocationInfo | undefined
 
   return (
     <>
@@ -66,6 +67,7 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
             ) : null
           })}
         {maneuver && <ManeuverFacts maneuver={maneuver} detail={detail} />}
+        {invocation && <InvocationFacts invocation={invocation} />}
         {entity.usesPerDay != null && (
           <>
             <dt>{fr.catalog.usesPerDay}</dt>
@@ -73,6 +75,40 @@ export function EntityFacts({ detail }: { detail: EntityDetail }) {
           </>
         )}
       </dl>
+    </>
+  )
+}
+
+interface InvocationInfo {
+  grade: string
+  level: number
+  kind?: string
+  [field: string]: unknown
+}
+
+function InvocationFacts({ invocation }: { invocation: InvocationInfo }) {
+  const c = fr.catalog
+  return (
+    <>
+      <dt>{c.invocationGrade}</dt>
+      <dd>{c.invocationGrades[invocation.grade] ?? invocation.grade}</dd>
+      <dt>{c.invocationLevel}</dt>
+      <dd>{invocation.level}</dd>
+      {invocation.kind && invocation.kind !== 'other' && (
+        <>
+          <dt>{c.invocationKind}</dt>
+          <dd>{c.invocationKinds[invocation.kind] ?? invocation.kind}</dd>
+        </>
+      )}
+      {Object.entries(c.invocationFields).map(([field, label]) => {
+        const value = invocation[field]
+        return value == null || value === '' ? null : (
+          <div key={field} style={{ display: 'contents' }}>
+            <dt>{label}</dt>
+            <dd>{String(value)}</dd>
+          </div>
+        )
+      })}
     </>
   )
 }

@@ -1,0 +1,429 @@
+{
+  "entities": [
+    {
+      "id": "class.daggerspell_shaper",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Animorphe enchantelame",
+        "en": "Daggerspell Shaper"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "nature",
+        "martial",
+        "divine"
+      ],
+      "description": {
+        "fr": "Dans un monastère caché au fond d'une vieille forêt, des druides et des lanceurs de sorts apprennent à manier deux dagues sans jamais lâcher leur magie. L'animorphe enchantelame est l'aile calme et réfléchie de sa guilde : il tisse une toile d'acier, puis se transforme en bête dont les griffes portent l'enchantement de ses lames.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non mauvais ; Concentration 8 rangs ; Arme de prédilection (dague), Combat à deux armes ; forme animale ; attaque sournoise +1d6 ou escarmouche +1d6.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Acrobaties, Art de la magie, Artisanat, Concentration, Connaissances (nature), Déplacement silencieux, Détection, Discrétion, Dressage, Équilibre, Équitation, Escalade, Natation, Perception auditive, Premiers secours, Profession, Saut, Survie.\n• Sorts : +1 niveau effectif de lanceur de sorts divins à partir du niveau 2.\n• Aptitudes : daguemagie (1) ; forme animale supplémentaire (1, 5, 10) ; griffes-dagues (2) ; attaque sournoise +1d6/+2d6/+3d6 (3, 6, 9) ; forme animale accélérée (7) ; forme animale améliorée (8) ; déluge enchantelame (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 6,
+      "prerequisite": "@skill.concentration.ranks >= 8 and has('feat.weapon_focus') and has('feat.two_weapon_fighting')",
+      "note": "Conditions dans la formule : Concentration, Arme de prédilection (dague : l'arme choisie n'est pas modélisée) et Combat à deux armes. En texte seulement : alignement non mauvais (relations alignment), forme animale, attaque sournoise +1d6 ou escarmouche +1d6. Nom anglais : Daggerspell Shaper."
+    },
+    {
+      "id": "power.daggerspell_shaper_dagger_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Daguemagie",
+        "en": "Daggerspell"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "Une dague dans chaque main, il murmure une formule sans lâcher ni l'une ni l'autre : l'acier et la magie ne font qu'un seul geste.\n\nEn jeu\n• Lance un sort à composantes gestuelles et matérielles en tenant une dague dans chaque main, sans provoquer d'attaque d'opportunité.\n• Avec une autre arme que la dague, il lui faut garder une main libre.\n• Il peut délivrer un sort de contact par une attaque de dague (contact au corps à corps ou attaque normale au corps à corps, pas un jet de dague)."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.daggerspell_shaper_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale",
+        "en": "Wild shape"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "Il prend la forme d'une bête plus souvent qu'un druide ordinaire, et ses lames suivent le mouvement.\n\nEn jeu\n• Utilisation de forme animale en plus par jour aux niveaux 1, 5 et 10 (+1, +2, +3 au total).\n• Niveau 2 : peut aussi prendre la taille TP. Niveau 4 : taille G.\n• Durée : 1 heure par niveau de classe ; ses niveaux de druide et d'animorphe se cumulent pour la durée, pas pour les tailles et types de créatures accessibles."
+      },
+      "effects": [],
+      "usesPerDay": "1 + (if(level('class.daggerspell_shaper') >= 5, 1, 0)) + (if(level('class.daggerspell_shaper') >= 10, 1, 0))",
+      "note": "Les utilisations en plus forment ici une réserve à part, à ajouter à celle du druide (si le personnage a déjà forme animale)."
+    },
+    {
+      "id": "power.daggerspell_shaper_dagger_claws",
+      "type": "class_power",
+      "name": {
+        "fr": "Griffes-dagues",
+        "en": "Dagger claws"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "Sous sa forme de félin ou d'ours, ses poings reprennent la force des lames qu'il tenait : chaque patte hérite de la magie d'une dague.\n\nEn jeu\n• Niveau 2 : en forme animale, les propriétés magiques de la dague de chaque main passent aux armes naturelles du membre correspondant.\n• Chaque dague n'affecte que les armes naturelles du membre qui la tenait (pas toutes les attaques).\n• Sans arme naturelle correspondante, aucun effet. Dure jusqu'à la fin de la forme.\n• Ses armes naturelles passent la réduction des dégâts comme les dagues tenues."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.daggerspell_shaper_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "Chaque niveau fait grandir sa magie de druide : plus de sorts, plus de puissance, sans que ses lames y perdent.\n\nEn jeu\n• À partir du niveau 2 : +1 niveau effectif de lanceur de sorts divins dans une classe précédente (au choix s'il en a plusieurs).\n• Il gagne sorts par jour, sorts connus et niveau de lanceur de ce niveau effectif, mais pas les autres aptitudes de la classe (dons de métamagie ou de création d'objets)."
+      },
+      "effects": [],
+      "note": "Progression choisie dans la fiche de niveau, rien dans les lignes de la table."
+    },
+    {
+      "id": "power.daggerspell_shaper_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "L'animorphe frappe là où l'adversaire ne regarde pas : dans son angle mort ou de côté, quand un compagnon l'occupe.\n\nEn jeu\n• +1d6 aux dégâts au niveau 3, +2d6 au niveau 6, +3d6 au niveau 9.\n• Mêmes règles que l'attaque sournoise du roublard : cible prise au dépourvu, en tenaille ou privée de son bonus de Dextérité ; à distance jusqu'à 9 m.\n• S'ajoute à l'attaque sournoise donnée par d'autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor(level('class.daggerspell_shaper') / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.daggerspell_shaper_quickened_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale accélérée",
+        "en": "Quicken wild shape"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "À ce niveau, la métamorphose se fait en quelques pas : il est homme, puis loup, avant que le dernier ennemi ait fini de lever son arme.\n\nEn jeu\n• Niveau 7 : forme animale en action de mouvement au lieu d'une action simple."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.daggerspell_shaper_improved_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale améliorée",
+        "en": "Improved wild shape"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "Même transformé, il garde ses bijoux et son armure enchantée : leur magie suit le corps de la bête.\n\nEn jeu\n• Niveau 8 : les bonus d'altération à la Force, la Dextérité et la Constitution de son équipement continuent de s'appliquer en forme animale, même si les objets ne pourraient pas être portés sous cette forme."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.daggerspell_shaper_dagger_storm",
+      "type": "class_power",
+      "name": {
+        "fr": "Déluge enchantelame",
+        "en": "Daggerspell storm"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "daggerspell_shaper"
+      ],
+      "description": {
+        "fr": "Dans la même seconde, une volée de coups de dagues et une formule rapide : le sort part au milieu du ballet.\n\nEn jeu\n• Niveau 10 : lance un sort en incantation rapide pendant une attaque à outrance, sans changer le niveau effectif du sort.\n• Il doit faire au moins une attaque au corps à corps dans le round, uniquement avec une dague (sauf si le sort lui-même demande un jet d'attaque).\n• Nombre d'utilisations par jour : son modificateur de Dextérité (minimum 1)."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, @ability.dex.mod)",
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.daggerspell_shaper_dagger_magic",
+        "power.daggerspell_shaper_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.daggerspell_shaper_wild_shape",
+        "power.daggerspell_shaper_dagger_claws"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.daggerspell_shaper_sneak_attack",
+        "power.daggerspell_shaper_spells"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.daggerspell_shaper_spells"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.daggerspell_shaper_wild_shape",
+        "power.daggerspell_shaper_spells"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.daggerspell_shaper_sneak_attack",
+        "power.daggerspell_shaper_spells"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.daggerspell_shaper_quickened_wild_shape",
+        "power.daggerspell_shaper_spells"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.daggerspell_shaper_improved_wild_shape",
+        "power.daggerspell_shaper_spells"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.daggerspell_shaper_sneak_attack",
+        "power.daggerspell_shaper_spells"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_shaper",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.daggerspell_shaper_dagger_storm",
+        "power.daggerspell_shaper_wild_shape",
+        "power.daggerspell_shaper_spells"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.daggerspell_shaper",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    }
+  ]
+}

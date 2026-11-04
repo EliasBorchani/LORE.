@@ -41,7 +41,8 @@
         "general",
         "fighter_bonus",
         "warblade_bonus",
-        "defense"
+        "defense",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Avant que l’embuscade ne se referme, avant que le premier mot de l’incantation ne tombe, il a déjà bougé. Ses réflexes ont une longueur d’avance sur le reste du monde.\n\nEn jeu\n• +4 aux tests d’initiative."

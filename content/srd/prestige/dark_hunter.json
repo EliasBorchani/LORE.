@@ -1,0 +1,270 @@
+{
+  "entities": [
+    {
+      "id": "class.dark_hunter",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chasseur sombre",
+        "en": "Dark Hunter"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Dans les galeries sans soleil, quelqu'un doit s'occuper de ce qui rôde. Le chasseur sombre est ce quelqu'un : un traqueur des Profondeurs qui connaît la pierre, voit dans le noir et tue ses proies une à une, de préférence sans qu'elles le voient venir.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; Artisanat (fabrication de pièges) 5 rangs, Connaissances (exploration souterraine) 2 rangs, Déplacement silencieux 2 rangs, Survie 2 rangs ; dons Combat en aveugle et Pistage.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (exploration souterraine), Déplacement silencieux, Désamorçage/sabotage, Détection, Discrétion, Escalade, Maîtrise des cordes, Natation, Perception auditive, Profession, Survie.\n• Aptitudes : connaissance supérieure de la pierre (1) ; vision dans le noir améliorée (2 et 4) ; attaque sournoise +1d6 (3) ; carnation rocheuse (4) ; attaque mortelle (5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.craft.ranks >= 5 and @skill.knowledge_dungeoneering.ranks >= 2 and @skill.move_silently.ranks >= 2 and @skill.survival.ranks >= 2 and has('feat.blind_fight') and has('feat.track')",
+      "note": "Condition Artisanat (fabrication de pièges) : le modèle lit les rangs d'Artisanat en général."
+    },
+    {
+      "id": "power.dark_hunter_greater_stonecunning",
+      "type": "class_power",
+      "name": {
+        "fr": "Connaissance supérieure de la pierre",
+        "en": "Greater stonecunning"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dark_hunter"
+      ],
+      "description": {
+        "fr": "Il lit la roche comme d'autres lisent un livre : un mur trop neuf, un piège de pierre, un plancher qui sonne creux.\n\nEn jeu\n• Capacité extraordinaire : il obtient la connaissance de la pierre s'il ne l'a pas (+2 en Fouille contre les ouvrages de pierre inhabituels).\n• S'il l'a déjà, ce bonus passe de +2 à +4.\n• Vaut aussi pour la Fouille qui cherche les pièges faits de pierre."
+      },
+      "effects": [
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 2,
+          "situation": "situation.unusual_stonework"
+        }
+      ],
+      "note": "Gain net de +2 dans les deux cas : de 0 à +2 sans la connaissance de la pierre, de +2 à +4 avec (nain)."
+    },
+    {
+      "id": "power.dark_hunter_improved_darkvision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision dans le noir améliorée",
+        "en": "Improved darkvision"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dark_hunter"
+      ],
+      "description": {
+        "fr": "Ses yeux s'ouvrent un peu plus à chaque descente dans le noir.\n\nEn jeu\n• Capacité extraordinaire : niveau 2, vision dans le noir sur 9 m s'il n'en a pas ; sinon sa portée augmente de 9 m.\n• Niveau 4 : encore 9 m de plus.\n• Se cumule avec les autres vision dans le noir naturelles ou extraordinaires, pas avec une vision dans le noir magique.\n• Perdue si un état préjudiciable lui retire la vision dans le noir."
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "add",
+          "value": "if(level('class.dark_hunter') >= 4, 18, if(level('class.dark_hunter') >= 2, 9, 0))"
+        }
+      ],
+      "note": "Même valeur pour un personnage avec ou sans vision dans le noir au départ : +9 m au niveau 2 puis +9 m au niveau 4."
+    },
+    {
+      "id": "power.dark_hunter_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dark_hunter"
+      ],
+      "description": {
+        "fr": "Une nuque, un genou, un défaut d'armure : le chasseur sombre frappe où l'ennemi ne peut pas se défendre.\n\nEn jeu\n• Capacité extraordinaire : +1d6 de dégâts quand la cible a perdu son bonus de Dextérité à la CA ou est prise en tenaille.\n• À distance, seulement à 9 m ou moins ; dés non multipliés par un coup critique.\n• Pas contre les créatures artificielles, morts-vivants, plantes, vases, intangibles ou immunisées contre les critiques, ni contre une cible dont il ne voit pas les points vitaux.\n• Dégâts non létaux seulement avec une arme non létale (matraque, mains nues).\n• Se cumule avec l'attaque sournoise d'une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(if(level('class.dark_hunter') >= 3, 1, 0))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.dark_hunter_stony_skin",
+      "type": "class_power",
+      "name": {
+        "fr": "Carnation rocheuse",
+        "en": "Stony skin"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dark_hunter"
+      ],
+      "description": {
+        "fr": "Sa peau et ses vêtements prennent la teinte de la paroi contre laquelle il s'adosse.\n\nEn jeu\n• Capacité surnaturelle : à 1,50 m ou moins d'un mur de pierre ou de terre, +10 (bonus de circonstances) en Discrétion.\n• Il peut se cacher même sans abri ni camouflage."
+      },
+      "effects": [
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 10,
+          "bonusType": "circumstance",
+          "situation": "situation.near_stone_or_earth_wall"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Situation à ajouter : situation.near_stone_or_earth_wall."
+    },
+    {
+      "id": "power.dark_hunter_death_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque mortelle",
+        "en": "Death attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "dark_hunter"
+      ],
+      "description": {
+        "fr": "Il observe sa proie, attend le bon moment, puis frappe pour tuer ou paralyser.\n\nEn jeu\n• Capacité extraordinaire : niveau 5. Il étudie sa cible 3 rounds, puis réussit une attaque sournoise au corps à corps.\n• Il choisit alors de tuer ou de paralyser ; jet de Vigueur DD 10 + niveau de chasseur sombre + modificateur d'Intelligence.\n• Raté : mort, ou sans défense pendant 1d6 rounds + 1 round par niveau de classe. Réussi : dégâts de l'attaque sournoise seulement.\n• Il doit frapper dans les 3 rounds qui suivent l'étude ; si la cible réussit son jet, 3 nouveaux rounds d'étude sont nécessaires.\n• Pendant l'étude, il peut faire d'autres actions tant que son attention reste sur la cible et qu'elle ne le repère pas."
+      },
+      "effects": [],
+      "note": "Pas de statistique pour ce pouvoir : texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.dark_hunter",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.dark_hunter_greater_stonecunning"
+      ]
+    },
+    {
+      "classId": "class.dark_hunter",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.dark_hunter_improved_darkvision"
+      ]
+    },
+    {
+      "classId": "class.dark_hunter",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.dark_hunter_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.dark_hunter",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.dark_hunter_stony_skin"
+      ]
+    },
+    {
+      "classId": "class.dark_hunter",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.dark_hunter_death_attack"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.knowledge_dungeoneering"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.dark_hunter",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

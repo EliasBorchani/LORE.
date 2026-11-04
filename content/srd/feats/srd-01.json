@@ -125,7 +125,8 @@
         "fighter_bonus",
         "warblade_bonus",
         "melee",
-        "ranged"
+        "ranged",
+        "scout_bonus"
       ],
       "description": {
         "fr": "On ne la voit jamais dégainer. La lame est au fourreau, puis elle est là, déjà levée, comme si elle n’avait jamais quitté sa main.\n\nEn jeu\n• Condition : bonus de base à l’attaque de +1.\n• Dégainer une arme est une action libre ; dégainer une arme dissimulée (Escamotage) est une action de mouvement.\n• Armes de jet : il peut lancer autant d’attaques par round que son bonus de base à l’attaque le permet, puisqu’il en reprend une en main à chaque fois.\n• Normal : dégainer demande une action de mouvement (ou se fait pendant un déplacement avec un bonus de base à l’attaque de +1 ou plus) ; une arme dissimulée demande une action simple."
@@ -145,7 +146,8 @@
         "general",
         "warblade_bonus",
         "skill",
-        "movement"
+        "movement",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Falaises, rivières en crue, remparts glissants : son corps a appris à vaincre le terrain avant même que son esprit ne s’en inquiète.\n\nEn jeu\n• +2 aux tests d’Escalade et de Natation."
@@ -198,7 +200,8 @@
         "general",
         "fighter_bonus",
         "melee",
-        "movement"
+        "movement",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Il entre, frappe, ressort. Le temps que l’adversaire se retourne, il n’y a plus qu’un courant d’air et une entaille fraîche.\n\nEn jeu\n• Condition : Dextérité 13, Esquive, Souplesse du serpent, bonus de base à l’attaque de +4.\n• Lors d’une action d’attaque au corps à corps, le personnage peut se déplacer avant et après l’attaque, sans dépasser sa vitesse de déplacement au total.\n• Il doit parcourir au moins 1,5 m avant et 1,5 m après l’attaque.\n• Ce déplacement ne provoque pas d’attaque d’opportunité de la part de la cible (les autres créatures, si).\n• Impossible en armure lourde."

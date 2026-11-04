@@ -1,0 +1,451 @@
+{
+  "entities": [
+    {
+      "id": "class.shadowbane_stalker",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Traqueur fléombre",
+        "en": "Shadowbane Stalker"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "skills"
+      ],
+      "hitDie": 8,
+      "skillPoints": 6,
+      "prerequisite": "@skill.search.ranks >= 4 and @skill.sense_motive.ranks >= 4 and @skill.gather_information.ranks >= 8",
+      "description": {
+        "fr": "Les hérétiques le traitent de fanatique, les opprimés de sauveur. Le traqueur fléombre, prêtre passé par l’école des roublards, appartient à un ordre de preux qui débusque le mal là où il se cache le mieux : parmi les gens bien élevés. Il garde sa magie divine et y ajoute la discrétion et le coup bas.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : alignement loyal bon ; Fouille 4 rangs, Psychologie 4 rangs, Renseignements 8 rangs ; pouvoir de détection du Mal ou capacité de lancer détection du Mal comme sort divin ; attaque sournoise +1d6.\n• Alignement : loyal bon.\n• Aucune formation aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Art de la magie, Artisanat, Concentration, Connaissances (histoire), Connaissances (nature), Connaissances (plans), Connaissances (religion), Crochetage, Décryptage, Déplacement silencieux, Désamorçage/sabotage, Détection, Discrétion, Équilibre, Escalade, Escamotage, Estimation, Évasion, Fouille, Maîtrise des cordes, Perception auditive, Premiers secours, Profession, Psychologie, Renseignements, Saut, Utilisation d’objets magiques.\n• Sorts : un niveau de lanceur divin de plus à chaque niveau, sauf aux niveaux 4 et 9.\n• Aptitudes : détection du Mal et discrétion sacrée (1), reconnaissance des subterfuges (2), attaque sournoise (3), défense sacrée (4), coup sacré (10)."
+      },
+      "note": "Conditions dans la formule : les rangs. En texte seulement : alignement loyal bon, pouvoir de détection du Mal ou lancer détection du Mal comme sort divin, dégâts d’attaque sournoise +1d6. Les niveaux de lanceur divin se choisissent dans les enregistrements de niveau."
+    },
+    {
+      "id": "power.shadowbane_stalker_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Lancement de sorts",
+        "en": "Spellcasting"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "shadowbane_stalker"
+      ],
+      "description": {
+        "fr": "Le traqueur n’abandonne pas la prière en chemin : chaque grade de l’ordre prolonge sa formation de lanceur de sorts divins.\n\nEn jeu\n• À chaque niveau sauf les niveaux 4 et 9, gagne un niveau de lanceur de sorts dans une classe divine qu’il avait déjà (une seule, au choix, s’il en a plusieurs).\n• Sorts par jour, sorts connus et niveau de lanceur de sorts comme s’il avait gagné un niveau dans cette classe, sans rien d’autre (pas de meilleur renvoi des morts-vivants, par exemple)."
+      },
+      "effects": [],
+      "note": "Les avancées de lanceur se choisissent dans les enregistrements de niveau, rien dans la table."
+    },
+    {
+      "id": "power.shadowbane_stalker_detect_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Mal",
+        "en": "Detect evil"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "shadowbane_stalker"
+      ],
+      "description": {
+        "fr": "Le mal se cache bien, mais il laisse une odeur que le traqueur a appris à flairer.\n\nEn jeu\n• Pouvoir magique à volonté : détection du Mal."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.shadowbane_stalker_sacred_stealth",
+      "type": "class_power",
+      "name": {
+        "fr": "Discrétion sacrée",
+        "en": "Sacred stealth"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "shadowbane_stalker"
+      ],
+      "description": {
+        "fr": "Une prière murmurée à la place d’un sort, et le traqueur se fond dans les ombres comme s’il avait reçu la bénédiction d’une divinité discrète.\n\nEn jeu\n• Action rapide, sans attaque d’opportunité : sacrifie un sort divin préparé (ou un emplacement s’il lance spontanément).\n• Bonus de sainteté de +4 en Déplacement silencieux et en Discrétion (+8 à partir du niveau 7), pendant un nombre de minutes égal à son modificateur de Charisme (s’il est positif) + le niveau du sort sacrifié.\n• Case à cocher : la durée et le sort sacrifié ne sont pas suivis."
+      },
+      "effects": [
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": "if(level('class.shadowbane_stalker') >= 7, 8, 4)",
+          "bonusType": "sacred",
+          "condition": "active('toggle.shadowbane_stalker_sacred_stealth')"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": "if(level('class.shadowbane_stalker') >= 7, 8, 4)",
+          "bonusType": "sacred",
+          "condition": "active('toggle.shadowbane_stalker_sacred_stealth')"
+        }
+      ],
+      "note": "Le livre donne le niveau 2 dans le texte et le niveau 1 dans la table : la table est suivie. Durée et sort sacrifié non suivis."
+    },
+    {
+      "id": "power.shadowbane_stalker_sense_deception",
+      "type": "class_power",
+      "name": {
+        "fr": "Reconnaissance des subterfuges",
+        "en": "Sense deception"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "shadowbane_stalker"
+      ],
+      "description": {
+        "fr": "À force d’écouter les mensonges des autres, le traqueur finit par sentir quand on lui joue la comédie.\n\nEn jeu\n• Bonus d’aptitude de +2 en Fouille et en Psychologie au niveau 2, +4 au niveau 5, +6 au niveau 8."
+      },
+      "effects": [
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": "if(level('class.shadowbane_stalker') >= 8, 6, if(level('class.shadowbane_stalker') >= 5, 4, 2))",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": "if(level('class.shadowbane_stalker') >= 8, 6, if(level('class.shadowbane_stalker') >= 5, 4, 2))",
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.shadowbane_stalker_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "shadowbane_stalker"
+      ],
+      "description": {
+        "fr": "Pour piéger un ennemi qui se croit à l’abri, le traqueur sait où frapper quand l’adversaire a la garde baissée.\n\nEn jeu\n• +1d6 aux dégâts au niveau 3, 2d6 au niveau 6, 3d6 au niveau 9.\n• Mêmes règles que l’attaque sournoise du roublard : cible privée de son bonus de Dextérité à la CA ou prise en tenaille, à 9 m au plus à distance.\n• Se cumule avec l’attaque sournoise d’une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor(level('class.shadowbane_stalker') / 3))d6",
+          "condition": "level('class.shadowbane_stalker') >= 3"
+        }
+      ]
+    },
+    {
+      "id": "power.shadowbane_stalker_sacred_defense",
+      "type": "class_power",
+      "name": {
+        "fr": "Défense sacrée",
+        "en": "Sacred defense"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "shadowbane_stalker"
+      ],
+      "description": {
+        "fr": "Une invocation courte, une protection qui dure juste le temps du combat.\n\nEn jeu\n• Niveau 4. Action rapide, sans attaque d’opportunité : sacrifie un sort divin préparé (ou un emplacement).\n• Bonus de sainteté de +4 à la CA pendant un nombre de rounds égal au niveau du sort sacrifié."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "sacred",
+          "condition": "active('toggle.shadowbane_stalker_sacred_defense')"
+        }
+      ],
+      "note": "Durée et sort sacrifié non suivis."
+    },
+    {
+      "id": "power.shadowbane_stalker_sacred_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Coup sacré",
+        "en": "Sacred strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "shadowbane_stalker"
+      ],
+      "description": {
+        "fr": "Au sommet de l’ordre, le traqueur transforme une prière en lame : le sort sacrifié se déverse dans sa prochaine attaque.\n\nEn jeu\n• Niveau 10. Action rapide, sans attaque d’opportunité : sacrifie un sort divin préparé (ou un emplacement).\n• Prochaine attaque, ce même round : +1d6 de dégâts par niveau du sort sacrifié, sans dépasser les dés d’attaque sournoise du traqueur.\n• Les créatures immunisées à l’attaque sournoise sont immunisées. Si l’attaque rate, le coup est perdu."
+      },
+      "effects": [],
+      "note": "Dégâts variables selon le sort sacrifié : texte seulement."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.shadowbane_stalker_spells",
+        "power.shadowbane_stalker_detect_evil",
+        "power.shadowbane_stalker_sacred_stealth"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.shadowbane_stalker_sense_deception"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.shadowbane_stalker_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.shadowbane_stalker_sacred_defense"
+      ]
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.shadowbane_stalker",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.shadowbane_stalker_sacred_strike"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.shadowbane_stalker",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    }
+  ]
+}

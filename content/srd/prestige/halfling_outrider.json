@@ -1,0 +1,400 @@
+{
+  "entities": [
+    {
+      "id": "class.halfling_outrider",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Cavalier émérite halfelin",
+        "en": "Halfling Outrider"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "mounted"
+      ],
+      "description": {
+        "fr": "Les communautés halfelines nomades confient leur sécurité à des éclaireurs montés : des champions qui avertissent, protègent et chevauchent avec une aisance déconcertante.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : race halfelin ; bonus de base à l'attaque +5 ; Détection 3 rangs, Équitation 6 rangs, Perception auditive 3 rangs ; dons Combat monté et Tir monté.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Détection, Dressage, Équitation, Perception auditive, Survie.\n• Aptitudes : bonus à la CA, bonus à l'Équitation, monture et Vigilance (1) ; équitation défensive (2) ; charge agile (3) ; debout sur la selle (4) ; saut de selle (5) ; esquive totale (7) ; maîtrise du combat monté (8) ; virage serré (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.spot.ranks >= 3 and @skill.ride.ranks >= 6 and @skill.listen.ranks >= 3 and has('feat.mounted_combat') and has('feat.mounted_archery')",
+      "note": "Condition de race (halfelin) : texte seul. Noms anglais des aptitudes à confirmer (Mounted defense, Agile charge, Stand in the saddle, Saddle leap, Mounted mastery, Tight turn…)."
+    },
+    {
+      "id": "power.halfling_outrider_ac_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à la CA",
+        "en": "AC bonus"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Perché sur sa monture, il est plus dur à toucher que son ombre.\n\nEn jeu\n• Bonus d'esquive à la CA quand il est monté : +1, puis +1 de plus à chaque niveau impair (+5 au niveau 9).\n• Perdu quand il perd son bonus de Dextérité à la CA."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor((level('class.halfling_outrider') + 1) / 2)",
+          "bonusType": "dodge",
+          "condition": "active('toggle.halfling_outrider_mounted')"
+        }
+      ],
+      "note": "Toggle « monté » : à activer quand le personnage est en selle."
+    },
+    {
+      "id": "power.halfling_outrider_ride_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à l'Équitation",
+        "en": "Ride bonus"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Une longue habitude de la selle.\n\nEn jeu\n• Bonus d'aptitude aux tests d'Équitation égal à son niveau de classe."
+      },
+      "effects": [
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": "level('class.halfling_outrider')",
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.halfling_outrider_mount",
+      "type": "class_power",
+      "name": {
+        "fr": "Monture",
+        "en": "Mount"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "La communauté lui confie sa monture, souvent un chien de selle ou un poney de guerre.\n\nEn jeu\n• Une monture fournie par la communauté, avec selle et harnais (chien de selle ou poney de guerre en général).\n• Ses niveaux s'ajoutent à ceux de paladin, de druide ou de rôdeur pour les pouvoirs et le profil d'une monture de paladin ou d'un compagnon animal."
+      },
+      "effects": [],
+      "note": "Non modélisé : le cumul des niveaux avec ceux du paladin, du druide et du rôdeur est à régler à la main."
+    },
+    {
+      "id": "power.halfling_outrider_alertness",
+      "type": "class_power",
+      "name": {
+        "fr": "Vigilance",
+        "en": "Alertness"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Il ne dort que d'un œil.\n\nEn jeu\n• Reçoit le don Vigilance en don supplémentaire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.halfling_outrider_mounted_defense",
+      "type": "class_power",
+      "name": {
+        "fr": "Équitation défensive",
+        "en": "Mounted defense"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Il se penche sur l'encolure et laisse la monture dérober ses flancs.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : action complexe (pour le cavalier).\n• Cavalier : +2 aux jets de Réflexes, +4 de CA (esquive).\n• Monture : +6 m de vitesse au sol, +2 aux jets de Volonté, +4 de CA (esquive)."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.halfling_outrider_mounted_defense')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "condition": "active('toggle.halfling_outrider_mounted_defense')"
+        }
+      ],
+      "note": "Le toggle ne couvre que le cavalier ; les bonus de la monture sont dans le texte."
+    },
+    {
+      "id": "power.halfling_outrider_agile_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge agile",
+        "en": "Agile charge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Sa monture traverse la foule ou les ronces comme si de rien n'était.\n\nEn jeu\n• Niveau 3 : peut charger à travers un terrain difficile ou des cases d'alliés, sur un test d'Équitation DD 15."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.halfling_outrider_stand_in_saddle",
+      "type": "class_power",
+      "name": {
+        "fr": "Debout sur la selle",
+        "en": "Stand in the saddle"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Il tire debout sur sa monture lancée au galop.\n\nEn jeu\n• Niveau 4 : se tient debout sur la selle, même en combat ou en déplacement, sans malus à ses actions (test d'Équitation DD 20).\n• Debout, il tire à distance sans malus même si la monture fait un double mouvement ou court."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.halfling_outrider_saddle_leap",
+      "type": "class_power",
+      "name": {
+        "fr": "Saut de selle",
+        "en": "Saddle leap"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Il saute de selle pour frapper l'adversaire d'en face.\n\nEn jeu\n• Niveau 5 : action libre, saute de selle et atterrit sur une case adjacente à sa monture (Équitation DD 20).\n• Un adversaire dans son espace contrôlé : une attaque à +2, mais −2 en CA (comme une charge).\n• Impossible si la monture s'est déplacée de plus de deux fois sa vitesse."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.halfling_outrider_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Il se jette hors de portée du souffle.\n\nEn jeu\n• Capacité extraordinaire, niveau 7 : jet de Réflexes réussi contre une attaque à demi-dégâts = aucun dégât.\n• Perdue en armure ou sous charge intermédiaire ou lourde, ou sans défense.\n• Sa monture en profite aussi quand il est en selle, avec son propre bonus de Réflexes ou celui du cavalier.\n• S'il avait déjà l'esquive totale : esquive extraordinaire (dégâts réduits de moitié même si le jet rate) ; la monture reste limitée à l'esquive totale."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.halfling_outrider_mounted_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise du combat monté",
+        "en": "Mounted mastery"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Il frappe de toutes ses forces sans arrêter sa course.\n\nEn jeu\n• Niveau 8 : attaque à outrance même si la monture a fait un mouvement (une action de mouvement).\n• Pas en combinaison avec une charge."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.halfling_outrider_tight_turn",
+      "type": "class_power",
+      "name": {
+        "fr": "Virage serré",
+        "en": "Tight turn"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "halfling_outrider"
+      ],
+      "description": {
+        "fr": "Un coup de talon, un virage à angle droit, et la charge reprend.\n\nEn jeu\n• Niveau 10 : action libre, fait tourner sa monture pendant une course ou une charge (Équitation DD 25), 90° au plus, un virage par round.\n• La monture doit parcourir au moins 3 m en ligne droite avant d'attaquer à la fin d'une charge.\n• Si le test rate, la monture avance encore de 3 m puis s'arrête et perd le reste de ses actions."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.halfling_outrider",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.halfling_outrider_ac_bonus",
+        "power.halfling_outrider_ride_bonus",
+        "power.halfling_outrider_mount",
+        "power.halfling_outrider_alertness"
+      ]
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.halfling_outrider_mounted_defense"
+      ]
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.halfling_outrider_agile_charge"
+      ]
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.halfling_outrider_stand_in_saddle"
+      ]
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.halfling_outrider_saddle_leap"
+      ]
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.halfling_outrider_evasion"
+      ]
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.halfling_outrider_mounted_mastery"
+      ]
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.halfling_outrider",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.halfling_outrider_tight_turn"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.halfling_outrider",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.halfling_outrider",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.halfling_outrider",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.halfling_outrider",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.halfling_outrider",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "power.halfling_outrider_alertness",
+      "relation": "grants",
+      "to": "feat.alertness"
+    }
+  ]
+}

@@ -19,6 +19,8 @@ import { useGroup, useGroupApi, useGroupPath } from '../group/GroupContext'
 const SEARCH_DELAY_MS = 250
 /** Values shown per filter before « Voir tout ». */
 const FACET_SHOWN = 12
+/** Invocation grades, lowest first. */
+const GRADES = ['least', 'lesser', 'greater', 'dark']
 
 interface SearchState {
   text: string
@@ -208,6 +210,7 @@ function FacetGroup(props: { facet: Facet; values: FacetValue[]; chosen: string[
     if (!values.some((v) => String(v.value) === value)) values.push({ value, count: 0 })
   }
   if (facet === 'level' || facet === 'maneuver_level') values.sort((a, b) => Number(a.value) - Number(b.value))
+  if (facet === 'invocation_grade') values.sort((a, b) => GRADES.indexOf(String(a.value)) - GRADES.indexOf(String(b.value)))
   const shown = all ? values : values.filter((v, i) => i < FACET_SHOWN || chosen.includes(String(v.value)))
   return (
     <fieldset className="facet">

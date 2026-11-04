@@ -1,0 +1,1000 @@
+{
+  "entities": [
+    {
+      "id": "item.gnome_shell_blade",
+      "type": "item",
+      "name": {
+        "fr": "Carapace à lame gnome",
+        "en": "Gnome shell blade"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "shield",
+        "weapon",
+        "exotic",
+        "light"
+      ],
+      "description": {
+        "fr": "Une carapace de tortue sanglée au poignet, d’où jaillit une lame entre les doigts. Les gnomes s’en servent dans les galeries trop étroites pour balancer un coup ample.\n\nEn jeu\n• Arme exotique légère, à tenir dans la main non directrice ; les gnomes ne peuvent en choisir qu’une comme arme familière (avec le marteau-piolet).\n• Bouclier : +1 de bouclier à la CA, perdu pendant les rounds où elle sert à attaquer. Malus d’armure aux tests −1, risque d’échec des sorts profanes 5 %.\n• Peut être rendue magique comme arme, comme bouclier, ou les deux (coûts payés séparément)."
+      },
+      "item": {
+        "slot": "shield",
+        "cost": "10 po",
+        "weight": "1,5 kg",
+        "armorBonus": "+1",
+        "checkPenalty": "–1",
+        "spellFailure": "5 %",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "19–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 1,
+          "layer": "base"
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -1
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 5
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le coup de bouclier (arme exotique légère, dégâts de la table) et la perte du bonus à la CA quand on s’en sert pour attaquer ne sont pas modélisés ; la fiche compte le bouclier seul, comme la rondache."
+    },
+    {
+      "id": "item.dwarven_axe_shield",
+      "type": "item",
+      "name": {
+        "fr": "Hache-targe naine",
+        "en": "Dwarven axe-shield"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "shield",
+        "weapon",
+        "exotic",
+        "light"
+      ],
+      "description": {
+        "fr": "Une targe en apparence anodine dont les bords haut et bas sont aiguisés comme une hache. Elle protège, puis sert d’arme de secours.\n\nEn jeu\n• Arme exotique légère ; arme familière des nains.\n• Bouclier : +1 de bouclier à la CA, perdu pendant les rounds où elle sert à attaquer. Malus d’armure aux tests −1, risque d’échec des sorts profanes 5 %.\n• Peut être rendue magique comme arme, comme bouclier, ou les deux (coûts payés séparément)."
+      },
+      "item": {
+        "slot": "shield",
+        "cost": "20 po",
+        "weight": "2 kg",
+        "armorBonus": "+1",
+        "checkPenalty": "–1",
+        "spellFailure": "5 %",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "×3",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "ac.shield",
+          "op": "set",
+          "value": 1,
+          "layer": "base"
+        },
+        {
+          "target": "armor.check_penalty",
+          "op": "add",
+          "value": -1
+        },
+        {
+          "target": "spell_failure.arcane",
+          "op": "add",
+          "value": 5
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le coup de bouclier (arme exotique légère, dégâts de la table) et la perte du bonus à la CA quand on s’en sert pour attaquer ne sont pas modélisés ; la fiche compte le bouclier seul, comme la rondache."
+    },
+    {
+      "id": "item.elven_lightblade",
+      "type": "item",
+      "name": {
+        "fr": "Frêlelame elfe",
+        "en": "Elven lightblade"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "light"
+      ],
+      "description": {
+        "fr": "Une lame mince comme une rapière, de la longueur d’une épée courte mais légère comme une dague. Les elfes agiles l’aiment pour se glisser entre les plaques d’une armure.\n\nEn jeu\n• Arme exotique légère.\n• Certains nobles elfes en portent une ouvragée de filigranes et de pierres fines, même sans la savoir manier."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "50 po",
+        "weight": "500 g",
+        "damage": "1d6",
+        "damageSmall": "1d4",
+        "critical": "18–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Nom français lu sur la table (OCR : « Frêlelame »)."
+    },
+    {
+      "id": "item.elven_thinblade",
+      "type": "item",
+      "name": {
+        "fr": "Finelame elfe",
+        "en": "Elven thinblade"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Taillée comme une rapière, longue comme une épée longue mais bien plus légère, c’est l’arme préférée des guerriers et roublards elfes. Sa lame souple cherche les jointures.\n\nEn jeu\n• Arme exotique à une main.\n• Attaque en finesse : on peut ajouter le bonus de Dextérité à l’attaque (à la place de Force), bien qu’elle ne soit pas légère."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "100 po",
+        "weight": "1,5 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "18–20/×2",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Attaque en finesse non modélisée."
+    },
+    {
+      "id": "item.barbed_whip",
+      "type": "item",
+      "name": {
+        "fr": "Fouet barbelé",
+        "en": "Barbed whip"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Un fouet à plusieurs lanières hérissées de barbillons, souvent enduites de poison avant le combat.\n\nEn jeu\n• Arme exotique à une main.\n• +2 au jet d’attaque opposé pour désarmer, et pour ne pas être soi-même désarmé en cas d’échec."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "20 po",
+        "weight": "1 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.great_war_pick",
+      "type": "item",
+      "name": {
+        "fr": "Grand pic de guerre",
+        "en": "Great war pick"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Un pic de guerre lourd au manche plus long et à la lame plus massive, qui perce les armures de plein fouet.\n\nEn jeu\n• Arme exotique à une main.\n• Trop volumineuse pour une main sans formation (Maniement d’une arme exotique) ; sans ce don, on la manie à deux mains comme une arme de guerre."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "30 po",
+        "weight": "6 kg",
+        "damage": "1d8",
+        "damageSmall": "1d6",
+        "critical": "×4",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 4,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.maul",
+      "type": "item",
+      "name": {
+        "fr": "Maillet",
+        "en": "Maul"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Une tête de pierre ou de métal sur un long manche, un marteau de forgeron fait pour assommer.\n\nEn jeu\n• Arme exotique à une main.\n• Trop volumineuse pour une main sans formation (Maniement d’une arme exotique) ; sans ce don, on la manie à deux mains comme une arme de guerre."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "15 po",
+        "weight": "10 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "×3",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Nom anglais à confirmer. "
+    },
+    {
+      "id": "item.breach_mace",
+      "type": "item",
+      "name": {
+        "fr": "Masse de brèche",
+        "en": "Breach mace"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "one_handed"
+      ],
+      "description": {
+        "fr": "Une masse lourde dont la tête écrase tout, mais dont le poids déséquilibre son porteur.\n\nEn jeu\n• Arme exotique à une main.\n• Trop volumineuse pour une main sans formation (Maniement d’une arme exotique) ; sans ce don, on la manie à deux mains comme une arme de guerre.\n• Malus de −1 à la CA pour qui la manie (poids et reprise d’équilibre après un coup)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "25 po",
+        "weight": "5 kg",
+        "damage": "1d12",
+        "damageSmall": "1d10",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d12",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le malus de −1 à la CA n’est pas modélisé."
+    },
+    {
+      "id": "item.mancatcher",
+      "type": "item",
+      "name": {
+        "fr": "Agrippeur",
+        "en": "Mancatcher"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "reach",
+        "nonlethal"
+      ],
+      "description": {
+        "fr": "Une fourche à pinces dentelées, utilisée par les gardes pour capturer un fuyard sans le tuer.\n\nEn jeu\n• Arme exotique à deux mains, à allonge (3 m) : inutilisable contre un adversaire adjacent.\n• Dégâts non létaux.\n• Sur une attaque réussie contre une créature de sa taille ou plus petite, tente une lutte en action libre sans attaque d’opportunité ; le bonus d’altération et les bonus d’attaque de l’arme comptent pour la lutte.\n• Pendant cette lutte, le porteur est lui aussi considéré comme agrippé, mais seule une victime avec allonge peut l’attaquer ; il lâche prise par une action simple.\n• Il peut aussi tenter de faire tomber l’adversaire (comme un croc-en-jambe, sans jet d’attaque)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "20 po",
+        "weight": "4 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Lutte, croc-en-jambe et allonge ne sont pas modélisés."
+    },
+    {
+      "id": "item.bardiche",
+      "type": "item",
+      "name": {
+        "fr": "Bardiche",
+        "en": "Bardiche"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "reach"
+      ],
+      "description": {
+        "fr": "Une longue lame de hache montée sur une hampe, avec une pointe qui arrête les charges.\n\nEn jeu\n• Arme exotique à deux mains, à allonge (3 m) : inutilisable contre un adversaire adjacent.\n• Le joueur choisit au moment de l’attaque : dégâts perforants ou tranchants.\n• Préparée contre une charge, inflige des dégâts doublés à l’adversaire qui charge."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "20 po",
+        "weight": "7,5 kg",
+        "damage": "2d6",
+        "damageSmall": "1d10",
+        "critical": "×3",
+        "damageType": "Perforant ou tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ]
+    },
+    {
+      "id": "item.great_spear",
+      "type": "item",
+      "name": {
+        "fr": "Grand épieu",
+        "en": "Great spear"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "reach"
+      ],
+      "description": {
+        "fr": "Un épieu à large lame plate, trop lourd pour qui n’y est pas formé.\n\nEn jeu\n• Arme exotique à deux mains, à allonge (3 m) ; facteur de portée 3 m dans la table.\n• Inutilisable sans formation particulière."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "25 po",
+        "weight": "4,5 kg",
+        "damage": "2d6",
+        "damageSmall": "1d10",
+        "critical": "×3",
+        "range": "3 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le facteur de portée de 3 m est celui de la table (OCR lu sur l’image) ; il peut venir de l’arme de jet dérivée."
+    },
+    {
+      "id": "item.lajatang",
+      "type": "item",
+      "name": {
+        "fr": "Lajatang",
+        "en": "Lajatang"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double"
+      ],
+      "description": {
+        "fr": "Un bâton orné d’une lame en croissant à chaque bout.\n\nEn jeu\n• Arme exotique à deux mains, arme double. Arme double : en combat à deux armes, chaque tête porte sa propre attaque, avec les malus d’une arme à une main associée à une arme légère. Tenue d’une seule main, elle perd son statut d’arme double.\n• Un moine formé la compte comme arme de moine ; chaque tête compte comme une arme distincte pour le déluge de coups."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "90 po",
+        "weight": "3,5 kg",
+        "damage": "1d8/1d8",
+        "damageSmall": "1d6/1d6",
+        "critical": "×2",
+        "damageType": "Tranchant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Seule une tête est modélisée (1d8) ; combat à deux armes non modélisé."
+    },
+    {
+      "id": "item.double_hammer",
+      "type": "item",
+      "name": {
+        "fr": "Marteau double",
+        "en": "Double hammer"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "two_handed",
+        "double"
+      ],
+      "description": {
+        "fr": "Un marteau à chaque extrémité d’un long manche.\n\nEn jeu\n• Arme exotique à deux mains, arme double. Arme double : en combat à deux armes, chaque tête porte sa propre attaque, avec les malus d’une arme à une main associée à une arme légère. Tenue d’une seule main, elle perd son statut d’arme double."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "70 po",
+        "weight": "9 kg",
+        "damage": "1d8/1d8",
+        "damageSmall": "1d6/1d6",
+        "critical": "×3",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "damage.melee.ability",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "additive"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Seule une tête est modélisée (1d8) ; combat à deux armes non modélisé."
+    },
+    {
+      "id": "item.barbed_bolas",
+      "type": "item",
+      "name": {
+        "fr": "Bolas barbelés",
+        "en": "Barbed bolas"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Des bolas dont les boules sont hérissées de pointes : elles blessent au lieu d’assommer.\n\nEn jeu\n• Arme exotique de jet ; dégâts létaux.\n• Permet un croc-en-jambe à distance ; en cas d’échec il ne se retourne pas contre le lanceur.\n• Comptent comme des bolas ordinaires pour la formation et les dons (Arme de prédilection, etc.)."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "10 po",
+        "weight": "1,5 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "range": "3 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Nom anglais à confirmer. "
+    },
+    {
+      "id": "item.boomerang",
+      "type": "item",
+      "name": {
+        "fr": "Boomerang",
+        "en": "Boomerang"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged",
+        "nonlethal"
+      ],
+      "description": {
+        "fr": "Un bâton incurvé de lancer, qui peut revenir vers son lanceur s’il rate.\n\nEn jeu\n• Arme exotique de jet ; dégâts non létaux.\n• Pour le rattraper au retour : jet d’attaque contre CA 10.\n• En cas d’échec, il tombe dans une case adjacente au lanceur (au hasard) si celui-ci est formé, ou 1d4 cases plus loin dans une direction aléatoire sinon."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "10 po",
+        "weight": "1 kg",
+        "damage": "1d4",
+        "damageSmall": "1d3",
+        "critical": "×2",
+        "range": "6 m",
+        "damageType": "Contondant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d4",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ]
+    },
+    {
+      "id": "item.greatbow",
+      "type": "item",
+      "name": {
+        "fr": "Grand arc",
+        "en": "Greatbow"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Un arc d’au moins 1,80 m, trop long pour servir à cheval.\n\nEn jeu\n• Arme exotique à distance, à deux mains ; inutilisable à cheval.\n• Un malus de Force s’applique aux dégâts, mais pas de bonus de Force (il faut la version composite).\n• Tire des flèches."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "150 po",
+        "weight": "3 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "×3",
+        "range": "36 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le malus de Force aux dégâts n’est pas modélisé."
+    },
+    {
+      "id": "item.composite_greatbow",
+      "type": "item",
+      "name": {
+        "fr": "Grand arc composite",
+        "en": "Composite greatbow"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "description": {
+        "fr": "La version composite du grand arc : trop encombrant pour un cavalier, mais qui rend la force du tireur.\n\nEn jeu\n• Arme exotique à distance, à deux mains ; inutilisable à cheval.\n• Suit les règles des arcs composites (puissance de Force) ; chaque point de bonus de Force ajoute 200 po.\n• Tire des flèches."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "200 po",
+        "weight": "3 kg",
+        "damage": "1d10",
+        "damageSmall": "1d8",
+        "critical": "×3",
+        "range": "39 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 3,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Nom anglais à confirmer. La puissance de l’arc n’est pas modélisée."
+    },
+    {
+      "id": "item.great_blowgun",
+      "type": "item",
+      "name": {
+        "fr": "Grande sarbacane",
+        "en": "Great blowgun"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "weapon",
+        "exotic",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Une sarbacane longue qui lance des dards plus gros que les aiguilles ordinaires, souvent empoisonnés.\n\nEn jeu\n• Arme exotique à distance, à deux mains pour tirer ou recharger ; recharger est une action de mouvement qui provoque une attaque d’opportunité.\n• Portée maximale : cinq facteurs de portée.\n• Tire des dards à sarbacane ; le bonus de Force ne s’applique pas aux dégâts."
+      },
+      "item": {
+        "slot": "weapon",
+        "cost": "15 po",
+        "weight": "1 kg",
+        "damage": "1d3",
+        "damageSmall": "1d2",
+        "critical": "×2",
+        "range": "3 m",
+        "damageType": "Perforant"
+      },
+      "effects": [
+        {
+          "target": "weapon.damage",
+          "op": "set",
+          "value": "1d3",
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.threat_range",
+          "op": "set",
+          "value": 1,
+          "layer": "base",
+          "scope": "item"
+        },
+        {
+          "target": "weapon.crit_multiplier",
+          "op": "set",
+          "value": 2,
+          "layer": "base",
+          "scope": "item"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Pas de bonus de Force aux dégâts : le modèle ne l’ajoute pas aux armes à distance."
+    },
+    {
+      "id": "item.blowgun_darts_10",
+      "type": "item",
+      "name": {
+        "fr": "Dards à sarbacane (10)",
+        "en": "Blowgun darts (10)"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "item",
+        "ammunition"
+      ],
+      "description": {
+        "fr": "Dix dards fins, plus lourds qu’une aiguille de sarbacane et plus légers qu’une flèche, dans une sacoche de cuir.\n\nEn jeu\n• Munitions de la grande sarbacane ; le lot de 10 est livré dans une sacoche de cuir.\n• Le bonus de Force ne s’applique pas aux dégâts ; inutilisable au corps à corps.\n• Un dard qui touche est détruit ; raté, 50 % de chances de pouvoir le récupérer."
+      },
+      "item": {
+        "slot": "ammunition",
+        "cost": "1 po",
+        "weight": "500 g"
+      },
+      "note": "Nom anglais à confirmer. "
+    }
+  ]
+}

@@ -1,0 +1,465 @@
+{
+  "entities": [
+    {
+      "id": "class.blood_magus",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Mage du sang",
+        "en": "Blood Magus"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane"
+      ],
+      "prerequisite": "@skill.concentration.ranks >= 4 and has('feat.toughness') and has('feat.great_fortitude')",
+      "description": {
+        "fr": "Il est mort une fois, et il en est revenu avec une certitude : la magie coule dans ses veines, au sens propre. Le mage du sang se pique, s’entaille, se grave des sorts dans la peau et fait de chaque goutte versée une source de puissance. Plus il saigne, plus ses sorts mordent ; au sommet de son art, il voyage d’un corps vivant à un autre en suivant le chant du sang.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : tout alignement sauf loyal bon ; 4 rangs en Concentration ; dons Robustesse et Vigueur surhumaine ; niveau 5 de lanceur de sorts profanes ; avoir été tué puis ramené à la vie.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Bluff, Concentration, Premiers secours.\n• Sorts : +1 niveau de lanceur de sorts profanes à chaque niveau sauf 5 et 10 (sorts par jour et niveau de lanceur d’une classe profane déjà acquise ; pas les autres avantages de cette classe).\n• Aptitudes : coagulation, composante sanguine et incantation durable (1) ; scarification (2) ; mise à mort 1/jour (3) ; breuvage sanguin (4) ; homoncule (5) ; étripage (6) ; plus épais que l’eau, RD 1/contondant (7) ; éveil du sang 1/jour (8) ; infusion, +2 Constitution (9) ; voyage par le sang 1/jour (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "note": "Conditions d’accès en formule : rangs, Robustesse et Vigueur surhumaine. Niveau 5 de lanceur de sorts profanes et « avoir été tué puis ramené à la vie » : texte seulement. Dé de vie d6 vérifié sur la page. Table du Codex : BBA +3 au niveau 9 (faute d’impression, +4 à +3 après le +4 du niveau 8) ; on garde +4, comme Complete Arcane. Noms anglais à confirmer pour Coagulation, Breuvage sanguin (Blood draught) et Étripage (Bloodseeking spell)."
+    },
+    {
+      "id": "power.blood_magus_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Chaque goutte versée nourrit l’art qu’il pratiquait déjà : sa magie profane continue de grandir, sauf aux deux paliers où le sang lui enseigne autre chose.\n\nEn jeu\n• Aux niveaux 1 à 4 et 6 à 9 : +1 niveau effectif dans une classe profane déjà acquise (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe.\n• Pas de progression aux niveaux 5 et 10."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.blood_magus_coagulation",
+      "type": "class_power",
+      "name": {
+        "fr": "Coagulation",
+        "en": "Coagulation"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Son sang sait se refermer de lui-même : à terre, il ne se vide pas.\n\nEn jeu\n• Extraordinaire. Sous 0 point de vie, il est stabilisé automatiquement.\n• Il meurt toujours à –10 points de vie."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.blood_magus_blood_component",
+      "type": "class_power",
+      "name": {
+        "fr": "Composante sanguine",
+        "en": "Blood component"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Une piqûre d’épingle, une goutte sur la paume, et le sort part plus fort que prévu.\n\nEn jeu\n• Surnaturel. Remplace les composantes matérielles d’un sort par son propre sang (action libre, fait partie de l’incantation).\n• Coûte 1 point de dégâts (sa réduction des dégâts ne compte pas) ; +1 niveau de lanceur de sorts pour ce sort.\n• Utilisable aussi sur un sort sans composante matérielle ; une composante de plus de 1 po reste nécessaire."
+      },
+      "effects": [],
+      "note": "Le +1 niveau de lanceur de sorts est choisi sort par sort : texte seulement."
+    },
+    {
+      "id": "power.blood_magus_durable_casting",
+      "type": "class_power",
+      "name": {
+        "fr": "Incantation durable",
+        "en": "Durable casting"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "La douleur ne le distrait plus : il a appris à lancer ses sorts en saignant.\n\nEn jeu\n• Extraordinaire. Pour le DD des tests de Concentration dus aux dégâts (incantation, maintien, sort redirigé, dégâts continus), chaque attaque compte son niveau de classe en moins.\n• Les dégâts restent subis en entier.\n• Aucun test de Concentration pour composante sanguine et étripage."
+      },
+      "effects": [],
+      "note": "DD de Concentration : texte seulement."
+    },
+    {
+      "id": "power.blood_magus_scarification",
+      "type": "class_power",
+      "name": {
+        "fr": "Scarification",
+        "en": "Scarification"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Il grave ses sorts dans sa chair ; la cicatrice reste à vif jusqu’au moment où il la libère.\n\nEn jeu\n• Extraordinaire. Comme Écriture de parchemins, mais le support est sa propre peau (mêmes coûts en po et PX, même lecture qu’un parchemin).\n• Lui seul peut lire ses marques.\n• Six cicatrices actives au maximum."
+      },
+      "effects": [],
+      "note": "Ce n’est pas le don Écriture de parchemins lui-même : pas de relation grants."
+    },
+    {
+      "id": "power.blood_magus_deathwatch",
+      "type": "class_power",
+      "name": {
+        "fr": "Mise à mort",
+        "en": "Deathwatch"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Il sent battre, ou faiblir, le sang de ceux qui l’entourent.\n\nEn jeu\n• Pouvoir magique. Mise à mort, comme le sort, 1 fois par jour."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.blood_magus_blood_draught",
+      "type": "class_power",
+      "name": {
+        "fr": "Breuvage sanguin",
+        "en": "Blood draught"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Ses potions ne sont pas en fiole : elles circulent dans ses veines, prêtes à jaillir.\n\nEn jeu\n• Extraordinaire. Comme Préparation de potions (sorts du 3e niveau au plus, mêmes coûts), mais la potion est gardée dans son sang.\n• Nombre maximal de breuvages : niveau de mage du sang + valeur de Constitution. Tous détruits s’il meurt.\n• Se piquer pour en profiter : action simple qui provoque des attaques d’opportunité.\n• Un autre peut le boire à la plaie (action complexe) ; le sang perd son effet après 1 round."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Ce n’est pas le don Préparation de potions lui-même : pas de relation grants."
+    },
+    {
+      "id": "power.blood_magus_homunculus",
+      "type": "class_power",
+      "name": {
+        "fr": "Homoncule",
+        "en": "Homunculus"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Une heure de rituel, un peu de son sang, et une petite créature ouvre les yeux, liée à lui pour toujours.\n\nEn jeu\n• Surnaturel. Crée un homoncule sans les règles de création normales : rituel de 1 heure et perte définitive de 1 point de vie.\n• Au contact (action simple, provoque des attaques d’opportunité) : lui transfère 1 point de dégâts par niveau.\n• L’homoncule gagne 1 DV à chaque niveau de mage du sang, jusqu’à 6 DV au niveau 9.\n• Homoncule tué : 2d10 points de dégâts pour le mage ; mage tué : l’homoncule meurt. Un seul à la fois."
+      },
+      "effects": [],
+      "note": "La perte de 1 point de vie et l’homoncule ne sont pas dans le modèle."
+    },
+    {
+      "id": "power.blood_magus_bloodseeking_spell",
+      "type": "class_power",
+      "name": {
+        "fr": "Étripage",
+        "en": "Bloodseeking spell"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Ses sorts ne se contentent plus de blesser : ils cherchent le sang et le font jaillir.\n\nEn jeu\n• Surnaturel. En lançant un sort, il s’inflige 3 points de dégâts (action libre, sa réduction des dégâts ne compte pas).\n• Le sort inflige 1d6 points de dégâts de plus à chaque cible, s’il fait perdre des points de vie.\n• Sans effet sur les créatures artificielles, élémentaires, morts-vivants, plantes, vases et créatures sans sang."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Choisi sort par sort : texte seulement."
+    },
+    {
+      "id": "power.blood_magus_thicker_than_water",
+      "type": "class_power",
+      "name": {
+        "fr": "Plus épais que l’eau",
+        "en": "Thicker than water"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Quand on le blesse, son sang reflue de la plaie au lieu d’en couler.\n\nEn jeu\n• Surnaturel. Réduction des dégâts 1/contondant."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.bludgeoning",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "power.blood_magus_awaken_the_blood",
+      "type": "class_power",
+      "name": {
+        "fr": "Éveil du sang",
+        "en": "Awaken the blood"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Un simple contact, et le sang de l’ennemi se rebelle et tente de sortir d’un coup.\n\nEn jeu\n• Surnaturel. 1 fois par jour : attaque de contact au corps à corps contre une créature vivante ; touchée, elle subit 10d10 points de dégâts.\n• Attaque ratée : il peut réessayer jusqu’à toucher.\n• Sans effet sur les créatures artificielles, élémentaires, morts-vivants, plantes, vases et créatures sans sang."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.blood_magus_infusion",
+      "type": "class_power",
+      "name": {
+        "fr": "Infusion",
+        "en": "Infusion"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Il distille son propre sang en une liqueur unique et la boit : son corps en sort plus robuste, pour toujours.\n\nEn jeu\n• Extraordinaire. Une seule fois : +2 en Constitution, de façon permanente."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 2
+        }
+      ],
+      "note": "Compté dès le niveau 9 (on suppose l’infusion bue)."
+    },
+    {
+      "id": "power.blood_magus_bloodwalk",
+      "type": "class_power",
+      "name": {
+        "fr": "Voyage par le sang",
+        "en": "Bloodwalk"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "blood_magus"
+      ],
+      "description": {
+        "fr": "Il entre dans une créature vivante comme dans une porte et ressort d’une autre, très loin, sur le même plan.\n\nEn jeu\n• Surnaturel. 1 fois par jour, action simple : entre dans une créature vivante au moins de sa taille et ressort à côté d’une autre créature vivante du même plan (1 round, distance illimitée).\n• Il indique une direction et une distance ; pour viser une personne précise, il lui faut une fiole de son sang.\n• Créature de départ non consentante : attaque de contact au corps à corps ; ratée, le pouvoir est perdu pour la journée.\n• Sortie sanglante (au choix) : 10d6 points de dégâts à la créature d’arrivée, Vigueur DD 10 + niveau de mage du sang + modificateur de Con pour annuler ; le mage fait Vigueur DD 15 ou est étourdi 1 round.\n• Sans effet sur les créatures artificielles, élémentaires, morts-vivants, plantes, vases et créatures sans sang."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.blood_magus",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.blood_magus_spells",
+        "power.blood_magus_coagulation",
+        "power.blood_magus_blood_component",
+        "power.blood_magus_durable_casting"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.blood_magus_scarification"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 3,
+      "bab": 1,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.blood_magus_deathwatch"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 4,
+      "bab": 2,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.blood_magus_blood_draught"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 5,
+      "bab": 2,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.blood_magus_homunculus"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 6,
+      "bab": 3,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.blood_magus_bloodseeking_spell"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 7,
+      "bab": 3,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.blood_magus_thicker_than_water"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 8,
+      "bab": 4,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.blood_magus_awaken_the_blood"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 9,
+      "bab": 4,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.blood_magus_infusion"
+      ]
+    },
+    {
+      "classId": "class.blood_magus",
+      "level": 10,
+      "bab": 5,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.blood_magus_bloodwalk"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.blood_magus",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.blood_magus",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

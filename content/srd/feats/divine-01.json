@@ -1,0 +1,298 @@
+{
+  "entities": [
+    {
+      "id": "feat.eagles_wings",
+      "type": "feat",
+      "name": {
+        "fr": "Ailes de l'aigle",
+        "en": "Eagle's Wings"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Des ailes puissantes lui poussent dans le dos et l'emportent dans le ciel avec l'aisance d'un rapace.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Dépense : une utilisation quotidienne de forme animale.\n• Ailes pendant 1 heure : vitesse de vol 18 m, manœuvrabilité moyenne."
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "min",
+          "value": 18,
+          "condition": "active('toggle.eagles_wings')"
+        }
+      ],
+      "note": "L’interrupteur marque que l’effet est actif. Pouvoir de forme animale non vérifié par la fiche ; les utilisations ne sont pas décomptées."
+    },
+    {
+      "id": "feat.alignment_focus",
+      "type": "feat",
+      "name": {
+        "fr": "Alignement renforcé",
+        "en": "Alignment Focus"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Plus il est fidèle à son camp, plus ses sorts lui obéissent : ceux qui portent la marque de son alignement sont plus difficiles à repousser.\n\nEn jeu\n• Condition : l'alignement choisi (Bien, Chaos, Loi ou Mal) doit figurer dans l'alignement du personnage.\n• DD des jets de sauvegarde +1 contre ses sorts ayant le registre choisi.\n• Ne se cumule pas avec École renforcée ni avec un autre Alignement renforcé sur un même sort.\n• Peut être pris deux fois, pour deux composantes d'alignement différentes."
+      },
+      "repeatable": {},
+      "note": "Le DD varie selon le registre du sort : non modélisé. Condition d'alignement non vérifiée par la fiche. Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.augment_healing",
+      "type": "feat",
+      "name": {
+        "fr": "Amélioration de la magie curative",
+        "en": "Augment Healing"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Ses sorts de soins referment les plaies avec une vigueur supérieure.\n\nEn jeu\n• Condition : 4 degrés de maîtrise en Premiers secours.\n• Chaque sort d'invocation [guérison] rend 2 pv de plus par niveau du sort (soins légers, niveau 1 : 1d8+3).\n• S'applique à tous ses sorts de soins."
+      },
+      "note": "Le bonus dépend du niveau du sort : non modélisé. Degrés de maîtrise en Premiers secours non vérifiés par la fiche."
+    },
+    {
+      "id": "feat.glorious_weapons",
+      "type": "feat",
+      "name": {
+        "fr": "Armes glorieuses",
+        "en": "Glorious Weapons"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il détourne l'énergie du renvoi pour baigner les armes de ses compagnons d'une lumière sainte ou d'une ombre impie.\n\nEn jeu\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants.\n• Dépense : une tentative de renvoi ou d'intimidation.\n• Action simple : les armes de corps à corps (naturelles comprises) de ses alliés dans un rayon de 18 m deviennent bonnes (énergie positive) ou mauvaises (énergie négative) et passent la réduction des dégâts correspondante.\n• Dure jusqu'à la fin de son prochain tour."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées."
+    },
+    {
+      "id": "feat.spontaneous_wounding",
+      "type": "feat",
+      "name": {
+        "fr": "Blessure spontanée",
+        "en": "Spontaneous Wounding"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Comme un prêtre voué aux ténèbres, il sacrifie un sort préparé pour en tirer une blessure.\n\nEn jeu\n• Condition : Sag 13, 4 degrés de maîtrise en Connaissances (religion), alignement non bon, au moins un sort de blessure sur sa liste.\n• Il convertit un sort préparé en sort de blessure de niveau égal ou inférieur de sa liste, comme un prêtre.\n• Limite : un nombre de conversions par jour égal à son bonus de Sagesse."
+      },
+      "prerequisite": "@ability.wis.score >= 13",
+      "note": "Degrés de maîtrise, alignement et sort de blessure non vérifiés par la fiche."
+    },
+    {
+      "id": "feat.lions_pounce",
+      "type": "feat",
+      "name": {
+        "fr": "Bond du lion",
+        "en": "Lion's Pounce"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Au bout de sa charge, il se jette sur la proie avec toute la férocité d'un fauve.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Action libre pendant une charge : dépense une utilisation quotidienne de forme animale.\n• À la fin de la charge, il fait une attaque à outrance au lieu d'une attaque simple."
+      },
+      "note": "Pouvoir de forme animale non vérifié par la fiche. Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.elemental_smiting",
+      "type": "feat",
+      "name": {
+        "fr": "Châtiment des élémentaires",
+        "en": "Elemental Smiting"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il charge son arme de l'énergie d'un élément pour frapper les créatures de l'élément opposé.\n\nEn jeu\n• Condition : pouvoir de renvoi d'un certain type d'élémentaires.\n• Dépense : une tentative de renvoi élémentaire du bon sous-type (Air, Eau, Feu, Terre). Les renvois de morts-vivants ne conviennent pas.\n• Une fois par round, action libre lors d'une attaque de corps à corps contre une créature du sous-type normalement renvoyé : si l'attaque touche, dégâts + niveau de prêtre (ou de la classe qui donne le pouvoir).\n• Si l'attaque rate, la tentative est perdue quand même."
+      },
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées ; le renvoi élémentaire n'est pas modélisé."
+    },
+    {
+      "id": "feat.reach_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Contact magique à distance",
+        "en": "Reach Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "metamagic"
+      ],
+      "description": {
+        "fr": "Il envoie son sort de contact en rayon plutôt que de le porter à la main.\n\nEn jeu\n• Un sort de contact devient un rayon de 9 m de portée, avec une attaque de contact à distance.\n• Emplacement de sort : +2 niveaux."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Seul le coût en emplacement est calculé ; le rayon est du texte."
+    },
+    {
+      "id": "feat.spontaneous_summoning",
+      "type": "feat",
+      "name": {
+        "fr": "Convocation spontanée",
+        "en": "Spontaneous Summoning"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Comme un druide, il troque un sort préparé contre l'appel d'une créature de la nature.\n\nEn jeu\n• Condition : Sag 13, 4 degrés de maîtrise en Connaissances (nature), alignement avec au moins une composante neutre, au moins un sort de convocation d'alliés naturels.\n• Il convertit un sort préparé en sort de convocation d'alliés naturels de niveau égal ou inférieur de sa liste.\n• Limite : un nombre de conversions par jour égal à son bonus de Sagesse."
+      },
+      "prerequisite": "@ability.wis.score >= 13",
+      "note": "Degrés de maîtrise, alignement et sort de convocation non vérifiés par la fiche."
+    },
+    {
+      "id": "feat.cheetahs_speed",
+      "type": "feat",
+      "name": {
+        "fr": "Course du guépard",
+        "en": "Cheetah's Speed"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Ses jambes s'allongent en foulées de félin : le temps d'un sprint, rien ne le rattrape.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Dépense : une utilisation quotidienne de forme animale.\n• Pendant 1 heure, vitesse de base au sol 15 m.\n• Une seule fois pendant cette heure, une charge peut couvrir jusqu'à dix fois sa vitesse."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "min",
+          "value": 15,
+          "condition": "active('toggle.cheetahs_speed')"
+        }
+      ],
+      "note": "L’interrupteur marque que l’effet est actif. La vitesse de 15 m ne peut que monter (plancher), jamais baisser. La charge à dix fois la vitesse est du texte."
+    },
+    {
+      "id": "feat.disciple_of_the_sun",
+      "type": "feat",
+      "name": {
+        "fr": "Disciple du soleil",
+        "en": "Disciple of the Sun"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Sa foi brûle assez fort pour réduire les morts-vivants en cendres au lieu de les faire simplement fuir.\n\nEn jeu\n• Conditions : pouvoir de renvoi ou d'intimidation des morts-vivants, alignement bon.\n• Lors d'un renvoi, il peut dépenser deux utilisations quotidiennes au lieu d'une : les morts-vivants affectés sont détruits au lieu d'être repoussés."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Alignement non vérifié par la fiche. Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.arcane_disciple",
+      "type": "feat",
+      "name": {
+        "fr": "Disciple profane",
+        "en": "Arcane Disciple"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Un magicien pieux puise dans le domaine d'un dieu pour enrichir sa liste de sorts profanes.\n\nEn jeu\n• Conditions : 4 degrés de maîtrise en Art de la magie et en Connaissances (religion), lanceur de sorts profanes, même alignement que le dieu choisi.\n• Il choisit un dieu et un de ses domaines : les sorts de ce domaine s'ajoutent à la liste d'une classe profane choisie (définitivement).\n• Il les apprend comme les autres sorts de sa classe. Pour les préparer ou les lancer, Sagesse au moins 10 + niveau du sort, et le DD utilise la Sagesse.\n• Un seul sort de domaine profane de chaque niveau par jour.\n• Peut être pris plusieurs fois, pour un autre domaine du même dieu (ou une autre classe profane)."
+      },
+      "repeatable": {},
+      "note": "Choix du dieu, du domaine et de la classe, listes de sorts : texte seulement. Prérequis non vérifiés par la fiche."
+    },
+    {
+      "id": "feat.domain_focus",
+      "type": "feat",
+      "name": {
+        "fr": "Domaine de prédilection",
+        "en": "Domain Focus"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Il connaît si bien l'un de ses domaines que ses sorts en sont plus puissants.\n\nEn jeu\n• Condition : accès au domaine choisi.\n• Niveau de lanceur de sorts +1 pour les sorts lancés comme sorts de ce domaine (résistance à la magie, durée, portée, dégâts…).\n• Ne vaut pas pour un sort de la liste générale préparé dans un emplacement normal.\n• Peut être pris plusieurs fois, pour des domaines différents."
+      },
+      "repeatable": {},
+      "note": "Domaine choisi et emplacement de domaine non modélisés : aucun effet calculé."
+    },
+    {
+      "id": "feat.extra_turning_range",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de renvoi",
+        "en": "Turn Undead Reach"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "Une seule tentative de renvoi balaie une foule bien plus grande de morts-vivants.\n\nEn jeu\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants.\n• Lors d'un renvoi réussi, le résultat du jet d'efficacité est multiplié par 1,5 (après les modificateurs de niveau et de Charisme)."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Nom anglais à confirmer. Le jet d'efficacité n'est pas modélisé."
+    },
+    {
+      "id": "feat.quick_wild_shape",
+      "type": "feat",
+      "name": {
+        "fr": "Forme animale accélérée",
+        "en": "Quick Wild Shape"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Il change de peau en un instant.\n\nEn jeu\n• Conditions : Dex 13, pouvoir de forme animale.\n• Activer forme animale demande une action de mouvement (au lieu d'une action simple)."
+      },
+      "prerequisite": "@ability.dex.score >= 13",
+      "note": "Pouvoir de forme animale non vérifié par la fiche. Nom anglais à confirmer."
+    }
+  ],
+  "relations": []
+}

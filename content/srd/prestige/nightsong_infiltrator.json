@@ -1,0 +1,560 @@
+{
+  "entities": [
+    {
+      "id": "class.nightsong_infiltrator",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Silence du Noctechant",
+        "en": "Nightsong Infiltrator"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "rogue"
+      ],
+      "description": {
+        "fr": "Serrures, pièges, murs à pic : le silence du Noctechant entre là où personne n'est invité et ressort avec ce qu'il était venu chercher. Il travaille presque toujours en équipe, en éclaireur, et fait profiter ses compagnons de sa science de l'infiltration.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 8 + modificateur d'Intelligence par niveau.\n• Conditions : 5 rangs en Crochetage, 5 en Désamorçage/sabotage, 10 en Escalade et 5 en Fouille ; don Vigilance ; esquive totale ; formation et épreuves auprès de la guilde du Noctechant.\n• Aucune formation nouvelle aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Acrobaties, Artisanat, Bluff, Contrefaçon, Crochetage, Décryptage, Déguisement, Déplacement silencieux, Désamorçage/sabotage, Détection, Diplomatie, Discrétion, Équilibre, Équitation, Escalade, Escamotage, Estimation, Évasion, Fouille, Maîtrise des cordes, Natation, Perception auditive, Profession, Renseignements, Saut, Utilisation d'objets magiques.\n• Aptitudes : recherche des pièges, sens des pièges d'équipe +1 (1) ; infiltration d'équipe +2, stabilité inébranlable (2) ; absence de traces, sauve qui peut ! (3) ; attaque sournoise d'équipe +1d6, détection de la magie, sens des pièges d'équipe +2 (4) ; mouvement collectif, roulé-boulé (5) ; esquive extraordinaire, maîtrise des compétences, outils spécialisés (6) ; absence de traces pour les alliés, sens des pièges +3 (7) ; attaque sournoise d'équipe +2d6, infiltration d'équipe +4 (8) ; mouvement collectif 2/jour (9) ; discrétion totale, sens des pièges +4 (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 8,
+      "prerequisite": "@skill.open_lock.ranks >= 5 and @skill.disable_device.ranks >= 5 and @skill.climb.ranks >= 10 and @skill.search.ranks >= 5 and has('feat.alertness')",
+      "note": "Conditions : esquive totale (pouvoir de classe) et la formation auprès de la guilde du Noctechant : texte seul."
+    },
+    {
+      "id": "power.nightsong_infiltrator_trapfinding",
+      "type": "class_power",
+      "name": {
+        "fr": "Recherche des pièges",
+        "en": "Trapfinding"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Pas un piège ne lui résiste, même ceux que les autres n'oseraient pas toucher.\n\nEn jeu\n• Trouve, désarme ou contourne les pièges de DD supérieur à 20 ; Fouille pour les pièges magiques (DD 25 + niveau du sort), Désamorçage/sabotage pour les désarmer.\n• S'il bat le DD de 10 ou plus au désamorçage, il passe le piège avec ses compagnons sans le déclencher."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.nightsong_infiltrator_team_trap_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens des pièges d'équipe",
+        "en": "Team trap sense"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Il sent le danger d'un piège un battement avant et prévient tout le groupe d'un geste.\n\nEn jeu\n• Capacité extraordinaire : contre les pièges, bonus aux jets de Réflexes et bonus d'esquive à la CA de +1 au niveau 1, +2 au niveau 4, +3 au niveau 7, +4 au niveau 10.\n• Ses alliés à 9 m ou moins en profitent aussi, même s'ils ont déjà le sens des pièges d'une autre classe."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "1 + floor((level('class.nightsong_infiltrator') - 1) / 3)",
+          "situation": "situation.vs_traps"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "1 + floor((level('class.nightsong_infiltrator') - 1) / 3)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_traps"
+        }
+      ],
+      "note": "Le bonus des alliés n'est pas dans la fiche du silence."
+    },
+    {
+      "id": "power.nightsong_infiltrator_team_infiltration",
+      "type": "class_power",
+      "name": {
+        "fr": "Infiltration d'équipe",
+        "en": "Team infiltration"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Une heure à observer une porte, et toute l'équipe sait comment la passer.\n\nEn jeu\n• Capacité extraordinaire : après 1 heure d'étude d'une petite zone (moins de 3 m de côté) à 18 m ou moins, +2 aux tests d'Acrobaties, Crochetage, Déplacement silencieux, Désamorçage/sabotage, Discrétion, Équilibre, Escalade et Fouille dans la zone pendant 24 heures.\n• Les alliés à 9 m ou moins ont le même bonus, sans avoir assisté à l'étude.\n• Le bonus passe à +4 au niveau 8."
+      },
+      "effects": [],
+      "note": "Bonus limité à une zone étudiée : texte seul (pas de situation pour l'instant)."
+    },
+    {
+      "id": "power.nightsong_infiltrator_unshakable_footing",
+      "type": "class_power",
+      "name": {
+        "fr": "Stabilité inébranlable",
+        "en": "Steady footing"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Même sur une corniche qui s'effrite, il garde les pieds sûrs.\n\nEn jeu\n• Capacité extraordinaire : jamais pris au dépourvu en escaladant ou en équilibre.\n• Bonus égal à son niveau de classe aux tests d'Équilibre et d'Escalade pour ne pas tomber quand il subit des dégâts."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Bonus conditionnel (subir des dégâts) : texte seul."
+    },
+    {
+      "id": "power.nightsong_infiltrator_trackless_step",
+      "type": "class_power",
+      "name": {
+        "fr": "Absence de traces",
+        "en": "Trackless step"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Ni empreinte ni branche brisée : sa piste s'arrête là où il pose le pied.\n\nEn jeu\n• Capacité extraordinaire dès le niveau 3 : aucune trace en milieu naturel, impossible à pister.\n• Au niveau 7 : jusqu'à 1 allié par niveau de classe en profite aussi (action simple pour les désigner ; 24 heures ou jusqu'à ce qu'il y mette fin, en action simple)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.nightsong_infiltrator_scramble",
+      "type": "class_power",
+      "name": {
+        "fr": "Sauve qui peut !",
+        "en": "Scramble"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Quand le combat tourne mal, il file plus vite que ses poursuivants.\n\nEn jeu\n• Capacité extraordinaire : +4 (esquive) à la CA les rounds où il ne fait que se déplacer.\n• En action rapide, il peut en faire profiter un allié à 9 m ou moins pour 1 round."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "dodge",
+          "condition": "active('toggle.nightsong_infiltrator_scramble')"
+        }
+      ],
+      "note": "Le bonus des alliés n'est pas dans la fiche du silence."
+    },
+    {
+      "id": "power.nightsong_infiltrator_team_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise d'équipe",
+        "en": "Team sneak attack"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Quand il tient un ennemi en tenaille avec ses amis, c'est toute l'équipe qui frappe là où ça fait mal.\n\nEn jeu\n• Capacité extraordinaire : +1d6 de dégâts sur une cible prise en tenaille entre lui et un allié, ou privée de son bonus de Dextérité à la CA ; +2d6 au niveau 8.\n• Tout allié qui prend aussi la cible en tenaille avec lui inflige les mêmes dégâts supplémentaires.\n• À distance, seulement à 9 m ou moins.\n• S'ajoute à l'attaque sournoise d'une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor(level('class.nightsong_infiltrator') / 4))d6"
+        }
+      ],
+      "note": "Le bonus des alliés n'est pas dans la fiche du silence."
+    },
+    {
+      "id": "power.nightsong_infiltrator_detect_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection de la magie",
+        "en": "Detect magic"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Un léger picotement lui signale ce qui est enchanté.\n\nEn jeu\n• Capacité magique, à volonté : comme détection de la magie."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.nightsong_infiltrator_team_move",
+      "type": "class_power",
+      "name": {
+        "fr": "Mouvement collectif",
+        "en": "Team move"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Un mot, un geste, et tout le groupe se glisse d'un pas dans l'ombre.\n\nEn jeu\n• Capacité extraordinaire, action simple : accorde une action de mouvement supplémentaire aux alliés de son choix à 9 m ou moins (lui non compris), prise tout de suite dans l'ordre d'initiative.\n• Utilisations par jour : 1 au niveau 5, 2 au niveau 9."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.nightsong_infiltrator') >= 9, 2, 1)",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.nightsong_infiltrator_defensive_roll",
+      "type": "class_power",
+      "name": {
+        "fr": "Roulé-boulé",
+        "en": "Defensive roll"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Il roule avec le coup mortel et s'en tire avec une bosse.\n\nEn jeu\n• Capacité extraordinaire : comme le roulé-boulé du roublard (Manuel des Joueurs)."
+      },
+      "effects": [],
+      "note": "Nom anglais : Defensive roll (nom du roublard)."
+    },
+    {
+      "id": "power.nightsong_infiltrator_improved_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive extraordinaire",
+        "en": "Improved evasion"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "La boule de feu l'effleure à peine.\n\nEn jeu\n• Capacité extraordinaire : contre un effet à jet de Réflexes pour demi-dégâts, aucun dégât s'il réussit, demi-dégâts s'il rate."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.nightsong_infiltrator_skill_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences",
+        "en": "Skill mastery"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Sous la pression, ses mains ne tremblent pas.\n\nEn jeu\n• Capacité extraordinaire : peut faire 10 même en situation de stress ou distrait avec Crochetage, Désamorçage/sabotage, Escalade et Fouille."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.nightsong_infiltrator_specialized_tools",
+      "type": "class_power",
+      "name": {
+        "fr": "Outils spécialisés",
+        "en": "Specialized tools"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "Il bricole l'outil exact qu'il faut pour la porte exacte qu'il vise.\n\nEn jeu\n• Capacité extraordinaire : après une étude d'infiltration, 1 heure d'Artisanat (DD 15) avec des outils d'artisan pour fabriquer un outil adapté.\n• Il donne +4 (circonstances) aux tests de Crochetage, Déguisement, Déplacement silencieux, Désamorçage/sabotage, Discrétion, Escalade, Escamotage, Évasion et Fouille dans la zone étudiée, pendant 24 heures.\n• Ne se cumule pas avec les autres outils de circonstances."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Zone étudiée : texte seul."
+    },
+    {
+      "id": "power.nightsong_infiltrator_hide_in_plain_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Discrétion totale",
+        "en": "Hide in plain sight"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "nightsong_infiltrator"
+      ],
+      "description": {
+        "fr": "On le regarde en face, et on ne le voit pas.\n\nEn jeu\n• Capacité extraordinaire : en terrain naturel, peut utiliser Discrétion même s'il est observé."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.nightsong_infiltrator_trapfinding",
+        "power.nightsong_infiltrator_team_trap_sense"
+      ]
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.nightsong_infiltrator_team_infiltration",
+        "power.nightsong_infiltrator_unshakable_footing"
+      ]
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.nightsong_infiltrator_trackless_step",
+        "power.nightsong_infiltrator_scramble"
+      ]
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.nightsong_infiltrator_team_sneak_attack",
+        "power.nightsong_infiltrator_detect_magic"
+      ]
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.nightsong_infiltrator_team_move",
+        "power.nightsong_infiltrator_defensive_roll"
+      ]
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.nightsong_infiltrator_improved_evasion",
+        "power.nightsong_infiltrator_skill_mastery",
+        "power.nightsong_infiltrator_specialized_tools"
+      ]
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.nightsong_infiltrator",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.nightsong_infiltrator_hide_in_plain_sight"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.forgery"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.nightsong_infiltrator",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    }
+  ]
+}

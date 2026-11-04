@@ -1,0 +1,301 @@
+{
+  "entities": [
+    {
+      "id": "class.master_of_many_forms",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître des formes multiples",
+        "en": "Master of Many Forms"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "shapechange"
+      ],
+      "description": {
+        "fr": "Il n’a pas de visage à lui : il porte celui qui sert le mieux la situation. Son identité tient dans son âme, la seule chose qui ne change pas d’une transformation à l’autre, et sa forme animale s’ouvre peu à peu à tous les types de créatures.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : dons Endurance et Vigilance ; pouvoir de forme animale.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Artisanat, Concentration, Connaissances (nature), Déguisement, Détection, Diplomatie, Discrétion, Dressage, Escalade, Natation, Perception auditive, Saut, Survie.\n• Aptitudes : verbe du change-forme (1) ; forme animale supérieure (1 à 10, un nouveau type de créature par niveau) ; forme animale accélérée (3) ; forme animale extraordinaire (7) ; forme changeante (10).\n• Les niveaux s’ajoutent à ceux des autres classes qui donnent la forme animale (dés de vie de la forme, durée) et donnent 1 utilisation par jour de plus par niveau."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "has('feat.endurance') and has('feat.alertness')",
+      "note": "Condition hors formule : pouvoir de forme animale (d’une autre classe). Mise à jour du changement de forme de l’ouvrage Les maîtres de la nature. Forme animale (druide) : utilisations, dés de vie et durée cumulés avec les niveaux de cette classe, texte seulement."
+    },
+    {
+      "id": "power.master_of_many_forms_shapechanger_speech",
+      "type": "class_power",
+      "name": {
+        "fr": "Verbe du change-forme",
+        "en": "Shifter speech"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_many_forms"
+      ],
+      "description": {
+        "fr": "Sa voix ne change pas avec son corps : il parle, et même lance des sorts, sous n’importe quelle forme.\n\nEn jeu\n• Pouvoir extraordinaire, niveau 1.\n• Il parle normalement dans toutes ses formes, composantes verbales comprises.\n• Il peut communiquer avec les créatures de l’espèce qu’il imite, si elles savent communiquer entre elles."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_many_forms_greater_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale supérieure",
+        "en": "Greater wild shape"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_many_forms"
+      ],
+      "description": {
+        "fr": "Chaque niveau lui ouvre une nouvelle famille de créatures, et une nouvelle gamme de tailles.\n\nEn jeu\n• Surnaturel. Forme animale peut prendre des formes de plus en plus variées : humanoïde (niveau 1), géant (2), humanoïde monstrueux (3), fée (4), vermine (5), aberration (6), plante (7), vase (8), élémentaire (9), dragon (10).\n• Tailles : G (niveau 2), TP (4), TG (6), Min (8), Gig (10).\n• Ses niveaux s’ajoutent à ceux des autres classes avec forme animale pour la limite de dés de vie de la forme et la durée.\n• +1 utilisation par jour de forme animale par niveau de maître des formes multiples."
+      },
+      "note": "Les utilisations et la limite de dés de vie de la forme animale (druide) ne sont pas dans le modèle : texte seulement.",
+      "effects": []
+    },
+    {
+      "id": "power.master_of_many_forms_quickened_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale accélérée",
+        "en": "Quick wild shape"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_many_forms"
+      ],
+      "description": {
+        "fr": "Passer d’une forme à l’autre devient presque un réflexe.\n\nEn jeu\n• Niveau 3 : prend sa forme animale par une action de mouvement au lieu d’une action simple."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_many_forms_extraordinary_wild_shape",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme animale extraordinaire",
+        "en": "Extraordinary wild shape"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_many_forms"
+      ],
+      "description": {
+        "fr": "Il garde tout ce que la forme a d’étrange : crocs venimeux, vol, souffle ou carapace.\n\nEn jeu\n• Niveau 7 : gagne les particularités extraordinaires de toute créature dont il prend l’aspect avec forme animale."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.master_of_many_forms_shapechanger",
+      "type": "class_power",
+      "name": {
+        "fr": "Forme changeante",
+        "en": "Shapechanger"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "master_of_many_forms"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, sa nature elle-même devient fluide.\n\nEn jeu\n• Niveau 10 : gagne le sous-type métamorphe.\n• Immunité à tous les effets de transmutation, sauf s’il accepte d’être affecté.\n• Plus de malus de vieillesse aux caractéristiques et immunité contre le vieillissement accéléré ; les malus déjà subis restent, les bonus d’âge continuent. Il meurt toujours de vieillesse en temps voulu."
+      },
+      "note": "Immunités : texte seulement.",
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.master_of_many_forms_shapechanger_speech",
+        "power.master_of_many_forms_greater_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape",
+        "power.master_of_many_forms_quickened_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape",
+        "power.master_of_many_forms_extraordinary_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape"
+      ]
+    },
+    {
+      "classId": "class.master_of_many_forms",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.master_of_many_forms_greater_wild_shape",
+        "power.master_of_many_forms_shapechanger"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.master_of_many_forms",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

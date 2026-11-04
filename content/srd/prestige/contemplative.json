@@ -1,0 +1,367 @@
+{
+  "entities": [
+    {
+      "id": "class.contemplative",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître contemplatif",
+        "en": "Contemplative"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Le maître contemplatif a tant médité sur le divin qu'il en est devenu un morceau. Son corps refuse les poisons et les maladies, l'âge ne l'atteint plus, et son esprit glisse hors de portée des enchanteurs. Cette voie convient bien à un fidèle qui change de dieu et cherche un nouveau chemin.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : Connaissances (religion) 13 rangs ; savoir lancer des sorts divins du 1er niveau ; avoir connu un contact direct avec sa divinité, un de ses serviteurs proches ou un être illuminé qui incarne un alignement (un solar, par exemple).\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (religion), Diplomatie, Intimidation, Premiers secours, Profession, Psychologie.\n• Sorts : +1 niveau de lanceur de sorts divins à chaque niveau.\n• Aptitudes : domaine supplémentaire (1, 6) ; santé divine (1) ; esprit insaisissable (2) ; plénitude divine (3) ; corps divin (5) ; âme divine (7) ; corps inaltérable (9) ; union mystique (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_religion.ranks >= 13",
+      "note": "Lancer des sorts divins du 1er niveau et le contact avec la divinité : texte seul. Connaissances (religion) 13 rangs est dans la formule."
+    },
+    {
+      "id": "power.contemplative_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de maître contemplatif",
+        "en": "Contemplative spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Sa méditation nourrit sa magie : ses prières montent en puissance au même rythme que sa sagesse intérieure.\n\nEn jeu\n• Chaque niveau de maître contemplatif compte comme un niveau de lanceur de sorts de plus dans une classe de lanceur de sorts divins que le personnage avait déjà ; • Si plusieurs classes conviennent, il choisit celle qui avance. Il gagne les sorts par jour, les sorts connus et le niveau de lanceur de sorts correspondants.\n• Il ne gagne pas les autres avantages de cette classe (renvoi des morts-vivants plus fort, plus d'utilisations de guérison des maladies…)."
+      },
+      "effects": [],
+      "note": "Pas de ligne dans la table : le niveau de lanceur de sorts est choisi dans les fiches de niveau. Le texte du livre demande une classe qui maîtrise le 1er niveau de sorts."
+    },
+    {
+      "id": "power.contemplative_bonus_domain",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine supplémentaire",
+        "en": "Bonus domain"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Un nouveau pan de la foi s'ouvre : il peut puiser dans un autre domaine que ceux de sa divinité.\n\nEn jeu\n• Aux niveaux 1 et 6 : accès à un domaine de son choix parmi ceux de son alignement ou de sa divinité.\n• Il reçoit le pouvoir accordé du domaine et peut choisir ses sorts comme sorts de domaine."
+      },
+      "effects": [],
+      "note": "Domaine choisi : texte seul, le modèle n'accorde pas encore de domaine par une classe de prestige."
+    },
+    {
+      "id": "power.contemplative_divine_health",
+      "type": "class_power",
+      "name": {
+        "fr": "Santé divine",
+        "en": "Divine health"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Aucun mal ne s'installe dans un corps déjà tourné vers le ciel.\n\nEn jeu\n• Capacité extraordinaire : immunisé contre toutes les maladies, magiques ou non (lycanthropie, putréfaction des momies…)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.contemplative_slippery_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit insaisissable",
+        "en": "Slippery mind"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Un enchantement qui l'a saisi se desserre souvent à la seconde tentative.\n\nEn jeu\n• Capacité extraordinaire : s'il rate un jet de sauvegarde contre un enchantement, il peut le refaire 1 round plus tard.\n• Une seule seconde chance par effet."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.contemplative_divine_wholeness",
+      "type": "class_power",
+      "name": {
+        "fr": "Plénitude divine",
+        "en": "Divine wholeness"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Il se referme tout seul, comme si le divin recousait sa chair.\n\nEn jeu\n• Capacité surnaturelle : se soigne de 4 fois son niveau de maître contemplatif en points de vie par jour.\n• Les points peuvent être répartis en plusieurs utilisations. S'ajoute à ses autres soins."
+      },
+      "effects": [
+        {
+          "target": "divine_wholeness.hp",
+          "op": "add",
+          "value": "4 * level('class.contemplative')"
+        }
+      ],
+      "note": "Réserve de points de vie, comme la plénitude physique du moine : à utiliser à la main."
+    },
+    {
+      "id": "power.contemplative_divine_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Corps divin",
+        "en": "Divine body"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Le sang d'un maître contemplatif n'a plus de goût pour le poison.\n\nEn jeu\n• Capacité surnaturelle : immunisé contre tous les poisons et venins."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.contemplative_divine_soul",
+      "type": "class_power",
+      "name": {
+        "fr": "Âme divine",
+        "en": "Divine soul"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "La magie hostile glisse sur lui comme l'eau sur une pierre polie.\n\nEn jeu\n• Capacité surnaturelle : résistance à la magie de 15 + niveau de maître contemplatif.\n• Un lanceur doit égaler ou dépasser ce chiffre avec son test de niveau de lanceur de sorts."
+      },
+      "effects": [
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": "15 + level('class.contemplative')",
+          "layer": "base"
+        }
+      ]
+    },
+    {
+      "id": "power.contemplative_incorruptible_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Corps inaltérable",
+        "en": "Incorruptible body"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Les années ne lui retirent plus rien.\n\nEn jeu\n• Capacité extraordinaire : plus de malus de caractéristique dû à l'âge, et on ne peut plus le vieillir par magie.\n• Les malus déjà subis restent ; les bonus d'âge continuent. Il meurt quand même de vieillesse à son heure."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.contemplative_mystic_union",
+      "type": "class_power",
+      "name": {
+        "fr": "Union mystique",
+        "en": "Mystic union"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "contemplative"
+      ],
+      "description": {
+        "fr": "Il n'est plus tout à fait mortel : sa nature elle-même est devenue magique.\n\nEn jeu\n• Capacité surnaturelle : pour les sorts et effets magiques, il compte comme un Extérieur (natif) et non comme un humanoïde.\n• Réduction des dégâts 10/magie."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.magic",
+          "op": "add",
+          "value": 10
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.contemplative",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.contemplative_spells",
+        "power.contemplative_bonus_domain",
+        "power.contemplative_divine_health"
+      ]
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.contemplative_slippery_mind"
+      ]
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.contemplative_divine_wholeness"
+      ]
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.contemplative_divine_body"
+      ]
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.contemplative_bonus_domain"
+      ]
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.contemplative_divine_soul"
+      ]
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.contemplative_incorruptible_body"
+      ]
+    },
+    {
+      "classId": "class.contemplative",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.contemplative_mystic_union"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.contemplative",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    }
+  ]
+}

@@ -95,6 +95,53 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
   prerequisites, feats that give maneuvers, the book's 38 feats, an effects pass over the maneuvers, 9 new
   situations. Checked: engine allTests, server tests, web tests and build, content checks, an import into a
   throwaway database (before the feats). Not checked in a browser; not reviewed; not imported on the VPS.
+- Codex Profane (Complete Arcane, owner's French PDF), 2026-11-02: first of the four Codex books (owner's order: book
+  by book, character options only; then Aventureux, Martial, Divin). Content: 147 spells, 80 feats (16 epic), 19
+  prestige classes, Warmage, Wu Jen, Warlock and its 50 invocations (see `content/AGENTS.md`); one Sonnet writer and
+  one reviewer agent per chunk (owner: Sonnet agents, the Opus ones hit the usage limit). Engine: invocations
+  (`invoking`, `invocation` block, `character.invocations`, `invokers` in the API, `InvokingTest`). Server:
+  `GET /catalog/invocations`, `invocation_grade` search filter (`0011_invocation_filters.sql`). Web: « Invocations »
+  on the Build screen, invocation facts and filter in the catalog, table columns, 42 new labels with icons; spell cards
+  show the level first (« 3 : Ensorceleur/Mage de bataille/Magicien »). Checked: content checks, engine JVM and Node
+  tests, web tests and build, server fmt and clippy, Danalieth's 20 verified values with the whole catalog merged
+  (Reflex 74 instead of 81 comes from the committed Warblade batch, as before). Not checked: server tests (Docker was
+  not running), a browser, an import. Engine tests pass on JVM, JS and iOS. Not reviewed; not committed.
+  Owner's choices (2026-11-02): keep the English names chosen (« Nom anglais à confirmer »: change the English name
+  later, never the id); the Sevenfold Veil's warding DC reads Intelligence for now (`18 + @ability.int.mod`; her test
+  catalog still has `@casting_ability.mod`); Wu Jen levels where the spell block and the book's list disagree keep the
+  block (Animate Fire 3, Mass Resist Energy 3); spell cards show the level first. Engine: zero-cost metamagic (every
+  `spell.slot_cost` written as 0) stays out of `spell.metamagic_count`, so the 7 Sudden feats, Born of the Three
+  Thunders, Energy Substitution, Lord of the Uttercold, Sanctum Spell, Cooperative Spell and Lore of Moil cost 0 on
+  a variant; each Sudden feat has its model feat's effects (Sudden Empower ×1.5, same exclusive group as Empower).
+- Codex Aventureux (Complete Adventurer), 2026-11-02: second Codex book, same process (Sonnet writer + reviewer per
+  chunk). Content: Scout, Ninja, Spellthief; 27 prestige classes; 70 spells; 66 feats (12 epic); 5 exotic weapons (see
+  `content/AGENTS.md`). Spell names checked against a community list of Complete Adventurer spells (35 renamed from
+  the agents' guesses); many class feature names still say « Nom anglais à confirmer ». The « tourmenteur » (Hexblade,
+  Complete Warrior) list waits in `content/tools/out/codex/aventureux/lists/hexblade.json` until the Codex Martial.
+  Tools: the equipment check accepts items of other books (shape only); 7 new situations. Web: 35 labels with icons
+  (the new classes, `scout_bonus`, `wild`, `bardic_music`, `nature`, `bardic`), the Scout bonus feat slot in the
+  editor targets, `Complete Adventurer` → `source.complete_adventurer`. Checked: every batch check, the catalog check,
+  web tests and build, Danalieth with the whole catalog (only the old Reflex difference). Not checked: server tests,
+  a browser, an import. No engine change. Not reviewed; not committed.
+- Codex Martial (Complete Warrior), 2026-11-03: third Codex book, same process. Content: Samurai, Swashbuckler,
+  Hexblade, Paladin and Ranger without spells; 36 prestige classes; 9 spells and 5 domains; 95 feats (12 epic); 19
+  exotic weapons (see `content/AGENTS.md`). Many class feature and weapon names still say « Nom anglais à confirmer ».
+  Fixes on earlier batches: the Complete Adventurer « Frappe débilitante » is Staggering Strike
+  (`feat.hamstring` → `feat.staggering_strike`; Hamstring is Complete Warrior's « Coupe-jarret »). Tools: `gen.py`
+  `reuse`, `gen_focus.py` Hexblade labels, 8 new situations, `deploy/import-content.sh` imports `tob/` and `arcane/`
+  (they were missing). Web: 41 labels with icons, the Hexblade and Spellsword bonus feat slots,
+  `Complete Warrior` → `source.complete_warrior`. Checked: every batch check, the catalog check, web tests and build,
+  Danalieth with the whole catalog (only the old Reflex difference). Not checked: server tests, a browser, an import.
+  No engine change. Not reviewed; not committed.
+- Codex Divin (Complete Divine), 2026-11-03: fourth and last Codex book, same process. Content: Favored Soul, Spirit
+  Shaman, Shugenja (its list and its 8 orders); 24 prestige classes; 123 spells and 21 domains; 51 feats (10 epic,
+  3 faith-point feats of an optional rule). Lists: the book's own, plus the whole lists its classes borrow (cleric →
+  Favored Soul and Ur-Priest, druid → Spirit Shaman, ranger → Consecrated Harrier, paladin and blackguard → Pious
+  Templar). Many class feature and spell names still say « Nom anglais à confirmer ». Web: 27 labels with icons, the
+  Hospitaler and Pious Templar bonus feat slots (fighter bonus feats), `Complete Divine` → `source.complete_divine`;
+  1 new situation. Checked: every batch check, the catalog check, web tests and build, Danalieth with the whole
+  catalog (only the old Reflex difference). Not checked: server tests, a browser, an import. No engine change. Not
+  reviewed; not committed.
 - Auth: refresh retry grace (30 s). A page reload during a token refresh used to log the session out; now a used
   token presented again within 30 s, when no newer token of the session was used, gets a new pair and the token the
   client never received is revoked. Past 30 s, or after a newer token was used, it is theft as before (whole session

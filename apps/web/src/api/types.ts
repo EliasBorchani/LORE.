@@ -66,6 +66,8 @@ export interface Character {
   spellcasting?: Record<string, { mode: string; known?: string[] }>
   /** Initiator class id to the maneuvers and stances it learned. */
   maneuvers?: Record<string, { known?: string[] }>
+  /** Invoker class id (Warlock) to the invocations it learned. */
+  invocations?: Record<string, { known?: string[] }>
   variants?: SpellVariant[]
   /** Skill id to ranks, for the whole character. */
   skillRanks?: Record<string, number>
@@ -150,6 +152,9 @@ export interface ProgressionRow {
   maneuversKnown?: number
   maneuversReadied?: number
   stancesKnown?: number
+  /** Invoker classes (Warlock): invocations known and the highest grade reached on this row. */
+  invocationsKnown?: number
+  invocationGrade?: string
 }
 
 export interface Relation {
@@ -220,6 +225,13 @@ export interface ManeuverEntry {
   maneuver: { discipline: string; level: number; kind: string; requires?: number } | null
 }
 
+/** A warlock invocation (`catalog/invocations`). */
+export interface InvocationEntry {
+  id: string
+  name: Localized | null
+  invocation: { grade: string; level: number; kind?: string } | null
+}
+
 export interface EntityPage {
   items: EntitySummary[]
   next?: string
@@ -227,8 +239,8 @@ export interface EntityPage {
   references?: EntityReference[]
 }
 
-/** The search filters; their values come from the content (`server/migrations/0007_search_filters.sql`, `0010`). */
-export const FACETS = ['school', 'descriptor', 'list', 'level', 'affects', 'discipline', 'maneuver_level'] as const
+/** The search filters; their values come from the content (`server/migrations/0007_search_filters.sql`, `0010`, `0011`). */
+export const FACETS = ['school', 'descriptor', 'list', 'level', 'affects', 'discipline', 'maneuver_level', 'invocation_grade'] as const
 export type Facet = (typeof FACETS)[number]
 export type SearchFilters = Partial<Record<Facet, string[]>>
 

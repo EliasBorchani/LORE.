@@ -1,0 +1,441 @@
+{
+  "entities": [
+    {
+      "id": "feat.monkey_grace",
+      "type": "feat",
+      "name": {
+        "fr": "Agilité du singe",
+        "en": "Monkey Grace"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "movement",
+        "skill",
+        "scout_bonus"
+      ],
+      "description": {
+        "fr": "Comme un singe dans la canopée, le personnage file de branche en branche sans que la forêt le ralentisse.\n\nEn jeu\n• Condition : 4 degrés en Escalade et 4 en Saut.\n• En forêt moyenne ou dense, il se déplace à sa vitesse de base au sol sans subir les ralentissements du terrain.\n• Il doit rester à au moins 6 m au-dessus du sol."
+      },
+      "prerequisite": "@skill.climb.ranks >= 4 and @skill.jump.ranks >= 4"
+    },
+    {
+      "id": "feat.oversized_two_weapon_fighting",
+      "type": "feat",
+      "name": {
+        "fr": "Arme secondaire disproportionnée",
+        "en": "Oversized Two-Weapon Fighting"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Une arme trop lourde pour la main faible ne lui fait pas peur : il la manie avec l'aisance d'une lame courte.\n\nEn jeu\n• Condition : For 13, Combat à deux armes.\n• Une arme à une main tenue dans la main non directrice compte comme une arme légère pour les malus du combat à deux armes.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.str.score >= 13 and has('feat.two_weapon_fighting')"
+    },
+    {
+      "id": "feat.devoted_performer",
+      "type": "feat",
+      "name": {
+        "fr": "Artiste dévot",
+        "en": "Devoted Performer"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il a quitté les scènes frivoles pour mettre sa musique au service de l'honneur et de la justice.\n\nEn jeu\n• Condition : châtiment du Mal et musique de barde.\n• Les niveaux de paladin et de barde s'additionnent pour les dégâts du châtiment du Mal et pour le nombre d'utilisations quotidiennes de la musique de barde.\n• Le nombre de châtiments par jour et les types de musique accessibles ne changent pas.\n• Le personnage peut gagner librement des niveaux de barde et de paladin, mais doit rester loyal bon pour progresser en paladin. Les malus d'expérience des classes déséquilibrées s'appliquent."
+      },
+      "prerequisite": "has('power.paladin_smite_evil') and has('power.bard_bardic_music')",
+      "note": "Le cumul des niveaux de paladin et de barde n'est pas calculé par la fiche."
+    },
+    {
+      "id": "feat.versatile_performer",
+      "type": "feat",
+      "name": {
+        "fr": "Artiste polyvalent",
+        "en": "Versatile Performer"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "skill"
+      ],
+      "description": {
+        "fr": "Chant, luth, danse ou théâtre : toutes ses formes d'art se hissent au niveau de sa meilleure.\n\nEn jeu\n• Condition : 5 degrés en Représentation.\n• Il choisit un nombre de formes de Représentation égal à son bonus d'Intelligence (minimum 1) ; pour elles, il compte comme ayant autant de degrés que dans sa meilleure forme.\n• Le choix est définitif ; une nouvelle forme s'ajoute à chaque point de bonus d'Intelligence gagné de façon permanente.\n• +2 aux tests de Représentation qui combinent plusieurs formes à la fois (ajouté au meilleur modificateur)."
+      },
+      "prerequisite": "@skill.perform.ranks >= 5",
+      "note": "Les formes choisies et le bonus de +2 ne sont pas calculés par la fiche."
+    },
+    {
+      "id": "feat.dual_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque double",
+        "en": "Dual Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Au cœur de la mêlée, il frappe des deux mains d'un seul mouvement, d'une précision de danseur.\n\nEn jeu\n• Condition : Combat à deux armes, Science du combat à deux armes.\n• Action simple : une attaque au corps à corps avec chaque arme, avec un seul jet d'attaque (le modificateur le moins favorable des deux armes).\n• Malus de -4 si l'arme principale est à une main ou légère et l'autre légère ; sinon -10.\n• Chaque arme inflige ses dégâts ; la réduction des dégâts s'applique séparément.\n• Les dégâts de précision (attaque sournoise) ne comptent qu'une fois. Sur un critique, seule l'arme principale inflige des dégâts accrus."
+      },
+      "prerequisite": "has('feat.two_weapon_fighting') and has('feat.improved_two_weapon_fighting')"
+    },
+    {
+      "id": "feat.leap_attack",
+      "type": "feat",
+      "name": {
+        "fr": "Attaque sautée",
+        "en": "Leap Attack"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee",
+        "movement"
+      ],
+      "description": {
+        "fr": "Il bondit sur son adversaire en pleine charge et retombe de tout son poids sur lui.\n\nEn jeu\n• Condition : 8 degrés en Saut, Attaque en puissance.\n• Il peut sauter pendant une charge ; s'il saute d'au moins 3 m à l'horizontale et atterrit à portée de la cible, les dégâts supplémentaires d'Attaque en puissance augmentent de 100 %.\n• Les règles du Saut et de la charge s'appliquent, mais le terrain difficile survolé est ignoré."
+      },
+      "prerequisite": "@skill.jump.ranks >= 8 and has('feat.power_attack')"
+    },
+    {
+      "id": "feat.ascetic_hunter",
+      "type": "feat",
+      "name": {
+        "fr": "Chasseur ascétique",
+        "en": "Ascetic Hunter"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Ce moine a quitté la voie stricte de son ordre pour traquer les hors-la-loi, et ses poings en sont plus précis.\n\nEn jeu\n• Condition : Coup étourdissant, ennemi juré.\n• Quand il frappe à mains nues pour étourdir son ennemi juré, le DD du coup étourdissant augmente de la moitié de son bonus d'ennemi juré aux dégâts.\n• Les niveaux de rôdeur et de moine s'additionnent pour les dégâts à mains nues.\n• Il peut gagner librement des niveaux de moine et de rôdeur, mais doit rester loyal pour progresser en moine. Malus d'expérience des classes déséquilibrées."
+      },
+      "prerequisite": "has('feat.stunning_fist') and has('power.ranger_favored_enemy')",
+      "note": "Le cumul des niveaux et le bonus de DD ne sont pas calculés par la fiche."
+    },
+    {
+      "id": "feat.ascetic_knight",
+      "type": "feat",
+      "name": {
+        "fr": "Chevalier ascétique",
+        "en": "Ascetic Knight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "unarmed"
+      ],
+      "description": {
+        "fr": "Moine et paladin à la fois, il voit dans l'illumination et l'honneur une seule et même pureté.\n\nEn jeu\n• Condition : Coup étourdissant, châtiment du Mal.\n• Les niveaux de paladin et de moine s'additionnent pour les dégâts à mains nues et pour les dégâts supplémentaires du châtiment du Mal.\n• Il peut gagner librement des niveaux de moine et de paladin, mais doit rester loyal bon pour progresser en paladin et loyal pour progresser en moine. Malus d'expérience des classes déséquilibrées."
+      },
+      "prerequisite": "has('feat.stunning_fist') and has('power.paladin_smite_evil')",
+      "note": "Le cumul des niveaux n'est pas calculé par la fiche."
+    },
+    {
+      "id": "feat.extraordinary_concentration",
+      "type": "feat",
+      "name": {
+        "fr": "Concentration extraordinaire",
+        "en": "Extraordinary Concentration"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "magic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Sa concentration est telle qu'il maintient un sort sans quasiment y penser.\n\nEn jeu\n• Condition : 15 degrés en Concentration.\n• Pour maintenir un sort, test de Concentration (DD 25 + niveau du sort) : réussi, le maintien ne coûte qu'une action de mouvement.\n• Réussi avec 10 de plus que le DD : une action rapide.\n• Il ne coûte qu'une action libre d'essayer ; un échec met fin au sort. Un seul sort à la fois.\n• Normal : maintenir un sort demande une action simple par round."
+      },
+      "prerequisite": "@skill.concentration.ranks >= 15"
+    },
+    {
+      "id": "feat.final_blow",
+      "type": "feat",
+      "name": {
+        "fr": "Coup final",
+        "en": "Final Blow"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il ne perd pas une seconde pour achever un ennemi à terre.\n\nEn jeu\n• Condition : Science de l'initiative, bonus de base à l'attaque de +2.\n• Un coup de grâce sur un adversaire sans défense ne demande qu'une action simple (il provoque toujours des attaques d'opportunité).\n• Normal : action complexe."
+      },
+      "prerequisite": "has('feat.improved_initiative') and @bab >= 2",
+      "note": "Nom anglais à confirmer (peut-être « Coup de Grace »)."
+    },
+    {
+      "id": "feat.find_the_gap",
+      "type": "feat",
+      "name": {
+        "fr": "Coup habile",
+        "en": "Find the Gap"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee",
+        "skill"
+      ],
+      "description": {
+        "fr": "Son œil repère le défaut de la cuirasse, et son coup s'y glisse.\n\nEn jeu\n• Condition : Int 13, Expertise du combat, 10 degrés en Détection, attaque sournoise.\n• Action simple : test de Détection contre un DD égal à la CA de la cible.\n• Réussi : sa prochaine attaque (avant la fin de son prochain tour) ignore les bonus d'armure et d'armure naturelle de la cible (altérations comprises).\n• À distance, la cible doit être à 9 m ou moins."
+      },
+      "prerequisite": "@ability.int.score >= 13 and has('feat.combat_expertise') and @skill.spot.ranks >= 10 and has('power.rogue_sneak_attack')"
+    },
+    {
+      "id": "feat.magical_appraisal",
+      "type": "feat",
+      "name": {
+        "fr": "Estimation de nature magique",
+        "en": "Magical Appraisal"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "magic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Son œil de connaisseur lit les propriétés d'un objet magique sans sort d'identification.\n\nEn jeu\n• Condition : 5 degrés en Art de la magie, en Connaissances (mystères) et en Estimation.\n• Sur un objet qu'il sait magique, Estimation révèle ses propriétés : 8 heures de travail sans interruption et 25 po de matériaux consommés.\n• DD du test : 10 + niveau de lanceur de sorts de l'objet."
+      },
+      "prerequisite": "@skill.spellcraft.ranks >= 5 and @skill.knowledge_arcana.ranks >= 5 and @skill.appraise.ranks >= 5"
+    },
+    {
+      "id": "feat.expert_tactician",
+      "type": "feat",
+      "name": {
+        "fr": "Expert tacticien",
+        "en": "Expert Tactician"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Un coup bien placé lui sert à lancer toute son équipe sur la même cible.\n\nEn jeu\n• Condition : Dex 13, Attaques réflexes, bonus de base à l'attaque de +2.\n• Après une attaque d'opportunité réussie contre une créature, lui et ses alliés gagnent +2 (circonstances) aux attaques et aux dégâts au corps à corps contre elle pendant 1 round."
+      },
+      "prerequisite": "@ability.dex.score >= 13 and has('feat.combat_reflexes') and @bab >= 2",
+      "note": "Interrupteur à activer après une attaque d'opportunité réussie : +2 au corps à corps contre cette créature pendant 1 round (la fiche ne suit pas la cible).",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.expert_tactician')"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.expert_tactician')"
+        }
+      ]
+    },
+    {
+      "id": "feat.combat_intuition",
+      "type": "feat",
+      "name": {
+        "fr": "Flair du combattant",
+        "en": "Combat Intuition"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il lit les intentions de ses adversaires et sent tout de suite ce qu'ils valent au combat.\n\nEn jeu\n• Condition : 4 degrés en Psychologie, bonus de base à l'attaque de +5.\n• Action libre : évaluer l'adversité d'un ennemi avec Psychologie, avec +4 au test ; le résultat est limité à une seule catégorie d'écart.\n• +1 (intuition) à l'attaque au corps à corps contre une créature déjà attaquée au corps à corps au round précédent.\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@skill.sense_motive.ranks >= 4 and @bab >= 5",
+      "note": "Interrupteur : +1 au corps à corps contre une créature déjà attaquée au corps à corps au round précédent. L'évaluation de l'adversaire n'est pas calculée.",
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 1,
+          "bonusType": "insight",
+          "condition": "active('toggle.combat_intuition')"
+        }
+      ]
+    },
+    {
+      "id": "feat.force_of_personality",
+      "type": "feat",
+      "name": {
+        "fr": "Forte personnalité",
+        "en": "Force of Personality"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "Sa confiance en lui est presque inébranlable, et sa volonté s'en nourrit.\n\nEn jeu\n• Condition : Cha 13.\n• Il ajoute son modificateur de Charisme, à la place de celui de Sagesse, à ses jets de Volonté contre les sorts et effets mentaux."
+      },
+      "prerequisite": "@ability.cha.score >= 13",
+      "note": "Le remplacement de la Sagesse par le Charisme aux jets de Volonté n'est pas calculé par la fiche."
+    },
+    {
+      "id": "feat.staggering_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Frappe débilitante",
+        "en": "Staggering Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Une attaque sournoise bien placée entrave les jambes de la victime.\n\nEn jeu\n• Condition : bonus de base à l'attaque de +6, attaque sournoise.\n• Sur une attaque sournoise réussie, il peut ajouter une blessure invalidante : jet de Vigueur (DD égal aux dégâts infligés) ou la cible est chancelante pendant 1 round.\n• Premiers secours (DD 15) ou des soins magiques d'au moins 1 pv mettent fin à l'état avant.\n• Les effets ne se cumulent pas ; sans effet sur les créatures immunisées à l'attaque sournoise."
+      },
+      "prerequisite": "@bab >= 6 and has('power.rogue_sneak_attack')"
+    },
+    {
+      "id": "feat.mobile_spellcasting",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation mobile",
+        "en": "Mobile Spellcasting"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "magic",
+        "movement",
+        "skill"
+      ],
+      "description": {
+        "fr": "Il lance ses sorts en marchant, sans perdre le fil de sa concentration.\n\nEn jeu\n• Condition : 8 degrés en Concentration.\n• Test de Concentration (DD 20 + niveau du sort) pour lancer un sort et se déplacer à sa vitesse dans la même action simple.\n• Seulement pour les sorts d'une action simple. Un échec fait perdre le sort.\n• Les attaques d'opportunité du déplacement s'appliquent. Incantation à la fois mobile et défensive : DD 25 + niveau du sort."
+      },
+      "prerequisite": "@skill.concentration.ranks >= 8"
+    },
+    {
+      "id": "feat.demolition_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Influx de démolition",
+        "en": "Demolition Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "magic",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il canalise la magie d'un sort sacrifié dans ses coups pour briser constructs et morts-vivants.\n\nEn jeu\n• Condition : attaque sournoise, niveau 5 de lanceur de sorts.\n• Action rapide (sans attaque d'opportunité) : il sacrifie un emplacement de sort de niveau 1 ou plus, perdu comme s'il avait lancé le sort.\n• Pendant 1 round, contre les créatures artificielles (emplacement profane) ou les morts-vivants (emplacement divin) : bonus d'intuition à l'attaque égal au niveau de l'emplacement, et +1d6 de dégâts par niveau de l'emplacement, plus les dés d'attaque sournoise.\n• L'attaque n'est pas une attaque sournoise et ne permet pas de critique sur ces créatures."
+      },
+      "prerequisite": "has('power.rogue_sneak_attack')",
+      "note": "Niveau 5 de lanceur de sorts non vérifié par la fiche. Les bonus ne sont pas calculés (dépendent de l'emplacement sacrifié)."
+    },
+    {
+      "id": "feat.devoted_inquisitor",
+      "type": "feat",
+      "name": {
+        "fr": "Inquisiteur dévot",
+        "en": "Devoted Inquisitor"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "general",
+        "melee"
+      ],
+      "description": {
+        "fr": "Mi-roublard, mi-paladin, il frappe les êtres mauvais là où ça fait mal, au nom de sa divinité.\n\nEn jeu\n• Condition : attaque sournoise, châtiment du Mal.\n• Une attaque sournoise portée avec un châtiment du Mal oblige la cible à un jet de Volonté (DD 10 + moitié de son niveau + modificateur de Cha) : échec, elle est hébétée 1 round.\n• Il peut gagner librement des niveaux de roublard et de paladin, mais doit rester loyal bon pour progresser en paladin. Malus d'expérience des classes déséquilibrées."
+      },
+      "prerequisite": "has('power.rogue_sneak_attack') and has('power.paladin_smite_evil')"
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.oversized_two_weapon_fighting",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.dual_strike",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.dual_strike",
+      "relation": "requires",
+      "to": "feat.improved_two_weapon_fighting"
+    },
+    {
+      "from": "feat.leap_attack",
+      "relation": "requires",
+      "to": "feat.power_attack"
+    },
+    {
+      "from": "feat.ascetic_hunter",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.ascetic_knight",
+      "relation": "requires",
+      "to": "feat.stunning_fist"
+    },
+    {
+      "from": "feat.final_blow",
+      "relation": "requires",
+      "to": "feat.improved_initiative"
+    },
+    {
+      "from": "feat.find_the_gap",
+      "relation": "requires",
+      "to": "feat.combat_expertise"
+    },
+    {
+      "from": "feat.expert_tactician",
+      "relation": "requires",
+      "to": "feat.combat_reflexes"
+    }
+  ]
+}

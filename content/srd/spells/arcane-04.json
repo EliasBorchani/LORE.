@@ -1,0 +1,692 @@
+{
+  "entities": [
+    {
+      "id": "spell.illusory_pit",
+      "type": "spell",
+      "name": {
+        "fr": "Fosse illusoire",
+        "en": "Illusory Pit"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le sol s'ouvre sur un gouffre sans fond, du moins pour ceux qui y croient. Les victimes s'agrippent à la terre ferme en hurlant, persuadées de tomber.\n\nEn jeu\n• Toute créature qui entre dans la zone fait un jet de Volonté.\n• Échec : elle se croit en chute, tombe à terre et ne peut rien faire d'autre que s'agripper au sol.\n• Réussite : elle est étourdie 1 round par le vertige.\n• Une victime attaquée sort de l'illusion mais est étourdie 1 round ; à la fin du sort, celles qui se croyaient en chute sont étourdies 1 round.\n• Créature volante au-dessus de la zone : réussite, aucun effet ; échec, étourdie 1 round.\n• Dure le temps de la concentration + 1 round/niveau."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "chimère",
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "cube de 3 m d'arête/niveau",
+        "duration": "concentration + 1 round/niveau",
+        "savingThrow": "Volonté, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.energy_whip",
+      "type": "spell",
+      "name": {
+        "fr": "Fouet d'énergie",
+        "en": "Energy Whip"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un fouet de magie crépitante se forme dans la main du lanceur. Son claquement suffit à faire reculer les bêtes sauvages.\n\nEn jeu\n• Le lanceur manie le fouet comme s'il y était formé ; contre les créatures autres que les animaux, c'est un fouet ordinaire.\n• Chaque claquement tient les animaux (pas les créatures magiques ni la vermine) à 9 m ou plus du lanceur, sauf jet de Volonté réussi, tant qu'ils ont la place de reculer.\n• Un animal touché par le fouet (attaque à distance) doit réussir un jet de Volonté ou être effrayé.\n• Dure 1 round/niveau. Composante : un petit fouet en soie."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "mental",
+          "son"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "effect": "1 fouet d'énergie",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.decapitating_scarf",
+      "type": "spell",
+      "name": {
+        "fr": "Foulard de décapitation",
+        "en": "Decapitating Scarf"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "Le foulard de soie lancé par le wu jen se raidit comme du fer et se referme sur la gorge de sa cible, assez fort pour lui trancher la tête.\n\nEn jeu\n• Attaque à distance normale (ligne de mire nécessaire) contre une créature à portée.\n• Si elle touche, la cible fait un jet de Vigueur : échec, elle est décapitée ; réussite, elle subit 1d4 points de dégâts par niveau de lanceur (max 20d4).\n• Créatures artificielles et morts-vivants (sauf vampires) ne meurent pas décapités : 6d4 points de dégâts dans tous les cas.\n• Aberrations, vases et créatures sans tête sont immunisées.\n• Focaliseur : un foulard en soie."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 20))d4",
+          "scope": "spell"
+        }
+      ],
+      "note": "Les dégâts sont ceux du jet de Vigueur réussi ; la décapitation (mort) est du texte."
+    },
+    {
+      "id": "spell.entangling_scarf",
+      "type": "spell",
+      "name": {
+        "fr": "Foulard d'enchevêtrement",
+        "en": "Entangling Scarf"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "Un foulard de soie file vers l'ennemi, durcit comme du fer et s'enroule autour de son cou pour l'entraver.\n\nEn jeu\n• Attaque de contact à distance (ligne de mire nécessaire) contre une créature à portée.\n• Si elle touche, la cible doit réussir un jet de Réflexes ou être enchevêtrée.\n• Dure 1 round/niveau. Focaliseur : un foulard en soie."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.iron_scarf",
+      "type": "spell",
+      "name": {
+        "fr": "Foulard de fer",
+        "en": "Iron Scarf"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "D'un geste, le wu jen lance un foulard de soie qui prend la dureté du fer en plein vol et frappe sa cible comme une barre de métal.\n\nEn jeu\n• Attaque à distance normale (ligne de mire nécessaire) contre une créature à portée.\n• Si elle touche : 1d8 points de dégâts + 1 par niveau de lanceur (max +5).\n• Focaliseur : un foulard en soie."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 5)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.hail_of_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Grêle de pierre",
+        "en": "Hail of Stone"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation",
+        "wu_jen_earth"
+      ],
+      "description": {
+        "fr": "Des pierres surgies de nulle part s'abattent en averse serrée sur une petite zone, écrasant tout ce qui s'y trouve.\n\nEn jeu\n• Cylindre de 1,50 m de rayon et 12 m de haut, à portée moyenne.\n• 1d4 points de dégâts par niveau de lanceur (max 5d4) aux créatures et objets de la zone, sans jet de sauvegarde.\n• Composante : un morceau de jade de 5 po."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "terre"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "cylindre (1,50 m de rayon, 12 m de haut)",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 5))d4",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.terracotta_warrior",
+      "type": "spell",
+      "name": {
+        "fr": "Guerrier de terre cuite",
+        "en": "Terracotta Warrior"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_earth"
+      ],
+      "description": {
+        "fr": "La petite statuette d'argile grandit, se craquelle et se dresse en soldat de taille humaine, prêt à frapper l'ennemi désigné par le wu jen.\n\nEn jeu\n• La statuette devient un objet animé de taille M : 35 pv, CA 14, solidité 6, VD 12 m, coup +2 au corps à corps (1d6+1).\n• Il n'a aucune des attaques spéciales des objets animés.\n• Il attaque la cible choisie par le wu jen au tour de celui-ci ; changer de cible coûte une action de mouvement.\n• Intacte à la fin du sort, la statuette resservira ; à 0 pv ou moins, elle tombe en poussière.\n• Dure 1 round/niveau. Focaliseur : une statuette de guerrier en terre cuite de 18 cm, valant 1 po."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "statuette touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.camouflage",
+      "type": "spell",
+      "name": {
+        "fr": "Homochromie",
+        "en": "Camouflage"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "La peau et les habits du sujet prennent les teintes de ce qui l'entoure, comme ceux d'un lézard sur une pierre.\n\nEn jeu\n• Bonus de circonstances de +10 aux tests de Discrétion.\n• Le bonus suit les changements de décor progressifs si le sujet avance à la moitié de sa vitesse ou moins.\n• Un changement brutal de décor demande 1 round d'adaptation, sans bonus.\n• Dure 1 heure/niveau. Composante : une mue de petit lézard."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "la créature touchée",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 10,
+          "bonusType": "circumstance",
+          "condition": "active('toggle.camouflage')"
+        }
+      ],
+      "note": "Niveau de druide lu sur la page : 2."
+    },
+    {
+      "id": "spell.energy_immunity",
+      "type": "spell",
+      "name": {
+        "fr": "Immunité contre les énergies destructives",
+        "en": "Energy Immunity"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le sujet et tout ce qu'il porte deviennent insensibles à une forme d'énergie : la flamme ne brûle plus, la foudre glisse sur lui.\n\nEn jeu\n• Le lanceur choisit un type d'énergie : acide, électricité, feu, froid ou son ; le sujet et son équipement en ignorent tous les dégâts.\n• Seuls les dégâts sont bloqués : se noyer dans l'acide, être assourdi ou pris dans la glace reste possible.\n• Remplace résistance aux énergies destructives et protection contre les énergies destructives, qui n'absorbent plus rien.\n• Dure 24 heures."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature touchée",
+        "duration": "24 heures",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "L'immunité à une énergie n'est pas dans le modèle : texte seulement."
+    },
+    {
+      "id": "spell.superior_invisibility",
+      "type": "spell",
+      "name": {
+        "fr": "Invisibilité supérieure",
+        "en": "Superior Invisibility"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Plus qu'invisible : le sujet ne laisse ni odeur ni bruit, et même les sens les plus fins ne trouvent rien.\n\nEn jeu\n• Comme invisibilité suprême (le sort ne prend pas fin si le sujet attaque), mais cache aussi à l'ouïe et à l'odorat.\n• Un silence absorbe sons et vibrations dans un rayon de 1,50 m : le sujet ne peut ni parler ni lancer de sorts à composante verbale, mais il entend et sent normalement.\n• Immunise contre détection de l'invisibilité, lueur féerique, négation de l'invisibilité, poussière scintillante, la poudre d'apparition, la perception des vibrations et la perception aveugle.\n• Vision lucide et vision aveugle le voient ; des indices (traces de pas) peuvent le trahir.\n• Cible : le lanceur ou une créature de 50 kg/niveau au plus."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "personnelle ou contact",
+        "target": "le jeteur de sorts ou 1 créature ne pesant pas plus de 50 kg/niveau",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "La ligne « Durée » manque dans le livre : 1 minute/niveau (T) supposé. Niveau 9 confirmé sur la page. Le livre écrit « composantes gestuelles » pour ce que le silence empêche ; lu comme verbales."
+    },
+    {
+      "id": "spell.brilliant_blade",
+      "type": "spell",
+      "name": {
+        "fr": "Lame de lumière",
+        "en": "Brilliant Blade"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "L'arme se met à briller comme une torche et sa lame passe à travers le métal et le cuir comme s'ils n'existaient pas.\n\nEn jeu\n• Une arme de corps à corps ou de jet, ou 50 projectiles en contact, deviennent des armes de lumière (6 m de lumière comme une torche).\n• Elles ignorent la matière inerte : les bonus d'armure et de bouclier à la CA (altération comprise) ne comptent pas ; Dextérité, parade, esquive, armure naturelle et autres comptent.\n• Sans effet contre les morts-vivants, les créatures artificielles et les objets.\n• Chaque flèche ou carreau perd l'effet une fois tiré ; les shuriken comptent comme des flèches.\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 arme de jet ou de corps à corps, ou 50 projectiles en contact",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": [],
+      "note": "L'attaque qui ignore l'armure n'est pas dans le modèle : texte seulement."
+    },
+    {
+      "id": "spell.lightning_blade",
+      "type": "spell",
+      "name": {
+        "fr": "Lame fulgurante",
+        "en": "Lightning Blade"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une épée de foudre crépitante apparaît dans la main d'un allié. Elle ne pèse presque rien et libère sa charge coup après coup, au contact ou en éclair.\n\nEn jeu\n• Arme de la taille d'une épée longue, comptée comme arme de guerre.\n• Attaque de contact au corps à corps, ou éclair en attaque de contact à distance (portée 9 m).\n• Réserve de 1d6 dégâts d'électricité par niveau de lanceur (max 10d6) ; avant chaque attaque, le porteur choisit combien de dés il engage, perdus en cas d'échec.\n• Pas de modificateur de Force aux dégâts ; ne fonctionne pas sous l'eau.\n• Dure 1 minute ou jusqu'à épuisement de la réserve."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "électricité"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature consentante touchée (voir description)",
+        "effect": "lame (voir description)",
+        "duration": "1 minute ou jusqu'à utilisation",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d6",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Les dés de dégâts sont la réserve totale, répartie par le porteur entre ses attaques."
+    },
+    {
+      "id": "spell.whirling_blade",
+      "type": "spell",
+      "name": {
+        "fr": "Lame tourbillonnante",
+        "en": "Whirling Blade"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lanceur jette sa lame, qui tourbillonne le long d'une ligne en tranchant chaque ennemi sur son passage, puis revient dans sa main.\n\nEn jeu\n• Une attaque au corps à corps normale contre chaque créature sur une ligne de 18 m, au bonus d'attaque maximal (une seule par cible, même avec plusieurs attaques par round).\n• Dégâts normaux de l'arme avec les bonus de caractéristique et de dons ; le lanceur peut remplacer son modificateur de Force par celui d'Intelligence ou de Charisme (selon sa classe) à l'attaque et aux dégâts.\n• L'arme revient dans sa main après la dernière attaque.\n• Focaliseur : l'arme tranchante de corps à corps lancée."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "effect": "ligne de 18 m",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.blades_of_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Lames de feu",
+        "en": "Blades of Fire"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "D'un mot, les armes du lanceur s'embrasent. Les flammes l'épargnent, lui et son acier, mais mordent ses ennemis.\n\nEn jeu\n• Action rapide : jusqu'à 2 armes de corps à corps maniées par le lanceur infligent 1d6 points de dégâts de feu en plus.\n• S'ajoute aux dégâts d'énergie que l'arme inflige déjà.\n• Dure 1 round."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "contact",
+        "target": "jusqu'à 2 armes maniées par le jeteur de sorts",
+        "duration": "1 round",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 fire",
+          "scope": "spell"
+        }
+      ],
+      "note": "Titre imprimé « (L)AMES DE FEU » (lettrine) : « Lames de feu »."
+    },
+    {
+      "id": "spell.long_shot",
+      "type": "spell",
+      "name": {
+        "fr": "Lancer de précision",
+        "en": "Long Shot"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un caractère tracé à l'encre sur l'arme guide ses tirs loin, bien plus loin qu'à l'ordinaire.\n\nEn jeu\n• Le facteur de portée d'1 arme à projectiles ou d'1 arme de jet par niveau est doublé.\n• Dure 10 minutes/niveau. Composante : de l'encre pour tracer le caractère sur les armes."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "1 arme à projectiles ou 1 arme de jet/niveau touchées",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Le facteur de portée n'est pas dans le modèle : texte seulement."
+    },
+    {
+      "id": "spell.spirit_binding",
+      "type": "spell",
+      "name": {
+        "fr": "Lien spirituel",
+        "en": "Spirit Binding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le wu jen appelle tout un groupe d'esprits et les retient le temps de négocier leurs services.\n\nEn jeu\n• Comme lien spirituel mineur (appel et contrat avec des esprits), mais jusqu'à 16 DV d'esprits du même type, à 9 m au plus les uns des autres.\n• Chaque esprit a son jet de sauvegarde et sa tentative d'évasion, et doit être convaincu séparément."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu'à 16 DV d'esprits, à 9 m au plus les uns des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Le bloc du livre ne redonne que Niveau et Cibles ; le reste vient de lien spirituel mineur."
+    },
+    {
+      "id": "spell.lesser_spirit_binding",
+      "type": "spell",
+      "name": {
+        "fr": "Lien spirituel mineur",
+        "en": "Spirit Binding, Lesser"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le wu jen trace un cercle d'appel et y fait venir un esprit, qu'il retient jusqu'à ce qu'il accepte un service.\n\nEn jeu\n• Fonctionne comme contrat, mais appelle et retient un esprit de 8 DV au plus.\n• L'esprit fait un jet de Volonté pour éviter l'appel, peut tenter de s'échapper, et doit être convaincu de servir.\n• Appeler une créature de l'Air, du Bien, du Chaos, de l'Eau, du Feu, de la Loi, du Mal ou de la Terre donne au sort ce même type."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux) (voir description)",
+        "target": "un esprit ayant jusqu'à 8 DV",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_spirit_binding",
+      "type": "spell",
+      "name": {
+        "fr": "Lien spirituel suprême",
+        "en": "Spirit Binding, Greater"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le wu jen convoque une véritable troupe d'esprits et les retient tous dans son cercle le temps d'obtenir leur aide.\n\nEn jeu\n• Comme lien spirituel mineur (appel et contrat avec des esprits), mais jusqu'à 24 DV d'esprits du même type, à 9 m au plus les uns des autres.\n• Chaque esprit a son jet de sauvegarde et sa tentative d'évasion, et doit être convaincu séparément."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "appel",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu'à 24 DV d'esprits, à 9 m au plus les uns des autres",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Le bloc du livre ne redonne que Niveau et Cibles ; le reste vient de lien spirituel mineur."
+    },
+    {
+      "id": "spell.bands_of_steel",
+      "type": "spell",
+      "name": {
+        "fr": "Liens d'acier",
+        "en": "Bands of Steel"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Des anneaux de métal brillant jaillissent autour de la cible et se resserrent sur elle jusqu'à la clouer sur place.\n\nEn jeu\n• Créature de taille M ou moins (G ou plus : aucun effet).\n• Jet de Réflexes raté : immobilisée (sans défense) ; réussi : seulement enchevêtrée.\n• Immobilisée : action complexe pour se libérer (Force ou Évasion DD 18) ; enchevêtrée : DD 13.\n• Dure 1 round/niveau. Composante : trois petits anneaux d'argent entrelacés."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, partiel",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.terracotta_lion",
+      "type": "spell",
+      "name": {
+        "fr": "Lion de terre cuite",
+        "en": "Terracotta Lion"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_earth"
+      ],
+      "description": {
+        "fr": "La statuette d'un lion de Foo s'éveille et grandit jusqu'à devenir un fauve d'argile énorme, qui fond sur les ennemis du wu jen.\n\nEn jeu\n• Comme guerrier de terre cuite, mais la statuette devient un objet animé de taille TG : 90 pv, CA 13, solidité 6, VD 9 m, coup +9 au corps à corps (2d6+7).\n• Il n'a aucune des attaques spéciales des objets animés.\n• Focaliseur : une statuette de lion de Foo en terre cuite de 30 cm, valant 10 po."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "statuette touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Le bloc du livre ne redonne que l'école et le niveau ; le reste vient de guerrier de terre cuite."
+    },
+    {
+      "id": "spell.leomunds_hidden_lodge",
+      "type": "spell",
+      "name": {
+        "fr": "Loge cachée de Léomund",
+        "en": "Leomund's Hidden Lodge"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un refuge solide surgit, mais personne ne le voit : rocher dans la montagne, dune dans le désert, gros arbre en forêt.\n\nEn jeu\n• Comme refuge de Léomund (structure de 6 m de côté), mais la loge prend l'aspect du décor et cache fumée, lumière et bruits venus de l'intérieur.\n• Au-delà de 9 m, elle est impossible à distinguer ; plus près, un test de Détection DD 30 révèle une construction.\n• Dure 24 heures. Focaliseur : celui d'alarme (clochette et fil d'argent) si la loge en a une."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, F (voir description)",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "structure de 6 m de côté",
+        "duration": "24 heures",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    }
+  ]
+}

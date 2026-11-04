@@ -1,0 +1,409 @@
+{
+  "entities": [
+    {
+      "id": "class.daggerspell_mage",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Mage enchantelame",
+        "en": "Daggerspell Mage"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "martial"
+      ],
+      "prerequisite": "@skill.concentration.ranks >= 8 and has('feat.weapon_focus') and has('feat.two_weapon_fighting')",
+      "description": {
+        "fr": "Dans un monastère perdu au fond d’une forêt, des lanceurs de sorts apprennent à se battre avec deux dagues et à lancer leurs formules au rythme des lames. Le mage enchantelame est avant tout un jeteur de sorts, et seulement ensuite un combattant ; il défend la justice et la vérité telles qu’il les comprend, dans le feu de l’action.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non mauvais ; 8 rangs en Concentration ; dons Arme de prédilection (dague) et Combat à deux armes ; niveau 5 de lanceur de sorts profanes ; attaque sournoise +1d6.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Art de la magie, Artisanat, Concentration, Connaissances (mystères), Déplacement silencieux, Détection, Discrétion, Dressage, Équilibre, Équitation, Escalade, Natation, Perception auditive, Premiers secours, Profession, Saut, Survie.\n• Sorts : +1 niveau de lanceur de sorts profanes aux niveaux 2 à 10, pour une classe profane déjà acquise.\n• Aptitudes : daguemagie (1) ; invocation du poignard (2) ; attaque sournoise +1d6/+2d6/+3d6 (3, 6, 9) ; daguemagie double (5) ; influx profane (7) ; jet de dague profane (8) ; déluge enchantelame (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 6,
+      "note": "Conditions en formule : rangs en Concentration, Arme de prédilection et Combat à deux armes (l'arme choisie, la dague, n'est pas modélisée). Alignement non mauvais, niveau 5 de lanceur de sorts profanes et attaque sournoise +1d6 : texte seulement. Dé de vie d6 lu sur la page (PDF 51). Les niveaux de lanceur se choisissent dans la fiche de niveau, rien dans les lignes de la table. Noms anglais à confirmer : Arcane infusion, Arcane dagger throw."
+    },
+    {
+      "id": "power.daggerspell_mage_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Chaque lame tournée dans la main est un geste de plus dans la formule : ses sorts continuent de croître avec la classe qu’il lançait déjà.\n\nEn jeu\n• Niveaux 2 à 10 : +1 niveau effectif de lanceur de sorts dans une classe profane déjà acquise (choisie dans la fiche de niveau ; une seule classe si plusieurs).\n• Il gagne les sorts par jour, les sorts connus (le cas échéant) et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes (dons de métamagie, de création d’objets).\n• Pas de progression au niveau 1."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.daggerspell_mage_daggerspell",
+      "type": "class_power",
+      "name": {
+        "fr": "Daguemagie",
+        "en": "Daggerspell"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Deux dagues en main, il lance quand même ses sorts : ses lames dansent en même temps que sa voix.\n\nEn jeu\n• Lance un sort à composantes gestuelles et matérielles en tenant une dague dans chaque main, sans provoquer d’attaque d’opportunité.\n• S’il manie autre chose qu’une dague, il lui faut une main libre.\n• Peut délivrer un sort de contact par une attaque de dague (contact au corps à corps ou attaque au corps à corps, pas en la lançant)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.daggerspell_mage_dagger_channel",
+      "type": "class_power",
+      "name": {
+        "fr": "Invocation du poignard",
+        "en": "Dagger channel"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Ses sorts d’énergie passent dans l’acier : ils tranchent autant qu’ils brûlent.\n\nEn jeu\n• À chaque sort profane d’énergie instantané, la moitié des dégâts devient dégâts tranchants magiques (la résistance aux énergies ne s’applique pas à cette moitié, mais la réduction des dégâts oui).\n• Sans effet sur le jet de sauvegarde ni la résistance à la magie du sort.\n• Aucune action : fait partie de l’incantation."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.daggerspell_mage_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Un mage qui se bat à la dague finit par apprendre où planter la pointe.\n\nEn jeu\n• +1d6 aux dégâts au niveau 3, 2d6 au niveau 6, 3d6 au niveau 9.\n• Mêmes règles que l’attaque sournoise du roublard : cible prise en tenaille ou privée de son bonus de Dextérité à la CA, à 9 m au plus à distance.\n• Se cumule avec l’attaque sournoise d’une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor(level('class.daggerspell_mage') / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.daggerspell_mage_twin_daggerspell",
+      "type": "class_power",
+      "name": {
+        "fr": "Daguemagie double",
+        "en": "Twin daggerspell"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Une dague, un sort ; l’autre dague, un deuxième sort. Chaque main porte sa charge.\n\nEn jeu\n• À partir du niveau 5 : retient un sort de contact dans chacune de ses deux dagues.\n• Il désigne quel sort va dans quelle dague au moment de l’incantation.\n• Si une dague quitte sa main, l’énergie du sort s’éteint sans dommage (sauf lancer de dague profane)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.daggerspell_mage_arcane_infusion",
+      "type": "class_power",
+      "name": {
+        "fr": "Influx profane",
+        "en": "Arcane infusion"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Un sort offert à la lame et elle prend feu, glace ou foudre : le premier coup suivant mord deux fois.\n\nEn jeu\n• À partir du niveau 7 : sacrifie un sort préparé (ou un emplacement s’il lance spontanément).\n• Choisit une dague tenue et une énergie (électricité, feu ou froid) : cette dague inflige +1d6 dégâts d’énergie.\n• Dure autant de rounds que le niveau du sort sacrifié. Plusieurs usages sur la même dague ne se cumulent pas.\n• Action rapide, sans attaque d’opportunité. Si la dague est lancée, les dégâts d’énergie valent pour cette attaque, puis l’effet se dissipe."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Les dégâts d'énergie dépendent d'un sort sacrifié : pas dans le modèle."
+    },
+    {
+      "id": "power.daggerspell_mage_arcane_dagger_throw",
+      "type": "class_power",
+      "name": {
+        "fr": "Jet de dague profane",
+        "en": "Arcane dagger throw"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Un sort glissé dans une dague lancée : elle touche, le sort passe ; elle manque, elle revient.\n\nEn jeu\n• À partir du niveau 8 : délivre un sort de contact par une dague lancée, comme une attaque au corps à corps.\n• Si la dague touche, le sort agit sur la cible. Si elle rate, elle revient dans sa main juste avant son prochain tour (comme la propriété boomerang) et il garde le sort."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.daggerspell_mage_daggerspell_storm",
+      "type": "class_power",
+      "name": {
+        "fr": "Déluge enchantelame",
+        "en": "Daggerspell storm"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "daggerspell_mage"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, ses dagues volent en rafale et un sort part au milieu de la tempête.\n\nEn jeu\n• À partir du niveau 10 : lance un sort rapide en même temps qu’une attaque à outrance, sans changer le niveau effectif du sort.\n• Au moins une attaque au corps à corps ce round, et toutes ses attaques à la dague (sauf si le sort exige un jet d’attaque).\n• Utilisations par jour : son modificateur de Dextérité (minimum 1)."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, @ability.dex.mod)"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 1,
+      "bab": 0,
+      "ref": 2,
+      "fort": 0,
+      "will": 2,
+      "grants": [
+        "power.daggerspell_mage_daggerspell"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 2,
+      "bab": 1,
+      "ref": 3,
+      "fort": 0,
+      "will": 3,
+      "grants": [
+        "power.daggerspell_mage_spells",
+        "power.daggerspell_mage_dagger_channel"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 3,
+      "bab": 2,
+      "ref": 3,
+      "fort": 1,
+      "will": 3,
+      "grants": [
+        "power.daggerspell_mage_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 4,
+      "bab": 3,
+      "ref": 4,
+      "fort": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 5,
+      "bab": 3,
+      "ref": 4,
+      "fort": 1,
+      "will": 4,
+      "grants": [
+        "power.daggerspell_mage_twin_daggerspell"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 6,
+      "bab": 4,
+      "ref": 5,
+      "fort": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 7,
+      "bab": 5,
+      "ref": 5,
+      "fort": 2,
+      "will": 5,
+      "grants": [
+        "power.daggerspell_mage_arcane_infusion"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 8,
+      "bab": 6,
+      "ref": 6,
+      "fort": 2,
+      "will": 6,
+      "grants": [
+        "power.daggerspell_mage_arcane_dagger_throw"
+      ]
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 9,
+      "bab": 6,
+      "ref": 6,
+      "fort": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.daggerspell_mage",
+      "level": 10,
+      "bab": 7,
+      "ref": 7,
+      "fort": 3,
+      "will": 7,
+      "grants": [
+        "power.daggerspell_mage_daggerspell_storm"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.daggerspell_mage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    }
+  ]
+}

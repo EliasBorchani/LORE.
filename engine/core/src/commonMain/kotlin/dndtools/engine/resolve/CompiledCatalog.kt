@@ -12,6 +12,7 @@ import dndtools.engine.model.EffectScope
 import dndtools.engine.model.EffectValue
 import dndtools.engine.model.Entity
 import dndtools.engine.model.InitiatingDef
+import dndtools.engine.model.InvokingDef
 import dndtools.engine.model.Op
 import dndtools.engine.model.ProgressionRow
 import dndtools.engine.model.SkillInfo
@@ -79,6 +80,16 @@ internal class CompiledCatalog(val catalog: Catalog) {
      */
     val perVariantModifiers = HashSet<String>()
 
+    /**
+     * Metamagic that costs no slot level (Sudden Empower, Energy Substitution): every `spell.slot_cost` it writes is
+     * the number 0. It is left out of `spell.metamagic_count`, so the « at least +1 per modifier » rule and Improved
+     * Metamagic's reduction skip it.
+     */
+    val freeModifiers: Set<String> = catalog.entities.filter { e ->
+        val costs = e.effects.filter { it.scope == EffectScope.SPELL && it.target == SLOT_COST }
+        costs.isNotEmpty() && costs.all { (it.value as? EffectValue.Number)?.value?.signum() == 0 }
+    }.mapTo(HashSet()) { it.id }
+
     /** Classes that cast spells, with how. */
     val casters: Map<String, SpellcastingDef> =
         catalog.entities.mapNotNull { e -> e.spellcasting?.let { e.id to it } }.toMap()
@@ -86,6 +97,10 @@ internal class CompiledCatalog(val catalog: Catalog) {
     /** Classes and feats (Martial Study) that give maneuvers, with their key ability. */
     val initiators: Map<String, InitiatingDef> =
         catalog.entities.mapNotNull { e -> e.initiating?.let { e.id to it } }.toMap()
+
+    /** Classes that learn warlock invocations, with their key ability. */
+    val invokers: Map<String, InvokingDef> =
+        catalog.entities.mapNotNull { e -> e.invoking?.let { e.id to it } }.toMap()
 
     /** Class or feat id to the disciplines it may learn maneuvers from, from `initiates` relations. */
     private val disciplines: Map<String, List<String>> = catalog.relations
@@ -193,6 +208,18 @@ internal class CompiledCatalog(val catalog: Catalog) {
         }
         if (initiators.isNotEmpty()) {
             define(INITIATOR_LEVEL, (listOf("floor(level() / 2)") + classLevels).let { if (it.size == 1) it[0] else "max(${it.joinToString()})" }, "initiating")
+        }
+
+        // Built-in statistics of each invoker class (Warlock). Its caster level for invocations is its class level plus
+        // what prestige classes add (`invoker_level.class[<class>]`); invocations known and the highest grade come
+        // from its table columns (grade 1 least … 4 dark), and effects add to them (Extra Invocation).
+        if (invokers.isNotEmpty()) define("invoker_level.class[*]", "0", "invoking")
+        for (id in invokers.keys) {
+            val short = initiatorKey(id)
+            val at = "invoking:$id"
+            define("invoker_level.$short", "level('$id') + @invoker_level.class[$id]", at)
+            define("invocations.known.$short", "max(@invocations.known.base[$id], 0)", at)
+            define("invocations.max_grade.$short", "max(@invocations.grade.base[$id], 0)", at)
         }
 
         // Built-in skill statistics, unless the catalog writes its own: ranks + ability modifier + armor check penalty,

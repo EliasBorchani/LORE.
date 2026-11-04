@@ -1,0 +1,489 @@
+{
+  "entities": [
+    {
+      "id": "class.suel_arcanamach",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Arcanamach suellois",
+        "en": "Suel Arcanamach"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "arcane",
+        "spontaneous"
+      ],
+      "hitDie": 8,
+      "skillPoints": 4,
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "prerequisite": "@bab >= 6 and @skill.tumble.ranks >= 4 and @skill.spellcraft.ranks >= 5 and @skill.concentration.ranks >= 4 and @skill.jump.ranks >= 4 and has('feat.combat_casting') and has('feat.iron_will')",
+      "description": {
+        "fr": "Les archimages de l’ancien Empire suellois ne dormaient jamais sans une lame à leur porte, et cette lame savait aussi lancer des sorts. L’arcanamach est l’héritier de ces gardes-mages : un combattant discipliné qui a appris juste assez de magie pour se rendre plus vif, plus fort, plus dur à atteindre, et pour arracher d’un coup d’épée les protections d’un sorcier adverse. L’empire a disparu, mais ses grimoires circulent encore, et ceux qui les lisent font d’excellents tueurs de mages.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : bonus de base à l’attaque +6 ; Acrobaties 4 rangs, Art de la magie 5 rangs, Concentration 4 rangs, Saut 4 rangs ; Magie de guerre, Volonté de fer ; parler le vieux suellois ; formé à au moins quatre armes de guerre ou exotiques ; avoir étudié le Grimoire Arcanamacha (1 semaine seul, ou 4 semaines avec un maître).\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Acrobaties, Art de la magie, Artisanat, Bluff, Concentration, Connaissances (histoire), Connaissances (mystères), Connaissances (plans), Déguisement, Déplacement silencieux, Détection, Discrétion, Escalade, Évasion, Fouille, Maîtrise des cordes, Natation, Perception auditive, Profession, Saut.\n• Sorts profanes spontanés, basés sur le Charisme, du niveau 1 au niveau 5, choisis parmi les abjurations, divinations, illusions et transmutations de la liste des ensorceleurs et magiciens.\n• Aptitudes : réduction du risque d’échec des sorts (5 % au niveau 1, +5 % aux niveaux 4, 7 et 10) et sorts tenaces (niveau 1) ; coup dissipant (niveau 2, 1/jour, 2/jour au niveau 6, 3/jour au niveau 10) ; force magique à durée étendue (niveau 3)."
+      },
+      "note": "Conditions d’accès hors formule : vieux suellois, quatre armes de guerre ou exotiques, étude du Grimoire Arcanamacha. Liste de sorts : les abjurations, divinations, illusions et transmutations de la liste d’ensorceleur/magicien ; pas d’entrées dans lists.json, le choix se fait sur le texte. Sorts connus marqués d’un astérisque dans le livre (nouveau niveau de sort aux niveaux 2, 4, 6 et 8) : seulement si le Charisme donne un sort en bonus à ce niveau, à vérifier à la main."
+    },
+    {
+      "id": "power.suel_arcanamach_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts d’arcanamach suellois",
+        "en": "Suel arcanamach spells"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "suel_arcanamach"
+      ],
+      "description": {
+        "fr": "Le Grimoire Arcanamacha n’enseigne pas la grande magie : il enseigne celle qui sert au combat. Protéger sa peau, voir venir le coup, se rendre invisible ou plus rapide que l’adversaire.\n\nEn jeu\n• Sorts profanes lancés sans préparation, comme un ensorceleur, choisis parmi les abjurations, divinations, illusions et transmutations de la liste d’ensorceleur/magicien.\n• Caractéristique : Charisme. Il faut au moins 10 + niveau du sort en Charisme pour le lancer. DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour et sorts connus selon le niveau d’arcanamach ; un 0 dans la table veut dire seulement les sorts en bonus d’un Charisme élevé.\n• Quand un nouveau niveau de sort s’ouvre (niveaux 2, 4, 6 et 8), les sorts connus de ce niveau ne s’apprennent que si le Charisme donne un sort en bonus à ce niveau.\n• À partir du niveau 4, puis à chaque niveau pair, peut échanger un sort connu contre un autre, comme un ensorceleur."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.suel_arcanamach_spell_failure_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction du risque d’échec des sorts",
+        "en": "Spell failure reduction"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "suel_arcanamach"
+      ],
+      "description": {
+        "fr": "Des générations de gardes-mages ont appris à tracer leurs gestes entre les plaques d’une armure. L’arcanamach lance ses sorts là où un magicien resterait coincé dans sa cotte.\n\nEn jeu\n• Retire 5 % au risque d’échec des sorts profanes dû à l’armure et au bouclier au niveau 1, 10 % au niveau 4, 15 % au niveau 7 et 20 % au niveau 10.\n• Seulement pour les sorts de sa liste d’arcanamach suellois."
+      },
+      "effects": [],
+      "note": "Le risque d’échec des sorts n’est pas encore lu par le modèle, et la réduction ne vaut que pour une liste : texte seulement."
+    },
+    {
+      "id": "power.suel_arcanamach_persistent_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts tenaces",
+        "en": "Persistent spells"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "suel_arcanamach"
+      ],
+      "description": {
+        "fr": "Les rivaux de l’Empire passaient leur temps à défaire la magie des autres ; les arcanamachs ont appris à tisser des sorts qui résistent.\n\nEn jeu\n• +6 au DD des tests pour dissiper les sorts de l’arcanamach."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. DD de dissipation : pas une statistique du modèle."
+    },
+    {
+      "id": "power.suel_arcanamach_dispelling_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Coup dissipant",
+        "en": "Dispelling strike"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "suel_arcanamach"
+      ],
+      "description": {
+        "fr": "La lame frappe, et avec elle l’armure de mage, la peau de pierre et le bouclier de feu de l’adversaire volent en éclats.\n\nEn jeu\n• Une attaque de corps à corps normale ; si elle touche, dégâts normaux et dissipation suprême ciblée sur la victime.\n• Test de dissipation : 1d20 + niveau d’arcanamach + 6.\n• Contre une créature sans sort ni effet magique actif, l’utilisation est perdue sans effet.\n• 1/jour au niveau 2, 2/jour au niveau 6, 3/jour au niveau 10."
+      },
+      "effects": [],
+      "usesPerDay": "1 + floor((level('class.suel_arcanamach') - 2) / 4)"
+    },
+    {
+      "id": "power.suel_arcanamach_extended_spell_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Force magique à durée étendue",
+        "en": "Extended spell power"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "suel_arcanamach"
+      ],
+      "description": {
+        "fr": "Les sorts que l’arcanamach se lance tiennent deux fois plus longtemps : un combat entier dure rarement plus que sa rapidité.\n\nEn jeu\n• Les sorts qu’il se lance à lui-même durent deux fois plus longtemps, comme avec Extension de durée, sans changer leur niveau ni leur temps d’incantation.\n• Un sort à plusieurs cibles dure deux fois plus longtemps pour lui seul, pas pour les autres cibles.\n• Sans effet sur les sorts qui n’ont pas de ligne « Cible »."
+      },
+      "effects": [],
+      "note": "Durée des sorts : pas encore dans le modèle, texte seulement."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.suel_arcanamach_spells",
+        "power.suel_arcanamach_spell_failure_reduction",
+        "power.suel_arcanamach_persistent_spells"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.suel_arcanamach_dispelling_strike"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.suel_arcanamach_extended_spell_power"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        2,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        2,
+        1,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        2,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        2,
+        0,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        3,
+        2,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        2,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        3,
+        2,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        4,
+        3,
+        3,
+        2,
+        0
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        4,
+        4,
+        3,
+        2,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "classId": "class.suel_arcanamach",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        4,
+        4,
+        3,
+        3,
+        2
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        3,
+        2
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.suel_arcanamach",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

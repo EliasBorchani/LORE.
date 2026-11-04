@@ -1,0 +1,329 @@
+{
+  "entities": [
+    {
+      "id": "class.purple_dragon_knight",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chevalier Dragon pourpre",
+        "en": "Purple Dragon Knight"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Les Dragons pourpres sont des soldats disciplinés et loyaux, et leurs chevaliers sont ce qu'ils ont de mieux : des chefs qui mènent à la charge, haussent le courage des troupes et font trembler l'ennemi.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal bon, neutre bon, loyal neutre ou neutre ; bonus de base à l'attaque +5 ; Diplomatie 1 rang ou Intimidation 1 rang, Détection 2 rangs, Équitation 6 rangs, Perception auditive 2 rangs ; dons Combat monté et Négociation ; appartenir aux Dragons pourpres.\n• Formé au pavois.\n• Compétences de classe : Connaissances (folklore local), Diplomatie, Dressage, Équitation, Escalade, Intimidation, Natation, Saut.\n• Aptitudes : cri de ralliement et écu héroïque (1) ; inspiration vaillante (2, 4) ; terreur (3) ; serment du courroux (4) ; baroud d'honneur (5).\n• Un paladin peut prendre ces niveaux sans perdre ses niveaux de paladin."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.spot.ranks >= 2 and @skill.ride.ranks >= 6 and @skill.listen.ranks >= 2 and (@skill.diplomacy.ranks >= 1 or @skill.intimidate.ranks >= 1) and has('feat.mounted_combat') and has('feat.negotiator')",
+      "note": "Alignement (loyal bon, neutre bon, loyal neutre, neutre) et appartenance aux Dragons pourpres : texte seul."
+    },
+    {
+      "id": "power.purple_dragon_knight_rallying_cry",
+      "type": "class_power",
+      "name": {
+        "fr": "Cri de ralliement",
+        "en": "Rallying cry"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "purple_dragon_knight"
+      ],
+      "description": {
+        "fr": "Un cri lancé avant la charge, et toute la troupe retrouve ses jambes et son courage.\n\nEn jeu\n• Capacité extraordinaire : 3 fois par jour, action libre. Alliés à 18 m ou moins.\n• Ils gagnent +1 (moral) à leur prochain jet d'attaque et +1,50 m de vitesse jusqu'au prochain tour du chevalier.\n• Case à cocher pour le chevalier lui-même, s'il en profite."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.purple_dragon_knight_rallying_cry')"
+        },
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 1.5,
+          "condition": "active('toggle.purple_dragon_knight_rallying_cry')"
+        }
+      ],
+      "usesPerDay": 3,
+      "note": "Le bonus d'attaque ne vaut que pour le prochain jet : à décocher ensuite. Vitesse en mètres."
+    },
+    {
+      "id": "power.purple_dragon_knight_heroic_shield",
+      "type": "class_power",
+      "name": {
+        "fr": "Écu héroïque",
+        "en": "Heroic shield"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "purple_dragon_knight"
+      ],
+      "description": {
+        "fr": "Son bouclier couvre aussi les camarades qu'il aide.\n\nEn jeu\n• Capacité extraordinaire : quand il utilise l'action d'aide pour défendre un allié, le bonus de circonstances à la CA est de +4 au lieu de +2."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.purple_dragon_knight_inspire_courage",
+      "type": "class_power",
+      "name": {
+        "fr": "Inspiration vaillante",
+        "en": "Inspire courage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "purple_dragon_knight"
+      ],
+      "description": {
+        "fr": "Un sermon enflammé qui gonfle le cœur de ceux qui l'écoutent.\n\nEn jeu\n• Capacité surnaturelle : niveau 2, 1 fois par jour ; 2 fois par jour au niveau 4.\n• Les alliés qui l'entendent (et pendant 5 rounds ensuite) gagnent +2 (moral) aux jets de sauvegarde contre le charme et la terreur, et +1 (moral) aux jets d'attaque et de dégâts des armes.\n• Pendant le sermon, il peut se battre, mais pas lancer de sorts ni activer d'objet magique à fin d'incantation ou à mot de commande."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.purple_dragon_knight_inspire_courage')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.purple_dragon_knight_inspire_courage')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "situation": "situation.vs_charm_or_fear",
+          "condition": "active('toggle.purple_dragon_knight_inspire_courage')"
+        }
+      ],
+      "usesPerDay": "1 + floor(level('class.purple_dragon_knight') / 4)",
+      "note": "Case à cocher pour le chevalier lui-même, quand il en profite."
+    },
+    {
+      "id": "power.purple_dragon_knight_fear",
+      "type": "class_power",
+      "name": {
+        "fr": "Terreur",
+        "en": "Fear"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "purple_dragon_knight"
+      ],
+      "description": {
+        "fr": "Un regard, un mot, et l'ennemi voit la mort venir.\n\nEn jeu\n• Capacité surnaturelle : niveau 3, 1 fois par jour, action simple. Effet du sort terreur (niveau de lanceur de sorts = niveau de classe).\n• DD du jet : 10 + niveau de chevalier + modificateur de Charisme.\n• Ses alliés sont immunisés contre cet effet."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.purple_dragon_knight_oath_of_wrath",
+      "type": "class_power",
+      "name": {
+        "fr": "Serment du courroux",
+        "en": "Oath of wrath"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "purple_dragon_knight"
+      ],
+      "description": {
+        "fr": "Il désigne un ennemi et jure de ne pas le lâcher.\n\nEn jeu\n• Capacité surnaturelle : niveau 4, 1 fois par jour, action libre. Un seul adversaire à 18 m ou moins.\n• Pour toute la rencontre : +2 (moral) aux jets d'attaque au corps à corps, aux jets de dégâts des armes, aux jets de sauvegarde et aux tests de compétence contre lui.\n• Si le chevalier fait une action complexe pour s'éloigner de cet adversaire, le serment est rompu pour la rencontre."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "situation": "situation.vs_designated_opponent",
+          "condition": "active('toggle.purple_dragon_knight_oath_of_wrath')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "situation": "situation.vs_designated_opponent",
+          "condition": "active('toggle.purple_dragon_knight_oath_of_wrath')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "situation": "situation.vs_designated_opponent",
+          "condition": "active('toggle.purple_dragon_knight_oath_of_wrath')"
+        }
+      ],
+      "usesPerDay": 1,
+      "note": "Les tests de compétence (+2) ne sont pas modélisés : texte seul."
+    },
+    {
+      "id": "power.purple_dragon_knight_final_stand",
+      "type": "class_power",
+      "name": {
+        "fr": "Baroud d'honneur",
+        "en": "Final stand"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "purple_dragon_knight"
+      ],
+      "description": {
+        "fr": "Quand tout vacille, il hurle son nom, et ses hommes tiennent.\n\nEn jeu\n• Capacité surnaturelle : niveau 5, 1 fois par jour.\n• Alliés à 3 m ou moins : 2d10 points de vie temporaires.\n• Il affecte autant de créatures que son niveau de classe + son modificateur de Charisme, pendant autant de rounds."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Points de vie temporaires des alliés : texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.purple_dragon_knight",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.purple_dragon_knight_rallying_cry",
+        "power.purple_dragon_knight_heroic_shield"
+      ]
+    },
+    {
+      "classId": "class.purple_dragon_knight",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.purple_dragon_knight_inspire_courage"
+      ]
+    },
+    {
+      "classId": "class.purple_dragon_knight",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.purple_dragon_knight_fear"
+      ]
+    },
+    {
+      "classId": "class.purple_dragon_knight",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.purple_dragon_knight_oath_of_wrath"
+      ]
+    },
+    {
+      "classId": "class.purple_dragon_knight",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.purple_dragon_knight_final_stand"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.purple_dragon_knight",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    }
+  ]
+}

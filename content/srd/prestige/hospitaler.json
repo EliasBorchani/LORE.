@@ -1,0 +1,307 @@
+{
+  "entities": [
+    {
+      "id": "class.hospitaler",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chevalier hospitalier",
+        "en": "Hospitaler"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Les chevaliers hospitaliers font vœu de pauvreté et d'obéissance pour garder les pèlerins sur les routes et soigner les malheureux dans les hospices de leur ordre. Armure lourde sur le dos, ils sont soldats le jour et infirmiers la nuit.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non chaotique ; bonus de base à l'attaque +5 ; Dressage 5 rangs, Équitation 5 rangs ; Attaque au galop, Combat monté ; savoir lancer des sorts divins de 1er niveau.\n• Formation aux armes courantes et de guerre, aux boucliers (sauf pavois) et à toutes les armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (religion), Diplomatie, Dressage, Équitation, Premiers secours, Profession.\n• Sorts : +1 niveau de lanceur de sorts divins à chaque niveau sauf 1, 5 et 9.\n• Aptitudes : don supplémentaire (1, 5, 9) ; imposition des mains (1) ; guérison des maladies (3, 7) ; code de conduite.\n• Un paladin peut prendre ces niveaux sans perdre ses niveaux de paladin."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5",
+      "note": "Conditions d'accès : compétences (Dressage, Équitation), dons et sorts divins de 1er niveau en texte seul ; alignement non chaotique en texte et en relations. Spellcasting : à choisir dans le niveau du personnage."
+    },
+    {
+      "id": "power.hospitaler_bonus_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire",
+        "en": "Bonus feat"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hospitaler"
+      ],
+      "description": {
+        "fr": "Avant de soigner les autres, il apprend à les défendre : l'ordre lui enseigne un tour de plus au combat.\n\nEn jeu\n• Un don supplémentaire aux niveaux 1, 5 et 9, pris dans la liste des dons supplémentaires du guerrier.\n• Le don garde ses conditions."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.hospitaler_bonus",
+          "op": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "power.hospitaler_lay_on_hands",
+      "type": "class_power",
+      "name": {
+        "fr": "Imposition des mains",
+        "en": "Lay on hands"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hospitaler"
+      ],
+      "description": {
+        "fr": "Une main posée sur la plaie, une prière courte, et le blessé respire mieux.\n\nEn jeu\n• Capacité surnaturelle : par jour, rend un nombre de points de vie égal à son niveau de chevalier hospitalier × son modificateur de Charisme (Charisme 12 minimum).\n• Les soins se répartissent entre autant de patients qu'il veut ; action simple.\n• Cumule ses niveaux de paladin (ou de toute autre classe avec cette aptitude) à ceux de chevalier hospitalier."
+      },
+      "effects": [
+        {
+          "target": "lay_on_hands.hp",
+          "op": "add",
+          "value": "level('class.hospitaler') * max(0, @ability.cha.mod)",
+          "condition": "@ability.cha.base >= 12"
+        }
+      ],
+      "note": "Charisme 12 minimum : condition sur la valeur de base (le total des bonus peut différer). Les soins sur les morts-vivants ne sont pas modélisés."
+    },
+    {
+      "id": "power.hospitaler_cure_disease",
+      "type": "class_power",
+      "name": {
+        "fr": "Guérison des maladies",
+        "en": "Cure disease"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hospitaler"
+      ],
+      "description": {
+        "fr": "Le contact de l'hospitalier chasse la fièvre et la contagion.\n\nEn jeu\n• Capacité magique : effet du sort guérison des maladies, 1 fois par semaine au niveau 3.\n• Niveau 7 : 2 fois par semaine."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hospitaler_code_of_conduct",
+      "type": "class_power",
+      "name": {
+        "fr": "Code de conduite",
+        "en": "Code of conduct"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hospitaler"
+      ],
+      "description": {
+        "fr": "Pauvreté, obéissance et protection des faibles : la règle de l'ordre.\n\nEn jeu\n• Vœu de pauvreté et d'obéissance au chef de l'établissement qui l'accueille ; il partage ses biens avec l'ordre.\n• Ne doit pas devenir chaotique ni trahir le code, sous peine de perdre ses pouvoirs et ses sorts (réparable par une pénitence).\n• S'il prend un niveau dans une autre classe que celle de paladin qu'il avait avant, il ne progresse plus comme hospitalier."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hospitaler_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de chevalier hospitalier",
+        "en": "Hospitaler spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hospitaler"
+      ],
+      "description": {
+        "fr": "Sa foi grandit avec son ordre : ses prières gagnent en force.\n\nEn jeu\n• Aux niveaux 2, 3, 4, 6, 7, 8 et 10 : +1 niveau de lanceur de sorts divins dans une classe qui lance déjà des sorts de 1er niveau (au choix si plusieurs).\n• Gagne les sorts par jour, sorts connus et niveau de lanceur de ce niveau effectif, mais aucune autre aptitude de la classe."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.hospitaler",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.hospitaler_bonus_feat",
+        "power.hospitaler_lay_on_hands",
+        "power.hospitaler_code_of_conduct"
+      ]
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.hospitaler_spells"
+      ]
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.hospitaler_cure_disease"
+      ]
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.hospitaler_bonus_feat"
+      ]
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.hospitaler_cure_disease"
+      ]
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.hospitaler_bonus_feat"
+      ]
+    },
+    {
+      "classId": "class.hospitaler",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.hospitaler",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    }
+  ]
+}

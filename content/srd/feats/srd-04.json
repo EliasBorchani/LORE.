@@ -13,7 +13,8 @@
         "general",
         "fighter_bonus",
         "melee",
-        "defense"
+        "defense",
+        "scout_bonus"
       ],
       "description": {
         "fr": "La lame ne sert pas qu’à frapper. Le bretteur avisé recule d’un demi-pas, garde haute, et laisse l’adversaire s’épuiser contre un mur d’acier : chaque coup qu’il renonce à porter devient une parade de plus.\n\nEn jeu\n• Condition : Intelligence 13.\n• Lors d’une attaque ou d’une attaque à outrance au corps à corps, choisir une valeur de 1 à 5, sans dépasser le bonus de base à l’attaque.\n• Cette valeur est un malus aux jets d’attaque et un bonus d’esquive à la CA jusqu’au début du tour suivant.\n• Normal : combattre sur la défensive donne seulement −4 à l’attaque et +2 d’esquive à la CA."
@@ -178,7 +179,8 @@
         "general",
         "warblade_bonus",
         "skill",
-        "movement"
+        "movement",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Une poutre étroite au-dessus du vide, une corde qui serre les poignets : le funambule trouve son équilibre partout et se glisse hors de toute étreinte comme l’eau entre les doigts.\n\nEn jeu\n• +2 aux tests d’Équilibre et d’Évasion."
@@ -248,7 +250,8 @@
       "labels": [
         "general",
         "magic",
-        "skill"
+        "skill",
+        "hexblade_bonus"
       ],
       "description": {
         "fr": "Les lames sifflent autour de lui, une poigne de fer lui serre le bras : peu importe. Le mage de bataille a appris à incanter dans le fracas, et sa voix ne tremble pas.\n\nEn jeu\n• +4 aux tests de Concentration pour lancer un sort sur la défensive, ou en étant agrippé ou immobilisé."

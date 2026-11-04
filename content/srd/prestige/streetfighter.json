@@ -1,0 +1,275 @@
+{
+  "entities": [
+    {
+      "id": "class.streetfighter",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Combattant de rue",
+        "en": "Streetfighter"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Il a grandi dans les quartiers où l'on ne baisse jamais la garde, et il en a fait une force : l'oeil vif, les poings prompts, aucune illusion sur la loyauté du combat. Dans une arène, une crypte ou une ruelle, il prend le moindre avantage et le garde.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; Bluff, Connaissances (folklore local) et Intimidation 5 rangs chacun ; Expertise du combat, Science de la feinte.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Acrobaties, Bluff, Connaissances (folklore local), Crochetage, Déplacement silencieux, Désamorçage/sabotage, Détection, Discrétion, Équitation, Escalade, Fouille, Intimidation, Perception auditive, Saut.\n• Aptitudes : sens de la rue, toujours prêt +1 (1) ; insensible aux coups 1/jour (2) ; attaque sournoise +1d6, toujours prêt +2 (3) ; insensible aux coups 2/jour (4) ; esquive instinctive, toujours prêt +3 (5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.bluff.ranks >= 5 and @skill.knowledge_local.ranks >= 5 and @skill.intimidate.ranks >= 5 and has('feat.combat_expertise') and has('feat.improved_feint')",
+      "note": "Toutes les conditions sont dans la formule. Nom anglais : Streetfighter."
+    },
+    {
+      "id": "power.streetfighter_street_smarts",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens de la rue",
+        "en": "Street smarts"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "streetfighter"
+      ],
+      "description": {
+        "fr": "Il sait lire une ruelle comme d'autres lisent une carte : qui y traîne, qui y paie, qui s'y cache.\n\nEn jeu\n• Bonus d'aptitude de +2 aux tests de Connaissances (folklore local) et de Renseignements."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_local",
+          "op": "add",
+          "value": 2,
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": 2,
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.streetfighter_always_ready",
+      "type": "class_power",
+      "name": {
+        "fr": "Toujours prêt",
+        "en": "Always ready"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "streetfighter"
+      ],
+      "description": {
+        "fr": "Une conversation tranquille peut tourner en bagarre en une seconde, et il est déjà prêt avant elle.\n\nEn jeu\n• Bonus d'aptitude à l'initiative : +1 au niveau 1, +2 au niveau 3, +3 au niveau 5."
+      },
+      "effects": [
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": "if(level('class.streetfighter') >= 5, 3, if(level('class.streetfighter') >= 3, 2, 1))",
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.streetfighter_shrug_off_blows",
+      "type": "class_power",
+      "name": {
+        "fr": "Insensible aux coups",
+        "en": "Shrug off damage"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "streetfighter"
+      ],
+      "description": {
+        "fr": "Des années de coups reçus lui ont appris à encaisser : un bon jet de muscles, et la lame ne fait qu'érafler.\n\nEn jeu\n• Niveau 2 : 1 fois par jour, ignorer en partie un coup physique (arme ou coup, pas un sort ou un pouvoir spécial) ; 2 fois par jour au niveau 4.\n• Jet de Vigueur, DD égal aux dégâts infligés. Réussite : aucun dégât létal, la moitié en dégâts non létaux. Échec : dégâts normaux.\n• Pas besoin d'avoir anticipé l'attaque."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.streetfighter') >= 4, 2, 1)"
+    },
+    {
+      "id": "power.streetfighter_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "streetfighter"
+      ],
+      "description": {
+        "fr": "Un ennemi qui regarde ailleurs ou qui est pris en tenaille ne s'en relèvera pas toujours.\n\nEn jeu\n• Niveau 3 : +1d6 aux dégâts.\n• Mêmes règles que l'attaque sournoise du roublard : cible prise au dépourvu, en tenaille ou privée de son bonus de Dextérité ; à distance jusqu'à 9 m.\n• S'ajoute à l'attaque sournoise donnée par d'autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "1d6"
+        }
+      ]
+    },
+    {
+      "id": "power.streetfighter_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "streetfighter"
+      ],
+      "description": {
+        "fr": "Sentir le coup avant de le voir : à force de vivre dans la rue, il y arrive.\n\nEn jeu\n• Niveau 5 : garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible.\n• S'il a déjà cette aptitude par une autre classe, il gagne l'esquive instinctive supérieure à la place."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.streetfighter",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.streetfighter_street_smarts",
+        "power.streetfighter_always_ready"
+      ]
+    },
+    {
+      "classId": "class.streetfighter",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.streetfighter_shrug_off_blows"
+      ]
+    },
+    {
+      "classId": "class.streetfighter",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.streetfighter_sneak_attack",
+        "power.streetfighter_always_ready"
+      ]
+    },
+    {
+      "classId": "class.streetfighter",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.streetfighter_shrug_off_blows"
+      ]
+    },
+    {
+      "classId": "class.streetfighter",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.streetfighter_uncanny_dodge",
+        "power.streetfighter_always_ready"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.streetfighter",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "entities": [
+    {
+      "id": "class.warpriest",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Prêtre de guerre",
+        "en": "Warpriest"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Le prêtre de guerre prie pour la paix en préparant la guerre. Pragmatique, sûr de sa volonté, il mène des troupes, rallie les peureux, enflamme les coeurs d'un discours et refuse de laisser tomber ses alliés tant qu'il lui reste un souffle de puissance divine.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; Diplomatie 8 rangs, Psychologie 5 rangs ; don Magie de guerre ; savoir lancer un sort divin d'au moins un des domaines Destruction, Force, Guerre ou Protection ; savoir renvoyer ou intimider les morts-vivants.\n• Formé à toutes les armes courantes et de guerre, à toutes les armures et aux boucliers (pavois compris).\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (histoire), Diplomatie, Dressage, Équitation, Natation, Psychologie.\n• Sorts : +1 niveau de lanceur de sorts divins aux niveaux pairs.\n• Aptitudes : domaine supplémentaire, ralliement, renvoi ou intimidation (1) ; discours galvanisant (2, 4, 6, 8, 10) ; soins légers de groupe (3) ; aura de terreur (5) ; festin des héros (6) ; rapidité (7) ; guérison suprême de groupe (9) ; ennemi implacable (10)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.diplomacy.ranks >= 8 and @skill.sense_motive.ranks >= 5 and has('feat.combat_casting')",
+      "note": "Lancer un sort de domaine Destruction, Force, Guerre ou Protection, et savoir renvoyer les morts-vivants : texte seul. Magie de guerre = Combat Casting (nom anglais déduit du français). Aura de terreur : la table indique le niveau 5, le texte du livre le niveau 6 ; la table est suivie."
+    },
+    {
+      "id": "power.warpriest_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de prêtre de guerre",
+        "en": "Warpriest spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Sa foi continue de grandir, un niveau sur deux.\n\nEn jeu\n• Chaque niveau pair (2, 4, 6, 8, 10) compte comme un niveau de lanceur de sorts divins de plus dans une classe précédente.\n• Il gagne les sorts par jour, sorts connus et niveau de lanceur correspondants, mais pas les autres avantages de cette classe."
+      },
+      "effects": [],
+      "note": "Pas de ligne dans la table : niveau de lanceur choisi dans les fiches de niveau, aux niveaux pairs."
+    },
+    {
+      "id": "power.warpriest_bonus_domain",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine supplémentaire",
+        "en": "Bonus domain"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Selon qu'il renvoie ou intimide les morts-vivants, il ajoute un domaine tourné vers la guerre.\n\nEn jeu\n• Domaine de la Gloire s'il renvoie les morts-vivants, domaine de la Domination s'il les intimide.\n• Il reçoit le pouvoir accordé et peut choisir les sorts du domaine comme sorts de domaine."
+      },
+      "effects": [],
+      "note": "Domaines `domain.glory` et `domain.domination` (propres au Codex Divin) : texte seul, le modèle n'accorde pas encore de domaine par une classe de prestige."
+    },
+    {
+      "id": "power.warpriest_rally",
+      "type": "class_power",
+      "name": {
+        "fr": "Ralliement",
+        "en": "Rally"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Sa voix arrache les compagnons à la panique.\n\nEn jeu\n• Capacité extraordinaire : action simple, s'il n'est pas lui-même sous un effet de terreur.\n• Ses alliés sous un effet de terreur, à 18 m ou moins et qui l'entendent, retentent leur jet de sauvegarde avec un bonus de moral égal à son niveau de prêtre de guerre."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warpriest_turn_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Renvoi ou intimidation des morts-vivants",
+        "en": "Turn or rebuke undead"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Son entraînement militaire donne plus de poids à sa parole sacrée face aux morts.\n\nEn jeu\n• Capacité surnaturelle : ses niveaux de prêtre de guerre s'ajoutent à ses niveaux de prêtre ou de paladin pour le renvoi ou l'intimidation des morts-vivants."
+      },
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": "level('class.warpriest')"
+        }
+      ]
+    },
+    {
+      "id": "power.warpriest_inspiring_oration",
+      "type": "class_power",
+      "name": {
+        "fr": "Discours galvanisant",
+        "en": "Inspiring oration"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Quelques phrases bien tournées, et la troupe n'a plus peur de rien.\n\nEn jeu\n• Capacité extraordinaire : action complexe, pour ses alliés qui l'écoutent (lui compris).\n• Bonus de moral aux jets de sauvegarde contre la charme et la terreur : +2 au niveau 2, puis +2 tous les niveaux pairs, jusqu'à +8 (table : +8 au niveau 10).\n• Dure 5 minutes plus 1 minute par niveau de prêtre de guerre après la fin du discours."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "min(8, 2 * floor(level('class.warpriest') / 2))",
+          "bonusType": "morale",
+          "situation": "situation.vs_charm_or_fear",
+          "condition": "active('toggle.warpriest_inspiring_oration')"
+        }
+      ],
+      "note": "Toggle à activer quand le discours est fait. Le texte dit +2 à chaque niveau pair (donc +10 au niveau 10), la table s'arrête à +8 au niveau 10 : la table est suivie, plafond +8. Le nom anglais exact de l'aptitude est à confirmer."
+    },
+    {
+      "id": "power.warpriest_mass_cure_light_wounds",
+      "type": "class_power",
+      "name": {
+        "fr": "Soins légers de groupe",
+        "en": "Mass cure light wounds"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Un geste, une prière, et toute la ligne reprend des forces.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : effet du sort soins légers de groupe.\n• Niveau de lanceur de sorts : son niveau le plus élevé dans une classe de lanceur de sorts divins."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.warpriest_aura_of_terror",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de terreur",
+        "en": "Aura of terror"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Ses ennemis lisent dans son regard ce qui les attend.\n\nEn jeu\n• Pouvoir surnaturel, 1 fois par jour : aura de 6 m autour de lui, pendant 1 round par niveau de prêtre de guerre.\n• Les adversaires dans l'aura font un jet de Volonté (DD 10 + niveau de prêtre de guerre + modificateur de Charisme) ou subissent l'effet du sort terreur."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.warpriest_heroes_feast",
+      "type": "class_power",
+      "name": {
+        "fr": "Festin des héros",
+        "en": "Heroes' feast"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Un repas de guerre, béni sur le champ de bataille.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : effet du sort festin des héros."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.warpriest_haste",
+      "type": "class_power",
+      "name": {
+        "fr": "Rapidité",
+        "en": "Haste"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Il donne à ses alliés l'élan de la charge.\n\nEn jeu\n• Pouvoir magique, 3 fois par jour : effet du sort rapidité."
+      },
+      "effects": [],
+      "usesPerDay": 3
+    },
+    {
+      "id": "power.warpriest_mass_heal",
+      "type": "class_power",
+      "name": {
+        "fr": "Guérison suprême de groupe",
+        "en": "Mass heal"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Une vague de lumière referme les plaies de toute une armée.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : effet du sort guérison suprême de groupe.\n• Niveau de lanceur de sorts : son niveau le plus élevé dans une classe de lanceur de sorts divins."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.warpriest_relentless_enemy",
+      "type": "class_power",
+      "name": {
+        "fr": "Ennemi implacable",
+        "en": "Relentless enemy"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warpriest"
+      ],
+      "description": {
+        "fr": "Tant qu'il tient debout et concentré, ses alliés ne tombent pas.\n\nEn jeu\n• Pouvoir surnaturel, action de mouvement, puis concentration pour le maintenir.\n• Ses alliés à 30 m ou moins dont les points de vie sont à 0 ou moins ignorent les effets des dégâts et peuvent continuer à se battre ; la mort survient à -20 points de vie.\n• Quand le pouvoir s'arrête ou qu'un allié s'éloigne de plus de 30 m, les dégâts ignorés sont appliqués d'un coup.\n• S'il renvoie les morts-vivants, il canalise de l'énergie positive vers ses alliés vivants ; s'il les intimide, de l'énergie négative vers ses alliés morts-vivants."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.warpriest",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.warpriest_bonus_domain",
+        "power.warpriest_rally",
+        "power.warpriest_turn_undead"
+      ]
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.warpriest_spells",
+        "power.warpriest_inspiring_oration"
+      ]
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.warpriest_mass_cure_light_wounds"
+      ]
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.warpriest_aura_of_terror"
+      ]
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.warpriest_heroes_feast"
+      ]
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.warpriest_haste"
+      ]
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.warpriest_mass_heal"
+      ]
+    },
+    {
+      "classId": "class.warpriest",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.warpriest_relentless_enemy"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.warpriest",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    }
+  ]
+}

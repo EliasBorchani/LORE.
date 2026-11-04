@@ -124,6 +124,59 @@ Team content is not here: it lives in the database, written with the app's conte
   on the 13 SRD feats of the Warblade list). Prerequisites read `@maneuvers.count[discipline.x:strike]` and the like.
   Martial Study and Martial Stance carry `initiating` and `initiates` relations to the 9 disciplines, so the sheet lets
   the player pick their maneuver.
+- Codex Profane (the owner's French Complete Arcane PDF, a scan with OCR; not open content: short summaries in our
+  own words, never the book's text). `content/tools/codex/extract.py <book> <pdf>` (pypdf in a venv outside the repo)
+  writes the page texts to `content/tools/out/codex/<book>/` (git-ignored, with the agents' briefs and the spell list
+  relations they wrote). One writer and one reviewer agent per chunk, reading the page images (the OCR alone misreads
+  tables). Names: `name.fr` as printed in the Codex, `name.en` the official English name, id from it; names the agents
+  were not sure of say « Nom anglais à confirmer » in their `note`. `source: "Complete Arcane"`. Batches:
+  `content/srd/spells/arcane-01…08.json` (147 spells; labels `wu_jen_<element>` for the wu jen's elements; their
+  class lists, the full Warmage and Wu Jen lists included, merged into `lists.json`), `content/srd/feats/arcane-01…03.json`
+  and `arcane-epic.json` (80 feats, label `draconic` for the draconic feats), `content/srd/prestige/` (19 prestige
+  classes; prerequisites as formulas where the model checks them), `content/tools/classes/warmage.py`
+  (`mode: free_slots`: it knows its whole list), `wu_jen.py`, `warlock.py` (`invoking`, columns `invocationsKnown`,
+  `invocationGrade`; eldritch blast `damage.warlock_eldritch_blast`), `content/srd/arcane/invocations-01…02.json`
+  (50 `invocation.*`). Check invocations with `node content/tools/codex/check_invocations.mjs <files>` and base classes
+  with `node content/tools/classes/check.mjs <file>`. Danalieth's Sevenfold Veil, Persistent Spell and Giant Size keep
+  her ids and effects (Giant Size: her table's Colossal tier). Epic: base classes have `epicBonusFeatEvery` 3, the
+  Mage of the Arcane Order one bonus feat every 4 levels past 10 (the French book prints no list for the Warlock).
+  Left out: magic items, grimoires, monsters, campaign chapters.
+- Codex Aventureux (the owner's French Complete Adventurer, same process, `source: "Complete Adventurer"`):
+  `content/tools/classes/scout.py`, `ninja.py`, `spellthief.py` (its list: every sorcerer/wizard spell of abjuration,
+  divination, enchantment, illusion, transmutation, levels 1–4), 27 prestige classes in `content/srd/prestige/`
+  (the Vigilante's list: bard spells of abjuration, divination, illusion, necromancy, transmutation, bard 0 counts as
+  1), `content/srd/spells/adventurer-01…02.json` (70 spells; their lists, the Spellthief's and the Vigilante's merged
+  into `lists.json`), `content/srd/feats/adventurer-01…02.json` and `adventurer-epic.json` (66 feats; labels `wild`
+  for wild shape feats, `bardic_music`), `content/srd/equipment/adventurer-01.json` (5 exotic weapons). Skirmish:
+  `damage.skirmish` dice and an untyped AC bonus behind the shared `toggle.scout_skirmish` (Scout and Highland
+  Stalker stack); sudden strike `damage.sudden_strike` (Ninja, Ghost-Faced Killer). Scout bonus feats: slots
+  `feat_slots.scout_bonus`, feats labelled `scout_bonus` (`gen_focus.py` gives it to every Skill Focus). Mindspy
+  psionics stay text. Left out: alchemical items, tools, magic items, skill uses, organizations.
+- Codex Martial (the owner's French Complete Warrior, same process, `source: "Complete Warrior"`):
+  `content/tools/classes/{samurai,swashbuckler,hexblade,paladin_variant,ranger_variant}.py` (the two variants: the SRD
+  class without spells; `gen.py` powers with `reuse='power.x'` grant an existing SRD power by its id; `_variant.py`),
+  36 prestige classes in `content/srd/prestige/` (Complete Warrior's Mindspy is `class.mindspy_warrior`:
+  `class.mindspy` is Complete Adventurer's), `content/srd/spells/warrior-01.json` (9 spells), 5 domains appended to
+  `domains.json` (Courage, Fate, Nobility, Planning, Tyranny), `content/srd/feats/warrior-01…03.json` (83 feats;
+  labels `tactical`, `weapon_style`) and `warrior-epic.json` (12), `content/srd/equipment/warrior-01.json` (19 exotic
+  weapons). Lists (`content/tools/out/codex/martial/lists/`, merged into `lists.json`): the Hexblade's, the Hunter of
+  the Dead's, the Knight of the Chalice's, the domains', the new spells'. Hexblade bonus feats: slot
+  `feat_slots.hexblade_bonus`, feats labelled `hexblade_bonus` (`gen_focus.py` gives it to Spell Focus and Greater
+  Spell Focus of enchantment, necromancy, transmutation). Spellsword bonus feat: `feat_slots.spellsword_bonus`, the
+  web feat picker offers metamagic and fighter bonus feats. Left out: guardian familiars, magic items, campaign
+  chapters, organizations, deities, improvised weapon rules.
+- Codex Divin (the owner's French Complete Divine, same process, `source: "Complete Divine"`):
+  `content/tools/classes/{favored_soul,spirit_shaman,shugenja}.py` (Spirit Shaman: `mode: spontaneous`, its retrieved
+  spells as `spellsKnown`; Shugenja: `spellsKnown` is the table's 1 + a + b, its 8 orders in a power), 24 prestige
+  classes in `content/srd/prestige/`, `content/srd/spells/divine-01…05.json` (123 spells), 21 domains appended to
+  `domains.json`, `content/srd/feats/divine-01…03.json` (41 feats; labels `divine`, `wild`) and `divine-epic.json`
+  (10). Lists (`content/tools/out/codex/divin/lists/`, merged into `lists.json`): the new spells', the domains', the
+  Shugenja's (with each spell's element in `shugenja_elements.json`, not used yet), the Holy Liberator's, the Temple
+  Raider's, the Blighter's, the Consecrated Harrier's extra spells; the merge copies the cleric list to the Favored
+  Soul and the Ur-Priest, the druid list to the Spirit Shaman, the ranger list to the Consecrated Harrier, the paladin
+  and blackguard lists to the Pious Templar. Hospitaler and Pious Templar bonus feats: slots `feat_slots.<class>_bonus`,
+  the web feat picker offers fighter bonus feats. Fast healing of spells is a floor (`min`), so it does not add up.
+  Left out: relics and magic items, deities, the afterlife and churches, faith points and the destroy undead option.
 - Done: races (7) and the 11 SRD base classes (`content/srd/classes/`; the 9 newest are generated by `python3 content/tools/classes/gen.py . <class>` from the
   scraped tables and the curated texts and effects in `content/tools/classes/<class>.py`). The SRD Wizard and Sorcerer replace the drafts of Danalieth's test catalog (her caster level effects
   live on other entities; her 20 verified values are unchanged with them).

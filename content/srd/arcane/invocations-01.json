@@ -1,0 +1,924 @@
+{
+  "entities": [
+    {
+      "id": "invocation.devour_magic",
+      "type": "invocation",
+      "name": {
+        "fr": "Absorption de magie",
+        "en": "Devour Magic"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater"
+      ],
+      "description": {
+        "fr": "Le sorcier plonge la main dans la trame d'un sort adverse et en boit l'énergie, qui se change en force vitale.\n\nEn jeu\n• Dissipation de la magie suprême ciblée, lancée par simple contact.\n• Gagne 5 points de vie temporaires par niveau de chaque sort dissipé (un mur de glace, niveau 4 : 20 pv).\n• Les points de vie temporaires durent 1 minute et ne se cumulent pas avec d'autres ; un nouveau sort absorbé peut les remplacer.\n• Ne permet pas d'absorber ses propres invocations."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 6,
+        "kind": "other",
+        "action": "1 action simple",
+        "range": "contact",
+        "duration": "1 minute (points de vie temporaires)"
+      },
+      "effects": [
+        {
+          "target": "hp.temporary",
+          "op": "add",
+          "value": "5 * @toggle.devour_magic.value",
+          "condition": "active('toggle.devour_magic')"
+        }
+      ],
+      "tableValue": {
+        "max": 9
+      },
+      "note": "Le niveau du sort dissipé est choisi à l'activation (tableValue, max 9). Les points de vie temporaires ne se cumulent pas avec d'autres : le modèle les additionne peut-être."
+    },
+    {
+      "id": "invocation.warlocks_call",
+      "type": "invocation",
+      "name": {
+        "fr": "Appel du sorcier",
+        "en": "Warlock's Call"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater"
+      ],
+      "description": {
+        "fr": "Une voix portée à travers les distances, mais dont le destinataire peut renvoyer la morsure.\n\nEn jeu\n• Message, comme le sort.\n• Une créature qui refuse de répondre a droit à un jet de Volonté pour renvoyer le message à l'expéditeur.\n• L'expéditeur subit alors 1d10 points de dégâts."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 5,
+        "kind": "other",
+        "action": "1 action simple",
+        "savingThrow": "Volonté, annule (voir description)"
+      }
+    },
+    {
+      "id": "invocation.eldritch_chain",
+      "type": "invocation",
+      "name": {
+        "fr": "Chaîne fantastique",
+        "en": "Eldritch Chain"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser",
+        "blast_shape"
+      ],
+      "description": {
+        "fr": "La décharge devient un arc d'énergie qui saute de victime en victime.\n\nEn jeu\n• Forme : la décharge peut sauter vers des cibles secondaires, chacune à 9 m au plus de la précédente.\n• Une attaque de contact à distance par cible secondaire pour leur infliger des dégâts.\n• Un bond tous les 5 niveaux de lanceur : 1 cible de plus au niveau 5, 2 au niveau 10, 3 au niveau 15, 4 au niveau 20.\n• Une cible ne peut être visée qu'une fois ; si le sorcier rate une cible, la chaîne s'arrête.\n• Chaque cible après la première subit la moitié des dégâts initiaux (y compris les dégâts ajoutés par d'autres invocations comme décharge au vitriol).\n• Un test de niveau de lanceur par cible dotée de résistance à la magie."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "blast_shape",
+        "effect": "Remodèle la décharge fantastique"
+      },
+      "note": "Une forme : elle remodèle la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.dark_ones_own_luck",
+      "type": "invocation",
+      "name": {
+        "fr": "Chance du démon",
+        "en": "Dark One's Own Luck"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Les puissances des ténèbres se penchent sur le sorcier et lui sourient, le temps d'un jour.\n\nEn jeu\n• Bonus de chance égal au modificateur de Charisme à un type de jet de sauvegarde au choix (Réflexes, Vigueur ou Volonté), choisi à chaque utilisation.\n• Un seul type de sauvegarde à la fois.\n• Le bonus ne peut pas dépasser le niveau de classe du sorcier.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple",
+        "duration": "24 heures"
+      },
+      "note": "Texte seul : le modèle ne sait pas choisir une seule sauvegarde parmi trois."
+    },
+    {
+      "id": "invocation.charm",
+      "type": "invocation",
+      "name": {
+        "fr": "Charme",
+        "en": "Charm"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "D'un mot velouté, le sorcier fait de sa victime un compagnon de route.\n\nEn jeu\n• Comme charme-monstre, mais c'est un pouvoir de langage.\n• Une créature à 18 m au plus ; Volonté pour résister, sinon elle voit le sorcier comme un bon camarade.\n• Une seule créature charmée à la fois : en charmer une seconde libère la première."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "other",
+        "action": "1 action simple",
+        "range": "18 m",
+        "target": "une créature",
+        "savingThrow": "Volonté, annule"
+      }
+    },
+    {
+      "id": "invocation.eldritch_cone",
+      "type": "invocation",
+      "name": {
+        "fr": "Cône fantastique",
+        "en": "Eldritch Cone"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater",
+        "blast_shape"
+      ],
+      "description": {
+        "fr": "La décharge s'épanouit en gerbe devant le sorcier au lieu de filer en rayon.\n\nEn jeu\n• Forme : cône de 9 m de long.\n• Inflige les dégâts habituels de la décharge fantastique à tous dans la zone.\n• Pas une attaque de rayon : aucune attaque de contact à distance.\n• Réflexes pour réduire les dégâts de moitié."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 5,
+        "kind": "blast_shape",
+        "area": "cône de 9 m",
+        "savingThrow": "Réflexes, demi-dégâts"
+      },
+      "note": "Une forme : elle remodèle la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.hideous_blow",
+      "type": "invocation",
+      "name": {
+        "fr": "Coup hideux",
+        "en": "Hideous Blow"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least",
+        "blast_shape"
+      ],
+      "description": {
+        "fr": "L'énergie occulte vient se loger dans le coup d'une arme.\n\nEn jeu\n• Forme : action simple, une attaque au corps à corps.\n• Si elle touche, la cible subit aussi l'effet de la décharge fantastique, essences comprises.\n• Ces dégâts s'ajoutent à ceux de l'arme.\n• Le sorcier n'a pas besoin d'infliger de dégâts avec l'arme pour déclencher les effets de la décharge."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 1,
+        "kind": "blast_shape",
+        "action": "1 action simple"
+      },
+      "note": "Une forme : elle remodèle la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.vitriolic_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge au vitriol",
+        "en": "Vitriolic Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater",
+        "essence"
+      ],
+      "description": {
+        "fr": "La décharge devient un jet d'acide invoqué, qui ronge longtemps après le coup.\n\nEn jeu\n• Essence : dégâts d'acide, ignore la résistance à la magie.\n• La cible subit 2d6 dégâts d'acide automatiques à chaque round suivant.\n• L'acide dure 1 round tous les 5 niveaux de classe (niveau 15 : 3 rounds)."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 6,
+        "kind": "essence",
+        "effect": "Dégâts d'acide, 2d6 par round supplémentaire",
+        "spellResistance": "non"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.blinding_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge aveuglante",
+        "en": "Blinding Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser",
+        "essence"
+      ],
+      "description": {
+        "fr": "Un éclair noir qui happe la vue de celui qu'il frappe.\n\nEn jeu\n• Essence : une créature vivante touchée doit réussir un jet de Vigueur ou être aveuglée pendant 1 round."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "essence",
+        "savingThrow": "Vigueur, annule",
+        "duration": "1 round"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.sickening_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge de fièvre",
+        "en": "Sickening Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least",
+        "essence"
+      ],
+      "description": {
+        "fr": "La décharge dépose une fièvre froide dans le sang de la cible.\n\nEn jeu\n• Essence : une créature vivante touchée doit réussir un jet de Vigueur ou être fiévreuse (« sickened ») pendant 1 minute.\n• Une créature déjà fiévreuse n'est pas affectée par cet aspect, mais subit les dégâts habituels."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "essence",
+        "savingThrow": "Vigueur, annule",
+        "duration": "1 minute"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.hellrime_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge de givre",
+        "en": "Hellrime Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser",
+        "essence"
+      ],
+      "description": {
+        "fr": "Un froid d'outre-monde mord la chair et raidit les gestes.\n\nEn jeu\n• Essence : dégâts de froid.\n• Une créature touchée doit réussir un jet de Vigueur ou subir -4 en Dextérité pendant 10 minutes.\n• Les malus de plusieurs décharges de givre ne se cumulent pas."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "essence",
+        "effect": "Dégâts de froid, -4 Dextérité",
+        "savingThrow": "Vigueur, annule",
+        "duration": "10 minutes"
+      },
+      "note": "Le Codex donne -4 en Dextérité dans la description et -2 dans la liste : on garde -4 (description)."
+    },
+    {
+      "id": "invocation.noxious_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge délétère",
+        "en": "Noxious Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater",
+        "essence"
+      ],
+      "description": {
+        "fr": "La décharge porte une puanteur qui retourne l'estomac.\n\nEn jeu\n• Essence : une créature touchée doit réussir un jet de Vigueur ou être nauséeuse pendant 1 minute."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 6,
+        "kind": "essence",
+        "savingThrow": "Vigueur, annule",
+        "duration": "1 minute"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.utterdark_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge des ténèbres",
+        "en": "Utterdark Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "dark",
+        "essence"
+      ],
+      "description": {
+        "fr": "Une lame d'ombre pure qui vide l'énergie de vie.\n\nEn jeu\n• Essence : dégâts d'énergie négative ; elle soigne les morts-vivants (comme blessure).\n• Une créature touchée doit réussir un jet de Vigueur ou gagner 2 niveaux négatifs, qui disparaissent après 1 heure.\n• Si la cible a autant de niveaux négatifs que de dés de vie, elle meurt."
+      },
+      "invocation": {
+        "grade": "dark",
+        "level": 8,
+        "kind": "essence",
+        "effect": "Énergie négative, 2 niveaux négatifs",
+        "savingThrow": "Vigueur, annule",
+        "duration": "1 heure"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.bewitching_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge enchanteresse",
+        "en": "Bewitching Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater",
+        "essence"
+      ],
+      "description": {
+        "fr": "Une lueur trouble qui embrouille les pensées de celui qu'elle touche.\n\nEn jeu\n• Essence : une créature touchée doit réussir un jet de Volonté ou être confuse pendant 1 round, en plus des dégâts.\n• Pouvoir mental."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 4,
+        "kind": "essence",
+        "savingThrow": "Volonté, annule",
+        "duration": "1 round"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.repelling_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge repoussante",
+        "en": "Repelling Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater",
+        "essence"
+      ],
+      "description": {
+        "fr": "Le choc de la décharge arrache la cible du sol et la projette au loin.\n\nEn jeu\n• Essence : une créature de taille M ou inférieure doit réussir un jet de Réflexes ou être repoussée de 1d6 cases (1,50 m chacune) et tomber à terre.\n• Un obstacle l'arrête plus tôt ; elle subit 1d6 dégâts tous les 3 m parcourus et tombe à terre.\n• Ce déplacement ne provoque pas d'attaque d'opportunité."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 6,
+        "kind": "essence",
+        "savingThrow": "Réflexes, annule"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.brimstone_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge sulfureuse",
+        "en": "Brimstone Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser",
+        "essence"
+      ],
+      "description": {
+        "fr": "Un feu de soufre qui s'accroche à la peau et continue de brûler.\n\nEn jeu\n• Essence : dégâts de feu.\n• Une créature touchée doit réussir un jet de Réflexes ou prendre feu : 2d6 dégâts de feu par round, jusqu'à une action complexe pour éteindre les flammes ou la fin de la durée.\n• Les flammes durent 1 round tous les 5 niveaux de classe (niveau 15 : 3 rounds).\n• Jamais plus de 2d6 de feu par round, même avec plusieurs décharges sulfureuses."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 3,
+        "kind": "essence",
+        "effect": "Dégâts de feu, 2d6 par round",
+        "savingThrow": "Réflexes, annule"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.frightful_blast",
+      "type": "invocation",
+      "name": {
+        "fr": "Décharge terrifiante",
+        "en": "Frightful Blast"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least",
+        "essence"
+      ],
+      "description": {
+        "fr": "La décharge porte avec elle une peur sourde, venue de loin.\n\nEn jeu\n• Essence : une créature touchée doit réussir un jet de Volonté ou être secouée pendant 1 minute.\n• Une créature déjà secouée n'est pas affectée par cet aspect, mais subit les dégâts habituels.\n• Une immunité aux effets mentaux ou à la terreur protège de cet effet."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "essence",
+        "savingThrow": "Volonté, annule",
+        "duration": "1 minute"
+      },
+      "note": "Une essence : elle change la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.spiderwalk",
+      "type": "invocation",
+      "name": {
+        "fr": "Déplacement arachnide",
+        "en": "Spiderwalk"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Le sorcier trouve prise sur n'importe quelle paroi, et les toiles ne le retiennent plus.\n\nEn jeu\n• Pattes d'araignée, comme le sort, pendant 24 heures.\n• Immunité aux toiles, ordinaires ou magiques, tant que l'invocation dure."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple",
+        "duration": "24 heures"
+      },
+      "note": "Texte seul : vitesse d'escalade et immunité aux toiles ne sont pas dans le modèle. Dure 24 heures : pas de toggle."
+    },
+    {
+      "id": "invocation.see_the_unseen",
+      "type": "invocation",
+      "name": {
+        "fr": "Détection de l'indiscernable",
+        "en": "See the Unseen"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Les yeux du sorcier percent les illusions de l'ombre et ce qui se cache dans la lumière.\n\nEn jeu\n• Détection de l'invisibilité, comme le sort.\n• Vision dans le noir sur 18 m.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple",
+        "duration": "24 heures"
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18,
+          "condition": "active('toggle.see_the_unseen')"
+        }
+      ],
+      "note": "Toggle : on peut renoncer à l'effet pendant les 24 heures."
+    },
+    {
+      "id": "invocation.voracious_dispelling",
+      "type": "invocation",
+      "name": {
+        "fr": "Dissipation vorace",
+        "en": "Voracious Dispelling"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "La magie défaite se retourne contre celui qui la portait.\n\nEn jeu\n• Dissipation de la magie, comme le sort.\n• Une créature dont un sort est dissipé subit 1 point de dégâts par niveau du sort, sans jet de sauvegarde."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "other",
+        "action": "1 action simple"
+      }
+    },
+    {
+      "id": "invocation.tenacious_plague",
+      "type": "invocation",
+      "name": {
+        "fr": "Fléau tenace",
+        "en": "Tenacious Plague"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater"
+      ],
+      "description": {
+        "fr": "Une nuée de criquets noirs, mauvaise jusque dans la chair des créatures les plus coriaces.\n\nEn jeu\n• Fléau d'insectes, comme le sort.\n• Ajouter le modificateur de Charisme au DD du jet de Vigueur contre la distraction de la nuée.\n• Les attaques de la nuée de criquets comptent comme armes magiques pour passer la réduction des dégâts."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 6,
+        "kind": "other",
+        "action": "1 action simple",
+        "savingThrow": "Vigueur (DD + Charisme)"
+      }
+    },
+    {
+      "id": "invocation.flee_the_scene",
+      "type": "invocation",
+      "name": {
+        "fr": "Fuite",
+        "en": "Flee the Scene"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Le sorcier disparaît dans une brèche et laisse derrière lui une image de lui-même qui fait illusion.\n\nEn jeu\n• Porte dimensionnelle comme pouvoir magique, portée courte (7,50 m + 1,50 m par 2 niveaux).\n• Il laisse une image accomplie de lui-même pendant 1 round.\n• L'image réagit aux attaques comme si le sorcier se concentrait."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "other",
+        "action": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m / 2 niveaux)",
+        "duration": "1 round (image)"
+      }
+    },
+    {
+      "id": "invocation.beguiling_influence",
+      "type": "invocation",
+      "name": {
+        "fr": "Influence captivante",
+        "en": "Beguiling Influence"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Une présence qui fait plier les regards et délie les langues.\n\nEn jeu\n• Bonus de +6 aux tests de Bluff, Diplomatie et Intimidation.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple",
+        "duration": "24 heures"
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.beguiling_influence')"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.beguiling_influence')"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.beguiling_influence')"
+        }
+      ],
+      "note": "Toggle : on peut renoncer à l'effet pendant les 24 heures."
+    },
+    {
+      "id": "invocation.retributive_invisibility",
+      "type": "invocation",
+      "name": {
+        "fr": "Invisibilité vengeresse",
+        "en": "Retributive Invisibility"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "dark"
+      ],
+      "description": {
+        "fr": "Une invisibilité piégée : la rompre, c'est faire éclater l'ombre.\n\nEn jeu\n• Invisibilité suprême, sur soi uniquement.\n• Si elle est dissipée, onde de choc de 6 m de rayon centrée sur le sorcier : 4d6 dégâts de son, étourdissement 1 round.\n• Vigueur réduit les dégâts de moitié et annule l'étourdissement."
+      },
+      "invocation": {
+        "grade": "dark",
+        "level": 6,
+        "kind": "other",
+        "action": "1 action simple",
+        "range": "personnelle",
+        "area": "rayonnement de 6 m",
+        "savingThrow": "Vigueur, demi-dégâts"
+      }
+    },
+    {
+      "id": "invocation.eldritch_spear",
+      "type": "invocation",
+      "name": {
+        "fr": "Lance fantastique",
+        "en": "Eldritch Spear"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least",
+        "blast_shape"
+      ],
+      "description": {
+        "fr": "La décharge file bien plus loin que ne l'oserait un rayon ordinaire.\n\nEn jeu\n• Forme : portée de la décharge fantastique de 75 m, sans facteur de portée."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "blast_shape",
+        "range": "75 m"
+      },
+      "note": "Une forme : elle remodèle la décharge fantastique, sans effet seule."
+    },
+    {
+      "id": "invocation.curse_of_despair",
+      "type": "invocation",
+      "name": {
+        "fr": "Malédiction du désespoir",
+        "en": "Curse of Despair"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Un toucher qui sème le découragement dans les bras de l'adversaire.\n\nEn jeu\n• Malédiction, comme le sort, par toucher.\n• Si la cible réussit son jet, elle subit quand même un malus de -1 aux jets d'attaque pendant 1 minute."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "other",
+        "action": "1 action simple",
+        "range": "contact",
+        "savingThrow": "Volonté, annule (voir description)"
+      }
+    },
+    {
+      "id": "invocation.the_dead_walk",
+      "type": "invocation",
+      "name": {
+        "fr": "Marche des morts",
+        "en": "The Dead Walk"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Les cadavres se relèvent à l'appel du sorcier.\n\nEn jeu\n• Animation des morts, comme le sort : squelettes et zombis.\n• Sans la composante matérielle (un onyx de 25 po par dé de vie de mort-vivant), les morts-vivants créés tombent en poussière après 1 minute."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "other",
+        "action": "1 action simple"
+      }
+    },
+    {
+      "id": "invocation.walk_unseen",
+      "type": "invocation",
+      "name": {
+        "fr": "Marche invisible",
+        "en": "Walk Unseen"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Le sorcier s'efface aux yeux du monde, une journée entière.\n\nEn jeu\n• Invisibilité, sur soi uniquement.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple",
+        "range": "personnelle",
+        "duration": "24 heures"
+      },
+      "note": "Texte seul : l'invisibilité n'est pas dans le modèle."
+    },
+    {
+      "id": "invocation.wall_of_perilous_flame",
+      "type": "invocation",
+      "name": {
+        "fr": "Mur de feu périlleux",
+        "en": "Wall of Perilous Flame"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater"
+      ],
+      "description": {
+        "fr": "Un mur de flammes dont une partie brûle de la rage de l'ombre, que rien n'éteint.\n\nEn jeu\n• Mur de feu, comme le sort.\n• La moitié des dégâts est surnaturelle : la résistance au feu ne l'affecte pas.\n• Une cible réduite à 0 pv ou moins par le mur disparaît tout entière 1 round plus tard (comme destruction)."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 5,
+        "kind": "other",
+        "action": "1 action simple"
+      }
+    },
+    {
+      "id": "invocation.wall_of_gloom",
+      "type": "invocation",
+      "name": {
+        "fr": "Mur de ténèbres",
+        "en": "Wall of Gloom"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Un rideau d'obscurité dressé là où le sorcier le désire.\n\nEn jeu\n• Mur de ténèbres, comme le sort (voir page 114 du Codex)."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple"
+      }
+    },
+    {
+      "id": "invocation.dark_discorporation",
+      "type": "invocation",
+      "name": {
+        "fr": "Noire désincarnation",
+        "en": "Dark Discorporation"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "dark"
+      ],
+      "description": {
+        "fr": "Le sorcier abandonne son corps et devient une nuée de chauves-souris d'ombre.\n\nEn jeu\n• Forme de nuée de taille Min, qui occupe 2 cases de 3 m (ou 8 cases de 1,50 m, disposées comme il le veut).\n• Dure 24 heures.\n• Caractéristiques : For -1 et Dex +6 ; perd les bonus d'armure et d'armure naturelle à la CA ; +4 de taille et parade égale au modificateur de Charisme à la CA.\n• Vol 12 m (manœuvrabilité parfaite) ; passe par les interstices comme une créature de taille Min.\n• Traits des nuées : immunisé aux coups critiques, à la prise en tenaille et aux dégâts des armes ; pas de croc-en-jambe, d'empoignade ni de bousculade ; pas de sorts ciblant un nombre précis de créatures (sauf pouvoirs mentaux) ; +50 % de dégâts des sorts et effets de zone.\n• À 0 pv, ou inconscient par dégâts non-létaux, retrouve la forme normale dans une case de la nuée, au choix.\n• Attaque de nuée : 4d6 dégâts aux créatures dont il occupe l'espace en fin de tour (arme magique de son alignement).\n• Distraction : une créature vivante vulnérable qui commence son tour dans la nuée doit réussir un jet de Vigueur ou être nauséeuse 1 round ; lancer un sort dans la nuée demande un test de Concentration DD 20 + niveau du sort.\n• L'équipement est absorbé et inutilisable.\n• Seulement des actions de mouvement, et aucune autre invocation."
+      },
+      "invocation": {
+        "grade": "dark",
+        "level": 8,
+        "kind": "other",
+        "action": "1 action simple",
+        "duration": "24 heures"
+      },
+      "note": "Texte seul : transformation en nuée, pas de statistiques modélisables."
+    },
+    {
+      "id": "invocation.dark_foresight",
+      "type": "invocation",
+      "name": {
+        "fr": "Noire prémonition",
+        "en": "Dark Foresight"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "dark"
+      ],
+      "description": {
+        "fr": "Les ombres soufflent au sorcier ce qui va venir, et lui permettent d'en parler à un autre esprit.\n\nEn jeu\n• Prémonition, comme le sort.\n• Si le sorcier a une ligne de mire sur une créature à 30 m au plus, il peut communiquer avec elle par télépathie."
+      },
+      "invocation": {
+        "grade": "dark",
+        "level": 9,
+        "kind": "other",
+        "action": "1 action simple",
+        "range": "30 m (télépathie)"
+      }
+    },
+    {
+      "id": "invocation.miasmic_cloud",
+      "type": "invocation",
+      "name": {
+        "fr": "Nuage de miasmes",
+        "en": "Miasmic Cloud"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Une brume viciée enveloppe le sorcier et fatigue ceux qui s'y aventurent.\n\nEn jeu\n• Brume sur 3 m de rayon autour du sorcier, sans gêner la ligne de mire.\n• Camouflage pour toutes les créatures dans la brume.\n• Les autres créatures qui entrent doivent réussir un jet de Vigueur ou être fatiguées, tant qu'elles restent dans le nuage et 1 round de plus.\n• Un vent modéré ou une flamme plus grosse qu'une torche la disperse ; elle se lève de toute façon au bout de 1 minute."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 1,
+        "kind": "other",
+        "action": "1 action simple",
+        "area": "rayon de 3 m",
+        "savingThrow": "Vigueur, annule",
+        "duration": "1 minute"
+      }
+    },
+    {
+      "id": "invocation.summon_swarm",
+      "type": "invocation",
+      "name": {
+        "fr": "Nuée grouillante",
+        "en": "Summon Swarm"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Une nuée d'insectes répond à l'appel du sorcier.\n\nEn jeu\n• Nuée grouillante, comme le sort.\n• Contrairement au sort, dure aussi longtemps que le sorcier se concentre, puis 2 rounds."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple",
+        "duration": "concentration + 2 rounds"
+      }
+    },
+    {
+      "id": "invocation.enervating_shadow",
+      "type": "invocation",
+      "name": {
+        "fr": "Ombre affaiblissante",
+        "en": "Enervating Shadow"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater"
+      ],
+      "description": {
+        "fr": "L'ombre protège le sorcier en pompant la force de ceux qui l'approchent.\n\nEn jeu\n• Camouflage total dans les zones qui ne sont pas vivement éclairées (inefficace en plein jour ou dans le rayon d'un sort de lumière).\n• Une créature vivante adjacente doit réussir un jet de Vigueur au début de son tour ou subir -4 en Force pendant 5 rounds ; une fois affectée, elle y est immune 24 heures.\n• Dure 5 rounds ; un sort de lumière de niveau égal ou supérieur le contre ou le dissipe."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 5,
+        "kind": "other",
+        "action": "1 action simple",
+        "savingThrow": "Vigueur, annule",
+        "duration": "5 rounds"
+      },
+      "note": "Le camouflage et le malus de Force imposé aux adversaires ne sont pas des nombres de la fiche du sorcier : tout reste dans le texte."
+    }
+  ]
+}

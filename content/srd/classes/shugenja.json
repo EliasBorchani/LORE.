@@ -1,0 +1,875 @@
+{
+  "entities": [
+    {
+      "id": "class.shugenja",
+      "type": "class",
+      "name": {
+        "fr": "Shugenja",
+        "en": "Shugenja"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "divine",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Le shugenja prie les esprits de l’air, de la terre, du feu et de l’eau, et ils lui répondent. Il écrit ses invocations sur des bandelettes de papier, les ofudas, qu’il lit à voix haute pour lancer un sort. Chacun se voue à un élément, qui colore toute sa magie, et se tient à l’écart de l’élément contraire.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé aux armes courantes et à l’épée courte ; ni armure ni bouclier. L’armure plus lourde que le cuir donne un malus aux tests d’Acrobaties, Déplacement silencieux, Discrétion, Équilibre, Escalade, Escamotage, Évasion, Natation et Saut, mais ne gêne pas ses sorts.\n• Sorts divins spontanés, basés sur le Charisme, du niveau 0 au niveau 9 ; liste propre au shugenja.\n• Aptitudes : concentration élémentaire (1), perception élémentaire (1).\n• Au-delà du niveau 20 : un don supplémentaire tous les 3 niveaux (23, 26, 29…)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "source": "Complete Divine",
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "divine",
+        "mode": "spontaneous"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.shugenja') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Épique : le Codex Divin donne ici la table jusqu’au niveau 20 seulement ; le don supplémentaire tous les 3 niveaux au-delà est la règle maison des classes du Codex. Les sorts connus de la table sont le total « o + élément + autre » (o = sort d’ordre). Les listes de sorts du shugenja (pages 146 à 151) sont dans un autre lot."
+    },
+    {
+      "id": "power.shugenja_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de shugenja",
+        "en": "Shugenja spells"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "shugenja"
+      ],
+      "description": {
+        "fr": "Le shugenja ne prépare rien : au moment de lancer, il choisit un sort parmi ceux qu’il connaît et lit son ofuda. Son répertoire est mince, mais l’ordre dont il vient lui offre un sort de chaque niveau.\n\nEn jeu\n• Sorts divins de la liste des shugenjas, lancés sans préparation (comme un ensorceleur).\n• Caractéristique : Charisme. Il faut au moins 10 + niveau du sort en Charisme pour l’apprendre ou le lancer. DD : 10 + niveau du sort + modificateur de Charisme. Sorts en bonus grâce à un Charisme élevé.\n• Sorts par jour selon le niveau de shugenja (table 1-5). Il peut dépenser un emplacement d’un niveau supérieur pour lancer un sort ; le sort garde son niveau réel.\n• Sorts connus (table 1-6) : au niveau 1, quatre sorts de niveau 0 et deux sorts du 1er niveau de son choix, plus un sort de chaque niveau imposé par son ordre. Le Charisme ne change pas le nombre de sorts connus.\n• Aux niveaux 4, 6, 8…, il peut remplacer un sort connu par un autre du même niveau, au plus de 2 niveaux sous son plus haut niveau de sorts ; un seul échange par niveau, et il doit rester conforme à sa concentration élémentaire.\n• Pas de livre de sorts : il écrit ses sorts sur des ofudas, qui servent de focaliseur divin. Il peut utiliser Écriture de parchemins (parchemins divins).\n• Métamagie : il choisit son sort au moment de le lancer, donc un sort métamagique prend une action complexe de plus (action complexe pour un sort d’une action simple, sinon +1 action complexe). Il ne peut pas utiliser Incantation rapide."
+      },
+      "effects": [],
+      "note": "Les sorts d’ordre et l’obligation de choisir la moitié des sorts connus dans son élément ne sont pas contrôlés par la feuille."
+    },
+    {
+      "id": "power.shugenja_elemental_focus",
+      "type": "class_power",
+      "name": {
+        "fr": "Concentration élémentaire",
+        "en": "Elemental focus"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "shugenja"
+      ],
+      "description": {
+        "fr": "Chaque shugenja se voue à l’air, la terre, le feu ou l’eau, souvent selon l’ordre qui l’a formé. Cet élément devient sa spécialité, et son contraire lui est fermé.\n\nEn jeu\n• Il choisit un élément de prédilection : Air, Terre, Feu ou Eau (l’ordre de l’Ineffable Mystère laisse le choix libre).\n• Au moins la moitié de ses sorts connus de chaque niveau sont de cet élément (table 1-6, « o + a + b » : o = le sort imposé par l’ordre, a = sorts de son élément à choisir en plus, b = sorts à choisir dans n’importe quel élément non interdit). La feuille compte le total 1 + a + b.\n• Il gagne le don École de prédilection pour les sorts de son élément, quelle que soit l’école : +1 au DD des jets de sauvegarde contre ces sorts.\n• Il ne peut pas apprendre de sorts de l’élément contraire : Air contre Terre, Feu contre Eau (et inversement).\n• Air : voyage, intuition, influence, divination, illusion. Terre : détermination, santé, croissance, solidité de la matière. Feu : destruction, vision, mais aussi intelligence, inspiration, création. Eau : transformation, purification, guérison, amitié."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer (« Elemental focus »). L’élément choisi et l’élément interdit se notent dans les notes de la fiche ; le +1 au DD dépend de l’élément de chaque sort lancé : pas dans le modèle. Le Vide est un cinquième élément réservé à une classe de prestige (chapitre 2)."
+    },
+    {
+      "id": "power.shugenja_elemental_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Perception élémentaire",
+        "en": "Elemental sense"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "shugenja"
+      ],
+      "description": {
+        "fr": "L’un des premiers talents du shugenja, si simple qu’on le compte comme un pouvoir magique : sentir où se cachent l’air, la terre, le feu ou l’eau autour de lui.\n\nEn jeu\n• Pouvoir magique, action complexe : il sent toutes les sources d’un élément choisi (Air, Terre, Feu ou Eau) dans 3 m. Il connaît leur taille, pas leur position ni leur nature exactes.\n• Chaque round de concentration de plus ajoute 1,50 m au rayon, jusqu’à niveau de shugenja × 1,50 m en plus.\n• Ou il se concentre sur une seule source par round et fait un test d’Art de la magie : 20 = position approximative ; 25 = naturelle ou issue d’un sort (Art de la magie DD 20 + niveau du sort pour le sort) ; 30 = créature ou objet ; 35 = nature exacte.\n• 3 utilisations par jour au niveau 1, +1 tous les 5 niveaux (4 au niveau 5, 5 au niveau 10…).\n• Bloqué par 1 m de bois ou de terre, 30 cm de pierre, 2,5 cm de métal ordinaire ou une mince feuille de plomb."
+      },
+      "effects": [],
+      "usesPerDay": "3 + floor(level('class.shugenja') / 5)",
+      "note": "Nom anglais à confirmer (« Elemental sense »)."
+    },
+    {
+      "id": "power.shugenja_orders",
+      "type": "class_power",
+      "name": {
+        "fr": "Ordres de shugenja",
+        "en": "Shugenja orders"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "shugenja"
+      ],
+      "description": {
+        "fr": "Nul shugenja ne s’instruit seul : il sort d’un ordre, qui lui lègue la prière d’un sort par niveau. Chaque ordre a sa couleur, du feu qui dévore à la pierre que l’on sculpte.\n\nEn jeu\n• Chaque ordre donne un sort connu par niveau, du niveau 0 au niveau 9 (le « o » de la table 1-6).\n• Impénétrable Creuset : Résistance, Arme magique, Cacophonie, Arme magique suprême, Renvoi, Protection contre la mort, Bannissement, Champ de force, Entrave, Emprisonnement.\n• Ineffable Mystère : Résistance, Bouclier entropique, Dissimulation d’objet, Dissipation de la magie, Immunité contre les sorts, Résistance à la magie, Zone d’antimagie, Renvoi des sorts, Protection contre les sorts, Disjonction de Mordenkainen.\n• Œil Omnivoyant : Assistance divine, Détection des collets et des fosses, Détection de pensées, Clairaudience/clairvoyance, Divination, Communion avec la nature, Orientation, Mythes et légendes, Vision mystique, Prémonition.\n• Douce Pluie : Soins superficiels, Soins légers, Augure, Soins importants, Soins intensifs, Communion, Guérison suprême, Résurrection, Guérison suprême de groupe, Capture d’âme.\n• Flamme Dévorante : Illumination, Mains brûlantes, Flammes, Lumière brûlante, Boule de feu, Colonne de feu, Feux purificateurs, Tempête de feu, Boule de feu à retardement, Nuée de météores.\n• Lande Interdite : Détection de la magie, Regain d’assurance, Odorat, Restauration partielle, Cerf fantôme, Brume de pureté, Contrôle du climat, Scrutation suprême, Flétrissure, Grand tertre.\n• Sculpture Parfaite : Réparation, Pierre magique, Ramollissement de la terre et de la pierre, Façonnage de la pierre, Subversion planaire, Transmutation de la pierre en boue, Pétrification, Statue, Tremblement de terre, Aversion.\n• Zéphire de Printemps : Hébétement, Déguisement, Flou, Invisibilité, Marche dans les airs, Invisibilité suprême, Voile, Double illusoire, Écran, Prémonition."
+      },
+      "effects": [],
+      "note": "Les sorts d’ordre ne sont pas contrôlés par la feuille : le joueur les choisit parmi les sorts connus."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.shugenja",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.shugenja_spells",
+        "power.shugenja_elemental_focus",
+        "power.shugenja_elemental_sense",
+        "power.shugenja_orders"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        5,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        7,
+        4,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        8,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        8,
+        5,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        4,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        5,
+        4,
+        3,
+        2,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 11,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 12,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        4,
+        3,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 13,
+      "bab": 6,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 14,
+      "bab": 7,
+      "fort": 4,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        4,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 15,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        5,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 16,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        5,
+        4,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 17,
+      "bab": 8,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 18,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        5,
+        4,
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 19,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.shugenja",
+      "level": 20,
+      "bab": 10,
+      "fort": 6,
+      "ref": 6,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "spellsKnown": [
+        10,
+        6,
+        6,
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.shugenja",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "proficiency",
+      "to": "item.short_sword"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.shugenja",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

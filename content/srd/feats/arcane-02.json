@@ -1,0 +1,855 @@
+{
+  "entities": [
+    {
+      "id": "feat.chain_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Démultiplication de sort",
+        "en": "Chain Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le sort frappe sa cible, puis jaillit d’elle comme un éclair qui cherche d’autres proies, de victime en victime.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• S’applique à un sort à cible unique dont la portée dépasse le contact.\n• Après la cible primaire, le sort rebondit sur des cibles secondaires : une par niveau de lanceur de sorts (20 au plus), toutes à 9 m au plus de la cible primaire, chacune visée une seule fois.\n• Sort à dégâts : chaque cible secondaire subit la moitié des dégâts de la cible primaire (arrondi à l’inférieur), et un jet de Réflexes réussi les divise encore par deux.\n• Sort sans dégâts : DD de sauvegarde −4 pour les cibles secondaires.\n• Le sort utilise un emplacement de 3 niveaux de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix."
+    },
+    {
+      "id": "feat.extra_slot",
+      "type": "feat",
+      "name": {
+        "fr": "Emplacement de sort supplémentaire",
+        "en": "Extra Slot"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic",
+        "slots"
+      ],
+      "description": {
+        "fr": "Un peu plus de place dans l’esprit du lanceur, assez pour retenir une formule de plus chaque jour.\n\nEn jeu\n• Condition : niveau 4 de lanceur de sorts.\n• Un emplacement de sort supplémentaire par jour, d’un niveau choisi en prenant le don et fixé pour toujours.\n• Ce niveau doit être inférieur au plus haut niveau de sort que le personnage peut lancer.\n• Peut être pris plusieurs fois : un emplacement de plus à chaque fois."
+      },
+      "repeatable": {},
+      "note": "Condition non vérifiée par la fiche : niveau 4 de lanceur de sorts. Pas d’effet : le modèle ne sait pas encore choisir une classe et un niveau de sort à la fois ; ajouter l’emplacement à la main."
+    },
+    {
+      "id": "feat.born_of_the_three_thunders",
+      "type": "feat",
+      "name": {
+        "fr": "Enfant des trois tonnerres",
+        "en": "Born of the Three Thunders"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "La foudre et le grondement qui la suit ne font qu’un dans ses sorts : l’éclair brûle, le tonnerre renverse, et le lanceur lui-même en reste sonné.\n\nEn jeu\n• Condition : 4 degrés de maîtrise en Connaissances (nature), Substitution d’énergie destructive (électricité).\n• S’applique à un sort d’électricité ou de son qui inflige des dégâts : moitié électricité, moitié son, et le sort a les deux registres.\n• Toute créature blessée fait un jet de Vigueur (DD du sort) ou est étourdie 1 round ; en cas d’échec, elle fait aussi un jet de Réflexes (même DD) ou tombe à terre.\n• Le lanceur est hébété 1 round après l’incantation.\n• Le sort garde un emplacement de son niveau normal."
+      },
+      "prerequisite": "@skill.knowledge_nature.ranks >= 4 and has('feat.energy_substitution')",
+      "note": "Condition non vérifiée par la fiche : le type d’énergie choisi pour Substitution d’énergie destructive (électricité). Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ».",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.guardian_spirit",
+      "type": "feat",
+      "name": {
+        "fr": "Esprit gardien",
+        "en": "Guardian Spirit"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "defense"
+      ],
+      "description": {
+        "fr": "L’esprit qui veille sur le personnage se fait plus attentif encore et souffle, au bon moment, de quoi corriger un faux pas.\n\nEn jeu\n• Condition : l’aptitude de classe d’esprit veilleur.\n• 2 fois par jour, relancer un test d’initiative.\n• 1 fois par jour, relancer un jet de sauvegarde.\n• La relance se décide juste après le premier jet."
+      },
+      "note": "Nom anglais à confirmer. Condition non vérifiée par la fiche : l’aptitude d’esprit veilleur (classe pas encore dans le catalogue). Deux réserves d’utilisations (2 et 1) : dans le texte."
+    },
+    {
+      "id": "feat.sudden_empower",
+      "type": "feat",
+      "name": {
+        "fr": "Extension d’effet soudaine",
+        "en": "Sudden Empower"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Sans y avoir pensé le matin, le lanceur gonfle un sort de moitié au moment même de l’incanter, d’un simple effort de volonté.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• 1 fois par jour, applique Extension d’effet à un sort sans en hausser le niveau et sans préparation.\n• Le personnage qui possède Extension d’effet peut toujours s’en servir normalement."
+      },
+      "usesPerDay": "1",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ». Mêmes effets que Extension d'effet.",
+      "effects": [
+        {
+          "target": "spell.numeric",
+          "op": "multiply",
+          "value": 1.5,
+          "multMode": "exclusive: metamagic_amplify",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.sudden_extend",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de durée soudaine",
+        "en": "Sudden Extend"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Sans y avoir pensé le matin, le lanceur fait durer un sort deux fois plus longtemps au moment même de l’incanter, d’un simple effort de volonté.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• 1 fois par jour, applique Extension de durée à un sort sans en hausser le niveau et sans préparation.\n• Le personnage qui possède Extension de durée peut toujours s’en servir normalement."
+      },
+      "usesPerDay": "1",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Le Codex n’imprime pas la condition dans le texte du don, seulement dans la table 3-1. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ». Mêmes effets que Extension de durée.",
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.sudden_widen",
+      "type": "feat",
+      "name": {
+        "fr": "Extension de zone d’effet soudaine",
+        "en": "Sudden Widen"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Sans y avoir pensé le matin, le lanceur élargit la zone d’un sort au moment même de l’incanter, d’un simple effort de volonté.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• 1 fois par jour, applique Extension de zone d’effet à un sort sans en hausser le niveau et sans préparation.\n• Le personnage qui possède Extension de zone d’effet peut toujours s’en servir normalement."
+      },
+      "usesPerDay": "1",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Le Codex n’imprime pas la condition dans le texte du don, seulement dans la table 3-1. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ». Mêmes effets que Extension de zone d’effet.",
+      "effects": [
+        {
+          "target": "spell.area.radius",
+          "op": "multiply",
+          "value": 2,
+          "multMode": "multiplicative",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.draconic_claw",
+      "type": "feat",
+      "name": {
+        "fr": "Griffes draconiques",
+        "en": "Draconic Claw"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "natural_attack",
+        "melee"
+      ],
+      "description": {
+        "fr": "Les ongles du personnage durcissent et se recourbent comme ceux de ses lointains ancêtres dragons, et la magie qu’il lance les met en mouvement.\n\nEn jeu\n• Condition : Héritage draconique.\n• Attaque naturelle de griffes : 1d4 (taille P), 1d6 (taille M), 1d8 (taille G).\n• Après un sort au temps d’incantation de 1 action simple, une attaque de griffes par une action immédiate contre un adversaire dans son espace contrôlé."
+      },
+      "prerequisite": "has('feat.draconic_heritage')",
+      "note": "Attaque de griffes : dans le texte (pas d’arme naturelle dans le modèle pour ce don)."
+    },
+    {
+      "id": "feat.draconic_heritage",
+      "type": "feat",
+      "name": {
+        "fr": "Héritage draconique",
+        "en": "Draconic Heritage"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "defense",
+        "skill"
+      ],
+      "description": {
+        "fr": "Un dragon se cache quelque part dans l’arbre généalogique du personnage, et ce sang lointain se réveille avec sa magie.\n\nEn jeu\n• Condition : niveau 1 d’ensorceleur.\n• Choisir une espèce de dragon, pour toujours (un demi-dragon prend celle de son parent) : elle fixe le type d’énergie et une compétence de classe.\n• Blanc : froid, Équilibre. Bleu : électricité, Perception auditive. Noir : acide, Discrétion. Rouge : feu, Intimidation. Vert : acide, Déplacement silencieux.\n• Airain : feu, Renseignements. Argent : froid, Déguisement. Bronze : électricité, Survie. Cuivre : acide, Discrétion. Or : feu, Premiers secours.\n• Bonus aux jets de sauvegarde contre le sommeil, la paralysie et les sorts et effets du type d’énergie de l’héritage, égal au nombre de dons draconiques du personnage."
+      },
+      "prerequisite": "level('class.sorcerer') >= 1",
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "count('feat.draconic_heritage') + count('feat.draconic_claw') + count('feat.draconic_legacy') + count('feat.draconic_skin') + count('feat.draconic_presence') + count('feat.draconic_power') + count('feat.draconic_resistance') + count('feat.draconic_breath') + count('feat.draconic_flight')",
+          "bonusType": "untyped",
+          "situation": "situation.vs_sleep_or_paralysis",
+          "status": "draft",
+          "note": "Un point par don draconique"
+        }
+      ],
+      "note": "Espèce de dragon : pas de choix dans le modèle, elle reste dans le texte (compétence de classe, type d’énergie). Le bonus contre le type d’énergie de l’héritage reste dans le texte."
+    },
+    {
+      "id": "feat.sudden_quicken",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation rapide soudaine",
+        "en": "Sudden Quicken"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Un mot, un geste à peine esquissé, et le sort part avant même que l’adversaire ait vu le lanceur bouger.\n\nEn jeu\n• Condition : Extension d’effet soudaine, Extension de durée soudaine, Incantation rapide, Incantation silencieuse soudaine, Incantation statique soudaine, Quintessence des sorts soudaine.\n• 1 fois par jour, applique Incantation rapide à un sort sans en hausser le niveau et sans préparation.\n• Le personnage qui possède Incantation rapide peut toujours s’en servir normalement."
+      },
+      "prerequisite": "has('feat.sudden_empower') and has('feat.sudden_extend') and has('feat.quicken_spell') and has('feat.sudden_silent') and has('feat.sudden_still') and has('feat.sudden_maximize')",
+      "usesPerDay": "1",
+      "note": "Conditions telles que le Codex les imprime (Incantation rapide comprise). Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ». Mêmes effets que Incantation rapide.",
+      "effects": [
+        {
+          "target": "spell.action",
+          "op": "set",
+          "value": "'swift'",
+          "layer": "final",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.sudden_silent",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation silencieuse soudaine",
+        "en": "Sudden Silent"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Pris de court, bâillonné ou entravé, le lanceur se passe de paroles sans s’y être préparé : la formule trouve un autre chemin.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• 1 fois par jour, applique Incantation silencieuse à un sort sans en hausser le niveau et sans préparation.\n• Le personnage qui possède Incantation silencieuse peut toujours s’en servir normalement."
+      },
+      "usesPerDay": "1",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Le Codex n’imprime pas la condition dans le texte du don, seulement dans la table 3-1. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ». Mêmes effets que Incantation silencieuse.",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.sudden_still",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation statique soudaine",
+        "en": "Sudden Still"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Pris de court, bâillonné ou entravé, le lanceur se passe de gestes sans s’y être préparé : la formule trouve un autre chemin.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• 1 fois par jour, applique Incantation statique à un sort sans en hausser le niveau et sans préparation.\n• Le personnage qui possède Incantation statique peut toujours s’en servir normalement."
+      },
+      "usesPerDay": "1",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Le Codex n’imprime pas la condition dans le texte du don, seulement dans la table 3-1. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ». Mêmes effets que Incantation statique.",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.extra_invocation",
+      "type": "feat",
+      "name": {
+        "fr": "Invocation supplémentaire",
+        "en": "Extra Invocation"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le pacte du personnage s’élargit : une nouvelle invocation s’ajoute à celles qu’il connaît.\n\nEn jeu\n• Condition : pouvoir utiliser des invocations mineures.\n• Une invocation de plus, prise dans sa liste, d’un rang inférieur au plus haut rang auquel il a accès.\n• Peut être pris plusieurs fois : une nouvelle invocation à chaque fois."
+      },
+      "repeatable": {},
+      "note": "Condition non vérifiée par la fiche : invocations mineures (sorcier, pas encore dans le catalogue). Invocation choisie : dans le texte."
+    },
+    {
+      "id": "feat.battlecaster",
+      "type": "feat",
+      "name": {
+        "fr": "Lanceur de sorts de guerre",
+        "en": "Battlecaster"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic",
+        "defense"
+      ],
+      "description": {
+        "fr": "Habitué à lancer ses sorts en armure, le personnage a appris à le faire sous une protection plus lourde encore.\n\nEn jeu\n• Condition : pouvoir ignorer le risque d’échec des sorts profanes dû à une armure.\n• Une catégorie d’armure de plus sans risque d’échec des sorts profanes (légère → intermédiaire, intermédiaire → lourde).\n• Ne vaut ni pour les boucliers ni pour les sorts d’une autre classe que celle qui ignore déjà l’armure."
+      },
+      "note": "Condition non vérifiée par la fiche : une classe qui lance ses sorts profanes en armure (barde, mage de bataille…). Le modèle ne calcule pas encore l’échec des sorts dû à l’armure."
+    },
+    {
+      "id": "feat.practiced_spellcaster",
+      "type": "feat",
+      "name": {
+        "fr": "Lanceur de sorts polyvalent",
+        "en": "Practiced Spellcaster"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "À force d’entraînement, le personnage tire de l’une de ses classes une magie plus forte que ses seuls niveaux ne le permettraient.\n\nEn jeu\n• Condition : 4 degrés de maîtrise en Art de la magie.\n• Niveau de lanceur de sorts +4 pour une classe de lanceur de sorts choisie, sans dépasser les dés de vie du personnage.\n• Ne change ni les sorts par jour ni les sorts connus.\n• Peut être pris plusieurs fois, pour une autre classe à chaque fois (pas de cumul sur une même classe)."
+      },
+      "prerequisite": "@skill.spellcraft.ranks >= 4",
+      "repeatable": {
+        "choose": "class"
+      },
+      "effects": [
+        {
+          "target": "caster_level.class[{choice}]",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "status": "draft",
+          "note": "One class, chosen by the player"
+        }
+      ],
+      "note": "Limite non tenue par la fiche : le niveau de lanceur ne dépasse pas les dés de vie."
+    },
+    {
+      "id": "feat.draconic_legacy",
+      "type": "feat",
+      "name": {
+        "fr": "Legs draconique",
+        "en": "Draconic Legacy"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le sang du dragon parle si fort que la magie même de l’ancêtre s’inscrit dans le répertoire du personnage.\n\nEn jeu\n• Condition : quatre dons draconiques.\n• Ajoute trois sorts connus selon l’espèce de l’héritage, à leur niveau habituel sauf mention :\n• Blanc : brume de dissimulation, mur de glace (5e niveau), tempête de neige. Bleu : image accomplie, mirage, ventriloquie.\n• Noir : charme-animal (serpents et lézards seulement), fléau d’insectes, ténèbres profondes. Rouge : détection des passages secrets, suggestion, vision lucide.\n• Vert : charme-personne, croissance végétale, domination. Airain : contrôle des vents, don des langues, endurance aux énergies destructives.\n• Argent : feuille morte, marche dans les airs (5e niveau), mur de vent. Bronze : communication avec les animaux, contrôle de l’eau (5e niveau), respiration aquatique.\n• Cuivre : façonnage de la pierre, image silencieuse, mur de pierre. Or : bénédiction, lumière du jour, rejet du Mal.\n• Un sort déjà connu est remplacé par un autre sort d’ensorceleur du même niveau."
+      },
+      "prerequisite": "count('feat.draconic_heritage') + count('feat.draconic_claw') + count('feat.draconic_legacy') + count('feat.draconic_skin') + count('feat.draconic_presence') + count('feat.draconic_power') + count('feat.draconic_resistance') + count('feat.draconic_breath') + count('feat.draconic_flight') >= 4",
+      "note": "Espèce de dragon : pas de choix dans le modèle, les sorts ajoutés restent dans le texte."
+    },
+    {
+      "id": "feat.greater_warmage_edge",
+      "type": "feat",
+      "name": {
+        "fr": "Magie affilée supérieure",
+        "en": "Greater Warmage Edge"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le mage de bataille a affûté sa magie de guerre au point que chacun de ses sorts mord plus profond.\n\nEn jeu\n• Condition : mage de bataille de niveau 4.\n• Bonus de magie affilée +1, plus 1 tous les quatre niveaux de mage de bataille.\n• Normal : la magie affilée vaut le modificateur d’Intelligence."
+      },
+      "note": "Nom anglais à confirmer. Condition non vérifiée par la fiche : niveau 4 de mage de bataille (`class.warmage` pas encore dans le catalogue ; à écrire `level('class.warmage') >= 4` quand elle existera). Bonus aux dégâts des sorts : dans le texte."
+    },
+    {
+      "id": "feat.magic_hand",
+      "type": "feat",
+      "name": {
+        "fr": "Main magique",
+        "en": "Magic Hand"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le personnage sent l’énergie comme une main invisible au bout de ses doigts : il soulève, porte et ouvre sans toucher.\n\nEn jeu\n• Pouvoirs magiques, 1 fois par jour chacun (niveau 1 de lanceur de sorts) : disque flottant de Tenser, manipulation à distance, ouverture/fermeture.\n• DD des sauvegardes : 10 + niveau du sort + modificateur de Charisme."
+      },
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.arcane_mastery",
+      "type": "feat",
+      "name": {
+        "fr": "Maîtrise de la magie profane",
+        "en": "Arcane Mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "La magie de l’adversaire n’a plus de secret pour lui : percer ses défenses devient une affaire de routine.\n\nEn jeu\n• Condition : pouvoir lancer des sorts profanes ou utiliser des pouvoirs magiques (invocations comprises).\n• Peut faire 10 aux tests de niveau de lanceur de sorts, comme pour un test de compétence."
+      },
+      "note": "Condition non vérifiée par la fiche : sorts profanes ou pouvoirs magiques."
+    },
+    {
+      "id": "feat.double_wand_wielder",
+      "type": "feat",
+      "name": {
+        "fr": "Maniement de double baguette",
+        "en": "Double Wand Wielder"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic",
+        "two_weapon"
+      ],
+      "description": {
+        "fr": "Une baguette dans chaque main, le personnage les vide de concert comme un bretteur manie deux lames.\n\nEn jeu\n• Condition : Combat à deux armes, Création de baguettes magiques.\n• Par une action complexe, active une baguette dans chaque main (les deux mains libres) : une baguette principale et une secondaire.\n• Chaque usage de la baguette secondaire coûte 2 charges au lieu d’une."
+      },
+      "prerequisite": "has('feat.two_weapon_fighting') and has('feat.craft_wand')"
+    },
+    {
+      "id": "feat.reckless_wand_wielder",
+      "type": "feat",
+      "name": {
+        "fr": "Manieur de baguettes intrépide",
+        "en": "Reckless Wand Wielder"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le personnage force sa baguette au-delà de ce pour quoi elle a été faite, quitte à la vider plus vite.\n\nEn jeu\n• Condition : 1 degré de maîtrise en Utilisation d’objets magiques, Création de baguettes magiques.\n• En dépensant 1 charge de plus, la baguette agit avec un niveau de lanceur de sorts supérieur de 2.\n• Une seule charge supplémentaire à la fois."
+      },
+      "prerequisite": "@skill.use_magic_device.ranks >= 1 and has('feat.craft_wand')"
+    },
+    {
+      "id": "feat.necropolitan",
+      "type": "feat",
+      "name": {
+        "fr": "Nécropolitain",
+        "en": "Necropolitan"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le personnage a compris ce qui glace le cœur des vivants, et il sait faire naître cette peur d’un mot.\n\nEn jeu\n• Pouvoirs magiques, 1 fois par jour chacun (niveau 1 de lanceur de sorts) : fatigue, frayeur, son imaginaire.\n• DD des sauvegardes : 10 + niveau du sort + modificateur de Charisme."
+      },
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.obtain_familiar",
+      "type": "feat",
+      "name": {
+        "fr": "Obtention de familier",
+        "en": "Obtain Familiar"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Sans être magicien ni ensorceleur, le personnage appelle à lui une petite créature qui se lie à sa magie.\n\nEn jeu\n• Condition : 4 degrés de maîtrise en Connaissances (mystères), niveau 3 de lanceur de sorts profanes.\n• Gagne un familier comme un ensorceleur ou un magicien ; l’appel prend 24 heures et 100 po de composantes.\n• Pour les pouvoirs du familier, additionner tous les niveaux des classes qui lancent des sorts profanes."
+      },
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 4",
+      "note": "Condition non vérifiée par la fiche : niveau 3 de lanceur de sorts profanes. Les niveaux de classe qui comptent pour le familier : dans le texte."
+    },
+    {
+      "id": "feat.draconic_skin",
+      "type": "feat",
+      "name": {
+        "fr": "Peau draconique",
+        "en": "Draconic Skin"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "defense"
+      ],
+      "description": {
+        "fr": "La peau du personnage prend le reflet et la dureté des écailles de ses ancêtres.\n\nEn jeu\n• Condition : Héritage draconique.\n• Armure naturelle +1."
+      },
+      "prerequisite": "has('feat.draconic_heritage')",
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Bonus sans type sur ac.natural pour qu’il s’ajoute à l’armure naturelle existante (comme Armure naturelle améliorée)."
+    },
+    {
+      "id": "feat.insightful",
+      "type": "feat",
+      "name": {
+        "fr": "Perspicace",
+        "en": "Insightful"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "D’instinct, le personnage perçoit la magie qui l’entoure et lit ce que d’autres ne voient pas.\n\nEn jeu\n• Pouvoirs magiques, 1 fois par jour chacun (niveau 1 de lanceur de sorts) : détection de la magie, détection des passages secrets, lecture de la magie."
+      },
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.heighten_spell_like_ability",
+      "type": "feat",
+      "name": {
+        "fr": "Pouvoir magique amélioré",
+        "en": "Heighten Spell-Like Ability"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le personnage pousse l’un de ses pouvoirs innés au-delà de sa force habituelle, comme s’il venait d’une magie plus haute.\n\nEn jeu\n• Condition : un pouvoir magique utilisable au niveau 6 de lanceur de sorts ou plus.\n• Choisir un pouvoir magique : 3 fois par jour (moins si le pouvoir s’utilise moins souvent), il compte comme un sort de 2 niveaux de plus (9e au plus).\n• Tout ce qui dépend du niveau du sort suit ce nouveau niveau, DD de sauvegarde compris.\n• Seul un pouvoir qui reproduit un sort de niveau au plus égal à (niveau de lanceur ÷ 2, arrondi à l’inférieur) − 2 peut être choisi.\n• Peut être pris plusieurs fois, pour un pouvoir différent à chaque fois (pas de cumul)."
+      },
+      "repeatable": {},
+      "usesPerDay": "3",
+      "note": "Nom anglais à confirmer. Condition non vérifiée par la fiche : niveau de lanceur du pouvoir magique. Pouvoir choisi : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.arcane_preparation",
+      "type": "feat",
+      "name": {
+        "fr": "Préparation profane",
+        "en": "Arcane Preparation"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Ce lanceur spontané a appris la discipline du grimoire : il fixe à l’avance quelques sorts, déjà modifiés, prêts à partir.\n\nEn jeu\n• Condition : pouvoir lancer des sorts profanes sans préparation.\n• Chaque jour, prépare un ou plusieurs sorts dans ses emplacements, en général pour leur appliquer un don de métamagie sans allonger le temps d’incantation.\n• L’emplacement ainsi préparé ne sert à rien d’autre tant que le sort n’est pas lancé.\n• Normal : un lanceur spontané qui ajoute de la métamagie lance le sort par une action complexe au lieu d’une action simple."
+      },
+      "note": "Condition non vérifiée par la fiche : lanceur de sorts profanes spontané (ensorceleur, barde…)."
+    },
+    {
+      "id": "feat.draconic_presence",
+      "type": "feat",
+      "name": {
+        "fr": "Présence draconique",
+        "en": "Draconic Presence"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Quand il lance un sort, l’ombre d’un dragon semble se dresser derrière lui et les plus faibles reculent.\n\nEn jeu\n• Condition : Héritage draconique.\n• Après un sort profane, les adversaires à 3 m au plus qui ont moins de DV que lui sont secoués pendant un nombre de rounds égal au niveau du sort.\n• Jet de Volonté pour annuler (DD 10 + niveau du sort + modificateur de Charisme) ; en cas de réussite, la cible est immunisée 24 heures.\n• Sans effet sur les créatures d’Intelligence 3 ou moins, celles déjà secouées et les dragons."
+      },
+      "prerequisite": "has('feat.draconic_heritage')"
+    },
+    {
+      "id": "feat.arcane_defense",
+      "type": "feat",
+      "name": {
+        "fr": "Protection profane",
+        "en": "Arcane Defense"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic",
+        "defense"
+      ],
+      "description": {
+        "fr": "Pour avoir longuement étudié une école de magie, le personnage en connaît les failles et y résiste mieux que quiconque.\n\nEn jeu\n• Condition : École renforcée dans l’école choisie.\n• +3 aux jets de sauvegarde contre les sorts de l’école choisie.\n• Peut être pris plusieurs fois, pour une autre école à chaque fois (pas de cumul)."
+      },
+      "prerequisite": "has('feat.spell_focus_abjuration') or has('feat.spell_focus_conjuration') or has('feat.spell_focus_divination') or has('feat.spell_focus_enchantment') or has('feat.spell_focus_evocation') or has('feat.spell_focus_illusion') or has('feat.spell_focus_necromancy') or has('feat.spell_focus_transmutation')",
+      "repeatable": {},
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "situation": "situation.vs_spells_of_chosen_school",
+          "status": "draft"
+        }
+      ],
+      "note": "École choisie : pas de choix dans le modèle ; la condition accepte n’importe quelle École renforcée."
+    },
+    {
+      "id": "feat.draconic_power",
+      "type": "feat",
+      "name": {
+        "fr": "Puissance draconique",
+        "en": "Draconic Power"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "L’énergie de ses ancêtres coule plus facilement à travers lui : ses sorts de ce type frappent plus fort.\n\nEn jeu\n• Condition : Héritage draconique.\n• Sorts profanes du registre d’énergie de l’héritage : niveau de lanceur de sorts +1 et DD de sauvegarde +1.\n• Un sort changé par Substitution d’énergie destructive en profite si sa nouvelle énergie est celle de l’héritage."
+      },
+      "prerequisite": "has('feat.draconic_heritage')",
+      "note": "Énergie de l’héritage : pas de choix dans le modèle, le bonus reste dans le texte."
+    },
+    {
+      "id": "feat.maximize_spell_like_ability",
+      "type": "feat",
+      "name": {
+        "fr": "Quintessence des pouvoirs magiques",
+        "en": "Maximize Spell-Like Ability"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le personnage sait vider l’un de ses pouvoirs innés de toute sa force, sans laisser de place au hasard.\n\nEn jeu\n• Condition : un pouvoir magique utilisable au niveau 6 de lanceur de sorts ou plus.\n• Choisir un pouvoir magique : 3 fois par jour (moins si le pouvoir s’utilise moins souvent), ses variables numériques prennent leur valeur maximale.\n• Les jets de sauvegarde, les tests opposés et les effets sans variable ne changent pas.\n• Avec Extension de pouvoir magique : le maximum plus la moitié d’un jet normal.\n• Seul un pouvoir qui reproduit un sort de niveau au plus égal à (niveau de lanceur ÷ 2, arrondi à l’inférieur) − 2 peut être choisi.\n• Peut être pris plusieurs fois, pour un pouvoir différent à chaque fois (pas de cumul)."
+      },
+      "repeatable": {},
+      "usesPerDay": "3",
+      "note": "Condition non vérifiée par la fiche : niveau de lanceur du pouvoir magique. Pouvoir choisi : pas encore dans le modèle."
+    },
+    {
+      "id": "feat.sudden_maximize",
+      "type": "feat",
+      "name": {
+        "fr": "Quintessence des sorts soudaine",
+        "en": "Sudden Maximize"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Sans préparation aucune, le lanceur jette toute sa force dans une formule et le sort atteint d’emblée son plein potentiel.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• 1 fois par jour, applique Quintessence des sorts à un sort sans en hausser le niveau et sans préparation.\n• Le personnage qui possède Quintessence des sorts peut toujours s’en servir normalement."
+      },
+      "usesPerDay": "1",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ». Mêmes effets que Quintessence des sorts.",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.born_of_the_three_thunders",
+      "relation": "requires",
+      "to": "feat.energy_substitution"
+    },
+    {
+      "from": "feat.draconic_claw",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    },
+    {
+      "from": "feat.sudden_quicken",
+      "relation": "requires",
+      "to": "feat.sudden_empower"
+    },
+    {
+      "from": "feat.sudden_quicken",
+      "relation": "requires",
+      "to": "feat.sudden_extend"
+    },
+    {
+      "from": "feat.sudden_quicken",
+      "relation": "requires",
+      "to": "feat.quicken_spell"
+    },
+    {
+      "from": "feat.sudden_quicken",
+      "relation": "requires",
+      "to": "feat.sudden_silent"
+    },
+    {
+      "from": "feat.sudden_quicken",
+      "relation": "requires",
+      "to": "feat.sudden_still"
+    },
+    {
+      "from": "feat.sudden_quicken",
+      "relation": "requires",
+      "to": "feat.sudden_maximize"
+    },
+    {
+      "from": "feat.draconic_legacy",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    },
+    {
+      "from": "feat.double_wand_wielder",
+      "relation": "requires",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "feat.double_wand_wielder",
+      "relation": "requires",
+      "to": "feat.craft_wand"
+    },
+    {
+      "from": "feat.reckless_wand_wielder",
+      "relation": "requires",
+      "to": "feat.craft_wand"
+    },
+    {
+      "from": "feat.draconic_skin",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    },
+    {
+      "from": "feat.draconic_presence",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    },
+    {
+      "from": "feat.draconic_power",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    }
+  ]
+}

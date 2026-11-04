@@ -1,0 +1,299 @@
+{
+  "entities": [
+    {
+      "id": "class.bladesinger",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chantelame",
+        "en": "Bladesinger"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Chez les elfes, l'escrime et la magie profane s'accordent en une seule danse. Le chantelame se bat avec une grâce qui fait oublier son efficacité, une lame dans une main, un sort au bout de l'autre.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : race elfe ou demi-elfe ; bonus de base à l'attaque +5 ; Acrobaties 2 rangs, Concentration 4, Équilibre 2, Représentation (chant) 2 et (danse) 2 ; dons Arme de prédilection (épée longue ou rapière), Esquive, Expertise du combat, Magie de combat ; lancer des sorts profanes de 1er niveau.\n• Formé au port des armures légères (pas les boucliers) ; aucune nouvelle arme.\n• Compétences de classe : Acrobaties, Art de la magie, Concentration, Connaissances (mystères), Équilibre, Représentation, Saut.\n• Sorts : +1 niveau effectif de lanceur de sorts profanes à chaque niveau impair.\n• Aptitudes : style du chantelame (1) ; chantesort mineur (2) ; chant de la vitesse (4, 8) ; chantesort majeur (6) ; chant de la furie (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.tumble.ranks >= 2 and @skill.concentration.ranks >= 4 and @skill.balance.ranks >= 2 and @skill.perform.ranks >= 2 and has('feat.dodge') and has('feat.combat_expertise') and has('feat.combat_casting')",
+      "note": "Condition de race, de sorts et d'Arme de prédilection : texte seul ; Représentation (chant et danse) : un seul seuil de 2 rangs sur Représentation dans la formule."
+    },
+    {
+      "id": "power.bladesinger_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bladesinger"
+      ],
+      "description": {
+        "fr": "Chaque degré de la danse affine aussi la magie.\n\nEn jeu\n• À chaque niveau impair : +1 niveau effectif de lanceur de sorts dans une classe profane précédente qui lance déjà des sorts du 1er niveau.\n• Avec plusieurs classes profanes, il choisit laquelle progresse.\n• Il gagne sorts par jour, sorts connus et niveau de lanceur, mais pas les autres aptitudes de cette classe."
+      },
+      "effects": [],
+      "note": "Progression choisie dans la fiche de niveau, rien dans les lignes de la table."
+    },
+    {
+      "id": "power.bladesinger_bladesong_style",
+      "type": "class_power",
+      "name": {
+        "fr": "Style du chantelame",
+        "en": "Bladesong style"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bladesinger"
+      ],
+      "description": {
+        "fr": "Une lame, une main libre, et une garde impossible à saisir.\n\nEn jeu\n• Capacité extraordinaire : épée longue ou rapière dans une main, rien dans l'autre : bonus d'esquive à la CA égal à son niveau de classe, plafonné à son bonus d'Intelligence.\n• Perdu en armure ou charge intermédiaire ou lourde, pris au dépourvu ou privé de son bonus de Dextérité."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "min(level('class.bladesinger'), max(0, @ability.int.mod))",
+          "bonusType": "dodge",
+          "condition": "active('toggle.bladesinger_bladesong_style')"
+        }
+      ],
+      "note": "Toggle à activer s'il tient la bonne arme dans une main et rien dans l'autre."
+    },
+    {
+      "id": "power.bladesinger_lesser_spellsong",
+      "type": "class_power",
+      "name": {
+        "fr": "Chantesort mineur",
+        "en": "Lesser spellsong"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bladesinger"
+      ],
+      "description": {
+        "fr": "Il lance ses sorts en pleine passe d'armes sans perdre le fil.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : avec la même garde (épée longue ou rapière, une main libre), il peut faire 10 aux tests de Concentration pour incanter sur la défensive."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bladesinger_song_of_celerity",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de la vitesse",
+        "en": "Song of celerity"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bladesinger"
+      ],
+      "usesPerDay": "1",
+      "description": {
+        "fr": "Un sort lancé entre deux battements.\n\nEn jeu\n• Capacité extraordinaire, avec la même garde.\n• Une fois par jour, niveau 4 : un sort de niveau 2 ou moins par une action libre, comme avec Incantation rapide, sans en augmenter le niveau ni le temps d'incantation (même un ensorceleur ou un barde).\n• Niveau 8 : la limite passe au niveau 4."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bladesinger_greater_spellsong",
+      "type": "class_power",
+      "name": {
+        "fr": "Chantesort majeur",
+        "en": "Greater spellsong"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bladesinger"
+      ],
+      "description": {
+        "fr": "Une cotte légère ne gêne plus son geste.\n\nEn jeu\n• Capacité extraordinaire, niveau 6 : plus de risque d'échec des sorts profanes en armure légère."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bladesinger_song_of_fury",
+      "type": "class_power",
+      "name": {
+        "fr": "Chant de la furie",
+        "en": "Song of fury"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bladesinger"
+      ],
+      "description": {
+        "fr": "Sa lame chante plus vite que l'œil ne suit.\n\nEn jeu\n• Capacité extraordinaire, niveau 10, avec la même garde : lors d'une attaque à outrance, une attaque de plus au plus haut bonus de base.\n• Mais toutes les attaques de ce round subissent −2, et ce malus dure jusqu'à son prochain tour (donc aussi aux attaques d'opportunité)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.bladesinger",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.bladesinger_bladesong_style",
+        "power.bladesinger_spells"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.bladesinger_lesser_spellsong"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.bladesinger_spells"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.bladesinger_song_of_celerity"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.bladesinger_spells"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.bladesinger_greater_spellsong"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.bladesinger_spells"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.bladesinger_spells"
+      ]
+    },
+    {
+      "classId": "class.bladesinger",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.bladesinger_song_of_fury"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.bladesinger",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.bladesinger",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.bladesinger",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.bladesinger",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.bladesinger",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.bladesinger",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.bladesinger",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.bladesinger",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    }
+  ]
+}

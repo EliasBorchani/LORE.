@@ -1,0 +1,317 @@
+{
+  "entities": [
+    {
+      "id": "class.wild_mage",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Mage sauvage",
+        "en": "Wild Mage"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane"
+      ],
+      "prerequisite": "@skill.spellcraft.ranks >= 8 and @skill.knowledge_planes.ranks >= 4 and @skill.use_magic_device.ranks >= 4 and has('feat.magical_aptitude')",
+      "description": {
+        "fr": "Pour lui, vouloir mettre la magie en formules est une erreur : elle est chaos, et c’est en lâchant prise qu’on la maîtrise. Le mage sauvage laisse le hasard entrer dans chacun de ses sorts ; parfois ils faiblissent, souvent ils frappent plus fort que ceux de n’importe quel magicien, et de temps en temps ils font tout autre chose. Il accepte le risque : c’est le prix du pouvoir.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : alignement chaotique ; 8 rangs en Art de la magie, 4 en Connaissances (plans), 4 en Utilisation d’objets magiques ; dons Affinité magique et un don de métamagie ; niveau 1 de lanceur de sorts profanes.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Bluff, Concentration, Connaissances (toutes), Intimidation, Profession, Utilisation d’objets magiques.\n• Sorts : +1 niveau de lanceur de sorts profanes à chaque niveau (sorts par jour et niveau de lanceur d’une classe profane déjà acquise ; pas les autres avantages de cette classe).\n• Aptitudes : magie sauvage (1) ; déflecteur aléatoire 1/jour (2), 2/jour (5), 3/jour (8) ; élève du Chaos (3) ; esprit chaotique (6) ; enchantement imprudent (9) ; coup sauvage 1/jour (10)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "note": "Conditions d’accès en formule : rangs et Affinité magique. Un don de métamagie au choix et niveau 1 de lanceur de sorts profanes : texte seulement. Jets de sauvegarde : la table du Codex met le bon jet dans la colonne Vigueur, mais le personnage exemple (Vig +4) et Complete Arcane donnent Volonté ; on garde Volonté."
+    },
+    {
+      "id": "power.wild_mage_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wild_mage"
+      ],
+      "description": {
+        "fr": "Le chaos ne remplace pas son ancienne magie : il la pousse plus loin, niveau après niveau.\n\nEn jeu\n• À chaque niveau : +1 niveau effectif dans une classe profane déjà acquise (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.wild_mage_wild_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Magie sauvage",
+        "en": "Wild magic"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wild_mage"
+      ],
+      "description": {
+        "fr": "Il a renoncé à la sécurité des formules : chacun de ses sorts lance aussi un dé.\n\nEn jeu\n• Pour chaque sort lancé : niveau de lanceur de sorts –3, puis +1d6 (exemple : ensorceleur 8/mage sauvage 1, niveau 6 + 1d6, soit 7 à 12).\n• Ce niveau compte pour tout ce qui dépend du niveau de lanceur, y compris les tests contre la résistance à la magie."
+      },
+      "effects": [],
+      "note": "Niveau de lanceur aléatoire à chaque sort : texte seulement, pas d’effet sur caster_level."
+    },
+    {
+      "id": "power.wild_mage_random_deflector",
+      "type": "class_power",
+      "name": {
+        "fr": "Déflecteur aléatoire",
+        "en": "Random deflector"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wild_mage"
+      ],
+      "description": {
+        "fr": "Les flèches et les rayons qui le visent hésitent soudain, puis partent ailleurs, parfois vers ses amis.\n\nEn jeu\n• Surnaturel. Action immédiate ; dure jusqu’au début de son prochain tour.\n• Les attaques à distance, attaques de contact à distance et sorts à cible individuelle visant le mage frappent une cible au hasard à 6 m ou moins (lui et ses alliés compris).\n• La nouvelle cible est touchée normalement : jet d’attaque contre sa CA, jet de sauvegarde le cas échéant.\n• 1 fois par jour au niveau 2, 2 fois au niveau 5, 3 fois au niveau 8."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.wild_mage') >= 8, 3, if(level('class.wild_mage') >= 5, 2, 1))"
+    },
+    {
+      "id": "power.wild_mage_student_of_chaos",
+      "type": "class_power",
+      "name": {
+        "fr": "Élève du Chaos",
+        "en": "Student of chaos"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wild_mage"
+      ],
+      "description": {
+        "fr": "Le hasard lui sourit plus qu’aux autres, surtout quand un objet magique s’en mêle.\n\nEn jeu\n• Extraordinaire. Objet magique à effet aléatoire (sac à malice, sceptre merveilleux…) : deux jets, il garde celui qu’il veut.\n• Sans effet quand le jet ne décide que du contenu de l’objet (robe de camelot, flasque de fer…)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.wild_mage_chaotic_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit chaotique",
+        "en": "Chaotic mind"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wild_mage"
+      ],
+      "description": {
+        "fr": "Le chaos a envahi ses pensées : impossible de les embrouiller davantage, ou même de les lire.\n\nEn jeu\n• Surnaturel. Immunisé contre les effets d’aliénation mentale et de confusion.\n• Antidétection permanente, comme le sort."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.wild_mage_reckless_dweomer",
+      "type": "class_power",
+      "name": {
+        "fr": "Enchantement imprudent",
+        "en": "Reckless dweomer"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wild_mage"
+      ],
+      "description": {
+        "fr": "Il sacrifie un sort pour voir ce que le chaos en fera.\n\nEn jeu\n• Surnaturel. Action simple : il renonce à un sort préparé ou à un emplacement de sort du 1er niveau ou plus et obtient un effet tiré comme avec un sceptre merveilleux.\n• Élève du Chaos s’applique (deux jets)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.wild_mage_wild_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Coup sauvage",
+        "en": "Wild strike"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "wild_mage"
+      ],
+      "description": {
+        "fr": "Une aura chatoyante enveloppe sa cible, et chaque sort qu’elle tente devient un pari.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : une créature à 18 m ou moins, pendant 2d6 rounds ; résistance à la magie, pas de jet de sauvegarde.\n• Chaque sort ou pouvoir magique de la cible : 50 % de chances de rater ; elle tire alors un effet de sceptre merveilleux."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.wild_mage",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.wild_mage_spells",
+        "power.wild_mage_wild_magic"
+      ]
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.wild_mage_random_deflector"
+      ]
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.wild_mage_student_of_chaos"
+      ]
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.wild_mage_chaotic_mind"
+      ]
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.wild_mage_reckless_dweomer"
+      ]
+    },
+    {
+      "classId": "class.wild_mage",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.wild_mage_wild_strike"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.wild_mage",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

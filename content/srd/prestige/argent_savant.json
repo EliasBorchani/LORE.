@@ -1,0 +1,225 @@
+{
+  "entities": [
+    {
+      "id": "class.argent_savant",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Savant d’argent",
+        "en": "Argent Savant"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "force"
+      ],
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.spellcraft.ranks >= 12 and @skill.knowledge_arcana.ranks >= 6",
+      "description": {
+        "fr": "Aucune énergie n’est plus pure que la force, que rien ne ressemble dans le monde matériel. Le savant d’argent, parfois appelé mage de force, y voit la plus noble des magies et consacre sa vie à la maîtriser, au point de pouvoir défaire les effets de force des autres.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : Art de la magie 12 rangs ; Connaissances (mystères) 6 rangs ; savoir lancer au moins cinq sorts de force, dont un du 5e niveau ou plus.\n• Aucune formation aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (toutes, chacune séparément), Profession.\n• Sorts : +1 niveau de lanceur de sorts profanes à chaque niveau, 2 à 5 (sorts par jour et niveau de lanceur d’une classe qu’il avait déjà ; pas les autres aptitudes de cette classe).\n• Aptitudes : spécialisation de force (1) ; armure de force (2) ; force étendue (3) ; force réduite (4) ; force dénouée (5)."
+      },
+      "note": "Conditions dans la formule : les rangs seulement. En texte : savoir lancer au moins cinq sorts de force, dont un du 5e niveau ou plus (le registre force n’est pas dans le modèle)."
+    },
+    {
+      "id": "power.argent_savant_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "argent_savant"
+      ],
+      "description": {
+        "fr": "Chaque niveau de savant d’argent, sauf le premier, fait avancer la magie que le personnage lançait déjà.\n\nEn jeu\n• Aux niveaux 2 à 5 : +1 niveau effectif de lanceur de sorts dans une classe de lanceur profane qu’il avait déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe (don supplémentaire, etc.).\n• Avec plusieurs classes de lanceur profane, une seule en profite."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.argent_savant_force_specialization",
+      "type": "class_power",
+      "name": {
+        "fr": "Spécialisation de force",
+        "en": "Force Specialization"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "argent_savant"
+      ],
+      "description": {
+        "fr": "Pour lui, la force est la plus pure des énergies, et ses sorts de force frappent plus juste et plus fort que ceux des autres mages.\n\nEn jeu\n• Au niveau 1 : +2 (aptitude) aux jets d’attaque de ses sorts de force.\n• +1 par dé de dégâts des sorts de force ; si le sort n’a pas de dés, +1 au total.\n• Exemple : projectile magique à 1 niveau de savant inflige 1d4+2 par projectile."
+      },
+      "effects": [],
+      "note": "Bonus réservé aux sorts du registre force : le modèle ne distingue pas encore le registre d’un sort. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.argent_savant_force_armor",
+      "type": "class_power",
+      "name": {
+        "fr": "Armure de force",
+        "en": "Force Armor"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "argent_savant"
+      ],
+      "description": {
+        "fr": "Ses boucliers et armures de force deviennent plus épais que ceux d’un mage ordinaire.\n\nEn jeu\n• Extraordinaire. À partir du niveau 2 : tout sort de force qui donne un bonus d’armure ou de bouclier à la CA le voit augmenter de +2.\n• Exemple : armure de mage donne +6 au lieu de +4."
+      },
+      "effects": [],
+      "note": "Bonus selon le sort lancé : pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.argent_savant_extended_force",
+      "type": "class_power",
+      "name": {
+        "fr": "Force étendue",
+        "en": "Extended Force"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "argent_savant"
+      ],
+      "description": {
+        "fr": "Ses sorts de force durent plus longtemps et résistent mieux aux tentatives pour les défaire.\n\nEn jeu\n• Extraordinaire. Au niveau 3 : la durée de ses sorts de force est doublée, comme avec Extension de durée, sans changer le niveau du sort ni le temps d’incantation.\n• Les restrictions de l’extension s’appliquent.\n• Le DD pour contrer ou dissiper ses sorts de force augmente de +4."
+      },
+      "effects": [],
+      "note": "Durée et DD de dissipation selon le registre du sort : pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.argent_savant_reduced_force",
+      "type": "class_power",
+      "name": {
+        "fr": "Force réduite",
+        "en": "Reduced Force"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "argent_savant"
+      ],
+      "description": {
+        "fr": "À force de côtoyer la force magique, il en encaisse les coups avec une étonnante légèreté.\n\nEn jeu\n• Extraordinaire. Au niveau 4 : il retranche son niveau de savant d’argent aux dégâts de force qu’il subit d’un sort ou d’un effet.\n• Projectile magique compte comme une seule attaque : on retranche le niveau une fois sur le total, pas sur chaque projectile."
+      },
+      "effects": [],
+      "note": "Réduction de dégâts d’un seul type, sans énergie « force » dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.argent_savant_unraveled_force",
+      "type": "class_power",
+      "name": {
+        "fr": "Force dénouée",
+        "en": "Unraveled Force"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "argent_savant"
+      ],
+      "description": {
+        "fr": "Il défait un effet de force comme on tire un fil, et l’énergie libérée explose autour de lui.\n\nEn jeu\n• Surnaturel. Au niveau 5, action simple : tente de dissiper un effet de force à 18 m, même s’il est normalement immunisé contre la dissipation (mur de force).\n• Test de niveau de lanceur de sorts contre DD 11 + niveau de lanceur de l’adversaire.\n• Si réussi : l’effet est dissipé et inflige 1d6 de dégâts de force par niveau du sort dissipé aux créatures et objets dans 3 m."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.argent_savant",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.argent_savant_spells",
+        "power.argent_savant_force_specialization"
+      ]
+    },
+    {
+      "classId": "class.argent_savant",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.argent_savant_force_armor"
+      ]
+    },
+    {
+      "classId": "class.argent_savant",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.argent_savant_extended_force"
+      ]
+    },
+    {
+      "classId": "class.argent_savant",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.argent_savant_reduced_force"
+      ]
+    },
+    {
+      "classId": "class.argent_savant",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.argent_savant_unraveled_force"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.argent_savant",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.argent_savant",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.argent_savant",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.argent_savant",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.argent_savant",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

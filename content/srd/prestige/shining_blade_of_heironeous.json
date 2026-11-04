@@ -1,0 +1,270 @@
+{
+  "entities": [
+    {
+      "id": "class.shining_blade_of_heironeous",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Lame étincelante d'Héronéus",
+        "en": "Shining Blade of Heironeous"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Héronéus enseigne à ses fidèles à servir le Bien par les armes. Les lames étincelantes sont ses chevaliers : sobres, austères, dévorés par leur cause, ils ne veulent plus être qu'une épée dans la main de leur dieu et la font étinceler de foudre, de sainteté, puis de lumière.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal bon ; bonus de base à l'attaque +7 ; bonus de base de Volonté +3 ; Connaissances (religion) 7 rangs ; sorts divins de niveau 1 ; Héronéus pour divinité tutélaire.\n• Armes courantes et de guerre, boucliers (sauf pavois), toutes les armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (religion), Diplomatie, Premiers secours, Profession.\n• Sorts : +1 niveau effectif de lanceur de sorts divins à chaque niveau pair.\n• Aptitudes : lame de foudre (1, 2/jour, puis +1 aux niveaux 3, 5, 7 et 9) ; lame sainte (5) ; lame de lumière (9)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 7 and @skill.knowledge_religion.ranks >= 7",
+      "note": "Conditions d'accès : alignement loyal bon (relations), bonus de base de Volonté +3, sorts divins de niveau 1, Héronéus pour divinité : texte seul. Niveau de lanceur de sorts, sorts par jour et sorts connus : +1 niveau effectif dans une classe de lanceur de sorts existante (choix fait dans le niveau du personnage), rien dans les lignes de la table. Niveaux pairs seulement. Le texte du livre dit « une utilisation de plus à chaque niveau pair » mais la table (et l'exemple niveau 3 : 3/jour) donne 2/jour au niveau 1 puis +1 aux niveaux 3, 5, 7, 9 : la table est suivie. Les boucliers s'entendent sauf le pavois (la relation « shields » ne peut pas l'exclure)."
+    },
+    {
+      "id": "power.shining_blade_of_heironeous_lightning_blade",
+      "type": "class_power",
+      "name": {
+        "fr": "Lame de foudre",
+        "en": "Lightning blade"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shining_blade_of_heironeous"
+      ],
+      "description": {
+        "fr": "Sa lame crépite de la foudre de son dieu.\n\nEn jeu\n• Capacité surnaturelle, action simple : transforme l'arme tranchante ou perforante qu'il tient en arme de foudre (+1d6 de dégâts d'électricité sur une attaque réussie).\n• Durée : un nombre de rounds égal à son niveau de classe + son modificateur de Charisme, répartis comme il veut ; l'effet s'arrête dès que l'arme quitte ses mains.\n• Utilisations par jour : 2 au niveau 1, puis 3, 4, 5 et 6 aux niveaux 3, 5, 7 et 9."
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "dice",
+          "value": "1d6",
+          "condition": "active('toggle.shining_blade_of_heironeous_lightning_blade')"
+        }
+      ],
+      "usesPerDay": "1 + ceil(level('class.shining_blade_of_heironeous') / 2)",
+      "note": "La durée en rounds (niveau + Charisme) est du texte seul ; le toggle représente l'arme de foudre active."
+    },
+    {
+      "id": "power.shining_blade_of_heironeous_holy_blade",
+      "type": "class_power",
+      "name": {
+        "fr": "Lame sainte",
+        "en": "Holy blade"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shining_blade_of_heironeous"
+      ],
+      "description": {
+        "fr": "Quand elle frappe le Mal, la lame rend la lumière de son dieu.\n\nEn jeu\n• Capacité surnaturelle (niveau 5) : lorsqu'il utilise sa lame de foudre, peut choisir de rendre l'arme sainte (+2d6 de dégâts contre les créatures mauvaises) au lieu de foudre.\n• Les deux formes coexistent : action simple pour la sainteté, puis une autre pour la foudre, dans le même combat. Jamais doublement sainte ni doublement de foudre.\n• Utilisations par jour : celles de la lame de foudre (4 au niveau 5, 5 au niveau 7)."
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "dice",
+          "value": "2d6",
+          "condition": "active('toggle.shining_blade_of_heironeous_holy_blade')",
+          "situation": "situation.vs_evil"
+        }
+      ],
+      "usesPerDay": "1 + ceil(level('class.shining_blade_of_heironeous') / 2)"
+    },
+    {
+      "id": "power.shining_blade_of_heironeous_light_blade",
+      "type": "class_power",
+      "name": {
+        "fr": "Lame de lumière",
+        "en": "Light blade"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "shining_blade_of_heironeous"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, l'acier ne s'embarrasse plus de la matière sans vie.\n\nEn jeu\n• Capacité surnaturelle (niveau 9) : lorsqu'il utilise sa lame de foudre, peut rendre l'arme de lumière (éclaire comme une torche et ignore la matière non vivante : armures, morts-vivants, créatures artificielles, objets).\n• Les trois formes coexistent, une action simple chacune, dans le même combat. Jamais doublement sainte, de foudre ni de lumière.\n• Utilisations par jour : 6."
+      },
+      "effects": [],
+      "usesPerDay": "1 + ceil(level('class.shining_blade_of_heironeous') / 2)",
+      "note": "Le toggle de lumière ne change aucun nombre de la fiche (les dégâts ignorent la matière non vivante : texte seul)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.shining_blade_of_heironeous_lightning_blade"
+      ]
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.shining_blade_of_heironeous_holy_blade"
+      ]
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.shining_blade_of_heironeous_light_blade"
+      ]
+    },
+    {
+      "classId": "class.shining_blade_of_heironeous",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.shining_blade_of_heironeous",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    }
+  ]
+}

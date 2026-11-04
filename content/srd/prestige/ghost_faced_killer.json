@@ -1,0 +1,334 @@
+{
+  "entities": [
+    {
+      "id": "class.ghost_faced_killer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Tueur fantôme",
+        "en": "Ghost-Faced Killer"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "skills"
+      ],
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.concentration.ranks >= 4 and @skill.move_silently.ranks >= 6 and @skill.hide.ranks >= 6 and @skill.intimidate.ranks >= 8 and has('feat.power_attack') and has('feat.improved_initiative')",
+      "description": {
+        "fr": "Sous un masque de porcelaine, un clan de tueurs a signé jadis un pacte avec des esprits démoniaques. Le tueur fantôme en tire l’invisibilité, la terreur et un talent pour les coups qu’on n’oublie pas. Il tue pour son clan, pour son empereur ou pour de l’argent.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : alignement mauvais ; bonus de base à l’attaque +5 ; Concentration 4 rangs, Déplacement silencieux 6 rangs, Discrétion 6 rangs, Intimidation 8 rangs ; Attaque en puissance, Science de l’initiative.\n• Alignement : mauvais (loyal, neutre ou chaotique).\n• Formé aux armes courantes, aux armes de guerre et aux armures légères.\n• Compétences de classe : Acrobaties, Bluff, Concentration, Crochetage, Déplacement silencieux, Détection, Discrétion, Escalade, Fouille, Intimidation, Natation, Perception auditive, Saut.\n• Aptitudes : éclipse spectrale (1), frappe éclair (2), frappe terrifiante (3), vision spectrale (7), enchaînement terrifiant (10)."
+      },
+      "note": "Conditions dans la formule : bonus de base à l’attaque, rangs, dons. En texte seulement : alignement mauvais. Noms anglais des aptitudes à confirmer."
+    },
+    {
+      "id": "power.ghost_faced_killer_spectral_eclipse",
+      "type": "class_power",
+      "name": {
+        "fr": "Éclipse spectrale",
+        "en": "Spectral eclipse"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ghost_faced_killer"
+      ],
+      "description": {
+        "fr": "Le masque blanc se pose, et le tueur devient une rumeur : on sait qu’il est là, on ne le voit plus.\n\nEn jeu\n• Action rapide, sans attaque d’opportunité : devient invisible pendant 1 round.\n• 1 fois par jour au niveau 1, puis une de plus aux niveaux 4, 7 et 10 (4 par jour).\n• À partir du niveau 6, peut devenir éthéré à la place."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.ghost_faced_killer_flash_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe éclair",
+        "en": "Flash strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ghost_faced_killer"
+      ],
+      "description": {
+        "fr": "Quand l’adversaire ne peut pas se défendre, le tueur vise l’endroit précis qui fait le plus mal.\n\nEn jeu\n• +1d6 aux dégâts au niveau 2, 2d6 au niveau 5, 3d6 au niveau 8.\n• S’applique quand la cible a perdu son bonus de Dextérité à la CA contre l’attaque.\n• Fonctionne comme la frappe éclair du ninja et se cumule avec l’attaque sournoise (par exemple 2d6 au total contre une cible privée de son bonus de Dextérité, si le tueur a aussi +1d6 d’attaque sournoise)."
+      },
+      "effects": [
+        {
+          "target": "damage.sudden_strike",
+          "op": "dice",
+          "value": "(floor((level('class.ghost_faced_killer') + 1) / 3))d6",
+          "condition": "level('class.ghost_faced_killer') >= 2"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le livre dit que ce pouvoir fonctionne comme la frappe éclair du ninja et se cumule avec l’attaque sournoise : les dés sont sur damage.sudden_strike."
+    },
+    {
+      "id": "power.ghost_faced_killer_terrifying_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe terrifiante",
+        "en": "Terrifying strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ghost_faced_killer"
+      ],
+      "description": {
+        "fr": "Un cri étouffé, et la victime comprend qu’elle est déjà morte. Les témoins, eux, ne demandent pas leur reste.\n\nEn jeu\n• Niveau 3 : 1 fois par jour (2 au niveau 6, 3 au niveau 9). Désigne une frappe éclair au corps à corps ; il faut Attaque en puissance et un malus d’au moins –1 à l’attaque.\n• Si l’attaque blesse la cible : jet de Volonté, DD 10 + niveau de tueur fantôme + modificateur de Charisme (+ dégâts de l’Attaque en puissance). Échec : elle meurt de terreur ; réussite : secouée 1 round par niveau de tueur fantôme.\n• Sans effet sur les créatures immunisées aux effets mentaux ou de terreur, ni sur celles qui ont plus de dés de vie que le niveau du tueur.\n• Les autres créatures à 9 m (hors alliés) : paniquées si leurs dés de vie sont inférieurs au niveau + Charisme du tueur, sinon secouées, 1 round par niveau (Volonté annule, même DD)."
+      },
+      "effects": [
+        {
+          "target": "dc.ghost_faced_killer_terrifying_strike",
+          "op": "set",
+          "value": "10 + level('class.ghost_faced_killer') + @ability.cha.mod"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le DD ne compte pas les dégâts de l’Attaque en puissance."
+    },
+    {
+      "id": "power.ghost_faced_killer_ghost_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision spectrale",
+        "en": "Ghost sight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ghost_faced_killer"
+      ],
+      "description": {
+        "fr": "Les esprits ont prêté leurs yeux au tueur : rien ne lui échappe, même ce qui n’est pas là.\n\nEn jeu\n• Niveau 7 : voit les créatures et objets éthérés et invisibles comme s’ils étaient matériels."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.ghost_faced_killer_terrifying_chain",
+      "type": "class_power",
+      "name": {
+        "fr": "Enchaînement terrifiant",
+        "en": "Terrifying chain"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ghost_faced_killer"
+      ],
+      "description": {
+        "fr": "Une victime tombe, et le tueur est déjà sur la suivante.\n\nEn jeu\n• Niveau 10 : quand une frappe terrifiante tue l’adversaire (blessures ou terreur), attaque immédiate au corps à corps contre une autre cible à portée.\n• Si cette cible est elle aussi privée de son bonus de Dextérité, c’est automatiquement une frappe terrifiante, qui ne consomme pas d’utilisation.\n• Pour le reste, comme le don Enchaînement."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.ghost_faced_killer_spectral_eclipse"
+      ]
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.ghost_faced_killer_flash_strike"
+      ]
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.ghost_faced_killer_terrifying_strike"
+      ]
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.ghost_faced_killer_ghost_sight"
+      ]
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.ghost_faced_killer",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.ghost_faced_killer_terrifying_chain"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.ghost_faced_killer",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

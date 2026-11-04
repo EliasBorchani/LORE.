@@ -1,0 +1,360 @@
+{
+  "entities": [
+    {
+      "id": "class.thief_acrobat",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Voleur-acrobate",
+        "en": "Thief-Acrobat"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "skills"
+      ],
+      "hitDie": 6,
+      "skillPoints": 6,
+      "prerequisite": "@skill.tumble.ranks >= 8 and @skill.balance.ranks >= 8 and @skill.climb.ranks >= 8 and @skill.jump.ranks >= 8 and (has('power.rogue_evasion') or has('power.monk_evasion') or has('power.ranger_evasion') or has('power.swordsage_evasion') or has('power.scout_evasion') or has('power.ninja_evasion') or has('power.dungeon_delver_evasion') or has('power.shadowdancer_evasion'))",
+      "description": {
+        "fr": "De toit en toit, de corde en corde, le voleur-acrobate entre là où personne ne peut entrer et en sort avant l’alerte. Il combat comme il se déplace : en virevoltant, et on le touche rarement.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : Acrobaties 8 rangs, Équilibre 8 rangs, Escalade 8 rangs, Saut 8 rangs ; esquive totale.\n• Formé aux armes courantes.\n• Compétences de classe : Acrobaties, Artisanat, Crochetage, Déplacement silencieux, Désamorçage/sabotage, Discrétion, Équilibre, Escalade, Estimation, Évasion, Fouille, Maîtrise des cordes, Représentation, Saut.\n• Aptitudes : haute voltige, relevé acrobatique, stabilité inébranlable (1) ; chute ralentie, souplesse combative (2) ; charge acrobatique, roulé-boulé (3) ; maîtrise des compétences (4) ; esquive totale (5)."
+      },
+      "note": "Conditions dans la formule : les rangs, l’esquive totale (celles des classes déjà dans le catalogue). Noms anglais des aptitudes à confirmer."
+    },
+    {
+      "id": "power.thief_acrobat_high_acrobatics",
+      "type": "class_power",
+      "name": {
+        "fr": "Haute voltige",
+        "en": "High acrobatics"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Les toits, les cordes tendues et les corniches ne l’impressionnent plus : il y court.\n\nEn jeu\n• Pas de malus de –5 à Équilibre en se déplaçant à vitesse normale.\n• Escalade à la moitié de sa vitesse par action de mouvement, sans le malus de –5.\n• Enchaîne les acrobaties à vitesse normale, sans le malus de –10 à Acrobaties."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.thief_acrobat_acrobatic_recovery",
+      "type": "class_power",
+      "name": {
+        "fr": "Relevé acrobatique",
+        "en": "Acrobatic recovery"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Un coup d’épaule, et le voleur est de nouveau debout avant que l’adversaire ait fini son geste.\n\nEn jeu\n• Se relève de terre par une action libre, sans attaque d’opportunité.\n• Impossible en armure intermédiaire ou lourde, ou avec plus qu’une charge légère."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.thief_acrobat_steady_footing",
+      "type": "class_power",
+      "name": {
+        "fr": "Stabilité inébranlable",
+        "en": "Steady footing"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Là où les autres vacillent, il garde le sourire.\n\nEn jeu\n• N’est pas pris au dépourvu quand il escalade ou se déplace en équilibre.\n• Bonus égal à son niveau de classe aux tests d’Équilibre et d’Escalade pour ne pas tomber quand il subit des dégâts."
+      },
+      "effects": [
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": "level('class.thief_acrobat')",
+          "situation": "situation.not_falling_when_hit"
+        },
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": "level('class.thief_acrobat')",
+          "situation": "situation.not_falling_when_hit"
+        }
+      ],
+      "note": "Situation à ajouter au catalogue."
+    },
+    {
+      "id": "power.thief_acrobat_slow_fall",
+      "type": "class_power",
+      "name": {
+        "fr": "Chute ralentie",
+        "en": "Slow fall"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Il effleure le mur au passage, et la chute devient une glissade.\n\nEn jeu\n• Réduit toute chute de 6 m au niveau 2, de 9 m au niveau 4.\n• Se cumule avec la chute ralentie d’une autre classe (moine)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.thief_acrobat_combat_agility",
+      "type": "class_power",
+      "name": {
+        "fr": "Souplesse combative",
+        "en": "Combat agility"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Virevoltant, il offre une cible qui n’est jamais là où on la frappe.\n\nEn jeu\n• Bonus d’esquive de +1 à la CA au niveau 2, +2 au niveau 4.\n• En combat défensif ou en défense totale : +1 de plus (donc +2, puis +3).\n• Aucun malus de CA ni d’attaque à genoux, assis ou à terre.\n• Impossible en armure intermédiaire ou lourde, ou avec plus qu’une charge légère."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "if(level('class.thief_acrobat') >= 4, 2, 1)",
+          "bonusType": "dodge",
+          "condition": "level('class.thief_acrobat') >= 2"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge",
+          "condition": "level('class.thief_acrobat') >= 2 and active('toggle.thief_acrobat_combat_agility')"
+        }
+      ],
+      "note": "La case à cocher vaut combat défensif ou défense totale."
+    },
+    {
+      "id": "power.thief_acrobat_acrobatic_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge acrobatique",
+        "en": "Acrobatic charge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Pour foncer sur sa cible, il passe par-dessus la foule, le gouffre ou les décombres.\n\nEn jeu\n• Niveau 3 : charge sur terrain difficile ou à travers des cases occupées par des alliés.\n• Peut exiger un test d’Acrobaties, de Maîtrise des cordes ou de Saut selon le terrain."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.thief_acrobat_defensive_roll",
+      "type": "class_power",
+      "name": {
+        "fr": "Roulé-boulé",
+        "en": "Defensive roll"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Quand le coup fatal arrive, il se jette de côté et le laisse passer à moitié.\n\nEn jeu\n• Niveau 3 : 1 fois par jour (2 au niveau 5). Un coup qui le mettrait à 0 pv ou moins (pas un sort ni un pouvoir spécial) : jet de Réflexes, DD égal aux dégâts. Réussite : dégâts réduits de moitié.\n• Il doit voir venir l’attaque et pouvoir réagir ; impossible s’il perd son bonus de Dextérité. L’esquive totale ne sert à rien ici.\n• Comme l’aptitude du roublard."
+      },
+      "effects": [],
+      "note": "Le livre dit niveau 4 dans le texte (et pour l’exemple de niveau 4) et niveau 3 dans la table : la table est suivie."
+    },
+    {
+      "id": "power.thief_acrobat_skill_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences",
+        "en": "Skill mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Il est si sûr de ses gestes qu’il ne craint plus la pression.\n\nEn jeu\n• Niveau 4 : peut faire 10 aux tests d’Acrobaties, d’Équilibre, d’Escalade et de Saut même sous stress ou distrait."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.thief_acrobat_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "thief_acrobat"
+      ],
+      "description": {
+        "fr": "Quand l’explosion arrive, il n’est déjà plus dessous.\n\nEn jeu\n• Niveau 5 : si un jet de Réflexes réussi réduit normalement les dégâts de moitié, il n’en subit aucun."
+      },
+      "effects": [],
+      "note": "Même règle que l’esquive totale du roublard."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.thief_acrobat",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.thief_acrobat_high_acrobatics",
+        "power.thief_acrobat_acrobatic_recovery",
+        "power.thief_acrobat_steady_footing"
+      ]
+    },
+    {
+      "classId": "class.thief_acrobat",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.thief_acrobat_slow_fall",
+        "power.thief_acrobat_combat_agility"
+      ]
+    },
+    {
+      "classId": "class.thief_acrobat",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.thief_acrobat_acrobatic_charge",
+        "power.thief_acrobat_defensive_roll"
+      ]
+    },
+    {
+      "classId": "class.thief_acrobat",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.thief_acrobat_skill_mastery"
+      ]
+    },
+    {
+      "classId": "class.thief_acrobat",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.thief_acrobat_evasion"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.thief_acrobat",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    }
+  ]
+}

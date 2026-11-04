@@ -1,0 +1,301 @@
+{
+  "entities": [
+    {
+      "id": "class.highland_stalker",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Traqueur des cimes",
+        "en": "Highland Stalker"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "nature"
+      ],
+      "description": {
+        "fr": "Dans les montagnes, celui qui sait trouver à manger et suivre une trace vit ; l'autre meurt. Le traqueur des cimes est un chasseur d'altitude qui avance sans ralentir sur les éboulis, tombe sur sa proie en bougeant et ne se laisse pas surprendre par le terrain.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; 8 rangs en Détection, 8 en Perception auditive et 8 en Survie ; don Pistage ; dégâts d'attaque sournoise +1d6 ou dégâts d'escarmouche +1d6.\n• Formé au port des armures légères ; aucune formation nouvelle aux armes.\n• Compétences de classe : Artisanat, Connaissances (géographie), Connaissances (nature), Déplacement silencieux, Détection, Discrétion, Équilibre, Escalade, Fouille, Perception auditive, Saut, Survie.\n• Aptitudes : pied alpin (1) ; escarmouche +1d6 (2), +1d6 et +1 CA (4), +2d6 et +1 CA (6), +2d6 et +2 CA (8), +3d6 et +2 CA (10) ; pistage accéléré (3) ; pied sûr (5) ; camouflage (7)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.spot.ranks >= 8 and @skill.listen.ranks >= 8 and @skill.survival.ranks >= 8 and has('feat.track')",
+      "note": "Condition : dégâts d'attaque sournoise ou d'escarmouche +1d6 : texte seul (pas de formule pour ces dés)."
+    },
+    {
+      "id": "power.highland_stalker_mountain_stride",
+      "type": "class_power",
+      "name": {
+        "fr": "Pied alpin",
+        "en": "Mountain stride"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "highland_stalker"
+      ],
+      "description": {
+        "fr": "Les éboulis roulent sous ses bottes, sans l'emporter.\n\nEn jeu\n• Capacité extraordinaire : traverse éboulis et terrains encombrés de décombres à sa vitesse normale.\n• Gravit pentes raides et escaliers à sa vitesse normale."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.highland_stalker_skirmish",
+      "type": "class_power",
+      "name": {
+        "fr": "Escarmouche",
+        "en": "Skirmish"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "highland_stalker"
+      ],
+      "description": {
+        "fr": "Il frappe en mouvement, et ses coups portent plus fort.\n\nEn jeu\n• Capacité extraordinaire : s'il se déplace d'au moins 3 m pendant son tour, +1d6 de dégâts sur ses attaques de ce tour, à partir du moment où il s'est éloigné d'au moins 3 m de son point de départ.\n• Dés : +1d6 au niveau 2, 2d6 au niveau 6, 3d6 au niveau 10.\n• Niveau 4 : +1 en CA (bonus d'aptitude) à chaque round où il bouge d'au moins 3 m, jusqu'au début de son tour suivant ; +2 au niveau 8.\n• À distance, seulement sur des cibles à 9 m ou moins.\n• Pas sur les créatures artificielles, morts-vivants, plantes, vases, intangibles, ni sur celles immunisées contre les coups critiques ; il doit voir leurs points vitaux.\n• Perdue en armure autre que légère, en charge intermédiaire ou lourde, ou à cheval.\n• Se cumule avec l'escarmouche d'une autre classe (par exemple l'éclaireur)."
+      },
+      "effects": [
+        {
+          "target": "damage.skirmish",
+          "op": "dice",
+          "value": "(max(0, 1 + floor((level('class.highland_stalker') - 2) / 4)))d6",
+          "condition": "active('toggle.scout_skirmish')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor(level('class.highland_stalker') / 4)",
+          "condition": "active('toggle.scout_skirmish')"
+        }
+      ],
+      "note": "Même toggle que l'escarmouche de l'éclaireur (toggle.scout_skirmish) : une seule case « escarmouche » active les dés et la CA des deux classes, qui se cumulent. À activer après un déplacement d'au moins 3 m ; armure légère et pas de monture : à la charge du joueur. Le livre parle de bonus d'aptitude ; comme pour l'éclaireur, le bonus de CA est sans type."
+    },
+    {
+      "id": "power.highland_stalker_swift_tracker",
+      "type": "class_power",
+      "name": {
+        "fr": "Pistage accéléré",
+        "en": "Swift tracker"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "highland_stalker"
+      ],
+      "description": {
+        "fr": "Il suit une piste sans ralentir.\n\nEn jeu\n• Capacité extraordinaire : niveau 3, suit une piste à sa vitesse normale (comme le rôdeur) ; double vitesse avec un malus de −10."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.highland_stalker_sure_footed",
+      "type": "class_power",
+      "name": {
+        "fr": "Pied sûr",
+        "en": "Sure-footed"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "highland_stalker"
+      ],
+      "description": {
+        "fr": "Rien dans la pente ne le gêne.\n\nEn jeu\n• Capacité extraordinaire : au niveau 5, ignore les modificateurs de DD aux tests d'Acrobaties, Déplacement silencieux et Équilibre dus aux éboulis, broussailles légères, décombres, pentes raides ou escaliers.\n• Il n'a pas à faire de test d'Équilibre (DD 10) pour courir ou charger en descendant une pente raide."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.highland_stalker_camouflage",
+      "type": "class_power",
+      "name": {
+        "fr": "Camouflage",
+        "en": "Camouflage"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "highland_stalker"
+      ],
+      "description": {
+        "fr": "Il se fond dans le paysage sans l'aide d'aucun abri.\n\nEn jeu\n• Capacité extraordinaire : au niveau 7, peut utiliser Discrétion sur tout terrain de type naturel."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.highland_stalker",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.highland_stalker_mountain_stride"
+      ]
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.highland_stalker_skirmish"
+      ]
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.highland_stalker_swift_tracker"
+      ]
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.highland_stalker_sure_footed"
+      ]
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.highland_stalker_camouflage"
+      ]
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.highland_stalker",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.highland_stalker",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "entities": [
+    {
+      "id": "class.thayan_knight",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Chevalier Thayen",
+        "en": "Thayan Knight"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Les Magiciens Rouges de Thay brisent les corps par leurs sorts, mais même eux ont besoin de gardes du corps qui sachent manier l'épée. Le chevalier Thayen est tatoué, loyal jusqu'à la mort et sans code d'honneur : la seule règle est que sa vie ne vaut rien contre celle de son maître.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : humain ; alignement non bon ; bonus de base à l'attaque +5 ; Connaissances (folklore de Thay) 2 rangs, Connaissances (mystères) 2 rangs, Intimidation 2 rangs ; dons Arme de prédilection (épée longue) et Volonté de fer ; prêter allégeance aux Magiciens Rouges de Thay.\n• Formé au pavois.\n• Compétences de classe : Artisanat, Bluff, Connaissances (folklore de Thay), Connaissances (mystères), Détection, Dressage, Équitation, Escalade, Intimidation, Natation, Profession, Renseignements, Saut.\n• Aptitudes : atrocités de Thay (1, 4) ; faveur des zulkirs (1) ; défenseur des zulkirs (2) ; don supplémentaire (3) ; baroud d'honneur (4) ; champion des zulkirs (5)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.knowledge_local.ranks >= 2 and @skill.knowledge_arcana.ranks >= 2 and @skill.intimidate.ranks >= 2 and has('feat.weapon_focus') and has('feat.iron_will')",
+      "note": "Conditions : race humaine, alignement non bon et allégeance aux Magiciens Rouges : texte seul. Connaissances (folklore de Thay) est lu comme Connaissances (folklore local) ; Connaissances (mystères) comme Connaissances (arcanes) ; Arme de prédilection : l'arme (épée longue) n'est pas contrôlée."
+    },
+    {
+      "id": "power.thayan_knight_thayan_atrocities",
+      "type": "class_power",
+      "name": {
+        "fr": "Atrocités de Thay",
+        "en": "Thayan atrocities"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thayan_knight"
+      ],
+      "description": {
+        "fr": "Ceux qui ont grandi à l'ombre des Magiciens Rouges ont déjà vu pire que ce qu'on leur montre.\n\nEn jeu\n• Capacité extraordinaire : +2 (moral) aux jets de sauvegarde contre la terreur et +1 (moral) contre le charme.\n• Niveau 4 : +4 contre la terreur et +2 contre le charme.\n• Aucun de ces bonus ne vaut contre un Magicien Rouge."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.thayan_knight') >= 4, 4, 2)",
+          "bonusType": "morale",
+          "situation": "situation.vs_fear"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.thayan_knight') >= 4, 2, 1)",
+          "bonusType": "morale",
+          "situation": "situation.vs_charm"
+        }
+      ],
+      "note": "Situation à ajouter : situation.vs_charm (« contre le charme »). L'exception des Magiciens Rouges est à la charge du joueur."
+    },
+    {
+      "id": "power.thayan_knight_zulkirs_favor",
+      "type": "class_power",
+      "name": {
+        "fr": "Faveur des zulkirs",
+        "en": "Zulkir's favor"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thayan_knight"
+      ],
+      "description": {
+        "fr": "Un tatouage rituel, long et douloureux, dit à qui il appartient.\n\nEn jeu\n• Capacité surnaturelle : niveau 1. Un tatouage rituel (front ou arrière de la tête) donne +2 (résistance) aux jets de Réflexes.\n• Le chevalier rate automatiquement ses jets de sauvegarde contre les effets mentaux créés par des Magiciens Rouges.\n• Capacité extraordinaire : tatouage visible, +2 (moral) aux tests d'Intimidation ; +4 au niveau 5 grâce au tatouage du visage (les deux ne s'additionnent pas)."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 2,
+          "bonusType": "resistance"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": "if(level('class.thayan_knight') >= 5, 4, 2)",
+          "bonusType": "morale",
+          "condition": "active('toggle.thayan_knight_tattoo_visible')"
+        }
+      ],
+      "note": "Case à cocher « tatouage visible » pour l'Intimidation."
+    },
+    {
+      "id": "power.thayan_knight_zulkirs_defender",
+      "type": "class_power",
+      "name": {
+        "fr": "Défenseur des zulkirs",
+        "en": "Zulkir's defender"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thayan_knight"
+      ],
+      "description": {
+        "fr": "Qui lève la main sur un Magicien Rouge se la voit trancher.\n\nEn jeu\n• Capacité extraordinaire : niveau 2. +2 (moral) aux jets d'attaque et de dégâts contre une créature qui attaque un Magicien Rouge ou qu'il vient de voir en attaquer un."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.thayan_knight_zulkirs_defender')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.thayan_knight_zulkirs_defender')"
+        }
+      ],
+      "note": "Case à cocher quand la condition est remplie (pas de situation adaptée)."
+    },
+    {
+      "id": "power.thayan_knight_bonus_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire",
+        "en": "Bonus feat"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thayan_knight"
+      ],
+      "description": {
+        "fr": "L'entraînement des gardes du corps de Thay ne laisse rien au hasard.\n\nEn jeu\n• Niveau 3 : un don de la liste des dons supplémentaires de guerrier, à condition d'en remplir les conditions."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.fighter_bonus",
+          "op": "add",
+          "value": 1,
+          "condition": "level('class.thayan_knight') >= 3"
+        }
+      ]
+    },
+    {
+      "id": "power.thayan_knight_final_stand",
+      "type": "class_power",
+      "name": {
+        "fr": "Baroud d'honneur",
+        "en": "Final stand"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thayan_knight"
+      ],
+      "description": {
+        "fr": "Il hurle un ordre, et les gardes serrent les rangs.\n\nEn jeu\n• Capacité surnaturelle : niveau 4, 1 fois par jour, action simple.\n• Alliés à 3 m ou moins : 2d10 points de vie temporaires.\n• Il affecte autant de créatures que son niveau de classe + son modificateur de Charisme, pendant autant de rounds."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Points de vie temporaires des alliés : texte seul."
+    },
+    {
+      "id": "power.thayan_knight_zulkirs_champion",
+      "type": "class_power",
+      "name": {
+        "fr": "Champion des zulkirs",
+        "en": "Zulkir's champion"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "thayan_knight"
+      ],
+      "description": {
+        "fr": "Un tatouage magique couvre son visage : il est désormais l'arme d'un Magicien Rouge.\n\nEn jeu\n• Capacité surnaturelle : niveau 5, 1 fois par jour, +2 (chance) à un seul jet de sauvegarde, à déclarer après le jet.\n• Tatouage visible : +4 (moral) aux tests d'Intimidation (déjà compté dans la faveur des zulkirs)."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Le bonus de chance est lancé après le dé : texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.thayan_knight",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.thayan_knight_thayan_atrocities",
+        "power.thayan_knight_zulkirs_favor"
+      ]
+    },
+    {
+      "classId": "class.thayan_knight",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.thayan_knight_zulkirs_defender"
+      ]
+    },
+    {
+      "classId": "class.thayan_knight",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.thayan_knight_bonus_feat"
+      ]
+    },
+    {
+      "classId": "class.thayan_knight",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.thayan_knight_final_stand"
+      ]
+    },
+    {
+      "classId": "class.thayan_knight",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.thayan_knight_zulkirs_champion"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "proficiency",
+      "to": "proficiency.tower_shield"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.thayan_knight",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "entities": [
+    {
+      "id": "class.ronin",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Ronin",
+        "en": "Ronin"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "melee"
+      ],
+      "description": {
+        "fr": "Chassé par son seigneur, souvent pour une faute dont il porte la honte, le ronin vend son épée au plus offrant. Sans maître ni attache, il cherche à échapper à ses ennemis et à son passé, et à retrouver la dignité d'avant.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non loyal ; bonus de base à l'attaque +6 ; don Maniement d'une arme exotique (épée bâtarde) ; avoir été chassé par son seigneur.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Artisanat, Bluff, Connaissances (histoire), Connaissances (noblesse et royauté), Déguisement, Équitation, Intimidation, Psychologie.\n• Aptitudes : attaque sournoise (+1d6 au niveau 1, puis +1d6 tous les 3 niveaux) et infamie (1) ; charge banzaï (2) ; don supplémentaire (5, 9) ; un ancien samouraï conserve une partie de ses aptitudes (voir la table)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 6 and has('feat.exotic_weapon_proficiency')",
+      "note": "Conditions en formule : bonus de base, Maniement d'une arme exotique (sans le choix de l'épée bâtarde). Alignement non loyal : relations alignment. Avoir été chassé par son seigneur : texte seul."
+    },
+    {
+      "id": "power.ronin_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ronin"
+      ],
+      "description": {
+        "fr": "Il sait où frapper quand l'adversaire ne peut pas se défendre.\n\nEn jeu\n• Capacité extraordinaire : +1d6 de dégâts quand la cible est incapable de se défendre efficacement ; +1d6 de plus aux niveaux 4, 7 et 10 (+4d6 au niveau 10).\n• Mêmes règles que l'attaque sournoise du roublard."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(1 + floor((level('class.ronin') - 1) / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.ronin_infamy",
+      "type": "class_power",
+      "name": {
+        "fr": "Infamie",
+        "en": "Infamy"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ronin"
+      ],
+      "description": {
+        "fr": "Son déshonneur le précède, vrai ou non.\n\nEn jeu\n• Face à une personne en position d'autorité qui a entendu parler de lui (test de Renseignements ou de Connaissances (noblesse et royauté) DD 10, ou décision du MD) : −4 aux tests liés au Charisme, et son attitude initiale est d'un cran inférieure.\n• Il évite ces effets sous une fausse identité ou un pseudonyme."
+      },
+      "effects": [],
+      "note": "Situationnel (dépend de l'interlocuteur) : pas de statistique sur la fiche."
+    },
+    {
+      "id": "power.ronin_banzai_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge banzaï",
+        "en": "Banzai charge"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ronin"
+      ],
+      "description": {
+        "fr": "Il se jette en avant, sans plus penser à se défendre.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : en chargeant, il choisit un nombre entre 2 et son bonus de base à l'attaque : malus à la CA et bonus au jet d'attaque d'autant.\n• Ces modificateurs remplacent le −2 et le +2 habituels d'une charge."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": "@toggle.ronin_banzai_charge.value",
+          "condition": "active('toggle.ronin_banzai_charge')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "-@toggle.ronin_banzai_charge.value",
+          "bonusType": "untyped",
+          "condition": "active('toggle.ronin_banzai_charge')"
+        }
+      ],
+      "tableValue": {
+        "max": "@bab"
+      },
+      "note": "Toggle avec valeur choisie (comme Attaque en puissance), à activer pour la charge. Le +2 / −2 habituel de la charge n'est pas compté par la fiche : à régler à la main."
+    },
+    {
+      "id": "power.ronin_bonus_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire",
+        "en": "Bonus feat"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ronin"
+      ],
+      "description": {
+        "fr": "Les rudes années d'errance lui ont appris des tours.\n\nEn jeu\n• Niveaux 5 et 9 : un don au choix parmi Attaque au galop, Charge dévastatrice, Combat monté, Feu nourri, Piétinement, Science du tir de précision, Tir à bout portant, Tir de loin, Tir de précision, Tir en mouvement, Tir monté et Tir rapide.\n• Il doit en remplir les conditions."
+      },
+      "effects": [],
+      "note": "Les dons ne sont pas dans une liste du modèle (pas de type d'emplacement « ronin ») : à choisir comme don général."
+    },
+    {
+      "id": "power.ronin_former_samurai",
+      "type": "class_power",
+      "name": {
+        "fr": "Ancien samouraï",
+        "en": "Former samurai"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "ronin"
+      ],
+      "description": {
+        "fr": "Les leçons du Bushido survivent chez le ronin, même quand l'honneur est perdu.\n\nEn jeu\n• Niveaux 1 à 5 de samouraï : il garde le châtiment kiai et l'utilise comme un samouraï.\n• Niveaux 6 à 10 : comme avant, et il garde aussi le regard menaçant, le regard menaçant de groupe et la science du regard menaçant.\n• Niveau 11 ou plus : comme avant, et il peut échanger des niveaux de samouraï contre autant de niveaux de ronin (14 niveaux de samouraï donnent par exemple ancien samouraï 10 / ronin 4). Le niveau global ne change pas. Il perd les aptitudes de samouraï liées aux niveaux échangés."
+      },
+      "effects": [],
+      "note": "Texte seul : la fiche garde tous les pouvoirs de samouraï que les niveaux donnent, même ceux que le ronin perd (deux lames en harmonie, maîtrise du iaijutsu, etc.). À retirer à la main. Réutilise power.samurai_kiai_smite et power.samurai_staredown / mass / improved."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.ronin",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.ronin_sneak_attack",
+        "power.ronin_infamy",
+        "power.ronin_former_samurai"
+      ]
+    },
+    {
+      "classId": "class.ronin",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.ronin_banzai_charge"
+      ]
+    },
+    {
+      "classId": "class.ronin",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.ronin",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.ronin",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.ronin_bonus_feat"
+      ]
+    },
+    {
+      "classId": "class.ronin",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.ronin",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.ronin",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.ronin",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.ronin",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.ronin",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+{
+  "entities": [
+    {
+      "id": "class.samurai",
+      "type": "class",
+      "name": {
+        "fr": "Samouraï",
+        "en": "Samurai"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial"
+      ],
+      "description": {
+        "fr": "Le samouraï sert un seigneur et suit le bushido, un code d’honneur qui règle presque toute sa vie. Il se bat au corps à corps avec deux lames, un katana et un wakizashi, et sa seule présence fait hésiter les adversaires moins honorables. À force de discipline, son cri de guerre frappe plus fort que son épée et son regard suffit à briser le moral d’une armée.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : loyal (bon, neutre ou mauvais).\n• Formé à toutes les armes courantes et de guerre et aux armures légères ; pas aux boucliers.\n• Un samouraï qui n’est plus loyal ou qui trahit gravement le bushido perd ses aptitudes liées au Charisme ; il les retrouve par pénitence, si son seigneur l’accepte. S’il prend un niveau dans une autre classe, il ne peut plus progresser comme samouraï.\n• Aptitudes : maniement du daïsho (1) ; deux lames en harmonie (2) ; châtiment kiai (3, 7, 12, 17) ; maître du iaijutsu (5) ; regard menaçant (6) ; science de l’initiative (8) ; regard menaçant de groupe (10) ; science des deux lames en harmonie (11) ; science du regard menaçant (14) ; maîtrise des deux lames en harmonie (16) ; présence terrifiante (20)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "source": "Complete Warrior",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.samurai') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Code du bushido, perte des pouvoirs et multiclassage : seulement dans le texte. Le livre ne donne pas de règle épique propre au samouraï : un don supplémentaire tous les 3 niveaux au-delà du 20 (à confirmer)."
+    },
+    {
+      "id": "power.samurai_daisho_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maniement du daïsho",
+        "en": "Daisho mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Un samouraï reçoit de sa famille une paire de lames anciennes, le katana et le wakizashi, et passe des années à les apprivoiser. Il les manie dès le premier jour comme si elles étaient les siennes.\n\nEn jeu\n• Le daïsho est la paire formée du katana (épée bâtarde de maître) et du wakizashi (épée courte de maître).\n• Maniement d’une arme exotique (épée bâtarde) offert en don supplémentaire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.samurai_two_blades_as_one",
+      "type": "class_power",
+      "name": {
+        "fr": "Deux lames en harmonie",
+        "en": "Two blades as one"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Le katana dans une main, le wakizashi dans l’autre : le samouraï se bat comme un guerrier qui aurait appris à deux armes depuis toujours.\n\nEn jeu\n• Se bat comme s’il avait le don Combat à deux armes, sans en remplir les conditions.\n• Uniquement avec le daïsho (katana et wakizashi)."
+      },
+      "effects": [],
+      "note": "Le don est accordé sans restriction dans le modèle ; la limite « avec le daïsho » est seulement dans le texte."
+    },
+    {
+      "id": "power.samurai_kiai_smite",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment kiai",
+        "en": "Kiai smite"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Un grand cri poussé au bon moment : l’air vibre, le bras se tend, et le coup qui suit est celui d’un homme sûr de lui.\n\nEn jeu\n• Action libre, une fois par jour au niveau 3, puis une fois de plus aux niveaux 7, 12 et 17.\n• Pour une seule attaque : bonus égal à son bonus de Charisme (au moins +1) au jet d’attaque et au jet de dégâts associé."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(1, @ability.cha.mod)",
+          "condition": "active('toggle.samurai_kiai_smite')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "max(1, @ability.cha.mod)",
+          "condition": "active('toggle.samurai_kiai_smite')"
+        }
+      ],
+      "usesPerDay": "1 + (if(level('class.samurai') >= 7, 1, 0)) + (if(level('class.samurai') >= 12, 1, 0)) + (if(level('class.samurai') >= 17, 1, 0))",
+      "note": "Toggle « châtiment kiai » : à activer pour l’attaque concernée seulement."
+    },
+    {
+      "id": "power.samurai_iaijutsu_master",
+      "type": "class_power",
+      "name": {
+        "fr": "Maître du iaijutsu",
+        "en": "Iaijutsu master"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Dégainer et frapper en un seul geste : le samouraï maîtrise cet art, et l’adversaire n’a vu que l’éclair de l’acier.\n\nEn jeu\n• Bénéficie du don Arme en main (Quick Draw), mais seulement en dégainant un katana et un wakizashi."
+      },
+      "effects": [],
+      "note": "Don accordé sans restriction dans le modèle ; la limite « katana et wakizashi » est seulement dans le texte."
+    },
+    {
+      "id": "power.samurai_staredown",
+      "type": "class_power",
+      "name": {
+        "fr": "Regard menaçant",
+        "en": "Staredown"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Le samouraï n’a pas besoin de crier : il fixe son adversaire, et celui-ci se souvient soudain d’une affaire urgente ailleurs.\n\nEn jeu\n• +4 aux tests d’Intimidation.\n• Peut démoraliser un adversaire comme le décrit la compétence Intimidation."
+      },
+      "effects": [
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "power.samurai_improved_initiative",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de l’initiative",
+        "en": "Improved initiative"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Les duels rituels lui ont appris à sentir le moment précis où l’adversaire va frapper.\n\nEn jeu\n• Don supplémentaire : Science de l’initiative (+4 à l’initiative)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.samurai_mass_staredown",
+      "type": "class_power",
+      "name": {
+        "fr": "Regard menaçant de groupe",
+        "en": "Mass staredown"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Sa présence pèse sur toute une rangée d’ennemis à la fois.\n\nEn jeu\n• Quand il tente de démoraliser avec Intimidation, il peut le faire sur tous ses adversaires dans un rayon de 9 m, par une action simple."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.samurai_improved_two_blades_as_one",
+      "type": "class_power",
+      "name": {
+        "fr": "Science des deux lames en harmonie",
+        "en": "Improved two blades as one"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Le jeu des deux lames devient plus précis, plus rapide.\n\nEn jeu\n• Se bat comme s’il avait le don Science du combat à deux armes, sans en remplir les conditions.\n• Uniquement avec le daïsho."
+      },
+      "effects": [],
+      "note": "Don accordé sans restriction dans le modèle ; la limite « avec le daïsho » est seulement dans le texte."
+    },
+    {
+      "id": "power.samurai_improved_staredown",
+      "type": "class_power",
+      "name": {
+        "fr": "Science du regard menaçant",
+        "en": "Improved staredown"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Un coup d’œil suffit : le sang de ses adversaires se glace.\n\nEn jeu\n• Peut démoraliser tous ses ennemis dans un rayon de 9 m par une simple action de mouvement (au lieu d’une action simple)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.samurai_two_blades_as_one_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des deux lames en harmonie",
+        "en": "Two blades as one mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "À ce niveau, deux lames dans les mains ne sont plus un effort, mais une seconde nature.\n\nEn jeu\n• Se bat comme s’il avait le don Maîtrise du combat à deux armes, sans en remplir les conditions.\n• Uniquement avec le daïsho."
+      },
+      "effects": [],
+      "note": "Don accordé sans restriction dans le modèle ; la limite « avec le daïsho » est seulement dans le texte."
+    },
+    {
+      "id": "power.samurai_frightful_presence",
+      "type": "class_power",
+      "name": {
+        "fr": "Présence terrifiante",
+        "en": "Frightful presence"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "samurai"
+      ],
+      "description": {
+        "fr": "Quand un samouraï de ce rang dégaine, la légende dégaine avec lui, et les adversaires oublient jusqu’à leur nom.\n\nEn jeu\n• Quand il dégaine son arme, tous ses adversaires à 9 m ou moins font un jet de Volonté (DD 20 + modificateur de Charisme du samouraï).\n• Échec : paniqué (4 DV ou moins) ou secoué (5 à 19 DV) pendant 4d6 rounds. Sans effet à partir de 20 DV.\n• Un adversaire qui réussit est immunisé contre la présence terrifiante de ce samouraï pendant 24 heures."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.samurai",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.samurai_daisho_mastery"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.samurai_two_blades_as_one"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.samurai_kiai_smite"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.samurai_iaijutsu_master"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.samurai_staredown"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.samurai_improved_initiative"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.samurai_mass_staredown"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.samurai_improved_two_blades_as_one"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.samurai_improved_staredown"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.samurai_two_blades_as_one_mastery"
+      ]
+    },
+    {
+      "classId": "class.samurai",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.samurai",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.samurai_frightful_presence"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "proficiency",
+      "to": "item.bastard_sword"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.samurai",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "power.samurai_two_blades_as_one",
+      "relation": "grants",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "power.samurai_iaijutsu_master",
+      "relation": "grants",
+      "to": "feat.quick_draw"
+    },
+    {
+      "from": "power.samurai_improved_initiative",
+      "relation": "grants",
+      "to": "feat.improved_initiative"
+    },
+    {
+      "from": "power.samurai_improved_two_blades_as_one",
+      "relation": "grants",
+      "to": "feat.improved_two_weapon_fighting"
+    },
+    {
+      "from": "power.samurai_two_blades_as_one_mastery",
+      "relation": "grants",
+      "to": "feat.greater_two_weapon_fighting"
+    }
+  ]
+}

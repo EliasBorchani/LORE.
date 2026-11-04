@@ -101,6 +101,7 @@ async fn a_stranger_gets_404_everywhere(pool: PgPool) {
             format!("/groups/{g}/catalog/maneuvers/class.warblade"),
             None,
         ),
+        ("GET", format!("/groups/{g}/catalog/invocations"), None),
         ("GET", format!("/groups/{g}/entities"), None),
         ("GET", format!("/groups/{g}/search?q=power"), None),
         (

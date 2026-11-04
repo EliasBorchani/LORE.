@@ -1,0 +1,477 @@
+{
+  "entities": [
+    {
+      "id": "class.animal_lord",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Seigneur des animaux",
+        "en": "Animal Lord"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "nature"
+      ],
+      "description": {
+        "fr": "Il ne dresse pas les bêtes : il les rejoint. Le seigneur des animaux choisit une famille d'animaux (chevaux, félins, loups, oiseaux, ours, requins, serpents ou singes), apprend à penser comme elle et finit par en emprunter les griffes, les crocs ou les ailes. Un personnage peut reprendre la classe pour un autre groupe, en repartant du niveau 1.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Choix du groupe d'animaux au niveau 1 (chevaux, félins, loups, oiseaux, ours, requins, serpents, singes) : il détermine le totem, les attributs animaux et les créatures convoquées. Choix noté dans le texte de la fiche.\n• Conditions : alignement neutre bon, loyal neutre, neutre, chaotique neutre ou neutre mauvais ; bonus de base à l'attaque +5 ; 2 rangs en Connaissances (nature) et 4 rangs en Dressage ; 4 rangs dans la compétence du groupe (Saut, Déplacement silencieux, Survie, Détection, Intimidation, Natation, Évasion ou Escalade) ; le don du groupe (Course, Attaque en finesse, Pistage, Science du vol, Endurance, Science de la nage, Attaques réflexes ou Robustesse).\n• Aucune formation nouvelle aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Connaissances (nature), Déplacement silencieux, Détection, Discrétion, Dressage, Escalade, Évasion, Intimidation, Natation, Perception auditive, Premiers secours, Saut, Survie.\n• Aptitudes : détection de la faune, empathie sauvage, lien animal (1) ; premier totem, vision nocturne (2) ; attribut animal 1/jour (3), 2/jour (6), 3/jour (9) ; communication avec les animaux (4) ; convocation d'animaux (5) ; deuxième totem (6) ; croissance animale (7) ; télépathie avec les animaux (8) ; troisième totem (10)."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 5 and @skill.knowledge_nature.ranks >= 2 and @skill.handle_animal.ranks >= 4",
+      "note": "Conditions : le groupe d'animaux est un choix (compétence à 4 rangs et don dépendant du groupe, par exemple Saut et Course pour les chevaux) ; l'alignement est restreint par les relations. Le modèle ne tient pas le groupe : tout ce qui en dépend est du texte."
+    },
+    {
+      "id": "power.animal_lord_detect_animals",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection de la faune",
+        "en": "Detect animals or plants"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Les bêtes de sa famille ne peuvent plus se cacher : il sent leur présence comme on sent une odeur de feu de bois.\n\nEn jeu\n• Capacité magique, à volonté : comme détection de la faune ou de la flore, niveau de lanceur égal à son niveau de classe.\n• Il ne perçoit que les animaux de son groupe de prédilection."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.animal_lord_wild_empathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Empathie sauvage",
+        "en": "Wild empathy"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Un regard calme, une main ouverte, et l'animal comprend qu'il n'a rien à craindre.\n\nEn jeu\n• Capacité extraordinaire : influence l'attitude d'un animal comme l'empathie sauvage du druide.\n• Ses niveaux de seigneur des animaux s'ajoutent à ceux d'une autre classe qui donne cette aptitude (druide, rôdeur) pour le bonus."
+      },
+      "effects": [
+        {
+          "target": "check.wild_empathy",
+          "op": "add",
+          "value": "level('class.animal_lord') + if(has('power.druid_wild_empathy') or has('power.ranger_wild_empathy'), 0, @ability.cha.mod)"
+        }
+      ],
+      "note": "Le modificateur de Charisme n'est compté qu'une fois, avec celui du druide ou du rôdeur. Si la classe est prise plusieurs fois (groupes différents), les niveaux ne se cumulent pas : à gérer à la main."
+    },
+    {
+      "id": "power.animal_lord_animal_bond",
+      "type": "class_power",
+      "name": {
+        "fr": "Lien animal",
+        "en": "Animal bond"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Entre lui et sa famille d'animaux s'est tissé un lien que les autres bêtes ne lui accordent pas.\n\nEn jeu\n• Capacité extraordinaire : +4 aux tests de Dressage et d'empathie sauvage visant les animaux de son groupe.\n• S'il a un compagnon animal, ses niveaux de seigneur des animaux s'ajoutent à son niveau de druide effectif pour le compagnon (dés de vie, pouvoirs spéciaux, etc.)."
+      },
+      "effects": [
+        {
+          "target": "animal_companion.level",
+          "op": "add",
+          "value": "if(has('power.druid_animal_companion') or has('power.ranger_animal_companion'), level('class.animal_lord'), 0)"
+        }
+      ],
+      "note": "Le bonus de +4 dépend du groupe d'animaux choisi : texte seul."
+    },
+    {
+      "id": "power.animal_lord_first_totem",
+      "type": "class_power",
+      "name": {
+        "fr": "Premier totem",
+        "en": "First totem"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Il prend à ses bêtes un talent qu'elles maîtrisent mieux que personne.\n\nEn jeu\n• Au niveau 2 : +4 à une compétence dictée par le groupe : chevaux, Saut ; félins, Déplacement silencieux ; loups, Survie ; oiseaux, Détection ; ours, Intimidation ; requins, Natation ; serpents, Évasion ; singes, Escalade."
+      },
+      "effects": [],
+      "note": "Compétence selon le groupe choisi : texte seul."
+    },
+    {
+      "id": "power.animal_lord_low_light_vision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision nocturne",
+        "en": "Low-light vision"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Les nuits sans lune lui paraissent claires, comme à un chat.\n\nEn jeu\n• Capacité extraordinaire : voit deux fois plus loin que les humains dans une lumière faible, couleurs et détails compris.\n• S'il a déjà la vision nocturne (par sa race), il voit trois fois plus loin."
+      },
+      "effects": [
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true"
+        }
+      ],
+      "note": "La portée triple avec la vision nocturne raciale n'est pas calculée : texte seul."
+    },
+    {
+      "id": "power.animal_lord_animal_aspect",
+      "type": "class_power",
+      "name": {
+        "fr": "Attribut animal",
+        "en": "Animal aspect"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Il fait surgir en lui l'arme naturelle de sa famille : griffes, crocs, ailes ou venin.\n\nEn jeu\n• Capacité surnaturelle, action rapide sans attaque d'opportunité ; dure 1 minute par niveau de classe.\n• Utilisations par jour : 1 au niveau 3, 2 au niveau 6, 3 au niveau 9. Une utilisation de forme animale peut en tenir lieu.\n• Au niveau 7 les dégâts de l'attribut montent d'un cran.\n• Chevaux : vitesse +3 m (+6 m au niveau 7), pour lui et sa monture, 1 heure par niveau. Félins : deux griffes (1d4, puis 1d6) et deux attaques de griffes à la fin d'une charge. Loups : odorat (10 minutes par niveau, puis 1 heure). Oiseaux : ailes, vol à sa vitesse au sol, manœuvrabilité moyenne (10 minutes par niveau au niveau 7). Ours : deux griffes (1d4, puis 1d6) et lutte en action libre sans attaque d'opportunité après une griffe réussie. Requins : morsure (1d8, puis 2d6), respiration aquatique. Serpents : morsure venimeuse 1 round par niveau (1d4 puis 1d6 ; Vigueur DD 10 + niveau + mod. de Constitution ; 1d3 puis 1d4 de Constitution). Singes : deux griffes (1d4, puis 1d6) et éventration si deux griffes touchent (2d4 + 1,5 × Force, puis 2d6)."
+      },
+      "effects": [],
+      "usesPerDay": "floor(level('class.animal_lord') / 3)",
+      "note": "Attaques naturelles et effets dépendent du groupe : texte seul. Utilisations par jour calculées."
+    },
+    {
+      "id": "power.animal_lord_speak_with_animals",
+      "type": "class_power",
+      "name": {
+        "fr": "Communication avec les animaux",
+        "en": "Speak with animals"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Les mots ne servent plus à rien : il comprend et on le comprend.\n\nEn jeu\n• Capacité magique, 1 fois par jour : comme communication avec les animaux, mais seulement avec son groupe de prédilection."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.animal_lord_summon_animals",
+      "type": "class_power",
+      "name": {
+        "fr": "Convocation d'animaux",
+        "en": "Summon animals"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Il appelle sa famille, qui répond toujours.\n\nEn jeu\n• Capacité magique : comme convocation d'alliés naturels V, mais limitée à son groupe ; durée 1 minute par niveau de classe.\n• Chevaux : 1d4+1 chevaux ou poneys. Félins : 1 lion sanguinaire, 1d3 tigres ou 1d4+1 lions. Loups : 1d4+1 loups ou loups sanguinaires. Oiseaux : 1d4+1 aigles, corbeaux, faucons, hiboux (ou géants ; pas les géants pour un seigneur des oiseaux mauvais). Ours : 1 ours polaire, 1d3 ours bruns ou 1d4+1 ours noirs. Requins : 1d3 requins TG ou 1d4+1 requins G, en milieu aquatique seulement. Serpents : 1 constricteur géant, 1d3 venimeux TG ou 1d4+1 constricteurs géants ou venimeux G. Singes : 1d3 gorilles sanguinaires ou 1d4+1 gorilles."
+      },
+      "effects": [],
+      "note": "Créatures convoquées selon le groupe : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.animal_lord_second_totem",
+      "type": "class_power",
+      "name": {
+        "fr": "Deuxième totem",
+        "en": "Second totem"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Sa famille lui transmet un don de plus.\n\nEn jeu\n• Au niveau 6 : un don en rapport avec le groupe, même sans en remplir les conditions : chevaux, Piétinement ; félins, Réflexes surhumains ; loups, Science du croc-en-jambe ; oiseaux, Attaque en vol ; ours, Science de la lutte ; requins, Science du critique (morsure) ; serpents, Science de l'initiative ; singes, Agilité du singe.\n• S'il a déjà ce don, il en choisit un autre dont il remplit les conditions."
+      },
+      "effects": [],
+      "note": "Don selon le groupe : texte seul (pas de relation grants, le choix dépend du groupe). Agilité du singe est un nouveau don du livre (page 103)."
+    },
+    {
+      "id": "power.animal_lord_animal_growth",
+      "type": "class_power",
+      "name": {
+        "fr": "Croissance animale",
+        "en": "Animal growth"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Un allié animal gonfle comme un souffle de forge.\n\nEn jeu\n• Capacité magique, 1 fois par jour, action rapide : comme croissance animale (niveau de lanceur = niveau de classe), sur une créature de son groupe de prédilection."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.animal_lord_animal_telepathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Télépathie avec les animaux",
+        "en": "Telepathy with animals"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "Une pensée suffit : sa famille l'entend sans qu'il ouvre la bouche.\n\nEn jeu\n• Capacité surnaturelle : télépathie avec toute créature de son groupe de prédilection, à 30 m au plus et en la voyant."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.animal_lord_third_totem",
+      "type": "class_power",
+      "name": {
+        "fr": "Troisième totem",
+        "en": "Third totem"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "animal_lord"
+      ],
+      "description": {
+        "fr": "L'animal a fini par changer son corps autant que son esprit.\n\nEn jeu\n• Au niveau 10 : +2 permanent à une caractéristique dictée par le groupe : chevaux, Constitution ; félins, Dextérité ; loups, Force ; oiseaux, Sagesse ; ours, Constitution ; requins, Force ; serpents, Charisme ; singes, Force."
+      },
+      "effects": [],
+      "note": "Caractéristique selon le groupe : texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.animal_lord",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.animal_lord_detect_animals",
+        "power.animal_lord_wild_empathy",
+        "power.animal_lord_animal_bond"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.animal_lord_first_totem",
+        "power.animal_lord_low_light_vision"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.animal_lord_animal_aspect"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.animal_lord_speak_with_animals"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.animal_lord_summon_animals"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.animal_lord_second_totem"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.animal_lord_animal_growth"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.animal_lord_animal_telepathy"
+      ]
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.animal_lord",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.animal_lord_third_totem"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.animal_lord",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    }
+  ]
+}

@@ -1,0 +1,432 @@
+{
+  "entities": [
+    {
+      "id": "class.enlightened_fist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Poing illuminé",
+        "en": "Enlightened Fist"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "martial"
+      ],
+      "description": {
+        "fr": "Le poing illuminé a compris que la discipline du moine et celle du mage ne s'opposent pas : il fait passer ses sorts par ses poings. Un geste de la main et la formule se loge dans le coup, qui frappe plus vite qu'un regard et plus fort qu'une masse.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : Art de la magie 5 rangs, Concentration 8 rangs, Connaissances (mystères) 5 rangs ; dons Magie de guerre, Coup étourdissant, Science du combat à mains nues ; lancer des sorts profanes (niveau de lanceur 3).\n• Variante divine : Connaissances (religion) à la place de mystères, et des sorts divins du 2e niveau ; dans ce cas le niveau de lanceur effectif n'augmente que les niveaux pairs.\n• Aucune formation nouvelle aux armes, boucliers ou armures.\n• Compétences de classe : Acrobaties, Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (religion), Déplacement silencieux, Détection, Discrétion, Équilibre, Escalade, Évasion, Natation, Perception auditive, Profession, Saut.\n• Sorts : +1 niveau de lanceur de sorts profanes aux niveaux 2 à 5 et 7 à 10, pour une classe profane précédente.\n• Aptitudes : aptitudes de moine et frappe ki (1) ; poing d'énergie (2, explosion au 6) ; poing profane (3) ; régénération profane (5) ; rayon de contact (7) ; âme de diamant (9)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@skill.spellcraft.ranks >= 5 and @skill.concentration.ranks >= 8 and @skill.knowledge_arcana.ranks >= 5 and has('feat.combat_casting') and has('feat.stunning_fist') and has('feat.improved_unarmed_strike')",
+      "note": "Conditions dans la formule : rangs, dons. En texte seulement : niveau 3 de lanceur de sorts profanes ; variante divine. Magie de guerre = Combat Casting (nom anglais déduit du français, à confirmer). Connaissances (mystères) est lu comme skill.knowledge_arcana."
+    },
+    {
+      "id": "power.enlightened_fist_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Chaque niveau de poing illuminé nourrit aussi la magie qu'il pratiquait déjà, sauf deux niveaux où seul le corps progresse.\n\nEn jeu\n• Niveaux 2 à 5 et 7 à 10 : +1 niveau effectif de lanceur de sorts dans une classe profane précédente (au choix s'il en a plusieurs).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau, pas les autres aptitudes de cette classe.\n• Pas de progression aux niveaux 1 et 6.\n• Variante divine : +1 niveau effectif seulement les niveaux pairs."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.enlightened_fist_monk_abilities",
+      "type": "class_power",
+      "name": {
+        "fr": "Aptitudes de moine",
+        "en": "Monk abilities"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Ses années de monastère comptent double : le mage frappe et esquive comme un moine plus expérimenté.\n\nEn jeu\n• Ses niveaux de poing illuminé s'ajoutent à ses niveaux de moine pour le bonus à la CA, les dégâts à mains nues, le déplacement accéléré et les utilisations quotidiennes de Coup étourdissant.\n• Sans niveau de moine, il a les mêmes avantages qu'un moine de niveau égal à son niveau de poing illuminé, mais n'ajoute pas son bonus de Sagesse à la CA.\n• Les autres aptitudes de moine (déluge de coups, dons, esquive totale…) ne comptent pas ses niveaux de poing illuminé."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor((level('class.monk') + level('class.enlightened_fist')) / 5) - floor(level('class.monk') / 5)"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.enlightened_fist')) >= 1 and (level('class.monk') + level('class.enlightened_fist')) < 4"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.enlightened_fist')) >= 4 and (level('class.monk') + level('class.enlightened_fist')) < 8"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.enlightened_fist')) >= 8 and (level('class.monk') + level('class.enlightened_fist')) < 12"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.enlightened_fist')) >= 12 and (level('class.monk') + level('class.enlightened_fist')) < 16"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d8",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.enlightened_fist')) >= 16 and (level('class.monk') + level('class.enlightened_fist')) < 20"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d10",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.enlightened_fist')) >= 20"
+        },
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": "3 * floor((level('class.monk') + level('class.enlightened_fist')) / 3) - 3 * floor(level('class.monk') / 3)"
+        }
+      ],
+      "note": "Dégâts à mains nues : le plus fort entre ceux du moine et ceux du total moine + poing illuminé. Coup étourdissant : le nombre d'utilisations quotidiennes n'est pas encore dans le modèle (texte seulement). Armure et charge : non gérées, comme pour le moine."
+    },
+    {
+      "id": "power.enlightened_fist_ki_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe ki (magie)",
+        "en": "Ki strike (magic)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Le ki du poing illuminé passe dans ses coups : aucune peau enchantée ne l'arrête.\n\nEn jeu\n• Ses attaques à mains nues comptent comme magiques pour passer la réduction des dégâts."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.enlightened_fist_energy_fist",
+      "type": "class_power",
+      "name": {
+        "fr": "Poing d'énergie",
+        "en": "Energy fist"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Un éclair ou une flamme s'enroule autour de ses poings le temps d'un souffle de ki.\n\nEn jeu\n• Niveau 2. Une fois par round, action libre : dépense une utilisation quotidienne de Coup étourdissant.\n• Pendant 1 round, chaque coup à mains nues inflige 1d6 dégâts d'électricité ou de feu en plus (choix à chaque activation).\n• Niveau 6 : sur un coup critique, explosion de 1d10 dégâts d'énergie en plus (2d10 si le critique est x3, 3d10 si x4).\n• Avec des niveaux de moine, il peut canaliser l'énergie dans une arme de moine."
+      },
+      "effects": [],
+      "note": "Dés de dégâts en plus selon le choix feu / électricité, et explosion sur critique : à appliquer à la main, le modèle ne garde pas encore ces dés."
+    },
+    {
+      "id": "power.enlightened_fist_arcane_fist",
+      "type": "class_power",
+      "name": {
+        "fr": "Poing profane",
+        "en": "Arcane fist"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Il glisse un sort de contact dans un enchaînement de coups.\n\nEn jeu\n• Niveau 3. Dépense une utilisation quotidienne de Coup étourdissant.\n• Il lance un sort de contact et le délivre avec l'une des attaques à mains nues de son attaque à outrance."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.enlightened_fist_arcane_regeneration",
+      "type": "class_power",
+      "name": {
+        "fr": "Régénération profane",
+        "en": "Arcane regeneration"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Il sacrifie une formule pour refermer ses plaies.\n\nEn jeu\n• Niveau 5. Action simple : sacrifie un sort préparé ou un emplacement inutilisé.\n• Il récupère autant de points de vie que le niveau du sort."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.enlightened_fist_ray_touch",
+      "type": "class_power",
+      "name": {
+        "fr": "Rayon de contact",
+        "en": "Touch ray"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Les rayons n'ont plus de portée : il les porte au bout de la main.\n\nEn jeu\n• Niveau 7. Tout sort à rayon peut être lancé comme un sort de contact : portée contact, cible « créature touchée ».\n• Il le délivre par une attaque de contact ou une attaque normale, et peut le retenir comme un sort de contact.\n• Combinable avec le poing profane pour délivrer un rayon dans une attaque à outrance."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.enlightened_fist_diamond_soul",
+      "type": "class_power",
+      "name": {
+        "fr": "Âme de diamant",
+        "en": "Diamond soul"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "enlightened_fist"
+      ],
+      "description": {
+        "fr": "Son esprit devient aussi dur que la pierre précieuse : la magie hostile glisse dessus.\n\nEn jeu\n• Niveau 9. Résistance à la magie de 10 + niveau de moine + niveau de poing illuminé."
+      },
+      "effects": [
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": "10 + level('class.monk') + level('class.enlightened_fist')",
+          "layer": "base",
+          "condition": "level('class.enlightened_fist') >= 9"
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.enlightened_fist",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.enlightened_fist_monk_abilities",
+        "power.enlightened_fist_ki_strike"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.enlightened_fist_energy_fist",
+        "power.enlightened_fist_spells"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.enlightened_fist_arcane_fist",
+        "power.enlightened_fist_spells"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.enlightened_fist_spells"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.enlightened_fist_arcane_regeneration",
+        "power.enlightened_fist_spells"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.enlightened_fist_ray_touch",
+        "power.enlightened_fist_spells"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.enlightened_fist_spells"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.enlightened_fist_diamond_soul",
+        "power.enlightened_fist_spells"
+      ]
+    },
+    {
+      "classId": "class.enlightened_fist",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.enlightened_fist_spells"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.enlightened_fist",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

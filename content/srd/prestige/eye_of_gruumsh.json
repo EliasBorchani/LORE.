@@ -1,0 +1,392 @@
+{
+  "entities": [
+    {
+      "id": "class.eye_of_gruumsh",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Œil de Gruumsh",
+        "en": "Eye of Gruumsh"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Pour servir un dieu borgne, il s'est arraché l'œil droit sans un cri. Depuis, l'œil de Gruumsh voit ce que les autres ne voient pas, et son peuple le suit sans discuter vers la guerre.\n\nEn jeu\n• Dé de vie : d12. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : orque ou demi-orque ; alignement chaotique mauvais, chaotique neutre ou neutre mauvais ; bonus de base à l'attaque +6 ; dons Arme de prédilection (hache double orque) et Maniement d'une arme exotique (hache double orque) ; adorer Gruumsh et s'être arraché l'œil droit lors d'un rituel (aucun pouvoir de la classe ne marche s'il recouvre la vue).\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Équitation, Escalade, Intimidation, Natation, Saut, Survie.\n• Aptitudes : combat en aveugle, conduite de la horde et rage de berserker (1) ; frappe aveugle (2) ; scarification rituelle +1 (3), +2 (6), +3 (9) ; crachat aveuglant 2/jour (4), 4/jour (7) ; vision aveugle 1,50 m (5), 3 m (8) ; vision de Gruumsh (10)."
+      },
+      "hitDie": 12,
+      "skillPoints": 2,
+      "note": "Conditions de race, d'alignement et rituel : texte seul. Les dons Arme de prédilection et Maniement d'une arme exotique portent sur la hache double orque : la formule ne vérifie que leur présence. Noms anglais à confirmer pour toutes les aptitudes.",
+      "prerequisite": "@bab >= 6 and has('feat.exotic_weapon_proficiency') and has('feat.weapon_focus')"
+    },
+    {
+      "id": "power.eye_of_gruumsh_blind_fighting",
+      "type": "class_power",
+      "name": {
+        "fr": "Combat en aveugle",
+        "en": "Blind-Fight"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "Il a perdu un œil et n'en tire aucune faiblesse : il frappe aussi bien dans le noir.\n\nEn jeu\n• Il obtient le don Combat en aveugle en don supplémentaire.\n• La perte de son œil ne lui impose aucun désavantage particulier."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.eye_of_gruumsh_horde_leadership",
+      "type": "class_power",
+      "name": {
+        "fr": "Conduite de la horde",
+        "en": "Lead the horde"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "Là où il va, les orques suivent, et ils se battent mieux de le suivre.\n\nEn jeu\n• Capacité extraordinaire : il commande tout orque ou demi-orque d'alignement non bon, à 9 m ou moins, qui a moins de dés de vie que son niveau global.\n• Celui qui suit ses ordres a un bonus de moral de +2 aux jets de Volonté. Dès qu'il décide d'aller à l'encontre des ordres, il perd ce bonus."
+      },
+      "effects": [],
+      "note": "Le bonus s'applique à ses suivants, pas à lui : texte seul."
+    },
+    {
+      "id": "power.eye_of_gruumsh_berserker_rage",
+      "type": "class_power",
+      "name": {
+        "fr": "Rage de berserker",
+        "en": "Berserker rage"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "La colère de Gruumsh le prend, et il ne reste de lui qu'un poing.\n\nEn jeu\n• Capacité extraordinaire : il entre en rage comme un barbare (+4 en Force et en Constitution, +2 de moral aux jets de Volonté, −2 en CA, durée 3 rounds + modificateur de Constitution), avec tous ses avantages et inconvénients.\n• Ses niveaux d'œil de Gruumsh se cumulent avec ses niveaux de barbare pour le nombre de rages par jour : 1 + 1 par tranche de 4 niveaux (barbare + œil).\n• Exemple : barbare 6 / œil 2 : 3 rages par jour. Guerrier 6 / œil 4 : 2 rages par jour."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.eye_of_gruumsh_berserker_rage') and not has('power.barbarian_rage')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.eye_of_gruumsh_berserker_rage') and not has('power.barbarian_rage')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale",
+          "condition": "active('toggle.eye_of_gruumsh_berserker_rage') and not has('power.barbarian_rage')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.eye_of_gruumsh_berserker_rage') and not has('power.barbarian_rage')"
+        },
+        {
+          "target": "rage.duration",
+          "op": "set",
+          "value": "3 + @ability.con.mod",
+          "condition": "active('toggle.eye_of_gruumsh_berserker_rage') and not has('power.barbarian_rage')"
+        }
+      ],
+      "usesPerDay": "1 + floor((level('class.barbarian') + level('class.eye_of_gruumsh')) / 4)",
+      "note": "Avec des niveaux de barbare, la rage du barbare (case toggle.barbarian_rage) donne déjà ces bonus : cette case ne les ajoute que sans niveau de barbare, pour ne pas les compter deux fois. Le nombre de rages par jour de la rage du barbare ne compte pas les niveaux d'œil de Gruumsh : lire celui de cette aptitude. Grande rage et rage de maître du barbare : non cumulées ici."
+    },
+    {
+      "id": "power.eye_of_gruumsh_blinding_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe aveugle",
+        "en": "Blinding strike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "Sa rage décuple ses forces, au prix de toute prudence.\n\nEn jeu\n• Capacité extraordinaire : pendant une rage de berserker, +4 en Force en plus, mais son malus à la CA passe de −2 à −4."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "condition": "(active('toggle.eye_of_gruumsh_berserker_rage') or active('toggle.barbarian_rage'))"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "condition": "(active('toggle.eye_of_gruumsh_berserker_rage') or active('toggle.barbarian_rage'))"
+        }
+      ],
+      "note": "Actif avec l'une ou l'autre des cases de rage (la sienne ou celle du barbare)."
+    },
+    {
+      "id": "power.eye_of_gruumsh_ritual_scarring",
+      "type": "class_power",
+      "name": {
+        "fr": "Scarification rituelle",
+        "en": "Ritual scarring"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "Les cicatrices sont des armures : la peau devient cuir, puis écorce.\n\nEn jeu\n• Capacité extraordinaire : +1 d'armure naturelle au niveau 3 (ou +1 à un bonus existant), +2 au niveau 6, +3 au niveau 9."
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "floor(level('class.eye_of_gruumsh') / 3)",
+          "bonusType": "natural_armor"
+        }
+      ],
+      "note": "Bonus typé natural_armor, comme le disciple draconique."
+    },
+    {
+      "id": "power.eye_of_gruumsh_blinding_spittle",
+      "type": "class_power",
+      "name": {
+        "fr": "Crachat aveuglant",
+        "en": "Blinding spittle"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "Un jet de suc gastrique en plein visage : l'ennemi se frotte les yeux, trop tard.\n\nEn jeu\n• Capacité extraordinaire : 2 fois par jour, il crache sur un adversaire à 6 m ou moins. Attaque de contact à distance (−4) ; si elle réussit et que la cible rate un jet de Réflexes (DD 10 + niveau de classe + modificateur de Constitution), elle est aveuglée jusqu'à ce qu'elle puisse se rincer les yeux.\n• Sans effet sur les créatures sans yeux ou dont la perception ne passe pas par les yeux. 2 utilisations de plus au niveau 7 (4 par jour)."
+      },
+      "effects": [],
+      "usesPerDay": "if(level('class.eye_of_gruumsh') >= 7, 4, 2)"
+    },
+    {
+      "id": "power.eye_of_gruumsh_blindsight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision aveugle",
+        "en": "Blindsight"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "Là où l'œil manque, le reste voit.\n\nEn jeu\n• Capacité extraordinaire : vision aveugle sur 1,50 m au niveau 5, 3 m au niveau 8."
+      },
+      "effects": [
+        {
+          "target": "vision.blindsense",
+          "op": "set",
+          "value": "if(level('class.eye_of_gruumsh') >= 8, 3, 1.5)"
+        }
+      ],
+      "note": "Statistique vision.blindsense, comme la perception aveugle du disciple draconique."
+    },
+    {
+      "id": "power.eye_of_gruumsh_gruumshs_vision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision de Gruumsh",
+        "en": "Gruumsh's vision"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "eye_of_gruumsh"
+      ],
+      "description": {
+        "fr": "Par l'œil qui lui manque, il a vu sa propre mort : depuis, elle ne l'effraie plus.\n\nEn jeu\n• Capacité extraordinaire : +2 de moral aux jets de sauvegarde et à la CA.\n• Il ne tombe plus inconscient en dessous de 0 point de vie (il meurt toujours à −10)."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale"
+        }
+      ],
+      "note": "Rester conscient sous 0 point de vie : texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.eye_of_gruumsh_blind_fighting",
+        "power.eye_of_gruumsh_horde_leadership",
+        "power.eye_of_gruumsh_berserker_rage"
+      ]
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.eye_of_gruumsh_blinding_strike"
+      ]
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.eye_of_gruumsh_ritual_scarring"
+      ]
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.eye_of_gruumsh_blinding_spittle"
+      ]
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.eye_of_gruumsh_blindsight"
+      ]
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.eye_of_gruumsh",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.eye_of_gruumsh_gruumshs_vision"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.eye_of_gruumsh",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.eye_of_gruumsh",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.eye_of_gruumsh",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.eye_of_gruumsh",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.eye_of_gruumsh",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.eye_of_gruumsh",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "power.eye_of_gruumsh_blind_fighting",
+      "relation": "grants",
+      "to": "feat.blind_fight"
+    }
+  ]
+}

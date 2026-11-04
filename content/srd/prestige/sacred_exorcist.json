@@ -1,0 +1,362 @@
+{
+  "entities": [
+    {
+      "id": "class.sacred_exorcist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Exorciste consacré",
+        "en": "Sacred Exorcist"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Quand un esprit s'installe dans un corps qui n'est pas le sien, c'est vers l'exorciste qu'on court. Mandaté par son Église, il arrache les possesseurs à leurs victimes, repousse les morts et marche enveloppé d'une aura sacrée qui rend la terre moins hospitalière au mal.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement bon ; Connaissances (plans) 10 rangs, Connaissances (religion) 7 rangs ; savoir lancer renvoi ou rejet du Mal ; être ordonné par une Église ou un ordre qui compte des exorcistes.\n• Armes courantes seulement ; aucune formation aux armures ni aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (plans), Connaissances (religion), Intimidation, Premiers secours, Profession.\n• Sorts : chaque niveau compte comme un niveau de lanceur de sorts divins dans une classe qui lance renvoi ou rejet du Mal.\n• Aptitudes : exorcisme et renvoi des morts-vivants (1) ; détection du Mal et résistance à la possession (2) ; ennemis privilégiés (3, 6, 9) ; rejet du Mal (4, 7, 10) ; présence consacrée (5) ; aura sacrée (8)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_planes.ranks >= 10 and @skill.knowledge_religion.ranks >= 7",
+      "note": "Conditions d'accès : alignement bon (relations), sorts (renvoi ou rejet du Mal) et ordination par une Église : texte seul. Niveau de lanceur de sorts, sorts par jour et sorts connus : +1 niveau effectif dans une classe de lanceur de sorts existante (choix fait dans le niveau du personnage), rien dans les lignes de la table."
+    },
+    {
+      "id": "power.sacred_exorcist_exorcism",
+      "type": "class_power",
+      "name": {
+        "fr": "Exorcisme",
+        "en": "Exorcism"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Il ne combat pas la créature : il chasse ce qui la mène.\n\nEn jeu\n• Capacité surnaturelle : action complexe pour forcer un esprit ou une créature possédante à quitter le corps qu'elle habite.\n• Test de niveau de classe + modificateur de Charisme contre un DD de 10 + DV du possesseur + son modificateur de Charisme.\n• Réussite : le possesseur sort (avec les suites propres à sa méthode de possession) ; il ne peut plus posséder la même cible pendant 24 heures."
+      },
+      "effects": [],
+      "note": "Test et DD : texte seul."
+    },
+    {
+      "id": "power.sacred_exorcist_turn_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Renvoi des morts-vivants",
+        "en": "Turn undead"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Sa foi fait reculer les morts comme celle d'un prêtre.\n\nEn jeu\n• Capacité surnaturelle : renvoi des morts-vivants comme un prêtre.\n• Ses niveaux d'exorciste s'ajoutent à ceux d'une autre classe qui lui donne déjà cette aptitude pour fixer son niveau effectif de renvoi."
+      },
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": "level('class.sacred_exorcist')"
+        }
+      ]
+    },
+    {
+      "id": "power.sacred_exorcist_detect_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Mal",
+        "en": "Detect evil"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Le mal laisse une odeur, et il la reconnaît.\n\nEn jeu\n• Capacité magique : à volonté, comme le sort détection du Mal (niveau 2)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.sacred_exorcist_possession_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance à la possession",
+        "en": "Possession resistance"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Esprits, fantômes et possesseurs trouvent chez lui une porte close.\n\nEn jeu\n• Capacité extraordinaire (niveau 2) : +4 (sainteté) aux jets de sauvegarde contre la possession et les effets semblables (dont la possession des fantômes) et +2 (sainteté) aux tests de dissipation contre ces effets.\n• +2 (sainteté) aux jets de sauvegarde contre tous les charmes et coercitions des Extérieurs mauvais et des morts-vivants."
+      },
+      "effects": [],
+      "note": "Bonus conditionnels à des effets nommés : texte seul (situations vs_possession et vs_charm_or_compulsion des Extérieurs mauvais / morts-vivants pas modélisées)."
+    },
+    {
+      "id": "power.sacred_exorcist_favored_enemy",
+      "type": "class_power",
+      "name": {
+        "fr": "Ennemis privilégiés",
+        "en": "Favored enemy"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Des études sans fin et un entraînement spécial lui font reconnaître la moindre ruse de ceux qu'il traque.\n\nEn jeu\n• Capacité extraordinaire (niveau 3) : choisit les morts-vivants ou les Extérieurs.\n• Bonus d'aptitude de +1 à Bluff, Détection, Intimidation, Perception auditive et Psychologie contre eux, et aux tests de lanceur de sorts pour vaincre leur résistance à la magie.\n• +2 au niveau 6 ; +3 au niveau 9."
+      },
+      "effects": [],
+      "note": "Le choix (morts-vivants ou Extérieurs) n'est pas modélisé : texte seul."
+    },
+    {
+      "id": "power.sacred_exorcist_dispel_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Rejet du Mal",
+        "en": "Dispel evil"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Une prière, et le mal est renvoyé d'où il vient.\n\nEn jeu\n• Capacité magique : rejet du Mal (dispel evil en anglais) 1 fois par semaine au niveau 4, 2 au niveau 7, 3 au niveau 10."
+      },
+      "effects": [],
+      "note": "Utilisations par semaine : texte seul (le modèle compte par jour). Le Codex dit « rejet du Mal » : c'est le sort Dispel evil (le « renvoi » est Dismissal)."
+    },
+    {
+      "id": "power.sacred_exorcist_consecrated_presence",
+      "type": "class_power",
+      "name": {
+        "fr": "Présence consacrée",
+        "en": "Consecrated presence"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Il avance dans un lieu sacré qu'il porte avec lui.\n\nEn jeu\n• Capacité surnaturelle (niveau 5) : aura d'énergie positive de 6 m de rayon, effet identique à consécration, mobile.\n• Entre dans une zone de profanation : les deux effets s'annulent tant qu'il y reste. S'il est la cible d'une profanation, son aura est supprimée pendant sa durée."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.sacred_exorcist_holy_aura",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura sacrée",
+        "en": "Holy aura"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_exorcist"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, la lumière elle-même le protège.\n\nEn jeu\n• Capacité magique (niveau 8) : aura sacrée, 1 fois par jour."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.sacred_exorcist_exorcism",
+        "power.sacred_exorcist_turn_undead"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.sacred_exorcist_detect_evil",
+        "power.sacred_exorcist_possession_resistance"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.sacred_exorcist_favored_enemy"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.sacred_exorcist_dispel_evil"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.sacred_exorcist_consecrated_presence"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.sacred_exorcist_favored_enemy"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.sacred_exorcist_dispel_evil"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.sacred_exorcist_holy_aura"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.sacred_exorcist_favored_enemy"
+      ]
+    },
+    {
+      "classId": "class.sacred_exorcist",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.sacred_exorcist_dispel_evil"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.sacred_exorcist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    }
+  ]
+}

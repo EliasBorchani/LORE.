@@ -1,0 +1,378 @@
+{
+  "entities": [
+    {
+      "id": "class.stormlord",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Seigneur des tempêtes",
+        "en": "Stormlord"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Pour le seigneur des tempêtes, l'orage est une prière : il la lance avec une javeline, la porte au creux de la lance et finit par marcher dans la foudre sans la craindre. Beaucoup servent Talos, le dieu des tempêtes, et les brigands qui l'honorent n'ont pas toujours tort.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base de Vigueur +4 ; dons Arme de prédilection (épieu, javeline, lance ou pique), Endurance, Vigueur surhumaine ; sorts divins du 3e niveau ; divinité tutélaire Talos ; avoir survécu à un éclair.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Concentration, Connaissances (nature), Connaissances (religion), Déguisement, Intimidation, Natation, Renseignements, Survie.\n• Sorts : +1 niveau effectif de lanceur de sorts divins à chaque niveau.\n• Aptitudes : javelines magiques (1, 6, 9) ; résistance à l'électricité (1, 4, 7, 9) ; arme de foudre (2) ; marche tempête (3) ; arme de tonnerre (5) ; chevauche tempête (6) ; arme de foudre intense (8) ; orage de fureur élémentaire (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "has('feat.weapon_focus') and has('feat.endurance') and has('feat.great_fortitude')",
+      "note": "Conditions d'accès : bonus de base de Vigueur +4, Arme de prédilection sur l'une des quatre armes, sorts divins du 3e niveau, Talos pour divinité et un éclair survécu : texte seul. Lancement de sorts : +1 niveau effectif à chaque niveau, choix fait dans le niveau du personnage, rien dans la table."
+    },
+    {
+      "id": "power.stormlord_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Progression des sorts",
+        "en": "Spell progression"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "Chaque niveau de seigneur des tempêtes prolonge la magie divine qu'il avait déjà.\n\nEn jeu\n• À chaque niveau : +1 niveau effectif dans une classe qui lance des sorts divins du 3e niveau (une seule, au choix, s'il y en a plusieurs).\n• Il gagne les sorts par jour, les sorts connus et le niveau de lanceur de sorts de ce niveau effectif, rien d'autre (pas de renvoi des morts-vivants, d'ennemi juré, etc.)."
+      },
+      "effects": [],
+      "note": "Se choisit dans le niveau du personnage (spellcasting.advances), rien dans la table."
+    },
+    {
+      "id": "power.stormlord_magic_javelins",
+      "type": "class_power",
+      "name": {
+        "fr": "Javelines magiques",
+        "en": "Magic javelins"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "Ses javelines frappent comme des armes enchantées, même sorties d'un simple carquois.\n\nEn jeu\n• Toute javeline qu'il lance compte comme une arme magique +1 le temps de l'attaque.\n• Bonus +2 au niveau 6, +3 au niveau 9 (le texte du livre dit 10 ; la table et ce seuil sont lus sur la table)."
+      },
+      "effects": [
+        {
+          "target": "weapon.attack",
+          "op": "add",
+          "value": "if(level('class.stormlord') >= 9, 3, if(level('class.stormlord') >= 6, 2, 1))",
+          "bonusType": "enhancement",
+          "scope": "item",
+          "condition": "active('toggle.stormlord_magic_javelins')"
+        },
+        {
+          "target": "weapon.damage",
+          "op": "add",
+          "value": "if(level('class.stormlord') >= 9, 3, if(level('class.stormlord') >= 6, 2, 1))",
+          "bonusType": "enhancement",
+          "scope": "item",
+          "condition": "active('toggle.stormlord_magic_javelins')"
+        }
+      ],
+      "note": "Case à cocher quand l'arme tenue est une javeline lancée. Désaccord livre : texte « niveau 10 », table « niveau 9 » pour +3 ; la table est suivie. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.stormlord_electricity_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance à l'électricité",
+        "en": "Electricity resistance"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "La foudre finit par le laisser indifférent, puis par ne plus lui faire aucun mal.\n\nEn jeu\n• Capacité extraordinaire : résistance à l'électricité 5 (niveau 1), 10 (niveau 4), 15 (niveau 7).\n• Niveau 9 : immunité contre l'électricité."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.electricity",
+          "op": "add",
+          "value": "if(level('class.stormlord') >= 7, 15, if(level('class.stormlord') >= 4, 10, 5))"
+        }
+      ],
+      "note": "Immunité du niveau 9 : texte seul (la résistance reste à 15 sur la fiche)."
+    },
+    {
+      "id": "power.stormlord_lightning_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme de foudre",
+        "en": "Lightning weapon"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "Son épieu ou sa javeline crépite de foudre tant qu'il la tient.\n\nEn jeu\n• Capacité surnaturelle : un épieu, une lance, une javeline ou une pique manié devient une arme de foudre : +1d6 dégâts d'électricité.\n• L'arme perd cette propriété si elle quitte ses mains plus d'un round."
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "dice",
+          "value": "1d6",
+          "condition": "active('toggle.stormlord_lightning_weapon')"
+        }
+      ],
+      "note": "Case à cocher quand l'arme tenue est de ces quatre types. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.stormlord_storm_walk",
+      "type": "class_power",
+      "name": {
+        "fr": "Marche tempête",
+        "en": "Storm walk"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "Les tempêtes se courbent devant lui et sa monture.\n\nEn jeu\n• Capacité extraordinaire : lui et sa monture avancent normalement dans les tempêtes naturelles ou magiques.\n• Immunité aux effets du vent fort (y compris bourrasque), aux précipitations, aux objets emportés par le vent, aux coups de tonnerre assourdissants, aux éclairs naturels et aux autres symptômes de la colère de Talos."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.stormlord_thunder_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme de tonnerre",
+        "en": "Thunder weapon"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "À la foudre s'ajoute le grondement qui l'accompagne.\n\nEn jeu\n• Capacité surnaturelle : sur un épieu, une lance, une javeline ou une pique, l'arme devient une arme de tonnerre (propriété du Guide du Maître).\n• Elle perd cette propriété si elle quitte ses mains plus d'un round."
+      },
+      "effects": [],
+      "note": "Dégâts de sonique sur critique : texte seul. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.stormlord_storm_rider",
+      "type": "class_power",
+      "name": {
+        "fr": "Chevauche tempête",
+        "en": "Storm rider"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "En pleine tempête, il s'élève sur le vent comme sur une monture.\n\nEn jeu\n• Pouvoir magique : vole pendant n'importe quelle tempête comme avec le sort vol.\n• Les vents de la tempête ne le gênent pas : même une tornade ne peut le faire tomber, basculer ni lui faire perdre sa mobilité en vol."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.stormlord_intense_lightning_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme de foudre intense",
+        "en": "Intense lightning weapon"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "Sa foudre devient une décharge qui n'attend qu'un coup heureux pour éclater.\n\nEn jeu\n• Capacité surnaturelle : sur un épieu, une lance, une javeline ou une pique, l'arme devient une arme de foudre intense.\n• Se cumule avec l'arme de tonnerre. Elle perd cette propriété si elle quitte ses mains plus d'un round."
+      },
+      "effects": [],
+      "note": "Dégâts supplémentaires sur critique : texte seul. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.stormlord_elemental_fury_storm",
+      "type": "class_power",
+      "name": {
+        "fr": "Orage de fureur élémentaire",
+        "en": "Storm of elemental fury"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "stormlord"
+      ],
+      "description": {
+        "fr": "À son sommet, il appelle un orage digne d'un dieu en colère.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : l'équivalent du sort orage de fureur élémentaire lancé par un prêtre de niveau 17."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Le sort « orage de fureur élémentaire » est un sort de ce livre (chapitre 7). Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.stormlord",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.stormlord_spells",
+        "power.stormlord_magic_javelins",
+        "power.stormlord_electricity_resistance"
+      ]
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.stormlord_lightning_weapon"
+      ]
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.stormlord_storm_walk"
+      ]
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.stormlord_thunder_weapon"
+      ]
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.stormlord_storm_rider"
+      ]
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.stormlord_intense_lightning_weapon"
+      ]
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.stormlord",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.stormlord_elemental_fury_storm"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.stormlord",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

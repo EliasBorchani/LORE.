@@ -1,0 +1,338 @@
+{
+  "entities": [
+    {
+      "id": "class.mindspy",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Fureteur spirituel",
+        "en": "Mindspy"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "psionic"
+      ],
+      "description": {
+        "fr": "Le fureteur spirituel se glisse dans les pensées des autres comme dans les ruelles d’une ville : il vole, espionne et efface ses traces dans l’esprit même de ses victimes. Ses pouvoirs psioniques s’allient à une vraie ruse de roublard.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d’Intelligence par niveau.\n• Conditions : bonus de base à l’attaque +3 ; 5 rangs en Déplacement silencieux, 5 en Discrétion, 3 en Escamotage ; niveau de manifestation 3 ; savoir manifester membrane de dissimulation.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Acrobaties, Art psi, Artisanat, Autohypnose, Bluff, Concentration, Connaissances (psionique), Crochetage, Déplacement silencieux, Désamorçage/sabotage, Détection, Discrétion, Escamotage, Évasion, Fouille, Perception auditive, Psychologie, Saut.\n• Facultés psioniques : +1 niveau effectif de manifestation (points psi et facultés) aux niveaux 1, 3, 4, 6, 7, 9 et 10, dans une classe psionique déjà possédée.\n• Aptitudes : lecture des pensées (niv. 1), attaque sournoise (+1d6 au niv. 2, +2d6 au niv. 5, +3d6 au niv. 8), brume de l’esprit (niv. 3), brume de l’esprit de groupe (niv. 9), surin mental (niv. 10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 3 and @skill.move_silently.ranks >= 5 and @skill.hide.ranks >= 5 and @skill.sleight_of_hand.ranks >= 3",
+      "note": "Nom anglais Mindspy à confirmer. Conditions : niveau 3 de manifestation et membrane de dissimulation : texte seul (pas de psionique dans le modèle). La recherche des pièges n’apparaît pas dans le tableau mais est citée dans l’exemple du livre (non reprise). Noms anglais de brume de l’esprit, etc. : sorts psioniques du Grand Manuel des Psioniques (Mind Fog, Read Thoughts)."
+    },
+    {
+      "id": "power.mindspy_manifesting",
+      "type": "class_power",
+      "name": {
+        "fr": "Facultés",
+        "en": "Manifesting"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy"
+      ],
+      "description": {
+        "fr": "Chaque pas dans la classe affine son pouvoir psionique.\n\nEn jeu\n• Aux niveaux 1, 3, 4, 6, 7, 9 et 10 : +1 niveau effectif de psionique dans une classe précédente qui manifeste (au choix s’il y en a plusieurs).\n• Gagne points psi par jour, facultés connues et niveau de manifestation de ce niveau effectif.\n• Aucun autre avantage de la classe (dons métapsioniques ou de création d’objets)."
+      },
+      "effects": [],
+      "note": "Le modèle n’a pas encore de psionique : texte seul."
+    },
+    {
+      "id": "power.mindspy_read_thoughts",
+      "type": "class_power",
+      "name": {
+        "fr": "Lecture des pensées",
+        "en": "Read thoughts"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy"
+      ],
+      "description": {
+        "fr": "Il lit les pensées de surface comme on lit une affiche.\n\nEn jeu\n• Capacité psionique, niveau 1.\n• Ajoute lecture des pensées à son répertoire s’il ne la connaît pas.\n• 1 fois par jour : coût en points psi réduit de son niveau de classe (minimum 1).\n• Les effets restent limités par son niveau de manifestation."
+      },
+      "effects": [],
+      "note": "Le modèle n’a pas encore de psionique : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mindspy_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy"
+      ],
+      "description": {
+        "fr": "Un adversaire distrait est un adversaire à sa merci.\n\nEn jeu\n• Comme l’attaque sournoise du roublard : +1d6 au niveau 2, +2d6 au niveau 5, +3d6 au niveau 8.\n• À distance, seulement si la cible est à 9 m ou moins.\n• S’ajoute à l’attaque sournoise donnée par d’autres classes."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor((level('class.mindspy') + 1) / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.mindspy_mind_fog",
+      "type": "class_power",
+      "name": {
+        "fr": "Brume de l’esprit",
+        "en": "Mind fog"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy"
+      ],
+      "description": {
+        "fr": "Il brouille les idées de ceux qui l’approchent.\n\nEn jeu\n• Capacité psionique, niveau 3.\n• Ajoute brume de l’esprit à son répertoire s’il ne la connaît pas.\n• 1 fois par jour : coût en points psi réduit de son niveau de classe (minimum 1).\n• Les effets restent limités par son niveau de manifestation."
+      },
+      "effects": [],
+      "note": "Le modèle n’a pas encore de psionique : texte seul."
+    },
+    {
+      "id": "power.mindspy_group_mind_fog",
+      "type": "class_power",
+      "name": {
+        "fr": "Brume de l’esprit de groupe",
+        "en": "Group mind fog"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy"
+      ],
+      "description": {
+        "fr": "Il étend son brouillard mental à tout un groupe.\n\nEn jeu\n• Capacité psionique, niveau 9.\n• Ajoute brume de l’esprit de groupe à son répertoire s’il ne la connaît pas.\n• 1 fois par jour : coût en points psi réduit de son niveau de classe (minimum 1).\n• Les effets restent limités par son niveau de manifestation."
+      },
+      "effects": [],
+      "note": "Le modèle n’a pas encore de psionique : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mindspy_mental_stab",
+      "type": "class_power",
+      "name": {
+        "fr": "Surin mental",
+        "en": "Mental stab"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mindspy"
+      ],
+      "description": {
+        "fr": "Il glisse une frappe précise et une décharge mentale en même temps : la victime ne garde aucun souvenir de lui.\n\nEn jeu\n• Capacité surnaturelle, niveau 10.\n• Une fois par round, en action libre juste après une attaque sournoise réussie : manifeste brume de l’esprit sur sa victime."
+      },
+      "effects": [],
+      "note": "Le modèle n’a pas encore de psionique : texte seul. Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.mindspy",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.mindspy_manifesting",
+        "power.mindspy_read_thoughts"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.mindspy_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.mindspy_manifesting",
+        "power.mindspy_mind_fog"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.mindspy_manifesting"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.mindspy_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.mindspy_manifesting"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.mindspy_manifesting"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.mindspy_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.mindspy_manifesting",
+        "power.mindspy_group_mind_fog"
+      ]
+    },
+    {
+      "classId": "class.mindspy",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.mindspy_manifesting",
+        "power.mindspy_mental_stab"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.mindspy",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

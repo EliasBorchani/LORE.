@@ -1,0 +1,744 @@
+{
+  "entities": [
+    {
+      "id": "spell.fire_eyes",
+      "type": "spell",
+      "name": {
+        "fr": "Regard de braise",
+        "en": "Fire Eyes"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Les yeux du wu jen s'allument comme deux charbons, d'un rouge sombre à un jaune vif. D'un regard appuyé, il fait prendre le bois sec et le tissu.\n\nEn jeu\n• Les yeux éclairent d'une lumière vive une case de 1,50 m devant le lanceur.\n• Action complexe : fixer un point à 18 m au plus pour enflammer des matières combustibles (jamais une créature vivante).\n• Si l'objet est porté, son porteur subit 1d6 dégâts de feu et doit réussir un jet de Réflexes DD 15 ou prendre feu.\n• Dure 1 minute."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute",
+        "savingThrow": "Réflexes, spécial (voir description)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6 fire",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.repel_elemental",
+      "type": "spell",
+      "name": {
+        "fr": "Rejet élémentaire",
+        "en": "Repel Elemental"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration",
+        "wu_jen_metal",
+        "wu_jen_wood",
+        "wu_jen_fire",
+        "wu_jen_water",
+        "wu_jen_earth"
+      ],
+      "description": {
+        "fr": "Un cri strident, chargé de l'élément contraire, et les esprits de la nature reculent : la flamme fuit devant l'eau, la pierre devant le vent.\n\nEn jeu\n• Vise les élémentaires d'un type choisi (Air, Eau, Feu ou Terre) dans 18 m autour du lanceur.\n• Chaque élémentaire de ce type qui rate un jet de Volonté fuit la zone.\n• Le sort prend fin si le lanceur force la barrière contre un élémentaire qui a raté son jet.\n• Dure 1 minute. Composante : un peu de l'élément opposé (feu contre l'Eau, terre contre l'Air, air contre la Terre, eau contre le Feu)."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "émanation de 18 m de rayon centrée sur le jeteur de sorts",
+        "duration": "1 minute",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.repair_minor_damage",
+      "type": "spell",
+      "name": {
+        "fr": "Réparation de dégâts superficiels",
+        "en": "Repair Minor Damage"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le mage passe la main sur une fêlure, et la matière se ressoude : une rayure de moins sur le golem.\n\nEn jeu\n• Rend 1 point de vie à une créature artificielle touchée.\n• La cible doit avoir encore au moins 1 point de vie.\n• Sans effet sur les créatures vivantes ou les morts-vivants : c'est une réparation, pas un soin."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature artificielle touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": 1,
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.repair_light_damage",
+      "type": "spell",
+      "name": {
+        "fr": "Réparation de dégâts légers",
+        "en": "Repair Light Damage"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le mage pose les mains sur une créature artificielle et remodèle sa matière pour effacer les coups reçus.\n\nEn jeu\n• Rend 1d8 points de vie + 1 par niveau de lanceur (+5 au plus) à une créature artificielle touchée.\n• La cible doit avoir encore au moins 1 point de vie.\n• Sans effet sur les créatures vivantes ou les morts-vivants : c'est une réparation, pas un soin."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature artificielle touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 5)",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.repair_moderate_damage",
+      "type": "spell",
+      "name": {
+        "fr": "Réparation de dégâts modérés",
+        "en": "Repair Moderate Damage"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Sous les mains du mage, les plaques tordues se redressent et les fissures se referment.\n\nEn jeu\n• Rend 2d8 points de vie + 1 par niveau de lanceur (+10 au plus) à une créature artificielle touchée.\n• La cible doit avoir encore au moins 1 point de vie.\n• Sans effet sur les créatures vivantes ou les morts-vivants : c'est une réparation, pas un soin."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature artificielle touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "2d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 10)",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.repair_serious_damage",
+      "type": "spell",
+      "name": {
+        "fr": "Réparation de dégâts importants",
+        "en": "Repair Serious Damage"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le mage reforge en un instant les membres brisés d'une créature artificielle, joints et rouages compris.\n\nEn jeu\n• Rend 3d8 points de vie + 1 par niveau de lanceur (+15 au plus) à une créature artificielle touchée.\n• La cible doit avoir encore au moins 1 point de vie.\n• Sans effet sur les créatures vivantes ou les morts-vivants : c'est une réparation, pas un soin."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature artificielle touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "3d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.repair_critical_damage",
+      "type": "spell",
+      "name": {
+        "fr": "Réparation de dégâts critiques",
+        "en": "Repair Critical Damage"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Même au bord de la ruine, une créature artificielle se recompose sous les mains du mage, presque neuve.\n\nEn jeu\n• Rend 4d8 points de vie + 1 par niveau de lanceur (+20 au plus) à une créature artificielle touchée.\n• La cible doit avoir encore au moins 1 point de vie.\n• Sans effet sur les créatures vivantes ou les morts-vivants : c'est une réparation, pas un soin."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature artificielle touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.healing",
+          "op": "dice",
+          "value": "4d8",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.healing",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.mass_resist_energy",
+      "type": "spell",
+      "name": {
+        "fr": "Résistance aux énergies destructives de groupe",
+        "en": "Mass Resist Energy"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un même rempart contre le feu, le froid ou la foudre, posé d'un geste sur tout un groupe.\n\nEn jeu\n• Comme résistance aux énergies destructives, mais touche 1 créature par niveau de lanceur, toutes à 9 m au plus les unes des autres.\n• Le texte du Codex n'imprime pas de durée : celle du sort de base (10 minutes/niveau) s'applique."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m au plus les unes des autres",
+        "duration": "10 minutes/niveau (voir résistance aux énergies destructives)",
+        "savingThrow": "Vigueur, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Durée absente du bloc imprimé : reprise de résistance aux énergies destructives."
+    },
+    {
+      "id": "spell.burning_blood",
+      "type": "spell",
+      "name": {
+        "fr": "Sang bouillonnant",
+        "en": "Burning Blood"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Le sang de la victime se met à bouillir et à ronger ses veines de l'intérieur. Chaque battement de cœur est une brûlure.\n\nEn jeu\n• Chaque round : 1d8 dégâts d'acide et 1d8 dégâts de feu ; un jet de Vigueur réussi annule les dégâts de ce round seulement.\n• Un round où elle rate son jet, la cible ne peut faire qu'une action de mouvement.\n• Sans effet sur créatures artificielles, élémentaires, morts-vivants, plantes et vases.\n• Dure 1 round/niveau. Composantes : une goutte de sang et une pincée de salpêtre."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature vivante (voir description)",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Vigueur, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8 acid",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8 fire",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.second_breath",
+      "type": "spell",
+      "name": {
+        "fr": "Second souffle",
+        "en": "Second Breath"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le wu jen souffle un reste de vie dans un mort. Il se relève, hagard et fragile, l'esprit dans le brouillard, sans être tout à fait revenu.\n\nEn jeu\n• Cible une créature morte depuis au plus 1 jour/niveau de lanceur, dont l'âme est libre et consentante.\n• Elle revient avec 1 point de vie maximum (pas de hausse possible, sauf points de vie temporaires) et une seule action de mouvement par round.\n• Elle ne peut ni attaquer, ni lancer de sorts, ni activer d'objets magiques ; elle parle lentement et se souvient mal de sa vie ; seule, elle erre.\n• Ce n'est pas un mort-vivant (ni renvoi, ni dégâts d'énergie positive) ; restauration suprême lui rend sa mémoire, pas ses forces.\n• Le corps ne se décompose pas et le temps passé ne compte pas pour rappel à la vie, qui peut la ramener pour de bon.\n• Dure 1 jour/niveau. Composantes : un châle blanc et de l'encens ; focaliseur : amulette en or au phénix."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, M, F",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "la créature touchée",
+        "duration": "1 jour/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.fire_shuriken",
+      "type": "spell",
+      "name": {
+        "fr": "Shuriken de feu",
+        "en": "Fire Shuriken"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Des étoiles de flamme naissent entre les doigts du lanceur, et il les jette d'un geste sec. Elles s'éteignent dans la chair qu'elles touchent.\n\nEn jeu\n• Crée 1 shuriken par tranche de 3 niveaux de lanceur (6 au plus, au niveau 18), lancés par attaques à distance ; le lanceur est formé à leur maniement.\n• Facteur de portée 3 m, critique 19-20, 3d6 dégâts de feu chacun.\n• Tous les dégâts en plus (bonus de Force, attaque sournoise…) deviennent aussi des dégâts de feu.\n• Ils disparaissent à l'impact : ils n'enflamment ni n'abîment rien.\n• Composante : un shuriken enduit de résine de pin et de soufre."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "0 m",
+        "effect": "1 shuriken magique/3 niveaux",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6 fire",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.sign_of_sealing",
+      "type": "spell",
+      "name": {
+        "fr": "Signe de scellement",
+        "en": "Sign of Sealing"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un sceau lumineux barre la porte ou le coffre. Qui le brise à la force du bras ou de la magie le paie aussitôt.\n\nEn jeu\n• L'objet ne s'ouvre qu'en le forçant (+10 au DD normal), ou avec déblocage ou dissipation de la magie.\n• S'il est forcé, le signe explose : 1d4 dégâts par niveau de lanceur (10d4 au plus) dans un rayon de 9 m (Réflexes, 1/2 dégâts).\n• Déblocage ne l'ouvre pas : il le réprime 10 minutes sur un test de niveau de lanceur DD 11 + niveau du créateur.\n• Piège magique : Désamorçage/sabotage DD 28. Le créateur passe sans le déclencher.\n• Permanent. Composante : émeraude broyée de 100 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 porte ou 1 coffre de 1,50 m de côté/niveau",
+        "duration": "permanente",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d4",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.greater_sign_of_sealing",
+      "type": "spell",
+      "name": {
+        "fr": "Signe de scellement suprême",
+        "en": "Greater Sign of Sealing"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le sceau se fait mur : même un couloir ouvert devient infranchissable, et les portes qu'il garde deviennent presque indestructibles.\n\nEn jeu\n• Comme signe de scellement, mais peut aussi fermer un passage ouvert (couloir, arche) d'une barrière d'énergie que nul ne traverse.\n• Porte ou objet scellé : solidité 10 et 5 points de résistance par niveau de lanceur ; jets de sauvegarde comme un objet magique, avec +4 de résistance.\n• Si le sceau est brisé : 1d6 dégâts par niveau de lanceur (20d6 au plus) dans un rayon de 12 m (Réflexes, 1/2 dégâts).\n• Déblocage est sans effet ; dissipation possible (DD 15 + niveau du créateur) ; Désamorçage/sabotage DD 31.\n• Permanent. Composante : émeraude broyée de 500 po."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 porte, 1 coffre ou 1 passage de 1,50 m de côté/niveau",
+        "duration": "permanente",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 20))d6",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane",
+      "note": "Portée, cible et jet repris de signe de scellement (le Codex ne les réimprime pas)."
+    },
+    {
+      "id": "spell.frost_breath",
+      "type": "spell",
+      "name": {
+        "fr": "Souffle de glace",
+        "en": "Frost Breath"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_water"
+      ],
+      "description": {
+        "fr": "Le wu jen souffle un nuage de cristaux de givre qui gainent ses ennemis d'une pellicule de glace mordante.\n\nEn jeu\n• Cône de 9 m : 1d6 dégâts par 2 niveaux de lanceur (10d6 au plus), et les créatures touchées sont fatiguées 1 minute.\n• Un jet de Vigueur réussi évite à la fois les dégâts et la fatigue.\n• Composante : une gorgée d'eau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "G, M",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "area": "cône",
+        "duration": "instantanée (voir description)",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 10))d6 cold",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.steam_breath",
+      "type": "spell",
+      "name": {
+        "fr": "Souffle de vapeur",
+        "en": "Steam Breath"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_water"
+      ],
+      "description": {
+        "fr": "Un jet de vapeur brûlante jaillit de la bouche du wu jen, s'élargit en éventail et se dissipe aussitôt.\n\nEn jeu\n• Cône de 9 m : 1d6 dégâts de feu par niveau de lanceur (10d6 au plus), Réflexes pour la moitié.\n• La vapeur disparaît tout de suite après.\n• Composante : une braise ardente arrosée d'eau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "9 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d6 fire",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.fire_breath",
+      "type": "spell",
+      "name": {
+        "fr": "Souffle enflammé",
+        "en": "Fire Breath"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Pendant quelques instants, le wu jen crache le feu comme un dragon, assez chaud pour fondre l'or et le plomb.\n\nEn jeu\n• Une fois par round, par une action simple : attaque de contact à distance jusqu'à 4,50 m.\n• Touché : 1d8 dégâts de feu par 2 niveaux de lanceur (10d8 au plus).\n• Enflamme les matières combustibles et fait fondre les métaux à bas point de fusion (plomb, or, cuivre, argent, bronze).\n• Ne fonctionne pas sous l'eau. Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 10))d8 fire",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.vitriolic_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère au vitriol",
+        "en": "Vitriolic Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une bulle vert émeraude éclate en pluie d'acide qui grésille et continue de ronger après la première morsure.\n\nEn jeu\n• Rayon de 3 m : 1d4 dégâts d'acide par niveau de lanceur (15d4 au plus).\n• Une créature qui rate son jet de Réflexes continue de brûler : 6d4 au 2e round, puis 3d4 au 3e.\n• À chacun de ces deux rounds, un jet de Réflexes réussi divise les dégâts par deux ; réussir celui du 3e round les annule.\n• Composante : une petite fiole d'eau régale."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "acide"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "étendue de 3 m de rayon",
+        "duration": "instantanée (voir description)",
+        "savingThrow": "Réflexes, annule et Réflexes, 1/2 dégâts (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d4 acid",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane",
+      "note": "Le texte parle de « rayonnement » : rendu ici « étendue ». Les dégâts des rounds suivants (6d4 puis 3d4) restent en texte."
+    },
+    {
+      "id": "spell.defenestrating_sphere",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère de défenestration",
+        "en": "Defenestrating Sphere"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une boule grise de vent hurlant fond sur l'ennemi, le renverse et l'arrache au sol pour le jeter dans les airs.\n\nEn jeu\n• Action simple : déplacer la sphère de 9 m et frapper une cible par attaque de contact à distance ; 3d6 dégâts.\n• Créature de taille M ou moins : Vigueur ou renversée ; si elle est à terre, second jet de Vigueur ou elle est projetée à 1d8 × 3 m de haut.\n• Elle retombe à 1d6 cases de son point de départ, dans une direction au hasard, et subit les dégâts de chute.\n• Un plafond trop bas inflige 1d6 dégâts par tranche de 3 m de hauteur manquante, en plus de la chute.\n• Une cible par round au plus ; la sphère disparaît si elle sort de portée. Dure 1 round/niveau. Focaliseur : perle grise de 100 po."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "air"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "une sphère de 60 cm de rayon",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Vigueur, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane",
+      "note": "Le bloc imprime « Composantes : V, G, M » mais le texte donne un focaliseur (perle grise de 100 po)."
+    },
+    {
+      "id": "spell.sphere_of_ultimate_destruction",
+      "type": "spell",
+      "name": {
+        "fr": "Sphère de destruction ultime",
+        "en": "Sphere of Ultimate Destruction"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une sphère de néant noir glisse vers sa proie. Ce qu'elle touche s'efface en poussière fine, l'équipement en moins.\n\nEn jeu\n• La sphère vole de 9 m par round ; elle frappe par attaque de contact à distance et s'arrête le round où elle attaque.\n• Une action de mouvement la dirige vers une nouvelle cible.\n• Touché : 2d6 dégâts par niveau de lanceur (40d6 au plus) ; Vigueur réussi : 5d6 seulement.\n• Une cible réduite à 0 point de vie ou moins est désintégrée (son équipement reste) ; contre un objet, elle efface jusqu'à un cube de 3 m.\n• Compte comme désintégration (détruit un mur de force…). Disparaît si elle sort de portée. Dure 1 round/niveau.\n• Composante : une pincée de poussière d'une créature désintégrée."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "une sphère de 60 cm de rayon",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Vigueur, partiel (voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level * 2, 40))d6",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.scales_of_the_lizard",
+      "type": "spell",
+      "name": {
+        "fr": "Squamifère",
+        "en": "Scales of the Lizard"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau du wu jen s'épaissit et se couvre d'un éclat d'écailles, dure comme celle d'un lézard.\n\nEn jeu\n• Bonus d'altération de +2 à l'armure naturelle ; +3 au niveau 6, +4 au niveau 9, +5 à partir du niveau 12.\n• Se cumule avec l'armure naturelle propre, pas avec d'autres bonus d'altération à l'armure naturelle.\n• Dure 1 minute. Focaliseur : un tatouage de lézard sur le lanceur."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute"
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "min(2 + floor(max(@spell.caster_level - 3, 0) / 3), 5)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.scales_of_the_lizard')"
+        }
+      ],
+      "source": "Complete Arcane"
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "entities": [
+    {
+      "id": "class.order_of_the_bow_initiate",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Initié de l'ordre des archers",
+        "en": "Order of the Bow Initiate"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Un initié de l'ordre des archers laisse parler son arc : précision, discipline et quête spirituelle ne font qu'un. La Voie de l'arc se montre à travers chaque flèche, et le tir devient une façon de se connaître soi-même.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; 5 rangs en Artisanat (fabrication d'arcs), 2 en Connaissances (religion) ; dons Arme de prédilection (arc court ou long, ou version composite), Tir à bout portant, Tir de précision, Tir rapide.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Connaissances (religion), Détection, Équitation, Escalade, Natation.\n• Aptitudes : précision mortelle +1d8 (1), +2d8 (3), +3d8 (5), +4d8 (7), +5d8 (9) ; tir rapproché (2) ; arme de prédilection supérieure (4) ; œil de faucon (6) ; précision de loin (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and @skill.craft.ranks >= 5 and @skill.knowledge_religion.ranks >= 2 and has('feat.weapon_focus') and has('feat.point_blank_shot') and has('feat.precise_shot') and has('feat.rapid_shot')",
+      "note": "Conditions hors formule : l'Arme de prédilection doit porter sur un arc court ou long (ou composite) ; les 5 rangs d'Artisanat sont pour la fabrication d'arcs."
+    },
+    {
+      "id": "power.order_of_the_bow_initiate_deadly_aim",
+      "type": "class_power",
+      "name": {
+        "fr": "Précision mortelle",
+        "en": "Deadly aim"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "order_of_the_bow_initiate"
+      ],
+      "description": {
+        "fr": "Un souffle retenu, une flèche, et le coup va droit au point faible.\n\nEn jeu\n• Capacité extraordinaire, action simple : une seule attaque à distance avec une arme à distance pour laquelle il a Arme de prédilection ; en cas de réussite, +1d8 de dégâts supplémentaires.\n• Cible à 9 m ou moins (18 m au niveau 10). Seulement contre les créatures vivantes dont on peut toucher les organes vitaux ; les créatures immunisées contre les coups critiques sont aussi immunisées.\n• +1d8 de plus à chaque niveau impair (+5d8 au niveau 9). Ne se multiplie pas sur un critique.\n• Pas besoin que la cible soit prise au dépourvu ou en tenaille. Il se cumule avec l'attaque sournoise.\n• Impossible dans une attaque à outrance, avec Tir rapide ou Feu nourri."
+      },
+      "effects": [
+        {
+          "target": "damage.deadly_aim",
+          "op": "dice",
+          "value": "(ceil(level('class.order_of_the_bow_initiate') / 2))d8"
+        }
+      ],
+      "note": "Dés sur une statistique à part, damage.deadly_aim, comme damage.skirmish ou damage.sudden_strike. Utilisable une fois par round, action simple : à la charge du joueur. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.order_of_the_bow_initiate_close_shot",
+      "type": "class_power",
+      "name": {
+        "fr": "Tir rapproché",
+        "en": "Close shot"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "order_of_the_bow_initiate"
+      ],
+      "description": {
+        "fr": "Les ennemis au contact ne l'empêchent plus de tirer.\n\nEn jeu\n• Capacité extraordinaire : au niveau 2, une attaque avec une arme à distance dans l'espace contrôlé par un ennemi ne provoque pas d'attaque d'opportunité."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.order_of_the_bow_initiate_greater_weapon_focus",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme de prédilection supérieure",
+        "en": "Greater weapon focus"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "order_of_the_bow_initiate"
+      ],
+      "description": {
+        "fr": "La maîtrise de son arc s'affine encore.\n\nEn jeu\n• Au niveau 4 : don supplémentaire Arme de prédilection supérieure pour l'arme dont il a Arme de prédilection, même sans en remplir les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.order_of_the_bow_initiate_sharp_shooting",
+      "type": "class_power",
+      "name": {
+        "fr": "Œil de faucon",
+        "en": "Sharp-Shooting"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "order_of_the_bow_initiate"
+      ],
+      "description": {
+        "fr": "Sa vue porte plus loin que celle de ses compagnons.\n\nEn jeu\n• Au niveau 6 : don supplémentaire Œil de faucon (Chapitre 3 du livre), même sans en remplir les conditions."
+      },
+      "effects": [],
+      "note": "Le don Œil de faucon est Sharp-Shooting (feat.sharp_shooting, chapitre 3), pas Vision du faucon (Complete Adventurer, feat.hawk_vision)."
+    },
+    {
+      "id": "power.order_of_the_bow_initiate_distant_precision",
+      "type": "class_power",
+      "name": {
+        "fr": "Précision de loin",
+        "en": "Distant precision"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "order_of_the_bow_initiate"
+      ],
+      "description": {
+        "fr": "Son tir est si sûr que la distance ne compte presque plus.\n\nEn jeu\n• Au niveau 10 : ses attaques de précision mortelle (et d'attaque sournoise, s'il en a) portent jusqu'à 18 m, au lieu de 9 m."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.order_of_the_bow_initiate_deadly_aim"
+      ]
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.order_of_the_bow_initiate_close_shot"
+      ]
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.order_of_the_bow_initiate_greater_weapon_focus"
+      ]
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.order_of_the_bow_initiate_sharp_shooting"
+      ]
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.order_of_the_bow_initiate",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.order_of_the_bow_initiate_distant_precision"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.order_of_the_bow_initiate",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.order_of_the_bow_initiate",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.order_of_the_bow_initiate",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.order_of_the_bow_initiate",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.order_of_the_bow_initiate",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.order_of_the_bow_initiate",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "power.order_of_the_bow_initiate_greater_weapon_focus",
+      "relation": "grants",
+      "to": "feat.greater_weapon_focus"
+    },
+    {
+      "from": "power.order_of_the_bow_initiate_sharp_shooting",
+      "relation": "grants",
+      "to": "feat.sharp_shooting"
+    }
+  ]
+}

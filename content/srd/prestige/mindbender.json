@@ -1,0 +1,404 @@
+{
+  "entities": [
+    {
+      "id": "class.mindbender",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "skillPoints": 2,
+      "name": {
+        "fr": "Maître de l’esprit",
+        "en": "Mindbender"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "enchantment"
+      ],
+      "prerequisite": "@skill.bluff.ranks >= 4 and @skill.diplomacy.ranks >= 4 and @skill.intimidate.ranks >= 4 and @skill.sense_motive.ranks >= 4",
+      "description": {
+        "fr": "Un sourire, une phrase bien placée, puis un murmure qui n’emprunte pas la voix : le maître de l’esprit ne force pas les portes, il convainc ceux qui en ont la clé de les ouvrir pour lui. Il a troqué une part de sa progression magique contre un art plus intime, celui de lire, de plier puis d’enchaîner la volonté des autres. Ses pairs se méfient de lui, et ils ont raison : chacun d’eux rêve de tenir les fils des autres.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non bon ; Bluff 4 rangs, Diplomatie 4 rangs, Intimidation 4 rangs, Psychologie 4 rangs ; savoir lancer charme-personne (sort, pouvoir magique ou invocation charme) ; niveau 5 de lanceur de sorts profanes.\n• Alignement : tout sauf bon.\n• Aucune formation nouvelle aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Art de la magie, Bluff, Concentration, Connaissances (chaque domaine à part), Diplomatie, Intimidation, Profession, Psychologie.\n• Sorts : +1 niveau de lanceur de sorts profanes aux niveaux 1, 3, 5, 7 et 9 (sorts par jour et niveau de lanceur d’une classe profane déjà acquise ; pas les autres avantages de cette classe).\n• Aptitudes : télépathie (1) ; amélioration des compétences et influence mentale (2) ; lecture d’esprit (3) ; charme éternel (4) ; puissance magique enchanteresse (6) ; domination (7) ; esclave (10)."
+      },
+      "note": "Conditions dans la formule : les quatre rangs de compétence ; alignement par les relations. Charme-personne et niveau 5 de lanceur de sorts profanes : pas encore dans le modèle, vérifiés à la main. Le livre propose aussi une variante psionique (non reprise)."
+    },
+    {
+      "id": "power.mindbender_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spellcasting"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Le maître de l’esprit continue d’étudier la magie, mais plus lentement : une partie de son attention est désormais tournée vers les pensées d’autrui.\n\nEn jeu\n• Aux niveaux 1, 3, 5, 7 et 9 : +1 niveau effectif de lanceur de sorts dans une classe profane qu’il possède déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres aptitudes de la classe (dons supplémentaires, etc.).\n• Rien aux niveaux pairs."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mindbender_telepathy",
+      "type": "class_power",
+      "name": {
+        "fr": "Télépathie",
+        "en": "Telepathy"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Première leçon de son art : les mots n’ont plus besoin de passer par les lèvres.\n\nEn jeu\n• Pouvoir surnaturel, permanent.\n• Il parle mentalement à toute créature qui connaît au moins une langue, à 30 m au plus."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mindbender_skill_enhancement",
+      "type": "class_power",
+      "name": {
+        "fr": "Amélioration des compétences",
+        "en": "Skill Enhancement"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Magie ou simple aplomb, il sait toujours quoi dire et quand le dire.\n\nEn jeu\n• Capacité extraordinaire, à partir du niveau 2.\n• Bonus égal à la moitié de son niveau de maître de l’esprit (arrondi à l’inférieur) aux tests de Bluff, Diplomatie, Intimidation et Psychologie."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": "floor(level('class.mindbender') / 2)",
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": "floor(level('class.mindbender') / 2)",
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": "floor(level('class.mindbender') / 2)",
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": "floor(level('class.mindbender') / 2)",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le livre ne donne pas de type au bonus : compté comme non typé."
+    },
+    {
+      "id": "power.mindbender_influence",
+      "type": "class_power",
+      "name": {
+        "fr": "Influence mentale",
+        "en": "Influence"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Une idée glissée dans l’esprit d’autrui, qui semble venir de lui-même.\n\nEn jeu\n• Pouvoir magique, comme le sort suggestion, sur une créature vivante de taille G ou moins.\n• Portée 30 m ; durée 5 heures + 1 heure par niveau de maître de l’esprit.\n• La suggestion peut passer par télépathie : la langue de la cible ne compte pas.\n• Volonté pour annuler, DD 13 + modificateur de sa caractéristique de lanceur de sorts (Intelligence pour un magicien, Charisme pour un ensorceleur ou un barde…).\n• 1 fois par jour au niveau 2, 2 fois au niveau 5, 3 fois au niveau 8."
+      },
+      "effects": [],
+      "usesPerDay": "1 + floor((level('class.mindbender') - 2) / 3)",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mindbender_read_thoughts",
+      "type": "class_power",
+      "name": {
+        "fr": "Lecture d’esprit",
+        "en": "Read Thoughts"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Il effleure la surface d’un esprit et entend ce qui s’y dit à voix basse.\n\nEn jeu\n• Pouvoir magique mental (équivaut à un pouvoir du 2e niveau), action simple.\n• Lit les pensées superficielles d’une créature vivante qu’il voit, à 30 m au plus.\n• Volonté pour annuler, DD 12 + modificateur de sa caractéristique de lanceur de sorts.\n• Concentration pour maintenir, 10 minutes au plus. Une créature d’Intelligence 1 ou 2 n’a que des pensées simples et instinctives.\n• Traverse les obstacles, mais 30 cm de pierre, 2,5 cm de métal, une fine feuille de plomb ou 1 m de bois ou de terre l’arrêtent.\n• 2 fois par jour au niveau 3, 4 fois par jour au niveau 7."
+      },
+      "effects": [],
+      "usesPerDay": "2 + 2 * floor(level('class.mindbender') / 7)",
+      "note": "Nom anglais à confirmer. Le texte dit 4 fois par jour au niveau 7, la table 2-15 imprime « 2 fois/jour » à ce niveau : on suit le texte."
+    },
+    {
+      "id": "power.mindbender_perpetual_charm",
+      "type": "class_power",
+      "name": {
+        "fr": "Charme éternel",
+        "en": "Perpetual Charm"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Ceux qu’il a charmés le restent, tant qu’on ne leur fait pas de mal.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : comme charme-monstre, sur une créature vivante de taille G ou moins à 30 m au plus.\n• Volonté pour résister, DD 14 + modificateur de sa caractéristique de lanceur de sorts.\n• Durée permanente ; l’effet cesse si lui ou un allié blesse la créature.\n• Créatures charmées en même temps : 1 au niveau 4, 2 au niveau 6, 3 au niveau 8, 4 au niveau 10. Au-delà, la plus ancienne est libérée, que la nouvelle tentative réussisse ou non.\n• Dissipation de la magie est sans effet ; annulation d’enchantement libère la créature (niveau de lanceur : 5 + niveau de maître de l’esprit)."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer. Nombre de créatures charmées : 1 + ⌊(niveau − 4) / 2⌋, texte seulement."
+    },
+    {
+      "id": "power.mindbender_enchantment_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Puissance magique enchanteresse",
+        "en": "Enchantment Power"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Ses sorts d’enchantement mordent plus fort que ceux des autres lanceurs de son rang.\n\nEn jeu\n• Capacité extraordinaire, à partir du niveau 6.\n• +2 au niveau de lanceur de sorts pour ses sorts d’enchantement ; +4 au niveau 10."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Bonus au niveau de lanceur limité à l’école d’enchantement : pas encore dans le modèle, texte seulement."
+    },
+    {
+      "id": "power.mindbender_dominate",
+      "type": "class_power",
+      "name": {
+        "fr": "Domination",
+        "en": "Dominate"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Plus besoin de convaincre : il commande, et le corps de l’autre obéit.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour, à partir du niveau 7 : comme domination universelle, sur une créature vivante de taille G ou moins à 30 m au plus.\n• Volonté pour résister, DD 19 + modificateur de sa caractéristique de lanceur de sorts.\n• Durée 24 heures."
+      },
+      "effects": [],
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mindbender_thrall",
+      "type": "class_power",
+      "name": {
+        "fr": "Esclave",
+        "en": "Thrall"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "mindbender"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, il peut garder pour toujours un esprit qu’il a fait plier.\n\nEn jeu\n• Pouvoir surnaturel, au niveau 10.\n• Rend permanente la domination d’une créature qu’il a dominée avec son pouvoir de domination.\n• Un seul esclave à la fois : en rendre un second permanent libère le premier."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.mindbender",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.mindbender_telepathy",
+        "power.mindbender_spells"
+      ]
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.mindbender_skill_enhancement",
+        "power.mindbender_influence"
+      ]
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 3,
+      "bab": 1,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.mindbender_read_thoughts"
+      ]
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 4,
+      "bab": 2,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.mindbender_perpetual_charm"
+      ]
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 5,
+      "bab": 2,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 6,
+      "bab": 3,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.mindbender_enchantment_power"
+      ]
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 7,
+      "bab": 3,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.mindbender_dominate"
+      ]
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 8,
+      "bab": 4,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 9,
+      "bab": 4,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.mindbender",
+      "level": 10,
+      "bab": 5,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.mindbender_thrall"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.mindbender",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

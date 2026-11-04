@@ -1,0 +1,283 @@
+{
+  "entities": [
+    {
+      "id": "class.evangelist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Évangéliste errant",
+        "en": "Evangelist"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "L'évangéliste errant sillonne les routes pour prêcher un dieu, un panthéon ou une doctrine. Il n'a pas la vocation d'un prêtre, mais il a la voix : quand il parle, on l'écoute, et parfois on le suit.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d'Intelligence par niveau.\n• Conditions : mêmes restrictions d'alignement qu'un prêtre de son dieu ; Bluff 8 rangs, Connaissances (religion) 5 rangs, Psychologie 5 rangs, Renseignements 5 rangs, Représentation (déclamation) 6 rangs ; Négociation ou Persuasion.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Bluff, Connaissances (toutes, séparément), Déguisement, Diplomatie, Évasion, Intimidation, Langue, Perception auditive, Profession, Psychologie, Représentation.\n• Aptitudes : grand orateur (1) avec discours accablant ou exaltant, embrasement vertueux (3), conversion des infidèles (5) ; le mot juste (2) ; maîtrise des compétences (4).\n• Les niveaux d'évangéliste errant se cumulent avec ceux de barde pour la puissance de la musique de barde."
+      },
+      "hitDie": 6,
+      "skillPoints": 6,
+      "prerequisite": "@skill.bluff.ranks >= 8 and @skill.knowledge_religion.ranks >= 5 and @skill.sense_motive.ranks >= 5 and @skill.gather_information.ranks >= 5 and @skill.perform.ranks >= 6 and (has('feat.negotiator') or has('feat.persuasive'))",
+      "note": "Conditions d'accès : alignement en texte (Négociation ou Persuasion en formule) ; Représentation (déclamation) lue comme skill.perform. Points de compétence : 6 par niveau. Grand orateur : usage par jour pas imprimé dans la table, chiffré sur l'exemple (niveau 3 : 3/jour), lu comme égal au niveau de classe."
+    },
+    {
+      "id": "power.evangelist_great_orator",
+      "type": "class_power",
+      "name": {
+        "fr": "Grand orateur",
+        "en": "Great orator"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "evangelist"
+      ],
+      "description": {
+        "fr": "Sa voix porte loin et ses mots frappent où il faut, comme une musique sans instrument.\n\nEn jeu\n• Capacité surnaturelle, semblable à la musique de barde : le niveau d'évangéliste errant s'ajoute au niveau de barde pour la puissance de ses chants.\n• Utilisations par jour : égal à son niveau d'évangéliste, en plus de celles de la musique de barde.\n• Il parle à haute voix au lieu de chanter ; les discours demandent une action complexe et de la concentration à chaque round, et durent tant qu'il parle plus 3 rounds."
+      },
+      "effects": [],
+      "usesPerDay": "level('class.evangelist')",
+      "note": "Détail de la musique de barde cumulée : non modélisé."
+    },
+    {
+      "id": "power.evangelist_crushing_speech",
+      "type": "class_power",
+      "name": {
+        "fr": "Discours accablant",
+        "en": "Crushing speech"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "evangelist"
+      ],
+      "description": {
+        "fr": "Les mots d'un tyran sapent la volonté de ses ennemis.\n\nEn jeu\n• Capacité surnaturelle, alignement mauvais, Représentation (déclamation) 9 rangs : désespoir chez tous les ennemis dans 9 m.\n• -4 aux jets de Volonté ; effet mental."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.evangelist_exalting_speech",
+      "type": "class_power",
+      "name": {
+        "fr": "Discours exaltant",
+        "en": "Exalting speech"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "evangelist"
+      ],
+      "description": {
+        "fr": "Un discours qui rend les siens plus forts que leur peur.\n\nEn jeu\n• Capacité surnaturelle, alignement neutre ou bon, Représentation (déclamation) 9 rangs : tous les alliés dans 9 m, lui compris, reçoivent un bonus de sainteté de +4 aux jets de Volonté.\n• Effet mental."
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 4,
+          "bonusType": "sacred",
+          "condition": "active('toggle.evangelist_exalting_speech')"
+        }
+      ],
+      "note": "Toggle : à activer pendant qu'il déclame."
+    },
+    {
+      "id": "power.evangelist_right_word",
+      "type": "class_power",
+      "name": {
+        "fr": "Le mot juste",
+        "en": "The right word"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "evangelist"
+      ],
+      "description": {
+        "fr": "Le bon mot au bon moment.\n\nEn jeu\n• Capacité extraordinaire, niveau 2 : le malus d'une tentative de Diplomatie précipitée (action complexe) passe de -10 à -5."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.evangelist_righteous_fire",
+      "type": "class_power",
+      "name": {
+        "fr": "Embrasement vertueux",
+        "en": "Righteous fire"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "evangelist"
+      ],
+      "description": {
+        "fr": "Des flammes divines s'allument autour de lui et de ses alliés, sans les brûler.\n\nEn jeu\n• Capacité surnaturelle, niveau 3, Représentation (déclamation) 11 rangs : lui et ses alliés dans 9 m reçoivent les effets de bouclier de feu (niveau de lanceur = niveau de classe + 5).\n• Les dégâts renvoyés sont purement divins : efficaces contre les créatures résistantes ou immunisées au feu.\n• Action complexe et concentration chaque round ; dure tant qu'il déclame plus 3 rounds."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.evangelist_skill_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences",
+        "en": "Skill mastery"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "evangelist"
+      ],
+      "description": {
+        "fr": "Il parle sans trembler, même sous la menace.\n\nEn jeu\n• Capacité extraordinaire, niveau 4 : choisit 1 + modificateur d'Intelligence compétences (au moins 1) parmi Bluff, Déguisement, Diplomatie, Intimidation, Psychologie.\n• Peut faire 10 avec elles même en situation de stress ou de distraction."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.evangelist_convert_infidels",
+      "type": "class_power",
+      "name": {
+        "fr": "Conversion des infidèles",
+        "en": "Convert the infidels"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "evangelist"
+      ],
+      "description": {
+        "fr": "Un discours passionné qui retourne un ennemi, au moins le temps d'un sort.\n\nEn jeu\n• Capacité surnaturelle, niveau 5, Représentation (déclamation) 13 rangs : action complexe, un ennemi dans 9 m fait un jet de Volonté (DD 10 + niveau de classe + modificateur de Charisme).\n• Raté : charmé comme avec charme-monstre, il prend temporairement l'alignement de l'évangéliste. Réussi : secoué 1 round.\n• À la fin, la créature choisit de garder le nouvel alignement ou de le quitter (nouveau jet de Volonté pour revenir).\n• Sans effet sur les créatures à sous-type d'alignement (anges, diables)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.evangelist",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.evangelist_great_orator",
+        "power.evangelist_crushing_speech",
+        "power.evangelist_exalting_speech"
+      ]
+    },
+    {
+      "classId": "class.evangelist",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.evangelist_right_word"
+      ]
+    },
+    {
+      "classId": "class.evangelist",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.evangelist_righteous_fire"
+      ]
+    },
+    {
+      "classId": "class.evangelist",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.evangelist_skill_mastery"
+      ]
+    },
+    {
+      "classId": "class.evangelist",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.evangelist_convert_infidels"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.evangelist",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    }
+  ]
+}

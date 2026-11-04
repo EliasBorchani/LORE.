@@ -1,0 +1,898 @@
+{
+  "entities": [
+    {
+      "id": "spell.resurgence",
+      "type": "spell",
+      "name": {
+        "fr": "Résurgence",
+        "en": "Resurgence"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une main posée et une courte prière suffisent : les puissances d'en haut offrent une seconde chance à un allié encore prisonnier d'un sort ou d'un pouvoir.\n\nEn jeu\n• Cible : la créature touchée ; Volonté, annule (inoffensif).\n• La cible refait un jet de sauvegarde contre un sort, pouvoir magique ou pouvoir surnaturel en cours (sauf s'il n'autorise pas de jet). Si elle subit plusieurs effets, elle choisit lequel retenter. Une réussite met fin à l'effet sur-le-champ.\n• Ne rend aucun point de vie et ne soigne pas les affaiblissements de caractéristique, mais met fin aux états secoué, fatigué ou nauséeux provoqués par l'effet.\n• Durée instantanée."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature touchée",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.mass_resurgence",
+      "type": "spell",
+      "name": {
+        "fr": "Résurgence de groupe",
+        "en": "Mass Resurgence"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Même prière que la résurgence, mais elle s'étend à toute une troupe. Chaque allié choisi retrouve une chance de se libérer d'un envoûtement.\n\nEn jeu\n• Cibles : jusqu'à une créature/niveau, aucune à plus de 9 m d'une autre.\n• Chaque cible refait un jet de sauvegarde contre un sort, pouvoir magique ou pouvoir surnaturel en cours, comme pour résurgence.\n• Une cible qui subit plusieurs effets n'en retente qu'un seul, à son choix.\n• Durée instantanée."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "jusqu'à une créature/niveau, aucune à plus de 9 m d'une autre",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Composantes, temps d'incantation, durée et jet de sauvegarde non imprimés dans le bloc : repris de résurgence, dont le sort est dit identique."
+    },
+    {
+      "id": "spell.revenance",
+      "type": "spell",
+      "name": {
+        "fr": "Retour macabre",
+        "en": "Revenance"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le lanceur touche un allié tombé à l'instant et lui rend la vie, mais pour un temps seulement. Le revenant combat encore, avec la rage de celui qui a été terrassé.\n\nEn jeu\n• Cible : un allié mort depuis au plus 1 round/niveau, touché.\n• Le sujet revient à la vie avec la moitié de ses points de vie normaux, sans perdre de niveau. Il est vivant (pas mort-vivant) et se soigne normalement.\n• Il meurt dès que le sort s'achève. Pendant ce temps, résurrection et rappel à la vie n'ont pas d'effet sur lui.\n• Bonus de moral de +1 aux jets d'attaque, de dégâts, de sauvegarde et tests contre la créature qui l'a terrassé.\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "allié défunt touché",
+        "duration": "1 minute/niveau",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Le bonus de moral ne vise qu'une créature précise : texte seul."
+    },
+    {
+      "id": "spell.brambles",
+      "type": "spell",
+      "name": {
+        "fr": "Ronces",
+        "en": "Brambles"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Des épines jaillissent d'une arme en bois et la rendent plus cruelle. Bâton, gourdin ou nunchaku deviennent des armes hérissées de pointes.\n\nEn jeu\n• Cible : une arme en bois touchée.\n• L'arme inflige des dégâts contondants et perforants, avec un bonus d'altération de +1 à l'attaque et des dégâts majorés de 1 par niveau de lanceur (maximum +10).\n• Ne marche que si la surface qui frappe est en bois (pas d'arc, de flèche ni de masse d'armes métallique).\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "l'arme touchée, qui doit être en bois",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Composante matérielle : une petite épine. Les effets touchent l'arme, pas la fiche."
+    },
+    {
+      "id": "spell.castigate",
+      "type": "spell",
+      "name": {
+        "fr": "Rudoiement",
+        "en": "Castigate"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur clame les préceptes de son dieu à la face des autres alignements. Les mots importent peu : la douleur frappe quiconque entend.\n\nEn jeu\n• Émanation de 3 m de rayon ; Vigueur, demi-dégâts.\n• Sans effet sur les créatures sourdes.\n• Ennemis de même alignement que le lanceur : assourdis 1d4 rounds (durée réduite de moitié si jet réussi).\n• Alignement éloigné d'un cran : 1 point de dégâts par niveau de lanceur (maximum 10).\n• Alignement éloigné de deux crans ou plus : 1d4 de dégâts par niveau de lanceur (maximum 10d4).\n• Durée instantanée."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Dégâts selon l'alignement des cibles : texte seul."
+    },
+    {
+      "id": "spell.unbinding",
+      "type": "spell",
+      "name": {
+        "fr": "Rupture d'entraves",
+        "en": "Unbinding"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un rayonnement puissant jaillit du lanceur et brise tout ce qui contraint, scelle ou enferme, d'un mur de force aux verrous des portes.\n\nEn jeu\n• Rayonnement de 54 m de rayon centré sur le lanceur ; portée 54 m ; aucun jet de sauvegarde.\n• Détruit sorts de charme et d'immobilisation, verrous du mage et fermetures analogues, murs de pierre ou de force, défense magique, animation suspendue, lenteur. Met fin à statue et brise le réceptacle d'un sort de possession (l'âme est annihilée). Tout sort retenant des effets magiques les déclenche à portée 0 m.\n• Ne touche pas : protection contre le Mal, bouclier, globe d'invulnérabilité renforcée et sorts défensifs similaires, pétrification, asservissement magique (familiers, génies, élémentaires), zone d'antimagie. Un cercle magique-prison est dissipé.\n• Malédictions et quêtes ne sont dissipées que si leur créateur est de niveau inférieur ou égal à celui du lanceur.\n• Les sorts du lanceur et de ses alliés dans la zone sont affectés, mais pas ceux qui agissent sur lui ou sur ce qu'il porte.\n• Durée instantanée. Les créatures libérées ne deviennent pas amicales."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M, FD",
+        "castingTime": "1 round entier",
+        "range": "54 m",
+        "area": "rayonnement de 54 m de rayon centré sur le lanceur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Composantes matérielles : une magnétite et une pincée de salpêtre."
+    },
+    {
+      "id": "spell.divine_sacrifice",
+      "type": "spell",
+      "name": {
+        "fr": "Sacrifice divin",
+        "en": "Divine Sacrifice"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur offre une part de son énergie vitale pour frapper plus fort. Chaque blessure volontaire nourrit le prochain coup.\n\nEn jeu\n• Cible : le lanceur ; durée 1 round/niveau.\n• Une fois par round, action libre sans attaque d'opportunité : sacrifier jusqu'à 10 points de vie (dégâts létaux).\n• Tous les 2 points sacrifiés, la prochaine attaque réussie inflige +1d6 de dégâts (maximum +5d6 pour 10 points).\n• Le bonus prend fin dès qu'une attaque touche ou que le sort s'achève. Sacrifices possibles chaque round."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sort",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Le sacrifice est choisi par le joueur : texte seul. Résistance à la magie non imprimée."
+    },
+    {
+      "id": "spell.dragon_breath",
+      "type": "spell",
+      "name": {
+        "fr": "Souffle de dragon",
+        "en": "Dragon Breath"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur crache un flot d'énergie à la manière d'un dragon véritable, choisi au moment de l'incantation. Sorte de souffle emprunté, qu'il pourra renouveler seulement après un temps de repos.\n\nEn jeu\n• Cible : le lanceur ; durée 1 round/niveau ; action libre pour cracher.\n• Après chaque souffle, attendre 1d4 rounds avant de recommencer.\n• Dragon chromatique : le sort devient [Mal] ; métallique : [Bien].\n• Dégâts : 1d8 par 2 niveaux de lanceur (maximum 10d8) ; Réflexes, demi-dégâts.\n• Blanc : cône de froid de 4,50 m. Bleu : ligne d'électricité de 9 m. Noir : ligne d'acide de 9 m. Rouge : cône de feu de 4,50 m. Vert : cône d'acide de 4,50 m.\n• Airain : cône de sommeil de 4,50 m, 1d6 rounds (Volonté, annule). Argent : cône de paralysie de 4,50 m, 1d6 rounds (Vigueur, annule). Bronze : ligne d'électricité de 9 m (Réflexes, demi-dégâts). Cuivre : cône de lenteur de 4,50 m, 1d6 rounds (Volonté, annule). Or : cône de feu de 4,50 m (Réflexes, demi-dégâts)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "bien ou mal"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 10))d8",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le type de souffle est choisi à l'incantation : dégâts calculés pour les souffles à dégâts (1d8 par 2 niveaux, maximum 10d8), pas pour sommeil, paralysie ni lenteur. Résistance à la magie non imprimée."
+    },
+    {
+      "id": "spell.sandblast",
+      "type": "spell",
+      "name": {
+        "fr": "Souffle de sable",
+        "en": "Sandblast"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une grêle de sable brûlant jaillit de la main tendue du lanceur et fauche tout ce qui se trouve dans l'arc.\n\nEn jeu\n• Zone : rayonnement semi-circulaire de 3 m de long centré sur les mains ; portée 3 m.\n• 1d6 de dégâts non létaux ; Réflexes, demi-dégâts.\n• Les créatures qui ratent leur jet sont aussi étourdies 1 round.\n• Durée instantanée."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "rayonnement de sable semi-circulaire de 3 m de long, centré sur les mains du lanceur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d6",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.planar_subversion",
+      "type": "spell",
+      "name": {
+        "fr": "Subversion planaire",
+        "en": "Planar Subversion"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les Extérieurs pris dans l'émanation sentent se rompre leur lien avec les forces planaires qui les ont créés. Leurs défenses s'affaiblissent d'un coup.\n\nEn jeu\n• Émanation de 6 m de rayon centrée sur un point ; Vigueur, annule ; durée 1 round/niveau.\n• Les Extérieurs qui ratent leur jet perdent 10 points de réduction des dégâts et 10 points de résistance à la magie.\n• Un Extérieur effectue un jet de sauvegarde et un test de RM en entrant dans la zone pour la première fois ; s'il réussit l'un des deux, il n'est plus affecté et peut circuler librement. Sinon il est affecté tant qu'il reste dans la zone, y compris s'il y revient."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M/FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "émanation de 6 m de rayon centrée sur un point dans l'espace",
+        "duration": "1 round/niveau",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Composante matérielle profane : une statuette d'adamantium (100 po)."
+    },
+    {
+      "id": "spell.briar_web",
+      "type": "spell",
+      "name": {
+        "fr": "Toile de ronces",
+        "en": "Briar Web"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La végétation se hérisse d'épines et s'enroule autour de quiconque la traverse. Chaque geste devient une souffrance.\n\nEn jeu\n• Zone : toute la végétation dans 6 m de rayon ; portée moyenne ; Réflexes, annule (voir ci-dessous) ; dure 1 minute/niveau.\n• Réussite : pas immobilisé mais vitesse réduite de moitié dans la zone.\n• Échec : immobile (enchevêtré, -2 à l'attaque, -4 en Dextérité, sans dégâts), ou action complexe pour se libérer (nouveau jet ; si réussi, vitesse à moitié, sans dégâts), ou agir normalement.\n• Une créature qui échoue et agit (attaque, sort à composante gestuelle…) subit 2d6 de dégâts perforants et doit réussir un test de Concentration (DD 15 + niveau du sort + dégâts) pour lancer un sort.\n• Les plantes procurent un abri à 1,50 m, un abri total à 6 m."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "toute la végétation dans une étendue de 6 m de rayon",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Réflexes, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.storm_tower",
+      "type": "spell",
+      "name": {
+        "fr": "Tour orageuse",
+        "en": "Storm Tower"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le lanceur amoncelle une tour de nuages d'orage qui annule de nombreuses formes de magie et étouffe les bruits.\n\nEn jeu\n• Zone : étendue de 30 m de haut et 6 m de rayon ; portée longue ; dure 1 round/niveau (T).\n• Absorbe les dégâts d'électricité subis à l'intérieur. Projectile magique impossible vers ou depuis la tour.\n• Considérée comme un vent de 90 km/h (attaques à distance impossibles), sans effet sur les créatures dedans. Seules les créatures Gig. ou C franchissent les bords.\n• Camouflage pour ceux qui voient depuis l'extérieur ; -10 aux tests de Perception auditive à moins de 15 m."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 round entier",
+        "range": "longue (120 m + 12 m/niveau)",
+        "area": "étendue de 30 m de haut et 6 m de rayon",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.maelstrom",
+      "type": "spell",
+      "name": {
+        "fr": "Tourbillon",
+        "en": "Maelstrom"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Les flots se creusent en un tourbillon meurtrier qui happe tout ce qui nage ou flotte alentour.\n\nEn jeu\n• Effet : tourbillon de 36 m de large et 18 m de profondeur, dans une étendue d'eau au moins aussi grande (sinon le sort est perdu) ; dure 1 round/niveau.\n• Créatures et objets dans l'eau à moins de 15 m : Réflexes ou ils sont aspirés (un nageur peut faire un test de Natation si son modificateur dépasse son bonus de Réflexes ; une embarcation y échappe par un test de Profession (marin) contre le DD).\n• Aspiré : 3d8 de dégâts à l'entrée, puis 3d8 de dégâts contondants par round, piégé 2d4 rounds.\n• Éjecté par le bas (taille G ou moins) ou par le haut (plus grand)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, FD",
+        "castingTime": "1 round entier",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "un tourbillon de 36 m de large et de 18 m de profondeur",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, annule (voir description)",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.waterspout",
+      "type": "spell",
+      "name": {
+        "fr": "Trombe d'eau",
+        "en": "Waterspout"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une colonne d'eau tourbillonnante s'élève dans les airs et avance sur la mer à la volonté du lanceur.\n\nEn jeu\n• Effet : cylindre de 3 m de large et 24 m de haut ; eau d'au moins 3 m de large et 6 m de profondeur requise ; dure 1 round/niveau.\n• Se déplace de 9 m par round, toujours au-dessus de l'eau. Agit à l'initiative du lanceur ; la contrôler ou lui donner un ordre est une action simple. Sortie de portée, elle s'effondre.\n• Créature ou objet touché : Réflexes ou 3d8 de dégâts. Taille M ou moins qui rate : aspiré, 2d6 de dégâts par round sans jet, piégé 1d3 rounds puis recraché.\n• Même jet pour les créatures de taille M ou moins à moins de 3 m ; seuls canoës, kayaks et coracles sont aspirés (test de Profession (marin) possible)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, FD",
+        "castingTime": "1 round entier",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "un cylindre de 3 m de large et de 24 m de haut",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.slime_wave",
+      "type": "spell",
+      "name": {
+        "fr": "Vague de limon",
+        "en": "Slime Wave"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une vague de limon vert déferle sur la zone, colle aux murs comme au plafond et dévore ce qu'elle touche.\n\nEn jeu\n• Zone : étendue de 4,50 m de rayon ; portée courte ; Réflexes, annule ; dure 1 round/niveau.\n• Les ratés sont couverts d'un amas de limon par tranche de 1,50 m de leur espace.\n• Chaque amas : 1d6 d'affaiblissement temporaire de Constitution par round ; 2d6 de dégâts par round au métal (dureté ignorée) et au bois (dureté appliquée). Sans effet sur la pierre.\n• Le premier round, on peut gratter le limon ; ensuite il faut le geler, le brûler ou le trancher (la victime subit les mêmes dégâts). Froid ou chaleur extrêmes, lumière du soleil ou guérison des maladies le détruisent.\n• Le limon s'évapore à la fin du sort."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "étendue de 4,50 m de rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Composantes matérielles : quelques gouttes d'eau d'une mare stagnante."
+    },
+    {
+      "id": "spell.wave_of_grief",
+      "type": "spell",
+      "name": {
+        "fr": "Vague de tristesse",
+        "en": "Wave of Grief"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une vague de chagrin déferle sur un cône de créatures, alourdissant les mains et le coeur.\n\nEn jeu\n• Zone : cône ; portée courte ; Volonté, annule ; dure 1 round/niveau.\n• Toutes les créatures prises dans le cône subissent un malus de moral de -3 aux jets d'attaque, jets de sauvegarde, tests de caractéristique et tests de compétence."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "descriptors": [
+          "Mal",
+          "mental"
+        ],
+        "components": "G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "cône",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Composantes matérielles : trois larmes."
+    },
+    {
+      "id": "spell.deific_vengeance",
+      "type": "spell",
+      "name": {
+        "fr": "Vengeance divine",
+        "en": "Deific Vengeance"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le lanceur invoque un dieu et énumère les crimes de la cible. La divinité répond par un coup spirituel qui ne rate jamais.\n\nEn jeu\n• Cible : 1 créature ; portée courte ; Volonté, demi-dégâts.\n• Touche automatiquement : 1d6 de dégâts par 2 niveaux de lanceur (maximum 5d6), ou 1d6 par niveau (maximum 10d6) contre un mort-vivant.\n• L'alignement de la cible n'entre pas en compte.\n• Durée instantanée."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(floor(@spell.caster_level / 2), 5))d6",
+          "scope": "spell"
+        }
+      ],
+      "note": "Les dégâts contre les morts-vivants (1d6/niveau, 10d6 max.) ne sont pas calculés."
+    },
+    {
+      "id": "spell.binding_winds",
+      "type": "spell",
+      "name": {
+        "fr": "Vents paralysants",
+        "en": "Binding Winds"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une rafale enveloppe la cible et la retient sur place, sans la blesser. Sa voix se perd dans le vent.\n\nEn jeu\n• Cible : 1 créature ; portée moyenne ; Réflexes, annule ; dure concentration.\n• La cible agit normalement mais ne peut pas se déplacer ; les créatures volantes sont retenues en l'air.\n• Elle peut parler mais personne ne l'entend, et elle n'entend que le vent. Aucun sort de son ou de langage vers ou depuis les vents (elle peut se lancer des sorts à elle-même).\n• Attaques à distance vers ou depuis les vents : -2 à l'attaque."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature",
+        "duration": "concentration",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.vigor",
+      "type": "spell",
+      "name": {
+        "fr": "Vigueur",
+        "en": "Vigor"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Version plus puissante de la vigueur mineure : la cible guérit plus vite pour toute la durée.\n\nEn jeu\n• Identique à vigueur mineure, mais confère guérison accélérée (2).\n• Dure 10 rounds + 1 round/niveau (25 rounds maximum).\n• Plusieurs sorts de vigueur ne se cumulent pas : seul le plus haut niveau s'applique."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "10 rounds + 1 round/niveau (25 rounds max.)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "fast_healing",
+          "op": "min",
+          "value": 2,
+          "condition": "active('toggle.vigor')"
+        }
+      ],
+      "note": "Bloc court dans le livre : autres champs repris de vigueur mineure."
+    },
+    {
+      "id": "spell.lesser_vigor",
+      "type": "spell",
+      "name": {
+        "fr": "Vigueur mineure",
+        "en": "Lesser Vigor"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un contact de la main rend à la cible un souffle de guérison continue, assez pour stabiliser un mourant.\n\nEn jeu\n• Cible : une créature vivante touchée ; Volonté, annule (inoffensif).\n• Guérison accélérée (1) : 1 point de vie par round pendant la durée ; stabilise automatiquement un mourant par dégâts importants.\n• Ne rend rien pour la faim, la soif ou l'asphyxie, ne régénère ni ne ressoude les membres tranchés.\n• Les sorts de vigueur ne se cumulent pas : seul le plus haut niveau s'applique ; un second sort de niveau égal prolonge le premier.\n• Dure 10 rounds + 1 round/niveau (15 rounds maximum)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "10 rounds + 1 round/niveau (15 rounds max.)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "fast_healing",
+          "op": "min",
+          "value": 1,
+          "condition": "active('toggle.lesser_vigor')"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_lesser_vigor",
+      "type": "spell",
+      "name": {
+        "fr": "Vigueur mineure de groupe",
+        "en": "Mass Lesser Vigor"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La même guérison continue, répandue sur tout un groupe d'alliés.\n\nEn jeu\n• Cibles : 1 créature/2 niveaux, aucune à plus de 9 m d'une autre ; portée 6 m ; Volonté, annule (inoffensif).\n• Guérison accélérée (1) pour chaque cible : 1 point de vie par round, stabilisation automatique d'un mourant.\n• Mêmes limites que vigueur mineure (faim, soif, asphyxie, membres tranchés).\n• Plusieurs sorts de vigueur ne se cumulent pas.\n• Dure 10 rounds + 1 round/niveau (25 rounds maximum)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "6 m",
+        "target": "1 créature/2 niveaux, aucune à plus de 9 m d'une autre",
+        "duration": "10 rounds + 1 round/niveau (25 rounds max.)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "fast_healing",
+          "op": "min",
+          "value": 1,
+          "condition": "active('toggle.mass_lesser_vigor')"
+        }
+      ]
+    },
+    {
+      "id": "spell.greater_vigor",
+      "type": "spell",
+      "name": {
+        "fr": "Vigueur suprême",
+        "en": "Greater Vigor"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le sommet de la famille : la cible se referme à vue d'oeil.\n\nEn jeu\n• Identique à vigueur mineure, mais confère guérison accélérée (4).\n• Dure 10 rounds + 1 round/niveau (35 rounds maximum)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature vivante touchée",
+        "duration": "10 rounds + 1 round/niveau (35 rounds max.)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "fast_healing",
+          "op": "min",
+          "value": 4,
+          "condition": "active('toggle.greater_vigor')"
+        }
+      ],
+      "note": "Bloc court dans le livre : autres champs repris de vigueur mineure."
+    },
+    {
+      "id": "spell.lesser_aspect_of_the_deity",
+      "type": "spell",
+      "name": {
+        "fr": "Visage divin mineur",
+        "en": "Lesser Aspect of the Deity"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le corps du lanceur se rapproche, un peu, de celui de son dieu. Sa présence s'impose et il résiste mieux aux énergies destructrices.\n\nEn jeu\n• Cible : le lanceur ; dure 1 round/niveau.\n• Bonus d'altération de +4 en Charisme.\n• Résistance (10) à deux des trois énergies suivantes : acide, électricité et froid s'il est bon ; feu et froid s'il est mauvais."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "Bien",
+          "Mal"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.lesser_aspect_of_the_deity')"
+        }
+      ],
+      "note": "Les résistances ne sont pas calculées par le modèle. Jet de sauvegarde et résistance à la magie non imprimés (sort personnel)."
+    },
+    {
+      "id": "spell.aspect_of_the_deity",
+      "type": "spell",
+      "name": {
+        "fr": "Visage divin",
+        "en": "Aspect of the Deity"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lanceur prend l'aspect d'une créature céleste (ou fiélonne, s'il est mauvais) sans devenir un Extérieur.\n\nEn jeu\n• Comme visage divin mineur, avec les particularités d'un céleste ou d'un fiélon.\n• Peau métallique et scintillante (bon) ou effrayante (mauvais).\n• Châtiment du Mal (bon) ou du Bien (mauvais) 1 fois par jour : bonus à l'attaque égal au modificateur de Charisme et aux dégâts égal au niveau global.\n• Vision dans le noir 18 m.\n• Résistance (20) à l'acide, l'électricité et au froid (bon) ; au feu et au froid (mauvais).\n• Réduction des dégâts 10/magie ; résistance à la magie (20).\n• Son type ne change pas."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "Bien",
+          "Mal"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.aspect_of_the_deity')"
+        },
+        {
+          "target": "damage_reduction.magic",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.aspect_of_the_deity')"
+        },
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": 20,
+          "layer": "base",
+          "condition": "active('toggle.aspect_of_the_deity')"
+        },
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18,
+          "condition": "active('toggle.aspect_of_the_deity')"
+        }
+      ],
+      "note": "Bloc court dans le livre : champs repris de visage divin mineur. Le +4 de Charisme (comme visage divin mineur), la RD, la RM et la vision dans le noir sont sur la fiche ; résistances aux énergies et châtiment : texte seul."
+    },
+    {
+      "id": "spell.greater_aspect_of_the_deity",
+      "type": "spell",
+      "name": {
+        "fr": "Visage divin suprême",
+        "en": "Greater Aspect of the Deity"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lanceur adopte la forme d'un demi-céleste ou d'un demi-fiélon et devient un Extérieur le temps du sort, mais peut tout de même être rappelé à la vie s'il est tué.\n\nEn jeu\n• Comme visage divin mineur, avec les particularités d'un demi-céleste (bon) ou demi-fiélon (mauvais), sans leurs pouvoirs magiques. Type : Extérieur pendant la durée.\n• Prêtre bon : ailes de plumes (vol deux fois sa vitesse au sol, bonne manoeuvrabilité), armure naturelle +1, vision nocturne, résistance à l'acide, l'électricité et au froid (10), immunité aux maladies, +4 racial aux jets contre le poison, RD 10/magie, RM 25, For +4, Dex +2, Con +4, Int +2, Sag +4, Cha +4.\n• Prêtre mauvais : ailes de chauve-souris (vol à sa vitesse au sol, manoeuvrabilité moyenne), armure naturelle +1, morsure (1d6, ou 1d3 si P) et griffes (1d4, ou 1d3 si P), vision dans le noir 18 m, immunité au poison, résistance à l'acide, l'électricité, au feu et au froid (10), RD 10/magie, RM 25, For +4, Dex +4, Con +2, Int +4, Cha +2."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "Bien",
+          "Mal"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.greater_aspect_of_the_deity')"
+        },
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.greater_aspect_of_the_deity')"
+        },
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 1,
+          "bonusType": "natural_armor",
+          "condition": "active('toggle.greater_aspect_of_the_deity')"
+        },
+        {
+          "target": "damage_reduction.magic",
+          "op": "add",
+          "value": 10,
+          "condition": "active('toggle.greater_aspect_of_the_deity')"
+        },
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": 25,
+          "layer": "base",
+          "condition": "active('toggle.greater_aspect_of_the_deity')"
+        }
+      ],
+      "note": "Bloc court dans le livre : champs repris de visage divin mineur. Sur la fiche : le +4 de Charisme de visage divin mineur, For +4 et armure naturelle +1 (communs aux deux alignements), RD 10/magie, RM 25. Les autres bonus de caractéristique diffèrent selon l'alignement (un seul interrupteur) : texte seul, comme les résistances, le vol et les attaques naturelles."
+    },
+    {
+      "id": "spell.zeal",
+      "type": "spell",
+      "name": {
+        "fr": "Zèle",
+        "en": "Zeal"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un bouclier divin protège le lanceur tandis qu'il fonce vers l'ennemi qu'il a désigné.\n\nEn jeu\n• Cible : le lanceur ; dure 1 round/niveau. Choisir un ennemi précis à l'incantation.\n• Bonus de parade de +4 à la CA contre toutes les attaques d'opportunité des autres adversaires.\n• Le lanceur traverse les adversaires comme des alliés, tant qu'il se rapproche de l'ennemi désigné."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Bonus de parade contre les attaques d'opportunité : texte seul."
+    }
+  ]
+}

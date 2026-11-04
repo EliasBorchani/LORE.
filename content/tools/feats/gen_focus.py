@@ -51,21 +51,25 @@ def feat(fid, fr, en, labels, text, effects, prerequisite=None):
     return e
 
 
+# The Hexblade's bonus feat list (Complete Warrior) offers these schools only.
+HEXBLADE_SCHOOLS = {'enchantment', 'necromancy', 'transmutation'}
+
 entities, relations = [], []
 for school, fr in SCHOOLS.items():
     focus, greater = f'feat.spell_focus_{school}', f'feat.greater_spell_focus_{school}'
-    entities.append(feat(focus, f'École renforcée ({fr})', f'Spell Focus ({school})', ['general', 'magic', 'DC'],
+    hexblade = ['hexblade_bonus'] if school in HEXBLADE_SCHOOLS else []
+    entities.append(feat(focus, f'École renforcée ({fr})', f'Spell Focus ({school})', ['general', 'magic', 'DC', *hexblade],
                          elide(fr, SPELL_FOCUS),
                          [{'target': f'dc.school[{school}]', 'op': 'add', 'value': 1, 'bonusType': 'untyped'},
                           {'target': 'feats.spell_focus.schools', 'op': 'add', 'value': 1}]))
-    entities.append(feat(greater, f'École supérieure ({fr})', f'Greater Spell Focus ({school})', ['general', 'magic', 'DC'],
+    entities.append(feat(greater, f'École supérieure ({fr})', f'Greater Spell Focus ({school})', ['general', 'magic', 'DC', *hexblade],
                          elide(fr, GREATER), [{'target': f'dc.school[{school}]', 'op': 'add', 'value': 1, 'bonusType': 'untyped'}],
                          f"has('{focus}')"))
     relations.append({'from': greater, 'relation': 'requires', 'to': focus})
 for s in skills:
     key = s['id'].removeprefix('skill.')
     fr = s['name']['fr']
-    entities.append(feat(f'feat.skill_focus_{key}', f'Talent ({fr})', f"Skill Focus ({s['name']['en']})", ['general', 'skill'],
+    entities.append(feat(f'feat.skill_focus_{key}', f'Talent ({fr})', f"Skill Focus ({s['name']['en']})", ['general', 'skill', 'scout_bonus'],
                          elide(fr, SKILL), [{'target': s['id'], 'op': 'add', 'value': 3, 'bonusType': 'untyped'}]))
 
 out = ROOT / 'content/srd/feats/focus.json'

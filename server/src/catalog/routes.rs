@@ -147,6 +147,41 @@ pub async fn maneuver_list(
     Ok(Json(maneuvers))
 }
 
+#[derive(Serialize, sqlx::FromRow)]
+pub struct InvocationEntry {
+    id: String,
+    name: Option<Value>,
+    invocation: Option<Value>,
+}
+
+/// Every warlock invocation, with its `invocation` block, for picking them on the sheet: any invoker class learns
+/// from the same list (the sheet checks the grade).
+pub async fn invocation_list(
+    State(pool): State<PgPool>,
+    user: CurrentUser,
+    Path(group_id): Path<String>,
+) -> Result<Json<Vec<InvocationEntry>>, AppError> {
+    let layers = layers(&pool, user, &group_id).await?;
+    let mut invocations: Vec<InvocationEntry> = bind_visible(
+        sqlx::query_as(&format!(
+            "SELECT e.id, v.content -> 'name' AS name, v.content -> 'invocation' AS invocation
+             FROM entity e
+             JOIN entity_version v ON v.entity_id = e.id AND v.version = e.current_version
+             WHERE e.type = 'invocation' AND {}",
+            Layers::visible("e", 1)
+        )),
+        &layers,
+    )
+    .fetch_all(&pool)
+    .await?;
+    for invocation in &mut invocations {
+        invocation.id = layers.canonical(&invocation.id).to_owned();
+    }
+    invocations.sort_by(|a, b| a.id.cmp(&b.id));
+    invocations.dedup_by(|a, b| a.id == b.id);
+    Ok(Json(invocations))
+}
+
 #[derive(Deserialize)]
 pub struct ListQuery {
     r#type: Option<String>,

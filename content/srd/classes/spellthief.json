@@ -1,0 +1,945 @@
+{
+  "entities": [
+    {
+      "id": "class.spellthief",
+      "type": "class",
+      "name": {
+        "fr": "Kleptomage",
+        "en": "Spellthief"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "arcane",
+        "spontaneous",
+        "skills"
+      ],
+      "description": {
+        "fr": "Le kleptomage ne vole pas des bourses : il vole la magie elle-même. Un coup placé au bon endroit, et le sort que son adversaire s’apprêtait à lancer devient le sien, tout comme la protection qui l’entourait ou la résistance qui le rendait intouchable. Mi-roublard, mi-lanceur de sorts, il préfère l’ombre, le flanc et la surprise aux affrontements de front.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous (beaucoup sont neutres).\n• Formé à toutes les armes courantes et aux armures légères, pas aux boucliers. Les sorts en armure légère n’ont pas de risque d’échec.\n• Sorts profanes spontanés, basés sur le Charisme, du niveau 1 au niveau 4, à partir du niveau 4 ; niveau de lanceur : la moitié de son niveau de kleptomage.\n• Aptitudes : attaque sournoise, recherche des pièges et vol de sort (1) ; détection de la magie, grâce magique, vol d’effet de sort (2) ; vol de résistance aux énergies destructives (3) ; sorts (4) ; vol de pouvoir magique (5) ; absorption de sorts (7) ; vision magique (9) ; intuition magique (13) ; vol de résistance à la magie (15)."
+      },
+      "hitDie": 6,
+      "skillPoints": 6,
+      "source": "Complete Adventurer",
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "effects": [
+        {
+          "target": "caster_level.spellthief",
+          "op": "add",
+          "value": "if(level('class.spellthief') >= 4, floor(level('class.spellthief') / 2), 0) - level('class.spellthief')"
+        },
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.spellthief') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Pouvoirs de vol (sorts, effets de sort, énergie, pouvoir magique, résistance à la magie) et absorption : le modèle ne garde pas les sorts volés ni les résistances temporaires, tout est en texte. Liste de sorts : tous les sorts d’ensorceleur/magicien de niveau 1 à 4 des écoles abjuration, divination, enchantement, illusion et transmutation."
+    },
+    {
+      "id": "power.spellthief_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Le kleptomage frappe là où l’adversaire ne regarde pas : un flanc découvert, un garde pris au dépourvu.\n\nEn jeu\n• +1d6 aux dégâts au niveau 1, puis +1d6 aux niveaux 5, 9, 13 et 17 (5d6 au maximum).\n• Quand la cible est privée de son bonus de Dextérité à la CA, ou quand il la prend en tenaille.\n• À distance, seulement à 9 m ou moins.\n• Se cumule avec l’attaque sournoise d’autres classes (roublard par exemple)."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(1 + floor((level('class.spellthief') - 1) / 4))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.spellthief_trapfinding",
+      "type": "class_power",
+      "name": {
+        "fr": "Recherche des pièges",
+        "en": "Trapfinding"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Il repère les mécanismes que les autres découvrent avec le pied.\n\nEn jeu\n• Peut trouver par la Fouille les pièges dont le DD dépasse 20.\n• Peut désamorcer les pièges magiques qu’il a repérés avec Désamorçage/sabotage."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spellthief_steal_spell",
+      "type": "class_power",
+      "name": {
+        "fr": "Vol de sort",
+        "en": "Steal spell"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Un coup bien placé, et la formule que l’ennemi tenait prête passe dans la tête du kleptomage.\n\nEn jeu\n• Après une attaque sournoise réussie, il renonce à 1d6 de dégâts pour voler un sort (ou la possibilité de le lancer) à la cible. Une cible consentante : par contact, action simple.\n• La victime perd un sort préparé de niveau 0 ou 1 (ou un emplacement de ce niveau si elle lance spontanément, et ce sort pendant 1 minute).\n• Il peut nommer le sort voulu ; sinon, ou s’il n’est pas disponible, le MD tire au hasard parmi ceux de la victime.\n• Niveau de sort maximal volé : 0 ou 1 au niveau 1, 2 au niveau 4, puis +1 tous les 2 niveaux (9 au niveau 18).\n• Le sort volé se lance plus tard comme s’il venait de son propriétaire (niveau de lanceur, DD), sans Charisme minimal, avec ses composantes ; à partir du niveau 4, il peut à la place lancer gratuitement un sort connu de niveau égal ou inférieur.\n• À lancer dans l’heure, sinon il se dissipe. Total de sorts volés : au plus son niveau de classe en niveaux de sort (niveau 0 compte pour 0,5).\n• Pas de métamagie sur un sort volé, sauf s’il a été préparé ainsi. Ne marche que contre les sorts, pas les pouvoirs psioniques ni magiques."
+      },
+      "effects": [],
+      "note": "Les sorts volés ne sont pas suivis par le modèle."
+    },
+    {
+      "id": "power.spellthief_detect_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection de la magie",
+        "en": "Detect magic"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Il sent la magie comme un chien flaire la peur.\n\nEn jeu\n• Lance détection de la magie un nombre de fois par jour égal à son bonus de Charisme (au moins 1).\n• Niveau de lanceur : son niveau de kleptomage."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, @ability.cha.mod)"
+    },
+    {
+      "id": "power.spellthief_magic_grace",
+      "type": "class_power",
+      "name": {
+        "fr": "Grâce magique",
+        "en": "Magic grace"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "La magie qu’il a si souvent dérobée glisse sur lui sans l’accrocher.\n\nEn jeu\n• +1 aux jets de sauvegarde contre les sorts au niveau 2, +2 au niveau 11, +3 au niveau 20."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.spellthief') >= 20, 3, if(level('class.spellthief') >= 11, 2, 1))",
+          "situation": "situation.vs_spells",
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.spellthief_steal_spell_effect",
+      "type": "class_power",
+      "name": {
+        "fr": "Vol d’effet de sort",
+        "en": "Steal spell effect"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Il arrache à un ennemi la bénédiction qui le protégeait et s’en pare à sa place.\n\nEn jeu\n• Seulement avec une attaque sournoise réussie : il renonce à 1d6 de dégâts sournois pour voler. Une cible consentante peut être volée par simple contact, en action simple.\n• Vole les effets d’un seul sort actif sur la cible (il peut le nommer ; sinon le MD choisit parmi ceux qui la touchent).\n• Impossible si le niveau de lanceur de ce sort dépasse son niveau de kleptomage + son modificateur de Charisme, ou si le sort n’aurait pas pu l’affecter (portée personnelle, type de créature).\n• Il en profite pendant 1 minute par niveau de classe (ou jusqu’à la fin du sort si plus court) ; ensuite l’effet revient à son propriétaire si sa durée n’est pas écoulée.\n• Ne marche pas contre les effets immunisés contre la dissipation de la magie."
+      },
+      "effects": [],
+      "note": "Les effets volés ne sont pas suivis par le modèle."
+    },
+    {
+      "id": "power.spellthief_steal_energy_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Vol de résistance aux énergies destructives",
+        "en": "Steal energy resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Le feu qui ne brûlait pas son ennemi brûle maintenant pour lui.\n\nEn jeu\n• Seulement avec une attaque sournoise réussie : il renonce à 1d6 de dégâts sournois pour voler. Une cible consentante peut être volée par simple contact, en action simple.\n• Gagne une résistance de 10 contre un type d’énergie (acide, électricité, feu, froid, son) que la cible possède (résistance ou immunité) ; la cible perd 10 de cette résistance (au minimum 0).\n• Une immunité reste intacte. Si la cible a plusieurs résistances, il choisit ; si elle n’a pas celle voulue, le MD tire au hasard.\n• Dure 1 minute (ou la fin de l’effet d’origine). Plusieurs usages ne s’additionnent que pour des types d’énergie différents.\n• Résistance de 20 au niveau 11, de 30 au niveau 19."
+      },
+      "effects": [],
+      "note": "La résistance volée est temporaire et n’est pas suivie par le modèle."
+    },
+    {
+      "id": "power.spellthief_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de kleptomage",
+        "en": "Spellthief spells"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Quelques sorties choisies, subtiles et discrètes, qui complètent ses vols : de quoi tromper, protéger et se faufiler.\n\nEn jeu\n• Sorts profanes de la liste d’ensorceleur/magicien, limités aux écoles d’abjuration, divination, enchantement, illusion et transmutation, du niveau 1 au niveau 4.\n• Lancés sans préparation, comme l’ensorceleur. Caractéristique : Charisme (au moins 10 + niveau du sort). DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour selon le niveau de kleptomage ; un « 0 » dans la table veut dire seulement les sorts en bonus d’un Charisme élevé. Les sorts connus ne reçoivent pas de bonus de Charisme.\n• Aux niveaux 12, 15 et 18, peut échanger un sort connu contre un autre de même niveau, au moins 2 niveaux sous son plus haut niveau de sort.\n• Niveau de lanceur : la moitié de son niveau de kleptomage."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spellthief_steal_spell_like_ability",
+      "type": "class_power",
+      "name": {
+        "fr": "Vol de pouvoir magique",
+        "en": "Steal spell-like ability"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Le don inné d’une créature — celui qu’elle croyait sien — devient un tour de plus dans la poche du kleptomage.\n\nEn jeu\n• Seulement avec une attaque sournoise réussie : il renonce à 1d6 de dégâts sournois pour voler. Une cible consentante peut être volée par simple contact, en action simple.\n• Vole temporairement un pouvoir magique de la cible (classe, race, archétype ou autre source), de niveau au plus égal au tiers de son niveau de kleptomage. Il peut le nommer, sinon le MD tire au hasard.\n• Si le pouvoir est limité par jour, la cible doit encore avoir une utilisation ; elle ne peut plus s’en servir tant qu’il n’est pas utilisé.\n• Utilisable une seule fois, dans la minute, sinon il disparaît. Niveau de lanceur et DD comme pour son propriétaire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spellthief_absorb_spell",
+      "type": "class_power",
+      "name": {
+        "fr": "Absorption de sorts",
+        "en": "Absorb spell"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Le sort qui devait le frapper s’éteint contre lui, et il en garde la charge.\n\nEn jeu\n• Quand il réussit son jet de sauvegarde contre un sort qui le prend pour cible (pas un sort de zone ou d’effet), il tente de l’absorber.\n• Test de niveau : 1d20 + son niveau de kleptomage contre DD 10 + niveau de lanceur du sort. Échec : le sort agit normalement. Réussite : aucun effet, et il stocke le sort comme avec le vol de sort.\n• Ne peut pas absorber un sort de niveau supérieur à ce qu’il peut voler.\n• Au niveau 20, peut utiliser l’énergie du sort en action immédiate, pour relancer le sort d’origine ou lancer un sort qu’il connaît."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spellthief_arcane_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision magique",
+        "en": "Arcane sight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "D’un coup d’œil, les auras de magie s’allument dans la pièce.\n\nEn jeu\n• Lance vision magique en action rapide un nombre de fois par jour égal à son modificateur de Charisme (au moins 1).\n• Niveau de lanceur : son niveau de kleptomage."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, @ability.cha.mod)"
+    },
+    {
+      "id": "power.spellthief_discover_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Intuition magique",
+        "en": "Discover spells"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "Quand il vole un sort, il lit aussi le reste du grimoire de sa victime.\n\nEn jeu\n• Quand il vole un sort à une créature, il apprend le nom de tous ses autres sorts du même niveau, préparés ou connus."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spellthief_steal_spell_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Vol de résistance à la magie",
+        "en": "Steal spell resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "spellthief"
+      ],
+      "description": {
+        "fr": "La protection qui rendait l’adversaire intouchable s’effrite pour lui, et se pose sur les épaules du kleptomage.\n\nEn jeu\n• Après une attaque sournoise réussie, il renonce à 3d6 de dégâts sournois pour réduire de 5 la résistance à la magie de la cible. Une cible consentante : par contact, action simple.\n• Il gagne une résistance à la magie de 5 + son niveau de classe (au plus celle de la cible), pendant un nombre de rounds égal à son modificateur de Charisme (au moins 1), puis elle revient à la cible.\n• Pas de nouvelle utilisation sur la même créature tant qu’elle n’a pas récupéré sa résistance."
+      },
+      "effects": [],
+      "note": "La résistance à la magie volée est temporaire et n’est pas suivie par le modèle."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.spellthief",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.spellthief_sneak_attack",
+        "power.spellthief_trapfinding",
+        "power.spellthief_steal_spell"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.spellthief_detect_magic",
+        "power.spellthief_magic_grace",
+        "power.spellthief_steal_spell_effect"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.spellthief_steal_energy_resistance"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.spellthief_spells"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.spellthief_steal_spell_like_ability"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.spellthief_absorb_spell"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.spellthief_arcane_sight"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 11,
+      "bab": 8,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 12,
+      "bab": 9,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 13,
+      "bab": 9,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [
+        "power.spellthief_discover_spells"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 14,
+      "bab": 10,
+      "fort": 4,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 15,
+      "bab": 11,
+      "fort": 5,
+      "ref": 5,
+      "will": 9,
+      "grants": [
+        "power.spellthief_steal_spell_resistance"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 16,
+      "bab": 12,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 17,
+      "bab": 12,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 18,
+      "bab": 13,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        2,
+        2,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 19,
+      "bab": 14,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        2
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "classId": "class.spellthief",
+      "level": 20,
+      "bab": 15,
+      "fort": 6,
+      "ref": 6,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        5,
+        5,
+        5
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.spellthief",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

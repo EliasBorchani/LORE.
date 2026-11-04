@@ -109,7 +109,8 @@ function spellLevels(card: CardContent, names: Names): string {
   }
   return [...byLevel]
     .sort(([a], [b]) => a - b)
-    .map(([level, lists]) => `${lists.sort((a, b) => a.localeCompare(b, 'fr')).join('/')} ${level}`)
+    // The level first: a card cuts long lines, and many lists can share a level (Fireball: three classes at 3).
+    .map(([level, lists]) => `${level} : ${lists.sort((a, b) => a.localeCompare(b, 'fr')).join('/')}`)
     .join(' · ')
 }
 

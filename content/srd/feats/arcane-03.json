@@ -1,0 +1,669 @@
+{
+  "entities": [
+    {
+      "id": "feat.repeat_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Répétition de sort",
+        "en": "Repeat Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le sort s’éteint, puis se rallume de lui-même un battement de cœur plus tard, au même endroit, comme un écho qui refuse de mourir.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• Le sort se relance tout seul au début du tour suivant du lanceur, avec le même point d’origine et la même zone, où que le lanceur soit alors.\n• Sort à cible : la seconde fois, il frappe la même cible si elle est encore à 9 m au plus de l’endroit où elle était ; sinon, il échoue.\n• Impossible avec un sort de contact.\n• Le sort utilise un emplacement de 3 niveaux de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix."
+    },
+    {
+      "id": "feat.pierce_magical_protection",
+      "type": "feat",
+      "name": {
+        "fr": "Résistance à la protection magique",
+        "en": "Pierce Magical Protection"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Il méprise la magie au point de la traverser : les boucliers scintillants et les peaux de pierre ne sont pour lui qu’un voile de plus à déchirer.\n\nEn jeu\n• Condition : Constitution 13, Tueur de mages.\n• Par une action simple, une attaque au corps à corps ignore les bonus à la CA venus de sorts, de pouvoirs magiques et d’objets à fin d’incantation ou à potentiel magique (baguettes, potions).\n• Si elle inflige des dégâts, ces sorts et effets qui donnent un bonus à la CA sont dissipés.\n• Rappel : comme Tueur de mages, −4 au niveau de lanceur de sorts (sorts et pouvoirs magiques).\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.con.score >= 13 and has('feat.mage_slayer')",
+      "note": "Le malus de −4 au niveau de lanceur est compté une fois, par Tueur de mages."
+    },
+    {
+      "id": "feat.pierce_magical_concealment",
+      "type": "feat",
+      "name": {
+        "fr": "Résistance au camouflage magique",
+        "en": "Pierce Magical Concealment"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "melee"
+      ],
+      "description": {
+        "fr": "Brouillard, flou, ténèbres : les ruses des mages ne trompent pas son regard. Il frappe ce qu’il sait être là, pas ce que la magie lui montre.\n\nEn jeu\n• Condition : Constitution 13, Combat en aveugle, Tueur de mages.\n• Ignore les chances de rater dues aux sorts et pouvoirs magiques (brume de dissimulation, flou, forme fantomatique, invisibilité, ténèbres, illusions qui camouflent…).\n• Face à image miroir, il reconnaît tout de suite la vraie créature.\n• Le camouflage ordinaire (brume naturelle, obscurité normale) garde ses chances de rater.\n• Rappel : comme Tueur de mages, −4 au niveau de lanceur de sorts (sorts et pouvoirs magiques).\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@ability.con.score >= 13 and has('feat.blind_fight') and has('feat.mage_slayer')",
+      "note": "Le malus de −4 au niveau de lanceur est compté une fois, par Tueur de mages."
+    },
+    {
+      "id": "feat.draconic_resistance",
+      "type": "feat",
+      "name": {
+        "fr": "Résistance draconique",
+        "en": "Draconic Resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "defense"
+      ],
+      "description": {
+        "fr": "Le souffle de ses ancêtres coule dans ses veines : le feu, le froid, l’acide ou la foudre de sa lignée le mordent de moins en moins à mesure que le dragon s’éveille en lui.\n\nEn jeu\n• Condition : Héritage draconique.\n• Résistance à l’énergie destructive de son héritage draconique.\n• Valeur : 3 × le nombre de dons draconiques du personnage, y compris ceux pris plus tard."
+      },
+      "prerequisite": "has('feat.draconic_heritage')",
+      "note": "Résistance aux énergies et type d’énergie de l’héritage : pas encore dans le modèle (texte seulement)."
+    },
+    {
+      "id": "feat.delay_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Retardement de sort",
+        "en": "Delay Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le sort est lancé, puis il attend. Une rune muette sur le sol, une promesse suspendue dans l’air, jusqu’au round que le lanceur a choisi.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• Seulement les sorts à zone d’effet, à portée personnelle ou de contact.\n• Le sort prend effet 1 à 5 rounds après l’incantation, juste avant le tour du lanceur ; le délai est choisi à la fin de l’incantation et ne change plus.\n• Cibles, zone et jets d’attaque sont fixés à l’incantation ; dégâts et jets de sauvegarde le sont au déclenchement.\n• Si la situation ne permet plus au sort de fonctionner (cible sortie de la zone…), il échoue.\n• Pendant le délai, le sort peut être détecté et dissipé normalement.\n• Le sort utilise un emplacement de 3 niveaux de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 3,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix."
+    },
+    {
+      "id": "feat.extra_spell_secret",
+      "type": "feat",
+      "name": {
+        "fr": "Secret magique supplémentaire",
+        "en": "Extra Spell Secret"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il a percé un nouveau mystère de l’un de ses sorts : la formule s’est pliée une fois pour toutes à sa volonté.\n\nEn jeu\n• Condition : aptitude de classe secret magique, pouvoir lancer des sorts du 2e niveau.\n• Un sort connu est modifié pour toujours par Extension de durée, Extension de portée, Incantation statique ou Incantation silencieuse, sans changer de niveau.\n• Le personnage n’a pas besoin d’avoir le don de métamagie choisi ; le choix (sort et modification) est définitif.\n• Peut être pris plusieurs fois : un autre sort, ou une autre modification sur un sort déjà modifié."
+      },
+      "repeatable": {},
+      "note": "Condition non vérifiée par la fiche : aptitude secret magique (wu jen), sorts du 2e niveau. Le sort modifié n’est pas suivi par la fiche."
+    },
+    {
+      "id": "feat.lord_of_the_uttercold",
+      "type": "feat",
+      "name": {
+        "fr": "Seigneur du froid absolu",
+        "en": "Lord of the Uttercold"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Aux confins des plans, là où le froid élémentaire touche le néant, il a trouvé un gel plus profond encore : un froid qui ronge la vie elle-même.\n\nEn jeu\n• Condition : 9 degrés de maîtrise en Connaissances (plans), Substitution d’énergie destructive (froid), pouvoir lancer un sort du registre froid.\n• Un sort de froid peut devenir un sort de froid absolu : la moitié de ses dégâts restent du froid, l’autre moitié devient de l’énergie négative.\n• Résistance et immunité au froid ne réduisent que la moitié froid.\n• La moitié d’énergie négative soigne les morts-vivants ; un mort-vivant sans résistance au froid voit dégâts et soins s’annuler.\n• Le sort garde son emplacement habituel (coût +0)."
+      },
+      "prerequisite": "@skill.knowledge_planes.ranks >= 9 and has('feat.energy_substitution')",
+      "note": "Condition non vérifiée par la fiche : Substitution d’énergie destructive choisie pour le froid, un sort de froid. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ».",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.sanctum_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort en sanctuaire",
+        "en": "Sanctum Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Entre ses murs, chaque pierre connaît sa voix. Ses sorts y gagnent une force qu’ils perdent dès qu’il s’en éloigne.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• Lancé dans son sanctuaire, le sort compte comme s’il était d’un niveau de plus ; ailleurs, d’un niveau de moins.\n• Ce niveau modifié sert à tout (DD de sauvegarde compris).\n• Le sort garde son emplacement habituel (coût +0).\n• Sanctuaire : une zone de 6 m de diamètre par niveau au plus (lieu, bâtiment, partie d’un bâtiment), où le personnage a vécu au moins trois mois en tout.\n• La zone devient son sanctuaire 7 jours après qu’il l’a choisie ; en choisir une autre annule tout de suite l’ancienne."
+      },
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Niveau effectif ±1 selon le lieu : pas dans le modèle. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ».",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.explosive_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort explosif",
+        "en": "Explosive Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le souffle du sort ne se contente pas de brûler ou de geler : il balaie. Les ennemis sont projetés jusqu’au bord de l’explosion et retombent lourdement.\n\nEn jeu\n• Seulement les sorts à zone (cône, cylindre, ligne, rayonnement) qui permettent un jet de Réflexes.\n• Une créature qui rate son jet de Réflexes est poussée jusqu’à une case juste hors de la zone, et tombe à terre.\n• Elle subit 1d6 points de dégâts par 3 m parcourus (rien sous 3 m).\n• Si un obstacle l’arrête, elle subit 1d6 de plus pour le choc.\n• Ce déplacement ne provoque pas d’attaque d’opportunité.\n• Le sort utilise un emplacement de 2 niveaux de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.innate_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort inné",
+        "en": "Innate Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il a tant répété ce sort que celui-ci ne lui demande plus d’effort : il fait partie de lui, comme un don de naissance.\n\nEn jeu\n• Condition : Incantation rapide, Incantation silencieuse, Incantation statique.\n• Un sort qu’il peut lancer devient un pouvoir magique utilisable à volonté, une fois par round.\n• En échange, un emplacement de sort de 8 niveaux de plus que le niveau du sort est occupé pour toujours.\n• Coût en PX : payé à chaque utilisation. Focaliseur : nécessaire. Composante matérielle avec un prix : un focaliseur valant 50 fois ce prix est nécessaire.\n• C’est un pouvoir magique, pas un sort : un prêtre ne peut pas le convertir en sort de soins ou de blessure.\n• S’il perd l’accès au niveau d’emplacement occupé, il perd le pouvoir.\n• Peut être pris plusieurs fois, pour un sort différent à chaque fois, en payant chaque coût."
+      },
+      "prerequisite": "has('feat.quicken_spell') and has('feat.silent_spell') and has('feat.still_spell')",
+      "repeatable": {},
+      "note": "L’emplacement occupé pour toujours n’est pas retiré par la fiche (texte seulement)."
+    },
+    {
+      "id": "feat.twin_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort jumeau",
+        "en": "Twin Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Deux voix dans une seule incantation : le sort jaillit en double, et la cible doit affronter deux fois la même magie.\n\nEn jeu\n• Condition : un don de métamagie au choix.\n• Le sort prend effet deux fois sur la même cible ou dans la même zone : jets d’attaque, cibles et zone, tout compte deux fois.\n• Les créatures subissent chaque sort séparément (deux jets de sauvegarde le cas échéant).\n• Deux effets identiques ne se cumulent pas (deux charme-personne ne durent pas plus longtemps), mais il faut deux dissipations pour s’en libérer.\n• Un seul contresort réussi annule les deux sorts.\n• Le sort utilise un emplacement de 4 niveaux de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix."
+    },
+    {
+      "id": "feat.persistent_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort persistant",
+        "en": "Persistent Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le sort aurait dû s’éteindre avec la fin du combat. Il tient toute la journée, fidèle, comme une flamme qu’on a appris à nourrir sans y penser.\n\nEn jeu\n• Condition : Extension de durée.\n• Un sort à portée personnelle ou fixe dure 24 heures.\n• Sans effet sur un sort instantané ou qui dure jusqu’à son utilisation.\n• Sort de détection persistant (détection de la magie…) : sentir la présence ou l’absence de ce qu’il détecte ne demande pas de concentration ; les informations en plus, si.\n• Le sort utilise un emplacement de 6 niveaux de plus que son niveau réel."
+      },
+      "prerequisite": "has('feat.extend_spell')",
+      "effects": [
+        {
+          "target": "spell.duration",
+          "op": "set",
+          "value": 14400,
+          "layer": "final",
+          "scope": "spell",
+          "status": "draft",
+          "note": "24 h = 14 400 rounds"
+        },
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 6,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "to confirm"
+        }
+      ],
+      "status": "to confirm",
+      "note": "Coût +6 d'après le livre ; à confirmer pour votre table."
+    },
+    {
+      "id": "feat.fortify_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort robuste",
+        "en": "Fortify Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il charge son sort d’un surplus de puissance brute, de quoi enfoncer les défenses que la magie des autres oppose à la sienne.\n\nEn jeu\n• Pour chaque niveau d’emplacement de plus (au moins 1), +2 aux tests de niveau de lanceur de sorts pour vaincre la résistance à la magie.\n• Sans effet sur un sort qui ne permet pas la résistance à la magie.\n• Le sort utilise un emplacement d’au moins 1 niveau de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        },
+        {
+          "target": "spell.caster_level_vs_sr",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Nom anglais à confirmer. La fiche compte la version à +1 niveau (+2) ; plus de niveaux pour plus de bonus : texte seulement."
+    },
+    {
+      "id": "feat.extra_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort supplémentaire",
+        "en": "Extra Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Une formule glanée dans un vieux grimoire, un secret soufflé par un maître : son répertoire s’enrichit d’un sort de plus.\n\nEn jeu\n• Condition : niveau 3 de lanceur de sorts.\n• Un sort connu de plus, d’un niveau strictement inférieur au plus haut niveau de sort qu’il peut lancer (ensorceleur niveau 4 : un sort du niveau 0 ou 1).\n• Pour un magicien, qui apprend ses sorts autrement, utile surtout quand il ne trouve pas le sort voulu.\n• Peut être pris plusieurs fois : un nouveau sort à chaque fois."
+      },
+      "repeatable": {},
+      "note": "Condition non vérifiée par la fiche : niveau 3 de lanceur de sorts. Le sort connu en plus n’est pas ajouté par la fiche."
+    },
+    {
+      "id": "feat.transdimensional_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Sort transdimensionnel",
+        "en": "Transdimensional Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Son sort ne s’arrête pas à la frontière du monde visible : il déborde dans l’Éthéré, dans l’Ombre et dans les poches d’espace cachées.\n\nEn jeu\n• Le sort touche aussi, dans sa zone, les créatures intangibles, celles du plan Éthéré ou du plan de l’Ombre, et celles d’un espace extradimensionnel dont l’entrée est dans la zone (clignotement, traversée des ombres, fantômes manifestés, corde enchantée, puits portable, poche à familier…).\n• Pour viser une telle créature, il faut la percevoir ; ce n’est pas nécessaire avec un rayonnement, un cône, une émanation ou une étendue.\n• Normal : seuls la force atteint les créatures éthérées, rien du plan Matériel n’atteint l’Ombre ni un espace extradimensionnel fermé, et un sort sans registre force a 50 % de chances d’échouer contre une créature intangible.\n• Le sort utilise un emplacement de 1 niveau de plus que son niveau réel."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "feat.draconic_breath",
+      "type": "feat",
+      "name": {
+        "fr": "Souffle draconique",
+        "en": "Draconic Breath"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il ne récite plus la formule : il la crache. La magie profane brûle dans sa gorge et sort en un souffle de dragon.\n\nEn jeu\n• Condition : Héritage draconique.\n• Par une action simple, il sacrifie un sort profane (un sort préparé ou un emplacement) pour souffler l’énergie de son héritage.\n• Feu ou froid : cône de 9 m. Acide ou électricité : ligne de 18 m.\n• Dégâts : 2d6 par niveau du sort sacrifié.\n• Réflexes pour moitié, DD 10 + niveau du sort sacrifié + modificateur de Charisme.\n• Pouvoir surnaturel."
+      },
+      "prerequisite": "has('feat.draconic_heritage')",
+      "note": "Dégâts du souffle : selon le sort sacrifié, pas dans le modèle (texte seulement)."
+    },
+    {
+      "id": "feat.ranged_spell_specialization",
+      "type": "feat",
+      "name": {
+        "fr": "Spécialisation magique à distance",
+        "en": "Ranged Spell Specialization"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic",
+        "ranged"
+      ],
+      "description": {
+        "fr": "Ses rayons ne se contentent plus de toucher : ils trouvent le point faible, la jointure, l’endroit où ça fait le plus mal.\n\nEn jeu\n• Condition : Arme de prédilection (sort à distance), niveau 4 de lanceur de sorts.\n• +2 aux dégâts des sorts qui demandent une attaque de contact à distance, si la cible est à 9 m au plus.\n• Sort à plusieurs rayons ou projectiles : seulement sur la première attaque réussie.\n• Sort à dégâts sur plusieurs rounds (flèche acide de Melf…) : seulement au premier round.\n• Seulement les sorts qui infligent des points de dégâts."
+      },
+      "prerequisite": "has('feat.weapon_focus')",
+      "note": "Condition non vérifiée par la fiche : Arme de prédilection choisie pour les sorts à distance, niveau 4 de lanceur de sorts. Le bonus vaut seulement pour certains sorts, à 9 m : texte seulement."
+    },
+    {
+      "id": "feat.touch_spell_specialization",
+      "type": "feat",
+      "name": {
+        "fr": "Spécialisation magique de contact",
+        "en": "Touch Spell Specialization"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic",
+        "melee"
+      ],
+      "description": {
+        "fr": "À force de lancer ses sorts de la main, il sait exactement où poser les doigts pour que la magie morde au plus profond.\n\nEn jeu\n• Condition : Arme de prédilection (sort de contact), niveau 4 de lanceur de sorts.\n• +2 aux dégâts des sorts qui demandent une attaque de contact au corps à corps.\n• Sort à plusieurs attaques de contact (contact glacial…) : seulement sur la première attaque réussie.\n• Seulement les sorts qui infligent des points de dégâts."
+      },
+      "prerequisite": "has('feat.weapon_focus')",
+      "note": "Condition non vérifiée par la fiche : Arme de prédilection choisie pour les sorts de contact, niveau 4 de lanceur de sorts. Le bonus vaut seulement pour certains sorts : texte seulement."
+    },
+    {
+      "id": "feat.night_haunt",
+      "type": "feat",
+      "name": {
+        "fr": "Spectre de la nuit",
+        "en": "Night Haunt"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il sent les choses qui bougent sans être vues. Des lueurs dansent autour de lui, des mains invisibles le servent : la nuit le reconnaît comme l’un des siens.\n\nEn jeu\n• Pouvoirs magiques, 1 fois par jour chacun, niveau 1 de lanceur de sorts : lumières dansantes, prestidigitation, serviteur invisible.\n• DD : 10 + niveau du sort + modificateur de Charisme."
+      }
+    },
+    {
+      "id": "feat.energy_substitution",
+      "type": "feat",
+      "name": {
+        "fr": "Substitution d’énergie destructive",
+        "en": "Energy Substitution"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Pour lui, une boule de feu n’est qu’une forme : il peut la remplir de glace, d’acide ou d’éclairs comme on change le vin d’une coupe.\n\nEn jeu\n• Condition : un don de métamagie au choix, 5 degrés de maîtrise en Connaissances (mystères).\n• Choisir un type d’énergie : acide, électricité, feu ou froid.\n• Un sort du registre d’une énergie destructive peut utiliser l’énergie choisie à la place ; son registre change aussi (boule de feu de froid : évocation [froid]).\n• Le sort garde son emplacement habituel (coût +0).\n• Peut être pris plusieurs fois, pour une énergie différente à chaque fois."
+      },
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 5",
+      "repeatable": {},
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. L’énergie choisie n’est pas suivie par la fiche. Coût 0 : `spell.slot_cost` à 0, que la fiche ne compte pas dans la règle « au moins +1 par modificateur ».",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 0,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "feat.nonlethal_substitution",
+      "type": "feat",
+      "name": {
+        "fr": "Substitution non-létale",
+        "en": "Nonlethal Substitution"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "metamagic",
+        "wizard_bonus",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il retient la morsure de l’énergie au dernier instant : le feu frappe comme un poing, le froid assomme sans tuer.\n\nEn jeu\n• Condition : 5 degrés de maîtrise en Connaissances (mystères), un don de métamagie au choix.\n• Choisir un type d’énergie : acide, électricité, feu ou froid.\n• Un sort de ce registre inflige des dégâts non-létaux à la place des dégâts d’énergie ; le reste du sort ne change pas.\n• Le sort n’abîme donc pas les objets et n’enflamme rien.\n• Le sort utilise un emplacement de 1 niveau de plus que son niveau réel."
+      },
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 5",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Condition non vérifiée par la fiche : un don de métamagie au choix. Le type d’énergie choisi n’est pas suivi par la fiche."
+    },
+    {
+      "id": "feat.mage_slayer",
+      "type": "feat",
+      "name": {
+        "fr": "Tueur de mages",
+        "en": "Mage Slayer"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "fighter_bonus",
+        "defense",
+        "magic"
+      ],
+      "description": {
+        "fr": "Il a étudié les mages pour mieux les abattre. Tant qu’il est près d’eux, aucune incantation prudente ne les protège, et leurs charmes glissent sur son esprit.\n\nEn jeu\n• Condition : 2 degrés de maîtrise en Art de la magie, bonus de base à l’attaque +3.\n• +1 aux jets de Volonté.\n• Les lanceurs de sorts dans son espace contrôlé ne peuvent pas lancer de sort sur la défensive (le test de Concentration rate) ; ils le savent.\n• En contrepartie, −4 au niveau de lanceur de sorts (sorts et pouvoirs magiques).\n• Un guerrier peut le prendre comme don supplémentaire."
+      },
+      "prerequisite": "@skill.spellcraft.ranks >= 2 and @bab >= 3",
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "status": "draft"
+        },
+        {
+          "target": "caster_level.class[*]",
+          "op": "add",
+          "value": -4,
+          "bonusType": "untyped",
+          "status": "draft"
+        }
+      ],
+      "status": "draft",
+      "note": "Le malus de −4 vaut aussi pour les pouvoirs magiques : pas dans le modèle."
+    },
+    {
+      "id": "feat.draconic_flight",
+      "type": "feat",
+      "name": {
+        "fr": "Vol draconique",
+        "en": "Draconic Flight"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "general",
+        "draconic",
+        "movement",
+        "flight"
+      ],
+      "description": {
+        "fr": "Quand la magie profane jaillit de lui, des ailes d’énergie s’ouvrent un instant dans son dos et le portent au-dessus du sol.\n\nEn jeu\n• Condition : Héritage draconique.\n• Après avoir lancé un sort profane dont le temps d’incantation est une action simple, vitesse de vol de 3 m par niveau du sort jusqu’à la fin de son tour."
+      },
+      "prerequisite": "has('feat.draconic_heritage')",
+      "note": "Vitesse de vol selon le sort lancé, pour un tour : pas dans le modèle (texte seulement)."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.pierce_magical_protection",
+      "relation": "requires",
+      "to": "feat.mage_slayer"
+    },
+    {
+      "from": "feat.pierce_magical_concealment",
+      "relation": "requires",
+      "to": "feat.blind_fight"
+    },
+    {
+      "from": "feat.pierce_magical_concealment",
+      "relation": "requires",
+      "to": "feat.mage_slayer"
+    },
+    {
+      "from": "feat.draconic_resistance",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    },
+    {
+      "from": "feat.lord_of_the_uttercold",
+      "relation": "requires",
+      "to": "feat.energy_substitution"
+    },
+    {
+      "from": "feat.innate_spell",
+      "relation": "requires",
+      "to": "feat.quicken_spell"
+    },
+    {
+      "from": "feat.innate_spell",
+      "relation": "requires",
+      "to": "feat.silent_spell"
+    },
+    {
+      "from": "feat.innate_spell",
+      "relation": "requires",
+      "to": "feat.still_spell"
+    },
+    {
+      "from": "feat.persistent_spell",
+      "relation": "requires",
+      "to": "feat.extend_spell"
+    },
+    {
+      "from": "feat.draconic_breath",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    },
+    {
+      "from": "feat.ranged_spell_specialization",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.touch_spell_specialization",
+      "relation": "requires",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "feat.draconic_flight",
+      "relation": "requires",
+      "to": "feat.draconic_heritage"
+    }
+  ]
+}

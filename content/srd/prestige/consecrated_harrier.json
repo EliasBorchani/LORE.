@@ -1,0 +1,524 @@
+{
+  "entities": [
+    {
+      "id": "class.consecrated_harrier",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Traqueur consacré",
+        "en": "Consecrated Harrier"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Le traqueur consacré est le chasseur de primes de son Église. Hérétiques, blasphémateurs et traîtres n'ont pas de refuge : il se déguise, enquête, s'attire des amitiés, puis frappe quand la proie ne s'y attend plus.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal ; bonus de base à l'attaque +5 ; Déguisement 5 rangs, Renseignements 5 rangs ; don Pistage ; avoir accepté et réussi une mission de son Église (localiser et détruire un ennemi précis ; un échec impose d'attendre un an et un jour).\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Bluff, Connaissances (folklore local), Déguisement, Diplomatie, Équitation, Escalade, Fouille, Intimidation, Maîtrise des cordes, Profession, Renseignements.\n• Sorts : divins préparés du niveau 1 au niveau 4 dès le niveau 1, basés sur la Sagesse, liste du rôdeur plus quelques sorts.\n• Aptitudes : bénédiction des écritures (1, 5, 10) ; détection du Chaos (1) ; vision sanctifiée (2) ; dissipation de la magie (3) ; désespoir foudroyant (4) ; leurre (6) ; chasse implacable (8) ; chasse infaillible (10) ; code de conduite."
+      },
+      "hitDie": 10,
+      "skillPoints": 4,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@bab >= 5 and @skill.disguise.ranks >= 5 and @skill.gather_information.ranks >= 5 and has('feat.track')",
+      "note": "Conditions d'accès : alignement loyal (relations) et mission de l'Église : texte seul. Sorts par jour : 0 = seulement les sorts en bonus (valeur imprimée), null pour « — »."
+    },
+    {
+      "id": "power.consecrated_harrier_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de traqueur consacré",
+        "en": "Consecrated harrier spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Quelques prières, juste ce qu'il faut pour débusquer une proie.\n\nEn jeu\n• Sorts divins préparés, du niveau 1 au niveau 4, dès le niveau 1, comme un prêtre, sans conversion.\n• Liste : celle du rôdeur, plus quelques sorts de filature et de discussion (voir la liste dans le fichier de listes).\n• Sagesse au moins 10 + niveau du sort. DD : 10 + niveau du sort + modificateur de Sagesse. Sorts en bonus grâce à la Sagesse ; un « 0 » dans la table veut dire seulement ces sorts en bonus."
+      },
+      "effects": [],
+      "note": "La liste = liste du rôdeur (à copier à la fusion) + content/tools/out/codex/divin/lists/consecrated_harrier.json (sorts ajoutés). Niveau de lanceur de sorts : niveau de traqueur consacré . Le livre ne donne pas le niveau de lanceur de sorts : lu comme le niveau de classe."
+    },
+    {
+      "id": "power.consecrated_harrier_scripture_blessing",
+      "type": "class_power",
+      "name": {
+        "fr": "Bénédiction des écritures",
+        "en": "Scripture blessing"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Face à la cible que son Église lui désigne, il est béni.\n\nEn jeu\n• Capacité surnaturelle : bonus de sainteté de +2 aux tests de Bluff, Détection, Perception auditive, Psychologie et Survie quand il cherche la cible désignée par l'Église (si c'est un groupe, vis-à-vis de son chef).\n• Le même bonus s'applique aux dégâts des attaques avec armes ou à mains nues contre cette cible.\n• +4 au niveau 5, +6 au niveau 10."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": "if(level('class.consecrated_harrier') >= 10, 6, if(level('class.consecrated_harrier') >= 5, 4, 2))",
+          "bonusType": "sacred",
+          "situation": "situation.vs_designated_opponent"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": "if(level('class.consecrated_harrier') >= 10, 6, if(level('class.consecrated_harrier') >= 5, 4, 2))",
+          "bonusType": "sacred",
+          "situation": "situation.vs_designated_opponent"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": "if(level('class.consecrated_harrier') >= 10, 6, if(level('class.consecrated_harrier') >= 5, 4, 2))",
+          "bonusType": "sacred",
+          "situation": "situation.vs_designated_opponent"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": "if(level('class.consecrated_harrier') >= 10, 6, if(level('class.consecrated_harrier') >= 5, 4, 2))",
+          "bonusType": "sacred",
+          "situation": "situation.vs_designated_opponent"
+        },
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": "if(level('class.consecrated_harrier') >= 10, 6, if(level('class.consecrated_harrier') >= 5, 4, 2))",
+          "bonusType": "sacred",
+          "situation": "situation.vs_designated_opponent"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "if(level('class.consecrated_harrier') >= 10, 6, if(level('class.consecrated_harrier') >= 5, 4, 2))",
+          "bonusType": "sacred",
+          "situation": "situation.vs_designated_opponent"
+        }
+      ],
+      "note": "Situation réutilisée : situation.vs_designated_opponent (la cible désignée par l'Église). Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.consecrated_harrier_detect_chaos",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Chaos",
+        "en": "Detect chaos"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Il repère la désobéissance à l'ordre.\n\nEn jeu\n• Pouvoir magique, à volonté : comme détection du Chaos, avec le niveau de lanceur d'un prêtre de même niveau."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.consecrated_harrier_sanctified_vision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision sanctifiée",
+        "en": "Sanctified vision"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Les mirages et les illusions ne durent pas devant son regard.\n\nEn jeu\n• Capacité surnaturelle : +4 à tous ses jets de sauvegarde contre les illusions."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "situation": "situation.vs_illusion"
+        }
+      ],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle). Désaccord livre : texte « niveau 3 », table « niveau 2 » ; la table est suivie."
+    },
+    {
+      "id": "power.consecrated_harrier_dispel_magic",
+      "type": "class_power",
+      "name": {
+        "fr": "Dissipation de la magie",
+        "en": "Dispel magic"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Il dissipe les sorts de ses cibles comme un prêtre le ferait.\n\nEn jeu\n• Pouvoir magique : comme dissipation de la magie, autant de fois par jour que son modificateur de Sagesse (au moins 1).\n• Il ajoute son bonus de bénédiction des écritures aux tests de dissipation."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, @ability.wis.mod)"
+    },
+    {
+      "id": "power.consecrated_harrier_crushing_despair",
+      "type": "class_power",
+      "name": {
+        "fr": "Désespoir foudroyant",
+        "en": "Crushing despair"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Un mot suffit à briser le moral de sa proie.\n\nEn jeu\n• Pouvoir magique : comme désespoir foudroyant, autant de fois par jour que son modificateur de Sagesse (au moins 1)."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, @ability.wis.mod)"
+    },
+    {
+      "id": "power.consecrated_harrier_lure",
+      "type": "class_power",
+      "name": {
+        "fr": "Leurre",
+        "en": "False vision"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Il attire sa proie là où il l'attend.\n\nEn jeu\n• Pouvoir magique : comme leurre (fausse vision), autant de fois par jour que son modificateur de Sagesse (au moins 1). Les effets sont toujours centrés sur lui."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, @ability.wis.mod)",
+      "note": "Sort de référence : spell.false_vision (« Leurre »)."
+    },
+    {
+      "id": "power.consecrated_harrier_relentless_hunt",
+      "type": "class_power",
+      "name": {
+        "fr": "Chasse implacable",
+        "en": "Relentless hunt"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Une proie blessée ne lui échappe plus.\n\nEn jeu\n• Capacité surnaturelle : s'il blesse sa proie et qu'elle fuit, il connaît sa direction et sa distance approximative (à 10 % près), et la repère précisément à moins de 15 m.\n• Même plan d'existence requis. Plusieurs cibles à la fois, à condition qu'elles concernent sa mission."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.consecrated_harrier_unerring_hunt",
+      "type": "class_power",
+      "name": {
+        "fr": "Chasse infaillible",
+        "en": "Unerring hunt"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Rien ne cache sa proie, pas même la frontière des plans.\n\nEn jeu\n• Capacité surnaturelle : améliore une chasse implacable en cours ; il détecte sa proie au-delà des frontières entre les plans.\n• Une seule chasse infaillible à la fois, sur un seul individu ; il renonce aux autres chasses infaillibles."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.consecrated_harrier_code_of_conduct",
+      "type": "class_power",
+      "name": {
+        "fr": "Code de conduite",
+        "en": "Code of conduct"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "consecrated_harrier"
+      ],
+      "description": {
+        "fr": "Il agit à visage découvert.\n\nEn jeu\n• Il doit se présenter à sa cible et annoncer pourquoi il vient, avant de l'abattre : sinon pas d'attaque sournoise ni de meurtre, même sur un champ de bataille.\n• S'il enfreint le code, il doit faire pénitence (sort pénitence) avant de gagner un niveau de plus dans la classe.\n• Un paladin peut devenir traqueur consacré et continuer à progresser comme paladin."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.consecrated_harrier_spells",
+        "power.consecrated_harrier_scripture_blessing",
+        "power.consecrated_harrier_detect_chaos",
+        "power.consecrated_harrier_code_of_conduct"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.consecrated_harrier_sanctified_vision"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.consecrated_harrier_dispel_magic"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.consecrated_harrier_crushing_despair"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.consecrated_harrier_lure"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.consecrated_harrier_relentless_hunt"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.consecrated_harrier",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.consecrated_harrier_unerring_hunt"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.consecrated_harrier",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    }
+  ]
+}

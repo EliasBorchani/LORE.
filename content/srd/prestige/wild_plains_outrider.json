@@ -1,0 +1,225 @@
+{
+  "entities": [
+    {
+      "id": "class.wild_plains_outrider",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Cavalier des steppes",
+        "en": "Wild Plains Outrider"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "nature",
+        "martial",
+        "mount"
+      ],
+      "description": {
+        "fr": "Les plaines n'accordent aucun repos : nomades, caravanes et armées engagent des cavaliers d'escorte qui ne s'arrêtent jamais. Le cavalier des steppes et sa monture pensent ensemble, couvrent des centaines de kilomètres en une semaine et chargent d'un même élan une bande de gobelins.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : Équitation 9 rangs ; Combat monté, Pistage ; un compagnon animal pouvant servir de monture ou un destrier de paladin.\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Connaissances (nature), Déplacement silencieux, Détection, Dressage, Équilibre, Équitation, Natation, Perception auditive, Saut, Survie.\n• Aptitudes : bonus d'Équitation (niveau de classe), compagnon animal/destrier de paladin, traqueur des steppes (1) ; célérité des steppes (2) ; combattant des steppes (3).\n• Un paladin qui prend cette classe peut continuer à progresser comme paladin."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@skill.ride.ranks >= 9 and has('feat.mounted_combat') and has('feat.track')",
+      "note": "Conditions dans la formule : Équitation, Combat monté, Pistage. En texte seulement : un compagnon animal pouvant servir de monture ou un destrier de paladin. Nom anglais : Wild Plains Outrider."
+    },
+    {
+      "id": "power.wild_plains_outrider_riding_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus d'Équitation",
+        "en": "Riding bonus"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "wild_plains_outrider"
+      ],
+      "description": {
+        "fr": "Il passe plus de temps en selle qu'à terre : cavalier et monture n'ont plus qu'un seul corps, aussi sûr au galop qu'au pas.\n\nEn jeu\n• Bonus d'aptitude égal à son niveau de classe à tous ses tests d'Équitation.\n• Même bonus à ses tests de Dressage avec son compagnon animal (s'il lui sert de monture) ou son destrier de paladin."
+      },
+      "effects": [
+        {
+          "target": "skill.ride",
+          "op": "add",
+          "value": "level('class.wild_plains_outrider')",
+          "bonusType": "competence"
+        }
+      ],
+      "note": "Bonus de Dressage avec la monture seulement : pas de situation pour ça, à ajouter à la main."
+    },
+    {
+      "id": "power.wild_plains_outrider_mount",
+      "type": "class_power",
+      "name": {
+        "fr": "Compagnon animal / destrier de paladin",
+        "en": "Animal companion/paladin mount"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "wild_plains_outrider"
+      ],
+      "description": {
+        "fr": "Sa monture est la meilleure de la plaine et lui doit autant qu'il lui doit.\n\nEn jeu\n• Ses niveaux de cavalier des steppes s'ajoutent à son niveau de druide effectif (niveau de druide, ou moitié du niveau de rôdeur) pour les capacités de son compagnon animal.\n• Avec des niveaux de paladin, ils s'ajoutent à son niveau de paladin effectif pour son destrier.\n• Avec les deux, il choisit une fois pour toutes quelle monture en profite."
+      },
+      "effects": [
+        {
+          "target": "animal_companion.level",
+          "op": "add",
+          "value": "level('class.wild_plains_outrider')"
+        }
+      ],
+      "note": "Le destrier de paladin n'est pas modélisé : seul le niveau du compagnon animal est augmenté. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.wild_plains_outrider_steppe_stalker",
+      "type": "class_power",
+      "name": {
+        "fr": "Traqueur des steppes",
+        "en": "Plains stalker"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "wild_plains_outrider"
+      ],
+      "description": {
+        "fr": "La monture avance sans bruit et sans se faire voir, parce que c'est le cavalier qui parle pour elle.\n\nEn jeu\n• Pour les tests de Déplacement silencieux et de Discrétion de sa monture, on utilise les rangs du cavalier, avec la taille, la Dextérité, le malus d'armure et les autres modificateurs de la monture."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.wild_plains_outrider_steppe_speed",
+      "type": "class_power",
+      "name": {
+        "fr": "Célérité des steppes",
+        "en": "Plains speed"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "wild_plains_outrider"
+      ],
+      "description": {
+        "fr": "Sous lui, la monture donne ce que d'autres cavaliers n'obtiennent qu'au fouet.\n\nEn jeu\n• Niveau 2 : sa monture a une vitesse de base accrue de 3 m.\n• S'applique à tous les modes de déplacement qu'elle maîtrise : vol, escalade, nage."
+      },
+      "effects": [],
+      "note": "Bonus de vitesse de la monture : pas sur la fiche du personnage. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.wild_plains_outrider_steppe_fighter",
+      "type": "class_power",
+      "name": {
+        "fr": "Combattant des steppes",
+        "en": "Plains fighter"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "wild_plains_outrider"
+      ],
+      "description": {
+        "fr": "Quand la monture se contente de trotter, le cavalier a déjà dégainé : la charge ne coûte rien à son bras.\n\nEn jeu\n• Niveau 3 : attaque à outrance au corps à corps tant que sa monture n'a fait qu'une action de mouvement dans le round."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.wild_plains_outrider",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.wild_plains_outrider_riding_bonus",
+        "power.wild_plains_outrider_mount",
+        "power.wild_plains_outrider_steppe_stalker"
+      ]
+    },
+    {
+      "classId": "class.wild_plains_outrider",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.wild_plains_outrider_steppe_speed"
+      ]
+    },
+    {
+      "classId": "class.wild_plains_outrider",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.wild_plains_outrider_steppe_fighter"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.wild_plains_outrider",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    }
+  ]
+}

@@ -41,7 +41,7 @@ describe('cardOf', () => {
   it('shows a spell by its school, levels and short facts', () => {
     const fireball = card('spell.fireball')
     expect(fireball.kicker).toBe('Évocation [feu]')
-    expect(fact('spell.fireball', 'Niveaux')).toMatch(/Magicien 3/)
+    expect(fact('spell.fireball', 'Niveaux')).toMatch(/^3 : .*Magicien/)
     expect(fact('spell.fireball', 'Portée')).toBe('Longue')
     expect(fact('spell.fireball', 'Jet de sauvegarde')).toBe('Réflexes, 1/2 dégâts')
   })

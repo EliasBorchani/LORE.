@@ -1,0 +1,277 @@
+{
+  "entities": [
+    {
+      "id": "class.spellsword",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Magelame",
+        "en": "Spellsword"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "arcane"
+      ],
+      "description": {
+        "fr": "Il rêve d'être mage et escrimeur à la fois, et il y arrive. Le magelame apprend à lancer ses sorts sous l'armure, puis à les glisser dans sa lame pour qu'ils éclatent au premier coup porté. Les mages le craignent pour son acier, les guerriers pour sa magie : il voyage donc souvent seul.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +4 ; 5 rangs en Connaissances (mystères) ; lancer des sorts profanes de niveau 2 ; formé à toutes les armes courantes et de guerre et à toutes les armures ; avoir vaincu un adversaire à l'arme, sans lancer de sort.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Concentration, Connaissances (toutes), Escalade, Profession, Saut.\n• Sorts : +1 niveau de lanceur profane aux niveaux impairs (1 à 9), pour une classe profane dont il maîtrise le niveau 2.\n• Aptitudes : réduction du risque d'échec des sorts 10 % (1), 15 % (3), 20 % (5), 25 % (7), 30 % (9) ; don supplémentaire (2) ; canalisation de sort 3/jour (4), 4/jour (6), 5/jour (8) ; canalisations multiples (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 4 and @skill.knowledge_arcana.ranks >= 5",
+      "note": "Conditions en formule : bonus de base à l'attaque et rangs. Sorts profanes de niveau 2, formations aux armes et armures et victoire à l'arme sans sort : texte seulement. Dé de vie d8 lu sur la page (PDF 64). Les niveaux de lanceur se choisissent dans la fiche de niveau, rien dans les lignes de la table."
+    },
+    {
+      "id": "power.spellsword_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spellsword"
+      ],
+      "description": {
+        "fr": "Chaque leçon d'escrime le rapproche d'un art de lanceur plus complet.\n\nEn jeu\n• Aux niveaux impairs : +1 niveau effectif de lanceur de sorts dans une classe profane déjà acquise dont il maîtrise le niveau 2 (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.spellsword_spell_failure_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction du risque d'échec des sorts",
+        "en": "Reduced arcane spell failure"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spellsword"
+      ],
+      "description": {
+        "fr": "Un entraînement long pour que la plaque ne gêne plus les gestes.\n\nEn jeu\n• Capacité extraordinaire : le risque d'échec des sorts profanes en armure ou avec un bouclier baisse de 10 points au niveau 1, puis de 5 de plus à chaque niveau impair, jusqu'à 30 points au niveau 9.\n• Exemple : écailles et rondache (30 %) passent à 20 % au niveau 1."
+      },
+      "effects": [],
+      "note": "Risque d'échec des sorts : le modèle n'applique pas encore de réduction (spell_failure.arcane). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.spellsword_bonus_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don supplémentaire",
+        "en": "Bonus feat"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spellsword"
+      ],
+      "description": {
+        "fr": "Au niveau 2, il affine son art.\n\nEn jeu\n• Un don de métamagie ou un don de la liste des dons supplémentaires du guerrier, au choix.\n• Il garde toutes ses conditions.\n• Ce don s'ajoute aux dons gagnés par le niveau."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.spellsword_bonus",
+          "op": "add",
+          "value": 1
+        }
+      ],
+      "note": "Emplacement de don feat_slots.spellsword_bonus : la liste (métamagie et dons supplémentaires du guerrier) n'est pas encore filtrée par le modèle."
+    },
+    {
+      "id": "power.spellsword_spellstrike",
+      "type": "class_power",
+      "name": {
+        "fr": "Canalisation de sort",
+        "en": "Spellstrike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spellsword"
+      ],
+      "description": {
+        "fr": "Le sort quitte la main et entre dans la lame, en attendant son heure.\n\nEn jeu\n• Magique : action de mouvement, il verse dans son arme de corps à corps un sort qu'il peut lancer (préparé ou emplacement dépensé).\n• Le sort frappe la prochaine créature touchée avec cette arme ; elle a droit à sa résistance à la magie et à ses jets de sauvegarde. Sorts de zone ou de rayon : seule la créature touchée est affectée.\n• Perdu s'il n'est pas utilisé en 8 heures. Pas d'autre canalisation tant que le premier sort n'est pas utilisé ou dissipé.\n• Utilisations : 3 par jour au niveau 4, 4 au niveau 6, 5 au niveau 8."
+      },
+      "effects": [],
+      "usesPerDay": "3 + (if(level('class.spellsword') >= 6, 1, 0)) + (if(level('class.spellsword') >= 8, 1, 0))",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.spellsword_multiple_spellstrike",
+      "type": "class_power",
+      "name": {
+        "fr": "Canalisations multiples",
+        "en": "Multiple spellstrike"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "spellsword"
+      ],
+      "description": {
+        "fr": "Deux sorts dans une seule lame.\n\nEn jeu\n• Magique, niveau 10 : il canalise jusqu'à deux sorts dans son arme de corps à corps.\n• Il active deux fois la canalisation de sort (deux actions de mouvement, deux utilisations quotidiennes).\n• Les deux effets se déclenchent sur la prochaine créature touchée, dans l'ordre où ils ont été placés."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.spellsword",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.spellsword_spells",
+        "power.spellsword_spell_failure_reduction"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.spellsword_bonus_feat"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.spellsword_spells",
+        "power.spellsword_spell_failure_reduction"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.spellsword_spellstrike"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.spellsword_spells",
+        "power.spellsword_spell_failure_reduction"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.spellsword_spellstrike"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.spellsword_spells",
+        "power.spellsword_spell_failure_reduction"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.spellsword_spellstrike"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.spellsword_spells",
+        "power.spellsword_spell_failure_reduction"
+      ]
+    },
+    {
+      "classId": "class.spellsword",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.spellsword_multiple_spellstrike"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.spellsword",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.spellsword",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.spellsword",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.spellsword",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.spellsword",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.spellsword",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

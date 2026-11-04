@@ -1,0 +1,597 @@
+{
+  "entities": [
+    {
+      "id": "spell.torment",
+      "type": "spell",
+      "name": {
+        "fr": "Supplice",
+        "en": "Torment"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une sangsue se tortille entre les doigts du wu jen, et une douleur sans cause visible s'abat sur tout un groupe d'ennemis : chaque geste leur coûte.\n\nEn jeu\n• Cibles : jusqu'à 1 DV de créatures par niveau de lanceur, toutes à 6 m au plus les unes des autres.\n• Malus de –4 aux jets d'attaque, aux tests de compétence et aux tests de caractéristique pendant 1 minute.\n• Vigueur réussi : le malus tombe à –2.\n• Composante : une sangsue vivante."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "jusqu'à 1 DV de créatures/niveau, toutes à 6 m au plus les unes des autres",
+        "duration": "1 minute",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.giant_size",
+      "type": "spell",
+      "name": {
+        "fr": "Taille de géant",
+        "en": "Giant Size"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le wu jen grandit jusqu'à dominer les arbres, et tout ce qu'il porte grandit avec lui. Plus sa magie est puissante, plus il peut monter haut.\n\nEn jeu\n• Le lanceur choisit une taille parmi celles que son niveau de lanceur permet (il peut toujours prendre plus petit).\n• Niveau 1–15 : Très Grand (6 m) ; For +16, Dex –2, Con +4, armure naturelle +3, –2 à la CA et aux attaques, espace/allonge 4,50 m.\n• Niveau 17–18 : Gigantesque (12 m) ; For +24, Dex –2, Con +8, armure naturelle +7, –4 à la CA et aux attaques, espace/allonge 6 m.\n• Niveau 19 et plus : Colossal (21,6 m) ; For +32, Dex –2, Con +12, armure naturelle +12, –8 à la CA et aux attaques, espace/allonge 9 m.\n• Sur la fiche : seule la taille Très Grand est comptée.\n• L'équipement change de taille aussi : armes et objets magiques restent utilisables, avec les dégâts d'armes de la nouvelle taille.\n• Dure 1 minute. Composante : une écaille de dragon ou des cheveux de géant."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 32,
+          "bonusType": "size",
+          "condition": "active('toggle.giant_size')",
+          "status": "draft",
+          "note": "Taille C ; pas de Superspell"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 16,
+          "bonusType": "size",
+          "condition": "active('toggle.giant_size')",
+          "status": "draft",
+          "note": "Taille C ; pas de Superspell"
+        }
+      ],
+      "note": "Effets repris du catalogue de test de Danalieth (règle des sorts déjà présents) : palier Colossal, +32 en Force et +16 en Constitution, sans les autres changements de taille (accord du MJ). Les paliers du livre (Très Grand, Gigantesque, Colossal) restent dans le texte. Le champ tableValue n'est pas permis sur un sort, donc le joueur ne peut pas choisir le palier."
+    },
+    {
+      "id": "spell.tiny_size",
+      "type": "spell",
+      "name": {
+        "fr": "Taille de nain",
+        "en": "Tiny Size"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le wu jen rétrécit jusqu'à tenir dans une main, puis sur un ongle. Petit, il se glisse partout et devient très difficile à toucher.\n\nEn jeu\n• Le lanceur choisit une taille parmi celles que son niveau de lanceur permet (il peut toujours prendre plus grand).\n• Niveau 15–16 : Très Petit (45 cm) ; For –8, Dex +4, Con –2, +2 à la CA et aux attaques, espace 75 cm, allonge 0 m.\n• Niveau 17–18 : Minuscule (22,5 cm) ; For –10, Dex +6, Con –2, +4 à la CA et aux attaques, espace 30 cm, allonge 0 m.\n• Niveau 19 et plus : Infime (7,5 cm) ; For –10, Dex +8, Con –2, +8 à la CA et aux attaques, espace 15 cm, allonge 0 m.\n• Sur la fiche : seule la taille Très Petit est comptée.\n• Aucune caractéristique ne descend sous 1. L'équipement rétrécit avec lui et reste utilisable.\n• Dure 1 minute. Composante : une puce."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute"
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": -8,
+          "bonusType": "size",
+          "condition": "active('toggle.tiny_size')"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "size",
+          "condition": "active('toggle.tiny_size')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": -2,
+          "bonusType": "size",
+          "condition": "active('toggle.tiny_size')"
+        },
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 2,
+          "bonusType": "size",
+          "condition": "active('toggle.tiny_size')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 2,
+          "bonusType": "size",
+          "condition": "active('toggle.tiny_size')"
+        }
+      ],
+      "note": "Les effets portent la taille Très Petit (toujours disponible) ; Minuscule et Infime restent en texte. Le champ tableValue n'est pas permis sur un sort, donc le joueur ne peut pas choisir le palier. La table du livre imprime « 15 cm/9 m » pour Infime : allonge lue 0 m (coquille probable)."
+    },
+    {
+      "id": "spell.animated_tattoos",
+      "type": "spell",
+      "name": {
+        "fr": "Tatouages animés",
+        "en": "Animated Tattoos"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les serpents tatoués sur les bras du wu jen se décollent de sa peau et filent comme des flèches vers leurs proies, crocs en avant.\n\nEn jeu\n• Une ou deux cibles à portée moyenne ; les serpents touchent toujours.\n• Chaque serpent inflige 3d6 points de dégâts à l'impact.\n• Venin : 1d6 points d'affaiblissement temporaire de Constitution tout de suite, puis 1d6 de nouveau 1 minute plus tard ; un jet de Vigueur annule chaque fois.\n• Les serpents reviennent ensuite : le lanceur doit les avaler (action simple, sans danger ni attaque d'opportunité) avant de relancer le sort.\n• Focaliseur : deux tatouages de serpents sur les avant-bras."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 ou 2 créatures",
+        "duration": "instantanée ; voir description",
+        "savingThrow": "Vigueur, partiel ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.anticipate_teleportation",
+      "type": "spell",
+      "name": {
+        "fr": "Téléportation anticipée",
+        "en": "Anticipate Teleportation"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un minuscule sablier tinte au moment où quelqu'un tente d'apparaître près du protégé : celui-ci sait où, qui et combien, et l'intrus arrive en retard.\n\nEn jeu\n• Émanation de 1,50 m de rayon par niveau autour de la créature touchée, pendant 1 heure/niveau.\n• Toute téléportation (sort ou effet du registre téléportation) qui arrive dans la zone est connue d'avance : point d'arrivée, taille de la créature, nombre et taille de ses compagnons.\n• L'arrivée est retardée de 1 round (juste avant le prochain tour de l'intrus, qui ne s'en rend pas compte) : le protégé et ceux qu'il prévient ont 1 round pour se préparer.\n• Une créature qui visait la zone mais arrive ailleurs est quand même retardée, sans que son point d'arrivée soit connu.\n• Aucun effet sur les départs depuis la zone.\n• Focaliseur : un sablier de platine et de cristal (500 po), tenu ou porté par le sujet."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, F",
+        "castingTime": "1 round",
+        "range": "1 créature consentante touchée",
+        "area": "émanation de 1,50 m de rayon/niveau, centrée sur la créature touchée",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_anticipate_teleportation",
+      "type": "spell",
+      "name": {
+        "fr": "Téléportation anticipée suprême",
+        "en": "Anticipate Teleportation, Greater"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "La version longue et plus fine de l'alarme : elle veille toute une journée, révèle aussi la nature des arrivants et les fait patienter bien plus longtemps.\n\nEn jeu\n• Comme téléportation anticipée, avec ces différences :\n• Révèle aussi le type de créature de l'arrivant et de ses compagnons.\n• L'arrivée est retardée de 3 rounds au lieu de 1.\n• Incantation de 10 minutes ; dure 24 heures.\n• Focaliseur : un sablier de platine et de cristal rempli de poussière de diamant (1 000 po), tenu ou porté par le sujet."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, F",
+        "castingTime": "10 minutes",
+        "range": "1 créature consentante touchée",
+        "area": "émanation de 1,50 m de rayon/niveau, centrée sur la créature touchée",
+        "duration": "24 heures",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Le livre n'imprime que l'école, le niveau, le temps d'incantation et la durée ; les autres lignes viennent de téléportation anticipée."
+    },
+    {
+      "id": "spell.creeping_darkness",
+      "type": "spell",
+      "name": {
+        "fr": "Ténèbres vivantes",
+        "en": "Creeping Darkness"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un nuage d'encre se forme et rampe là où le wu jen le pousse, avalant la lumière, le bruit et les voix de ceux qu'il engloutit.\n\nEn jeu\n• Nuage de 6 m de rayon et 6 m de haut, déplaçable de 6 m par round tant que le lanceur se concentre et que le nuage reste à portée ; il flotte et passe par les plus petits trous.\n• Dedans : les créatures sont aveuglées (vision dans le noir comprise) et assourdies, ne peuvent pas parler ni lancer de sorts à composante verbale.\n• Une créature entièrement dans le nuage a un camouflage total.\n• Vent modéré (15 km/h) : dispersé en 5 rounds ; vent violent (30 km/h) : en 2 rounds.\n• Dure 3 rounds/niveau. Composantes : un poil de moustache de vieux chat noir et un flacon de fumée d'une nuit sans lune."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "obscurité"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "nuage de 6 m de rayon et 6 m de haut (F)",
+        "duration": "3 rounds/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.assay_spell_resistance",
+      "type": "spell",
+      "name": {
+        "fr": "Test de résistance",
+        "en": "Assay Spell Resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un regard suffit au lanceur pour lire les failles des protections magiques d'une créature, et viser droit dedans.\n\nEn jeu\n• Action rapide ; le lanceur doit voir la créature visée au moment de l'incantation.\n• Bonus de +10 aux tests de niveau de lanceur pour vaincre la résistance à la magie de cette seule créature.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [
+        {
+          "target": "spell.caster_level_vs_sr",
+          "op": "add",
+          "value": 10,
+          "bonusType": "untyped",
+          "scope": "spell",
+          "condition": "active('toggle.assay_spell_resistance')"
+        }
+      ],
+      "note": "Le bonus ne vaut que contre la créature choisie : l'interrupteur s'allume pour elle."
+    },
+    {
+      "id": "spell.ice_knife",
+      "type": "spell",
+      "name": {
+        "fr": "Trait de glace",
+        "en": "Ice Knife"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation",
+        "wu_jen_water"
+      ],
+      "description": {
+        "fr": "Une lame de glace se forme dans la main du lanceur et part comme un carreau ; si elle manque, elle éclate en une pluie d'éclats gelés.\n\nEn jeu\n• Attaque à distance normale, avec +2 au jet d'attaque tous les deux niveaux de lanceur.\n• Touché : 2d8 points de dégâts de froid et 2 points d'affaiblissement temporaire de Dextérité (Vigueur annule l'affaiblissement ; aucun affaiblissement pour une créature immunisée contre le froid).\n• Raté : explosion de 3 m de rayon là où le trait retombe (comme une arme de jet ratée), 1d8 points de dégâts de froid (Réflexes, moitié).\n• Composante : une goutte d'eau ou un morceau de glace."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "froid"
+        ],
+        "components": "G, M",
+        "castingTime": "1 action simple",
+        "range": "longue (120 m + 12 m/niveau)",
+        "effect": "1 projectile de glace",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d8 cold",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.imbue_familiar_with_spell_ability",
+      "type": "spell",
+      "name": {
+        "fr": "Transfert de sorts au familier",
+        "en": "Imbue Familiar with Spell Ability"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Le mage confie une partie de son arsenal à son familier, qui pourra lancer ces sorts lui-même, au bon moment, sans attendre son maître.\n\nEn jeu\n• Un sort transféré par tranche de 3 niveaux de lanceur ; niveau de sort maximum = niveau de lanceur / 3, arrondi à l'inférieur (5 au plus). Plusieurs lancers ne dépassent pas ces limites.\n• Ensorceleur : il transfère des sorts connus ; magicien : des sorts préparés.\n• Le familier lance les sorts avec le niveau de lanceur du mage ; les emplacements (celui de ce sort et ceux des sorts transférés) restent pris jusqu'à ce que le familier les utilise ou meure.\n• Dissipé : les sorts sont perdus comme s'ils avaient été lancés. En zone d'antimagie, le familier ne peut pas les lancer, mais les retrouve en sortant si la durée court encore.\n• Le mage doit avoir les composantes et focaliseurs au moment où le familier lance ; le coût en PX est pris sur le mage.\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le familier touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.transmute_rock_to_lava",
+      "type": "spell",
+      "name": {
+        "fr": "Transmutation de la pierre en lave",
+        "en": "Transmute Rock to Lava"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La roche brute rougit, s'affaisse et se met à couler. Ceux qui se tenaient dessus doivent sauter vite, ou cuire.\n\nEn jeu\n• Change un cube de 3 m de pierre naturelle en lave (pas de roche magique ni de pierre taillée).\n• Réflexes réussi et sortie de la zone avant son prochain tour : 2d6 points de dégâts de feu ; sinon 20d6 points de dégâts de feu par round passé dans la lave.\n• Dans la lave : vitesse 1,50 m, –2 aux attaques et à la CA ; après en être sorti, demi-dégâts (1d6 ou 10d6) pendant 1d3 rounds.\n• Sur un plafond : pluie de lave (2d6 feu + 1d6 contondants, Réflexes moitié) puis bassin de 4,50 m de rayon qui inflige 2d6 de feu pendant 1d3 rounds à ceux qui en sortent.\n• Sur les fondations d'un bâtiment : 10d6 de feu par round à la partie en contact ; le bois s'enflamme.\n• La lave ne blesse plus après 2d6 heures ; le cœur peut rester en fusion bien plus longtemps."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "feu",
+          "terre"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "cube de 3 m de côté",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts ; voir description",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "20d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.cobra_venom",
+      "type": "spell",
+      "name": {
+        "fr": "Venin du cobra",
+        "en": "Cobra Venom"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_water"
+      ],
+      "description": {
+        "fr": "La salive du wu jen tourne au poison et il la crache en un jet large, comme un cobra cracheur.\n\nEn jeu\n• Cône de 3 m.\n• Vigueur ou 1d3 points d'affaiblissement temporaire de Constitution ; pas d'effet secondaire.\n• Le lanceur est insensible à ce poison.\n• Composante : un croc de cobra."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "G, M",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "cône",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.toad_venom",
+      "type": "spell",
+      "name": {
+        "fr": "Venin du crapaud",
+        "en": "Toad Venom"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "La peau du wu jen se couvre d'un suc âcre, comme celle d'un crapaud : un simple contact suffit à empoisonner.\n\nEn jeu\n• Attaque de contact au corps à corps.\n• Poison : 1d6 points d'affaiblissement temporaire de Constitution tout de suite, puis 1d6 de nouveau 1 minute plus tard ; un jet de Vigueur annule chaque fois.\n• Focaliseur : un tatouage de crapaud."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature vivante touchée",
+        "duration": "instantanée ; voir description",
+        "savingThrow": "Vigueur, annule ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.mass_darkvision",
+      "type": "spell",
+      "name": {
+        "fr": "Vision dans le noir de groupe",
+        "en": "Darkvision, Mass"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "D'un geste, le mage ouvre les yeux de tout son groupe sur le noir complet.\n\nEn jeu\n• Comme vision dans le noir (18 m), pour le lanceur et tous ses alliés dans un rayon de 3 m.\n• Dure 1 heure/niveau ; ne peut pas être rendu permanent.\n• Composante : une carotte séchée ou trois petites agates."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "target": "le lanceur et ses alliés dans un rayonnement de 3 m de rayon centré sur lui",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18,
+          "condition": "active('toggle.mass_darkvision')"
+        }
+      ],
+      "note": "Le livre imprime « Temps d'incantation : V, G, M » (ligne Composantes manquante) : composantes V, G, M, temps d'incantation supposé 1 action simple."
+    },
+    {
+      "id": "spell.low_light_vision",
+      "type": "spell",
+      "name": {
+        "fr": "Vision nocturne",
+        "en": "Low-Light Vision"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une flamme de chandelle danse un instant dans les yeux du sujet ; ensuite, la lune lui suffit pour y voir comme en plein jour.\n\nEn jeu\n• La cible gagne la vision nocturne : elle voit deux fois plus loin qu'un humain sous faible éclairage (étoiles, lune, torche), couleurs et détails compris.\n• Dure 1 heure/niveau. Composante profane : une chandelle."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, M",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true",
+          "condition": "active('toggle.low_light_vision')"
+        }
+      ]
+    },
+    {
+      "id": "spell.mass_fly",
+      "type": "spell",
+      "name": {
+        "fr": "Vol de groupe",
+        "en": "Fly, Mass"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Toute une compagnie quitte le sol d'un même élan, à condition de rester groupée.\n\nEn jeu\n• Comme vol, sur 1 créature par niveau, toutes à 9 m au plus les unes des autres.\n• Un sujet qui s'éloigne à plus de 9 m de tous les autres perd le sort ; s'ils ne sont que deux, tous deux le perdent.\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, toutes à 9 m au plus les unes des autres",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.backbiter",
+      "type": "spell",
+      "name": {
+        "fr": "Volte-face",
+        "en": "Backbiter"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie",
+        "wu_jen_wood"
+      ],
+      "description": {
+        "fr": "Le manche de l'arme ennemie se tord en silence. Au premier coup porté, elle fait demi-tour et frappe celui qui la tient.\n\nEn jeu\n• Cible : une arme à deux mains ou à allonge à manche de bois, maniée à deux mains ou comme arme à allonge (une arme trop petite pour son porteur ne marche pas).\n• À la prochaine attaque au corps à corps, l'arme frappe son porteur : le jet d'attaque se fait contre sa propre CA.\n• Le porteur ne peut ni réduire les dégâts volontairement ni les rendre non létaux ; sa réduction des dégâts s'applique. Il n'est pas prévenu.\n• Le sort prend fin après cette attaque, touchée ou non, ou au bout de 1 round/niveau.\n• Arme magique : jet de Volonté (son bonus de base ou celui du porteur, au choix).\n• Focaliseur : une dague."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "une arme",
+        "duration": "1 round/niveau ou jusqu'à utilisation",
+        "savingThrow": "Volonté, annule ; voir description",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": []
+    }
+  ]
+}

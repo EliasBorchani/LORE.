@@ -1,0 +1,597 @@
+{
+  "entities": [
+    {
+      "id": "class.bloodhound",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Limier professionnel",
+        "en": "Bloodhound"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "skills"
+      ],
+      "prerequisite": "@bab >= 4 and @skill.move_silently.ranks >= 4 and @skill.gather_information.ranks >= 4 and @skill.survival.ranks >= 4 and has('feat.endurance') and has('feat.track')",
+      "description": {
+        "fr": "Quand les soldats du roi échouent, on envoie chercher le limier. Il pourchasse les malfaiteurs sur des lieues, les assomme plutôt que de les tuer et les ramène à la justice, pour l’argent, pour la vengeance ou par principe. Une fois le contrat accepté, il ne le lâche plus.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : bonus de base à l’attaque +4 ; 4 rangs en Déplacement silencieux, 4 en Renseignements, 4 en Survie ; dons Endurance et Pistage.\n• Formé aux armes courantes et de guerre, aux armures légères.\n• Compétences de classe : Bluff, Crochetage, Déguisement, Déplacement silencieux, Détection, Diplomatie, Discrétion, Équitation, Escalade, Fouille, Intimidation, Maîtrise des cordes, Natation, Perception auditive, Premiers secours, Psychologie, Renseignements, Saut, Survie.\n• Aptitudes : cible désignée, pistage accéléré (1) ; frappe non-létale, sur le qui-vive (2) ; ramenez-les vivants, traqueur infatigable (3) ; acharnement du chasseur, furtivité du vent (4) ; attaque handicapante, pistage sans traces (5) ; détection de l’invisibilité, esprit opaque (6) ; localisation de créature (7) ; liberté de mouvement (8) ; odorat (9) ; orientation (10)."
+      },
+      "hitDie": 10,
+      "skillPoints": 6,
+      "note": "Conditions en formule : bonus de base, rangs, Endurance, Pistage. Dé de vie d10 et 6 points de compétence lus sur la page (PDF 49). Noms anglais à confirmer : Hasty tracking, Nonlethal strike, On your toes, Bring 'em back alive, Tireless tracker, Hunter's tenacity, Wind step, Trackless tracking, Mind veil. Cibles désignées multiples et bonus de la cible : toggle unique."
+    },
+    {
+      "id": "power.bloodhound_quarry",
+      "type": "class_power",
+      "name": {
+        "fr": "Cible désignée",
+        "en": "Quarry"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Quelques minutes à fixer un visage ou un portrait, et la proie est choisie : le limier ne la lâchera plus.\n\nEn jeu\n• Désigner une cible : se concentrer 10 minutes sur un humanoïde ou humanoïde monstrueux en vue, ou sur son portrait ou sa description. Toute interruption oblige à recommencer.\n• Bonus d’intuition égal à son niveau de classe aux tests de Détection, Fouille, Perception auditive et Survie pour suivre les déplacements de la cible.\n• 1 cible au niveau 1, puis une de plus tous les 3 niveaux (4 cibles au niveau 10), toutes désignées en même temps.\n• Choisir une nouvelle cible avant d’avoir capturé la précédente : elle perd son statut, et le limier perd les PX qu’il aurait gagnés en la vainquant (une fois par semaine). Abandonner une cible fait perdre toutes les autres."
+      },
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": "level('class.bloodhound')",
+          "condition": "active('toggle.bloodhound_quarry')"
+        },
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": "level('class.bloodhound')",
+          "condition": "active('toggle.bloodhound_quarry')"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": "level('class.bloodhound')",
+          "condition": "active('toggle.bloodhound_quarry')"
+        },
+        {
+          "target": "skill.survival",
+          "op": "add",
+          "value": "level('class.bloodhound')",
+          "condition": "active('toggle.bloodhound_quarry')"
+        }
+      ],
+      "note": "Les bonus valent pour les tests visant à suivre la cible : le toggle les suppose."
+    },
+    {
+      "id": "power.bloodhound_hasty_tracking",
+      "type": "class_power",
+      "name": {
+        "fr": "Pistage accéléré",
+        "en": "Hasty tracking"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Il file sur la piste sans ralentir, là où d’autres avancent à tâtons.\n\nEn jeu\n• Se déplace à sa vitesse normale en suivant une piste (comme l’aptitude du rôdeur)."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bloodhound_nonlethal_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe non-létale",
+        "en": "Nonlethal strike"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Il sait frapper juste assez fort pour assommer, pas pour tuer : un prisonnier vaut plus cher.\n\nEn jeu\n• Infliger des dégâts non létaux avec une arme de corps à corps non prévue pour cela, sans le malus de -4 à l’attaque."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bloodhound_on_your_toes",
+      "type": "class_power",
+      "name": {
+        "fr": "Sur le qui-vive",
+        "en": "On your toes"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Il prépare son coup à l’avance : quand la proie se montrera, il sera déjà prêt.\n\nEn jeu\n• Prépare une action contre sa cible désignée même hors combat.\n• Si la cible déclenche l’action dans les 10 minutes, il l’exécute comme en plein combat (si elle est possible).\n• Si l’action n’est pas possible (cible trop loin, par exemple), elle est perdue."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bloodhound_bring_em_back_alive",
+      "type": "class_power",
+      "name": {
+        "fr": "Ramenez-les vivants",
+        "en": "Bring 'em back alive"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Un bon coup pour assommer, une corde, et la proie est livrée entière au juge.\n\nEn jeu\n• Quand un coup du limier réduit un adversaire à -2 pv ou moins, il peut décider que celui-ci tombe seulement à -1 pv.\n• Choix à faire tout de suite après le coup, avant toute autre action.\n• Impossible en rage."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bloodhound_tireless_tracker",
+      "type": "class_power",
+      "name": {
+        "fr": "Traqueur infatigable",
+        "en": "Tireless tracker"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Lancé sur une piste, il ne sent plus ni la fatigue ni les ampoules.\n\nEn jeu\n• Sur une cible désignée : +4 aux tests de Constitution contre les dégâts non létaux de la marche forcée.\n• Sur la piste d’une cible désignée : +3 m de vitesse (+6 m au niveau 6, +9 m au niveau 9), sans dépasser la vitesse de la cible. Se cumule avec les autres bonus de vitesse."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": "3 * floor(level('class.bloodhound') / 3)",
+          "condition": "active('toggle.bloodhound_quarry')"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le +4 aux tests de Constitution est en texte seulement."
+    },
+    {
+      "id": "power.bloodhound_hunters_tenacity",
+      "type": "class_power",
+      "name": {
+        "fr": "Acharnement du chasseur",
+        "en": "Hunter's tenacity"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Les ruses et les sorts de sa proie glissent sur sa volonté de la rattraper.\n\nEn jeu\n• Ajoute son bonus de Constitution (s’il est positif) à ses jets de Volonté contre les attaques spéciales et les sorts de sa cible désignée."
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": "max(0, @ability.con.mod)",
+          "situation": "situation.vs_designated_opponent"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bloodhound_wind_step",
+      "type": "class_power",
+      "name": {
+        "fr": "Furtivité du vent",
+        "en": "Wind step"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Il se glisse sur la piste sans ralentir le pas.\n\nEn jeu\n• Se déplace discrètement même pressé : plus de malus de -5 à vitesse normale pour Déplacement silencieux et Discrétion.\n• À la course : -10 au lieu de -20 (le -20 reste en charge ou en attaque)."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bloodhound_crippling_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque handicapante",
+        "en": "Crippling strike"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Des coups visés avec une précision cruelle : la proie perd de la force à chaque blessure.\n\nEn jeu\n• Contre sa cible désignée, une attaque (corps à corps ou à distance, à 9 m au plus) inflige en plus 2 points d’affaiblissement de Force.\n• Même règle que l’attaque handicapante du roublard."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bloodhound_trackless_tracking",
+      "type": "class_power",
+      "name": {
+        "fr": "Pistage sans traces",
+        "en": "Trackless tracking"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Un sort qui efface les traces ne suffit plus à lui échapper.\n\nEn jeu\n• Peut pister une créature protégée par passage sans traces ou un effet semblable, avec un malus de circonstances de -20 aux jets de Survie."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.bloodhound_see_invisibility",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection de l'invisibilité",
+        "en": "See invisibility"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Rien de ce qui est marqué ne se dérobe, même invisible.\n\nEn jeu\n• Comme le sort détection de l’invisibilité, actif en permanence, mais ne révèle que ses cibles désignées."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bloodhound_mind_veil",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit opaque",
+        "en": "Mind veil"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Les devins ont du mal à lire dans la tête d’un homme qui ne pense qu’à sa chasse.\n\nEn jeu\n• Résistance à la magie contre les divinations : 15 + niveau de classe.\n• Ne se cumule pas avec une autre résistance à la magie."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Résistance à la magie non modélisée."
+    },
+    {
+      "id": "power.bloodhound_locate_creature",
+      "type": "class_power",
+      "name": {
+        "fr": "Localisation de créature",
+        "en": "Locate creature"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Il sent où se cache sa proie, comme si une corde l’y reliait.\n\nEn jeu\n• Une fois par jour, comme le sort localisation de créature (niveau de lanceur : niveau de classe)."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.bloodhound_freedom_of_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Liberté de mouvement",
+        "en": "Freedom of movement"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Ni corde, ni toile, ni boue ne le retient quand la proie est proche.\n\nEn jeu\n• Agit normalement malgré les effets qui entravent les mouvements, comme sous liberté de mouvement.\n• Un nombre de rounds par jour égal à son bonus de Sagesse (au moins 1), en plusieurs fois si besoin."
+      },
+      "effects": [],
+      "note": "Rounds par jour non modélisés."
+    },
+    {
+      "id": "power.bloodhound_scent",
+      "type": "class_power",
+      "name": {
+        "fr": "Odorat",
+        "en": "Scent"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "À force de suivre des pistes, il flaire les proies comme un chien de chasse.\n\nEn jeu\n• Obtient le pouvoir d’odorat."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.bloodhound_find_the_path",
+      "type": "class_power",
+      "name": {
+        "fr": "Orientation",
+        "en": "Find the path"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "bloodhound"
+      ],
+      "description": {
+        "fr": "Même perdu au fond d’un marais, il retrouve la route qui mène à sa proie.\n\nEn jeu\n• Deux fois par jour, comme le sort orientation (niveau de lanceur : niveau de classe)."
+      },
+      "effects": [],
+      "usesPerDay": "2"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.bloodhound",
+      "level": 1,
+      "bab": 1,
+      "ref": 2,
+      "fort": 2,
+      "will": 0,
+      "grants": [
+        "power.bloodhound_quarry",
+        "power.bloodhound_hasty_tracking"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 2,
+      "bab": 2,
+      "ref": 3,
+      "fort": 3,
+      "will": 0,
+      "grants": [
+        "power.bloodhound_nonlethal_strike",
+        "power.bloodhound_on_your_toes"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 3,
+      "bab": 3,
+      "ref": 3,
+      "fort": 3,
+      "will": 1,
+      "grants": [
+        "power.bloodhound_bring_em_back_alive",
+        "power.bloodhound_tireless_tracker"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 4,
+      "bab": 4,
+      "ref": 4,
+      "fort": 4,
+      "will": 1,
+      "grants": [
+        "power.bloodhound_hunters_tenacity",
+        "power.bloodhound_wind_step"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 5,
+      "bab": 5,
+      "ref": 4,
+      "fort": 4,
+      "will": 1,
+      "grants": [
+        "power.bloodhound_crippling_strike",
+        "power.bloodhound_trackless_tracking"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 6,
+      "bab": 6,
+      "ref": 5,
+      "fort": 5,
+      "will": 2,
+      "grants": [
+        "power.bloodhound_see_invisibility",
+        "power.bloodhound_mind_veil"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 7,
+      "bab": 7,
+      "ref": 5,
+      "fort": 5,
+      "will": 2,
+      "grants": [
+        "power.bloodhound_locate_creature"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 8,
+      "bab": 8,
+      "ref": 6,
+      "fort": 6,
+      "will": 2,
+      "grants": [
+        "power.bloodhound_freedom_of_movement"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 9,
+      "bab": 9,
+      "ref": 6,
+      "fort": 6,
+      "will": 3,
+      "grants": [
+        "power.bloodhound_scent"
+      ]
+    },
+    {
+      "classId": "class.bloodhound",
+      "level": 10,
+      "bab": 10,
+      "ref": 7,
+      "fort": 7,
+      "will": 3,
+      "grants": [
+        "power.bloodhound_find_the_path"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.bloodhound",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    }
+  ]
+}

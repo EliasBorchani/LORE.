@@ -1,0 +1,617 @@
+{
+  "entities": [
+    {
+      "id": "class.vigilante",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Redresseur de torts",
+        "en": "Vigilante"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "skills",
+        "arcane",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Le crime lui a pris un proche, ou il en a trop commis lui-même : le redresseur de torts ne lâche plus une enquête. Il écoute la rumeur de la ville, relève les indices, interroge sans relâche, puis livre le coupable, parfois à la milice, parfois à sa façon. Quelques sorts discrets l’aident à voir, à convaincre et à ne pas se faire repérer.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non mauvais ; bonus de base à l’attaque +4 ; Fouille 4 rangs, Intimidation 4 rangs, Connaissances (folklore local) 8 rangs, Psychologie 8 rangs, Renseignements 8 rangs ; don Vigilance.\n• Formé aux armes courantes, aux armes de guerre et au filet ; aucune armure, aucun bouclier.\n• Sorts profanes spontanés de la liste du redresseur de torts, basés sur le Charisme, du niveau 1 au niveau 4.\n• Aptitudes : détection du Mal, sens de la rue +2 (1) ; châtiment des coupables 1/jour (2), 2/jour (6), 3/jour (10) ; fouille accélérée (3) ; communication avec les morts (4) ; cachette improvisée (5) ; sens de la rue +4 (7) ; ancre dimensionnelle (8) ; ardeur (9)."
+      },
+      "hitDie": 8,
+      "skillPoints": 6,
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "prerequisite": "@bab >= 4 and @skill.search.ranks >= 4 and @skill.intimidate.ranks >= 4 and @skill.knowledge_local.ranks >= 8 and @skill.sense_motive.ranks >= 8 and @skill.gather_information.ranks >= 8 and has('feat.alertness')",
+      "note": "Conditions dans la formule : bonus de base à l’attaque, rangs, don. En texte seulement : alignement non mauvais."
+    },
+    {
+      "id": "power.vigilante_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de redresseur de torts",
+        "en": "Vigilante spells"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Quelques formules bien choisies suffisent au redresseur de torts : de quoi se glisser inaperçu, déceler un mensonge ou retrouver un fuyard.\n\nEn jeu\n• Sorts profanes de la liste du redresseur de torts, lancés sans préparation, comme le barde.\n• Caractéristique : Charisme. Il faut au moins 10 + niveau du sort en Charisme pour le lancer. DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour et sorts connus selon le niveau (tables 2-19 et 2-20) ; il ne connaît que 2 sorts de niveau 1 au départ. Un 0 dans la table veut dire seulement les sorts en bonus d’un Charisme élevé.\n• Liste : tous les sorts de barde des écoles abjuration, divination, illusion, nécromancie et transmutation, plus détection de la magie et prestidigitation que le livre cite aussi (les sorts de barde de niveau 0 comptent comme niveau 1).\n• Aux niveaux pairs à partir du 6, peut échanger un sort connu contre un autre, comme le barde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.vigilante_detect_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Mal",
+        "en": "Detect evil"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Un frisson, un regard de travers : il sent le Mal avant d’avoir une preuve.\n\nEn jeu\n• Mag (aptitude magique) : détection du Mal à volonté, comme le sort."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.vigilante_street_smarts",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens de la rue",
+        "en": "Street smarts"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Il connaît les ruelles, les gardes corrompus et les cachettes des receleurs.\n\nEn jeu\n• Bonus d’aptitude de +2 aux tests de Connaissances (folklore local) et de Renseignements ; +4 au niveau 7."
+      },
+      "effects": [
+        {
+          "target": "skill.knowledge_local",
+          "op": "add",
+          "value": "if(level('class.vigilante') >= 7, 4, 2)",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.gather_information",
+          "op": "add",
+          "value": "if(level('class.vigilante') >= 7, 4, 2)",
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.vigilante_smite_the_guilty",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment des coupables",
+        "en": "Smite the guilty"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Il a vu le crime de ses yeux : le coupable le saura bien assez tôt.\n\nEn jeu\n• Sur, niveau 2 et plus : 1 fois par jour (2 au niveau 6, 3 au niveau 10) contre une personne qu’il a vue commettre un crime dans la ville qu’il tient pour sa communauté.\n• Il ajoute son bonus de Charisme (s’il y en a un) à son jet d’attaque et inflige 1 point de dégâts de plus par niveau de redresseur de torts.\n• L’attaque doit avoir lieu dans les 3 jours après le crime. On peut l’utiliser plusieurs fois contre le même coupable pour le même crime. Contre une personne innocente du crime, les effets ne s’appliquent pas, mais l’utilisation est dépensée."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.vigilante_smite_the_guilty')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.vigilante')",
+          "condition": "active('toggle.vigilante_smite_the_guilty')"
+        }
+      ],
+      "usesPerDay": "if(level('class.vigilante') >= 10, 3, if(level('class.vigilante') >= 6, 2, 1))",
+      "note": "Valable seulement contre un coupable précis dans le délai : la case à cocher sert à l’activer le moment venu."
+    },
+    {
+      "id": "power.vigilante_quick_search",
+      "type": "class_power",
+      "name": {
+        "fr": "Fouille accélérée",
+        "en": "Quick search"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Une pièce entière passée au peigne fin en un clin d’œil.\n\nEn jeu\n• Niveau 3 et plus : fouille une surface ou un volume de 1,50 m de côté par une action de mouvement (au lieu d’une action complexe)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.vigilante_speak_with_dead",
+      "type": "class_power",
+      "name": {
+        "fr": "Communication avec les morts",
+        "en": "Speak with dead"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Les victimes ont parfois des choses à dire, pourvu qu’on les écoute.\n\nEn jeu\n• Mag, niveau 4 et plus : communication avec les morts 1 fois par jour (niveau de lanceur de sorts égal à son niveau de redresseur de torts)."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.vigilante_improvised_hide",
+      "type": "class_power",
+      "name": {
+        "fr": "Cachette improvisée",
+        "en": "Improvised hide"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Un cri, un renversement d’étal, et tous les yeux regardent ailleurs.\n\nEn jeu\n• Niveau 5 et plus : peut utiliser Bluff pour créer une diversion et se cacher par une action de mouvement (au lieu d’une action simple), avec un bonus de +4 à ce test de Bluff."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": "4",
+          "situation": "situation.to_hide_after_diversion"
+        }
+      ]
+    },
+    {
+      "id": "power.vigilante_dimensional_anchor",
+      "type": "class_power",
+      "name": {
+        "fr": "Ancre dimensionnelle",
+        "en": "Dimensional anchor"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "Il ferme la porte derrière le fuyard, même quand celui-ci voulait passer par un autre monde.\n\nEn jeu\n• Mag, niveau 8 et plus : ancre dimensionnelle 1 fois par jour (niveau de lanceur de sorts égal à son niveau de redresseur de torts)."
+      },
+      "effects": [],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "power.vigilante_zeal",
+      "type": "class_power",
+      "name": {
+        "fr": "Ardeur",
+        "en": "Zeal"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "vigilante"
+      ],
+      "description": {
+        "fr": "À ce stade, sa détermination est telle que la magie qui voudrait le détourner de sa route glisse sur lui.\n\nEn jeu\n• Niveau 9 et plus : s’il réussit un jet de Volonté ou de Vigueur contre un sort dont le jet réduirait normalement l’effet (Vigueur 1/2 dégâts, Volonté partiel…), il échappe totalement aux effets.\n• Ne s’applique pas s’il est endormi ou inconscient."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.vigilante",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.vigilante_spells",
+        "power.vigilante_detect_evil",
+        "power.vigilante_street_smarts"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.vigilante_smite_the_guilty"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.vigilante_quick_search"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.vigilante_speak_with_dead"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        1,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.vigilante_improvised_hide"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        2,
+        0,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        2,
+        0
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.vigilante_dimensional_anchor"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.vigilante_zeal"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        2
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.vigilante",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "proficiency",
+      "to": "item.net"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.vigilante",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    }
+  ]
+}

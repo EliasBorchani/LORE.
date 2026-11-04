@@ -1,0 +1,744 @@
+{
+  "entities": [
+    {
+      "id": "spell.body_outside_body",
+      "type": "spell",
+      "name": {
+        "fr": "Duplication corporelle",
+        "en": "Body Outside Body"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le wu jen se dédouble : des copies parfaites de lui-même surgissent à ses côtés, prêtes à obéir à n'importe quel ordre, même le plus suicidaire.\n\nEn jeu\n• Crée 1 double par tranche de 5 niveaux de lanceur, à 3 m au plus.\n• Chaque double a les caractéristiques, niveaux, compétences, dons, souvenirs et équipement du lanceur ; ses objets magiques ne sont que des copies ordinaires.\n• Les doubles ne lancent pas de sorts et n'utilisent ni objets à potentiel magique ni objets à fin d'incantation.\n• Ils obéissent au lanceur, même pour une action qu'il ne ferait pas lui-même, et sont amicaux envers ses alliés.\n• Chaque double a le quart des points de vie actuels du lanceur ; s'il est tué, il disparaît et le lanceur subit 10 points de dégâts.\n• À la fin du sort, les doubles et leur équipement disparaissent, sans dégâts pour le lanceur.\n• Les doubles sont impossibles à distinguer du lanceur.\n• Dure 1 minute. Composante : cheveux, ongles ou peau morte du lanceur."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "effect": "1 double/5 niveaux",
+        "duration": "1 minute",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.water_to_poison",
+      "type": "spell",
+      "name": {
+        "fr": "Eau empoisonnée",
+        "en": "Water to Poison"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_water"
+      ],
+      "description": {
+        "fr": "D'un geste, l'eau claire d'une gourde ou d'un puits devient un poison sans couleur ni goût, que rien ne distingue de l'eau.\n\nEn jeu\n• Change 3 dl d'eau par niveau de lanceur en poison d'ingestion incolore et sans goût ; une dose = 3 dl.\n• DD du poison = DD du sort ; jet de Volonté (et non de Vigueur) pour chaque effet.\n• Effet initial : 1 point d'affaiblissement temporaire de Constitution ; effet secondaire (1 minute plus tard) : 1d8 points de Constitution.\n• Boire plus d'une dose n'aggrave pas l'effet.\n• Instantané. Composantes : un croc de serpent venimeux et un héliotrope de 50 po."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "3 décilitres d'eau/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun ; voir description",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.silent_message",
+      "type": "spell",
+      "name": {
+        "fr": "Échange muet",
+        "en": "Silent Message"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Un haussement de sourcil, un parchemin posé sur la table, un geste de la main : la cible comprend aussitôt tout un message, sans qu'un mot soit prononcé.\n\nEn jeu\n• Transmet un message simple de 25 mots au plus à une créature intelligente à portée, par un geste ou un signe.\n• Si le lanceur ne parle pas la langue de la cible, il ne transmet qu'une émotion simple (« au secours », « danger »).\n• Utilisable ligoté et bâillonné tant que le lanceur a le focaliseur (composante F seulement).\n• Dure 1 round. Focaliseur : un petit cône de verre."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature intelligente",
+        "duration": "1 round",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.smoke_ladder",
+      "type": "spell",
+      "name": {
+        "fr": "Échelle de fumée",
+        "en": "Smoke Ladder"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Le wu jen saisit la fumée d'un feu et la tord en une échelle rigide, si légère qu'on la porte d'une main, qui tient debout toute seule.\n\nEn jeu\n• Façonne la fumée d'un feu en une échelle de 3 m de long par niveau de lanceur.\n• L'échelle ne pèse presque rien, reste rigide et stable, et tient sans appui.\n• Relancer le sort sur l'échelle avant sa fin prolonge sa durée.\n• Dure 1 minute/niveau (T). Focaliseur : un grand feu de bois vert."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 round",
+        "range": "contact",
+        "effect": "une échelle de fumée",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.resonating_bolt",
+      "type": "spell",
+      "name": {
+        "fr": "Éclair résonant",
+        "en": "Resonating Bolt"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "La main ouverte du lanceur libère un trait de son pur qui fait vibrer la chair et fend la pierre, avant de filer jusqu'au bout de sa course.\n\nEn jeu\n• Ligne de 18 m : 1d4 points de dégâts de son par niveau de lanceur (10d4 au plus), Réflexes pour moitié.\n• Inflige les mêmes dégâts aux objets ; s'il brise un obstacle, l'éclair continue jusqu'à sa portée maximale, sinon il s'arrête."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "ligne de 18 m de long",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d4 sonic",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.otilukes_dispelling_screen",
+      "type": "spell",
+      "name": {
+        "fr": "Écran de dissipation d'Otiluke",
+        "en": "Otiluke's Dispelling Screen"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un rideau immobile de lumière violette se dresse ; tout ce qui le franchit en ressort dépouillé de sa magie.\n\nEn jeu\n• Crée un écran opaque et immobile : mur de 3 m de côté par niveau, ou sphère/hémisphère de 30 cm de rayon par niveau.\n• Toute créature ou objet non tenu qui le traverse subit une dissipation de la magie ciblée (niveau de lanceur = celui du lanceur) ; les objets portés ne sont pas touchés.\n• Test de dissipation : 1d20 + niveau de lanceur (+10 au plus) contre DD 11 + niveau de lanceur de l'effet ; un objet non porté voit ses pouvoirs réprimés 1d4 rounds.\n• Les effets magiques qui ne sont pas portés par une créature ou un objet ne traversent pas l'écran.\n• Détruit par désintégration ou une dissipation de la magie réussie ; réprimé par une zone d'antimagie.\n• Dure 1 minute/niveau (T). Composante : une fine plaque de cristal au plomb."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "mur d'énergie de 3 m de côté/niveau ou sphère/hémisphère de 30 cm de rayon/niveau au plus",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_otilukes_dispelling_screen",
+      "type": "spell",
+      "name": {
+        "fr": "Écran de dissipation suprême d'Otiluke",
+        "en": "Greater Otiluke's Dispelling Screen"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le même rideau violet, mais d'une puissance telle que les enchantements les plus solides ne lui résistent guère.\n\nEn jeu\n• Comme écran de dissipation d'Otiluke, mais le bonus au test de dissipation peut monter jusqu'à +20."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "mur d'énergie de 3 m de côté/niveau ou sphère/hémisphère de 30 cm de rayon/niveau au plus",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fortify_familiar",
+      "type": "spell",
+      "name": {
+        "fr": "Endurcissement de familier",
+        "en": "Fortify Familiar"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "universel"
+      ],
+      "description": {
+        "fr": "Le mage partage un peu de sa force avec son compagnon : la peau du familier s'épaissit et ses points faibles se dérobent aux coups.\n\nEn jeu\n• Le familier touché gagne 2d8 points de vie temporaires (ils durent 1 heure au plus).\n• Bonus d'altération de +2 à l'armure naturelle du familier.\n• 25 % de chances d'ignorer les dégâts en plus d'une attaque sournoise ou d'un coup critique (les dégâts normaux restent).\n• Dure 1 heure/niveau."
+      },
+      "spell": {
+        "school": "Universel",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le familier touché",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Les bonus vont sur la fiche du familier, pas du lanceur : texte seulement."
+    },
+    {
+      "id": "spell.shadow_binding",
+      "type": "spell",
+      "name": {
+        "fr": "Entrave d'ombre",
+        "en": "Shadow Binding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Des rubans d'ombre jaillissent d'un point et s'enroulent autour de tous ceux qui sont proches, les laissant d'abord hagards, puis prisonniers.\n\nEn jeu\n• Rayonnement de 3 m de rayon : chaque créature qui rate un jet de Volonté est hébétée 1 round, puis enchevêtrée.\n• Se libérer : action complexe et test de Force ou d'Évasion DD 20.\n• Dure 1 round/niveau. Composante : quelques maillons d'une chaîne en fer."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "ombre",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "rayonnement de 3 m de rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.dancing_blade",
+      "type": "spell",
+      "name": {
+        "fr": "Épée animée",
+        "en": "Dancing Blade"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "Une épée s'élève d'elle-même et tournoie autour de son protégé, frappant ceux qui l'approchent sans que personne ne la tienne.\n\nEn jeu\n• Une épée sans surveillance, ou tenue par un allié consentant, vole et combat pour le sujet choisi par le lanceur (tant que tous deux restent à portée).\n• L'épée utilise l'initiative et le bonus de base à l'attaque du sujet, sans ses autres modificateurs d'attaque et de dégâts (Force comprise) ; −4 à l'attaque si le sujet ne sait pas manier l'épée.\n• Elle reste à 1,50 m du sujet, fait une attaque à outrance quand il en fait une, et tombe si ses points de vie tombent à 0 ou moins.\n• Aucune concentration ; le sujet peut combattre avec une autre arme en même temps.\n• Deux adversaires ne peuvent pas prendre le sujet en tenaille (un troisième le peut).\n• Dure 1 round/niveau. Composante : une petite marionnette à fils et baguettes."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 épée",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "L'épée est une attaque en plus du sujet, que le modèle ne tient pas."
+    },
+    {
+      "id": "spell.sword_of_deception",
+      "type": "spell",
+      "name": {
+        "fr": "Épée de malchance",
+        "en": "Sword of Deception"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une lame de lumière vert pâle fond sur l'ennemi désigné ; chaque entaille le rend un peu plus maladroit face au danger suivant.\n\nEn jeu\n• L'épée attaque la cible désignée au round de l'incantation puis à chaque round ; attaque au corps à corps avec un bonus de base égal au niveau de lanceur (attaques multiples à outrance contre la même cible).\n• 1d4 points de dégâts par coup, critique sur 19–20 ; elle touche les créatures intangibles.\n• Chaque coup donne −1 au prochain jet de sauvegarde de la cible (−2 sur un critique), cumulable jusqu'à −5, jusqu'à ce que la cible fasse un jet de sauvegarde face à un danger ; délivrance des malédictions l'enlève.\n• Changer de cible : action simple, l'épée peut alors attaquer aussitôt.\n• Elle frappe dans la même direction que le lanceur (pas de tenaille avec lui, mais avec ses alliés).\n• Ne peut être attaquée ni blessée ; dissipable.\n• Résistance à la magie : un test au premier coup ; en cas d'échec, le sort est dissipé.\n• Hors de portée ou de vue, elle revient planer près du lanceur.\n• Dure 1 round/niveau (T). Focaliseur : une épée miniature et des dés pipés."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "lame d'énergie vert pâle",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d4",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.sword_of_darkness",
+      "type": "spell",
+      "name": {
+        "fr": "Épée des ténèbres",
+        "en": "Sword of Darkness"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une épée noire d'énergie négative se lève et taille dans les vivants, arrachant à chaque coup un peu de leur force de vie.\n\nEn jeu\n• Comme épée de malchance (attaques, portée, durée, ciblage), mais avec une lame noire d'énergie négative.\n• Chaque coup sur une créature vivante lui inflige 1 niveau négatif (2 sur un critique confirmé, critique sur 19–20) ; ils ne durent pas assez pour devenir des pertes de niveau.\n• Une créature qui a autant de niveaux négatifs que de dés de vie meurt.\n• Sur un mort-vivant, chaque coup lui donne 5 points de vie temporaires par tranche de 2 niveaux de lanceur (25 au plus), pour 1 heure.\n• Composante : un katana, une épée bâtarde ou une épée longue brisée contre une pierre pendant l'incantation."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "lame noire d'énergie négative",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.fire_burst",
+      "type": "spell",
+      "name": {
+        "fr": "Explosion de feu",
+        "en": "Fire Burst"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le lanceur s'embrase d'un coup : une gerbe de flammes jaillit de tout son corps et brûle ce qui l'entoure, sans le toucher.\n\nEn jeu\n• Rayonnement de 1,50 m autour du lanceur : 1d8 points de dégâts de feu par niveau de lanceur (5d8 au plus), Réflexes pour moitié.\n• Le lanceur et ceux qui partagent sa case ne sont pas touchés ; les objets de la zone, si.\n• Composante : un peu de soufre."
+      },
+      "spell": {
+        "school": "Invocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "1,50 m",
+        "area": "rayonnement de feu de 1,50 m",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 5))d8 fire",
+          "scope": "spell"
+        }
+      ],
+      "note": "La ligne Effet du livre parle de rayonnement ; rangé en zone d'effet."
+    },
+    {
+      "id": "spell.greater_fire_burst",
+      "type": "spell",
+      "name": {
+        "fr": "Explosion de feu suprême",
+        "en": "Greater Fire Burst"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La même gerbe de flammes, plus large et bien plus brûlante.\n\nEn jeu\n• Comme explosion de feu, mais rayonnement de 3 m et 15d8 points de dégâts de feu au plus (1d8 par niveau de lanceur)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "1,50 m",
+        "area": "rayonnement de feu de 3 m",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d8 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.blast_of_flame",
+      "type": "spell",
+      "name": {
+        "fr": "Explosion de flammes",
+        "en": "Blast of Flame"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un torrent de flammes jaillit en cône des mains du lanceur et dévore tout ce qui se trouve devant lui.\n\nEn jeu\n• Cône de 18 m : 1d6 points de dégâts de feu par niveau de lanceur (10d6 au plus), Réflexes pour moitié.\n• Pas de résistance à la magie (flammes créées).\n• Composante : une mèche de lampe imbibée d'huile."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "rayonnement en forme de cône",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 10))d6 fire",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.elemental_burst",
+      "type": "spell",
+      "name": {
+        "fr": "Explosion élémentaire",
+        "en": "Elemental Burst"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_metal",
+        "wu_jen_wood",
+        "wu_jen_fire",
+        "wu_jen_water",
+        "wu_jen_earth"
+      ],
+      "description": {
+        "fr": "Le wu jen désigne un objet fait d'un des cinq éléments ; l'énergie qui dort en lui s'en échappe d'un seul coup, en éclats, en étincelles ou en vague.\n\nEn jeu\n• Cible un objet de bois, feu, eau, métal ou terre ; il explose en un rayonnement de 3 m de rayon, sans être abîmé.\n• Bois, métal ou terre : éclats tranchants, 1d8 points de dégâts (Réflexes pour moitié).\n• Feu : étincelles, 1d8 points de dégâts de feu (Réflexes pour moitié).\n• Eau : une vague renverse les créatures (Réflexes, annule) ; +4 au jet par catégorie de taille au-dessus de M, −4 par catégorie en dessous, +4 de plus pour une créature très stable ou à quatre pattes."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "rayonnement de 3 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, 1/2 dégâts ou Réflexes, annule ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d8",
+          "scope": "spell"
+        }
+      ],
+      "note": "Dégâts de feu seulement avec un feu ; les dés sont notés sans type."
+    },
+    {
+      "id": "spell.servant_horde",
+      "type": "spell",
+      "name": {
+        "fr": "Factotums",
+        "en": "Servant Horde"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une armée de mains invisibles se met au travail : elles portent, nettoient et rangent sans relâche pendant des heures.\n\nEn jeu\n• Crée 2d6 serviteurs invisibles, +1 par niveau de lanceur (+15 au plus), comme le sort serviteur invisible.\n• Dure 1 heure/niveau. Composante : un petit bâton en croix garni de ficelles nouées."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "des serviteurs invisibles, sans forme et dénués d’intelligence",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.ferromagnetism",
+      "type": "spell",
+      "name": {
+        "fr": "Ferromagnétisme",
+        "en": "Ferromagnetism"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation",
+        "wu_jen_metal"
+      ],
+      "description": {
+        "fr": "Un rayon étincelant part de la main du wu jen et arrache le fer et l'acier à leur place : armes, outils et serrures volent vers lui.\n\nEn jeu\n• Une fois par round, attaque de contact à distance : le rayon tire vers le lanceur un objet en fer ou en acier avec une Force de 30 (jusqu'à 4 tonnes).\n• Objet libre : il vole dans la main du lanceur (ou au bord de sa case s'il est trop grand).\n• Objet tenu : tentative de désarmement avec le bonus de Force du rayon (+10) au lieu de celui du lanceur, sans attaque d'opportunité (l'incantation en provoque une) ; en cas de succès, l'arme arrive dans la main du lanceur.\n• Objet porté mais non tenu : le porteur a un jet de Réflexes pour le retenir, s'il a une main libre ; sinon le lanceur ne peut que tenter un désarmement.\n• Objet attaché : test de Force (+10 du rayon) pour briser l'attache.\n• Dure 1 round/niveau. Composante : un morceau de magnétite."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.internal_fire",
+      "type": "spell",
+      "name": {
+        "fr": "Feu intérieur",
+        "en": "Internal Fire"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Une chaleur infernale naît au creux des entrailles des victimes ; celles qui ne lui résistent pas brûlent de l'intérieur et tombent en cendres.\n\nEn jeu\n• Vise jusqu'à 1 DV de créatures par niveau de lanceur, toutes à 9 m au plus l'une de l'autre.\n• Jet de Vigueur raté : la cible meurt.\n• Jet réussi : 6d6 points de dégâts de feu, +1 par niveau de lanceur (+20 au plus).\n• Focaliseur : un brasero de fer plein de braises."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "jusqu'à 1 DV de créatures/niveau, toutes à 9 m au plus l'une de l'autre",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "6d6 fire",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 20)",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.blackfire",
+      "type": "spell",
+      "name": {
+        "fr": "Feu noir",
+        "en": "Blackfire"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un rayon noirâtre enveloppe la victime d'un brasier froid qui se nourrit de sa vie ; il saute sur ceux qui l'approchent et ne laisse que des cendres.\n\nEn jeu\n• Rayon : attaque de contact à distance contre une créature vivante, qui s'embrase de flammes noires.\n• Chaque round, Vigueur : en cas d'échec, la cible est nauséeuse et subit 1d4 points d'affaiblissement temporaire de Constitution ; en cas de réussite, elle est seulement fiévreuse ce round.\n• Les créatures vivantes adjacentes à une cible doivent réussir un jet de Vigueur ou s'embraser à leur tour.\n• Constitution réduite à 0 : la créature tombe en cendres ; seuls résurrection suprême ou souhait la ramènent, avec un test de niveau de lanceur DD 30.\n• Trois jets de Vigueur réussis de suite éteignent le feu ; l'eau ou l'étouffement n'y font rien, mais zone d'antimagie, dissipation de la magie, délivrance des malédictions ou annulation d'enchantement l'éteignent.\n• Protection contre la mort donne l'immunité.\n• Dure 1 round/niveau. Composante : une pincée de cendres d'un vampire détruit par le soleil."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "rayon",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule et Réflexes, annule ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Le livre imprime Volonté et Réflexes sur la ligne de jet de sauvegarde, mais le texte ne demande que des jets de Vigueur."
+    },
+    {
+      "id": "spell.arrow_of_bone",
+      "type": "spell",
+      "name": {
+        "fr": "Flèche d'os",
+        "en": "Arrow of Bone"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Le mage peint des runes de mort sur une flèche, qui prend l'aspect d'un os glacé ; la créature vivante qu'elle touche peut mourir sur le coup.\n\nEn jeu\n• Enchante une arme de jet ou un projectile touché (flèche, carreau, dard, javeline, lance) pendant 8 heures ou jusqu'à son usage.\n• L'arme gagne un bonus d'altération de +4 à l'attaque et aux dégâts.\n• Une créature vivante touchée doit réussir un jet de Vigueur ou mourir ; en cas de réussite, elle subit quand même 3d6 points de dégâts, +1 par niveau de lanceur (+15 au plus).\n• Touché ou raté, le projectile est détruit.\n• Incantation de 10 minutes. Composantes : un minuscule carquois en os et une fiole de sang mêlé de poudre de gemme (50 po)."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mort"
+        ],
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "contact",
+        "target": "1 arme de jet ou 1 projectile touché",
+        "duration": "8 heures ou jusqu'à utilisation",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "3d6",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(@spell.caster_level, 15)",
+          "scope": "spell"
+        }
+      ],
+      "note": "Le +4 d'altération va sur le projectile (non modélisé) : texte seulement."
+    },
+    {
+      "id": "spell.ghostform",
+      "type": "spell",
+      "name": {
+        "fr": "Forme fantomatique",
+        "en": "Ghostform"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le corps du mage perd toute substance : il devient un spectre visible qui traverse les murs, glisse sans bruit et ne craint plus les armes ordinaires.\n\nEn jeu\n• Le lanceur devient intangible : seules les créatures intangibles, les armes magiques (ou ce qui frappe comme elles), les sorts et les pouvoirs magiques ou surnaturels l'atteignent.\n• 50 % de chances d'ignorer les dégâts d'une source tangible, sauf énergie positive, négative ou force (projectile magique, armes spectrales).\n• Les effets sans dégâts l'affectent, sauf ceux qui ne visent que des cibles tangibles.\n• Perd son bonus d'armure naturelle ; gagne un bonus de parade égal à son modificateur de Charisme (+1 au moins).\n• Traverse les objets solides s'ils ne sont pas plus grands que lui ; dedans, il a un abri total et ses adversaires un camouflage total ; il ne traverse pas les effets de force.\n• Ses attaques ignorent armure, bouclier et armure naturelle (pas la parade ni la force) ; ses attaques non magiques ne touchent pas les cibles tangibles, celles d'arme magique ratent à 50 % (sauf arme spectrale) ; ses sorts les affectent normalement.\n• Ne tombe pas, se déplace dans l'eau comme dans l'air, ne pèse rien, ne fait pas de bruit ; pas de croc-en-jambe ni de lutte, dans un sens comme dans l'autre.\n• N'a plus de Force : son modificateur de Dextérité s'applique au corps à corps et à distance.\n• Dure 1 minute/niveau (T)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "max(@ability.cha.mod, 1)",
+          "bonusType": "deflection",
+          "condition": "active('toggle.ghostform')"
+        }
+      ],
+      "note": "Seul le bonus de parade est modélisé ; la perte de l'armure naturelle, l'intangibilité et la Dextérité à la place de la Force sont du texte."
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "entities": [
+    {
+      "id": "class.elemental_savant",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Savant élémentaire",
+        "en": "Elemental Savant"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "elemental"
+      ],
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 8 and @skill.knowledge_planes.ranks >= 4 and has('feat.energy_substitution')",
+      "description": {
+        "fr": "Air, eau, feu, terre : le savant élémentaire s’attache à l’un d’eux jusqu’à lui ressembler. Ses sorts prennent la couleur de son élément, son corps s’endurcit, et au bout du chemin il devient lui-même une créature élémentaire.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : Connaissances (mystères) 8 rangs ; Connaissances (plans) 4 rangs ; Substitution d’énergie destructive (acide, électricité, feu ou froid) ; savoir lancer au moins trois sorts de même registre (acide, électricité, feu ou froid), dont un du 3e niveau ou plus ; avoir eu un contact pacifique avec un élémentaire ou un Extérieur de sous-type élémentaire.\n• Aucune formation aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (plans), Profession.\n• Sorts : +1 niveau de lanceur de sorts à chaque niveau, sauf 5 et 10 (sorts par jour et niveau de lanceur d’une classe qu’il avait déjà ; pas les autres aptitudes de cette classe).\n• Aptitudes : résistance à une énergie destructive 5/10/20 (1, 4, 7) ; spécialité élémentaire (1) ; immunité contre le sommeil (2) ; efficacité élémentaire accrue +2/+4 (3, 8) ; focalisation élémentaire +1/+2 (5, 10) ; vision dans le noir 18 m (6) ; immunité contre la paralysie et le poison (9) ; perfection élémentaire et immunité contre une énergie destructive (10)."
+      },
+      "note": "Conditions dans la formule : rangs et Substitution d’énergie destructive. En texte : trois sorts de même registre dont un du 3e niveau, contact pacifique avec un élémentaire. L’élément choisi n’est pas dans le modèle : à noter à la main."
+    },
+    {
+      "id": "power.elemental_savant_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Chaque niveau de savant élémentaire, sauf les niveaux 5 et 10, fait avancer la magie que le personnage lançait déjà.\n\nEn jeu\n• Aux niveaux 1 à 4, 6 à 9 : +1 niveau effectif de lanceur de sorts dans une classe de lanceur qu’il avait déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe (renvoi des morts-vivants, don supplémentaire, etc.).\n• Avec plusieurs classes de lanceur, une seule en profite."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.elemental_savant_energy_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance à une énergie destructive",
+        "en": "Energy Resistance"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Son corps s’habitue peu à peu à l’énergie de l’élément qu’il a choisi.\n\nEn jeu\n• Extraordinaire. Résistance à l’énergie liée à son élément : 5 au niveau 1, 10 au niveau 4, 20 au niveau 7.\n• Air : électricité ; Eau : froid ; Feu : feu ; Terre : acide."
+      },
+      "effects": [],
+      "note": "Élément choisi (et énergie liée) : pas dans le modèle. À appliquer à la main sur energy_resistance.<énergie> (acid, cold, electricity, fire). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.elemental_savant_elemental_specialty",
+      "type": "class_power",
+      "name": {
+        "fr": "Spécialité élémentaire",
+        "en": "Elemental Specialty"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Il lie sa magie à un seul élément, et tous ses sorts d’énergie se teintent de sa couleur.\n\nEn jeu\n• Extraordinaire. Au niveau 1, il choisit un élément et son énergie : Air/électricité, Eau/froid, Feu/feu, Terre/acide. Le choix doit être celui du don Substitution d’énergie destructive demandé à l’entrée.\n• Ses sorts qui infligent des dégâts d’énergie changent de registre et de type de dégâts pour ceux de son élément.\n• Les sorts sans dégâts ne changent pas (fusion dans la pierre reste de la Terre)."
+      },
+      "effects": [],
+      "note": "Élément choisi (et énergie liée) : pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.elemental_savant_sleep_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité contre le sommeil",
+        "en": "Sleep Immunity"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Sa transformation avance : le sommeil magique n’a plus de prise sur lui.\n\nEn jeu\n• Extraordinaire. À partir du niveau 2 : immunité aux effets de sommeil."
+      },
+      "effects": [],
+      "note": "Immunité : texte seulement, pas dans le modèle."
+    },
+    {
+      "id": "power.elemental_savant_elemental_efficiency",
+      "type": "class_power",
+      "name": {
+        "fr": "Efficacité élémentaire accrue",
+        "en": "Energy Penetration"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Ses sorts de son élément percent les protections magiques comme s’ils les connaissaient déjà.\n\nEn jeu\n• Extraordinaire. Niveau 3 : +2 (aptitude) au test de niveau de lanceur (1d20 + niveau de lanceur de sorts) contre la résistance à la magie, pour les sorts d’énergie de son élément. Niveau 8 : +4.\n• S’ajoute aux dons Efficacité des sorts accrue et supérieure."
+      },
+      "effects": [],
+      "note": "Élément choisi (et énergie liée) : pas dans le modèle. Bonus réservé aux sorts de son élément : à appliquer à la main. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.elemental_savant_elemental_focus",
+      "type": "class_power",
+      "name": {
+        "fr": "Focalisation élémentaire",
+        "en": "Elemental Focus"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Sa maîtrise de l’énergie choisie rend ses sorts plus difficiles à repousser.\n\nEn jeu\n• Extraordinaire. Au niveau 5 : +1 au DD de sauvegarde de ses sorts qui utilisent l’énergie de son élément.\n• Passe à +2 au niveau 10.\n• Cumulatif avec École renforcée et École supérieure."
+      },
+      "effects": [],
+      "note": "Élément choisi (et énergie liée) : pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.elemental_savant_darkvision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision dans le noir",
+        "en": "Darkvision"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Ses yeux s’habituent à voir sans lumière, comme ceux des créatures élémentaires.\n\nEn jeu\n• Extraordinaire. Au niveau 6 : vision dans le noir sur 18 m."
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        }
+      ]
+    },
+    {
+      "id": "power.elemental_savant_paralysis_poison_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité contre la paralysie et le poison",
+        "en": "Paralysis and Poison Immunity"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Proche de la perfection élémentaire, son corps ignore ce qui frappe les chairs ordinaires.\n\nEn jeu\n• Extraordinaire. Au niveau 9 : immunité à la paralysie et au poison."
+      },
+      "effects": [],
+      "note": "Immunités : texte seulement, pas dans le modèle."
+    },
+    {
+      "id": "power.elemental_savant_elemental_perfection",
+      "type": "class_power",
+      "name": {
+        "fr": "Perfection élémentaire",
+        "en": "Elemental Perfection"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Au terme de son voyage, le mortel devient lui-même élémentaire, tout en gardant son âme et son corps distincts.\n\nEn jeu\n• Niveau 10 : son type devient élémentaire. Il n’a plus besoin de manger, dormir ni respirer (le repos reste nécessaire pour retrouver ses sorts).\n• Immunité à l’étourdissement, aux coups critiques et à la prise en tenaille.\n• Il gagne la vitesse, les modes de déplacement, attaques naturelles, attaques spéciales et particularités d’un élémentaire de taille M de son élément (Manuel des Monstres) ; DD de la forme d’attaque élémentaire (tourbillon, maelstrom, départ de feu) : 20 + modificateur de Constitution.\n• Son apparence change légèrement (yeux, peau).\n• +2 (circonstances) aux tests de Charisme (compétences et caractéristique) avec les créatures de même sous-type élémentaire et les savants élémentaires du même élément.\n• On peut le ramener à la vie comme son type précédent."
+      },
+      "effects": [],
+      "note": "Élément choisi (et énergie liée) : pas dans le modèle. Type élémentaire, immunités, formes d’attaque et bonus de Charisme : pas dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.elemental_savant_energy_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité contre une énergie destructive",
+        "en": "Energy Immunity"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "elemental_savant"
+      ],
+      "description": {
+        "fr": "Il finit par ne plus craindre du tout l’énergie de son élément.\n\nEn jeu\n• Extraordinaire. Au niveau 10 : immunité à l’énergie liée à son élément (électricité, froid, feu ou acide)."
+      },
+      "effects": [],
+      "note": "Élément choisi (et énergie liée) : pas dans le modèle. Immunité : texte seulement. Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.elemental_savant",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.elemental_savant_spells",
+        "power.elemental_savant_energy_resistance",
+        "power.elemental_savant_elemental_specialty"
+      ]
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.elemental_savant_sleep_immunity"
+      ]
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.elemental_savant_elemental_efficiency"
+      ]
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.elemental_savant_elemental_focus"
+      ]
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.elemental_savant_darkvision"
+      ]
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.elemental_savant_paralysis_poison_immunity"
+      ]
+    },
+    {
+      "classId": "class.elemental_savant",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.elemental_savant_elemental_perfection",
+        "power.elemental_savant_energy_immunity"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.elemental_savant",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.elemental_savant",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.elemental_savant",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.elemental_savant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.elemental_savant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.elemental_savant",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

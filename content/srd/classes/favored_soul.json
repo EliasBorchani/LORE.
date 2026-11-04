@@ -1,0 +1,953 @@
+{
+  "entities": [
+    {
+      "id": "class.favored_soul",
+      "type": "class",
+      "name": {
+        "fr": "Élu divin",
+        "en": "Favored Soul"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "divine",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "L’élu divin n’a pas appris la magie divine : il est né avec. Il lance les sorts des prêtres, sans étude ni préparation, comme on respire, et devient peu à peu un petit morceau de sa divinité : armes bénies, résistance au feu et au froid, ailes, puis une peau que l’acier ordinaire n’entame plus.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : au choix, mais proche de celui de son dieu (neutre seulement si son dieu l’est).\n• Formé à toutes les armes courantes et à l’arme de prédilection de sa divinité ; aux armures légères et intermédiaires et aux boucliers (sauf le pavois). Une armure lourde ne gêne pas ses sorts, mais il n’y est pas formé.\n• Sorts divins spontanés de la liste du prêtre (sans domaines), basés sur le Charisme (le DD utilise la Sagesse), du niveau 0 au niveau 9 ; pas besoin de les préparer, répertoire limité. À partir du niveau 4, puis tous les 2 niveaux, il peut oublier un sort connu pour en apprendre un autre du même niveau (au plus 2 niveaux sous son meilleur niveau de sort).\n• Aptitudes : arme de prédilection de la divinité (3) ; résistance aux énergies destructives, 10 points, un type au niveau 5, un autre au niveau 10, un troisième au niveau 15 ; spécialisation martiale de la divinité (12) ; ailes (17) ; réduction des dégâts (20).\n• Au-delà du niveau 20 : un don supplémentaire tous les 3 niveaux (23, 26, 29…)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "source": "Complete Divine",
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "divine",
+        "mode": "spontaneous"
+      },
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.favored_soul') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Le livre ne donne pas de règle épique propre à l’élu divin : un don supplémentaire tous les 3 niveaux au-delà du 20 (maison). Compétences de classe lues sur l’image (Connaissances (mystères)). La liste du prêtre est copiée plus tard."
+    },
+    {
+      "id": "power.favored_soul_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts d’élu divin",
+        "en": "Favored soul spells"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "favored_soul"
+      ],
+      "description": {
+        "fr": "L’élu divin lance ses sorts par un lien inné avec le divin : il n’a rien à préparer et choisit parmi ceux qu’il connaît, dans la liste des prêtres.\n\nEn jeu\n• Sorts divins de la liste du prêtre, du niveau 0 au niveau 9, sans domaine. Caractéristique : Charisme (10 + niveau du sort minimum). DD : 10 + niveau du sort + modificateur de Sagesse.\n• Sorts par jour selon le niveau (Table 1-3), plus des sorts en bonus grâce à un Charisme élevé.\n• Répertoire limité : 4 sorts de niveau 0 et 3 sorts de niveau 1 au départ (Table 1-4), puis de nouveaux à chaque niveau ; ce nombre n’est pas modifié par le Charisme.\n• Il lance librement n’importe quel sort connu, tant qu’il lui reste un emplacement du niveau voulu.\n• À partir du niveau 4, puis tous les 2 niveaux, il peut échanger un sort connu contre un autre de même niveau (au plus 2 niveaux sous son meilleur niveau de sort), un seul échange à la fois."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.favored_soul_deitys_weapon_focus",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme de prédilection de la divinité",
+        "en": "Deity’s weapon focus"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "favored_soul"
+      ],
+      "description": {
+        "fr": "À force de servir son dieu, l’élu divin en prend l’arme de prédilection et la manie avec un naturel de plus en plus sûr.\n\nEn jeu\n• Don Arme de prédilection pour l’arme de sa divinité. S’il l’a déjà, il choisit une autre arme.\n• Maniement de l’arme de la divinité (même si elle est de guerre ou exotique) dès le niveau 1."
+      },
+      "effects": [],
+      "note": "L’arme choisie n’est pas modélisée : le don est donné, le bonus de +1 aux attaques passe par l’arme maniée."
+    },
+    {
+      "id": "power.favored_soul_energy_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance aux énergies destructives",
+        "en": "Energy resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "favored_soul"
+      ],
+      "description": {
+        "fr": "La peau de l’élu divin s’habitue aux flammes, au gel ou à l’éclair, comme celle d’un petit dieu qui en a vu d’autres.\n\nEn jeu\n• Résistance 10 contre un type d’énergie choisi (acide, électricité, feu, froid ou son) au niveau 5.\n• Un deuxième type au niveau 10, un troisième au niveau 15, avec la même résistance de 10."
+      },
+      "effects": [],
+      "note": "Le type est un choix : il se note sur la fiche. Les cibles energy_resistance.<type> existent dans le moteur, mais le choix par type n’est pas modélisé."
+    },
+    {
+      "id": "power.favored_soul_deitys_weapon_specialization",
+      "type": "class_power",
+      "name": {
+        "fr": "Spécialisation martiale de la divinité",
+        "en": "Deity’s weapon specialization"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "favored_soul"
+      ],
+      "description": {
+        "fr": "L’arme sacrée de son dieu frappe plus fort dans ses mains, comme si le fidèle y avait mis tout ce que le dieu y a mis.\n\nEn jeu\n• Don Spécialisation martiale pour l’arme de sa divinité. S’il l’a déjà, il choisit une autre arme."
+      },
+      "effects": [],
+      "note": "Spécialisation martiale demande normalement guerrier 4 : ici donnée sans condition, par le livre."
+    },
+    {
+      "id": "power.favored_soul_wings",
+      "type": "class_power",
+      "name": {
+        "fr": "Ailes",
+        "en": "Wings"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "favored_soul"
+      ],
+      "description": {
+        "fr": "Des ailes poussent dans son dos, de plumes si l’élu divin est bon, de chauve-souris s’il est mauvais.\n\nEn jeu\n• Vitesse de vol 18 m, bonne manœuvrabilité.\n• Ailes de plumes (bon) ou de chauve-souris (mauvais) ; au choix s’il n’est ni l’un ni l’autre."
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "set",
+          "value": 18
+        }
+      ]
+    },
+    {
+      "id": "power.favored_soul_damage_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction des dégâts",
+        "en": "Damage reduction"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "class_power",
+        "favored_soul"
+      ],
+      "description": {
+        "fr": "Les armes ordinaires ne laissent presque plus de marque : l’élu divin porte en lui la protection de son dieu.\n\nEn jeu\n• Réduction des dégâts 10/argent s’il est loyal, 10/fer froid s’il est chaotique ; au choix s’il n’est ni l’un ni l’autre, une fois pour toutes."
+      },
+      "effects": [],
+      "note": "Réduction des dégâts /argent ou /fer froid : le modèle ne tient que la réduction sans type (damage_reduction.none), texte seul. Valeur vérifiée sur la page 14 : 10, pas 5."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.favored_soul",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.favored_soul_spells"
+      ],
+      "spellsPerDay": [
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 3,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.favored_soul_deitys_weapon_focus"
+      ],
+      "spellsPerDay": [
+        6,
+        5,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        5,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.favored_soul_energy_resistance"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        7,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 5,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        7,
+        6,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        8,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        8,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 11,
+      "bab": 8,
+      "fort": 7,
+      "ref": 7,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 12,
+      "bab": 9,
+      "fort": 8,
+      "ref": 8,
+      "will": 8,
+      "grants": [
+        "power.favored_soul_deitys_weapon_specialization"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 13,
+      "bab": 9,
+      "fort": 8,
+      "ref": 8,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 14,
+      "bab": 10,
+      "fort": 9,
+      "ref": 9,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 15,
+      "bab": 11,
+      "fort": 9,
+      "ref": 9,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 16,
+      "bab": 12,
+      "fort": 10,
+      "ref": 10,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 17,
+      "bab": 12,
+      "fort": 10,
+      "ref": 10,
+      "will": 10,
+      "grants": [
+        "power.favored_soul_wings"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4,
+        null
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 18,
+      "bab": 13,
+      "fort": 11,
+      "ref": 11,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 19,
+      "bab": 14,
+      "fort": 11,
+      "ref": 11,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        4
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.favored_soul",
+      "level": 20,
+      "bab": 15,
+      "fort": 12,
+      "ref": 12,
+      "will": 12,
+      "grants": [
+        "power.favored_soul_damage_reduction"
+      ],
+      "spellsPerDay": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "spellsKnown": [
+        9,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.favored_soul",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.favored_soul_deitys_weapon_focus",
+      "relation": "grants",
+      "to": "feat.weapon_focus"
+    },
+    {
+      "from": "power.favored_soul_deitys_weapon_specialization",
+      "relation": "grants",
+      "to": "feat.weapon_specialization"
+    }
+  ]
+}

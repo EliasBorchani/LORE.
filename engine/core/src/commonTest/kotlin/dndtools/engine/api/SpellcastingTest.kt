@@ -22,6 +22,8 @@ class SpellcastingTest {
              "effects": [{"target": "spell.slot_cost", "op": "add", "value": 2, "scope": "spell"}]},
             {"id": "feat.extend", "type": "feat", "name": {"en": "Extend"},
              "effects": [{"target": "spell.slot_cost", "op": "add", "value": 1, "scope": "spell"}]},
+            {"id": "feat.sudden_empower", "type": "feat", "name": {"en": "Sudden Empower"},
+             "effects": [{"target": "spell.slot_cost", "op": "add", "value": 0, "scope": "spell"}]},
             {"id": "feat.improved_metamagic", "type": "feat", "name": {"en": "Improved Metamagic"},
              "effects": [{"target": "spell.slot_cost_per_modifier", "op": "add", "value": -1, "scope": "spell"}]},
             {"id": "feat.improved_spell_capacity", "type": "feat", "name": {"en": "Improved Spell Capacity"},
@@ -94,6 +96,11 @@ class SpellcastingTest {
         assertEquals("3", improved.previewVariant(variant("feat.empower")).slotLevel)
         // Empower 2 + Extend 1, minus 1 per modifier = 1, but each modifier costs at least 1: +2.
         assertEquals("4", improved.previewVariant(variant("feat.empower", "feat.extend")).slotLevel)
+        // A modifier written at 0 levels (Sudden Empower) costs nothing, with or without Improved Metamagic, and does not
+        // count toward the « at least 1 per modifier » rule of the others.
+        assertEquals("2", engine.open(bard(4)).previewVariant(variant("feat.sudden_empower")).slotLevel)
+        assertEquals("2", improved.previewVariant(variant("feat.sudden_empower")).slotLevel)
+        assertEquals("4", improved.previewVariant(variant("feat.empower", "feat.extend", "feat.sudden_empower")).slotLevel)
     }
 
     @Test

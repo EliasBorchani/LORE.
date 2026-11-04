@@ -22,7 +22,7 @@ run() {
 
 run test-references/danalieth/catalog.json
 for file in content/srd/rules.json content/srd/sources.json content/srd/situations.json content/srd/races.json content/srd/domains.json \
-            content/srd/classes/*.json content/srd/prestige/*.json content/srd/feats/*.json \
+            content/srd/tob/*.json content/srd/arcane/*.json content/srd/classes/*.json content/srd/prestige/*.json content/srd/feats/*.json \
             content/srd/equipment/*.json content/srd/spells/*.json; do
   run "$file"
 done

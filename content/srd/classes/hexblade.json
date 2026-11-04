@@ -1,0 +1,802 @@
+{
+  "entities": [
+    {
+      "id": "class.hexblade",
+      "type": "class",
+      "name": {
+        "fr": "Tourmenteur",
+        "en": "Hexblade"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial",
+        "arcane",
+        "spontaneous"
+      ],
+      "description": {
+        "fr": "Le tourmenteur est un épéiste qui a un peu de magie dans le sang. Il se bat comme un guerrier, maudit ses adversaires pour leur gâcher le combat, et résiste à la magie avec un aplomb qui irrite les mages. Plus tard viennent quelques sorts, un familier et une aura qui fait glisser les coups sur lui.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : jamais bon.\n• Formé à toutes les armes courantes et de guerre et aux armures légères ; pas aux boucliers. Pas de risque d’échec des sorts en armure légère ; armure intermédiaire, lourde ou bouclier : risque normal.\n• Sorts profanes spontanés de sa propre liste, basés sur le Charisme, du niveau 1 au niveau 4, à partir du niveau 4 ; niveau de lanceur : la moitié de son niveau de tourmenteur.\n• Aptitudes : tourment (1, 5, 9, 13, 17) ; résistance profane (2) ; ardeur (3) ; appel de familier et sorts (4) ; dons supplémentaires (5, 10, 15, 20) ; tourment supérieur (7) ; aura de malchance (12, 16, 20) ; tourment suprême (19).\n• Un tourmenteur dont l’alignement devient bon perd ses aptitudes surnaturelles et ses sorts, et ne progresse plus dans la classe."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "source": "Complete Warrior",
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "arcane",
+        "mode": "spontaneous"
+      },
+      "effects": [
+        {
+          "target": "caster_level.hexblade",
+          "op": "add",
+          "value": "if(level('class.hexblade') >= 4, floor(level('class.hexblade') / 2), 0) - level('class.hexblade')"
+        },
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.hexblade') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Perte des pouvoirs en cas d’alignement bon : seulement dans le texte. Le livre ne donne pas de règle épique propre au tourmenteur : un don supplémentaire tous les 3 niveaux au-delà du 20 (à confirmer). La liste de sorts est dans le lot des listes."
+    },
+    {
+      "id": "power.hexblade_hexblades_curse",
+      "type": "class_power",
+      "name": {
+        "fr": "Tourment",
+        "en": "Hexblade’s curse"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "D’un regard, le tourmenteur jette sur un adversaire une malédiction qui lui gâche tout : ses coups, ses sorts, ses réflexes.\n\nEn jeu\n• Action libre, une fois par jour au niveau 1, puis une fois de plus aux niveaux 5, 9, 13 et 17.\n• La cible doit être vue et à 18 m ou moins. Pendant 1 heure : −2 aux jets d’attaque, aux jets de sauvegarde, aux tests de caractéristique et de compétence, et aux jets de dégâts des armes.\n• Jet de Volonté (DD 10 + moitié de son niveau + modificateur de Charisme) pour annuler l’effet ; un jet réussi immunise cette cible contre ce tourmenteur pendant 24 heures.\n• Plusieurs tourments sur la même cible ne se cumulent pas. Délivrance des malédictions ou dissipation de la magie y met fin."
+      },
+      "effects": [],
+      "usesPerDay": "1 + floor((level('class.hexblade') - 1) / 4)",
+      "note": "Le malus touche la cible, pas la fiche du tourmenteur : pas d’effet chiffré."
+    },
+    {
+      "id": "power.hexblade_arcane_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance profane",
+        "en": "Arcane resistance"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "La magie hostile glisse sur lui plus facilement que sur les autres.\n\nEn jeu\n• Bonus égal à son bonus de Charisme (au moins +1) aux jets de sauvegarde contre les sorts et les pouvoirs magiques."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "max(1, @ability.cha.mod)",
+          "situation": "situation.vs_spells"
+        }
+      ]
+    },
+    {
+      "id": "power.hexblade_mettle",
+      "type": "class_power",
+      "name": {
+        "fr": "Ardeur",
+        "en": "Mettle"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "Là où d’autres encaissent la moitié d’un sort, lui serre les dents et n’en sent rien.\n\nEn jeu\n• Quand il réussit un jet de Vigueur ou de Volonté contre une attaque qui, en cas de réussite, n’a qu’un effet réduit (« Vigueur, partiel » ou « Volonté, partiel »), il ne subit aucun effet.\n• Sans effet s’il est inconscient ou endormi."
+      },
+      "effects": [],
+      "note": "Pas encore dans le modèle (texte seulement)."
+    },
+    {
+      "id": "power.hexblade_summon_familiar",
+      "type": "class_power",
+      "name": {
+        "fr": "Appel de familier",
+        "en": "Summon familiar"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "Un chat aux yeux trop intelligents, un corbeau qui répond quand on lui parle : le familier est un petit animal lié à l’âme de son maître.\n\nEn jeu\n• Rituel de 24 heures et 100 po. Comme un ensorceleur de 3 niveaux de moins pour les pouvoirs et caractéristiques du familier.\n• S’il meurt ou est renvoyé, le maître rate un jet de Vigueur DD 15 ou perd 200 PX par niveau de tourmenteur ; un nouveau familier demande un an et un jour.\n• Un personnage multiclassé n’a qu’un seul familier à la fois."
+      },
+      "effects": [
+        {
+          "target": "familiar.master_level",
+          "op": "add",
+          "value": "max(0, level('class.hexblade') - 3)"
+        }
+      ]
+    },
+    {
+      "id": "power.hexblade_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de tourmenteur",
+        "en": "Hexblade spells"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "Quelques sorts, appris sans livre et lancés sans préparation : de quoi pousser un adversaire à l’erreur et protéger l’épéiste.\n\nEn jeu\n• Sorts profanes de la liste du tourmenteur, du niveau 1 au niveau 4, lancés sans préparation.\n• Caractéristique : Charisme. Il faut au moins 10 + niveau du sort en Charisme. DD : 10 + niveau du sort + modificateur de Charisme.\n• Sorts par jour selon le niveau de tourmenteur, plus des sorts en bonus grâce à un Charisme élevé ; un « 0 » dans la table veut dire seulement les sorts en bonus. Sorts connus fixes, sans bonus de Charisme.\n• Niveau de lanceur : la moitié de son niveau de tourmenteur.\n• Aux niveaux 12, 15 et 18, peut échanger un sort connu contre un autre de même niveau, au moins 2 niveaux sous son plus haut niveau de sort."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hexblade_bonus_feats",
+      "type": "class_power",
+      "name": {
+        "fr": "Dons supplémentaires",
+        "en": "Bonus feats"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "Ses talents d’épéiste et de lanceur de sorts se prolongent par des dons choisis dans une liste courte.\n\nEn jeu\n• Un don supplémentaire aux niveaux 5, 10, 15 et 20, à choisir dans la liste de la classe ; il doit en remplir les conditions.\n• Liste : École renforcée (enchantement, nécromancie ou transmutation seulement), École supérieure (mêmes écoles), Efficacité des sorts accrue, Efficacité des sorts supérieure, Magie de guerre."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.hexblade_bonus",
+          "op": "add",
+          "value": "min(4, floor(level('class.hexblade') / 5))"
+        }
+      ],
+      "note": "Liste de dons : Spell Focus et Greater Spell Focus restreints aux écoles d’Enchantement, Nécromancie et Transmutation."
+    },
+    {
+      "id": "power.hexblade_greater_hexblades_curse",
+      "type": "class_power",
+      "name": {
+        "fr": "Tourment supérieur",
+        "en": "Greater hexblade’s curse"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "Sa malédiction mord plus fort.\n\nEn jeu\n• Le malus du tourment passe à −4 (au lieu de −2)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.hexblade_aura_of_unluck",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de malchance",
+        "en": "Aura of unluck"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "Autour de lui, les coups dévient comme si la chance avait changé de camp.\n\nEn jeu\n• Action libre : toute attaque, au corps à corps ou à distance, contre lui a 20 % de chances de rater (comme un camouflage).\n• Dure 3 rounds + son bonus de Charisme (s’il est positif).\n• Une fois par jour au niveau 12, puis une fois de plus aux niveaux 16 et 20."
+      },
+      "effects": [],
+      "usesPerDay": "1 + (if(level('class.hexblade') >= 16, 1, 0)) + (if(level('class.hexblade') >= 20, 1, 0))"
+    },
+    {
+      "id": "power.hexblade_dire_hexblades_curse",
+      "type": "class_power",
+      "name": {
+        "fr": "Tourment suprême",
+        "en": "Dire hexblade’s curse"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "hexblade"
+      ],
+      "description": {
+        "fr": "Son tourment est devenu écrasant.\n\nEn jeu\n• Le malus du tourment passe à −6 (au lieu de −4)."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.hexblade",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.hexblade_hexblades_curse"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.hexblade_arcane_resistance"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.hexblade_mettle"
+      ],
+      "spellsPerDay": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.hexblade_summon_familiar",
+        "power.hexblade_spells"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.hexblade_bonus_feats"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        2,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.hexblade_greater_hexblades_curse"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        3,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        2,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 11,
+      "bab": 11,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        3,
+        2,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 12,
+      "bab": 12,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [
+        "power.hexblade_aura_of_unluck"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 13,
+      "bab": 13,
+      "fort": 4,
+      "ref": 4,
+      "will": 8,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        3,
+        null
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 14,
+      "bab": 14,
+      "fort": 4,
+      "ref": 4,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 15,
+      "bab": 15,
+      "fort": 5,
+      "ref": 5,
+      "will": 9,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 16,
+      "bab": 16,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        4,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 17,
+      "bab": 17,
+      "fort": 5,
+      "ref": 5,
+      "will": 10,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 18,
+      "bab": 18,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        2,
+        2,
+        1
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 19,
+      "bab": 19,
+      "fort": 6,
+      "ref": 6,
+      "will": 11,
+      "grants": [
+        "power.hexblade_dire_hexblades_curse"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        2
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "classId": "class.hexblade",
+      "level": 20,
+      "bab": 20,
+      "fort": 6,
+      "ref": 6,
+      "will": 12,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3
+      ],
+      "spellsKnown": [
+        null,
+        5,
+        5,
+        5,
+        5
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.hexblade",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "entities": [
+    {
+      "id": "class.sacred_fist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Poing sacré",
+        "en": "Sacred Fist"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "martial"
+      ],
+      "description": {
+        "fr": "Le poing sacré a remisé les armes et les armures lourdes pour faire de son corps et de sa foi une seule arme. Il prie, il s'entraîne, il avance, et ses poings s'enflamment au nom de son dieu. Ses sorts ne le déshonorent pas : seule l'arme à la main le ferait.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +4 ; Connaissances (religion) 8 rangs ; dons Attaques réflexes, Coup étourdissant, Magie de guerre, Science du combat à mains nues ; savoir lancer des sorts divins du 1er niveau.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Art de la magie, Concentration, Équilibre, Évasion, Premiers secours, Profession, Saut.\n• Sorts : +1 niveau de lanceur de sorts divins à chaque niveau, sauf aux niveaux 4 et 8.\n• Aptitudes : dégâts à mains nues (1) ; bonus à la CA (1, 5, 10) ; déplacement accéléré (3, 6, 9) ; flamme sacrée (4, 8) ; perception aveugle (6) ; armure intérieure (10).\n• Code de conduite : le poing sacré jure de ne plus utiliser d'arme ; s'il en porte ou en utilise une sciemment, il perd ses sorts et aptitudes de classe jusqu'à contrition (sort pénitence).\n• Il ne peut plus gagner de niveau de poing sacré s'il prend un niveau dans une autre classe."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@bab >= 4 and @skill.knowledge_religion.ranks >= 8 and has('feat.combat_reflexes') and has('feat.stunning_fist') and has('feat.combat_casting') and has('feat.improved_unarmed_strike')",
+      "note": "Lancer des sorts divins du 1er niveau, le code de conduite et le multiclassage : texte seul. Magie de guerre = Combat Casting, Attaques réflexes = Combat Reflexes (noms anglais déduits du français)."
+    },
+    {
+      "id": "power.sacred_fist_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de poing sacré",
+        "en": "Sacred fist spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_fist"
+      ],
+      "description": {
+        "fr": "Sa prière nourrit toujours sa magie, mais il ne progresse pas à chaque niveau.\n\nEn jeu\n• Chaque niveau, sauf les niveaux 4 et 8, compte comme un niveau de lanceur de sorts divins de plus dans une classe précédente.\n• Il gagne les sorts par jour, sorts connus et niveau de lanceur correspondants, mais pas les autres avantages de cette classe."
+      },
+      "effects": [],
+      "note": "Pas de ligne dans la table : niveau de lanceur choisi dans les fiches de niveau, sauf aux niveaux 4 et 8."
+    },
+    {
+      "id": "power.sacred_fist_unarmed_damage",
+      "type": "class_power",
+      "name": {
+        "fr": "Dégâts à mains nues",
+        "en": "Unarmed damage"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_fist"
+      ],
+      "description": {
+        "fr": "Ses poings frappent comme ceux d'un moine, même s'il n'a jamais porté la robe.\n\nEn jeu\n• Capacité extraordinaire : ses niveaux de poing sacré s'ajoutent à ses niveaux de moine pour les dégâts à mains nues.\n• Sans niveau de moine, il compte comme un moine de niveau égal à son niveau de poing sacré."
+      },
+      "effects": [
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.sacred_fist')) >= 1 and (level('class.monk') + level('class.sacred_fist')) < 4"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.sacred_fist')) >= 4 and (level('class.monk') + level('class.sacred_fist')) < 8"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.sacred_fist')) >= 8 and (level('class.monk') + level('class.sacred_fist')) < 12"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.sacred_fist')) >= 12 and (level('class.monk') + level('class.sacred_fist')) < 16"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d8",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.sacred_fist')) >= 16 and (level('class.monk') + level('class.sacred_fist')) < 20"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d10",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.sacred_fist')) >= 20"
+        }
+      ],
+      "note": "Dégâts à mains nues : le plus fort entre ceux du moine seul et ceux du total moine + poing sacré, comme pour le poing illuminé."
+    },
+    {
+      "id": "power.sacred_fist_ac_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à la CA",
+        "en": "AC bonus"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_fist"
+      ],
+      "description": {
+        "fr": "Un sixième sens lui fait esquiver même ce qu'il n'a pas vu.\n\nEn jeu\n• Capacité extraordinaire : +1 à la CA ; +2 au niveau 5 ; +3 au niveau 10.\n• Il s'applique même au contact ou quand il est pris au dépourvu.\n• Perdu s'il porte une armure intermédiaire ou lourde, un bouclier, une charge intermédiaire ou lourde, ou s'il est sans défense."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "1 + (if(level('class.sacred_fist') >= 5, 1, 0)) + (if(level('class.sacred_fist') >= 10, 1, 0))"
+        }
+      ],
+      "note": "Armure, bouclier et charge : non gérés, comme pour le moine. Cumul avec le bonus à la CA du moine : le texte ne le dit pas, mais le bonus est sans type et la fiche d'Alaraster (moine 6 / poing sacré 4, CA 21) ne tombe juste que s'ils s'additionnent."
+    },
+    {
+      "id": "power.sacred_fist_fast_movement",
+      "type": "class_power",
+      "name": {
+        "fr": "Déplacement accéléré",
+        "en": "Fast movement"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_fist"
+      ],
+      "description": {
+        "fr": "Il court plus vite que son armure légère ne le laisse croire.\n\nEn jeu\n• Capacité extraordinaire : bonus d'altération à la vitesse de déplacement : +3 m au niveau 3, +6 m au niveau 6, +9 m au niveau 9.\n• Perdu en armure plus lourde que légère ou avec une charge intermédiaire ou lourde.\n• Ne se cumule pas avec celui du moine : il garde le plus fort."
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": "max(0, 3 * floor(level('class.sacred_fist') / 3) - 3 * floor(level('class.monk') / 3))"
+        }
+      ],
+      "note": "Bonus d'altération : le modèle ne garde que le meilleur des deux (poing sacré, moine)."
+    },
+    {
+      "id": "power.sacred_fist_sacred_flame",
+      "type": "class_power",
+      "name": {
+        "fr": "Flamme sacrée",
+        "en": "Sacred flame"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_fist"
+      ],
+      "description": {
+        "fr": "Des flammes saintes courent autour de ses poings et de ses pieds.\n\nEn jeu\n• Capacité surnaturelle : action simple, dure 1 minute, 1 fois par jour (2 fois par jour au niveau 8).\n• Dégâts à mains nues en plus : niveau de poing sacré + modificateur de Sagesse.\n• La moitié de ces dégâts est du feu, l'autre moitié de l'énergie sacrée (que la résistance au feu ne réduit pas)."
+      },
+      "effects": [
+        {
+          "target": "unarmed.damage",
+          "op": "add",
+          "value": "level('class.sacred_fist') + @ability.wis.mod",
+          "condition": "active('toggle.sacred_fist_sacred_flame')"
+        }
+      ],
+      "usesPerDay": "1 + floor(level('class.sacred_fist') / 8)",
+      "note": "Toggle à activer pendant la minute de flammes. Répartition feu / énergie sacrée : texte seul."
+    },
+    {
+      "id": "power.sacred_fist_blindsense",
+      "type": "class_power",
+      "name": {
+        "fr": "Perception aveugle",
+        "en": "Blindsense"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_fist"
+      ],
+      "description": {
+        "fr": "Il entend, sent et ressent ce qui bouge autour de lui, yeux ouverts ou non.\n\nEn jeu\n• Capacité extraordinaire : perception aveugle dans un rayon de 3 m."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.sacred_fist_inner_armor",
+      "type": "class_power",
+      "name": {
+        "fr": "Armure intérieure",
+        "en": "Inner armor"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "sacred_fist"
+      ],
+      "description": {
+        "fr": "Sa sérénité le protège des coups du dehors et de la magie hostile.\n\nEn jeu\n• Capacité extraordinaire, 1 fois par jour : bonus de sainteté de +4 à la CA et de +4 à tous les jets de sauvegarde.\n• Résistance à la magie 25.\n• Dure un nombre de rounds égal à son modificateur de Sagesse."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 4,
+          "bonusType": "sacred",
+          "condition": "active('toggle.sacred_fist_inner_armor')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "sacred",
+          "condition": "active('toggle.sacred_fist_inner_armor')"
+        },
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": 25,
+          "layer": "base",
+          "condition": "active('toggle.sacred_fist_inner_armor')"
+        }
+      ],
+      "usesPerDay": 1,
+      "note": "Toggle à activer pendant la durée (Sagesse rounds)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.sacred_fist",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.sacred_fist_spells",
+        "power.sacred_fist_unarmed_damage",
+        "power.sacred_fist_ac_bonus"
+      ]
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": []
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.sacred_fist_fast_movement"
+      ]
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.sacred_fist_sacred_flame"
+      ]
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.sacred_fist_blindsense"
+      ]
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.sacred_fist",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.sacred_fist_inner_armor"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.sacred_fist",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

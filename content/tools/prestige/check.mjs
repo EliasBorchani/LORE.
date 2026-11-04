@@ -10,6 +10,7 @@ const problems = []
 const warnings = []
 
 const catalog = read(R + 'test-references/danalieth/catalog.json')
+const danalieth = new Set(catalog.entities.map((e) => e.id))
 const add = (batch) => {
   const ids = new Set((batch.entities ?? []).map((e) => e.id))
   const classes = new Set((batch.progressions ?? []).map((p) => p.classId))
@@ -31,7 +32,8 @@ for (const e of batch.entities ?? []) {
   if (!e.name?.fr || !e.name?.en) problems.push(`${at}: name.fr and name.en needed`)
   if (!/\n\nEn jeu\n• /.test(e.description?.fr ?? '')) problems.push(`${at}: description.fr must be a paragraph, then "\\n\\nEn jeu\\n• rule" lines`)
   if (/https?:\/\//.test(JSON.stringify(e))) problems.push(`${at}: no URLs`)
-  if (e.type === 'class_power' && !e.id.startsWith(`power.${classId?.slice(6)}_`)) problems.push(`${at}: class powers are power.<class>_<feature>`)
+  // Danalieth's test catalog fixed some ids before this rule (Sevenfold Veil: power.sv_*); they never change.
+  if (e.type === 'class_power' && !e.id.startsWith(`power.${classId?.slice(6)}_`) && !danalieth.has(e.id)) problems.push(`${at}: class powers are power.<class>_<feature>`)
 }
 for (const r of batch.relations ?? []) if (r.from?.startsWith('spell.')) problems.push(`relation from ${r.from}: spell list entries go in the result, not in this file (lists.json owns them)`)
 const rows = (batch.progressions ?? []).filter((p) => p.classId === classId).sort((a, b) => a.level - b.level)

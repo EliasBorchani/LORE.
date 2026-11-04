@@ -1,0 +1,249 @@
+{
+  "entities": [
+    {
+      "id": "class.warshaper",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Bellimorphe",
+        "en": "Warshaper"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "shapechange"
+      ],
+      "description": {
+        "fr": "Pourquoi se contenter d'une épée quand on peut devenir l'arme ? Le bellimorphe remodèle son corps en plein combat : griffes, crocs, carapace, membres trop longs, selon ce que la situation demande.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +4 ; savoir changer de forme (pouvoir de change-forme, sous-type métamorphe, sort métamorphose ou forme animale).\n• Aucune formation nouvelle aux armes ou aux armures.\n• Compétences de classe : Artisanat, Concentration, Déguisement, Équilibre, Escalade, Évasion, Natation, Saut.\n• Les aptitudes ne marchent que sous une forme qui n'est pas sa forme naturelle.\n• Aptitudes : armes morphiques et immunités morphiques (1) ; corps morphique (2) ; allonge morphique (3) ; guérison morphique (4) ; instamorphisme ou multimorphisme (5)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 4",
+      "note": "Condition de changement de forme : texte seul (le modèle ne connaît pas les formes)."
+    },
+    {
+      "id": "power.warshaper_morphic_weapons",
+      "type": "class_power",
+      "name": {
+        "fr": "Armes morphiques",
+        "en": "Morphic weapons"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warshaper"
+      ],
+      "description": {
+        "fr": "Griffes, crocs, cornes : le corps fournit l'arme qu'il faut.\n\nEn jeu\n• Capacité extraordinaire, sous une autre forme que la sienne.\n• Action de mouvement : obtient des armes naturelles (griffes, crocs…) dont les dégâts suivent la taille de la forme actuelle ; elles n'ont pas à correspondre à la forme copiée.\n• Il peut aussi renforcer une arme naturelle que la forme a déjà : ses dégâts montent d'une catégorie de taille.\n• Utilisable aussi souvent qu'il veut, même si la source de la transformation ne change la forme qu'une fois."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warshaper_morphic_immunities",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunités morphiques",
+        "en": "Morphic immunities"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warshaper"
+      ],
+      "description": {
+        "fr": "Il range ses organes vitaux là où les coups les atteignent mal.\n\nEn jeu\n• Capacité extraordinaire : immunisé contre l'étourdissement et les coups critiques tant qu'il est transformé."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warshaper_morphic_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Corps morphique",
+        "en": "Morphic body"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warshaper"
+      ],
+      "description": {
+        "fr": "Il ne choisit plus que des formes robustes.\n\nEn jeu\n• Capacité surnaturelle, niveau 2 : sous une autre forme, +4 en Force et en Constitution."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.warshaper_morphic_body')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.warshaper_morphic_body')"
+        }
+      ],
+      "note": "Toggle à activer quand le bellimorphe est transformé. Bonus sans type (le livre n'en précise pas)."
+    },
+    {
+      "id": "power.warshaper_morphic_reach",
+      "type": "class_power",
+      "name": {
+        "fr": "Allonge morphique",
+        "en": "Morphic reach"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warshaper"
+      ],
+      "description": {
+        "fr": "Bras, cou, tentacules : il s'étire pour toucher plus loin.\n\nEn jeu\n• Capacité surnaturelle, niveau 3 : +1,50 m à l'allonge de la forme copiée.\n• Cette allonge supplémentaire ne se voit pas avant qu'il s'en serve."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warshaper_morphic_healing",
+      "type": "class_power",
+      "name": {
+        "fr": "Guérison morphique",
+        "en": "Morphic healing"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warshaper"
+      ],
+      "description": {
+        "fr": "Sa chair se referme d'elle-même, et il peut l'y aider.\n\nEn jeu\n• Capacité surnaturelle, niveau 4 : guérison accélérée 2.\n• Action complexe de méditation + test de Concentration (DD = dégâts subis) : récupère aussitôt 10 points de vie."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.warshaper_instamorph_multimorph",
+      "type": "class_power",
+      "name": {
+        "fr": "Instamorphisme / multimorphisme",
+        "en": "Instamorph / multimorph"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "warshaper"
+      ],
+      "description": {
+        "fr": "Au sommet, il passe d'une forme à l'autre aussi vite que la bataille change.\n\nEn jeu\n• Capacité surnaturelle, niveau 5 : une seule des deux, selon la source de ses transformations.\n• Instamorphisme (changement de forme à volonté) : se transforme par une action de mouvement.\n• Multimorphisme (sort métamorphose, pouvoir magique limité par jour ou forme animale) : change de forme plusieurs fois pendant la durée du sort ou du pouvoir.\n• Chaque changement est une action simple ; seul le premier soigne. Reprendre sa forme initiale met fin au sort ou au pouvoir."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.warshaper",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.warshaper_morphic_weapons",
+        "power.warshaper_morphic_immunities"
+      ]
+    },
+    {
+      "classId": "class.warshaper",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.warshaper_morphic_body"
+      ]
+    },
+    {
+      "classId": "class.warshaper",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.warshaper_morphic_reach"
+      ]
+    },
+    {
+      "classId": "class.warshaper",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.warshaper_morphic_healing"
+      ]
+    },
+    {
+      "classId": "class.warshaper",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.warshaper_instamorph_multimorph"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.warshaper",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

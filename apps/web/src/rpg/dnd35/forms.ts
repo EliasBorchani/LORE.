@@ -156,6 +156,28 @@ FORMS.push(
   maneuverForm('stance', 'Une posture : une manière de combattre que l’initiateur garde tant qu’il le veut, une seule à la fois.'),
 )
 
+FORMS.push({
+  type: 'invocation',
+  intro: 'Une invocation : un pouvoir magique que le sorcier utilise à volonté. Il en apprend selon sa table, jusqu’au rang qu’il a atteint.',
+  sections: [
+    { id: 'essentials', title: 'Essentiel', fields: [name, description, labels, source] },
+    {
+      id: 'rules',
+      title: 'Règles',
+      fields: [
+        { key: 'invocation.grade', kind: 'choice', label: 'Rang', description: 'Le sorcier l’apprend quand sa table atteint ce rang.', options: [{ value: '', label: '— à choisir' }, { value: 'least', label: 'Inférieure' }, { value: 'lesser', label: 'Mineure' }, { value: 'greater', label: 'Majeure' }, { value: 'dark', label: 'Suprême' }] },
+        { key: 'invocation.level', kind: 'choice', label: 'Niveau équivalent', description: 'Le niveau de sort auquel elle compte (dissipation, DD).', options: [{ value: '', label: '— à choisir' }, ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => ({ value: n, label: String(n) }))] },
+        { key: 'invocation.kind', kind: 'choice', label: 'Type', description: 'Une essence ou une forme change la décharge occulte ; les autres sont des pouvoirs à part.', options: [{ value: 'other', label: 'Autre' }, { value: 'essence', label: 'Invocation fantastique (essence)' }, { value: 'blast_shape', label: 'Invocation façonnée (forme)' }], optional: true },
+        { key: 'invocation.action', kind: 'text', label: 'Action', description: '1 action simple, 1 action rapide…', optional: true },
+        { key: 'invocation.range', kind: 'text', label: 'Portée', description: 'Personnelle, contact, 18 m…', optional: true },
+        { key: 'invocation.duration', kind: 'text', label: 'Durée', description: '24 heures, 1 round…', optional: true },
+        { key: 'invocation.savingThrow', kind: 'text', label: 'Jet de sauvegarde', description: 'Volonté annule…', optional: true },
+        effects,
+      ],
+    },
+  ],
+})
+
 /** Every other type until it gets its own form: the common fields; its own blocks stay in « Avancé ». */
 function generic(type: string): FormSchema {
   return {

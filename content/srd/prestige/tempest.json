@@ -1,0 +1,195 @@
+{
+  "entities": [
+    {
+      "id": "class.tempest",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Tempête d'acier",
+        "en": "Tempest"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "combat"
+      ],
+      "description": {
+        "fr": "Deux lames, un seul mouvement : la tempête d'acier combat comme un orage, sans cesse en rotation, et protège sa garde avec les armes mêmes qu'elle lance sur ses adversaires. Elle apprend sur le terrain, rarement à l'école.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +6 ; dons Attaque éclair, Combat à deux armes, Esquive, Science du combat à deux armes et Souplesse du serpent.\n• Aucune formation nouvelle aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Acrobaties, Artisanat, Équilibre, Escalade, Escamotage, Saut.\n• Aptitudes : tempête défensive +1 (1), +2 (3), +3 (5) ; ambidextrie (2 et 4) ; polyvalence à deux armes (3) ; attaque éclair à deux armes (5).\n• Les aptitudes de combat à deux armes se perdent en armure intermédiaire ou lourde."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 6 and has('feat.spring_attack') and has('feat.two_weapon_fighting') and has('feat.dodge') and has('feat.improved_two_weapon_fighting') and has('feat.mobility')"
+    },
+    {
+      "id": "power.tempest_two_weapon_defense",
+      "type": "class_power",
+      "name": {
+        "fr": "Tempête défensive",
+        "en": "Two-weapon defense"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tempest"
+      ],
+      "description": {
+        "fr": "Ses lames dessinent un rempart mouvant autour d'elle.\n\nEn jeu\n• Capacité extraordinaire : +1 à la CA quand elle manie une arme double ou deux armes (pas d'armes naturelles ni de combat à mains nues) ; +2 au niveau 3, +3 au niveau 5.\n• Perdue en armure intermédiaire ou lourde."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "if(level('class.tempest') >= 5, 3, if(level('class.tempest') >= 3, 2, 1))",
+          "condition": "active('toggle.tempest_two_weapon_defense')"
+        }
+      ],
+      "note": "Armes en main et armure : condition du joueur (case à cocher). Type de bonus non précisé : sans type."
+    },
+    {
+      "id": "power.tempest_ambidexterity",
+      "type": "class_power",
+      "name": {
+        "fr": "Ambidextrie",
+        "en": "Ambidexterity"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tempest"
+      ],
+      "description": {
+        "fr": "Sa main faible vaut presque la forte.\n\nEn jeu\n• Capacité extraordinaire : les malus de combat à deux armes diminuent de 1 au niveau 2 (−3 / −1 si l'arme secondaire est légère), puis encore de 1 au niveau 4 (−2 / +0 si légère).\n• Perdue en armure intermédiaire ou lourde."
+      },
+      "effects": [],
+      "note": "Le modèle ne calcule pas les malus de combat à deux armes (aucune statistique pour eux) : texte seul."
+    },
+    {
+      "id": "power.tempest_two_weapon_versatility",
+      "type": "class_power",
+      "name": {
+        "fr": "Polyvalence à deux armes",
+        "en": "Two-weapon versatility"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tempest"
+      ],
+      "description": {
+        "fr": "Ce qu'elle sait faire d'une lame, elle le fait de l'autre.\n\nEn jeu\n• Capacité extraordinaire, dès le niveau 3 : en combat à deux armes, les effets de certains dons s'appliquent aux deux armes : Arme de prédilection, Arme de prédilection supérieure, Science du critique, Spécialisation martiale, Spécialisation martiale supérieure.\n• N'apporte rien pour un don déjà pris pour les deux armes."
+      },
+      "effects": [],
+      "note": "Une seule arme maniée dans le modèle : texte seul."
+    },
+    {
+      "id": "power.tempest_two_weapon_spring_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque éclair à deux armes",
+        "en": "Two-weapon spring attack"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tempest"
+      ],
+      "description": {
+        "fr": "Elle frappe, bondit, frappe encore, avant même qu'on la voie bouger.\n\nEn jeu\n• Capacité extraordinaire, dès le niveau 5 : en attaque éclair, elle attaque une fois avec chacune de ses deux armes.\n• Perdue en armure intermédiaire ou lourde."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.tempest",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.tempest_two_weapon_defense"
+      ]
+    },
+    {
+      "classId": "class.tempest",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.tempest_ambidexterity"
+      ]
+    },
+    {
+      "classId": "class.tempest",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.tempest_two_weapon_versatility"
+      ]
+    },
+    {
+      "classId": "class.tempest",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.tempest",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.tempest_two_weapon_spring_attack"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.tempest",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.tempest",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.tempest",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.tempest",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.tempest",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.tempest",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

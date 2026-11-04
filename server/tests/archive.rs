@@ -204,7 +204,7 @@ async fn export_restore_export_gives_the_same_files(pool: PgPool) {
             before.characters,
             before.character_versions
         ),
-        (3, 94, 95, 2, 3)
+        (3, 93, 94, 2, 3)
     );
     assert_eq!(
         (

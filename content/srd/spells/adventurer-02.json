@@ -1,0 +1,1140 @@
+{
+  "entities": [
+    {
+      "id": "spell.instant_search",
+      "type": "spell",
+      "name": {
+        "fr": "Fouille instantanée",
+        "en": "Instant Search"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un regard rapide suffit : le personnage fouille une pièce ou un coffre en un éclair, sans perdre son temps.\n\nEn jeu\n• Pendant 1 round, un test de Fouille se fait en action libre.\n• Bonus d’intuition de +2 à ce test."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": [
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "condition": "active('toggle.instant_search')"
+        }
+      ]
+    },
+    {
+      "id": "spell.dirge_of_discord",
+      "type": "spell",
+      "name": {
+        "fr": "Hymne de la discorde",
+        "en": "Dirge of Discord"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le barde entonne un chant impie qui emplit les esprits de cris et de hurlements, et rend les victimes lourdes et maladroites.\n\nEn jeu\n• Zone : étendue de 6 m de rayon ; Volonté annule.\n• Les créatures affectées subissent –4 aux jets d’attaque, aux tests de Concentration et à la Dextérité.\n• Leur vitesse est réduite de 50 % (minimum 1,50 m).\n• Composante matérielle : une pincée de cendres de destrakhan."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mal",
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "area": "étendue de 6 m de rayon",
+        "duration": "concentration + 1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bladeweave",
+      "type": "spell",
+      "name": {
+        "fr": "Hypnolame",
+        "en": "Bladeweave"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Les coups du personnage dessinent une trajectoire qui fascine l’adversaire et le laisse un instant sans réaction.\n\nEn jeu\n• À chaque round où il attaque avec une arme de corps à corps, il peut faire une attaque de contact en plus, en action libre, avec son bonus d’attaque normal.\n• Cette attaque ne fait pas de dégâts : la créature touchée par l’arme doit réussir un jet de Volonté ou être hébétée 1 round.\n• La résistance à la magie s’applique à cet effet."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "mirage",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.improvisation",
+      "type": "spell",
+      "name": {
+        "fr": "Improvisation",
+        "en": "Improvisation"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage s’appuie sur sa chance : il se constitue une réserve de points à dépenser quand il en a besoin.\n\nEn jeu\n• Réserve de 2 points par niveau de lanceur de sorts, à répartir librement.\n• Les points s’ajoutent aux jets d’attaque, tests de compétence et tests de caractéristique (bonus de chance).\n• Aucun jet ne reçoit plus de la moitié du niveau de lanceur de sorts.\n• À annoncer avant de lancer le dé ; les points non utilisés sont perdus à la fin du sort.\n• Composante matérielle : une paire de dés."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)"
+      },
+      "effects": [],
+      "note": "Les points sont dépensés à la volée : le modèle ne les représente pas."
+    },
+    {
+      "id": "spell.listening_lorecall",
+      "type": "spell",
+      "name": {
+        "fr": "Intuition auditive",
+        "en": "Listening Lorecall"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les oreilles du personnage captent et situent les sons les plus infimes.\n\nEn jeu\n• Bonus d’intuition de +4 aux tests de Perception auditive.\n• Avec 5 degrés de maîtrise en Perception auditive : perception aveugle sur 9 m.\n• Avec 10 degrés : vision aveugle sur 9 m à la place.\n• Un sort ou effet de silence annule la perception et la vision aveugles."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau"
+      },
+      "effects": [
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 4,
+          "bonusType": "insight",
+          "condition": "active('toggle.listening_lorecall')"
+        }
+      ]
+    },
+    {
+      "id": "spell.divine_insight",
+      "type": "spell",
+      "name": {
+        "fr": "Intuition divine",
+        "en": "Divine Insight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage s’en remet à sa divinité pour réussir un geste précis, une seule fois.\n\nEn jeu\n• Une seule fois pendant la durée : bonus d’intuition de 5 + niveau de lanceur de sorts (maximum +15) à un test de compétence.\n• Se déclenche en action immédiate, avant le test ; le sort s’achève ensuite.\n• Un seul effet d’intuition divine à la fois sur soi."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 heure/niveau ou jusqu’à déchargement (T)"
+      },
+      "effects": [],
+      "note": "Usage unique sur un test choisi : non modélisé."
+    },
+    {
+      "id": "spell.healing_lorecall",
+      "type": "spell",
+      "name": {
+        "fr": "Intuition du guérisseur",
+        "en": "Healing Lorecall"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Son expérience de soigneur rend ses sorts de guérison plus complets et plus puissants.\n\nEn jeu\n• Avec 5 degrés ou plus en Premiers secours, ses sorts de guérison peuvent aussi retirer ébloui, hébété ou fatigué.\n• Avec 10 degrés ou plus : aussi épuisé, fiévreux ou nauséeux.\n• Pour les points de vie rendus, il peut remplacer son niveau de lanceur de sorts par son degré en Premiers secours.\n• La limite de niveau de lanceur de sorts de chaque sort reste appliquée.\n• Composante matérielle : une petite feuille de menthe."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)"
+      },
+      "effects": [],
+      "note": "Le remplacement du niveau de lanceur par les degrés de Premiers secours n’est pas modélisé."
+    },
+    {
+      "id": "spell.swift_invisibility",
+      "type": "spell",
+      "name": {
+        "fr": "Invisibilité rapide",
+        "en": "Swift Invisibility"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Version éclair de l’invisibilité : le personnage disparaît le temps d’un round.\n\nEn jeu\n• Fonctionne comme invisibilité, mais dure 1 round.\n• Se lance en action rapide ; composante verbale seulement."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "hallucination",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.joyful_noise",
+      "type": "spell",
+      "name": {
+        "fr": "Joyeux vacarme",
+        "en": "Joyful Noise"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Un tapage de vibrations sonores qui chasse le silence magique autour du personnage.\n\nEn jeu\n• Émanation de 3 m de rayon centrée sur le jeteur de sorts, qui se déplace avec lui tant qu’il se concentre.\n• Annule les effets de silence magique dans la zone ; ils reprennent hors de la zone.\n• Pratique pour sortir un groupe d’une zone de silence."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "G",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "émanation de 3 m de rayon, centrée sur le jeteur de sorts",
+        "duration": "concentration, voir description",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.speechlink",
+      "type": "spell",
+      "name": {
+        "fr": "Lien verbal",
+        "en": "Speechlink"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Deux personnes consentantes se parlent comme si elles étaient côte à côte, où qu’elles soient.\n\nEn jeu\n• Le jeteur de sorts et une créature consentante touchée communiquent de vive voix à n’importe quelle distance, sur le même plan.\n• L’un ou l’autre peut mettre fin au sort quand il veut.\n• Chacun entend l’autre quel que soit le volume, mais aucun autre son ne passe.\n• Marche aussi avec les animaux, sans leur donner la compréhension des langues."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "le jeteur de sorts et une créature touchée",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bloodhound",
+      "type": "spell",
+      "name": {
+        "fr": "Limier de sang",
+        "en": "Bloodhound"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "L’odorat et l’instinct du pisteur lui donnent une seconde chance de retrouver une piste perdue.\n\nEn jeu\n• Si un test de Survie pour pister échoue, le personnage peut le retenter tout de suite contre le même DD.\n• S’il échoue encore, il doit chercher la piste 30 minutes (dehors) ou 5 minutes (dedans) avant de réessayer."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "24 heures (T)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.masters_touch",
+      "type": "spell",
+      "name": {
+        "fr": "Main de maître",
+        "en": "Master’s Touch"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage manie sans peine l’arme ou le bouclier qu’il tient en main, même sans l’avoir appris.\n\nEn jeu\n• Maîtrise du maniement de l’objet tenu au moment du lancement (une seule arme ou un seul bouclier précis, pas une catégorie).\n• Pour plusieurs objets, on lance le sort plusieurs fois.\n• Si le personnage lâche l’objet, la maîtrise ne passe pas à un autre ; il la retrouve s’il le reprend avant la fin.\n• Focaliseur : l’objet que le personnage veut savoir utiliser."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, F",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)"
+      },
+      "effects": [],
+      "note": "Maîtrise d’un objet précis : non modélisée."
+    },
+    {
+      "id": "spell.cloak_of_the_sea",
+      "type": "spell",
+      "name": {
+        "fr": "Mante marine",
+        "en": "Cloak of the Sea"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "La peau de la créature prend une teinte verdâtre et aqueuse, et l’eau devient son élément.\n\nEn jeu\n• Sous l’eau : mêmes effets que flou, liberté de mouvement et respiration aquatique.\n• Pas de dégâts non létaux dus à la pression ou au froid de l’eau.\n• Hors de l’eau, seul respiration aquatique reste.\n• Le sujet peut entrer et sortir de l’eau sans mettre fin au sort."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature touchée",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.infernal_threnody",
+      "type": "spell",
+      "name": {
+        "fr": "Mélopée infernale",
+        "en": "Infernal Threnody"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le barde joue un rythme puissant et hypnotique qui nourrit la magie des prêtres mauvais et affaiblit celle des prêtres bons.\n\nEn jeu\n• Émanation en sphère dont le rayon est égal à la portée, centrée sur le jeteur de sorts ; Volonté annule.\n• Les lanceurs de sorts divins mauvais dans la zone gagnent +2 au niveau effectif de lanceur de sorts (pour les effets qui en dépendent, sans sorts en plus).\n• Imite sanctification maléfique pour le renvoi et l’intimidation des morts-vivants.\n• Lanceurs divins mauvais : bonus de malfaisance de +4 aux tests de Charisme pour intimider les morts-vivants ; lanceurs divins bons : malus de malfaisance de –4 aux tests pour les renvoyer."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "mal",
+          "son"
+        ],
+        "components": "V, G",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "area": "émanation en sphère dont le rayon est égal à la portée, centrée sur le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.listening_coin",
+      "type": "spell",
+      "name": {
+        "fr": "Monnaie d’écoute",
+        "en": "Listening Coin"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Deux pièces ordinaires deviennent l’une un émetteur, l’autre un récepteur : le personnage entend ce qui se dit près de la première.\n\nEn jeu\n• Deux pièces : l’une émet, l’autre reçoit (comme clairaudience).\n• Le personnage colle la pièce réceptrice à son oreille pour entendre tout ce que capte l’émettrice.\n• Si l’émettrice est dans une poche ou un sac, le DD du test de Perception auditive augmente de 5.\n• Marche à n’importe quelle distance ; silence si les pièces sont sur des plans différents.\n• Focaliseur : les deux pièces."
+      },
+      "spell": {
+        "school": "Divination",
+        "subschool": "scrutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "effect": "capteur magique",
+        "duration": "1 heure/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.foebane",
+      "type": "spell",
+      "name": {
+        "fr": "Mort à l’ennemi",
+        "en": "Foebane"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une arme du personnage devient mortelle pour une catégorie d’ennemis qu’il a juré de traquer.\n\nEn jeu\n• Contre les ennemis jurés : l’arme agit comme une arme magique +5 et inflige 2d6 dégâts supplémentaires.\n• Le porteur gagne un bonus de résistance de +4 aux jets de sauvegarde contre les effets de ces créatures.\n• Le sort s’achève 1 round après que l’arme quitte la main du personnage.\n• Un seul sort de ce type à la fois ; il remplace les bonus et pouvoirs d’une arme magique et ne s’empile avec aucun autre effet du même genre.\n• Sans effet sur les artefacts."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme touchée",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "resistance",
+          "situation": "situation.vs_favored_enemy",
+          "condition": "active('toggle.foebane')"
+        }
+      ],
+      "note": "Les bonus de l’arme (+5, 2d6) ne sont pas modélisés : seul le bonus aux jets de sauvegarde l’est."
+    },
+    {
+      "id": "spell.accelerated_movement",
+      "type": "spell",
+      "name": {
+        "fr": "Mouvement accéléré",
+        "en": "Accelerated Movement"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage avance vite et sans bruit sans perdre en précision.\n\nEn jeu\n• Il se déplace à sa vitesse normale avec Déplacement silencieux, Équilibre ou Escalade sans malus au test.\n• Le malus quand on court ou charge n’est pas supprimé.\n• Composante matérielle : un cafard mort."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)"
+      },
+      "effects": [],
+      "note": "Pas de bonus chiffré : l’effet est une suppression de malus."
+    },
+    {
+      "id": "spell.hawkeye",
+      "type": "spell",
+      "name": {
+        "fr": "Œil de faucon",
+        "en": "Hawkeye"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le regard du personnage porte loin et voit tout.\n\nEn jeu\n• La portée de ses armes à distance augmente de 50 %.\n• Bonus d’aptitude de +5 aux tests de Détection.\n• Focaliseur : la lentille d’une loupe."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes/niveau (T)"
+      },
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 5,
+          "bonusType": "competence",
+          "condition": "active('toggle.hawkeye')"
+        }
+      ],
+      "note": "Portée +50 % non modélisée."
+    },
+    {
+      "id": "spell.snipers_eye",
+      "type": "spell",
+      "name": {
+        "fr": "Œil du tireur d’élite",
+        "en": "Sniper’s Eye"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage voit et entend tout du poste où il se tient : à l’arc ou à l’arbalète, il frappe très loin et sans pitié.\n\nEn jeu\n• Bonus d’aptitude de +10 aux tests de Détection.\n• Vision dans le noir à 18 m.\n• Attaque sournoise à distance jusqu’à 18 m au lieu de 9 m.\n• Attaque mortelle avec une arme à distance (cible à 18 m au plus).\n• N’accorde ni attaque sournoise ni attaque mortelle si le personnage n’a pas déjà ces aptitudes.\n• Focaliseur : un point d’observation fixe (le bonus se perd si le personnage s’éloigne de plus de 1,50 m du lieu du lancement)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)"
+      },
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 10,
+          "bonusType": "competence",
+          "condition": "active('toggle.snipers_eye')"
+        },
+        {
+          "target": "vision.darkvision",
+          "op": "add",
+          "value": 18,
+          "condition": "active('toggle.snipers_eye')"
+        }
+      ]
+    },
+    {
+      "id": "spell.wail_of_doom",
+      "type": "spell",
+      "name": {
+        "fr": "Plainte de la destinée",
+        "en": "Wail of Doom"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Un cri de désespoir déchire les ennemis et les plonge dans la terreur.\n\nEn jeu\n• Cône de 9 m ; chaque créature subit 1d4 par niveau de lanceur de sorts (maximum 15d4) et est paniquée 1 round par niveau.\n• Volonté, partiel : dégâts réduits de moitié, secoué au lieu de paniqué, et durée réduite à 1 round."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mental",
+          "son",
+          "terreur"
+        ],
+        "components": "V",
+        "castingTime": "1 action simple",
+        "range": "9 m",
+        "area": "rayonnement en forme de cône",
+        "duration": "instantanée et 1 round/niveau ou 1 round ; voir description",
+        "savingThrow": "Volonté, partiel ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d4",
+          "scope": "spell"
+        }
+      ]
+    },
+    {
+      "id": "spell.daggerspell_stance",
+      "type": "spell",
+      "name": {
+        "fr": "Posture enchantelame",
+        "en": "Daggerspell Stance"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Une position de combat à deux dagues qui dévie à la fois les coups et la magie.\n\nEn jeu\n• Les effets ne se produisent qu’avec deux dagues portées ; ils se maintiennent si on en laisse tomber une.\n• Attaque à outrance avec une dague dans chaque main : bonus d’intuition de +2 à l’attaque et aux dégâts avec les dagues, pour ce round.\n• Combat sur la défensive avec deux dagues : résistance à la magie de 5 + niveau de lanceur de sorts.\n• Défense totale avec deux dagues : en plus, réduction des dégâts 5/magie.\n• Focaliseurs : une paire de dagues."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, F",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)"
+      },
+      "effects": [],
+      "note": "Conditions de combat (attaque à outrance, défense) non modélisées."
+    },
+    {
+      "id": "spell.exacting_shot",
+      "type": "spell",
+      "name": {
+        "fr": "Précision meurtrière",
+        "en": "Exacting Shot"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une arme à distance du personnage porte des coups au but contre ses ennemis jurés.\n\nEn jeu\n• Les jets pour confirmer un critique contre un ennemi juré réussissent automatiquement.\n• L’arme ignore les chances de rater dues au camouflage contre un ennemi juré (pas pour le camouflage total).\n• Sans effet si l’arme ou le projectile a déjà un effet magique ou une propriété liée aux critiques."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "arme à distance touchée",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule (inoffensif, objet)",
+        "spellResistance": "oui (inoffensif, objet)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.tactical_precision",
+      "type": "spell",
+      "name": {
+        "fr": "Précision tactique",
+        "en": "Tactical Precision"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Les alliés sentent par instinct ce que font les autres et coordonnent mieux leurs attaques.\n\nEn jeu\n• Cible : 1 créature/niveau, à 9 m ou moins les unes des autres.\n• Deux alliés affectés qui prennent la même créature en tenaille gagnent chacun +2 (intuition) à l’attaque contre elle, en plus du +2 de la prise en tenaille.\n• Un allié affecté qui blesse un adversaire pris en tenaille par un autre allié affecté inflige 1d6 dégâts supplémentaires (sans effet contre les immunisés aux attaques sournoises).\n• Composante matérielle : un jouet en forme de petit soldat."
+      },
+      "spell": {
+        "school": "Divination",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, distantes de 9 m ou moins les unes des autres",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Bonus de tenaille entre alliés non modélisés (situation sur d’autres personnages)."
+    },
+    {
+      "id": "spell.mindless_rage",
+      "type": "spell",
+      "name": {
+        "fr": "Rage aveugle",
+        "en": "Mindless Rage"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le sujet est pris d’une fureur qui le fait foncer sur le jeteur de sorts, sans voir autre chose.\n\nEn jeu\n• Le sujet doit voir le jeteur de sorts au lancement ; s’il le perd de vue, le sort s’achève.\n• Il doit attaquer à outrance le jeteur de sorts s’il est dans son espace ; sinon, se déplacer vers lui (jusqu’à 2 fois sa vitesse).\n• Il peut utiliser dons, compétences et pouvoirs de mêlée, mais pas d’attaque à distance, de sorts ni d’objets magiques à mot de commande ou à fin d’incantation.\n• Il ne peut pas attaquer d’autre créature que le jeteur de sorts.\n• Sur une créature qui a la rage de berserker : la rage s’active et compte pour une utilisation quotidienne.\n• Focaliseur : un mouchoir ou tissu écarlate."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, F",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.swift_haste",
+      "type": "spell",
+      "name": {
+        "fr": "Rapidité instantanée",
+        "en": "Swift Haste"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un souffle de vitesse, le temps d’un round.\n\nEn jeu\n• Fonctionne comme rapidité, mais dure 1 round.\n• Se lance en action rapide ; composante verbale seulement.\n• Bonus de rapidité : +1 aux jets d’attaque, +1 à la CA et aux jets de Réflexes (esquive), +9 m de vitesse."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "condition": "active('toggle.swift_haste')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge",
+          "condition": "active('toggle.swift_haste')"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge",
+          "condition": "active('toggle.swift_haste')"
+        },
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 9,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.swift_haste')"
+        }
+      ],
+      "note": "L’attaque supplémentaire de rapidité n’est pas modélisée."
+    },
+    {
+      "id": "spell.insidious_rhythm",
+      "type": "spell",
+      "name": {
+        "fr": "Refrain entêtant",
+        "en": "Insidious Rhythm"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une mélodie ridicule reste en tête du sujet et l’empêche de se concentrer.\n\nEn jeu\n• Le sujet doit réussir un jet de Volonté pour ne pas être gêné.\n• –4 aux tests de compétence liés à l’Intelligence et à Concentration.\n• Pour lancer, se concentrer sur ou diriger un sort, il doit réussir un test de Concentration (DD = DD du sort + niveau du sort) pour ne pas échouer."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.swift_expeditious_retreat",
+      "type": "spell",
+      "name": {
+        "fr": "Repli expéditif rapide",
+        "en": "Swift Expeditious Retreat"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un coup de fouet de vitesse pour décrocher, le temps d’un round.\n\nEn jeu\n• Fonctionne comme repli expéditif, mais dure 1 round.\n• Se lance en action rapide ; composante verbale seulement.\n• +9 m de vitesse de déplacement (bonus d’altération)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": [
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 9,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.swift_expeditious_retreat')"
+        }
+      ]
+    },
+    {
+      "id": "spell.healthful_rest",
+      "type": "spell",
+      "name": {
+        "fr": "Repos bienfaisant",
+        "en": "Healthful Rest"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le repos du groupe devient bien plus réparateur.\n\nEn jeu\n• Cibles : 1 créature/niveau, à 9 m ou moins les unes des autres.\n• Pendant 24 heures, chaque créature affectée regagne le double de points de vie par la guérison naturelle (selon son niveau d’activité)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "guérison",
+        "components": "V, G",
+        "castingTime": "10 minutes",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature/niveau, distantes de 9 m ou moins les unes des autres",
+        "duration": "24 heures",
+        "savingThrow": "Volonté, annule (inoffensif)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.instant_locksmith",
+      "type": "spell",
+      "name": {
+        "fr": "Serrurier instantané",
+        "en": "Instant Locksmith"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un éclair de clairvoyance guide les doigts du personnage sur une serrure ou un piège.\n\nEn jeu\n• Pendant 1 round, un test de Crochetage ou de Désamorçage/sabotage se fait en action libre.\n• Bonus d’intuition de +2 à ce test."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": [
+        {
+          "target": "skill.open_lock",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "condition": "active('toggle.instant_locksmith')"
+        },
+        {
+          "target": "skill.disable_device",
+          "op": "add",
+          "value": 2,
+          "bonusType": "insight",
+          "condition": "active('toggle.instant_locksmith')"
+        }
+      ]
+    },
+    {
+      "id": "spell.bladestorm",
+      "type": "spell",
+      "name": {
+        "fr": "Tempête d’acier",
+        "en": "Bladestorm"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage se jette dans un tourbillon de lames et frappe tous les ennemis à sa portée.\n\nEn jeu\n• À lancer au début du tour, avant toute autre action.\n• Ensuite, une action complexe pour attaquer chaque adversaire à portée avec chacune de ses armes de corps à corps (règles du combat à deux armes).\n• Au plus autant de cibles que son niveau de personnage.\n• Si le personnage n’utilise pas l’action complexe, le sort n’a aucun effet."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.arrow_storm",
+      "type": "spell",
+      "name": {
+        "fr": "Tempête de flèches",
+        "en": "Arrow Storm"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une pluie de flèches part en tous sens et touche chaque ennemi à portée.\n\nEn jeu\n• À lancer au début du tour, avant toute autre action.\n• Ensuite, une action complexe pour faire une attaque à distance avec un arc maîtrisé contre chaque adversaire dans un rayon égal à la portée de l’arme.\n• Au plus autant de cibles que son niveau de personnage.\n• Si le personnage n’utilise pas l’action complexe, le sort n’a aucun effet."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.guided_shot",
+      "type": "spell",
+      "name": {
+        "fr": "Tir assisté",
+        "en": "Guided Shot"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "L’esprit et le corps se concentrent sur un tir parfait.\n\nEn jeu\n• Pendant 1 round, les attaques à distance du personnage ne subissent pas de malus dû à la distance.\n• Elles ignorent les bonus à la CA dus à un abri autre que total.\n• Ne dépasse pas la portée maximale de l’arme et ne permet pas de viser une cible à l’abri total."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": [],
+      "note": "Malus de distance et abri non modélisés."
+    },
+    {
+      "id": "spell.nightstalkers_transformation",
+      "type": "spell",
+      "name": {
+        "fr": "Transformation en tueur des ombres",
+        "en": "Nightstalker’s Transformation"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le personnage devient un combattant furtif et dangereux, au prix de sa magie.\n\nEn jeu\n• +4 en Dextérité (altération), +3 à la CA (chance), +5 aux jets de Réflexes (chance).\n• +5 (aptitude) aux tests de Détection, Perception auditive, Déplacement silencieux et Discrétion.\n• Maîtrise des armes courantes, arbalète de poing, arc court, épée courte, matraque et rapière ; don Attaque en finesse ; esquive totale.\n• +3d6 dégâts de précision en tenaille ou contre un adversaire privé de son bonus de Dextérité (comme l’attaque sournoise).\n• Le personnage ne peut plus lancer de sorts ni utiliser d’objets à activation de sort ou à fin d’incantation.\n• Composante matérielle : une potion de grâce féline, bue (ses effets sont remplacés par ceux du sort)."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)"
+      },
+      "effects": [
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.nightstalkers_transformation')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 3,
+          "bonusType": "luck",
+          "condition": "active('toggle.nightstalkers_transformation')"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 5,
+          "bonusType": "luck",
+          "condition": "active('toggle.nightstalkers_transformation')"
+        },
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 5,
+          "bonusType": "competence",
+          "condition": "active('toggle.nightstalkers_transformation')"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 5,
+          "bonusType": "competence",
+          "condition": "active('toggle.nightstalkers_transformation')"
+        },
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": 5,
+          "bonusType": "competence",
+          "condition": "active('toggle.nightstalkers_transformation')"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": 5,
+          "bonusType": "competence",
+          "condition": "active('toggle.nightstalkers_transformation')"
+        }
+      ],
+      "note": "Dons, esquive totale, dégâts de précision et perte des sorts : texte seulement."
+    },
+    {
+      "id": "spell.hindsight",
+      "type": "spell",
+      "name": {
+        "fr": "Vision du passé",
+        "en": "Hindsight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le personnage voit et entend ce qui s’est passé là où il se trouve, plus ou moins loin dans le temps.\n\nEn jeu\n• Zone : rayon de 18 m centré sur le jeteur de sorts ; la période se choisit au lancement.\n• Jours : un jour par niveau, détails précis sur gens, paroles et événements.\n• Semaines : une semaine par niveau, résumé sans mots exacts.\n• Années : un an par niveau, idée générale des événements marquants.\n• Siècles : un siècle, plus un par tranche de 4 niveaux au-delà du premier, seulement les très grands événements.\n• Composante matérielle : un diamant en forme de sablier valant au moins 1 000 po."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 heure",
+        "range": "personnelle",
+        "area": "rayon de 18 m, centré sur le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.swift_fly",
+      "type": "spell",
+      "name": {
+        "fr": "Vol rapide",
+        "en": "Swift Fly"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Un envol éclair, le temps d’un round.\n\nEn jeu\n• Fonctionne comme vol, mais dure 1 round.\n• Se lance en action rapide ; composante verbale seulement."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round"
+      },
+      "effects": []
+    }
+  ]
+}

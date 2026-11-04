@@ -1,0 +1,585 @@
+{
+  "entities": [
+    {
+      "id": "class.dread_pirate",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Pirate flamboyant",
+        "en": "Dread Pirate"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class",
+        "prestige",
+        "skills"
+      ],
+      "description": {
+        "fr": "Dans chaque port, des brigands se disent pirates ; peu font fortune. Le pirate flamboyant, lui, maîtrise tout le métier : informateurs, embuscade en mer, abordage à la corde, revente discrète de la cargaison. Certains règnent par la terreur, d’autres par un code d’honneur qui leur valent des redditions sans combat ; tous bâtissent une réputation qui les précède de port en port.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 6 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non loyal ; bonus de base à l’attaque +4 ; Estimation 8 rangs, Maîtrise des cordes 4 rangs, Natation 4 rangs, Profession (marin) 8 rangs ; dons Arme en main, Attaque en finesse ; posséder un navire valant au moins 10 000 po.\n• Formé aux armes courantes, aux armes de guerre légères et à la rapière ; aux armures légères, pas aux boucliers.\n• Aptitudes : combat à deux armes, loup de mer (1) ; redoutable réputation +2/+4/+6 (2, 6, 10) ; honorable : esprit d’équipage (3, 7), fortune des quatre vents (5), seule la mort nous arrêtera (9) ; sans honneur : attaque sournoise 1d6/2d6 (3, 7), fléau des mers (5), exhortation sadique (9) ; charge acrobatique et stabilité inébranlable (4) ; maîtrise des compétences (8) ; roi des océans (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 6,
+      "prerequisite": "@bab >= 4 and @skill.appraise.ranks >= 8 and @skill.use_rope.ranks >= 4 and @skill.swim.ranks >= 4 and @skill.profession.ranks >= 8 and has('feat.quick_draw') and has('feat.weapon_finesse')",
+      "note": "Conditions dans la formule : bonus de base à l’attaque, rangs, dons. En texte seulement : alignement non loyal, Profession (marin) précisément, navire d’au moins 10 000 po. Dons : Arme en main = Quick Draw."
+    },
+    {
+      "id": "power.dread_pirate_two_weapon_fighting",
+      "type": "class_power",
+      "name": {
+        "fr": "Combat à deux armes",
+        "en": "Two-weapon fighting"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Une rapière dans une main, une dague dans l’autre : sur un pont qui tangue, c’est tout naturel.\n\nEn jeu\n• Tant qu’il ne porte pas d’armure intermédiaire ou lourde, il est considéré comme ayant le don Combat à deux armes, même sans en remplir les conditions."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dread_pirate_sea_legs",
+      "type": "class_power",
+      "name": {
+        "fr": "Loup de mer",
+        "en": "Sea legs"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Le pirate sent le temps, les courants et l’humeur de son équipage avant même de lever les yeux.\n\nEn jeu\n• Bonus d’intuition égal à son niveau de pirate flamboyant à ses tests de Profession (marin).\n• Chaque allié qui le voit ou l’entend gagne un bonus d’intuition égal à la moitié de ce nombre aux mêmes tests."
+      },
+      "effects": [],
+      "note": "Profession (marin) seulement : le modèle n’a pas de compétence Profession par spécialité, donc pas d’effet chiffré."
+    },
+    {
+      "id": "power.dread_pirate_fearsome_reputation",
+      "type": "class_power",
+      "name": {
+        "fr": "Redoutable réputation",
+        "en": "Fearsome reputation"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Au niveau 2, le pirate choisit la légende qu’il veut faire courir : pirate honorable qui évite les massacres inutiles, ou pirate sans honneur qui aime la terreur et la cruauté.\n\nEn jeu\n• Honorable : bonus de circonstances +2 à Diplomatie ; sans honneur : +2 à Intimidation. +4 au niveau 6, +6 au niveau 10.\n• Les deux voies s’excluent : une seule est vraie à la fois (une seule case à cocher).\n• Il gagne d’autres aptitudes selon la voie choisie.\n• Sous une fausse identité, il ne profite ni de sa réputation ni des aptitudes qui en dépendent ; des actes qui la contredisent ouvertement peuvent l’affaiblir (au MD)."
+      },
+      "effects": [
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": "min(6, 2 * floor((level('class.dread_pirate') + 2) / 4))",
+          "bonusType": "circumstance",
+          "condition": "active('toggle.dread_pirate_honorable')"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": "min(6, 2 * floor((level('class.dread_pirate') + 2) / 4))",
+          "bonusType": "circumstance",
+          "condition": "active('toggle.dread_pirate_dishonorable')"
+        }
+      ],
+      "note": "La voie (honorable ou sans honneur) se choisit avec les cases à cocher « toggle.dread_pirate_honorable » et « toggle.dread_pirate_dishonorable » ; une seule doit être active."
+    },
+    {
+      "id": "power.dread_pirate_crew_spirit",
+      "type": "class_power",
+      "name": {
+        "fr": "Esprit d’équipage",
+        "en": "Crew spirit"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Le pirate honorable sait lever la bravoure de ses hommes avant l’abordage : une phrase, un geste, et tout le monde se tient plus droit.\n\nEn jeu\n• Pirate honorable seulement, niveau 3 et plus : une fois par jour, action libre, il encourage ses alliés (et lui-même) qui le voient ou l’entendent. Effet mental, 1 minute par niveau de pirate flamboyant.\n• Bonus de moral de +1 aux jets de sauvegarde contre charme et terreur, et aux jets d’attaque et de dégâts d’arme.\n• Niveau 7 : deux fois par jour, bonus de +2.\n• S’il a l’inspiration vaillante de la musique de barde, les bonus de moral des deux aptitudes s’additionnent."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "if(level('class.dread_pirate') >= 7, 2, 1)",
+          "bonusType": "morale",
+          "condition": "active('toggle.dread_pirate_crew_spirit') and active('toggle.dread_pirate_honorable')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "if(level('class.dread_pirate') >= 7, 2, 1)",
+          "bonusType": "morale",
+          "condition": "active('toggle.dread_pirate_crew_spirit') and active('toggle.dread_pirate_honorable')"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.dread_pirate') >= 7, 2, 1)",
+          "bonusType": "morale",
+          "situation": "situation.vs_charm_or_fear",
+          "condition": "active('toggle.dread_pirate_crew_spirit') and active('toggle.dread_pirate_honorable')"
+        }
+      ],
+      "usesPerDay": "if(level('class.dread_pirate') >= 7, 2, 1)",
+      "note": "Le cumul avec l’inspiration vaillante du barde (deux bonus de moral qui s’additionnent) n’est pas géré : le modèle ne garde que le plus fort des bonus de moral."
+    },
+    {
+      "id": "power.dread_pirate_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Le pirate sans honneur frappe là où ça fait mal : un adversaire coincé entre deux lames, ou qui regarde ailleurs.\n\nEn jeu\n• Pirate sans honneur seulement, niveau 3 et plus : +1d6 aux dégâts, +2d6 au niveau 7.\n• Mêmes règles que l’attaque sournoise du roublard (cible prise en tenaille ou privée de son bonus de Dextérité à la CA, à 9 m au plus à distance).\n• S’ajoute à l’attaque sournoise d’une autre classe."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(1 + floor(level('class.dread_pirate') / 7))d6",
+          "condition": "active('toggle.dread_pirate_dishonorable')"
+        }
+      ]
+    },
+    {
+      "id": "power.dread_pirate_acrobatic_charge",
+      "type": "class_power",
+      "name": {
+        "fr": "Charge acrobatique",
+        "en": "Acrobatic charge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Un pont encombré, une corde, un bastingage : le pirate charge à travers tout ce qui gênerait un autre.\n\nEn jeu\n• Niveau 4 et plus : peut charger en terrain difficile ou à travers des cases occupées par des alliés (pont encombré, bond depuis la proue, balancement entre deux navires).\n• Selon la situation, un test d’Acrobaties, de Maîtrise des cordes ou de Saut peut être demandé."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dread_pirate_steady_stance",
+      "type": "class_power",
+      "name": {
+        "fr": "Stabilité inébranlable",
+        "en": "Steady stance"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Là où les autres chancellent, le pirate garde les pieds sur terre, ou plutôt sur le bois mouillé.\n\nEn jeu\n• Niveau 4 et plus : n’est pas pris au dépourvu quand il escalade ou se déplace en équilibre.\n• Bonus égal à son niveau de pirate flamboyant aux tests d’Équilibre et d’Escalade pour ne pas tomber quand il subit des dégâts."
+      },
+      "effects": [
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": "level('class.dread_pirate')",
+          "situation": "situation.when_taking_damage"
+        },
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": "level('class.dread_pirate')",
+          "situation": "situation.when_taking_damage"
+        }
+      ]
+    },
+    {
+      "id": "power.dread_pirate_fortune_of_the_four_winds",
+      "type": "class_power",
+      "name": {
+        "fr": "Fortune des quatre vents",
+        "en": "Fortune of the four winds"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Le vent tourne toujours pour le pirate honorable : un mauvais lancer peut être refait.\n\nEn jeu\n• Pirate honorable seulement, niveau 5 et plus : une fois par jour, relancer un jet d’attaque, un jet de sauvegarde, un test de caractéristique ou de compétence qu’il vient de rater. Le second résultat compte, même s’il est pire."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dread_pirate_scourge_of_the_seas",
+      "type": "class_power",
+      "name": {
+        "fr": "Fléau des mers",
+        "en": "Scourge of the seas"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Un seul regard, une seule menace, et tout l’équipage ennemi tremble.\n\nEn jeu\n• Pirate sans honneur seulement, niveau 5 et plus : l’emploi d’Intimidation pour démoraliser touche tous les ennemis dans un rayon de 9 m qui le voient et l’entendent.\n• Effet pendant un nombre de rounds égal à son modificateur de Charisme (minimum 1) ; plusieurs usages ne se cumulent pas. Effet mental."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dread_pirate_skill_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences",
+        "en": "Skill mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "À ce stade, le pirate ne doute plus de ses jambes.\n\nEn jeu\n• Niveau 8 : peut faire 10 aux tests d’Acrobaties, d’Équilibre, d’Escalade et de Saut, même sous stress ou distrait."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.dread_pirate_only_death_can_stop_us",
+      "type": "class_power",
+      "name": {
+        "fr": "Seule la mort nous arrêtera",
+        "en": "Only death can stop us"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Quand tout semble perdu, ses hommes se battent comme s’ils ne pouvaient plus mourir.\n\nEn jeu\n• Pirate honorable seulement, niveau 9 et plus : tout allié touché par l’esprit d’équipage reçoit en plus 10 + modificateur de Charisme du pirate en points de vie temporaires (minimum 10), un bonus d’esquive à la CA égal à son modificateur de Charisme (minimum +1) et le don Dur à cuire.\n• Les effets disparaissent si le pirate perd connaissance."
+      },
+      "effects": [],
+      "note": "Effets sur les alliés : pas sur la feuille du pirate."
+    },
+    {
+      "id": "power.dread_pirate_sadistic_exhortation",
+      "type": "class_power",
+      "name": {
+        "fr": "Exhortation sadique",
+        "en": "Sadistic exhortation"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Un prisonnier sans défense, un geste cruel devant l’équipage, et la troupe se déchaîne.\n\nEn jeu\n• Pirate sans honneur seulement, niveau 9 et plus : une fois par jour, en tuant une personne sans défense, il donne à tous les alliés qui assistent à l’acte un bonus de moral de +2 aux jets de dégâts pendant 24 heures.\n• Si la victime était de son propre équipage : bonus de +4, mais les alliés subissent aussi un malus de −2 aux jets de Volonté jusqu’à la fin des effets."
+      },
+      "effects": [],
+      "note": "Effet sur les alliés : pas sur la feuille du pirate."
+    },
+    {
+      "id": "power.dread_pirate_king_of_the_seas",
+      "type": "class_power",
+      "name": {
+        "fr": "Roi des océans",
+        "en": "King of the seas"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "dread_pirate"
+      ],
+      "description": {
+        "fr": "Ses exploits sont devenus légende : des marins aguerris demandent à rejoindre son équipage pour une simple part de butin.\n\nEn jeu\n• Niveau 10 : équivaut au don Prestige, mais seulement pour des suivants (pas de compagnons d’armes)."
+      },
+      "effects": [],
+      "note": "Prestige = Leadership ; le don est donné avec la restriction écrite dans le texte."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.dread_pirate",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.dread_pirate_two_weapon_fighting",
+        "power.dread_pirate_sea_legs"
+      ]
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.dread_pirate_fearsome_reputation"
+      ]
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.dread_pirate_crew_spirit",
+        "power.dread_pirate_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 4,
+      "bab": 4,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.dread_pirate_acrobatic_charge",
+        "power.dread_pirate_steady_stance"
+      ]
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 5,
+      "bab": 5,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.dread_pirate_fortune_of_the_four_winds",
+        "power.dread_pirate_scourge_of_the_seas"
+      ]
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 6,
+      "bab": 6,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 7,
+      "bab": 7,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 8,
+      "bab": 8,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.dread_pirate_skill_mastery"
+      ]
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 9,
+      "bab": 9,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.dread_pirate_only_death_can_stop_us",
+        "power.dread_pirate_sadistic_exhortation"
+      ]
+    },
+    {
+      "classId": "class.dread_pirate",
+      "level": 10,
+      "bab": 10,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.dread_pirate_king_of_the_seas"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "proficiency",
+      "to": "item.rapier"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.dread_pirate",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    },
+    {
+      "from": "power.dread_pirate_two_weapon_fighting",
+      "relation": "grants",
+      "to": "feat.two_weapon_fighting"
+    },
+    {
+      "from": "power.dread_pirate_king_of_the_seas",
+      "relation": "grants",
+      "to": "feat.leadership"
+    }
+  ]
+}

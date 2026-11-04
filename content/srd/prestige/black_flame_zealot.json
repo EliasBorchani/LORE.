@@ -1,0 +1,405 @@
+{
+  "entities": [
+    {
+      "id": "class.black_flame_zealot",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Fanatique de la Flamme noire",
+        "en": "Black Flame Zealot"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Au service d'un dieu du feu et de la destruction, l'ordre de la Flamme noire frappe dans l'ombre comme un poignard caché dans le culte. Ses fanatiques unissent la discrétion de l'assassin et le zèle du prêtre : leurs victimes ne sont pas seulement tuées, elles sont brûlées jusqu'à n'être plus rien.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement non bon ; Connaissances (religion), Déplacement silencieux et Discrétion 8 rangs chacun ; Maniement d'une arme de guerre (kukri), Volonté de fer ; sorts divins de niveau 2 ; attaque sournoise +1d6 ; avoir pour divinité tutélaire le dieu de l'ordre et avoir tué un ennemi du culte.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Art de la magie, Artisanat, Concentration, Connaissances (religion), Crochetage, Déplacement silencieux, Détection, Discrétion, Équilibre, Escalade, Escamotage, Évasion, Fouille, Maîtrise des cordes, Natation, Perception auditive, Profession, Saut.\n• Sorts : +1 niveau effectif de lanceur de sorts divins tous les niveaux pairs.\n• Aptitudes : attaque mortelle et cœur de zélateur (1) ; utilisation du poison (2) ; attaque sournoise +1d6 (3, 6, 9) ; foulée implacable (5) ; flamme sacrée (7) ; immolation impie (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 4,
+      "prerequisite": "@skill.knowledge_religion.ranks >= 8 and @skill.move_silently.ranks >= 8 and @skill.hide.ranks >= 8 and has('feat.iron_will')",
+      "note": "Conditions d'accès : alignement non bon (relations), Maniement d'une arme de guerre (kukri), sorts divins de niveau 2, attaque sournoise +1d6, dieu tutélaire et meurtre d'un ennemi du culte : texte seul. Niveau de lanceur de sorts, sorts par jour et sorts connus : +1 niveau effectif dans une classe de lanceur de sorts existante (choix fait dans le niveau du personnage), rien dans les lignes de la table. Les niveaux de sorts s'ajoutent aux niveaux pairs seulement (2, 4, 6, 8, 10)."
+    },
+    {
+      "id": "power.black_flame_zealot_death_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque mortelle",
+        "en": "Death attack"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "black_flame_zealot"
+      ],
+      "description": {
+        "fr": "Trois rounds à étudier sa proie, un seul coup bien placé, et la victime ne se relève pas.\n\nEn jeu\n• Capacité extraordinaire, comme celle de l'assassin, sans la paralysie : après 3 rounds d'observation, une attaque sournoise réussie force un jet de Vigueur ou la mort.\n• Ses niveaux d'assassin s'additionnent à ses niveaux de fanatique pour calculer le DD."
+      },
+      "effects": [],
+      "note": "DD de l'attaque mortelle : pas encore une statistique du modèle."
+    },
+    {
+      "id": "power.black_flame_zealot_zealot_heart",
+      "type": "class_power",
+      "name": {
+        "fr": "Cœur de zélateur",
+        "en": "Zealot's heart"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "black_flame_zealot"
+      ],
+      "description": {
+        "fr": "Il n'a plus peur, mais il ne rassure personne.\n\nEn jeu\n• Capacité surnaturelle : immunisé contre la terreur, magique ou non. N'aide pas ses compagnons."
+      },
+      "effects": [],
+      "note": "Immunité : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.black_flame_zealot_poison_use",
+      "type": "class_power",
+      "name": {
+        "fr": "Utilisation du poison",
+        "en": "Poison use"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "black_flame_zealot"
+      ],
+      "description": {
+        "fr": "Il manie les poisons comme un assassin, sans risquer de s'empoisonner.\n\nEn jeu\n• Capacité extraordinaire (niveau 2) : n'a aucune chance de s'empoisonner en appliquant un poison sur une arme."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.black_flame_zealot_sneak_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque sournoise",
+        "en": "Sneak attack"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "black_flame_zealot"
+      ],
+      "description": {
+        "fr": "Il frappe là où la garde est basse, et ses dégâts s'ajoutent à ceux de ses autres sources.\n\nEn jeu\n• +1d6 de dégâts supplémentaires aux niveaux 3, 6 et 9 (+3d6 au maximum).\n• Se cumule avec les autres attaques sournoises (roublard, par exemple).\n• Contre un adversaire pris au dépourvu, ou pris en tenaille ; sans effet sur les créatures sans organes vitaux ou immunisées contre les coups critiques."
+      },
+      "effects": [
+        {
+          "target": "damage.sneak_attack",
+          "op": "dice",
+          "value": "(floor(level('class.black_flame_zealot') / 3))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.black_flame_zealot_relentless_stride",
+      "type": "class_power",
+      "name": {
+        "fr": "Foulée implacable",
+        "en": "Relentless stride"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "black_flame_zealot"
+      ],
+      "description": {
+        "fr": "D'un pas, il traverse les murs de ce qui l'attend.\n\nEn jeu\n• Capacité magique (niveau 5) : 1 fois par jour, comme porte dimensionnelle, avec un niveau de lanceur égal à la moitié de son niveau global."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.black_flame_zealot_sacred_flame",
+      "type": "class_power",
+      "name": {
+        "fr": "Flamme sacrée",
+        "en": "Sacred flame"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "black_flame_zealot"
+      ],
+      "description": {
+        "fr": "Une flamme noire dévore sa lame à son ordre.\n\nEn jeu\n• Capacité surnaturelle (niveau 7) : à volonté, une arme qu'il tient prend la propriété « de feu » (+1d6 de dégâts de feu).\n• 1 fois par jour, action libre : une arme prend la propriété « de feu intense » pendant 1 minute."
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "dice",
+          "value": "1d6",
+          "condition": "active('toggle.black_flame_zealot_sacred_flame')"
+        }
+      ],
+      "note": "L'arme enflammée est un toggle de sa fiche ; « de feu intense » (dés supplémentaires sur critique) : texte seul. Nom anglais à confirmer. Le texte du Codex dit niveau 6, la table et l'exemple (niveau 7) disent 7 : on suit la table."
+    },
+    {
+      "id": "power.black_flame_zealot_impious_immolation",
+      "type": "class_power",
+      "name": {
+        "fr": "Immolation impie",
+        "en": "Impious immolation"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "black_flame_zealot"
+      ],
+      "description": {
+        "fr": "Ce que la flamme noire tue ne laisse pas de cendres.\n\nEn jeu\n• Capacité surnaturelle (niveau 10) : toute créature tuée par son attaque mortelle ou l'une de ses attaques sournoises est entièrement consumée.\n• Pour la ramener : résurrection suprême, souhait bien formulé puis résurrection, ou miracle."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.black_flame_zealot_death_attack",
+        "power.black_flame_zealot_zealot_heart"
+      ]
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.black_flame_zealot_poison_use"
+      ]
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.black_flame_zealot_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.black_flame_zealot_relentless_stride"
+      ]
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.black_flame_zealot_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.black_flame_zealot_sacred_flame"
+      ]
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 6,
+      "grants": [
+        "power.black_flame_zealot_sneak_attack"
+      ]
+    },
+    {
+      "classId": "class.black_flame_zealot",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 7,
+      "grants": [
+        "power.black_flame_zealot_impious_immolation"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.black_flame_zealot",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

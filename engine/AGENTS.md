@@ -81,7 +81,8 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
   `spell.slot_cost` effect or the label `spell modifier`. A buff's numeric bonus is multiplied by
   `variant[...].spell.numeric`; `@spell.caster_level` reads `caster_level.<class>` of the casting class. Built in:
   `spell.level` (relation `on_spell_list` with `level`, plus the variant's `heighten`), `spell.slot_level` (level +
-  metamagic, each modifier at least +1), `spell.dc` (10 + level + casting ability modifier), `spell.metamagic_count`.
+  metamagic, each modifier at least +1, except a free one: every `spell.slot_cost` it writes is the number 0, as
+  Sudden Empower; it stays out of `spell.metamagic_count`), `spell.dc` (10 + level + casting ability modifier), `spell.metamagic_count`.
   Heighten Spell is the saved variant's `heighten` (levels added), not a modifier in `metamagic`: the spell really is
   that level, so the slot and the DC follow, and the « at least +1 » rule and Improved Metamagic leave it alone.
 - **Spell slots:** a class with `spellcasting` (`ability`, `kind`, default `mode`) gets built-in `caster_level.<class>`
@@ -106,6 +107,17 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
   `active('toggle.<id>')` shows in the toggles. The API lists `initiators` (counts, disciplines from `initiates`
   relations, maneuvers and stances apart, issues `unknown`, `discipline`, `level`, `requires`, `too_many`,
   `too_many_stances`). Readied and expended maneuvers are play state, not tracked yet.
+- **Invocations (Complete Arcane):** a class with `invoking` (`ability`, shown only) learns warlock invocations. It
+  gets built-in `invoker_level.<class>` = class levels + `invoker_level.class[<class>]` (prestige classes add to it),
+  `invocations.known.<class>` from its table column `invocationsKnown` (+ effects: Extra Invocation) and
+  `invocations.max_grade.<class>` (1 least … 4 dark) from `invocationGrade`, written on the rows where the grade
+  changes; past the last row the last value holds. Inputs: `invocations.known.base[<class>]`,
+  `invocations.grade.base[<class>]`, `invocations.count[all | least | lesser | greater | dark]` (for prerequisites).
+  An `invocation` block (`grade`, `level` = spell level equivalent, `kind` `essence` / `blast_shape` / `other`, text
+  fields) is display data plus the grade the sheet checks. `character.invocations[<class>].known` lists them; those of
+  a class the character has are had, so their effects and toggles apply. The API lists `invokers` (invoker level,
+  count, `maxGrade`, invocations, issues `unknown`, `grade`, `too_many`). Essences and blast shapes change the eldritch
+  blast in text only.
 - **Prerequisites** are formulas; on failure, report which part failed. A choice that becomes invalid is kept and flagged, never deleted.
 - **Breakdown:** every number lists its sources and the suppressed bonuses.
 - **Content checks:** JSON decoding is strict (unknown field = error); review metadata (`status`, `note`, `flag`, `assumptions`) is stripped first. `ModelCheck` reports data problems (unknown references and types, formulas that do not parse) without throwing.

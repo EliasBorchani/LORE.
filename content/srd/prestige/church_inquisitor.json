@@ -1,0 +1,416 @@
+{
+  "entities": [
+    {
+      "id": "class.church_inquisitor",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Inquisiteur de la Foi",
+        "en": "Church Inquisitor"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Quand la cupidité ronge les sommets d'une Église ou qu'un diable souffle à l'oreille d'un haut prêtre, c'est l'inquisiteur qui démasque le mal de l'intérieur. Spécialiste de la divination et de l'abjuration, il perce les illusions, ne se laisse ni charmer ni contraindre et finit par arracher la vérité à ceux qui mentent.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal bon ou loyal neutre ; bonus de base de Volonté +3 ; Art de la magie, Connaissances (mystères) et Connaissances (religion) 4 rangs chacun ; savoir lancer zone de vérité comme sort divin ; appartenir à une Église loyale bonne ou à un ordre religieux et y avoir découvert une corruption.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Bluff, Concentration, Connaissances (folklore local), Connaissances (mystères), Connaissances (plans), Connaissances (religion), Décryptage, Détection, Diplomatie, Fouille, Intimidation, Psychologie, Renseignements.\n• Sorts : +1 niveau effectif de lanceur de sorts divins à chaque niveau, dans une classe qui lance zone de vérité.\n• Aptitudes : détection du Mal et domaine de l'Inquisition (1) ; immunité aux charmes (2) ; transpercer les illusions (3) et les déguisements (4) ; immunité aux coercitions (5) ; forcer le changement de forme (6) ; immunité à la possession (8) ; détection du mensonge (9) ; découvrir la vérité (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "prerequisite": "@skill.spellcraft.ranks >= 4 and @skill.knowledge_arcana.ranks >= 4 and @skill.knowledge_religion.ranks >= 4",
+      "note": "Conditions d'accès : alignement loyal bon ou loyal neutre (relations), bonus de base de Volonté +3, zone de vérité en sort divin, appartenance à une Église : texte seul. Niveau de lanceur de sorts, sorts par jour et sorts connus : +1 niveau effectif dans une classe de lanceur de sorts existante (choix fait dans le niveau du personnage), rien dans les lignes de la table. Le domaine de l'Inquisition (Complete Divine, chapitre 7) n'est pas dans domains.json : il sera ajouté par la tâche des domaines (id probable domain.inquisition)."
+    },
+    {
+      "id": "power.church_inquisitor_detect_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du Mal",
+        "en": "Detect evil"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Il flaire la corruption avant qu'elle ne se montre.\n\nEn jeu\n• Capacité magique : à volonté, comme le sort détection du Mal."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.church_inquisitor_inquisition_domain",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine de l'Inquisition",
+        "en": "Inquisition domain"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Il reçoit l'appui des inquisiteurs de sa foi.\n\nEn jeu\n• Accès au domaine de l'Inquisition : choisit ses sorts de domaine parmi ceux de ce domaine.\n• Pouvoir accordé : +4 aux tests de dissipation."
+      },
+      "effects": [],
+      "note": "Domaine absent de domains.json pour l'instant : le pouvoir (+4 aux tests de dissipation) est du texte seul."
+    },
+    {
+      "id": "power.church_inquisitor_charm_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité aux charmes",
+        "en": "Immunity to charm"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Aucune voix douce ne le détourne.\n\nEn jeu\n• Capacité extraordinaire (niveau 2) : immunisé contre tous les sorts et effets d'enchantement (charme)."
+      },
+      "effects": [],
+      "note": "Immunité : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.church_inquisitor_see_through_illusions",
+      "type": "class_power",
+      "name": {
+        "fr": "Transpercer les illusions",
+        "en": "See through illusions"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Il voit le décor d'illusion pour ce qu'il est.\n\nEn jeu\n• Capacité surnaturelle (niveau 3) : chaque fois qu'un sort d'illusion ou de déguisement est actif dans son champ de vision, jet de Volonté immédiat pour le déceler.\n• Il n'a pas besoin de toucher l'illusion : le regard suffit."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.church_inquisitor_see_through_disguises",
+      "type": "class_power",
+      "name": {
+        "fr": "Transpercer les déguisements",
+        "en": "See through disguises"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Un faux nez ne trompe pas un inquisiteur.\n\nEn jeu\n• Capacité extraordinaire (niveau 4) : +4 (aptitude) aux tests de Détection opposés à Déguisement."
+      },
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 4,
+          "situation": "situation.vs_disguise"
+        }
+      ],
+      "note": "Situation à ajouter : situation.vs_disguise (« contre un déguisement »). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.church_inquisitor_coercion_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité aux coercitions",
+        "en": "Immunity to compulsion"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Personne ne peut plus lui dicter ses actes.\n\nEn jeu\n• Capacité extraordinaire (niveau 5) : immunisé contre tous les sorts et effets de coercition."
+      },
+      "effects": [],
+      "note": "Immunité : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.church_inquisitor_force_shapechange",
+      "type": "class_power",
+      "name": {
+        "fr": "Forcer le changement de forme",
+        "en": "Force shapechange"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Il arrache le masque, au sens propre.\n\nEn jeu\n• Capacité surnaturelle (niveau 6) : attaque de contact au corps à corps ; si elle touche, jet de dissipation comme avec dissipation de la magie contre l'effet de changement de forme (avec le +4 du domaine de l'Inquisition).\n• Annule changement de forme, métamorphose, modification d'apparence et les transformations (magiques, extraordinaires ou surnaturelles) ; la créature ne peut plus se transformer pendant 1d6 rounds.\n• Utilisable à volonté."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.church_inquisitor_possession_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité à la possession",
+        "en": "Immunity to possession"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Son esprit lui appartient, rien d'autre.\n\nEn jeu\n• Capacité extraordinaire (niveau 8) : immunisé contre possession, capture d'âme, séquestration, la possession des fantômes et tout effet qui déplace ou remplace l'âme.\n• Peut encore voyager vers les plans par projection astrale s'il le désire."
+      },
+      "effects": [],
+      "note": "Immunité : texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.church_inquisitor_discern_lies",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection du mensonge",
+        "en": "Discern lies"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Un mensonge sonne faux à ses oreilles.\n\nEn jeu\n• Capacité magique (niveau 9) : détection du mensonge, 3 fois par jour."
+      },
+      "effects": [],
+      "usesPerDay": "3"
+    },
+    {
+      "id": "power.church_inquisitor_reveal_truth",
+      "type": "class_power",
+      "name": {
+        "fr": "Découvrir la vérité",
+        "en": "Reveal truth"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "church_inquisitor"
+      ],
+      "description": {
+        "fr": "Un contact suffit pour qu'un menteur ne puisse plus dire que la vérité.\n\nEn jeu\n• Capacité surnaturelle (niveau 10) : en touchant une créature qui lui a menti, la force à révéler la vérité.\n• Jet de Volonté (DD 10 + niveau de classe + modificateur de Charisme) ; effet mental de coercition.\n• Échec : la créature redonne sa version des faits, mais ne peut dire que la vérité.\n• 3 fois par jour."
+      },
+      "effects": [],
+      "usesPerDay": "3",
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.church_inquisitor",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.church_inquisitor_detect_evil",
+        "power.church_inquisitor_inquisition_domain"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.church_inquisitor_charm_immunity"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.church_inquisitor_see_through_illusions"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.church_inquisitor_see_through_disguises"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.church_inquisitor_coercion_immunity"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.church_inquisitor_force_shapechange"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.church_inquisitor_possession_immunity"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.church_inquisitor_discern_lies"
+      ]
+    },
+    {
+      "classId": "class.church_inquisitor",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.church_inquisitor_reveal_truth"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.church_inquisitor",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    }
+  ]
+}

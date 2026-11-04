@@ -32,7 +32,8 @@
       "source": "SRD",
       "labels": [
         "general",
-        "skill"
+        "skill",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Une herbe couchée, une branche cassée, une odeur de cendre froide : là où les autres voient un sentier vide, le pisteur lit l’histoire de ceux qui sont passés avant lui.\n\nEn jeu\n• Un test de Survie permet de trouver une piste ou de la suivre sur 1,5 km ; un nouveau test est demandé quand la piste se complique (elle se divise, d’autres traces la croisent…).\n• En pistant, le personnage avance à la moitié de sa vitesse ; à vitesse normale, il subit −5 au test, et −20 au double de sa vitesse.\n• DD de base selon le sol : très meuble (neige, boue) 5, meuble 10, ferme 15, dur (roche, plancher de pierre) 20 ; il varie ensuite avec le nombre et la taille des créatures, le temps écoulé, la météo et la lumière.\n• Après un échec, nouvel essai possible au bout de 1 heure de recherche (en extérieur) ou 10 minutes (en intérieur).\n• Aucune piste à suivre face à une créature sous passage sans trace.\n• Normal : sans ce don, Survie permet de repérer des traces, mais de ne les suivre que si le DD est de 10 ou moins ; Fouille peut révéler une empreinte, jamais suivre une piste.\n• Le rôdeur l’a d’office."
@@ -134,7 +135,8 @@
       "labels": [
         "general",
         "fighter_bonus",
-        "ranged"
+        "ranged",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Clic, levier, carreau : un geste mille fois répété. L’arbalète est déjà prête alors que le premier tir n’a pas encore touché.\n\nEn jeu\n• Condition : maniement du type d’arbalète choisi (de poing, légère ou lourde).\n• Recharger ce type d’arbalète ne prend plus qu’une action libre (arbalète de poing ou légère) ou une action de mouvement (arbalète lourde). Le rechargement provoque toujours une attaque d’opportunité.\n• Pour l’arbalète de poing ou légère : autant de tirs en attaque à outrance qu’avec un arc.\n• Normal : une action de mouvement pour recharger une arbalète de poing ou légère, une action complexe pour une arbalète lourde.\n• Se prend plusieurs fois, chaque fois pour un autre type d’arbalète.\n• Un guerrier peut le prendre comme don supplémentaire."
@@ -153,7 +155,8 @@
       "labels": [
         "general",
         "warblade_bonus",
-        "defense"
+        "defense",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Le sol se dérobe, la boule de feu éclate, la lame tombe du plafond : le corps a déjà bougé avant que l’esprit ait compris le danger.\n\nEn jeu\n• +2 aux jets de Réflexes."

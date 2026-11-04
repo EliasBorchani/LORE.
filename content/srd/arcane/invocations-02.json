@@ -1,0 +1,396 @@
+{
+  "entities": [
+    {
+      "id": "invocation.baleful_utterance",
+      "type": "invocation",
+      "name": {
+        "fr": "Propos funestes",
+        "en": "Baleful Utterance"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Une syllabe du sombreverbe, arrachée à la gorge du sorcier, fait voler en éclats un objet ou ce qui se trouve dans une zone. Le porteur de l'objet brisé en garde les oreilles qui sifflent.\n\nEn jeu\n• Agit comme le sort fracassement.\n• Si une créature tient ou porte la cible détruite : jet de Vigueur, sinon hébétée 1 round et assourdie 1 minute.\n• Effet de son."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "action": "1 action simple",
+        "duration": "instantanée"
+      }
+    },
+    {
+      "id": "invocation.breath_of_the_night",
+      "type": "invocation",
+      "name": {
+        "fr": "Souffle de la nuit",
+        "en": "Breath of the Night"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Une brume sombre se lève autour du sorcier et le cache aux regards, comme un manteau de nuit sortant de sa propre peau.\n\nEn jeu\n• Comme le sort nappe de brouillard, sur un rayon de 6 mètres autour du personnage.\n• La brume n'entrave pas la ligne de mire, mais tous ceux qui s'y trouvent ont un camouflage.\n• Un vent modéré ou une flamme plus grande qu'une torche la disperse aussitôt ; sinon elle se lève au bout de 1 minute."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 1,
+        "kind": "other",
+        "area": "rayon de 6 m autour du personnage",
+        "duration": "1 minute"
+      }
+    },
+    {
+      "id": "invocation.chilling_tentacles",
+      "type": "invocation",
+      "name": {
+        "fr": "Tentacules glacés",
+        "en": "Chilling Tentacles"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "greater"
+      ],
+      "description": {
+        "fr": "Des tentacules noirs et glacés jaillissent du sol à la recherche de proies, et leur contact brûle de froid.\n\nEn jeu\n• Fonctionne comme tentacules noirs d'Evard.\n• Chaque créature dans la zone subit 2d6 de dégâts de froid par round, qu'elle soit agrippée ou non."
+      },
+      "invocation": {
+        "grade": "greater",
+        "level": 5,
+        "kind": "other"
+      }
+    },
+    {
+      "id": "invocation.darkness",
+      "type": "invocation",
+      "name": {
+        "fr": "Ténèbres",
+        "en": "Darkness"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Le sorcier fait tomber l'ombre à volonté, sans rien devoir aux mots ni aux gestes d'un lanceur de sorts.\n\nEn jeu\n• Permet d'utiliser le sort ténèbres."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other"
+      }
+    },
+    {
+      "id": "invocation.devils_sight",
+      "type": "invocation",
+      "name": {
+        "fr": "Vision diabolique",
+        "en": "Devil's Sight"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Les yeux du sorcier prennent l'acuité de ceux d'un diable : aucune obscurité ne lui est une gêne.\n\nEn jeu\n• Voit normalement dans les ténèbres, ordinaires ou magiques, sur 9 mètres.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "duration": "24 heures"
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 9,
+          "condition": "active('toggle.devils_sight')"
+        }
+      ]
+    },
+    {
+      "id": "invocation.earthen_grasp",
+      "type": "invocation",
+      "name": {
+        "fr": "Poigne tellurienne",
+        "en": "Earthen Grasp"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Une main de terre se referme sur une cible, par la seule volonté du sorcier.\n\nEn jeu\n• Permet d'utiliser le sort poigne tellurienne."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other"
+      }
+    },
+    {
+      "id": "invocation.fell_flight",
+      "type": "invocation",
+      "name": {
+        "fr": "Vol",
+        "en": "Fell Flight"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Une cape d'ombre aux allures d'ailes se déploie dans le dos du sorcier et l'emporte dans les airs.\n\nEn jeu\n• Vitesse de vol égale à sa vitesse au sol, manœuvrabilité bonne.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 3,
+        "kind": "other",
+        "duration": "24 heures"
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "set",
+          "value": "@speed.land",
+          "condition": "active('toggle.fell_flight')"
+        }
+      ],
+      "note": "Manœuvrabilité (bonne) : pas encore dans le modèle."
+    },
+    {
+      "id": "invocation.hungry_darkness",
+      "type": "invocation",
+      "name": {
+        "fr": "Ténèbres affamées",
+        "en": "Hungry Darkness"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Une zone d'ombre s'ouvre, grouillante de chauves-souris qui ne mordent que les ennemis du sorcier.\n\nEn jeu\n• Zone de ténèbres emplie d'une nuée de chauves-souris (celle du Manuel des Monstres, sur toutes les cases de la zone). Elle reste en place.\n• Le personnage est immunisé contre les attaques de la nuée mais subit les effets des ténèbres.\n• Dure tant qu'il se concentre, puis 2 rounds. Si la nuée est détruite, les ténèbres disparaissent."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 3,
+        "kind": "other",
+        "duration": "concentration + 2 rounds"
+      }
+    },
+    {
+      "id": "invocation.leaps_and_bounds",
+      "type": "invocation",
+      "name": {
+        "fr": "Sauts et bonds",
+        "en": "Leaps and Bounds"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Le sorcier se sent aussi léger qu'une ombre : chaque saut, chaque pirouette lui devient facile.\n\nEn jeu\n• +6 aux tests d'Acrobaties, d'Équilibre et de Saut.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other",
+        "duration": "24 heures"
+      },
+      "effects": [
+        {
+          "target": "skill.tumble",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.leaps_and_bounds')"
+        },
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.leaps_and_bounds')"
+        },
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": 6,
+          "condition": "active('toggle.leaps_and_bounds')"
+        }
+      ],
+      "note": "Acrobaties = skill.tumble dans le catalogue. Le type du bonus n'est pas précisé dans le livre : non typé."
+    },
+    {
+      "id": "invocation.shadow_walk",
+      "type": "invocation",
+      "name": {
+        "fr": "Voie de l'ombre",
+        "en": "Shadow Walk"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "dark"
+      ],
+      "description": {
+        "fr": "Le sorcier marche entre les ombres, et ce voyage le guérit comme un long sommeil.\n\nEn jeu\n• Permet d'utiliser le sort traversée des ombres.\n• Pour chaque heure passée dans cet état, il regagne autant de points de vie qu'après une journée entière de repos."
+      },
+      "invocation": {
+        "grade": "dark",
+        "level": 6,
+        "kind": "other"
+      }
+    },
+    {
+      "id": "invocation.stony_grasp",
+      "type": "invocation",
+      "name": {
+        "fr": "Poigne de pierre",
+        "en": "Stony Grasp"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Une main de roche se referme sur une cible, plus dure et plus lourde que celle de la terre.\n\nEn jeu\n• Permet d'utiliser le sort poigne de pierre."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 3,
+        "kind": "other"
+      },
+      "note": "Grade : la liste (page 131) la range dans les invocations mineures, mais la description (page 136) porte « Inférieure ; 3° ». On suit la liste."
+    },
+    {
+      "id": "invocation.voidsense",
+      "type": "invocation",
+      "name": {
+        "fr": "Perception du vide",
+        "en": "Voidsense"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "lesser"
+      ],
+      "description": {
+        "fr": "Le sorcier affûte sa vue et son ouïe jusqu'à sentir ce qui l'entoure, même sans rien voir.\n\nEn jeu\n• Perception aveugle sur 9 mètres.\n• Dure 24 heures."
+      },
+      "invocation": {
+        "grade": "lesser",
+        "level": 4,
+        "kind": "other",
+        "duration": "24 heures"
+      },
+      "effects": [
+        {
+          "target": "vision.blindsense",
+          "op": "set",
+          "value": 9,
+          "condition": "active('toggle.voidsense')"
+        }
+      ],
+      "note": "Le modèle n'a que « blindsense » : on l'utilise pour la perception aveugle (blindsight)."
+    },
+    {
+      "id": "invocation.word_of_changing",
+      "type": "invocation",
+      "name": {
+        "fr": "Parole de transformation",
+        "en": "Word of Changing"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "dark"
+      ],
+      "description": {
+        "fr": "Un mot d'une puissance terrible ravale une créature au rang de masse inoffensive, et cette ruine peut durer toujours.\n\nEn jeu\n• Comme le sort métamorphose funeste.\n• 24 heures après la transformation, le sujet a un second jet de sauvegarde (avec son bonus initial) pour reprendre sa forme.\n• S'il échoue de nouveau, la forme reste indéfiniment, ou jusqu'à ce que d'autres moyens la défassent."
+      },
+      "invocation": {
+        "grade": "dark",
+        "level": 5,
+        "kind": "other",
+        "duration": "permanente (voir description)",
+        "savingThrow": "Vigueur, annule (second jet après 24 heures)"
+      },
+      "note": "Jet de sauvegarde du sort de base (métamorphose funeste) : Vigueur, supposé."
+    },
+    {
+      "id": "invocation.eldritch_doom",
+      "type": "invocation",
+      "name": {
+        "fr": "Sort fantastique",
+        "en": "Eldritch Doom"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "dark"
+      ],
+      "description": {
+        "fr": "Des éclairs de puissance mystique s'abattent de tous côtés sur les ennemis proches du sorcier.\n\nEn jeu\n• Invocation façonnée : la décharge fantastique frappe toutes les créatures désignées dans un rayon de 6 mètres.\n• Pas d'attaque de contact à distance : chaque cible fait un jet de Réflexes pour réduire les dégâts de moitié."
+      },
+      "invocation": {
+        "grade": "dark",
+        "level": 8,
+        "kind": "blast_shape",
+        "area": "rayon de 6 m",
+        "savingThrow": "Réflexes, moitié"
+      }
+    },
+    {
+      "id": "invocation.entropic_warding",
+      "type": "invocation",
+      "name": {
+        "fr": "Protection entropique",
+        "en": "Entropic Warding"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "invocation",
+        "least"
+      ],
+      "description": {
+        "fr": "Une énergie chaotique tourbillonne autour du sorcier, détourne les tirs qui le visent et efface sa piste.\n\nEn jeu\n• Détourne les attaques à distance (comme bouclier entropique).\n• Ne laisse aucune trace (comme passage sans trace) et ne peut pas être pisté à l'odorat.\n• Un adversaire peut quand même le détecter à l'odorat."
+      },
+      "invocation": {
+        "grade": "least",
+        "level": 2,
+        "kind": "other"
+      }
+    }
+  ]
+}

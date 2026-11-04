@@ -1,0 +1,778 @@
+{
+  "entities": [
+    {
+      "id": "class.ninja",
+      "type": "class",
+      "name": {
+        "fr": "Ninja",
+        "en": "Ninja"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "skills"
+      ],
+      "description": {
+        "fr": "Le ninja agit dans l’ombre et ne se fait voir que lorsqu’il est trop tard. Il frappe de nulle part, se glisse partout et s’échappe de presque n’importe quelle impasse en puisant dans son ki : disparaître un instant, brouiller ses contours, traverser les murs. Poison, fléchettes et gestes rapides font le reste.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 6 + modificateur d’Intelligence par niveau, ×4 au niveau 1.\n• Alignement : tous.\n• Formé aux armes courantes, à l’arbalète de poing, à l’arc court, à l’épée courte, au kama, au kukri, au nunchaku, au saï, au shuriken et au siangham ; ni armure ni bouclier.\n• Aptitudes : bonus à la CA, frappe éclair, pouvoirs ki et recherche des pièges (1) ; éclipse spectrale (2) ; utilisation du poison (3) ; grand saut (4) ; esquive ki et gymnaste (6) ; escalade rapide (7) ; frappe spectrale (8) ; science du poison (9) ; esquive totale (12) ; intangibilité spirituelle (14) ; vision spectrale (16) ; esquive ki supérieure (18) ; marche éthérée (20).\n• Les pouvoirs ki ne s’utilisent que sans armure et sans charge intermédiaire ou lourde ; en armure, avec un bouclier ou une charge intermédiaire ou lourde, le ninja perd aussi le bonus à la CA."
+      },
+      "hitDie": 6,
+      "skillPoints": 6,
+      "source": "Complete Adventurer",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.ninja') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Perte des aptitudes en armure ou chargé : l’équipement porté n’est pas encore dans le modèle, les bonus s’appliquent toujours. Le livre ne donne pas de règle épique propre au ninja : un don supplémentaire tous les 3 niveaux au-delà du 20."
+    },
+    {
+      "id": "power.ninja_ac_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus à la CA",
+        "en": "AC bonus"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Le ninja esquive les coups et son sixième sens lui évite même ceux qu’il n’a pas vus venir.\n\nEn jeu\n• Ajoute son bonus de Sagesse (s’il est positif) à sa CA, plus +1 aux niveaux 5, 10, 15 et 20.\n• Ces bonus comptent aussi contre les attaques de contact et quand il est pris au dépourvu.\n• Perdus en armure, avec un bouclier, avec une charge intermédiaire ou lourde, ou s’il est immobilisé ou sans défense.\n• Ne se cumule pas avec le bonus à la CA du moine."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "max(0, @ability.wis.mod) + floor(level('class.ninja') / 5)"
+        }
+      ]
+    },
+    {
+      "id": "power.ninja_sudden_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe éclair",
+        "en": "Sudden strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Quand l’adversaire ne sait pas se défendre, le ninja ne frappe pas fort : il frappe juste, à l’endroit qui fait mal.\n\nEn jeu\n• +1d6 aux dégâts au niveau 1, puis +1d6 tous les 2 niveaux (10d6 au niveau 19).\n• Quand la cible est privée de son bonus de Dextérité à la CA (qu’elle en ait un ou non). Pas sur une simple prise en tenaille.\n• À distance, seulement à 9 m ou moins.\n• Pas contre les créatures qui bénéficient d’un camouflage, celles dont les points vitaux sont hors de portée ou imperceptibles, ni celles immunisées contre les coups critiques.\n• Jamais de dégâts non létaux.\n• S’ajoute aux dégâts de l’attaque sournoise si les deux s’appliquent à la même cible ; pour les conditions de dons et de classes, elle compte comme une attaque sournoise."
+      },
+      "effects": [
+        {
+          "target": "damage.sudden_strike",
+          "op": "dice",
+          "value": "(ceil(level('class.ninja') / 2))d6"
+        }
+      ]
+    },
+    {
+      "id": "power.ninja_ki_powers",
+      "type": "class_power",
+      "name": {
+        "fr": "Pouvoirs ki",
+        "en": "Ki powers"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Le ninja canalise son ki en réserve : chaque pouvoir de discrétion ou de mouvement en consomme une part. Tant qu’il lui en reste, son esprit résiste mieux aux influences.\n\nEn jeu\n• Utilisations par jour : la moitié de son niveau de ninja (au moins 1) plus son bonus de Sagesse.\n• Seulement sans armure et sans charge intermédiaire ou lourde.\n• Tant qu’il lui reste au moins une utilisation, +2 à ses jets de Volonté.\n• Pouvoirs ki : éclipse spectrale, esquive ki, frappe spectrale, esquive ki supérieure, marche éthérée."
+      },
+      "effects": [],
+      "usesPerDay": "max(1, floor(level('class.ninja') / 2)) + max(0, @ability.wis.mod)",
+      "note": "Le +2 aux jets de Volonté dépend de la réserve restante (pas suivie par le modèle) : non appliqué."
+    },
+    {
+      "id": "power.ninja_trapfinding",
+      "type": "class_power",
+      "name": {
+        "fr": "Recherche des pièges",
+        "en": "Trapfinding"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Un piège bien caché n’arrête pas un ninja : il le voit avant de le déclencher.\n\nEn jeu\n• Peut trouver par la Fouille les pièges dont le DD dépasse 20 (pièges magiques compris).\n• Peut désamorcer les pièges magiques avec Désamorçage/sabotage."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_ghost_step",
+      "type": "class_power",
+      "name": {
+        "fr": "Éclipse spectrale",
+        "en": "Ghost step"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Une inspiration, et le ninja n’est plus là pour les yeux de ses ennemis.\n\nEn jeu\n• Dépense une utilisation de ki : invisible pendant 1 round. Action rapide, sans attaque d’opportunité.\n• Dès le niveau 10, il peut devenir éthéré à la place."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_poison_use",
+      "type": "class_power",
+      "name": {
+        "fr": "Utilisation du poison",
+        "en": "Poison use"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Il manie les poisons sans crainte : ses propres lames ne lui font plus courir de risque.\n\nEn jeu\n• Ne s’empoisonne jamais par accident en enduisant son arme."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_great_leap",
+      "type": "class_power",
+      "name": {
+        "fr": "Grand saut",
+        "en": "Great leap"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Le ninja prend toujours son élan, même quand il n’en a pas la place.\n\nEn jeu\n• Ses tests de Saut se font toujours comme s’il courait et avait le don Course : +4 au test.\n• Seulement sans armure et sans charge intermédiaire ou lourde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_acrobatics",
+      "type": "class_power",
+      "name": {
+        "fr": "Gymnaste",
+        "en": "Acrobatics"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Entraîné à passer partout, il fait des acrobaties ce que d’autres font du marcher.\n\nEn jeu\n• Bonus aux tests d’Acrobaties, d’Escalade et de Saut : +2 au niveau 6, +4 au niveau 12, +6 au niveau 18."
+      },
+      "effects": [
+        {
+          "target": "skill.tumble",
+          "op": "add",
+          "value": "if(level('class.ninja') >= 18, 6, if(level('class.ninja') >= 12, 4, 2))"
+        },
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": "if(level('class.ninja') >= 18, 6, if(level('class.ninja') >= 12, 4, 2))"
+        },
+        {
+          "target": "skill.jump",
+          "op": "add",
+          "value": "if(level('class.ninja') >= 18, 6, if(level('class.ninja') >= 12, 4, 2))"
+        }
+      ]
+    },
+    {
+      "id": "power.ninja_ki_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive ki",
+        "en": "Ki dodge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Ses contours se brouillent, tremblent, et les coups ratent leur cible.\n\nEn jeu\n• Dépense une utilisation de ki : camouflage (20 % de chances de rater) contre toutes les attaques pendant 1 round.\n• Action rapide, sans attaque d’opportunité.\n• Détection de l’invisibilité ne l’annule pas ; vision lucide si. Ne se cumule pas avec un autre camouflage ni avec des sorts comme clignotement ou déplacement."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_speed_climb",
+      "type": "class_power",
+      "name": {
+        "fr": "Escalade rapide",
+        "en": "Speed climb"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Un mur, une pente : le ninja les grimpe presque aussi vite qu’il court.\n\nEn jeu\n• Escalade murs et plans inclinés à sa vitesse de déplacement au prix d’une action de mouvement, sans malus.\n• Doit commencer et finir le round sur une surface horizontale, sinon il tombe.\n• Une main libre suffit. Seulement sans armure et sans charge intermédiaire ou lourde."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_ghost_strike",
+      "type": "class_power",
+      "name": {
+        "fr": "Frappe spectrale",
+        "en": "Ghost strike"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Entre deux mondes, le ninja frappe ce qui n’est pas tout à fait là.\n\nEn jeu\n• Dépense une utilisation de ki : sa prochaine attaque, avant la fin de son prochain tour, frappe une créature intangible ou éthérée comme si elle était tangible.\n• Permet aussi, étant éthéré, de frapper normalement un adversaire du plan Matériel.\n• Action de mouvement, sans attaque d’opportunité."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_improved_poison_use",
+      "type": "class_power",
+      "name": {
+        "fr": "Science du poison",
+        "en": "Improved poison use"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Il enduit son arme de poison en un clin d’œil.\n\nEn jeu\n• Applique un poison sur son arme au prix d’une action de mouvement (au lieu d’une action simple)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_evasion",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive totale",
+        "en": "Evasion"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "La zone d’effet l’enveloppe, et il en ressort sans une égratignure.\n\nEn jeu\n• Contre un effet qui permet un jet de Réflexes pour moitié dégâts, ne subit aucun dégât s’il réussit.\n• Seulement sans armure et avec une charge légère au plus."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_ghost_mind",
+      "type": "class_power",
+      "name": {
+        "fr": "Intangibilité spirituelle",
+        "en": "Ghost mind"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Les sorts de divination ont du mal à le trouver, comme s’il n’était qu’un souvenir.\n\nEn jeu\n• Pour le voir ou le détecter par un sort de scrutation, le lanceur doit réussir un test de niveau de lanceur de sorts (DD 20 + niveau de ninja).\n• Contre un sort de scrutation sur toute une zone (œil du mage), un test manqué signifie que le ninja n’est pas détecté ; contre un sort qui le vise précisément, le sort échoue."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_ghost_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision spectrale",
+        "en": "Ghost sight"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Pour lui, ce qui est invisible ou éthéré se voit comme le reste.\n\nEn jeu\n• Voit les créatures invisibles et éthérées aussi bien que les créatures matérielles."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_greater_ki_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive ki supérieure",
+        "en": "Greater ki dodge"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "À ce stade, ses contours ne sont plus que des ondes dans l’air.\n\nEn jeu\n• Son esquive ki donne désormais un camouflage total : 50 % de chances de rater."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.ninja_ghost_walk",
+      "type": "class_power",
+      "name": {
+        "fr": "Marche éthérée",
+        "en": "Ghost walk"
+      },
+      "provenance": "official",
+      "source": "Complete Adventurer",
+      "labels": [
+        "class_power",
+        "ninja"
+      ],
+      "description": {
+        "fr": "Le ninja quitte le monde matériel et y revient quand il le décide.\n\nEn jeu\n• Dépense deux utilisations de ki : entre dans le plan Éthéré pour une longue période, comme le sort forme éthérée.\n• Niveau de lanceur de sorts : son niveau de ninja."
+      },
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.ninja",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.ninja_ac_bonus",
+        "power.ninja_sudden_strike",
+        "power.ninja_ki_powers",
+        "power.ninja_trapfinding"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.ninja_ghost_step"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.ninja_poison_use"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.ninja_great_leap"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 4,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.ninja",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.ninja_acrobatics",
+        "power.ninja_ki_dodge"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.ninja_speed_climb"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 6,
+      "will": 2,
+      "grants": [
+        "power.ninja_ghost_strike"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.ninja_improved_poison_use"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.ninja",
+      "level": 11,
+      "bab": 8,
+      "fort": 3,
+      "ref": 7,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.ninja",
+      "level": 12,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 4,
+      "grants": [
+        "power.ninja_evasion"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 13,
+      "bab": 9,
+      "fort": 4,
+      "ref": 8,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.ninja",
+      "level": 14,
+      "bab": 10,
+      "fort": 4,
+      "ref": 9,
+      "will": 4,
+      "grants": [
+        "power.ninja_ghost_mind"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 15,
+      "bab": 11,
+      "fort": 5,
+      "ref": 9,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.ninja",
+      "level": 16,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 5,
+      "grants": [
+        "power.ninja_ghost_sight"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 17,
+      "bab": 12,
+      "fort": 5,
+      "ref": 10,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.ninja",
+      "level": 18,
+      "bab": 13,
+      "fort": 6,
+      "ref": 11,
+      "will": 6,
+      "grants": [
+        "power.ninja_greater_ki_dodge"
+      ]
+    },
+    {
+      "classId": "class.ninja",
+      "level": 19,
+      "bab": 14,
+      "fort": 6,
+      "ref": 11,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.ninja",
+      "level": 20,
+      "bab": 15,
+      "fort": 6,
+      "ref": 12,
+      "will": 6,
+      "grants": [
+        "power.ninja_ghost_walk"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.hand_crossbow"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.shortbow"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.short_sword"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.kama"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.kukri"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.nunchaku"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.sai"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.shuriken"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "proficiency",
+      "to": "item.siangham"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.lawful_evil"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.ninja",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

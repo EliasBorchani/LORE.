@@ -1,0 +1,488 @@
+{
+  "entities": [
+    {
+      "id": "feat.master_wand",
+      "type": "feat",
+      "name": {
+        "fr": "Baguette de maître",
+        "en": "Master Wand"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Pour ce mage, une baguette n’est plus une réserve qui s’épuise mais un simple conduit : il y verse sa propre magie et la laisse intacte.\n\nEn jeu\n• Condition : Création de baguettes magiques, 15 degrés de maîtrise en Art de la magie.\n• En activant une baguette, dépense un emplacement de sort encore libre ce jour-là au lieu d’une charge.\n• L’emplacement doit être d’un niveau au moins égal à celui du sort de la baguette (métamagie comprise).\n• Un sort préparé peut servir d’emplacement, sauf un sort préparé dans l’emplacement d’école de spécialité."
+      },
+      "prerequisite": "level() >= 21 and has('feat.craft_wand')",
+      "note": "Condition non vérifiée par la fiche : 15 degrés en Art de la magie. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.master_staff",
+      "type": "feat",
+      "name": {
+        "fr": "Bâton de maître",
+        "en": "Master Staff"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Le bâton n’est plus qu’un prolongement de son bras : ses pouvoirs puisent dans les réserves du mage plutôt que dans les siennes.\n\nEn jeu\n• Condition : Création de bâtons magiques, 30 degrés de maîtrise en Art de la magie.\n• En activant un bâton, dépense un emplacement de sort encore libre ce jour-là au lieu d’une charge.\n• L’emplacement doit être d’un niveau au moins égal à celui du sort du bâton (métamagie comprise).\n• Un sort préparé peut servir d’emplacement, sauf un sort préparé dans l’emplacement d’école de spécialité.\n• Ne remplace pas la charge d’un pouvoir du bâton qui ne reproduit aucun sort précis."
+      },
+      "prerequisite": "level() >= 21 and has('feat.craft_staff')",
+      "note": "Condition non vérifiée par la fiche : 30 degrés en Art de la magie. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_abjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (abjuration)",
+        "en": "Epic Spell Focus (abjuration)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts d’abjuration de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (abjuration), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts d’abjuration (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_abjuration')",
+      "effects": [
+        {
+          "target": "dc.school[abjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_conjuration",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (invocation)",
+        "en": "Epic Spell Focus (conjuration)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts d’invocation de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (invocation), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts d’invocation (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_conjuration')",
+      "effects": [
+        {
+          "target": "dc.school[conjuration]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_divination",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (divination)",
+        "en": "Epic Spell Focus (divination)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts de divination de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (divination), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts de divination (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_divination')",
+      "effects": [
+        {
+          "target": "dc.school[divination]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_enchantment",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (enchantement)",
+        "en": "Epic Spell Focus (enchantment)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts d’enchantement de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (enchantement), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts d’enchantement (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_enchantment')",
+      "effects": [
+        {
+          "target": "dc.school[enchantment]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_evocation",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (évocation)",
+        "en": "Epic Spell Focus (evocation)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts d’évocation de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (évocation), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts d’évocation (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_evocation')",
+      "effects": [
+        {
+          "target": "dc.school[evocation]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_illusion",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (illusion)",
+        "en": "Epic Spell Focus (illusion)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts d’illusion de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (illusion), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts d’illusion (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_illusion')",
+      "effects": [
+        {
+          "target": "dc.school[illusion]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_necromancy",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (nécromancie)",
+        "en": "Epic Spell Focus (necromancy)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts de nécromancie de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (nécromancie), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts de nécromancie (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_necromancy')",
+      "effects": [
+        {
+          "target": "dc.school[necromancy]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_focus_transmutation",
+      "type": "feat",
+      "name": {
+        "fr": "École renforcée épique (transmutation)",
+        "en": "Epic Spell Focus (transmutation)"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "DC"
+      ],
+      "description": {
+        "fr": "Au-delà de la maîtrise, il y a l’empreinte : les sorts de transmutation de ce lanceur pèsent d’un poids que même les créatures légendaires sentent passer.\n\nEn jeu\n• Condition : École supérieure (transmutation), pouvoir lancer au moins un sort du 9e niveau de cette école.\n• +1 de plus au DD des jets de sauvegarde contre ses sorts de transmutation (+3 au total avec École renforcée et École supérieure).\n• Un don par école : il peut être pris pour plusieurs écoles."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_focus_transmutation')",
+      "effects": [
+        {
+          "target": "dc.school[transmutation]",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Condition non vérifiée par la fiche : un sort du 9e niveau de l’école. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.epic_spell_penetration",
+      "type": "feat",
+      "name": {
+        "fr": "Efficacité des sorts accrue épique",
+        "en": "Epic Spell Penetration"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Les barrières qui arrêtent les mages ordinaires ne sont pour lui qu’un voile : sa magie passe là où celle des autres se brise.\n\nEn jeu\n• Condition : Efficacité des sorts supérieure.\n• +2 de plus au test de niveau de lanceur pour passer la résistance à la magie (+6 au total avec Efficacité des sorts accrue et supérieure).\n• Vaut pour tous ses sorts : le bonus apparaît sur chaque variante."
+      },
+      "prerequisite": "level() >= 21 and has('feat.greater_spell_penetration')",
+      "effects": [
+        {
+          "target": "spell.caster_level_vs_sr",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.automatic_quicken_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation rapide automatique",
+        "en": "Automatic Quicken Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "metamagic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Ses sorts les plus simples partent d’eux-mêmes, sans que le mage ait à y penser : une pensée suffit, et la magie est déjà là.\n\nEn jeu\n• Condition : Incantation rapide, 30 degrés de maîtrise en Art de la magie, pouvoir lancer des sorts profanes ou divins du 9e niveau.\n• Ses sorts du niveau 1 ou moins reçoivent Incantation rapide sans coûter d’emplacement plus élevé.\n• Peut être pris plusieurs fois : chaque prise étend l’effet d’un niveau au-dessus (niveau 2 ou moins avec deux prises).\n• La limite d’un sort à incantation rapide par round reste en place ; impossible sur un sort dont l’incantation dépasse 1 round.\n• N’allonge pas l’incantation des sorts lancés spontanément (ensorceleur, conversion spontanée), qui demande d’habitude une action complexe avec la métamagie."
+      },
+      "prerequisite": "level() >= 21 and has('feat.quicken_spell')",
+      "repeatable": {},
+      "note": "Réduction de coût par niveau de sort : pas dans le modèle (texte seulement). Condition non vérifiée par la fiche : 30 degrés en Art de la magie, sorts du 9e niveau. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.automatic_silent_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation silencieuse automatique",
+        "en": "Automatic Silent Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "metamagic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Ses sorts mineurs n’ont plus besoin de sa voix : la magie lui obéit dans le plus parfait silence.\n\nEn jeu\n• Condition : Incantation silencieuse, 24 degrés de maîtrise en Art de la magie, pouvoir lancer des sorts profanes ou divins du 9e niveau.\n• Ses sorts du niveau 3 ou moins reçoivent Incantation silencieuse sans coûter d’emplacement plus élevé.\n• Peut être pris plusieurs fois : chaque prise étend l’effet de trois niveaux au-dessus (niveau 6 ou moins avec deux prises).\n• Les sorts de barde, qui ne peuvent pas être lancés en silence, n’en profitent pas.\n• N’allonge pas l’incantation des sorts lancés spontanément (ensorceleur, conversion spontanée), qui demande d’habitude une action complexe avec la métamagie."
+      },
+      "prerequisite": "level() >= 21 and has('feat.silent_spell')",
+      "repeatable": {},
+      "note": "Réduction de coût par niveau de sort : pas dans le modèle (texte seulement). Condition non vérifiée par la fiche : 24 degrés en Art de la magie, sorts du 9e niveau. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.automatic_still_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation statique automatique",
+        "en": "Automatic Still Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "metamagic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Ses mains peuvent rester immobiles ou liées : ses sorts mineurs se forment sans le moindre geste.\n\nEn jeu\n• Condition : Incantation statique, 27 degrés de maîtrise en Art de la magie, pouvoir lancer des sorts profanes ou divins du 9e niveau.\n• Ses sorts du niveau 3 ou moins reçoivent Incantation statique sans coûter d’emplacement plus élevé.\n• Peut être pris plusieurs fois : chaque prise étend l’effet de trois niveaux au-dessus (niveau 6 ou moins avec deux prises).\n• N’allonge pas l’incantation des sorts lancés spontanément (ensorceleur, conversion spontanée), qui demande d’habitude une action complexe avec la métamagie."
+      },
+      "prerequisite": "level() >= 21 and has('feat.still_spell')",
+      "repeatable": {},
+      "note": "Réduction de coût par niveau de sort : pas dans le modèle (texte seulement). Condition non vérifiée par la fiche : 27 degrés en Art de la magie, sorts du 9e niveau. Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.enhance_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Rehaussement magique",
+        "en": "Enhance Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "metamagic",
+        "magic"
+      ],
+      "description": {
+        "fr": "Là où la formule s’arrête d’habitude, la sienne continue : ses boules de feu et ses éclairs dépassent le plafond que les grimoires leur fixent.\n\nEn jeu\n• Condition : Quintessence des sorts.\n• Sort dont les dés de dégâts suivent le niveau de lanceur : le maximum de dés monte de 10 (boule de feu : 20d6 au lieu de 10d6).\n• Sort dont les dés suivent la moitié du niveau de lanceur : le maximum monte de 5 (lumière brûlante : 10d8 au lieu de 5d8).\n• Sans effet sur les autres sorts, même ceux qui dépendent du niveau de lanceur d’une autre façon (projectile magique, flèche acide).\n• Le sort utilise un emplacement de 4 niveaux de plus que son niveau réel."
+      },
+      "prerequisite": "level() >= 21 and has('feat.maximize_spell')",
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 4,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Plafond de dés relevé : pas dans le modèle (le plafond est écrit dans la formule de dégâts de chaque sort ; seul le coût en emplacement est calculé). Cette version du Codex Profane remplace celles des autres suppléments."
+    },
+    {
+      "id": "feat.improved_combat_casting",
+      "type": "feat",
+      "name": {
+        "fr": "Science de la magie de guerre",
+        "en": "Improved Combat Casting"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "epic",
+        "magic",
+        "skill"
+      ],
+      "description": {
+        "fr": "Au cœur de la mêlée, entouré d’ennemis, il incante comme s’il était seul dans sa tour : les coups qui pleuvent ne troublent plus sa concentration.\n\nEn jeu\n• Condition : Magie de guerre, 25 degrés de maîtrise en Concentration.\n• Bonus égal à la moitié de son niveau de lanceur de sorts aux tests de Concentration pour lancer un sort ou utiliser un pouvoir magique sur la défensive, en étant agrippé ou immobilisé."
+      },
+      "prerequisite": "level() >= 21 and has('feat.combat_casting')",
+      "note": "Bonus non calculé : il suit le niveau de lanceur, qui dépend de la classe (texte seulement). Condition non vérifiée par la fiche : 25 degrés en Concentration. Cette version du Codex Profane remplace celles des autres suppléments."
+    }
+  ],
+  "relations": [
+    {
+      "from": "feat.master_wand",
+      "relation": "requires",
+      "to": "feat.craft_wand"
+    },
+    {
+      "from": "feat.master_staff",
+      "relation": "requires",
+      "to": "feat.craft_staff"
+    },
+    {
+      "from": "feat.epic_spell_focus_abjuration",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_abjuration"
+    },
+    {
+      "from": "feat.epic_spell_focus_conjuration",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_conjuration"
+    },
+    {
+      "from": "feat.epic_spell_focus_divination",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_divination"
+    },
+    {
+      "from": "feat.epic_spell_focus_enchantment",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_enchantment"
+    },
+    {
+      "from": "feat.epic_spell_focus_evocation",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_evocation"
+    },
+    {
+      "from": "feat.epic_spell_focus_illusion",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_illusion"
+    },
+    {
+      "from": "feat.epic_spell_focus_necromancy",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_necromancy"
+    },
+    {
+      "from": "feat.epic_spell_focus_transmutation",
+      "relation": "requires",
+      "to": "feat.greater_spell_focus_transmutation"
+    },
+    {
+      "from": "feat.epic_spell_penetration",
+      "relation": "requires",
+      "to": "feat.greater_spell_penetration"
+    },
+    {
+      "from": "feat.automatic_quicken_spell",
+      "relation": "requires",
+      "to": "feat.quicken_spell"
+    },
+    {
+      "from": "feat.automatic_silent_spell",
+      "relation": "requires",
+      "to": "feat.silent_spell"
+    },
+    {
+      "from": "feat.automatic_still_spell",
+      "relation": "requires",
+      "to": "feat.still_spell"
+    },
+    {
+      "from": "feat.enhance_spell",
+      "relation": "requires",
+      "to": "feat.maximize_spell"
+    },
+    {
+      "from": "feat.improved_combat_casting",
+      "relation": "requires",
+      "to": "feat.combat_casting"
+    }
+  ]
+}

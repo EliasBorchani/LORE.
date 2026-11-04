@@ -1,0 +1,506 @@
+{
+  "entities": [
+    {
+      "id": "class.paladin_variant",
+      "type": "class",
+      "name": {
+        "fr": "Paladin (sans magie)",
+        "en": "Paladin (variant, no spellcasting)"
+      },
+      "provenance": "official",
+      "labels": [
+        "class",
+        "base",
+        "martial"
+      ],
+      "description": {
+        "fr": "Dans une campagne centrée sur les combattants, le paladin renonce aux prières préparées. Il garde son serment, sa lumière, son destrier et ses mains qui guérissent, et gagne en échange des pouvoirs plus sûrs : une arme qui frappe comme le bien, une puissance divine qui gonfle ses bras, sa sagesse ou sa voix, des soins qui relèvent aussi sa monture.\n\nEn jeu\n• Mêmes dé de vie, points de compétence, compétences, formation, alignement (loyal bon), code de conduite et progression d’attaque et de sauvegardes que le paladin du Manuel des Joueurs.\n• Pas de sorts divins, pas de niveau de lanceur.\n• Aptitudes du paladin conservées : aura de Bien, détection du Mal, châtiment du Mal (1) ; grâce divine, imposition des mains (2) ; aura de bravoure, santé divine (3) ; renvoi des morts-vivants (4) ; destrier (5) ; guérison des maladies (6).\n• Aptitudes ajoutées : arme bénie (6) ; puissance divine (11) ; soins de la monture (13) ; épée sainte (16)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "source": "Complete Warrior",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.paladin_variant') - 20) / 3))",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "Variante du Codex Martial : le paladin du Manuel des Joueurs sans les sorts. Les aptitudes inchangées reprennent celles du paladin (mêmes ids) ; celles dont les formules lisent le niveau de classe sont recopiées pour lire le niveau de paladin sans magie."
+    },
+    {
+      "id": "power.paladin_variant_smite_evil",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment du Mal",
+        "en": "Smite evil"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Le paladin appelle sa foi dans son arme, et le coup qui tombe sur l’ennemi porte tout le poids de son serment.\n\nEn jeu\n• Une fois par jour au niveau 1, puis une fois de plus aux niveaux 5, 10, 15 et 20.\n• Contre une créature mauvaise, ajoute son bonus de Charisme (s’il est positif) au jet d’attaque et son niveau de paladin aux dégâts.\n• Si la cible n’est pas mauvaise, le châtiment est perdu sans effet."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)",
+          "condition": "active('toggle.paladin_variant_smite_evil')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.paladin_variant')",
+          "condition": "active('toggle.paladin_variant_smite_evil')"
+        }
+      ],
+      "usesPerDay": "1 + floor(level('class.paladin_variant') / 5)"
+    },
+    {
+      "id": "power.paladin_variant_lay_on_hands",
+      "type": "class_power",
+      "name": {
+        "fr": "Imposition des mains",
+        "en": "Lay on hands"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Une main sur l’épaule du blessé, une prière murmurée, et la chair se referme.\n\nEn jeu\n• Chaque jour, peut soigner un total de points de vie égal à son niveau de paladin × son bonus de Charisme, répartis comme il veut.\n• Soigner est une action simple ; sur lui-même aussi.\n• Peut aussi blesser un mort-vivant : attaque de contact au corps à corps, sans attaque d’opportunité, sans jet de sauvegarde."
+      },
+      "effects": [
+        {
+          "target": "lay_on_hands.hp",
+          "op": "add",
+          "value": "level('class.paladin_variant') * max(0, @ability.cha.mod)"
+        }
+      ]
+    },
+    {
+      "id": "power.paladin_variant_turn_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Renvoi des morts-vivants",
+        "en": "Turn undead"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Le paladin brandit son symbole sacré, et ce qui aurait dû rester dans la tombe recule.\n\nEn jeu\n• Renvoie les morts-vivants comme un prêtre de 3 niveaux de moins que son niveau de paladin.\n• Utilisations par jour : 3 + modificateur de Charisme."
+      },
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": "level('class.paladin_variant') - 3"
+        }
+      ],
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "power.paladin_variant_remove_disease",
+      "type": "class_power",
+      "name": {
+        "fr": "Guérison des maladies",
+        "en": "Remove disease"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Le paladin pose sa main sur le front brûlant, et la fièvre s’en va.\n\nEn jeu\n• Guérison des maladies comme le sort : 1 fois par semaine au niveau 6, puis une de plus aux niveaux 9, 12, 15 et 18."
+      },
+      "effects": [
+        {
+          "target": "remove_disease.uses_per_week",
+          "op": "add",
+          "value": "floor(level('class.paladin_variant') / 3) - 1"
+        }
+      ]
+    },
+    {
+      "id": "power.paladin_variant_blessed_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme bénie",
+        "en": "Blessed weapon"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Dans ses mains, une arme ordinaire frappe comme si elle avait été forgée pour le bien.\n\nEn jeu\n• Toute arme de corps à corps qu’il manie est considérée comme d’alignement bon pour ignorer la réduction des dégâts."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.paladin_variant_divine_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Puissance divine",
+        "en": "Divine power"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Une prière, et la force du ciel passe dans ses bras, sa sagesse ou sa voix.\n\nEn jeu\n• Une fois par jour, action simple : +4 en Force, en Sagesse ou en Charisme (au choix) pendant 1 minute par niveau de paladin."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Choix de la caractéristique : pas encore dans le modèle (texte seulement)."
+    },
+    {
+      "id": "power.paladin_variant_mount_healing",
+      "type": "class_power",
+      "name": {
+        "fr": "Soins de la monture",
+        "en": "Mount healing"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Ses mains qui guérissent soignent aussi la bête qui le porte, et la relèvent de ce qui l’abat.\n\nEn jeu\n• Quand il utilise l’imposition des mains sur sa monture, elle regagne 5 points de vie par point de soin dépensé.\n• Peut aussi dépenser l’imposition des mains pour retirer un état à sa monture, à 5 points de soin par état : assourdi, aveuglé, confus, ébloui, empoisonné, épuisé, étourdi, fatigué, fiévreux, frappé d’aliénation mentale, frappé de débilité, hébété, malade, nauséeux.\n• Un affaiblissement temporaire de caractéristique coûte 1 point de soin par point restauré.\n• Peut retirer un état et rendre des points de vie en même temps, mais les points dépensés pour un état ne servent pas aux points de vie."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.paladin_variant_holy_sword",
+      "type": "class_power",
+      "name": {
+        "fr": "Épée sainte",
+        "en": "Holy sword"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "class_power",
+        "paladin_variant"
+      ],
+      "description": {
+        "fr": "Une fois par jour, l’épée du paladin s’embrase d’une lumière qui ne souffre pas le mal.\n\nEn jeu\n• Pouvoir magique : épée sainte, à un niveau de lanceur égal à la moitié de son niveau de paladin."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "La page du Codex ne donne pas la fréquence ; une fois par jour, comme les pouvoirs magiques du rôdeur alternatif (à confirmer)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.paladin_variant",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.paladin_aura_of_good",
+        "power.paladin_detect_evil",
+        "power.paladin_variant_smite_evil"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.paladin_divine_grace",
+        "power.paladin_variant_lay_on_hands"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.paladin_aura_of_courage",
+        "power.paladin_divine_health"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.paladin_variant_turn_undead"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.paladin_special_mount"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.paladin_variant_remove_disease",
+        "power.paladin_variant_blessed_weapon"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 11,
+      "bab": 11,
+      "fort": 7,
+      "ref": 3,
+      "will": 3,
+      "grants": [
+        "power.paladin_variant_divine_power"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 12,
+      "bab": 12,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 13,
+      "bab": 13,
+      "fort": 8,
+      "ref": 4,
+      "will": 4,
+      "grants": [
+        "power.paladin_variant_mount_healing"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 14,
+      "bab": 14,
+      "fort": 9,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 15,
+      "bab": 15,
+      "fort": 9,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 16,
+      "bab": 16,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": [
+        "power.paladin_variant_holy_sword"
+      ]
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 17,
+      "bab": 17,
+      "fort": 10,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 18,
+      "bab": 18,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 19,
+      "bab": 19,
+      "fort": 11,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.paladin_variant",
+      "level": 20,
+      "bab": 20,
+      "fort": 12,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    },
+    {
+      "from": "class.paladin_variant",
+      "relation": "alignment",
+      "to": "alignment.lawful_good"
+    }
+  ]
+}

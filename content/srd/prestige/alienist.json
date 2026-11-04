@@ -1,0 +1,513 @@
+{
+  "entities": [
+    {
+      "id": "class.alienist",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Aliéniste",
+        "en": "Alienist"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "summoning"
+      ],
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_planes.ranks >= 8 and has('feat.augment_summoning')",
+      "description": {
+        "fr": "Au-delà des plans connus, hors du temps, dérivent des intelligences si étrangères qu’un seul regard sur elles rend fou. L’aliéniste a choisi de les écouter. Il appelle leurs créatures déformées, troque des morceaux de sa raison contre leurs secrets et finit par devenir, lui aussi, quelque chose qui n’appartient plus tout à fait à ce monde.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : alignement non loyal ; Connaissances (plans) 8 rangs ; Amélioration des créatures convoquées ; savoir lancer au moins un sort de convocation du 3e niveau ; avoir eu un contact pacifique avec un aliéniste ou une créature pseudo-naturelle.\n• Aucune formation aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Art de la magie, Concentration, Connaissances (toutes, chacune séparément), Détection, Perception auditive, Profession, Renseignements.\n• Sorts : +1 niveau de lanceur de sorts à chaque niveau, 1 à 10 (sorts par jour et niveau de lanceur d’une classe qu’il avait déjà ; pas les autres aptitudes de cette classe).\n• Aptitudes : convocation pseudo-naturelle et pouvoirs de familier (niveau 1) ; bénédiction aliénante (2) ; secret métamagique (3 et 7) ; conviction aliénante (4) ; familier pseudo-naturel (5) ; convocation supplémentaire (6) ; réalité aliénante (8) ; éternelle jeunesse (9) ; transcendance aliénante (10)."
+      },
+      "note": "Conditions d’accès : rangs et Amélioration des créatures convoquées en formule ; alignement en relations ; sort de convocation du 3e niveau et contact pseudo-naturel vérifiés à la main."
+    },
+    {
+      "id": "power.alienist_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Les voix d’au-delà des étoiles ne demandent pas qu’on oublie ce qu’on sait : chaque niveau d’aliéniste fait aussi progresser la magie qu’il pratiquait déjà.\n\nEn jeu\n• À chaque niveau, 1 à 10 : +1 niveau effectif de lanceur de sorts dans une classe de lanceur qu’il avait déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe (dons, renvoi des morts-vivants…).\n• Avec plusieurs classes de lanceur, une seule en profite."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.alienist_familiar_powers",
+      "type": "class_power",
+      "name": {
+        "fr": "Pouvoirs de familier",
+        "en": "Familiar Powers"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Le familier de l’aliéniste grandit avec son maître, nourri des mêmes murmures venus d’ailleurs.\n\nEn jeu\n• Les niveaux d’aliéniste s’ajoutent à ceux d’une classe qui donne un familier (une seule, au choix) pour l’armure naturelle, l’Intelligence et les pouvoirs du familier.\n• Ne donne pas de familier à qui n’en a pas."
+      },
+      "effects": [
+        {
+          "target": "familiar.master_level",
+          "op": "add",
+          "value": "level('class.alienist')"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.alienist_summon_alien",
+      "type": "class_power",
+      "name": {
+        "fr": "Convocation pseudo-naturelle",
+        "en": "Summon Alien"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Quand l’aliéniste ouvre un passage, ce n’est plus un ange ni un démon qui le franchit, mais une version tordue de la créature, aux yeux trop nombreux et aux membres mal placés.\n\nEn jeu\n• Avec convocation de monstres, toute créature céleste ou fiélon appelée prend l’archétype pseudo-naturel (ex. : convocation de monstres IV appelle un loup sanguinaire pseudo-naturel).\n• Ne peut plus appeler de créatures non pseudo-naturelles avec convocation de monstres (pas de méphite ni de hurleur, par exemple)."
+      },
+      "effects": [],
+      "note": "Archétype pseudo-naturel des créatures convoquées : pas encore dans le modèle."
+    },
+    {
+      "id": "power.alienist_alien_blessing",
+      "type": "class_power",
+      "name": {
+        "fr": "Bénédiction aliénante",
+        "en": "Alien Blessing"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Les entités qu’il contemple veillent sur lui à leur manière, mais leur regard laisse des traces : son jugement s’use à mesure que sa chance grandit.\n\nEn jeu\n• Extraordinaire. À partir du niveau 2 : +1 (intuition) à tous les jets de sauvegarde.\n• Perd 2 points de Sagesse pour toujours."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "insight"
+        },
+        {
+          "target": "ability.wis.score",
+          "op": "add",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "id": "power.alienist_metamagic_secret",
+      "type": "class_power",
+      "name": {
+        "fr": "Secret métamagique",
+        "en": "Metamagic Secret"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "À force d’écouter les voix d’au-delà du temps, l’aliéniste apprend à tordre ses sorts d’une façon que nul maître ne lui aurait enseignée.\n\nEn jeu\n• Un don de métamagie supplémentaire au niveau 3, un autre au niveau 7.\n• Le don garde ses conditions et s’ajoute aux dons gagnés par le niveau."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.alienist_bonus",
+          "op": "add",
+          "value": "if(level('class.alienist') >= 7, 2, 1)"
+        }
+      ],
+      "note": "Type d’emplacement feat_slots.alienist_bonus (dons de métamagie seulement) : à ajouter aux types connus (targets.ts, fiches de niveau)."
+    },
+    {
+      "id": "power.alienist_alien_conviction",
+      "type": "class_power",
+      "name": {
+        "fr": "Conviction aliénante",
+        "en": "Alien Conviction"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Sa foi en des êtres que personne d’autre ne peut concevoir lui donne une endurance anormale, et un regard que les gens normaux ont du mal à soutenir.\n\nEn jeu\n• Extraordinaire. Au niveau 4 : +3 points de vie.\n• −4 aux tests de Bluff, Diplomatie et Dressage pour influencer une créature qui n’est pas pseudo-naturelle (le malus s’aggrave au niveau 8, voir réalité aliénante)."
+      },
+      "effects": [
+        {
+          "target": "hp.max",
+          "op": "add",
+          "value": 3
+        },
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": -4,
+          "situation": "situation.vs_non_pseudonatural"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": -4,
+          "situation": "situation.vs_non_pseudonatural"
+        },
+        {
+          "target": "skill.handle_animal",
+          "op": "add",
+          "value": -4,
+          "situation": "situation.vs_non_pseudonatural"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.alienist_pseudonatural_familiar",
+      "type": "class_power",
+      "name": {
+        "fr": "Familier pseudo-naturel",
+        "en": "Pseudonatural Familiar"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Le familier qui le suit depuis des années change de forme peu à peu, jusqu’à ce que plus rien en lui ne soit tout à fait naturel.\n\nEn jeu\n• Au niveau 5, son familier (s’il en a un) gagne l’archétype pseudo-naturel en plus de ses pouvoirs normaux ; il n’est pas remplacé.\n• Tout familier appelé ensuite a d’office cet archétype.\n• Sans familier, aucun effet."
+      },
+      "effects": [],
+      "note": "Archétype du familier : pas encore dans le modèle."
+    },
+    {
+      "id": "power.alienist_extra_summoning",
+      "type": "class_power",
+      "name": {
+        "fr": "Convocation supplémentaire",
+        "en": "Extra Summoning"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Les entités répondent si volontiers à ses appels qu’il garde toujours une porte ouverte pour elles.\n\nEn jeu\n• Au niveau 6 : un emplacement de sort en plus, du plus haut niveau de sort qu’il sait lancer.\n• Cet emplacement ne peut contenir qu’un sort de convocation de monstres.\n• Quand il accède à un niveau de sort plus élevé, l’emplacement monte avec lui."
+      },
+      "effects": [],
+      "note": "Emplacement réservé à la convocation de monstres : pas encore dans le modèle."
+    },
+    {
+      "id": "power.alienist_alien_reality",
+      "type": "class_power",
+      "name": {
+        "fr": "Réalité aliénante",
+        "en": "Alien Reality"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Son obsession devient visible et inquiétante : son corps tient mieux que jamais, mais il ne sait plus parler aux gens ordinaires.\n\nEn jeu\n• Extraordinaire. Au niveau 8 : encore +3 points de vie.\n• Le malus de Bluff, Diplomatie et Dressage contre les créatures non pseudo-naturelles atteint −10 au total (−6 de plus)."
+      },
+      "effects": [
+        {
+          "target": "hp.max",
+          "op": "add",
+          "value": 3
+        },
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": -6,
+          "situation": "situation.vs_non_pseudonatural"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": -6,
+          "situation": "situation.vs_non_pseudonatural"
+        },
+        {
+          "target": "skill.handle_animal",
+          "op": "add",
+          "value": -6,
+          "situation": "situation.vs_non_pseudonatural"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Le malus s’ajoute à celui de la conviction aliénante (−4 puis −10 au total)."
+    },
+    {
+      "id": "power.alienist_timeless_body",
+      "type": "class_power",
+      "name": {
+        "fr": "Éternelle jeunesse",
+        "en": "Timeless Body"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Il a appris des entités le secret de la jeunesse sans fin, sans savoir encore qu’elles viendraient chercher leur dû.\n\nEn jeu\n• Extraordinaire. Au niveau 9 : plus de nouveaux malus de caractéristique dus à l’âge, insensible au vieillissement magique.\n• Les malus déjà subis restent ; les bonus d’âge continuent de venir.\n• À l’âge où il devrait mourir, des entités l’emportent et il disparaît pour toujours."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.alienist_alien_transcendence",
+      "type": "class_power",
+      "name": {
+        "fr": "Transcendance aliénante",
+        "en": "Alien Transcendence"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "alienist"
+      ],
+      "description": {
+        "fr": "Au bout de sa quête, l’aliéniste cesse d’être tout à fait mortel et devient l’une des créatures qu’il étudiait : une petite part de lui, tentacule ou œil de trop, vit désormais sa propre vie.\n\nEn jeu\n• Surnaturel. Au niveau 10, son type devient Extérieur.\n• Réduction des dégâts 10/magie ; résistance à l’acide 10 et à l’électricité 10.\n• Une excroissance étrange bouge seule : −4 aux tests de Déguisement pour cacher sa vraie nature.\n• +2 (circonstances) aux tests de caractéristique et de compétence de Charisme avec ceux qui partagent sa fascination pour le Royaume Lointain.\n• Quand il montre sa vraie nature : +2 (circonstances) aux tests d’Intimidation contre toutes les autres créatures."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.magic",
+          "op": "add",
+          "value": 10
+        },
+        {
+          "target": "energy_resistance.acid",
+          "op": "add",
+          "value": 10
+        },
+        {
+          "target": "energy_resistance.electricity",
+          "op": "add",
+          "value": 10
+        },
+        {
+          "target": "skill.disguise",
+          "op": "add",
+          "value": -4,
+          "situation": "situation.hiding_true_nature"
+        },
+        {
+          "target": "skill.intimidate",
+          "op": "add",
+          "value": 2,
+          "bonusType": "circumstance",
+          "situation": "situation.revealing_alien_nature"
+        }
+      ],
+      "note": "Type Extérieur et bonus de Charisme face aux adeptes du Royaume Lointain : pas encore dans le modèle. Résistance aux énergies : cible energy_resistance.<énergie> à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.alienist",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.alienist_spells",
+        "power.alienist_familiar_powers",
+        "power.alienist_summon_alien"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.alienist_alien_blessing"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.alienist_metamagic_secret"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.alienist_alien_conviction"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.alienist_pseudonatural_familiar"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.alienist_extra_summoning"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.alienist",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.alienist_alien_reality"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.alienist_timeless_body"
+      ]
+    },
+    {
+      "classId": "class.alienist",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.alienist_alien_transcendence"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.alienist",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_good"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    },
+    {
+      "from": "class.alienist",
+      "relation": "alignment",
+      "to": "alignment.chaotic_evil"
+    }
+  ]
+}

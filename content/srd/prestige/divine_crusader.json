@@ -1,0 +1,474 @@
+{
+  "entities": [
+    {
+      "id": "class.divine_crusader",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Croisé divin",
+        "en": "Divine Crusader"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Le croisé divin est le serviteur d'élite d'un seul dieu. Il incarne une facette précise de son maître (feu, guerre, savoir, Bien) et s'en revêt jusque dans sa chair, jusqu'à devenir presque un être des plans.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : même alignement que sa divinité tutélaire ; bonus de base à l'attaque +7 ; Connaissances (religion) 2 rangs ; Arme de prédilection (arme de la divinité).\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (religion), Diplomatie, Équitation, Escalade, Intimidation, Natation, Saut, plus celles du domaine choisi.\n• Sorts : sorts divins préparés (1er à 9e niveau) à partir du seul domaine choisi, soit un sort par niveau ; Charisme 10 + niveau du sort, DD 10 + niveau du sort + modificateur de Charisme.\n• Aptitudes : aura (1) ; dieu et domaine (1) ; résistance à l'électricité 5 (3), 10 (9) ; Spécialisation martiale (5) ; résistance à l'acide 5 (6), 10 (9) ; vision dans le noir (7) ; perfection de l'être (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "cha",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@bab >= 7 and @skill.knowledge_religion.ranks >= 2",
+      "note": "Conditions d'accès : alignement (le même que le dieu) et Arme de prédilection en texte. Spellcasting : liste réduite à neuf sorts, ceux du domaine choisi ; pas de liste de classe séparée (les sorts de domaine existent déjà). Charisme 10 + niveau du sort. Choix du domaine et du dieu hors modèle. Le texte du cinquième niveau (Spécialisation martiale) accorde un don : le choix du don est à faire à la main. "
+    },
+    {
+      "id": "power.divine_crusader_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de croisé divin",
+        "en": "Divine crusader spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "Son dieu ne lui prête qu'un seul coffre d'incantations : celui de son domaine, mais il le connaît par cœur.\n\nEn jeu\n• Sorts divins préparés comme un prêtre, du niveau 1 au niveau 9, uniquement les sorts du domaine choisi (un sort par niveau).\n• Pas de conversion spontanée en soins ou en blessures.\n• Charisme au moins 10 + niveau du sort ; DD 10 + niveau du sort + modificateur de Charisme ; sorts en bonus grâce au Charisme."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.divine_crusader_aura",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura",
+        "en": "Aura"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "Son alignement rayonne autour de lui, net et lourd comme un gong.\n\nEn jeu\n• Capacité extraordinaire : l'intensité de son aura d'alignement (détection du Mal) est égale à son niveau de croisé divin plus ses niveaux dans toute autre classe qui en donne une (prêtre, paladin)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.divine_crusader_god_and_domain",
+      "type": "class_power",
+      "name": {
+        "fr": "Dieu et domaine",
+        "en": "Deity and domain"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "Il se choisit un dieu et un de ses domaines, et ne les quitte plus.\n\nEn jeu\n• Doit avoir une divinité tutélaire, de même alignement exactement.\n• Choisit un domaine parmi ceux que son dieu offre aux prêtres : il reçoit le pouvoir accordé et ajoute ses compétences de domaine aux siennes.\n• Il peut lancer les sorts de ce domaine."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.divine_crusader_electricity_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance à l'électricité",
+        "en": "Electricity resistance"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "La foudre glisse sur sa peau.\n\nEn jeu\n• Capacité extraordinaire : résistance à l'électricité 5 au niveau 3, 10 au niveau 9."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.electricity",
+          "op": "add",
+          "value": "if(level('class.divine_crusader') >= 9, 10, 5)"
+        }
+      ]
+    },
+    {
+      "id": "power.divine_crusader_weapon_specialization",
+      "type": "class_power",
+      "name": {
+        "fr": "Spécialisation martiale",
+        "en": "Weapon Specialization"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "Il frappe avec l'arme sacrée de son dieu comme personne.\n\nEn jeu\n• Au niveau 5 : le don Spécialisation martiale en bonus, pour l'arme de sa divinité."
+      },
+      "effects": [],
+      "note": "Don à ajouter à la main (l'arme n'est pas dans le modèle)."
+    },
+    {
+      "id": "power.divine_crusader_acid_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance à l'acide",
+        "en": "Acid resistance"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "Les acides ne mordent presque plus.\n\nEn jeu\n• Capacité extraordinaire : résistance à l'acide 5 au niveau 6, 10 au niveau 9."
+      },
+      "effects": [
+        {
+          "target": "energy_resistance.acid",
+          "op": "add",
+          "value": "if(level('class.divine_crusader') >= 9, 10, 5)",
+          "condition": "level('class.divine_crusader') >= 6"
+        }
+      ]
+    },
+    {
+      "id": "power.divine_crusader_darkvision",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision dans le noir",
+        "en": "Darkvision"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "Ses yeux percent les ténèbres comme ceux des êtres des plans.\n\nEn jeu\n• Capacité extraordinaire, niveau 7 : vision dans le noir 18 m ; s'il l'a déjà, la portée augmente de 9 m."
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        }
+      ],
+      "note": "Modèle : 18 m fixes ; la portée accrue de 9 m s'il l'avait déjà n'est pas calculée."
+    },
+    {
+      "id": "power.divine_crusader_perfect_self",
+      "type": "class_power",
+      "name": {
+        "fr": "Perfection de l'être",
+        "en": "Perfect self"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_crusader"
+      ],
+      "description": {
+        "fr": "Il est maintenant pour de bon une créature des plans.\n\nEn jeu\n• Niveau 10 : devient un Extérieur (natif) ; peut toujours être rappelé à la vie, réincarné ou ressuscité.\n• Réduction des dégâts 10/magie."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.magic",
+          "op": "add",
+          "value": 10
+        }
+      ]
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.divine_crusader",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.divine_crusader_aura",
+        "power.divine_crusader_god_and_domain",
+        "power.divine_crusader_spells"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.divine_crusader_electricity_resistance"
+      ],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.divine_crusader_weapon_specialization"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        2,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.divine_crusader_acid_resistance"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        2,
+        2,
+        1,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.divine_crusader_darkvision"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.divine_crusader",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.divine_crusader_perfect_self"
+      ],
+      "spellsPerDay": [
+        null,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.divine_crusader",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    }
+  ]
+}

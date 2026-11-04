@@ -1,0 +1,151 @@
+{
+  "entities": [
+    {
+      "id": "class.hulking_hurler",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Lanceur massif",
+        "en": "Hulking Hurler"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Quand on est grand comme une tour, pourquoi s'embêter à viser ? Le lanceur massif arrache un rocher, un tronc, parfois un morceau de mur, et l'envoie dans les rangs ennemis avec la précision d'une catapulte. Presque tous sont des géants, et leurs adversaires apprennent vite à se mettre à couvert.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; dons Arme de prédilection (une arme de jet), Attaque en puissance et Tir à bout portant ; taille G ou plus.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Escalade, Intimidation, Natation, Saut.\n• Aptitudes : art du lancer massif et réception d'arme (1) ; prouesse de lancer à deux mains (2 et 3)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 5 and has('feat.weapon_focus') and has('feat.power_attack') and has('feat.point_blank_shot')",
+      "note": "Conditions en formule : bonus de base à l'attaque et dons. Taille G ou plus et l'arme de jet de l'Arme de prédilection : texte seulement. Dé de vie d10 lu sur la page (PDF 59)."
+    },
+    {
+      "id": "power.hulking_hurler_hulking_throw",
+      "type": "class_power",
+      "name": {
+        "fr": "Art du lancer massif",
+        "en": "Hulking throw"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hulking_hurler"
+      ],
+      "description": {
+        "fr": "Il jette ce qui lui tombe sous la main, pourvu que ça pèse comme une charge légère pour lui.\n\nEn jeu\n• Capacité extraordinaire : il reçoit le don Art du lancer en don supplémentaire.\n• Il peut lancer n'importe quel objet dont le poids correspond à une charge légère pour lui, pas seulement des armes. Une arme improvisée ne donne que −2 au jet d'attaque (au lieu de −4).\n• Facteur de portée d'une arme de jet ou improvisée : 3 m + 1,50 m par catégorie de taille au-delà de G."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.hulking_hurler_weapon_catch",
+      "type": "class_power",
+      "name": {
+        "fr": "Réception d'arme",
+        "en": "Weapon catch"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hulking_hurler"
+      ],
+      "description": {
+        "fr": "Une lance lui arrive dessus ? Il l'attrape et la renvoie.\n\nEn jeu\n• Il reçoit le don Interception de projectiles en don supplémentaire, même sans en remplir les conditions.\n• Il peut attraper des armes de sa taille ou plus petites, et les renvoyer tout de suite à l'envoyeur s'il le souhaite."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.hulking_hurler_two_handed_throwing_stunt",
+      "type": "class_power",
+      "name": {
+        "fr": "Prouesse de lancer à deux mains",
+        "en": "Two-handed throwing stunt"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "hulking_hurler"
+      ],
+      "description": {
+        "fr": "À deux mains et en y mettant tout son poids, un lancer devient une manœuvre à part.\n\nEn jeu\n• Capacité extraordinaire, niveaux 2 et 3 : un choix de prouesse à chaque niveau ; il tient l'objet à deux mains et le lance par une action complexe.\n• Attaque de zone : vise la case de la cible (CA 10) ; toute créature dedans fait un jet de Réflexes (DD 10 + son bonus d'attaque à distance) ou subit tous les dégâts. Arme de taille TG ou plus seulement.\n• Attaque en puissance à distance : cible à 9 m ou moins, il peut utiliser Attaque en puissance avec son arme de jet.\n• Coup renversant : si l'attaque touche et blesse, la créature tombe à terre.\n• Frappe météore : ajoute deux fois son modificateur de Force aux dégâts (au lieu d'une fois).\n• Jet en surcharge : il lance une arme de deux catégories de taille au-dessus de la sienne, ou un objet qui correspond à sa charge intermédiaire."
+      },
+      "effects": [],
+      "note": "Choix de prouesses : texte seulement. Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.hulking_hurler",
+      "level": 1,
+      "bab": 1,
+      "fort": 0,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.hulking_hurler_hulking_throw",
+        "power.hulking_hurler_weapon_catch"
+      ]
+    },
+    {
+      "classId": "class.hulking_hurler",
+      "level": 2,
+      "bab": 2,
+      "fort": 0,
+      "ref": 3,
+      "will": 0,
+      "grants": [
+        "power.hulking_hurler_two_handed_throwing_stunt"
+      ]
+    },
+    {
+      "classId": "class.hulking_hurler",
+      "level": 3,
+      "bab": 3,
+      "fort": 1,
+      "ref": 3,
+      "will": 1,
+      "grants": [
+        "power.hulking_hurler_two_handed_throwing_stunt"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.hulking_hurler",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.hulking_hurler",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.hulking_hurler",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.hulking_hurler",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "power.hulking_hurler_weapon_catch",
+      "relation": "grants",
+      "to": "feat.snatch_arrows"
+    },
+    {
+      "from": "power.hulking_hurler_hulking_throw",
+      "relation": "grants",
+      "to": "feat.throw_anything"
+    }
+  ]
+}

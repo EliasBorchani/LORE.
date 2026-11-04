@@ -361,7 +361,7 @@ async fn a_draft_character_gets_the_same_closure_as_a_saved_one(pool: PgPool) {
     )
     .await;
     assert_eq!(status, StatusCode::OK);
-    assert_eq!(closure["catalog"]["entities"].as_array().unwrap().len(), 80);
+    assert_eq!(closure["catalog"]["entities"].as_array().unwrap().len(), 79);
 
     let (status, _) = call(
         &pool,
@@ -813,6 +813,62 @@ async fn search_filters_maneuvers_by_discipline_and_level(pool: PgPool) {
     );
     assert_eq!(list[0]["maneuver"]["level"], 4);
     assert_eq!(list[2]["type"], "stance");
+}
+
+#[sqlx::test(migrator = "server::MIGRATOR")]
+async fn search_filters_invocations_by_grade_and_lists_them(pool: PgPool) {
+    let invocation = |id: &str, grade: &str, level: u8| {
+        json!({
+            "id": id, "type": "invocation", "name": { "fr": id },
+            "invocation": { "grade": grade, "level": level }
+        })
+    };
+    let catalog = json!({
+        "version": "test",
+        "entities": [
+            invocation("invocation.eldritch_spear", "least", 2),
+            invocation("invocation.see_the_unseen", "least", 2),
+            invocation("invocation.brimstone_blast", "lesser", 3),
+            { "id": "spell.fireball", "type": "spell", "name": { "fr": "Boule de feu" } }
+        ]
+    });
+    import(&pool, &official(), &catalog, "test", None)
+        .await
+        .unwrap();
+
+    let page = search_page(
+        &pool,
+        "/search?type=invocation&invocation_grade=least&facets=true",
+    )
+    .await;
+    assert_eq!(
+        item_ids(&page),
+        ["invocation.eldritch_spear", "invocation.see_the_unseen"]
+    );
+    // The facet is counted without its own filter.
+    assert_eq!(
+        counts(&page, "invocation_grade"),
+        [("least".into(), 2), ("lesser".into(), 1)]
+    );
+
+    // What an invoker may learn: every invocation, with its block (the sheet checks the grade).
+    let (status, list) = call(&pool, "GET", "/catalog/invocations", None).await;
+    assert_eq!(status, StatusCode::OK);
+    let ids: Vec<&str> = list
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|m| m["id"].as_str().unwrap())
+        .collect();
+    assert_eq!(
+        ids,
+        [
+            "invocation.brimstone_blast",
+            "invocation.eldritch_spear",
+            "invocation.see_the_unseen"
+        ]
+    );
+    assert_eq!(list[0]["invocation"]["grade"], "lesser");
 }
 
 #[sqlx::test(migrator = "server::MIGRATOR")]

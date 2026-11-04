@@ -1,0 +1,279 @@
+{
+  "entities": [
+    {
+      "id": "class.geometer",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Géomètre",
+        "en": "Geometer"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane"
+      ],
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 9 and @skill.decipher_script.ranks >= 9 and @skill.disable_device.ranks >= 4 and @skill.search.ranks >= 4 and has('feat.scribe_scroll') and @spellcasting.arcane.max_level >= 3",
+      "description": {
+        "fr": "Pour le géomètre, un sort n’est pas une formule : c’est une figure. Chaque enchantement a sa forme parfaite, faite d’angles et de cercles, et qui sait la tracer n’a plus besoin de prononcer un mot. Presque toujours magicien, souvent abjurateur, il couvre ses pages de diagrammes d’une précision maniaque, repère les glyphes piégés d’un coup d’œil et sait les faire taire le temps de passer.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : Connaissances (mystères) 9 rangs, Décryptage 9 rangs, Désamorçage/sabotage 4 rangs, Fouille 4 rangs ; Écriture de parchemins ; savoir préparer et lancer des sorts profanes du 3e niveau.\n• Aucune formation aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (chaque domaine), Décryptage, Désamorçage/sabotage, Fouille, Profession.\n• Sorts : +1 niveau de lanceur de sorts profanes à chaque niveau (1 à 5), dans une classe profane qu’il avait déjà (sorts par jour et niveau de lanceur ; pas les autres aptitudes de cette classe).\n• Aptitudes : glyphe de garde et glyphe magique (niveau 1) ; livre de géométrie (2) ; détection des sceaux (3) ; annulation de sceau (4) ; glyphe de garde suprême et glyphe magique puissant (5)."
+      },
+      "note": "Conditions d’accès : la formule ne vérifie pas que les sorts sont préparés (pas spontanés)."
+    },
+    {
+      "id": "power.geometer_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Chaque figure apprise affine la main du géomètre et enrichit l’art qu’il pratiquait déjà.\n\nEn jeu\n• À chaque niveau de géomètre (1 à 5) : +1 niveau effectif de lanceur de sorts dans une classe profane qu’il avait avant (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres aptitudes de la classe (dons supplémentaires, etc.)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.geometer_glyph_of_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Glyphe de garde",
+        "en": "Glyph of warding"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Le premier diagramme que l’on apprend au géomètre est aussi le plus classique : le glyphe qui garde une porte ou un coffre.\n\nEn jeu\n• Ajoute glyphe de garde à son grimoire comme sort profane du 3e niveau, à préparer et lancer comme ses autres sorts."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.geometer_spellglyph",
+      "type": "class_power",
+      "name": {
+        "fr": "Glyphe magique",
+        "en": "Spellglyph"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Une figure tracée à l’encre rare sur un parchemin remplace les mots et les ingrédients : le géomètre lance son sort en silence, et le diagramme se consume.\n\nEn jeu\n• En lançant un sort préparé, peut utiliser un glyphe magique préparé pour ce sort : le sort est lancé comme avec Incantation silencieuse, sans changer son niveau.\n• Le glyphe remplace aussi les composantes matérielles (pas le focaliseur) ; il disparaît au lancement.\n• Fabriquer un glyphe : 1 heure et 25 po d’encre par niveau du sort ; si le sort demande une composante de plus de 1 po, ajouter son coût.\n• Le choix se fait au moment de lancer le sort."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.geometer_geometric_spellbook",
+      "type": "class_power",
+      "name": {
+        "fr": "Livre de géométrie",
+        "en": "Geometric spellbook"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Là où un magicien noircit des pages entières, le géomètre se contente d’une seule figure.\n\nEn jeu\n• Chaque sort n’occupe qu’une page de son grimoire ; le copier prend 24 heures et coûte toujours 100 po par page.\n• Les autres lanceurs de sorts ont +5 au DD d’Art de la magie pour déchiffrer ou préparer un sort de ce grimoire."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.geometer_sense_sigils",
+      "type": "class_power",
+      "name": {
+        "fr": "Détection des sceaux",
+        "en": "Sense sigils"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Un œil formé aux figures repère tout de suite un trait qui ne devrait pas être là.\n\nEn jeu\n• Peut trouver par la Fouille les pièges magiques faits d’une rune, d’un glyphe, d’un sceau ou d’un symbole, comme un roublard.\n• Bonus égal à son niveau de lanceur de sorts aux tests de Fouille pour trouver ces pièges.\n• Test de Fouille automatique quand il passe à 3 m d’une telle inscription ou va la déclencher."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Le bonus dépend du niveau de lanceur d’une classe choisie et d’un seul type de piège : texte seulement."
+    },
+    {
+      "id": "power.geometer_sigil_cancellation",
+      "type": "class_power",
+      "name": {
+        "fr": "Annulation de sceau",
+        "en": "Sigil cancellation"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Le géomètre pose le doigt sur la figure et en retient le trait de trop : le temps qu’il reste concentré, la garde ne réagit plus.\n\nEn jeu\n• Action simple : test de niveau de lanceur de sorts (DD 6 + niveau de lanceur du sceau) contre une protection magique à base de symbole, sceau, rune ou glyphe qu’il voit.\n• Réussite : l’effet est réprimé tant qu’il se concentre ; ses alliés peuvent passer."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. La table le donne au niveau 4, le texte dit « à partir du niveau 3 » : la table est suivie."
+    },
+    {
+      "id": "power.geometer_greater_glyph_of_warding",
+      "type": "class_power",
+      "name": {
+        "fr": "Glyphe de garde suprême",
+        "en": "Greater glyph of warding"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, le géomètre trace les gardes les plus redoutables.\n\nEn jeu\n• Ajoute glyphe de garde suprême à son grimoire comme sort profane du 5e niveau, à préparer et lancer comme ses autres sorts."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.geometer_potent_glyph",
+      "type": "class_power",
+      "name": {
+        "fr": "Glyphe magique puissant",
+        "en": "Potent glyph"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "geometer"
+      ],
+      "description": {
+        "fr": "Ses figures sont devenues si justes qu’elles renforcent le sort qu’elles portent.\n\nEn jeu\n• +1 au niveau de lanceur de sorts pour un sort lancé avec un glyphe magique."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Le texte du livre titre l’aptitude « Glyphe de garde puissant », la table « glyphe magique puissant » : le nom de la table est gardé. Bonus seulement avec un glyphe : texte seulement."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.geometer",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.geometer_spells",
+        "power.geometer_glyph_of_warding",
+        "power.geometer_spellglyph"
+      ]
+    },
+    {
+      "classId": "class.geometer",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.geometer_geometric_spellbook"
+      ]
+    },
+    {
+      "classId": "class.geometer",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.geometer_sense_sigils"
+      ]
+    },
+    {
+      "classId": "class.geometer",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.geometer_sigil_cancellation"
+      ]
+    },
+    {
+      "classId": "class.geometer",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.geometer_greater_glyph_of_warding",
+        "power.geometer_potent_glyph"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.geometer",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

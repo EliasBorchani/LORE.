@@ -1,0 +1,258 @@
+{
+  "entities": [
+    {
+      "id": "class.fatespinner",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Maître du destin",
+        "en": "Fatespinner"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "luck"
+      ],
+      "description": {
+        "fr": "Les dés tombent, l’univers hésite, et le maître du destin choisit la face qui l’arrange. Ce mage a compris que le hasard n’est qu’un équilibre fragile entre mille issues possibles, et il a appris à faire pencher la balance : un peu plus de chance pour lui, un peu moins pour ceux qui le défient. Mais toute faveur arrachée au sort se paie un jour.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : Connaissances (mystères) 10 rangs, Profession (joueur) 5 rangs ; lancer des sorts profanes du 4e niveau, dont au moins un sort de divination du 1er niveau.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Escamotage, Estimation, Profession.\n• Sorts : +1 niveau de lanceur de sorts aux niveaux 1 à 4 (pas au niveau 5), dans une classe de lanceur de sorts déjà possédée.\n• Aptitudes : distorsion du hasard (1) ; caprice du destin (2) ; distorsion du destin (3) ; deuxième chance et troisième chance (4) ; sceau du destin (5)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 10 and @skill.profession.ranks >= 5 and @spellcasting.arcane.max_level >= 4",
+      "note": "Condition hors formule : un sort de divination du 1er niveau parmi les sorts connus ou préparés, et Profession limitée à « joueur » (la formule lit toutes les professions)."
+    },
+    {
+      "id": "power.fatespinner_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fatespinner"
+      ],
+      "description": {
+        "fr": "Chaque probabilité domptée affine aussi l’art que le maître du destin pratiquait avant de s’y intéresser.\n\nEn jeu\n• Aux niveaux 1 à 4 : +1 niveau effectif de lanceur de sorts dans une classe de lanceur de sorts déjà possédée (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe.\n• Pas de progression au niveau 5."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.fatespinner_spin_fate",
+      "type": "class_power",
+      "name": {
+        "fr": "Distorsion du hasard",
+        "en": "Spin fate"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fatespinner"
+      ],
+      "description": {
+        "fr": "Le maître du destin accumule chaque jour une petite réserve de « distorsion », une prise sur les probabilités qu’il dépense pour rendre ses sorts plus difficiles à esquiver.\n\nEn jeu\n• Réserve quotidienne : autant de points de distorsion que de niveaux de maître du destin.\n• Action libre : dépense des points pour augmenter d’autant le DD de sauvegarde d’un de ses sorts (1 point = +1).\n• La réserve revient quand il récupère ses sorts du jour."
+      },
+      "usesPerDay": "level('class.fatespinner')",
+      "note": "Le bonus de DD se choisit sort par sort, au moment du lancer : pas d’effet chiffré sur la fiche.",
+      "effects": []
+    },
+    {
+      "id": "power.fatespinner_fickle_finger_of_fate",
+      "type": "class_power",
+      "name": {
+        "fr": "Caprice du destin",
+        "en": "Fickle finger of fate"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fatespinner"
+      ],
+      "description": {
+        "fr": "D’un claquement de doigts, le maître du destin annule le dernier coup de dés d’un autre, ami ou ennemi.\n\nEn jeu\n• 1/jour, action immédiate : une créature en ligne de mire relance un jet de dé qu’elle vient de faire.\n• Le second résultat s’applique, même s’il est pire."
+      },
+      "usesPerDay": "1",
+      "effects": []
+    },
+    {
+      "id": "power.fatespinner_spin_destiny",
+      "type": "class_power",
+      "name": {
+        "fr": "Distorsion du destin",
+        "en": "Spin destiny"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fatespinner"
+      ],
+      "description": {
+        "fr": "Sa prise sur le hasard s’étend : le maître du destin peut désormais orienter ses propres gestes, pas seulement ses sorts.\n\nEn jeu\n• Les points de distorsion peuvent aussi s’ajouter à ses tests de compétence, jets d’attaque et jets de sauvegarde (1 point = +1).\n• Même réserve que la distorsion du hasard.\n• Le bonus se décide avant le jet."
+      },
+      "note": "Bonus choisi jet par jet dans la réserve : pas d’effet chiffré sur la fiche.",
+      "effects": []
+    },
+    {
+      "id": "power.fatespinner_deny_fate",
+      "type": "class_power",
+      "name": {
+        "fr": "Deuxième chance",
+        "en": "Deny fate"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fatespinner"
+      ],
+      "description": {
+        "fr": "Quand la mort se penche sur lui, le maître du destin trouve toujours un fil de chance auquel se raccrocher.\n\nEn jeu\n• 1/jour : réussit d’office le premier test de stabilisation qu’il doit faire alors qu’il est mourant.\n• Les tests suivants des 24 heures se lancent normalement."
+      },
+      "usesPerDay": "1",
+      "effects": []
+    },
+    {
+      "id": "power.fatespinner_third_chance",
+      "type": "class_power",
+      "name": {
+        "fr": "Troisième chance",
+        "en": "Third chance"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fatespinner"
+      ],
+      "description": {
+        "fr": "Une fois par jour, le maître du destin refuse simplement le résultat que le sort lui a donné.\n\nEn jeu\n• 1/jour : relance un jet de dé qu’il vient de faire.\n• Le second résultat s’applique, même s’il est pire."
+      },
+      "usesPerDay": "1",
+      "note": "Nom anglais à confirmer (le Codex donne cette aptitude au niveau 4 avec deuxième chance).",
+      "effects": []
+    },
+    {
+      "id": "power.fatespinner_seal_fate",
+      "type": "class_power",
+      "name": {
+        "fr": "Sceau du destin",
+        "en": "Seal fate"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "fatespinner"
+      ],
+      "description": {
+        "fr": "Au sommet de son art, le maître du destin peut graver dans le marbre l’issue d’un instant : la survie d’un allié ou la chute d’un ennemi.\n\nEn jeu\n• 1/jour, action libre : une créature à 9 m au plus, avec au plus autant de dés de vie que lui, reçoit +10 ou −10 (au choix) à son prochain jet de sauvegarde.\n• L’effet dure 1 round ; si rien ne demande de jet de sauvegarde pendant ce round, il est perdu.\n• Contre une créature qui a plus de dés de vie : sans effet, mais l’utilisation du jour n’est pas dépensée."
+      },
+      "usesPerDay": "1",
+      "note": "Le texte du Codex dit « niveau 9 », la table donne le niveau 5 (la classe a 5 niveaux) : niveau 5 retenu.",
+      "effects": []
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.fatespinner",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.fatespinner_spin_fate",
+        "power.fatespinner_spells"
+      ]
+    },
+    {
+      "classId": "class.fatespinner",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.fatespinner_fickle_finger_of_fate"
+      ]
+    },
+    {
+      "classId": "class.fatespinner",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.fatespinner_spin_destiny"
+      ]
+    },
+    {
+      "classId": "class.fatespinner",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.fatespinner_deny_fate",
+        "power.fatespinner_third_chance"
+      ]
+    },
+    {
+      "classId": "class.fatespinner",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.fatespinner_seal_fate"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.fatespinner",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.fatespinner",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.fatespinner",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.fatespinner",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.fatespinner",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.fatespinner",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.fatespinner",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

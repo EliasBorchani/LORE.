@@ -108,6 +108,8 @@ class Session internal constructor(
 
     internal fun knownManeuvers(): Set<String> = state.knownManeuvers
 
+    internal fun knownInvocations(): Set<String> = state.knownInvocations
+
     internal fun skillRanks(skillId: String): Long = state.skillRanks(skillId)
 
     internal fun isClassSkill(skillId: String): Boolean = state.isClassSkill(skillId)

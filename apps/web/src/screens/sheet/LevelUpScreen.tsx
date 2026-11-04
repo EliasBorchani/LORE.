@@ -274,14 +274,21 @@ function slotName(slot: string, name: (id: string) => string): string {
   return bonus ? `bonus (${name(`class.${bonus[1]}`)})` : slot
 }
 
+/** Slots whose feats carry other labels than the slot's own name. */
+const SLOT_LABELS: Record<string, string[]> = {
+  epic_bonus: ['epic'],
+  spellsword_bonus: ['metamagic', 'fighter_bonus'],
+  hospitaler_bonus: ['fighter_bonus'],
+  pious_templar_bonus: ['fighter_bonus'],
+}
+
 /**
  * The feats a slot offers: a class bonus slot lists the feats labelled for it (`fighter_bonus`) when there are any,
- * the epic bonus slot the epic feats, other slots every feat. Feats already picked are left out.
+ * the epic bonus slot the epic feats, other slots every feat. Feats already picked are left out unless they repeat.
  */
-/** The feats a slot offers: those labelled for it, without the ones picked at this level unless they repeat. */
 function featsFor(slot: string, feats: EntitySummary[], picked: FeatPick[], repeats: (id: string) => boolean) {
-  const label = slot === 'epic_bonus' ? 'epic' : slot
-  const labelled = feats.filter((f) => f.labels?.includes(label))
+  const labels = SLOT_LABELS[slot] ?? [slot]
+  const labelled = feats.filter((f) => labels.some((l) => f.labels?.includes(l)))
   const pool = slot !== 'general' && slot !== 'epic' && labelled.length > 0 ? labelled : feats
   return pool
     .filter((f) => repeats(f.id) || !picked.some((p) => p.id === f.id))

@@ -1,0 +1,497 @@
+{
+  "entities": [
+    {
+      "id": "class.green_star_adept",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Adepte de l’étoile verdoyante",
+        "en": "Green Star Adept"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "transformation"
+      ],
+      "hitDie": 8,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 4 and @skill.knowledge_architecture.ranks >= 2 and @skill.knowledge_geography.ranks >= 2 and @skill.knowledge_history.ranks >= 2 and @skill.knowledge_arcana.ranks >= 8 and @skill.decipher_script.ranks >= 2 and has('feat.combat_casting')",
+      "description": {
+        "fr": "Une fois par génération, la comète verte traverse le ciel et sème sur le monde quelques éclats de métal étoilé. L’adepte de l’étoile verdoyante traque ces fragments, les broie et les avale : niveau après niveau, sa chair devient un métal vert et froid. Au bout du chemin, il n’est plus qu’une statue vivante, presque invulnérable et presque immortelle, qui a payé ce prix de toute son humanité physique.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : bonus de base à l’attaque +4 ; Connaissances (architecture et ingénierie) 2 rangs, Connaissances (géographie) 2 rangs, Connaissances (histoire) 2 rangs, Connaissances (mystères) 8 rangs, Décryptage 2 rangs ; Magie de guerre ; niveau 1 de lanceur de sorts profanes ; avoir avalé, au terme d’un rituel d’une semaine (réactifs de 1 000 po), au moins 50 g de métal étoilé réduit en poudre.\n• Formé aux armes courantes ; aucune formation aux armures ni aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (architecture et ingénierie), Connaissances (géographie), Connaissances (histoire), Connaissances (mystères), Décryptage, Estimation, Profession.\n• Sorts : +1 niveau de lanceur de sorts profanes aux niveaux 2, 4, 6, 8 et 10 (sorts par jour et niveau de lanceur ; pas les autres aptitudes de la classe).\n• Aptitudes : dépendance au métal étoilé, niveau de lanceur virtuel, réduction des dégâts, rigueur du métal étoilé (niveau 1) ; attaque naturelle, métabolisme surnaturel (2) ; fortification (3) ; vision surnaturelle (4) ; métabolisme inexistant (7) ; perfection de l’émeraude et réparation rapide (10)."
+      },
+      "note": "Conditions d’accès : rangs, bonus de base à l’attaque et Magie de guerre en formule ; niveau 1 de lanceur de sorts profanes et le rituel du métal étoilé vérifiés à la main."
+    },
+    {
+      "id": "power.green_star_adept_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Le métal qu’il avale ne nourrit pas que son corps : un niveau sur deux, l’adepte progresse aussi dans l’art profane qu’il pratiquait déjà.\n\nEn jeu\n• Aux niveaux 2, 4, 6, 8 et 10 : +1 niveau effectif de lanceur de sorts dans une classe profane qu’il avait déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif, pas les autres aptitudes de la classe (dons, familier…).\n• Avec plusieurs classes profanes, une seule en profite."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.green_star_adept_starmetal_dependency",
+      "type": "class_power",
+      "name": {
+        "fr": "Dépendance au métal étoilé",
+        "en": "Starmetal Dependency"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "La transformation ne s’entretient pas seule : chaque nouvelle étape exige une nouvelle dose de métal tombé du ciel.\n\nEn jeu\n• Extraordinaire. À partir du niveau 2, chaque niveau gagné ne donne ses aptitudes de classe qu’après un rituel de 24 heures avec 25 g de métal étoilé et des réactifs de 1 000 po.\n• Bonus de base à l’attaque, jets de sauvegarde, compétences, dons et caractéristiques s’appliquent tout de suite, sans rituel."
+      },
+      "effects": [],
+      "note": "Rituel non suivi par le modèle : les aptitudes du niveau s’appliquent dès qu’il est pris. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.green_star_adept_virtual_caster_level",
+      "type": "class_power",
+      "name": {
+        "fr": "Niveau de lanceur de sorts virtuel",
+        "en": "Virtual Spellcaster Level"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Le métal étoilé amplifie la magie qui le traverse : les sorts de l’adepte frappent plus fort qu’il ne devrait, sans qu’il en connaisse de plus puissants.\n\nEn jeu\n• Extraordinaire. Ajoute son niveau d’adepte de l’étoile verdoyante au niveau de lanceur d’une classe profane (au choix s’il en a plusieurs).\n• Change seulement le niveau de lanceur, pas les sorts accessibles : un magicien 5 / adepte 4 lance comme un lanceur de niveau 9, mais avec les sorts d’un magicien 7.\n• Ce bonus remplace, pour le niveau de lanceur, celui des niveaux pairs (« Sorts ») : il ne s’y ajoute pas."
+      },
+      "effects": [],
+      "note": "Classe choisie et niveau de lanceur total : pas encore dans le modèle, à appliquer à la main. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.green_star_adept_damage_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction des dégâts",
+        "en": "Damage Reduction"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Le métal infusé dans sa chair amortit les coups : les lames ordinaires rebondissent sur une peau qui sonne comme une cloche.\n\nEn jeu\n• Extraordinaire. Réduction des dégâts 1/adamantium au niveau 1.\n• +1 par niveau d’adepte : 10/adamantium au niveau 10."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.adamantine",
+          "op": "add",
+          "value": "level('class.green_star_adept')"
+        }
+      ]
+    },
+    {
+      "id": "power.green_star_adept_starmetal_rigor",
+      "type": "class_power",
+      "name": {
+        "fr": "Rigueur du métal étoilé",
+        "en": "Starmetal Rigor"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Sa peau verdit, ses gestes se raidissent, son corps se fait plus lourd et plus dur : la force monte à mesure que la souplesse s’en va.\n\nEn jeu\n• Extraordinaire. Niveau 1 : Force +1, Dextérité −1, armure naturelle +1.\n• Niveau 4 : Force +2, Dextérité −1, armure naturelle +2 (au total).\n• Niveau 7 : Force +4, Dextérité −2, armure naturelle +4 (au total).\n• Niveau 10 : Force +6, Dextérité −3, armure naturelle +6 (au total).\n• La Dextérité ne descend jamais sous 3."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 10, 6, if(level('class.green_star_adept') >= 7, 4, if(level('class.green_star_adept') >= 4, 2, 1)))"
+        },
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 10, -3, if(level('class.green_star_adept') >= 7, -2, -1))"
+        },
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 10, 6, if(level('class.green_star_adept') >= 7, 4, if(level('class.green_star_adept') >= 4, 2, 1)))",
+          "bonusType": "natural_armor"
+        }
+      ],
+      "note": "Minimum de 3 en Dextérité : pas encore dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.green_star_adept_natural_attack",
+      "type": "class_power",
+      "name": {
+        "fr": "Attaque naturelle",
+        "en": "Natural Attack"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Ses poings pèsent désormais autant qu’une masse de forge : un simple revers suffit à briser des os.\n\nEn jeu\n• Extraordinaire. À partir du niveau 2, attaque de coup contondante : 1d4 (taille P), 1d6 (taille M), 1d8 (taille G).\n• Ajoute 1,5 fois son modificateur de Force aux dégâts."
+      },
+      "effects": [],
+      "note": "Arme naturelle (coup) : pas encore dans le modèle."
+    },
+    {
+      "id": "power.green_star_adept_unnatural_metabolism",
+      "type": "class_power",
+      "name": {
+        "fr": "Métabolisme surnaturel",
+        "en": "Unnatural Metabolism"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Le sang de l’adepte charrie autant de métal que de vie : poisons, maladies et magie de mort ont de moins en moins de prise sur lui.\n\nEn jeu\n• Extraordinaire. Bonus aux jets de sauvegarde contre le poison, le sommeil, la paralysie, l’étourdissement, la maladie, les effets de mort et la nécromancie.\n• +2 au niveau 2, +4 au niveau 5, +6 au niveau 8."
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 8, 6, if(level('class.green_star_adept') >= 5, 4, 2))",
+          "situation": "situation.vs_poison"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 8, 6, if(level('class.green_star_adept') >= 5, 4, 2))",
+          "situation": "situation.vs_sleep"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 8, 6, if(level('class.green_star_adept') >= 5, 4, 2))",
+          "situation": "situation.vs_paralysis"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 8, 6, if(level('class.green_star_adept') >= 5, 4, 2))",
+          "situation": "situation.vs_stun"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 8, 6, if(level('class.green_star_adept') >= 5, 4, 2))",
+          "situation": "situation.vs_disease"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 8, 6, if(level('class.green_star_adept') >= 5, 4, 2))",
+          "situation": "situation.vs_death_effects"
+        },
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "if(level('class.green_star_adept') >= 8, 6, if(level('class.green_star_adept') >= 5, 4, 2))",
+          "situation": "situation.vs_necromancy"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.green_star_adept_fortification",
+      "type": "class_power",
+      "name": {
+        "fr": "Fortification",
+        "en": "Fortification"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Ses organes se changent peu à peu en métal : il reste de moins en moins de points faibles à viser.\n\nEn jeu\n• Extraordinaire. Contre un coup critique ou une attaque sournoise : 25 % de chances (niveau 3), 50 % (niveau 6), 75 % (niveau 9) de l’annuler.\n• Coup annulé : l’attaque inflige ses dégâts normaux."
+      },
+      "effects": [],
+      "note": "Chance d’annuler un critique : pas encore dans le modèle."
+    },
+    {
+      "id": "power.green_star_adept_unnatural_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision surnaturelle",
+        "en": "Unnatural Sight"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Ses yeux prennent l’éclat d’une pierre précieuse et percent la nuit comme le feraient ceux d’une statue enchantée.\n\nEn jeu\n• Extraordinaire. Au niveau 4 : vision dans le noir 18 m et vision nocturne."
+      },
+      "effects": [
+        {
+          "target": "vision.darkvision",
+          "op": "set",
+          "value": 18
+        },
+        {
+          "target": "vision.low_light",
+          "op": "set",
+          "value": "true"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.green_star_adept_no_metabolism",
+      "type": "class_power",
+      "name": {
+        "fr": "Métabolisme inexistant",
+        "en": "Nonmetabolism"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Au septième niveau, le corps de l’adepte cesse presque de vivre : plus de souffle, plus de faim, plus de fatigue.\n\nEn jeu\n• Extraordinaire. N’a plus besoin de respirer, de manger ni de dormir.\n• Immunisé contre les poisons inhalés, la noyade, l’asphyxie et le sommeil.\n• Ignore les états fatigué et épuisé.\n• Doit quand même se reposer 8 heures pour récupérer ses sorts."
+      },
+      "effects": [],
+      "note": "Immunités : pas encore dans le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.green_star_adept_emerald_perfection",
+      "type": "class_power",
+      "name": {
+        "fr": "Perfection de l’émeraude",
+        "en": "Emerald Perfection"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "La transformation s’achève : l’adepte n’est plus qu’une statue de métal vert parfaitement sculptée à son image, habitée par un esprit qui, lui, est resté humain.\n\nEn jeu\n• Extraordinaire. Au niveau 10, son type devient créature artificielle.\n• Perd sa valeur de Constitution et les points de vie qu’elle donnait ; gagne +10 (taille P), +20 (taille M) ou +30 (taille G) points de vie.\n• Reste sensible aux effets mentaux.\n• Immunisé contre le poison, la paralysie, l’étourdissement, la maladie, les dégâts d’attaque sournoise, les coups critiques, les dégâts non létaux, les affaiblissements et diminutions de caractéristique, l’absorption d’énergie, les effets de mort et la nécromancie, et contre les effets à jet de Vigueur qui n’affectent pas aussi les objets (sauf s’ils sont inoffensifs).\n• Pas de guérison naturelle ; les soins pour créatures vivantes ne marchent plus, seuls les sorts de réparation et la réparation rapide le soignent.\n• Pas de mort par dégâts massifs, mais détruit à 0 point de vie ; rappel à la vie et résurrection fonctionnent comme avant.\n• Plus aucun malus de vieillissement, insensible au vieillissement magique, ne meurt pas de vieillesse."
+      },
+      "effects": [],
+      "note": "Type créature artificielle, perte de la Constitution, points de vie selon la taille et immunités : pas encore dans le modèle, à corriger à la main sur la fiche."
+    },
+    {
+      "id": "power.green_star_adept_fast_repair",
+      "type": "class_power",
+      "name": {
+        "fr": "Réparation rapide",
+        "en": "Fast Repair"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "green_star_adept"
+      ],
+      "description": {
+        "fr": "Le métal se referme lentement sur ses blessures, comme une coulée qui refroidit.\n\nEn jeu\n• Extraordinaire. Au niveau 10, récupère 1 point de vie par heure de repos, tant qu’il lui reste au moins 1 point de vie.\n• Ne fait pas repousser les membres perdus et ne les recolle pas."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.green_star_adept",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.green_star_adept_starmetal_dependency",
+        "power.green_star_adept_virtual_caster_level",
+        "power.green_star_adept_damage_reduction",
+        "power.green_star_adept_starmetal_rigor"
+      ]
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.green_star_adept_spells",
+        "power.green_star_adept_natural_attack",
+        "power.green_star_adept_unnatural_metabolism"
+      ]
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.green_star_adept_fortification"
+      ]
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.green_star_adept_unnatural_sight"
+      ]
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.green_star_adept_no_metabolism"
+      ]
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.green_star_adept",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.green_star_adept_emerald_perfection",
+        "power.green_star_adept_fast_repair"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.knowledge_architecture"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.green_star_adept",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    }
+  ]
+}

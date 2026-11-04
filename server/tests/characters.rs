@@ -566,7 +566,7 @@ async fn the_character_catalog_is_its_closure(pool: PgPool) {
     assert_eq!(catalog.status, StatusCode::OK);
     assert_eq!(catalog.body["missing"], json!([]));
     let entities = catalog.body["catalog"]["entities"].as_array().unwrap();
-    assert_eq!(entities.len(), 80);
+    assert_eq!(entities.len(), 79);
     assert!(entities.iter().any(|e| e["id"] == "class.warblade"));
 
     // Every skill comes along, even one no class of the character points to.
@@ -584,7 +584,7 @@ async fn the_character_catalog_is_its_closure(pool: PgPool) {
     )
     .await;
     let entities = catalog.body["catalog"]["entities"].as_array().unwrap();
-    assert_eq!(entities.len(), 81);
+    assert_eq!(entities.len(), 80);
     assert!(entities.iter().any(|e| e["id"] == "skill.swim"));
 }
 

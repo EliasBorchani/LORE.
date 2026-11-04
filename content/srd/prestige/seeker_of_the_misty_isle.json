@@ -1,0 +1,398 @@
+{
+  "entities": [
+    {
+      "id": "class.seeker_of_the_misty_isle",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Quêteur de l'île des Brumes",
+        "en": "Seeker of the Misty Isle"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine",
+        "martial"
+      ],
+      "description": {
+        "fr": "Il y a longtemps, deux dieux orques ont arraché l'île des Brumes au monde des elfes. Depuis, un ordre d'elfes marche sans fin pour la retrouver, au prix de leur vie. Le quêteur court sur les terres hostiles, voit et entend plus loin que ses frères, et sait toujours où il met les pieds.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 6 + modificateur d'Intelligence par niveau.\n• Conditions : elfe ou demi-elfe ; Connaissances (religion) 4 rangs, Survie 8 rangs ; savoir lancer des sorts divins du 2e niveau ; être recruté par un autre membre de l'ordre.\n• Formé aux armes de guerre et aux armures légères et intermédiaires.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (géographie), Connaissances (religion), Déplacement silencieux, Détection, Diplomatie, Discrétion, Équilibre, Équitation, Escalade, Langue, Perception auditive, Saut, Survie.\n• Sorts : +1 niveau de lanceur de sorts divins aux niveaux 1 à 4 et 6 à 9.\n• Aptitudes : domaine du Voyage (1) ; pied leste (4) ; perception de Corellon et pied sûr (5) ; orientation (6) ; domaine de la Magie (7) ; vision magique (9) ; localisation suprême (10)."
+      },
+      "hitDie": 8,
+      "skillPoints": 6,
+      "prerequisite": "@skill.knowledge_religion.ranks >= 4 and @skill.survival.ranks >= 8",
+      "note": "Race (elfe ou demi-elfe), lancer des sorts divins du 2e niveau et le recrutement : texte seul. Les noms anglais des aptitudes sont déduits du français."
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de quêteur de l'île des Brumes",
+        "en": "Seeker of the Misty Isle spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Sa quête n'étouffe pas sa foi : ses prières grandissent avec lui.\n\nEn jeu\n• Aux niveaux 1 à 4 et 6 à 9 (pas aux niveaux 5 et 10), il compte comme un niveau de lanceur de sorts divins de plus dans une classe précédente qui lance des sorts du 2e niveau.\n• Il gagne les sorts par jour, sorts connus et niveau de lanceur correspondants, mais pas les autres avantages de cette classe."
+      },
+      "effects": [],
+      "note": "Pas de ligne dans la table : niveau de lanceur choisi dans les fiches de niveau, sauf aux niveaux 5 et 10."
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_bonus_domains",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaines supplémentaires",
+        "en": "Bonus domains"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Le chemin lui prête ses secrets, d'abord le voyage, puis la magie.\n\nEn jeu\n• Domaine du Voyage dès le niveau 1, domaine de la Magie au niveau 7.\n• Il reçoit les pouvoirs accordés et peut choisir les sorts de ces domaines comme sorts de domaine."
+      },
+      "effects": [],
+      "note": "Domaines choisis : texte seul. La compétence de classe Survie du domaine du Voyage figure déjà dans la liste de la classe."
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_light_step",
+      "type": "class_power",
+      "name": {
+        "fr": "Pied leste",
+        "en": "Light step"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Il file sur le terrain accidenté comme sur une route.\n\nEn jeu\n• Capacité extraordinaire : ignore le malus de -5 des déplacements accélérés avec Déplacement silencieux, Discrétion, Équilibre, Escalade et Survie (pistage).\n• Son malus pour un enchaînement d'acrobaties accéléré n'est que de -5 (au lieu de -10)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_corellons_perception",
+      "type": "class_power",
+      "name": {
+        "fr": "Perception de Corellon",
+        "en": "Corellon's perception"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Ses sens ont été aiguisés par des siècles de recherche.\n\nEn jeu\n• Capacité extraordinaire : bonus racial de +5 aux tests de Détection, de Fouille et de Perception auditive.\n• Action libre : 1 fois par round et par compétence, tenter de remarquer (vue ou ouïe) ce qu'il n'a pas encore détecté."
+      },
+      "effects": [
+        {
+          "target": "skill.spot",
+          "op": "add",
+          "value": 5,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.search",
+          "op": "add",
+          "value": 5,
+          "bonusType": "racial"
+        },
+        {
+          "target": "skill.listen",
+          "op": "add",
+          "value": 5,
+          "bonusType": "racial"
+        }
+      ]
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_sure_foot",
+      "type": "class_power",
+      "name": {
+        "fr": "Pied sûr",
+        "en": "Sure foot"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Le sol le plus traître ne le gêne plus.\n\nEn jeu\n• Capacité extraordinaire : ignore les modificateurs au DD des tests d'Acrobaties, de Déplacement silencieux et d'Équilibre dus aux conditions et à l'état du sol ou des surfaces."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_find_the_path",
+      "type": "class_power",
+      "name": {
+        "fr": "Orientation",
+        "en": "Find the path"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Il ne se perd jamais bien longtemps.\n\nEn jeu\n• Pouvoir magique, 1 fois par jour : effet du sort orientation.\n• Niveau de lanceur de sorts : son niveau de quêteur de l'île des Brumes."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_arcane_sight",
+      "type": "class_power",
+      "name": {
+        "fr": "Vision magique",
+        "en": "Arcane sight"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Ses yeux s'allument d'un halo bleu et la magie lui apparaît.\n\nEn jeu\n• Pouvoir surnaturel, 3 fois par jour : effet du sort vision magique, comme jeté par un lanceur de sorts de son plus haut niveau de lanceur de sorts divins."
+      },
+      "effects": [],
+      "usesPerDay": 3
+    },
+    {
+      "id": "power.seeker_of_the_misty_isle_discern_location",
+      "type": "class_power",
+      "name": {
+        "fr": "Localisation suprême",
+        "en": "Discern location"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "seeker_of_the_misty_isle"
+      ],
+      "description": {
+        "fr": "Rien ne lui reste caché très longtemps.\n\nEn jeu\n• Pouvoir magique, 1 fois par semaine : effet du sort localisation suprême.\n• Niveau de lanceur de sorts : son niveau de quêteur de l'île des Brumes."
+      },
+      "effects": [],
+      "note": "Une fois par semaine : le modèle ne compte que par jour, texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 2,
+      "will": 0,
+      "grants": [
+        "power.seeker_of_the_misty_isle_spells",
+        "power.seeker_of_the_misty_isle_bonus_domains"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 3,
+      "will": 0,
+      "grants": []
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.seeker_of_the_misty_isle_light_step"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 1,
+      "grants": [
+        "power.seeker_of_the_misty_isle_corellons_perception",
+        "power.seeker_of_the_misty_isle_sure_foot"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": [
+        "power.seeker_of_the_misty_isle_find_the_path"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 5,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 2,
+      "grants": []
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 3,
+      "grants": [
+        "power.seeker_of_the_misty_isle_arcane_sight"
+      ]
+    },
+    {
+      "classId": "class.seeker_of_the_misty_isle",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 7,
+      "will": 3,
+      "grants": [
+        "power.seeker_of_the_misty_isle_discern_location"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.seeker_of_the_misty_isle",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    }
+  ]
+}

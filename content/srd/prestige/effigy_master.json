@@ -1,0 +1,207 @@
+{
+  "entities": [
+    {
+      "id": "class.effigy_master",
+      "type": "prestige_class",
+      "hitDie": 4,
+      "skillPoints": 2,
+      "name": {
+        "fr": "Maître des effigies",
+        "en": "Effigy Master"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane",
+        "crafting"
+      ],
+      "prerequisite": "@skill.spellcraft.ranks >= 5 and @skill.craft.ranks >= 10 and @skill.knowledge_arcana.ranks >= 5 and @skill.use_magic_device.ranks >= 2 and has('feat.craft_wondrous_item')",
+      "description": {
+        "fr": "Bois, cuir, fil de fer, un peu de glaise : là où d’autres voient un tas de matériaux, le maître des effigies voit déjà un gardien qui se lève. À force d’essais, il a appris à insuffler à ses créations une imitation de vie plus tenace que celle de n’importe quelle autre créature artificielle. Garde du corps infatigable, compagnon d’armes ou simple curiosité d’atelier : chaque effigie porte la marque de son créateur.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : Art de la magie 5 rangs ; Artisanat (ferronnerie, maroquinerie ou travail du bois) 10 rangs ; Connaissances (mystères) 5 rangs ; Utilisation d’objets magiques 2 rangs ; don Création d’objets merveilleux ; simulacre sur sa liste de sorts (qu’il sache le lancer ou non).\n• Aucune formation nouvelle aux armes, aux armures ni aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (chaque domaine à part), Profession.\n• Sorts : +1 niveau de lanceur de sorts aux niveaux 2 à 5 (sorts par jour et niveau de lanceur d’une classe de lanceur de sorts déjà acquise ; pas les autres avantages de cette classe).\n• Aptitudes : création d’effigies (1) ; science de l’effigie (3) ; lien d’effigie (5)."
+      },
+      "note": "Conditions dans la formule : rangs et don (Artisanat compté sans spécialité : vérifier à la main ferronnerie, maroquinerie ou travail du bois). Simulacre sur la liste de sorts : pas encore dans le modèle. Les effigies elles-mêmes (création, profils, coûts) sont décrites au chapitre des effigies du livre, pas encore au catalogue."
+    },
+    {
+      "id": "power.effigy_master_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spellcasting"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "effigy_master"
+      ],
+      "description": {
+        "fr": "Entre deux effigies, il continue d’approfondir sa magie, un peu moins vite qu’un pur lanceur de sorts.\n\nEn jeu\n• Aux niveaux 2 à 5 : +1 niveau effectif de lanceur de sorts dans une classe de lanceur de sorts qu’il possède déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres aptitudes de la classe (renvoi des morts-vivants, dons supplémentaires, etc.).\n• Pas de progression au niveau 1."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.effigy_master_create_effigy",
+      "type": "class_power",
+      "name": {
+        "fr": "Création d’effigies",
+        "en": "Create Effigy"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "effigy_master"
+      ],
+      "description": {
+        "fr": "Il sait donner forme et pseudo-vie à une effigie, sans les outils habituels des fabricants de créatures artificielles.\n\nEn jeu\n• Pouvoir surnaturel : il peut créer des effigies (règles de création au chapitre des effigies du livre).\n• Pas besoin du don Création de créatures artificielles pour les créer, ni de ce don ou de rangs en Connaissances (architecture et ingénierie) pour réparer les siennes.\n• Ajoute son niveau de maître des effigies à son niveau de lanceur de sorts pour fixer le nombre maximal de dés de vie de ses effigies.\n• Il faut du bois, du cuir, du métal ou du fil de fer, et un test d’Artisanat (ferronnerie, maroquinerie ou travail du bois) DD 15.\n• Coût en PX et en po selon la taille de l’effigie."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Les effigies ne sont pas encore au catalogue."
+    },
+    {
+      "id": "power.effigy_master_improved_effigy",
+      "type": "class_power",
+      "name": {
+        "fr": "Science de l’effigie",
+        "en": "Improved Effigy"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "effigy_master"
+      ],
+      "description": {
+        "fr": "Il reprend ses créations, resserre une articulation, renforce une couture : elles frappent plus juste et tiennent mieux.\n\nEn jeu\n• Capacité extraordinaire, à partir du niveau 3.\n• Il améliore une de ses effigies : bonus d’aptitude permanent de +2 aux jets d’attaque, de dégâts et de sauvegarde de l’effigie.\n• 1 jour de travail et 100 po par dé de vie de l’effigie ; aucun coût en PX."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Bonus sur la fiche de l’effigie, pas sur celle du personnage : texte seulement."
+    },
+    {
+      "id": "power.effigy_master_effigy_bond",
+      "type": "class_power",
+      "name": {
+        "fr": "Lien d’effigie",
+        "en": "Effigy Bond"
+      },
+      "provenance": "official",
+      "source": "Complete Arcane",
+      "labels": [
+        "class_power",
+        "effigy_master"
+      ],
+      "description": {
+        "fr": "Un rituel d’une heure, et l’effigie devient un prolongement de lui-même : il sent ce qu’elle subit et peut voir par ses yeux.\n\nEn jeu\n• Pouvoir surnaturel, au niveau 5 ; rituel de 1 heure pour se lier à une de ses effigies.\n• Il connaît en permanence l’état de l’effigie liée (comme rapport).\n• 1 fois par jour, il peut l’observer à distance (comme scrutation).\n• À 1,50 m au plus de l’effigie liée : +1 de moral aux jets de sauvegarde et aux tests de niveau de lanceur de sorts.\n• Une seule effigie liée à la fois ; refaire le rituel avec une autre (ou après la destruction de la première) remplace le lien."
+      },
+      "effects": [
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.effigy_master_effigy_bond')"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.effigy_master_effigy_bond')"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 1,
+          "bonusType": "morale",
+          "condition": "active('toggle.effigy_master_effigy_bond')"
+        }
+      ],
+      "usesPerDay": "1",
+      "note": "Toggle à activer quand l’effigie liée est à 1,50 m au plus. Bonus aux tests de niveau de lanceur de sorts : texte seulement. Les utilisations par jour comptent la scrutation."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.effigy_master",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.effigy_master_create_effigy"
+      ]
+    },
+    {
+      "classId": "class.effigy_master",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.effigy_master_spells"
+      ]
+    },
+    {
+      "classId": "class.effigy_master",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.effigy_master_improved_effigy"
+      ]
+    },
+    {
+      "classId": "class.effigy_master",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.effigy_master",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.effigy_master_effigy_bond"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.effigy_master",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.effigy_master",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.effigy_master",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.effigy_master",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.effigy_master",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

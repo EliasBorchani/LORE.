@@ -1,0 +1,547 @@
+{
+  "entities": [
+    {
+      "id": "class.exemplar",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Figure exemplaire",
+        "en": "Exemplar"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "skills"
+      ],
+      "description": {
+        "fr": "Pour la figure exemplaire, chaque geste bien fait est une leçon : elle pousse ses talents si loin que les autres veulent à leur tour se dépasser. Barde, artisan ou funambule, elle peut même prêter son savoir-faire à ses alliés, jusqu’à devenir une créature à moitié magique.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 8 + modificateur d’Intelligence par niveau.\n• Conditions : 6 rangs en Diplomatie et 13 rangs dans une compétence ; don Talent (une compétence, soit Skill Focus).\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : toutes.\n• Pas de progression de sorts.\n• Aptitudes : maestria (niv. 1, 4, 7 et 10), maîtrise des compétences (niv. 1), talent contagieux (niv. 2 et 8), dons supplémentaires (niv. 3, 6, 9), assurance souveraine (niv. 4), démonstration convaincante (niv. 5), vivacité intellectuelle (niv. 8), perfection de l’être (niv. 10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 8,
+      "prerequisite": "@skill.diplomacy.ranks >= 6",
+      "note": "Conditions : 13 rangs dans une compétence et le don Talent (une compétence) : texte seul. Les noms anglais des aptitudes sont à confirmer."
+    },
+    {
+      "id": "power.exemplar_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maestria",
+        "en": "Mastery"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "Elle choisit une compétence qu’elle domine déjà et y met une aisance hors du commun.\n\nEn jeu\n• Capacité extraordinaire.\n• Aux niveaux 1, 4, 7 et 10 : choisit une compétence où elle a au moins 13 rangs ; bonus d’aptitude de +4 à ses tests.\n• Sans autre compétence à 13 rangs, l’aptitude attend ; elle s’applique dès que la condition est remplie."
+      },
+      "effects": [],
+      "note": "Compétence choisie à chaque prise : le modèle ne la suit pas, texte seul."
+    },
+    {
+      "id": "power.exemplar_skill_mastery",
+      "type": "class_power",
+      "name": {
+        "fr": "Maîtrise des compétences",
+        "en": "Skill mastery"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "Elle garde la main sûre même sous la pression.\n\nEn jeu\n• Capacité extraordinaire.\n• Choisit 1 + modificateur d’Intelligence compétences : elle peut faire 10 même en situation de stress ou distraite.\n• Une nouvelle compétence s’ajoute à chaque niveau de classe gagné."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.exemplar_contagious_talent",
+      "type": "class_power",
+      "name": {
+        "fr": "Talent contagieux",
+        "en": "Contagious talent"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "Son exemple porte : quand elle se met en difficulté, ses alliés s’en trouvent meilleurs.\n\nEn jeu\n• Capacité extraordinaire, niveau 2.\n• Pour une compétence couverte par maestria : s’impose un malus libre (au plus son niveau de classe) ; tous ses alliés dans 9 m gagnent un bonus d’aptitude égal à la moitié du malus.\n• Action complexe ; l’effet dure tant qu’elle est consciente et à portée.\n• Au niveau 8 : le bonus est égal au malus."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Texte seul : bonus donné aux alliés."
+    },
+    {
+      "id": "power.exemplar_bonus_feats",
+      "type": "class_power",
+      "name": {
+        "fr": "Dons supplémentaires",
+        "en": "Bonus feats"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "Ses exemples se changent en nouveaux talents.\n\nEn jeu\n• Niveaux 3, 6 et 9 : un don supplémentaire à choisir dans une liste (Affinité magique, Artiste polyvalent, Athlétisme, Autonome, Combat en aveugle, Discret, Doigts de fée, Expertise du combat, Fin limier, Fourberie, Fraternité animale, Funambule, Magie de guerre, Méticuleux, Négociation, Ouvert d’esprit, Persuasion, Pistage, Savoir-faire mécanique, Science de la nage, Science de l’initiative, Talent, Vigilance, Voltigeur).\n• Elle doit remplir les conditions du don."
+      },
+      "effects": [],
+      "note": "Choix de dons : texte seul (pas de slot propre à la classe dans le modèle)."
+    },
+    {
+      "id": "power.exemplar_sublime_confidence",
+      "type": "class_power",
+      "name": {
+        "fr": "Assurance souveraine",
+        "en": "Sublime confidence"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "Sa confiance en elle l’aide à tenir bon quand tout vacille.\n\nEn jeu\n• Capacité surnaturelle, niveau 4.\n• Ajoute son bonus de Charisme (s’il est positif) aux tests de Concentration et aux jets de Vigueur."
+      },
+      "effects": [
+        {
+          "target": "skill.concentration",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)"
+        },
+        {
+          "target": "save.fort",
+          "op": "add",
+          "value": "max(0, @ability.cha.mod)"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.exemplar_convincing_demonstration",
+      "type": "class_power",
+      "name": {
+        "fr": "Démonstration convaincante",
+        "en": "Convincing demonstration"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "Un beau tour réussi devant la foule vaut mieux qu’un long discours.\n\nEn jeu\n• Capacité extraordinaire, niveau 5.\n• Elle utilise sa maestria pour améliorer l’attitude de PNJ : le test de la compétence choisie remplace celui de Diplomatie.\n• Les PNJ doivent la voir à 9 m ou moins, s’y intéresser, et la démonstration doit divertir (pas menacer).\n• Au moins 1 minute ; une même créature une fois par 24 heures."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Texte seul."
+    },
+    {
+      "id": "power.exemplar_intellectual_agility",
+      "type": "class_power",
+      "name": {
+        "fr": "Vivacité intellectuelle",
+        "en": "Intellectual agility"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "Elle mêle réflexion et réflexes : une bonne idée lui fait gagner une demi-seconde.\n\nEn jeu\n• Capacité surnaturelle, niveau 8.\n• Ajoute son bonus d’Intelligence (s’il est positif) aux tests d’initiative et aux jets de Réflexes."
+      },
+      "effects": [
+        {
+          "target": "initiative",
+          "op": "add",
+          "value": "max(0, @ability.int.mod)"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "max(0, @ability.int.mod)"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.exemplar_perfect_self",
+      "type": "class_power",
+      "name": {
+        "fr": "Perfection de l’être",
+        "en": "Perfect self"
+      },
+      "source": "Complete Adventurer",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "exemplar"
+      ],
+      "description": {
+        "fr": "À force de perfection, elle n’est plus tout à fait de ce monde.\n\nEn jeu\n• Niveau 10 : son type devient Extérieur (natif), comme l’aptitude du moine du même nom."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. Changement de type : texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.exemplar",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.exemplar_mastery",
+        "power.exemplar_skill_mastery"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.exemplar_contagious_talent"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 3,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.exemplar_bonus_feats"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 4,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.exemplar_sublime_confidence",
+        "power.exemplar_mastery"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 5,
+      "bab": 3,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.exemplar_convincing_demonstration"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 6,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.exemplar_bonus_feats"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 7,
+      "bab": 5,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.exemplar_mastery"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 8,
+      "bab": 6,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.exemplar_contagious_talent",
+        "power.exemplar_intellectual_agility"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 9,
+      "bab": 6,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": [
+        "power.exemplar_bonus_feats"
+      ]
+    },
+    {
+      "classId": "class.exemplar",
+      "level": 10,
+      "bab": 7,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.exemplar_mastery",
+        "power.exemplar_perfect_self"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.ride"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.bluff"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.disguise"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.sleight_of_hand"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.gather_information"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.use_magic_device"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.spot"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.search"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.disable_device"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.forgery"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.open_lock"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.use_rope"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_architecture"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_dungeoneering"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_geography"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_history"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_local"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nobility"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_planes"
+    },
+    {
+      "from": "class.exemplar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    }
+  ]
+}

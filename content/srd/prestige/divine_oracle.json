@@ -1,0 +1,357 @@
+{
+  "entities": [
+    {
+      "id": "class.divine_oracle",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Oracle divin",
+        "en": "Divine Oracle"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Les dieux parlent à l'oracle divin, et il y répond de toute son attention. Passé, présent et avenir lui arrivent par bribes : cela le protège des pièges, rend ses sorts de divination plus sûrs et finit par ne plus laisser personne le surprendre. Certains le prennent pour un fou ; ceux qui l'écoutent se trompent moins.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : Connaissances (religion) 8 rangs ; don Talent (Connaissances (religion)) ; savoir lancer au moins deux sorts de l'école de divination.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (religion), Intimidation, Premiers secours, Profession.\n• Sorts : +1 niveau de lanceur de sorts à chaque niveau, dans une classe qui lance au moins deux sorts de divination.\n• Aptitudes : domaine des Oracles et bonus de scrutation (1) ; prescience et sens des pièges (2, puis 5 et 8) ; amélioration des divinations (3) ; esquive instinctive (4) ; esquive instinctive supérieure (6) ; immunité à la surprise (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_religion.ranks >= 8 and has('feat.skill_focus_knowledge_religion')",
+      "note": "Savoir lancer deux sorts de divination : texte seul. Talent (Connaissances (religion)) lu comme Skill Focus (Knowledge (religion)). Le domaine des Oracles est `domain.oracle` (texte seul ici, la classe n'accorde pas de domaine)."
+    },
+    {
+      "id": "power.divine_oracle_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts d'oracle divin",
+        "en": "Divine oracle spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Chaque vision affine sa magie : il progresse dans ses sorts comme s'il avait continué sa classe de lanceur de sorts.\n\nEn jeu\n• Chaque niveau compte comme un niveau de lanceur de sorts de plus dans une classe précédente qui lance au moins deux sorts de divination.\n• Il gagne les sorts par jour, sorts connus et niveau de lanceur correspondants, mais pas les autres avantages de cette classe."
+      },
+      "effects": [],
+      "note": "Niveau de lanceur de sorts choisi dans les fiches de niveau."
+    },
+    {
+      "id": "power.divine_oracle_oracle_domain",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine des Oracles",
+        "en": "Oracle domain"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Les dieux lui prêtent la vue lointaine : ses sorts de divination portent plus loin.\n\nEn jeu\n• Il reçoit le pouvoir accordé du domaine des Oracles : +2 au niveau de lanceur de sorts pour ses sorts de divination.\n• Il peut préparer les sorts de ce domaine comme sorts de domaine."
+      },
+      "effects": [],
+      "note": "Domaine `domain.oracle` (chapitre 7) : texte seul, le modèle n'accorde pas encore de domaine par une classe de prestige."
+    },
+    {
+      "id": "power.divine_oracle_scrying_bonus",
+      "type": "class_power",
+      "name": {
+        "fr": "Bonus de scrutation",
+        "en": "Scrying bonus"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Quand il cherche à voir au loin, sa magie accroche mieux.\n\nEn jeu\n• Capacité surnaturelle : bonus de sainteté de +1 au DD de tous ses sorts de divination (scrutation)."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. DD de sorts : texte seul, le modèle n'a pas de DD par école."
+    },
+    {
+      "id": "power.divine_oracle_foresight",
+      "type": "class_power",
+      "name": {
+        "fr": "Prescience",
+        "en": "Foresight"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Il sent venir l'explosion et se glisse hors de sa portée.\n\nEn jeu\n• Capacité extraordinaire : s'il réussit un jet de Réflexes contre un effet qui fait moitié dégâts en cas de réussite, il ne subit aucun dégât.\n• Marche en toute armure, contrairement à l'esquive totale du moine ou du roublard."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer (la capacité fonctionne comme l'esquive totale)."
+    },
+    {
+      "id": "power.divine_oracle_trap_sense",
+      "type": "class_power",
+      "name": {
+        "fr": "Sens des pièges",
+        "en": "Trap sense"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Un picotement dans la nuque, et il a déjà évité le déclic.\n\nEn jeu\n• Capacité extraordinaire : contre les pièges, bonus aux jets de Réflexes et bonus d'esquive à la CA.\n• +1 au niveau 2, +2 au niveau 5, +3 au niveau 8.\n• Se cumule avec le sens des pièges d'autres classes."
+      },
+      "effects": [
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": "floor((level('class.divine_oracle') + 1) / 3)",
+          "situation": "situation.vs_traps"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor((level('class.divine_oracle') + 1) / 3)",
+          "bonusType": "dodge",
+          "situation": "situation.vs_traps"
+        }
+      ]
+    },
+    {
+      "id": "power.divine_oracle_improved_divinations",
+      "type": "class_power",
+      "name": {
+        "fr": "Amélioration des divinations",
+        "en": "Improved divinations"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Quand il tire l'augure, le sort lui répond mieux qu'aux autres.\n\nEn jeu\n• Capacité extraordinaire : pour un sort comme augure ou divination, il lance les dés deux fois et garde le meilleur résultat."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.divine_oracle_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive",
+        "en": "Uncanny dodge"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "On ne le prend pas au dépourvu.\n\nEn jeu\n• Garde son bonus de Dextérité à la CA quand il est pris au dépourvu ou attaqué par un ennemi invisible ; il le perd s'il est immobilisé.\n• S'il l'a déjà par une autre classe, il gagne à la place l'esquive instinctive supérieure."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.divine_oracle_improved_uncanny_dodge",
+      "type": "class_power",
+      "name": {
+        "fr": "Esquive instinctive supérieure",
+        "en": "Improved uncanny dodge"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Même cerné, il voit venir les coups de partout.\n\nEn jeu\n• Ne peut plus être pris en tenaille, sauf par un roublard d'au moins 4 niveaux de plus que son niveau d'oracle divin.\n• Les niveaux de toutes ses classes qui donnent esquive instinctive s'additionnent pour ce calcul."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.divine_oracle_surprise_immunity",
+      "type": "class_power",
+      "name": {
+        "fr": "Immunité à la surprise",
+        "en": "Immune to surprise"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "divine_oracle"
+      ],
+      "description": {
+        "fr": "Il sait toujours quand un combat va commencer.\n\nEn jeu\n• Capacité extraordinaire : il peut toujours agir pendant un round de surprise (une action simple), sauf s'il est physiquement empêché d'agir.\n• Sans round de surprise, elle ne sert à rien."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.divine_oracle",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.divine_oracle_spells",
+        "power.divine_oracle_oracle_domain",
+        "power.divine_oracle_scrying_bonus"
+      ]
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.divine_oracle_foresight",
+        "power.divine_oracle_trap_sense"
+      ]
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.divine_oracle_improved_divinations"
+      ]
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.divine_oracle_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.divine_oracle_improved_uncanny_dodge"
+      ]
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.divine_oracle",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.divine_oracle_surprise_immunity"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.divine_oracle",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

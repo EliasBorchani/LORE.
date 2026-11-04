@@ -12,7 +12,8 @@
       "labels": [
         "general",
         "fighter_bonus",
-        "ranged"
+        "ranged",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Là où les autres archers voient une silhouette floue, lui voit une cible. Il a appris à lire le vent, à lever la pointe juste ce qu’il faut, et ses traits filent bien au-delà de ce que l’arme semblait promettre.\n\nEn jeu\n• Condition : Tir à bout portant.\n• Arme à projectiles (arc, arbalète, fronde) : facteur de portée multiplié par 1,5.\n• Arme de jet : facteur de portée multiplié par 2.\n• Un guerrier peut le prendre comme don supplémentaire."
@@ -32,7 +33,8 @@
       "labels": [
         "general",
         "fighter_bonus",
-        "ranged"
+        "ranged",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Deux lames s’entrechoquent, des corps tournent, l’allié est à un pas de l’ennemi : il tire quand même, et la flèche trouve l’interstice. Il ne vise pas la mêlée, il vise l’homme.\n\nEn jeu\n• Condition : Tir à bout portant.\n• Tirer ou lancer une arme sur un adversaire engagé au corps à corps ne donne plus le malus de −4 à l’attaque.\n• Normal : −4 à l’attaque à distance contre une cible engagée en mêlée.\n• Un guerrier peut le prendre comme don supplémentaire."
@@ -53,7 +55,8 @@
         "general",
         "fighter_bonus",
         "ranged",
-        "movement"
+        "movement",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Il ne s’arrête jamais pour tirer. Il surgit derrière un pilier, décoche, et il a déjà disparu derrière le suivant avant que la corde ait fini de vibrer.\n\nEn jeu\n• Condition : Dextérité 13, Esquive, Souplesse du serpent, Tir à bout portant, bonus de base à l’attaque +4.\n• Action d’attaque simple à distance : il peut couper son déplacement en deux, une partie avant le tir et l’autre après, sans dépasser sa vitesse sur l’ensemble du round.\n• Un guerrier peut le prendre comme don supplémentaire."
@@ -121,7 +124,8 @@
       "source": "SRD",
       "labels": [
         "general",
-        "skill"
+        "skill",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Un craquement de branche, un reflet sur une lame, une respiration retenue derrière une porte : rien ne lui échappe. Ses compagnons dorment mieux quand c’est lui qui monte la garde.\n\nEn jeu\n• +2 aux tests de Détection et de Perception auditive.\n• Le maître d’un familier en profite tant que le familier est à portée de main."
@@ -153,7 +157,8 @@
       "labels": [
         "general",
         "warblade_bonus",
-        "defense"
+        "defense",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Poisons, maladies, fatigue des longues marches : son corps encaisse ce qui en terrasserait d’autres. On le dit taillé dans le chêne ; il dit juste qu’il a l’habitude.\n\nEn jeu\n• +2 aux jets de Vigueur."
@@ -179,7 +184,8 @@
       "labels": [
         "general",
         "warblade_bonus",
-        "defense"
+        "defense",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Les murmures des enchanteurs glissent sur lui comme la pluie sur la pierre. Son esprit est une forteresse, et il n’en ouvre la porte à personne.\n\nEn jeu\n• +2 aux jets de Volonté."
@@ -206,7 +212,8 @@
         "general",
         "warblade_bonus",
         "skill",
-        "movement"
+        "movement",
+        "scout_bonus"
       ],
       "description": {
         "fr": "Il roule, bondit, retombe sur ses pieds comme un chat. Les toits sont ses routes, les poutres ses passerelles, et les gardes s’essoufflent bien avant lui.\n\nEn jeu\n• +2 aux tests d’Acrobaties et de Saut."

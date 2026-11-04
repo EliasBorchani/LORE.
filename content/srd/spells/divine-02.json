@@ -1,0 +1,668 @@
+{
+  "entities": [
+    {
+      "id": "spell.body_of_the_sun",
+      "type": "spell",
+      "name": {
+        "fr": "Corps solaire",
+        "en": "Body of the Sun"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lanceur laisse la puissance du soleil sourdre de sa peau : des flammes courtes l'enveloppent et lèchent quiconque s'approche trop.\n\nEn jeu\n• Émanation de 1,50 m de rayon centrée sur le lanceur, qui n'est pas affecté.\n• Les créatures qui touchent le lanceur subissent 1d4+1 dégâts de feu (Réflexes, demi-dégâts).\n• Éclaire la zone.\n• Dure 1 round/niveau."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "feu"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "1,50 m",
+        "area": "émanation de 1,50 m de rayon centrée sur le jeteur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "Réflexes, demi-dégâts",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "1d4 fire",
+          "scope": "spell"
+        },
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": 1,
+          "scope": "spell"
+        }
+      ],
+      "note": "Les dégâts sont ceux d'un contact avec le lanceur ; l'effet reste décrit par le sort."
+    },
+    {
+      "id": "spell.crown_of_glory",
+      "type": "spell",
+      "name": {
+        "fr": "Couronne de gloire",
+        "en": "Crown of Glory"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Le lanceur se pare d'une autorité céleste. Les foules s'arrêtent, intimidées, et lui prêtent l'oreille comme à un chef envoyé par les dieux.\n\nEn jeu\n• Émanation de 36 m de rayon centrée sur le lanceur ; Volonté, annule.\n• Le lanceur gagne un bonus d'altération de +4 en Charisme.\n• Créatures de moins de 8 DV : elles cessent toute activité et lui font face. Pour agir contre lui, un jet de Volonté est nécessaire ; en cas d'échec elles sont captivées (comme discours captivant).\n• Créatures de 8 DV ou plus : immunisées.\n• Tous comprennent le lanceur par télépathie, quelle que soit la langue.\n• Jusqu'à 3 suggestions de groupe sur les créatures de moins de 8 DV à portée (Volonté, annule), sans le coût d'un autre sort.\n• Composante matérielle : une opale de 200 po.\n• Dure 1 minute/niveau."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, M, FD",
+        "castingTime": "1 round entier",
+        "range": "36 m",
+        "area": "émanation de 36 m de rayon centrée sur le jeteur de sorts",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "ability.cha.score",
+          "op": "add",
+          "value": 4,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.crown_of_glory')"
+        }
+      ],
+      "note": "Seul le bonus de Charisme est calculé ; le reste est du texte."
+    },
+    {
+      "id": "spell.wrath_of_the_noonday_sun",
+      "type": "spell",
+      "name": {
+        "fr": "Courroux du soleil de midi",
+        "en": "Wrath of the Noonday Sun"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un éclat de lumière pure jaillit du lanceur, aveuglant tous ceux qui le voient et brûlant les créatures nées des ténèbres.\n\nEn jeu\n• Rayonnement de 3 m centré sur le lanceur ; toutes les créatures qui voient sont affectées.\n• Réflexes, annule : sinon aveuglées 1 minute/niveau.\n• Mort-vivant : 1d6 dégâts tous les 2 niveaux (maximum 10d6), Réflexes demi-dégâts ; détruit les morts-vivants vulnérables à la lumière du soleil en cas d'échec.\n• Limons, moisissures, thallophytes et vases subissent des dégâts comme des morts-vivants."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "lumière"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "3 m",
+        "area": "toutes les créatures douées de vision situées dans un rayonnement de 3 m centré sur le jeteur de sorts",
+        "duration": "instantanée",
+        "savingThrow": "Réflexes, annule (ou demi-dégâts ; voir description)",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.create_bogun",
+      "type": "spell",
+      "name": {
+        "fr": "Création de bogun",
+        "en": "Create Bogun"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Une petite poupée de végétaux reçoit l'étincelle de la vie et devient un minuscule serviteur ailé du druide, hérissé de piquants.\n\nEn jeu\n• Dernier sort du rituel : un bogun (créature artificielle de taille TP, 2d10 pv, vol 15 m, piquants à venin : Vigueur DD 11, affaiblissement 1d6 Dex) est créé.\n• Il obéit au créateur, qui partage ses sens à 450 m ; 5 % de chance de refuser une tâche (Diplomatie DD 11).\n• Créateur de niveau 7 minimum avec Création d'objets merveilleux ; rituel d'une semaine, 8 h par jour ; artisanat DD 12 pour la poupée.\n• Le créateur doit aussi lancer empire végétal, façonnage du bois et ce sort le dernier jour.\n• Composante matérielle : la poupée. Coût en PX : 25."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M, PX",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "effect": "une création artificielle de taille TP",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Le bogun et son rituel ne sont pas modélisés."
+    },
+    {
+      "id": "spell.true_creation",
+      "type": "spell",
+      "name": {
+        "fr": "Création véritable",
+        "en": "True Creation"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Le lanceur façonne de toutes pièces un objet banal, aussi réel et durable que s'il avait été forgé à la main.\n\nEn jeu\n• Crée un objet non magique, non porté, de matière inerte, jusqu'à 30 dm³/niveau.\n• L'objet est permanent ; il ne peut pas être dissipé.\n• Les objets complexes demandent un test d'Artisanat adapté.\n• Les objets créés peuvent servir de composante matérielle.\n• Composante matérielle : un morceau du matériau voulu. Coût en PX : valeur de l'objet en po (minimum 1)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, M, PX",
+        "castingTime": "10 minutes",
+        "range": "0 m",
+        "effect": "objet non magique et non porté de matière inerte de 30 dm³/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.greater_whirlwind",
+      "type": "spell",
+      "name": {
+        "fr": "Cyclone suprême",
+        "en": "Greater Whirlwind"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Une tornade monstrueuse se lève, arrache les arbres, jette les ennemis en l'air et réduit les bâtiments en gravats.\n\nEn jeu\n• Tornade de 6 m de rayon, jusqu'à 1,50 m de haut/niveau, placée à portée.\n• Près de la tornade : Vigueur ou attirance (taille G ou moins, dans 18 m), renversement (TG, 12 m) ou impossibilité de reculer (Gig/C, 12 m).\n• Au sein de la tornade : 6d6 dégâts par round pendant 1d10 rounds, aucune action possible ; la créature est ensuite éjectée.\n• Structures : 2d6 × 10 dégâts par round ; éteint les flammes ; pas d'attaque à distance à travers.\n• Le lanceur la déplace de 18 m par round (action de mouvement)."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "air"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "tornade de 6 m de rayon, jusqu'à 1,50 m de haut/niveau de lanceur de sorts, centrée n'importe où dans les limites de portée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Vigueur, partiel",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.recitation",
+      "type": "spell",
+      "name": {
+        "fr": "Déclamation",
+        "en": "Recitation"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "En récitant un texte sacré, le lanceur appelle la faveur de son dieu sur ses compagnons et le doute sur ses ennemis.\n\nEn jeu\n• Tous les alliés et ennemis dans un rayonnement de 18 m de rayon centré sur le lanceur.\n• Alliés : bonus de chance de +2 aux jets d'attaque et de sauvegarde (+3 s'ils vénèrent la même divinité).\n• Ennemis : malus de chance de -2 aux jets d'attaque et de sauvegarde.\n• Le lanceur est libre d'agir ensuite.\n• Focaliseur divin : un texte sacré en plus du symbole sacré."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "tous les alliés et ennemis situés dans un rayonnement de 18 m de rayon centré sur le lanceur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Les bonus touchent aussi les alliés ; non calculés ici."
+    },
+    {
+      "id": "spell.decomposition",
+      "type": "spell",
+      "name": {
+        "fr": "Décomposition",
+        "en": "Decomposition"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Les plaies des ennemis proches s'infectent et suppurent, comme si la pourriture s'invitait dans chaque blessure.\n\nEn jeu\n• Émanation de 15 m de rayon centrée sur le lanceur ; touche les ennemis.\n• Un ennemi qui subit des dégâts létaux subit 1 dégât de plus par round suivant, tant que dure le sort.\n• Arrêt : Premiers secours DD 15, ou un sort de soins ou autre magie de guérison.\n• Une seule blessure suppure à la fois."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "15 m",
+        "area": "tous les ennemis situés dans une émanation de 15 m de rayon centrée sur le lanceur de sorts",
+        "duration": "1 round/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.disembodiment",
+      "type": "spell",
+      "name": {
+        "fr": "Décorporation",
+        "en": "Disembodiment"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le lanceur s'endort pendant que son esprit quitte son corps et part observer des lieux lointains.\n\nEn jeu\n• Cible : le lanceur. L'esprit se déplace de 30 m par round, intangible.\n• Il voit et entend comme sur place ; il ne peut ni parler, ni attaquer, ni lancer de sorts.\n• Les protections contre les créatures intangibles l'arrêtent ; on peut le détecter et l'attaquer comme une créature intangible.\n• À la fin du sort, l'esprit rejoint le corps. Si le corps est dérangé, le sort s'arrête."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "G, FD",
+        "castingTime": "1 round entier",
+        "range": "voir description",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.surf",
+      "type": "spell",
+      "name": {
+        "fr": "Déferlante",
+        "en": "Surf"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Les flots se dressent en vague, soulèvent une créature ou un objet et le portent droit devant.\n\nEn jeu\n• Cible : des flots situés sous une créature ou un objet ; Réflexes, annule.\n• Taille soulevée selon le niveau : M (5), G (7), TG (9), Gig (11), C (13).\n• La vague avance en ligne droite à 18 m par round.\n• Le sort prend fin au contact de la terre et dépose la charge sur le rivage."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "flots situés sous une créature ou un objet",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "Réflexes, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.last_breath",
+      "type": "spell",
+      "name": {
+        "fr": "Dernier souffle",
+        "en": "Last Breath"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Le druide rappelle une créature tout juste morte, au prix d'une partie de sa propre vigueur.\n\nEn jeu\n• Cible : créature morte touchée, morte depuis 1 round au plus.\n• Le lanceur subit 1d4 dégâts par DV de la cible (la résistance à la magie n'y change rien).\n• L'âme doit consentir. La créature revient à 0 pv ; caractéristiques à 0 remontées à 1 ; poisons et maladies normaux traités.\n• Perd 1 niveau (ou 1 Con au niveau 1) ; sorts préparés : 50 % de perte chacun.\n• Sans effet sur les créatures artificielles, élémentaires, Extérieurs, morts-vivants, morts par effet de mort ou de vieillesse."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "créature morte touchée",
+        "duration": "instantanée",
+        "savingThrow": "aucun (voir description)",
+        "spellResistance": "oui (inoffensif)"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.imaginary_disorientation",
+      "type": "spell",
+      "name": {
+        "fr": "Désorientation imaginaire",
+        "en": "Imaginary Disorientation"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "Le sol semble se tordre et le paysage changer de forme, si bien que la victime ne parvient plus à marcher droit.\n\nEn jeu\n• Cible : une créature vivante ; Volonté, annule.\n• À chaque round où elle se déplace : Survie DD 20 pour distinguer le vrai relief.\n• Échec : elle part à 90° (gauche ou droite) sans s'en apercevoir avant d'interagir ou avant la fin du round.\n• Ne touche que les déplacements ; combat et sorts normaux."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "mirage",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "une créature vivante",
+        "duration": "10 minutes/niveau (T)",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.winged_mount",
+      "type": "spell",
+      "name": {
+        "fr": "Destrier ailé",
+        "en": "Winged Mount"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "De grandes ailes de plumes blanches poussent sur le destrier du lanceur et l'emportent dans les airs.\n\nEn jeu\n• Cible : le destrier touché.\n• Vitesse de vol de 18 m (manoeuvrabilité bonne).\n• Ralenti par le poids transporté, la barde et l'environnement."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "destrier touché",
+        "duration": "10 minutes/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer. La liste donne « Che 4 » : lu comme chevalier noir (blackguard)."
+    },
+    {
+      "id": "spell.detect_favored_enemy",
+      "type": "spell",
+      "name": {
+        "fr": "Détection des ennemis jurés",
+        "en": "Detect Favored Enemy"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le rôdeur sent la présence de ses ennemis jurés, de plus en plus précisément à mesure qu'il se concentre.\n\nEn jeu\n• Quart de cercle jusqu'à 18 m ; concentration.\n• Round 1 : présence ou absence d'un ennemi juré.\n• Round 2 : types présents et nombre par type.\n• Round 3 : emplacement et DV de chaque individu.\n• Bloqué par 30 cm de pierre, 2,5 cm de métal, une mince feuille de plomb, 90 cm de bois ou de terre."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "18 m",
+        "area": "quart de cercle émanant du lanceur de sorts et s'étendant jusqu'à l'extrémité de la portée",
+        "duration": "concentration, jusqu'à 10 minutes/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.wrack",
+      "type": "spell",
+      "name": {
+        "fr": "Dévastation",
+        "en": "Wrack"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une douleur atroce plie en deux un humanoïde : la peau se couvre de cloques, du sang coule des yeux, et il s'effondre.\n\nEn jeu\n• Cible : un humanoïde ; Vigueur, annule.\n• Pendant le sort : aveuglé, sans défense, aucune action.\n• Après le sort : malus de -2 aux jets d'attaque, de sauvegarde et aux tests pendant 3d10 minutes ; la vue revient tout de suite."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "un humanoïde",
+        "duration": "1 round/niveau",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.true_domination",
+      "type": "spell",
+      "name": {
+        "fr": "Domination véritable",
+        "en": "True Domination"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Le lanceur prend le contrôle d'un humanoïde et le tient sous sa volonté, sans limite de distance sur le même plan.\n\nEn jeu\n• Cible : humanoïde de taille M ou inférieure ; Volonté, annule.\n• Lien télépathique : le lanceur dicte la conduite ; il ne reçoit pas les sens de la cible.\n• Ordre contraire à sa nature : nouveau jet de Volonté à -4. Même pour une action d'autodestruction.\n• Contrôle sans limite de portée sur le même plan ; protection contre le Mal n'empêche pas la domination."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "un humanoïde de taille M ou inférieure",
+        "duration": "1 jour/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.bolt_of_glory",
+      "type": "spell",
+      "name": {
+        "fr": "Éclair de gloire",
+        "en": "Bolt of Glory"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "évocation"
+      ],
+      "description": {
+        "fr": "Un éclair d'énergie positive frappe une créature. Les morts-vivants et les créatures impies en sont ravagés, les êtres purs n'en ressentent rien.\n\nEn jeu\n• Effet : rayon ; attaque de contact à distance.\n• Plan Matériel, plan élémentaire, Extérieur neutre : 1d6 tous les 2 niveaux (max. 7d6).\n• Plan de l'énergie négative, Extérieur mauvais, mort-vivant : 1d6/niveau (max. 15d6).\n• Plan de l'énergie positive, Extérieur bon : aucun dégât."
+      },
+      "spell": {
+        "school": "Évocation",
+        "descriptors": [
+          "bien"
+        ],
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "rayon",
+        "duration": "instantanée",
+        "savingThrow": "aucun",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "note": "Les dégâts dépendent de la cible : non calculés."
+    },
+    {
+      "id": "spell.crumble",
+      "type": "spell",
+      "name": {
+        "fr": "Effritement",
+        "en": "Crumble"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "L'érosion ronge d'un coup une structure bâtie : un pont, un mur, un édifice s'effrite.\n\nEn jeu\n• Cible : 1 structure ou créature artificielle ; Vigueur, partiel (objet).\n• 1d6 dégâts par niveau (max. 15d6), la solidité ne compte pas.\n• Taille maximale : TG jusqu'au niveau 15, Gig aux niveaux 16-18, C aux niveaux 19-20 ; au-delà, le sort échoue.\n• N'affecte pas les créatures vivantes."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 structure ou 1 créature artificielle",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, partiel (objet)",
+        "spellResistance": "oui (objet)"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "(min(@spell.caster_level, 15))d6",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.poison_thorns",
+      "type": "spell",
+      "name": {
+        "fr": "Épines empoisonnées",
+        "en": "Poison Thorns"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Des épines noires luisantes sortent de la peau du druide et blessent quiconque le frappe de près.\n\nEn jeu\n• Cible : le lanceur.\n• Quiconque l'attaque au corps à corps ou le lutte subit 1d6 dégâts perforants + bonus de Force du lanceur (les armes à allonge protègent).\n• Chaque round, une créature qui lutte contre lui est empoisonnée : 1d4 Force, puis 1d4 une minute après (Vigueur DD 10 + 1/2 niveau + Sag, annule).\n• Le lanceur ne peut pas s'en servir pour attaquer.\n• Composante matérielle : une rose noire séchée."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.monstrous_thrall",
+      "type": "spell",
+      "name": {
+        "fr": "Esclave monstrueux",
+        "en": "Monstrous Thrall"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "enchantement"
+      ],
+      "description": {
+        "fr": "Une domination sans fin : la créature qui rate son jet devient à jamais l'esclave du lanceur.\n\nEn jeu\n• Cible : une créature ; Volonté, annule.\n• Comme domination véritable, mais la domination est permanente si le jet initial échoue.\n• Ordre contraire à sa nature : nouveau jet de Volonté à -4 ; après un succès, plus de malus pour cet ordre.\n• Coût en PX : 500 par DV ou niveau du sujet."
+      },
+      "spell": {
+        "school": "Enchantement",
+        "subschool": "coercition",
+        "descriptors": [
+          "mental"
+        ],
+        "components": "V, G, PX",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "une créature",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": []
+    },
+    {
+      "id": "spell.woodland_spirit",
+      "type": "spell",
+      "name": {
+        "fr": "Esprit des bois",
+        "en": "Woodland Spirit"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "Un esprit vert et translucide surgit, simple serviteur de la nature qui accomplit de petites tâches sans comprendre la technique.\n\nEn jeu\n• Effet : un serviteur de la nature.\n• Tâches simples (feu de camp, cueillette, nourrir un compagnon, pêcher) ; ne sait pas ouvrir un coffre verrouillé.\n• Force 2 : soulève 10 kg, en tire 50. Vitesse 4,50 m, y compris vers le haut.\n• Ne peut attaquer ni faire de jet ; dissipé par 6 points de dégâts de zone.\n• Hors de portée du sort, il disparaît."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "components": "V, G, FD",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "effect": "un serviteur de la nature",
+        "duration": "1 heure/niveau",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ]
+}

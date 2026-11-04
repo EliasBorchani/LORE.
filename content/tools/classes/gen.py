@@ -1,5 +1,7 @@
 # Builds content/srd/classes/<class>.json from the scraped tables (content/tools/out) and the curated data in this folder.
-# Tome of Battle classes (`tobTable`) read their table from content/tools/out/tob/classes.json (content/tools/tob).
+# Tome of Battle classes (`tobTable`) read their table from content/tools/out/tob/classes.json (content/tools/tob);
+# Codex classes give their `rows` (level, bab, fort, ref, will, spellsPerDay, spellsKnown, invocationsKnown,
+# invocationGrade) in the class file.
 # Usage: python3 gen.py <repo root> druid sorcerer ...
 import importlib.util, json, re, sys
 from pathlib import Path
@@ -46,6 +48,8 @@ def build(mod):
         cls['spellcasting'] = c['spellcasting']
     if 'initiating' in c:
         cls['initiating'] = c['initiating']
+    if 'invoking' in c:
+        cls['invoking'] = c['invoking']
     cls['effects'] = c.get('effects', [])
     # SRD epic bonus feats: one every N class levels past 20 (class features keep coming at class level).
     every = c.get('epicBonusFeatEvery')
@@ -56,6 +60,10 @@ def build(mod):
     entities = [cls]
     grants = {}
     for p in mod.POWERS:
+        if 'reuse' in p:
+            # Variant classes: the same feature as another class, granted by its existing id (no new entity).
+            grants.setdefault(p['level'], []).append(p['reuse'])
+            continue
         e = {
             'id': f"power.{c['id']}_{p['id']}", 'type': 'class_power', 'name': {'fr': p['fr'], 'en': p['en']},
             'provenance': 'official', **({'source': c['source']} if c.get('source') else {}),
@@ -74,6 +82,12 @@ def build(mod):
                          'will': r['will'], 'grants': grants.get(r['level'], []), 'maneuversKnown': r['maneuversKnown'],
                          'maneuversReadied': r['maneuversReadied'], 'stancesKnown': r['stancesKnown']}
                         for r in json.load(open(ROOT / 'content/tools/out/tob/classes.json'))[c['id']]]
+    elif c.get('rows'):
+        # Book classes (Codex): rows written in the class file, read from the book's table.
+        progressions = [{'classId': cid, **{k: r[k] for k in ('level', 'bab', 'fort', 'ref', 'will')},
+                         'grants': grants.get(r['level'], []),
+                         **{k: r[k] for k in ('spellsPerDay', 'spellsKnown', 'invocationsKnown', 'invocationGrade') if k in r}}
+                        for r in c['rows']]
     else:
         progressions = rows_from_table(c, cid, grants)
 
@@ -82,7 +96,7 @@ def build(mod):
     relations += [{'from': cid, 'relation': 'alignment', 'to': f'alignment.{a}'} for a in c['alignments']]
     relations += [{'from': cid, 'relation': 'initiates', 'to': f'discipline.{d}'} for d in c.get('disciplines', [])]
     # A power that gives a feat grants it, so `has('feat.track')` holds and the feat comes with the closure.
-    relations += [{'from': f"power.{c['id']}_{p['id']}", 'relation': 'grants', 'to': p['feat']} for p in mod.POWERS if 'feat' in p]
+    relations += [{'from': f"power.{c['id']}_{p['id']}", 'relation': 'grants', 'to': p['feat']} for p in mod.POWERS if 'feat' in p and 'reuse' not in p]
     return {'entities': entities, 'progressions': progressions, 'relations': relations}
 
 

@@ -1,0 +1,331 @@
+{
+  "entities": [
+    {
+      "id": "feat.extra_wild_shape",
+      "type": "feat",
+      "name": {
+        "fr": "Formes animales supplémentaires",
+        "en": "Extra Wild Shape"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Il prend la forme d'une bête plus souvent chaque jour.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Forme animale +2 utilisations par jour ; +1 utilisation de forme élémentaire s'il l'a.\n• Peut être pris plusieurs fois ; les effets se cumulent."
+      },
+      "repeatable": {},
+      "note": "Les utilisations de forme animale viennent des classes : non modifiées par ce don. Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.boars_ferocity",
+      "type": "feat",
+      "name": {
+        "fr": "Férocité du sanglier",
+        "en": "Boar's Ferocity"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Blessé à mort, il refuse de tomber et continue le combat comme si de rien n'était.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• À 0 pv ou moins (encore en vie) : action libre, même hors de son tour, pour dépenser une utilisation quotidienne de forme animale.\n• Pendant 1 minute, il agit comme s'il n'était ni hors de combat ni mourant."
+      },
+      "note": "Pouvoir de forme animale non vérifié par la fiche."
+    },
+    {
+      "id": "feat.grizzlys_claws",
+      "type": "feat",
+      "name": {
+        "fr": "Griffes du grizzly",
+        "en": "Grizzly's Claws"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Ses ongles s'allongent en griffes d'ours, taillées pour déchirer.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Dépense : une utilisation quotidienne de forme animale.\n• Pendant 1 heure, deux attaques naturelles principales de griffes, sans malus, avec tout le bonus de Force aux dégâts.\n• Dégâts perforants et tranchants d'une épée courte de sa taille (1d6 en taille M, 1d4 en taille P).\n• Remplace des griffes naturelles qu'il aurait déjà."
+      },
+      "note": "Attaques naturelles non modélisées."
+    },
+    {
+      "id": "feat.elemental_healing",
+      "type": "feat",
+      "name": {
+        "fr": "Guérison des élémentaires",
+        "en": "Elemental Healing"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il verse l'énergie d'un élément en une aura bienfaisante pour les créatures de cet élément.\n\nEn jeu\n• Condition : pouvoir d'intimidation d'un certain type d'élémentaires.\n• Dépense : une tentative d'intimidation élémentaire du bon sous-type (Air, Eau, Feu, Terre). Les autres renvois ne conviennent pas.\n• Action simple : aura de 18 m de rayon ; les créatures du sous-type normalement intimidé récupèrent 1d8 pv par deux niveaux de prêtre (ou de la classe qui donne le pouvoir)."
+      },
+      "note": "Les tentatives dépensées ne sont pas décomptées."
+    },
+    {
+      "id": "feat.sacred_healing",
+      "type": "feat",
+      "name": {
+        "fr": "Guérison sainte",
+        "en": "Sacred Healing"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "En canalisant l'énergie positive, il pousse les vivants autour de lui à se refermer et à se remettre sur pied à vue d'œil.\n\nEn jeu\n• Conditions : 8 degrés de maîtrise en Premiers secours, pouvoir de renvoi des morts-vivants.\n• Dépense : une tentative de renvoi. Action complexe.\n• Toutes les créatures vivantes dans 18 m ont guérison accélérée 3 pendant 1 + son modificateur de Charisme rounds (1 minimum)."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Les tentatives de renvoi dépensées ne sont pas décomptées ; degrés de maîtrise non vérifiés."
+    },
+    {
+      "id": "feat.oaken_resilience",
+      "type": "feat",
+      "name": {
+        "fr": "Impassibilité du chêne",
+        "en": "Oaken Resilience"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Son corps prend la patience et la dureté du chêne : rien ne l'ébranle.\n\nEn jeu\n• Condition : pouvoir de forme animale (plantes).\n• Dépense : une utilisation quotidienne de forme animale.\n• Pendant 10 minutes : immunité aux coups critiques, poisons, sommeil, paralysie, métamorphose et étourdissement.\n• Bonus de +8 pour résister à un croc-en-jambe ou une bousculade."
+      },
+      "effects": [
+        {
+          "target": "check.resist_bull_rush_trip",
+          "op": "add",
+          "value": 8,
+          "bonusType": "untyped",
+          "condition": "active('toggle.oaken_resilience')"
+        }
+      ],
+      "note": "L’interrupteur marque que l’effet est actif. Les immunités sont du texte."
+    },
+    {
+      "id": "feat.hasten_spell",
+      "type": "feat",
+      "name": {
+        "fr": "Incantation accélérée",
+        "en": "Hasten Spell"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "metamagic"
+      ],
+      "description": {
+        "fr": "Il abrège les incantations les plus longues.\n\nEn jeu\n• Seuls les sorts à incantation plus longue qu'une action simple sont concernés.\n• 1 round : action simple. Plusieurs rounds : action complexe. Minutes ou heures : 1 minute ou 1 heure.\n• Emplacement de sort : +1 niveau.\n• Un sort d'1 round peut ensuite recevoir Incantation rapide (action libre). Utilisable en lancer spontané si le temps d'origine est d'au moins 1 round."
+      },
+      "effects": [
+        {
+          "target": "spell.slot_cost",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped",
+          "scope": "spell"
+        }
+      ],
+      "note": "Nom anglais à confirmer. Seul le coût en emplacement est calculé."
+    },
+    {
+      "id": "feat.divine_metamagic",
+      "type": "feat",
+      "name": {
+        "fr": "Métamagie divine",
+        "en": "Divine Metamagic"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il paie un don de métamagie avec la force de son renvoi, sans alourdir l'emplacement du sort.\n\nEn jeu\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants.\n• Il choisit un don de métamagie ; le don ne vaut que pour celui-ci.\n• Action libre : dépense une utilisation quotidienne, plus une par niveau d'emplacement que le don exige, pour appliquer la métamagie à un sort connu sans changer son emplacement.\n• Peut être pris plusieurs fois, pour un autre don de métamagie."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "repeatable": {},
+      "note": "Choix du don de métamagie en texte ; les tentatives dépensées ne sont pas décomptées."
+    },
+    {
+      "id": "feat.fishs_swim",
+      "type": "feat",
+      "name": {
+        "fr": "Nage du poisson",
+        "en": "Fish's Swim"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Des branchies s'ouvrent sur son cou et une peau fine relie ses doigts.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• Dépense : une utilisation quotidienne de forme animale.\n• Pendant 1 heure : respire sous l'eau et à l'air, vitesse de nage 12 m, bonus de +8 en Natation."
+      },
+      "effects": [
+        {
+          "target": "skill.swim",
+          "op": "add",
+          "value": 8,
+          "bonusType": "untyped",
+          "condition": "active('toggle.fishs_swim')"
+        }
+      ],
+      "note": "L’interrupteur marque que l’effet est actif. Vitesse de nage non modélisée."
+    },
+    {
+      "id": "feat.divine_spell_power",
+      "type": "feat",
+      "name": {
+        "fr": "Puissance magique divine",
+        "en": "Divine Spell Power"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il jette son renvoi dans son prochain sort divin pour en renforcer la puissance.\n\nEn jeu\n• Conditions : pouvoir de renvoi ou d'intimidation des morts-vivants, lanceur de sorts divins de niveau 1.\n• Dépense : une tentative de renvoi, action libre, test de renvoi avec +3.\n• Le résultat du test modifie son niveau de lanceur de sorts pour le prochain sort divin lancé ce round (exemple : 16 = +2, 8 = -1).\n• Sans sort divin avant son prochain tour, le bonus est perdu. Sans effet sur la magie profane."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Nom anglais à confirmer. Les tentatives dépensées ne sont pas décomptées."
+    },
+    {
+      "id": "feat.wolverines_rage",
+      "type": "feat",
+      "name": {
+        "fr": "Rage du glouton",
+        "en": "Wolverine's Rage"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "La douleur le rend furieux : blessé, il se déchaîne sans plus pouvoir s'arrêter.\n\nEn jeu\n• Condition : pouvoir de forme animale.\n• S'il a subi des dégâts au round précédent : action libre, dépense une utilisation quotidienne de forme animale.\n• Rage de 5 rounds : For +2, Con +2, CA -2. Il ne peut pas y mettre fin."
+      },
+      "effects": [
+        {
+          "target": "ability.str.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.wolverines_rage')"
+        },
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 2,
+          "condition": "active('toggle.wolverines_rage')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": -2,
+          "condition": "active('toggle.wolverines_rage')"
+        }
+      ],
+      "note": "L’interrupteur marque que l’effet est actif. La rage dure 5 rounds et ne peut pas être arrêtée volontairement."
+    },
+    {
+      "id": "feat.profane_boost",
+      "type": "feat",
+      "name": {
+        "fr": "Renforcement malfaisant",
+        "en": "Profane Boost"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il charge l'air d'énergie négative, qui rend ses alliés plus cruels dans leurs sorts de blessure.\n\nEn jeu\n• Condition : pouvoir d'intimidation des morts-vivants.\n• Dépense : une tentative d'intimidation. Action simple.\n• Aura de 18 m de rayon jusqu'à la fin de son prochain tour : tout sort de blessure lancé contre une créature dans l'aire est maximisé (don Quintessence des sorts), sans changer le niveau ni le temps d'incantation."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Nom anglais à confirmer. Les tentatives dépensées ne sont pas décomptées."
+    },
+    {
+      "id": "feat.sacred_boost",
+      "type": "feat",
+      "name": {
+        "fr": "Renforcement saint",
+        "en": "Sacred Boost"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "divine"
+      ],
+      "description": {
+        "fr": "Il baigne les lieux d'énergie positive, qui rend les sorts de soins plus généreux.\n\nEn jeu\n• Condition : pouvoir de renvoi des morts-vivants.\n• Dépense : une tentative de renvoi. Action simple.\n• Aura de 18 m de rayon jusqu'à la fin de son prochain tour : tout sort de soins lancé sur une créature dans l'aire est maximisé (don Quintessence des sorts), sans changer le niveau ni le temps d'incantation."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Nom anglais à confirmer. Les tentatives dépensées ne sont pas décomptées."
+    },
+    {
+      "id": "feat.quick_turning",
+      "type": "feat",
+      "name": {
+        "fr": "Renvoi rapide",
+        "en": "Quick Turning"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general"
+      ],
+      "description": {
+        "fr": "D'un geste, d'un mot, il chasse les morts-vivants.\n\nEn jeu\n• Condition : pouvoir de renvoi ou d'intimidation des morts-vivants.\n• Renvoi ou intimidation en action libre (au lieu d'une action simple), mais toujours une tentative par round.\n• N'accélère pas l'activation des dons divins."
+      },
+      "prerequisite": "@turn_undead.level >= 1",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "feat.elephants_hide",
+      "type": "feat",
+      "name": {
+        "fr": "Résilience de l'éléphant",
+        "en": "Elephant's Hide"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "general",
+        "wild"
+      ],
+      "description": {
+        "fr": "Sa peau épaissit et durcit comme le cuir d'un éléphant.\n\nEn jeu\n• Condition : pouvoir de forme animale (taille G).\n• Dépense : une utilisation quotidienne de forme animale.\n• Pendant 10 minutes : armure naturelle +7, sans cumul avec une autre armure naturelle."
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": 7,
+          "bonusType": "untyped",
+          "condition": "active('toggle.elephants_hide')"
+        }
+      ],
+      "note": "L’interrupteur marque que l’effet est actif. Le non-cumul avec une autre armure naturelle n'est pas tenu (bonus sans type, comme les autres dons d'armure naturelle)."
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,440 @@
+{
+  "entities": [
+    {
+      "id": "class.radiant_servant_of_pelor",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Serviteur radieux de Pélor",
+        "en": "Radiant Servant of Pelor"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "divine"
+      ],
+      "description": {
+        "fr": "Pour Pélor, la force du Bien se prouve par la charité et l'humilité. Le serviteur radieux soigne, conseille, protège, et affronte le Mal en face quand il le faut, surtout les morts-vivants. On le trouve là où l'on souffre : une épidémie, une famine, un village hanté.\n\nEn jeu\n• Dé de vie : d6. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement neutre bon ; bonus de base de Volonté +5 ; Connaissances (religion) 9 rangs, Premiers secours 5 rangs ; don Emprise sur les morts-vivants ; sorts divins du 1er niveau et accès au domaine du Soleil ; Pélor pour divinité tutélaire.\n• Formé aux armes courantes, aux armes de guerre, aux boucliers (pas le pavois) et à toutes les armures.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (mystères), Connaissances (religion), Diplomatie, Premiers secours, Profession, Psychologie.\n• Sorts : +1 niveau effectif de lanceur de sorts divins à chaque niveau.\n• Aptitudes : rayonnement de la ferveur, renvois suprêmes supplémentaires et renvoi des morts-vivants (1) ; extension des soins et santé divine (2) ; aura de protection (3) ; domaine supplémentaire (5) ; quintessence des soins (6) ; explosion d'énergie positive (8) ; soins souverains (10)."
+      },
+      "hitDie": 6,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_religion.ranks >= 9 and @skill.heal.ranks >= 5 and has('feat.extra_turning')",
+      "note": "Conditions d'accès : alignement (relation), bonus de base de Volonté +5, sorts divins du 1er niveau avec domaine du Soleil et Pélor pour divinité : texte seul. Lancement de sorts : +1 niveau effectif à chaque niveau, choix fait dans le niveau du personnage, rien dans la table."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Progression des sorts",
+        "en": "Spell progression"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Chaque niveau de serviteur radieux ajoute à la magie divine qu'il avait déjà.\n\nEn jeu\n• À chaque niveau : +1 niveau effectif dans une classe qui lance déjà des sorts divins du 1er niveau (une seule, au choix).\n• Il gagne les sorts par jour, les sorts connus et le niveau de lanceur de sorts de ce niveau effectif, rien d'autre (pas de meilleur renvoi, pas de dons supplémentaires…)."
+      },
+      "effects": [],
+      "note": "Se choisit dans le niveau du personnage (spellcasting.advances), rien dans la table."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_radiance_of_fervor",
+      "type": "class_power",
+      "name": {
+        "fr": "Rayonnement de la ferveur",
+        "en": "Radiance of fervor"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Sa lumière brille plus loin et plus fort que celle des autres prêtres.\n\nEn jeu\n• Ses sorts du registre de la lumière ont un rayon d'éclairage doublé.\n• Ils comptent comme un niveau de plus pour savoir s'ils contrent ou dissipent les sorts d'obscurité (lumière du jour : 36 m, traitée comme un sort de niveau 4)."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_extra_supreme_turning",
+      "type": "class_power",
+      "name": {
+        "fr": "Renvois suprêmes supplémentaires",
+        "en": "Bonus supreme turning"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Le domaine du Soleil lui donne un renvoi plus puissant, et il en dispose largement.\n\nEn jeu\n• Renvoi suprême (pouvoir du domaine du Soleil) : 3 + modificateur de Charisme fois par jour de plus."
+      },
+      "effects": [],
+      "usesPerDay": "3 + @ability.cha.mod",
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_turn_undead",
+      "type": "class_power",
+      "name": {
+        "fr": "Renvoi des morts-vivants",
+        "en": "Turn undead"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Ses niveaux de serviteur comptent comme des niveaux de prêtre pour repousser les morts-vivants.\n\nEn jeu\n• Ajoute ses niveaux de serviteur radieux à ses niveaux de prêtre pour le renvoi des morts-vivants."
+      },
+      "effects": [
+        {
+          "target": "turn_undead.level",
+          "op": "add",
+          "value": "level('class.radiant_servant_of_pelor')"
+        }
+      ],
+      "note": "Si le personnage n'a aucun niveau de prêtre, la valeur reste le niveau de serviteur seul : à vérifier sur la fiche."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_extend_healing",
+      "type": "class_power",
+      "name": {
+        "fr": "Extension des soins",
+        "en": "Extended healing"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Ses sorts de guérison durent plus longtemps sans coûter plus cher.\n\nEn jeu\n• Niveau 2 : ses sorts du domaine de la Guérison agissent comme avec le don Extension d'effet, sans emplacement supérieur."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_divine_health",
+      "type": "class_power",
+      "name": {
+        "fr": "Santé divine",
+        "en": "Divine health"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "La maladie ne trouve plus de prise sur lui.\n\nEn jeu\n• Capacité extraordinaire : immunisé contre toutes les maladies, y compris magiques (putréfaction de momie, lycanthropie)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_aura_of_protection",
+      "type": "class_power",
+      "name": {
+        "fr": "Aura de protection",
+        "en": "Aura of protection"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Sa seule présence raffermit les volontés autour de lui.\n\nEn jeu\n• Capacité surnaturelle : lui et ses alliés à 3 m ou moins ont un bonus de moral de +2 aux jets de Volonté."
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": 2,
+          "bonusType": "morale"
+        }
+      ],
+      "note": "La part pour les alliés n'est pas dans la fiche."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_bonus_domain",
+      "type": "class_power",
+      "name": {
+        "fr": "Domaine supplémentaire",
+        "en": "Bonus domain"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Pélor lui confie un troisième domaine.\n\nEn jeu\n• Niveau 5 : reçoit un troisième domaine de Pélor, en plus de ses deux domaines de départ ; au choix, Gloire ou Purification.\n• Il prend le pouvoir accordé du nouveau domaine et peut choisir ses sorts quotidiens parmi les trois listes."
+      },
+      "effects": [],
+      "note": "Domaines Gloire et Purification : pas dans domains.json (texte seul). Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_quicken_healing",
+      "type": "class_power",
+      "name": {
+        "fr": "Quintessence des soins",
+        "en": "Empower healing"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Ses sorts de guérison deviennent plus puissants, sans surcoût.\n\nEn jeu\n• Niveau 6 : ses sorts du domaine de la Guérison agissent comme avec le don Quintessence des sorts, sans emplacement supérieur.\n• Remplace l'extension des soins jusqu'au niveau 10."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_positive_energy_burst",
+      "type": "class_power",
+      "name": {
+        "fr": "Explosion d'énergie positive",
+        "en": "Positive energy burst"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Il offre deux renvois pour une lumière qui anéantit les morts-vivants autour de lui.\n\nEn jeu\n• Capacité surnaturelle, action simple : coûte 2 utilisations de renvoi ; 1d6 dégâts par niveau de classe à tous les morts-vivants dans un rayon de 30 m.\n• Réflexes demi : DD 10 + niveau de classe.\n• Impossible s'il lui reste moins de 2 utilisations de renvoi ce jour-là."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.radiant_servant_of_pelor_sovereign_healing",
+      "type": "class_power",
+      "name": {
+        "fr": "Soins souverains",
+        "en": "Sovereign healing"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "radiant_servant_of_pelor"
+      ],
+      "description": {
+        "fr": "Au sommet, ses soins cumulent les deux améliorations.\n\nEn jeu\n• Niveau 10 : ses sorts du domaine de la Guérison agissent comme avec Extension d'effet et Quintessence des sorts, sans emplacement supérieur."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.radiant_servant_of_pelor_radiance_of_fervor",
+        "power.radiant_servant_of_pelor_extra_supreme_turning",
+        "power.radiant_servant_of_pelor_turn_undead",
+        "power.radiant_servant_of_pelor_spells"
+      ]
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.radiant_servant_of_pelor_extend_healing",
+        "power.radiant_servant_of_pelor_divine_health"
+      ]
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.radiant_servant_of_pelor_aura_of_protection"
+      ]
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.radiant_servant_of_pelor_bonus_domain"
+      ]
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.radiant_servant_of_pelor_quicken_healing"
+      ]
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [
+        "power.radiant_servant_of_pelor_positive_energy_burst"
+      ]
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.radiant_servant_of_pelor",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.radiant_servant_of_pelor_sovereign_healing"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.knowledge_arcana"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "proficiency",
+      "to": "proficiency.simple_weapons"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "proficiency",
+      "to": "proficiency.martial_weapons"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "proficiency",
+      "to": "proficiency.light_armor"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "proficiency",
+      "to": "proficiency.medium_armor"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "proficiency",
+      "to": "proficiency.heavy_armor"
+    },
+    {
+      "from": "class.radiant_servant_of_pelor",
+      "relation": "proficiency",
+      "to": "proficiency.shields"
+    }
+  ]
+}

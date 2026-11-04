@@ -1,0 +1,495 @@
+{
+  "entities": [
+    {
+      "id": "class.natures_warrior",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Combattant de la nature",
+        "en": "Nature's Warrior"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige"
+      ],
+      "description": {
+        "fr": "Les combattants de la nature protègent un monde sauvage et originel. Presque tous ont commencé druides, et ont passé tant de temps sous forme animale qu'ils préfèrent leur nouvelle peau à celle qui les a vus naître ; solitaires, parfois fanatiques, ils gardent un œil sur la civilisation.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : alignement avec une composante neutre ; bonus de base à l'attaque +4 ; Connaissances (nature) 8 rangs, Connaissances (plans) 2 rangs, Survie 8 rangs ; don Pistage ; pouvoir de forme animale.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Connaissances (nature), Diplomatie, Dressage, Intimidation, Natation, Perception auditive, Saut, Survie.\n• Aptitudes : armement de la nature (1, 3, 5) ; nature animale (1) ; +1 niveau effectif de lanceur de sorts divin (2, 4).\n• Armement de la nature, à choisir un par niveau impair, une fois chacun : ailes de l'ouragan, anneaux du serpent, arme de la nature, armure du crocodile, au fil de l'eau, croissance sauvage, flambée de pouvoir, griffes du grizzly, résistance de la terre, robe de nuages."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "prerequisite": "@bab >= 4 and @skill.knowledge_nature.ranks >= 8 and @skill.knowledge_planes.ranks >= 2 and @skill.survival.ranks >= 8 and has('feat.track')",
+      "note": "Alignement (une composante neutre : neutre bon, loyal neutre, neutre, chaotique neutre, neutre mauvais) et pouvoir de forme animale : texte seul. La classe a 5 niveaux (table 2-13)."
+    },
+    {
+      "id": "power.natures_warrior_nature_armament",
+      "type": "class_power",
+      "name": {
+        "fr": "Armement de la nature",
+        "en": "Nature's armament"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Sa forme animale n'est plus un déguisement : elle devient son arme.\n\nEn jeu\n• Capacité surnaturelle : à chaque niveau impair (1, 3, 5), il choisit un pouvoir dans la liste ci-dessous, chacun une seule fois.\n• Sauf indication contraire, ces pouvoirs ne marchent que sous forme animale."
+      },
+      "effects": [],
+      "note": "Les 10 pouvoirs sont des entrées « choice » de la classe."
+    },
+    {
+      "id": "power.natures_warrior_wild_nature",
+      "type": "class_power",
+      "name": {
+        "fr": "Nature animale",
+        "en": "Animal nature"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Ses années sous forme animale le rapprochent de la nature plus qu'aucun druide.\n\nEn jeu\n• Capacité surnaturelle : ses niveaux de combattant de la nature s'ajoutent à ceux des classes qui donnent forme animale ou empathie sauvage, pour ces deux pouvoirs seulement.\n• Exemple : druide 8 / combattant de la nature 3 compte comme druide 11 pour forme animale (4 fois par jour, formes de taille TP) et pour l'empathie sauvage."
+      },
+      "effects": [
+        {
+          "target": "check.wild_empathy",
+          "op": "add",
+          "value": "level('class.natures_warrior') + if(has('power.druid_wild_empathy') or has('power.ranger_wild_empathy'), 0, @ability.cha.mod)"
+        }
+      ],
+      "note": "Nombre d'utilisations de forme animale par jour : texte seul."
+    },
+    {
+      "id": "power.natures_warrior_divine_spellcasting",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "À chaque niveau pair, sa magie divine progresse un peu.\n\nEn jeu\n• Niveaux 2 et 4 : +1 niveau effectif de lanceur de sorts dans une de ses classes de lanceur divin (au choix s'il en a plusieurs ; sinon, druide de niveau 1).\n• Il obtient sorts par jour, sorts connus et niveau de lanceur de sorts de ce niveau effectif, sans les autres avantages du niveau (renvoi, dons de métamagie, etc.)."
+      },
+      "effects": [
+        {
+          "target": "caster_level.divine",
+          "op": "add",
+          "value": "floor(level('class.natures_warrior') / 2)",
+          "bonusType": "untyped"
+        }
+      ],
+      "note": "L'effet porte sur tout le niveau de lanceur divin ; le choix de la classe qui progresse et les sorts par jour sont à gérer à la main dans les fiches de niveau."
+    },
+    {
+      "id": "power.natures_warrior_wings_of_the_hurricane",
+      "type": "class_power",
+      "name": {
+        "fr": "Ailes de l'ouragan",
+        "en": "Wings of the hurricane"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Les vents le portent plus loin et plus vite.\n\nEn jeu\n• Sous forme d'oiseau ou d'élémentaire d'Air : vitesse de vol de base +9 m, manœuvrabilité améliorée d'une catégorie (bonne devient parfaite)."
+      },
+      "effects": [
+        {
+          "target": "speed.fly",
+          "op": "add",
+          "value": 9,
+          "condition": "active('toggle.natures_warrior_wings_of_the_hurricane')"
+        }
+      ],
+      "note": "Case à cocher quand il est sous la forme concernée. Choix du pouvoir : une seule fois chacun, à chaque niveau impair."
+    },
+    {
+      "id": "power.natures_warrior_serpents_coils",
+      "type": "class_power",
+      "name": {
+        "fr": "Anneaux du serpent",
+        "en": "Serpent's coils"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Il enserre sa proie comme un python.\n\nEn jeu\n• Sous forme d'une créature qui a étreinte : +4 aux tests de lutte, et 1d8 + modificateur de Force de dégâts sur un test de lutte opposé réussi."
+      },
+      "effects": [],
+      "note": "Texte seul : pas de statistique de lutte. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.natures_warrior_natures_weapon",
+      "type": "class_power",
+      "name": {
+        "fr": "Arme de la nature",
+        "en": "Nature's weapon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Ses griffes et ses crocs frappent comme des armes enchantées.\n\nEn jeu\n• +1 (altération) aux jets d'attaque de ses armes naturelles, qui comptent comme magiques pour passer la réduction des dégâts."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.natures_warrior_natures_weapon')"
+        }
+      ],
+      "note": "Case à cocher quand il est sous la forme concernée. Choix du pouvoir : une seule fois chacun, à chaque niveau impair. Le bonus ne vaut que pour les armes naturelles (à la charge du joueur)."
+    },
+    {
+      "id": "power.natures_warrior_crocodile_armor",
+      "type": "class_power",
+      "name": {
+        "fr": "Armure du crocodile",
+        "en": "Crocodile armor"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Sa peau devient cuirasse.\n\nEn jeu\n• Sous forme animale : l'armure naturelle augmente de +1 par niveau de classe (une vraie amélioration d'armure naturelle, pas un bonus d'altération)."
+      },
+      "effects": [
+        {
+          "target": "ac.natural",
+          "op": "add",
+          "value": "level('class.natures_warrior')",
+          "condition": "active('toggle.natures_warrior_crocodile_armor')"
+        }
+      ],
+      "note": "Case à cocher quand il est sous la forme concernée. Choix du pouvoir : une seule fois chacun, à chaque niveau impair."
+    },
+    {
+      "id": "power.natures_warrior_flowing_water",
+      "type": "class_power",
+      "name": {
+        "fr": "Au fil de l'eau",
+        "en": "Flowing water"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Il se fait torrent et glisse entre les lames.\n\nEn jeu\n• Condition : savoir prendre la forme d'un élémentaire (pas besoin de l'avoir prise).\n• 3 fois par jour, action de mouvement : il devient un torrent qui se déplace à sa vitesse au sol sans attaque d'opportunité.\n• Il ne peut rien faire d'autre que se déplacer ; à la fin du mouvement, il reprend sa forme."
+      },
+      "effects": [],
+      "usesPerDay": 3,
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.natures_warrior_wild_growth",
+      "type": "class_power",
+      "name": {
+        "fr": "Croissance sauvage",
+        "en": "Wild growth"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Ses blessures se referment comme l'herbe après la pluie.\n\nEn jeu\n• Il bénéficie de la guérison accélérée (1)."
+      },
+      "effects": [],
+      "note": "Guérison accélérée : texte seul."
+    },
+    {
+      "id": "power.natures_warrior_flare_of_power",
+      "type": "class_power",
+      "name": {
+        "fr": "Flambée de pouvoir",
+        "en": "Flare of power"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Des flammes couvrent son corps.\n\nEn jeu\n• Sous forme d'élémentaire de Feu : il est couvert de flammes qui agissent comme un bouclier de feu (chaud).\n• Niveau de lanceur de sorts : niveaux de druide + niveaux de combattant de la nature."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.natures_warrior_grizzlys_claws",
+      "type": "class_power",
+      "name": {
+        "fr": "Griffes du grizzly",
+        "en": "Grizzly's claws"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Ses coups de patte fendent le bois.\n\nEn jeu\n• Sous forme animale : +3 aux dégâts de ses attaques naturelles."
+      },
+      "effects": [
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": 3,
+          "condition": "active('toggle.natures_warrior_grizzlys_claws')"
+        }
+      ],
+      "note": "Case à cocher quand il est sous la forme concernée. Choix du pouvoir : une seule fois chacun, à chaque niveau impair. Seulement pour les attaques naturelles."
+    },
+    {
+      "id": "power.natures_warrior_earth_resistance",
+      "type": "class_power",
+      "name": {
+        "fr": "Résistance de la terre",
+        "en": "Earth resistance"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Sa peau encaisse comme la pierre.\n\nEn jeu\n• Sous forme animale : réduction des dégâts 3/—."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": 3,
+          "condition": "active('toggle.natures_warrior_earth_resistance')"
+        }
+      ],
+      "note": "Case à cocher quand il est sous la forme concernée. Choix du pouvoir : une seule fois chacun, à chaque niveau impair."
+    },
+    {
+      "id": "power.natures_warrior_cloud_robe",
+      "type": "class_power",
+      "name": {
+        "fr": "Robe de nuages",
+        "en": "Cloud robe"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "natures_warrior"
+      ],
+      "description": {
+        "fr": "Un nuage épais l'enveloppe et le cache.\n\nEn jeu\n• Sous forme d'élémentaire d'Air : action libre, il couvre son corps de brume pendant 1 minute par niveau de classe (ou jusqu'à ce qu'il y mette fin).\n• Il bénéficie d'un camouflage qui ne gêne ni sa vue ni ses actions."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.natures_warrior",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.natures_warrior_nature_armament",
+        "power.natures_warrior_wild_nature"
+      ]
+    },
+    {
+      "classId": "class.natures_warrior",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 0,
+      "grants": [
+        "power.natures_warrior_divine_spellcasting"
+      ]
+    },
+    {
+      "classId": "class.natures_warrior",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.natures_warrior_nature_armament"
+      ]
+    },
+    {
+      "classId": "class.natures_warrior",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": []
+    },
+    {
+      "classId": "class.natures_warrior",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 1,
+      "grants": [
+        "power.natures_warrior_nature_armament"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.knowledge_nature"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.handle_animal"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "class_skill",
+      "to": "skill.survival"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_wings_of_the_hurricane"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_serpents_coils"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_natures_weapon"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_crocodile_armor"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_flowing_water"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_wild_growth"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_flare_of_power"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_grizzlys_claws"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_earth_resistance"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "choice",
+      "to": "power.natures_warrior_cloud_robe"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "alignment",
+      "to": "alignment.neutral_good"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "alignment",
+      "to": "alignment.lawful_neutral"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "alignment",
+      "to": "alignment.neutral"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "alignment",
+      "to": "alignment.chaotic_neutral"
+    },
+    {
+      "from": "class.natures_warrior",
+      "relation": "alignment",
+      "to": "alignment.neutral_evil"
+    }
+  ]
+}

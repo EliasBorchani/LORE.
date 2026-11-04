@@ -41,11 +41,12 @@ rule sections plus the closure of its character's entities, and later only what 
   when its JSON changed. Files may be partial batches, so nothing absent from the file is deleted.
 - Closure (`POST /groups/{g}/catalog/closure {roots}`): entities reached through ids found in content (any string shaped like an
   id, including inside formulas), outgoing relations except `on_spell_list`, and class table rows. Danalieth's closure
-  (80 of 92 entities) gives the same 20 verified values in the reference runner. `{character}` instead of `{roots}`
+  (79 of 91 entities) gives the same 20 verified values in the reference runner. `{character}` instead of `{roots}`
   gives a draft character's closure (as `GET /characters/{id}/catalog`, every skill included), for the level-up preview.
 - Search (`server/src/catalog/search.rs`, `migrations/0004_search.sql`, `0007_search_filters.sql` and
-  `0010_maneuver_filters.sql`): text plus filters, as in the Catalog model (maneuvers: `discipline`, `maneuver_level`,
-  read from the `maneuver` block). The values it reads are stored generated columns of `entity_version`
+  `0010_maneuver_filters.sql`, `0011_invocation_filters.sql`): text plus filters, as in the Catalog model (maneuvers:
+  `discipline`, `maneuver_level`, read from the `maneuver` block; invocations: `invocation_grade`, from the
+  `invocation` block). The values it reads are stored generated columns of `entity_version`
   (`search_*`, `facet_*`): Postgres computes them when a version is written, so import, restore and the editor need
   no extra step, and the export leaves them out. Computing them from the JSON at query time was several times too
   slow.
@@ -79,6 +80,8 @@ rule sections plus the closure of its character's entities, and later only what 
 - `GET /catalog/spell-list/{classId}`: the spells on a class's list with their level and name (for picking spells
   known; the closure leaves `on_spell_list` out). `GET /catalog/maneuvers/{classId}`: the maneuvers and stances of the
   disciplines the class `initiates`, with their `maneuver` block (for picking them on the Build screen).
+  `GET /catalog/invocations`: every warlock invocation with its `invocation` block (any invoker learns from the same
+  list; the engine checks the grade).
 - Endpoints: `GET /health`. Catalog reads go through a group (members only): `GET /groups/{g}/catalog/core`,
   `POST /groups/{g}/catalog/closure`, `GET /groups/{g}/entities?type=&after=&limit=&card=` (paged by id, max 200; each
   item has `id`, `type`, `name`, `labels`, `houseRule?`; with `card=true` also `card` and the page's `references`),
@@ -87,7 +90,7 @@ rule sections plus the closure of its character's entities, and later only what 
   names of the ids in prerequisites, effects and maneuver blocks, one lookup per page), `GET /groups/{g}/catalog/counts`
   (`{type: count}` the group sees),
   `GET /groups/{g}/entities/{id}` (+ `overrides`, `ruleset`, `editable`), `…/versions`,
-  `GET /groups/{g}/catalog/spell-list/{class}`, `GET /groups/{g}/catalog/maneuvers/{class}`, `GET /groups/{g}/catalog/states` (the `toggle.*` and `situation.*`
+  `GET /groups/{g}/catalog/spell-list/{class}`, `GET /groups/{g}/catalog/maneuvers/{class}`, `GET /groups/{g}/catalog/invocations`, `GET /groups/{g}/catalog/states` (the `toggle.*` and `situation.*`
   ids the group's content names, from the stored column `facet_states`, `migrations/0009_cms.sql`). Atelier
   (`atelier.rs`, `docs/prd-cms.md`): `GET|POST /groups/{g}/drafts`, `GET|PUT|DELETE /groups/{g}/drafts/{id}` (the
   author's only, an opaque `payload`, 256 KB and 200 per account at most; archived group: delete only),

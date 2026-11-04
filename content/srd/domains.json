@@ -387,6 +387,517 @@
         "fr": "Ce prêtre sert les eaux profondes. Il respire sous les vagues, commande aux marées, et les créatures du feu fuient devant lui.\n\nEn jeu\n• Renvoie ou détruit les créatures du feu comme un prêtre bon renvoie les morts-vivants ; intimide, contrôle ou soutient les créatures de l’eau comme un prêtre mauvais intimide les morts-vivants.\n• Utilisations par jour : 3 + modificateur de Charisme (pouvoir surnaturel, compté à part du renvoi des morts-vivants).\n• Sorts : 1 Brume de dissimulation, 2 Nappe de brouillard, 3 Respiration aquatique, 4 Contrôle de l’eau, 5 Tempête de grêle, 6 Cône de froid, 7 Brouillard acide, 8 Flétrissure, 9 Nuée d’élémentaires (eau seulement)"
       },
       "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "domain.courage",
+      "type": "domain",
+      "name": {
+        "fr": "Courage",
+        "en": "Courage"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre du Courage rayonne d'une bravoure qui rassure tous ceux qui l'entourent. Près de lui, la peur n'a plus de prise.\n\nEn jeu\n• Aura de bravoure : lui et tous ses alliés gagnent +4 de moral aux jets de sauvegarde contre la terreur (pouvoir surnaturel, continu tant qu'il est conscient et vivant).\n• Sorts : 1 Regain d’assurance, 2 Aide, 3 Manteau de bravoure, 4 Héroïsme, 5 Furie vaillante, 6 Festin des héros, 7 Héroïsme suprême, 8 Rugissement du lion, 9 Manteau de bravoure suprême"
+      },
+      "note": "Le bonus de +4 contre la terreur est modélisé sur la fiche du prêtre ; l'effet sur les alliés n'est pas calculé.",
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": 4,
+          "bonusType": "morale",
+          "situation": "situation.vs_fear"
+        }
+      ]
+    },
+    {
+      "id": "domain.fate",
+      "type": "domain",
+      "name": {
+        "fr": "Destin",
+        "en": "Fate"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre du Destin sent les fils du sort avant qu'ils ne se tendent. Rien ne le prend vraiment au dépourvu.\n\nEn jeu\n• Esquive instinctive (un adversaire invisible ou un coup inattendu ne lui fait pas perdre son bonus de Dextérité à la CA ; il le perd s'il est immobilisé).\n• Si le prêtre a déjà ce pouvoir par une autre classe, ses niveaux de prêtre s'ajoutent à ceux de cette classe pour l'esquive instinctive supérieure.\n• Sorts : 1 Coup au but, 2 Augure, 3 Malédiction, 4 Rapport suprême, 5 Marque de la justice, 6 Quête, 7 Vision mystique, 8 Esprit impénétrable, 9 Prémonition"
+      },
+      "note": "L'esquive instinctive n'est pas modélisée."
+    },
+    {
+      "id": "domain.nobility",
+      "type": "domain",
+      "name": {
+        "fr": "Noblesse",
+        "en": "Nobility"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Noblesse parle, et ses compagnons se redressent. Sa voix porte l'autorité d'un chef né.\n\nEn jeu\n• Une fois par jour, action simple : inspire ses alliés (pouvoir magique).\n• Un allié doit entendre le prêtre parler pendant un round entier pour être affecté.\n• Pendant un nombre de rounds égal au bonus de Charisme du prêtre (minimum 1), les alliés affectés gagnent +2 de moral aux jets d'attaque, de sauvegarde, de dégâts et aux tests de caractéristique et de compétence.\n• Sorts : 1 Faveur divine, 2 Discours captivant, 3 Panoplie magique, 4 Détection du mensonge, 5 Injonction suprême, 6 Quête, 7 Champ de force, 8 Exigence, 9 Tempête vengeresse"
+      },
+      "usesPerDay": "1",
+      "note": "L'inspiration des alliés n'est pas calculée par le modèle."
+    },
+    {
+      "id": "domain.planning",
+      "type": "domain",
+      "name": {
+        "fr": "Organisation",
+        "en": "Planning"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de l'Organisation prépare tout longtemps à l'avance. Ses sorts durent plus longtemps que ceux des autres.\n\nEn jeu\n• Obtient le don Extension de durée comme don supplémentaire.\n• Sorts : 1 Perception de la mort, 2 Augure, 3 Clairaudience/clairvoyance, 4 Rapport suprême, 5 Détection de la scrutation, 6 Festin des héros, 7 Scrutation suprême, 8 Localisation suprême, 9 Arrêt du temps"
+      },
+      "note": "Le don Extension de durée accordé n'est pas modélisé (à ajouter à la main)."
+    },
+    {
+      "id": "domain.tyranny",
+      "type": "domain",
+      "name": {
+        "fr": "Tyrannie",
+        "en": "Tyranny"
+      },
+      "provenance": "official",
+      "source": "Complete Warrior",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Tyrannie plie les volontés. Ceux qui résistent à ses ordres découvrent à quel point c'est difficile.\n\nEn jeu\n• Bonus de +1 au DD des jets de sauvegarde contre ses sorts de coercition.\n• Sorts : 1 Injonction, 2 Discours captivant, 3 Détection du mensonge, 4 Terreur, 5 Injonction suprême, 6 Quête, 7 Poigne de Bigby, 8 Charme-monstre de groupe, 9 Domination universelle"
+      }
+    },
+    {
+      "id": "domain.celerity",
+      "type": "domain",
+      "name": {
+        "fr": "Célérité",
+        "en": "Celerity"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Célérité ne traîne jamais. Ses pas sont plus vifs que ceux des autres, tant qu'il n'est pas alourdi.\n\nEn jeu\n• Vitesse de déplacement au sol : +3 m. Perdu si le prêtre porte une armure intermédiaire ou lourde, ou s'il est encombré d'une charge intermédiaire ou lourde.\n• Sorts : 1 Repli expéditif, 2 Grâce féline, 3 Flou, 4 Rapidité, 5 Voyage par les arbres, 6 Vent divin, 7 Grâce féline de groupe, 8 Clignotement supérieur, 9 Arrêt du temps"
+      },
+      "note": "Le +3 m de vitesse n'est pas calculé : il dépend de l'armure et de la charge portées, que le modèle ne lit pas."
+    },
+    {
+      "id": "domain.weather",
+      "type": "domain",
+      "name": {
+        "fr": "Climat",
+        "en": "Weather"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Pluie, neige et bourrasques glissent sur le prêtre du Climat comme sur un vieux marin. Le vent lui-même le traite en plus grand qu'il n'est.\n\nEn jeu\n• Pluie et neige ne pénalisent pas ses tests de Détection et de Fouille.\n• Vitesse normale en terrain neigeux ou glacé.\n• Le vent (naturel ou magique) l'affecte comme s'il avait une catégorie de taille de plus.\n• Sorts : 1 Brume de dissimulation, 2 Bourrasque, 3 Appel de la foudre, 4 Tempête de grêle, 5 Vents paralysants, 6 Marche des nuages, 7 Contrôle du climat, 8 Cyclone, 9 Cyclone suprême"
+      },
+      "note": "Les effets du climat ne sont pas modélisés."
+    },
+    {
+      "id": "domain.community",
+      "type": "domain",
+      "name": {
+        "fr": "Communauté",
+        "en": "Community"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Communauté tisse des liens là où il passe. Les gens se confient à lui et se serrent les coudes derrière lui.\n\nEn jeu\n• Apaisement des émotions une fois par jour (pouvoir magique).\n• Bonus de +2 aux tests de Diplomatie.\n• Sorts : 1 Bénédiction, 2 Rapport, 3 Prière, 4 Don des langues, 5 Lien télépathique de Rary, 6 Festin des héros, 7 Refuge, 8 Manoir somptueux de Mordenkainen, 9 Guérison suprême de groupe"
+      },
+      "effects": [
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ],
+      "usesPerDay": "1"
+    },
+    {
+      "id": "domain.competition",
+      "type": "domain",
+      "name": {
+        "fr": "Compétition",
+        "en": "Competition"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Compétition ne refuse aucun défi. Chaque duel est une occasion de prouver sa valeur.\n\nEn jeu\n• Bonus de +1 à tous ses tests opposés (pouvoir extraordinaire).\n• Sorts : 1 Regain d'assurance, 2 Zèle, 3 Prière, 4 Puissance divine, 5 Force du colosse, 6 Pacte du zélote, 7 Régénération, 8 Moment de prescience, 9 Visage divin suprême"
+      },
+      "effects": [
+        {
+          "target": "check.opposed",
+          "op": "add",
+          "value": 1,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "domain.summoner",
+      "type": "domain",
+      "name": {
+        "fr": "Convocation",
+        "en": "Summoner"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Convocation appelle les créatures d'autres plans et elles répondent avec plus de force qu'à l'ordinaire.\n\nEn jeu\n• Bonus de +2 au niveau de lanceur de sorts pour ses sorts d'invocation (convocation) et d'invocation (appel).\n• Sorts : 1 Convocation de monstres I, 2 Convocation de monstres II, 3 Convocation de monstres III, 4 Allié d'outreplan, 5 Convocation de monstres V, 6 Allié majeur d'outreplan, 7 Convocation de monstres VII, 8 Allié suprême d'outreplan, 9 Portail"
+      },
+      "note": "Le bonus au niveau de lanceur par école n'est pas calculé par le modèle."
+    },
+    {
+      "id": "domain.creation",
+      "type": "domain",
+      "name": {
+        "fr": "Création",
+        "en": "Creation"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Création fait naître des choses de rien. Ce qu'il façonne par la prière a un peu plus de présence.\n\nEn jeu\n• Bonus de +1 au niveau de lanceur de sorts pour ses sorts d'invocation (création).\n• Sorts : 1 Création d'eau, 2 Image imparfaite, 3 Création de nourriture et d'eau, 4 Création mineure, 5 Création majeure, 6 Festin des héros, 7 Image permanente, 8 Création véritable, 9 Pavillon de grandeur"
+      },
+      "note": "Le bonus au niveau de lanceur par école n'est pas calculé par le modèle."
+    },
+    {
+      "id": "domain.domination",
+      "type": "domain",
+      "name": {
+        "fr": "Domination",
+        "en": "Domination"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Domination fait plier les esprits par la parole et la volonté. Peu de gens lui disent non deux fois.\n\nEn jeu\n• Obtient le don École renforcée (Enchantement) comme don supplémentaire.\n• Sorts : 1 Injonction, 2 Discours captivant, 3 Suggestion, 4 Domination, 5 Injonction suprême, 6 Quête, 7 Suggestion de groupe, 8 Domination véritable, 9 Esclave monstrueux"
+      },
+      "note": "Le don École renforcée (Enchantement) accordé n'est pas modélisé (à ajouter à la main)."
+    },
+    {
+      "id": "domain.madness",
+      "type": "domain",
+      "name": {
+        "fr": "Folie",
+        "en": "Madness"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "La raison du prêtre de la Folie vacille, et c'est ce qui lui donne un regard que personne d'autre n'a. Parfois, il voit plus clair que tous.\n\nEn jeu\n• Malus permanent de 1 à tous ses tests liés à la Sagesse et à ses jets de Volonté.\n• Une fois par jour : bonus égal à la moitié de son niveau à un test lié à la Sagesse ou à un jet de Volonté. À déclarer avant le jet de dé.\n• Sorts : 1 Confusion mineure, 2 Contact aliénant, 3 Rage, 4 Confusion, 5 Rayons d'ensorcellement, 6 Assassin imaginaire, 7 Aliénation mentale, 8 Hurlement aliénant, 9 Ennemi subconscient"
+      },
+      "effects": [
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": -1,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "save.will",
+          "op": "add",
+          "value": "floor(level('class.cleric') / 2)",
+          "bonusType": "untyped",
+          "condition": "active('toggle.domain_madness')"
+        }
+      ],
+      "usesPerDay": "1",
+      "note": "Les tests de Sagesse ne sont pas calculés : seuls les jets de Volonté portent le malus et le bonus."
+    },
+    {
+      "id": "domain.force",
+      "type": "domain",
+      "name": {
+        "fr": "Forces",
+        "en": "Force"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre des Forces plie les énergies invisibles de l'inertie et du mouvement. Un geste raté peut être repris par le cosmos.\n\nEn jeu\n• Une fois par jour, relance un jet de dégâts (arme, sort ou pouvoir) et garde le meilleur des deux résultats (pouvoir surnaturel).\n• Sorts : 1 Armure de mage, 2 Projectile magique, 3 Explosion de force, 4 Sphère d'isolement d'Otiluke, 5 Mur de force, 6 Champ de force, 7 Cage de force, 8 Sphère téléguidée d'Otiluke, 9 Main broyeuse de Bigby"
+      },
+      "usesPerDay": "1",
+      "note": "La relance de dégâts n'est pas calculée."
+    },
+    {
+      "id": "domain.cold",
+      "type": "domain",
+      "name": {
+        "fr": "Froid",
+        "en": "Cold"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre du Froid marche dans le givre sans trembler. Les créatures du feu reculent devant lui, celles du froid lui obéissent.\n\nEn jeu\n• Renvoie ou détruit les créatures du feu comme un prêtre bon renvoie les morts-vivants ; intimide ou contrôle les créatures du froid comme un prêtre mauvais.\n• Utilisations par jour : 3 + modificateur de Charisme (pouvoir surnaturel).\n• Sorts : 1 Contact glacial, 2 Métal gelé, 3 Tempête de neige, 4 Tempête de grêle, 5 Mur de glace, 6 Cône de froid, 7 Contrôle du climat, 8 Rayon polaire, 9 Avalanche vengeresse"
+      },
+      "usesPerDay": "3 + @ability.cha.mod"
+    },
+    {
+      "id": "domain.glory",
+      "type": "domain",
+      "name": {
+        "fr": "Gloire",
+        "en": "Glory"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Gloire brille d'une lumière sacrée. Les morts-vivants fuient son éclat comme une aube trop vive.\n\nEn jeu\n• Renvoie les morts-vivants avec +2 au test de renvoi et +1d6 au jet d'efficacité.\n• Sorts : 1 Destruction de mort-vivant, 2 Bénédiction d'arme, 3 Lumière brûlante, 4 Châtiment divin, 5 Épée sainte, 6 Éclair de gloire, 7 Rayon de soleil, 8 Couronne de gloire, 9 Portail"
+      },
+      "note": "Le bonus de renvoi n'est pas calculé. Sorts alignés : un prêtre dont l'alignement l'interdit ne peut pas lancer les sorts du domaine à registre du Bien (Châtiment divin, Épée sainte)."
+    },
+    {
+      "id": "domain.inquisition",
+      "type": "domain",
+      "name": {
+        "fr": "Inquisition",
+        "en": "Inquisition"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de l'Inquisition débusque la magie, le mensonge et le désordre. Les sorts adverses ont du mal à lui résister.\n\nEn jeu\n• Bonus de +4 aux tests de dissipation.\n• Sorts : 1 Détection du Chaos, 2 Zone de vérité, 3 Détection de pensées, 4 Détection du mensonge, 5 Vision lucide, 6 Quête, 7 Décret, 8 Bouclier de la Loi, 9 Emprisonnement"
+      },
+      "note": "Sorts alignés : un prêtre chaotique ne peut pas lancer les sorts du domaine à registre de la Loi (Bouclier de la Loi). Le bonus de dissipation n'est pas calculé."
+    },
+    {
+      "id": "domain.liberation",
+      "type": "domain",
+      "name": {
+        "fr": "Libération",
+        "en": "Liberation"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Libération n'aime ni les chaînes ni les ordres imposés. Quand une magie tente de le soumettre, il a droit à une seconde chance.\n\nEn jeu\n• Si un effet de charme, de coercition ou de terreur l'atteint et qu'il rate son jet de sauvegarde, il le rejoue 1 round plus tard contre le même DD. Une seule chance supplémentaire (pouvoir surnaturel).\n• Sorts : 1 Mauvais augure, 2 Alignement indétectable, 3 Rage, 4 Liberté de mouvement, 5 Annulation d'enchantement, 6 Dissipation suprême, 7 Refuge, 8 Esprit impénétrable, 9 Rupture d'entraves"
+      },
+      "note": "Le second jet de sauvegarde n'est pas calculé."
+    },
+    {
+      "id": "domain.mysticism",
+      "type": "domain",
+      "name": {
+        "fr": "Mysticisme",
+        "en": "Mysticism"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre du Mysticisme canalise la puissance directe de son dieu. Une courte prière suffit à le placer sous une protection divine.\n\nEn jeu\n• Une fois par jour, action libre : bonus de chance aux jets de sauvegarde égal à son modificateur de Charisme (minimum +1), pendant 1 round par niveau de prêtre (pouvoir surnaturel).\n• Sorts : 1 Faveur divine, 2 Arme spirituelle, 3 Visage divin mineur, 4 Arme de la divinité, 5 Force du colosse, 6 Visage divin, 7 Blasphème, 8 Aura sacrée, 9 Visage divin suprême"
+      },
+      "effects": [
+        {
+          "target": "save.all",
+          "op": "add",
+          "value": "max(1, @ability.cha.mod)",
+          "bonusType": "luck",
+          "condition": "active('toggle.domain_mysticism')"
+        }
+      ],
+      "usesPerDay": "1",
+      "note": "Les dieux neutres, loyaux neutres et chaotiques neutres ne peuvent pas accorder ce domaine. Aux niveaux 7 et 8, le prêtre choisit un sort selon son alignement (Blasphème ou Parole sacrée, Aura sacrée ou Aura maudite), choix irrévocable. Sorts alignés : il ne peut pas lancer les sorts du domaine opposés à son alignement."
+    },
+    {
+      "id": "domain.ocean",
+      "type": "domain",
+      "name": {
+        "fr": "Océan",
+        "en": "Ocean"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de l'Océan respire sous l'eau comme à l'air libre. La mer le laisse passer et ne le noie jamais.\n\nEn jeu\n• Respiration aquatique automatique sous l'eau (pouvoir surnaturel), 1 minute par niveau de prêtre et par jour, en une ou plusieurs fois.\n• Sorts : 1 Endurance aux énergies destructives, 2 Rafale de pluie, 3 Déferlante, 4 Liberté de mouvement, 5 Raz-de-marée, 6 Miasme, 7 Trombe d'eau, 8 Tourbillon, 9 Nuée d'élémentaires"
+      },
+      "note": "La respiration aquatique n'est pas calculée."
+    },
+    {
+      "id": "domain.oracle",
+      "type": "domain",
+      "name": {
+        "fr": "Oracles",
+        "en": "Oracle"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre des Oracles lit l'avenir comme d'autres lisent un livre. Ses visions portent plus loin et sont plus sûres.\n\nEn jeu\n• Bonus de +2 au niveau de lanceur de sorts pour ses sorts de divination.\n• Sorts : 1 Identification, 2 Augure, 3 Divination, 4 Scrutation, 5 Communion, 6 Mythes et légendes, 7 Scrutation suprême, 8 Localisation suprême, 9 Prémonition"
+      },
+      "note": "Le bonus au niveau de lanceur par école n'est pas calculé par le modèle."
+    },
+    {
+      "id": "domain.pact",
+      "type": "domain",
+      "name": {
+        "fr": "Pactes",
+        "en": "Pact"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre des Pactes sait ce que vaut une promesse, et ce que vaut son prix. Il jauge, il menace, il lit les intentions.\n\nEn jeu\n• Estimation, Intimidation et Psychologie deviennent des compétences de classe.\n• Sorts : 1 Injonction, 2 Protection d'autrui, 3 Communication avec les morts, 4 Divination, 5 Pacte de vigueur, 6 Pacte du zélote, 7 Pacte de regain, 8 Pacte mortel, 9 Portail"
+      }
+    },
+    {
+      "id": "domain.mind",
+      "type": "domain",
+      "name": {
+        "fr": "Pensée",
+        "en": "Mind"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Pensée comprend les gens avant qu'ils parlent. Un mot juste, un regard, et il sait ce qu'on lui cache.\n\nEn jeu\n• Bonus de +2 aux tests de Bluff, de Diplomatie et de Psychologie.\n• Sorts : 1 Compréhension des langages, 2 Détection de pensées, 3 Lien télépathique mineur, 4 Détection du mensonge, 5 Lien télépathique de Rary, 6 Exploration des pensées, 7 Araignée mentale, 8 Esprit impénétrable, 9 Ennemi subconscient"
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.diplomacy",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        },
+        {
+          "target": "skill.sense_motive",
+          "op": "add",
+          "value": 2,
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "domain.pestilence",
+      "type": "domain",
+      "name": {
+        "fr": "Pestilence",
+        "en": "Pestilence"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Pestilence vit parmi les fièvres sans les craindre. Il les porte, parfois, et les répand sur ses ennemis.\n\nEn jeu\n• Immunisé contre les maladies, mais peut rester porteur sain de maladies infectieuses.\n• Sorts : 1 Anathème, 2 Nuée grouillante, 3 Contagion, 4 Empoisonnement, 5 Horde de rats, 6 Malédiction de la lycanthropie, 7 Fléau, 8 Création de mort-vivant dominant, 9 Nuée d'otyughs"
+      },
+      "note": "L'immunité aux maladies n'est pas calculée. Au niveau 8, Création de mort-vivant dominant ne peut créer que des momies. Sorts alignés : il ne peut pas lancer les sorts du domaine à registre du Mal si son alignement l'interdit."
+    },
+    {
+      "id": "domain.purification",
+      "type": "domain",
+      "name": {
+        "fr": "Purification",
+        "en": "Purification"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre de la Purification chasse la souillure, du corps comme de l'air. Les sorts de protection qu'il lance durent mieux.\n\nEn jeu\n• Bonus de +1 au niveau de lanceur de sorts pour ses sorts d'abjuration.\n• Sorts : 1 Auréole de lumière, 2 Vengeance divine, 3 Déclamation, 4 Rudoiement, 5 Brume de pureté, 6 Feux purificateurs, 7 Fureur vertueuse des fidèles, 8 Explosion de lumière, 9 Visage divin suprême"
+      },
+      "note": "Le bonus au niveau de lanceur par école n'est pas calculé par le modèle."
+    },
+    {
+      "id": "domain.dream",
+      "type": "domain",
+      "name": {
+        "fr": "Rêves",
+        "en": "Dream"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "domain"
+      ],
+      "description": {
+        "fr": "Le prêtre des Rêves a erré dans trop de cauchemars pour qu'un seul puisse encore lui faire peur.\n\nEn jeu\n• Immunisé contre la terreur.\n• Sorts : 1 Sommeil, 2 Augure, 3 Sommeil profond, 4 Assassin imaginaire, 5 Cauchemar, 6 Décorporation, 7 Scrutation suprême, 8 Mot de pouvoir étourdissant, 9 Ennemi subconscient"
+      },
+      "note": "L'immunité à la terreur n'est pas calculée."
     }
   ],
   "relations": [
@@ -424,6 +935,21 @@
       "from": "domain.trickery",
       "relation": "class_skill",
       "to": "skill.hide"
+    },
+    {
+      "from": "domain.pact",
+      "relation": "class_skill",
+      "to": "skill.appraise"
+    },
+    {
+      "from": "domain.pact",
+      "relation": "class_skill",
+      "to": "skill.intimidate"
+    },
+    {
+      "from": "domain.pact",
+      "relation": "class_skill",
+      "to": "skill.sense_motive"
     }
   ]
 }

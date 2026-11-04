@@ -1,0 +1,185 @@
+{
+  "entities": [
+    {
+      "id": "feat.positive_energy_aura",
+      "type": "feat",
+      "name": {
+        "fr": "Aura d’énergie positive",
+        "en": "Positive Energy Aura"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic"
+      ],
+      "description": {
+        "fr": "Sa seule présence fait reculer, voire s’effondrer, les morts-vivants les plus faibles.\n\nEn jeu\n• Conditions : Cha 25, pouvoir de renvoi des morts-vivants, faculté de lancer rejet du Mal.\n• Tout mort-vivant à 4,50 m ou moins est repoussé comme par un renvoi, sans tentative dépensée ni jet d’efficacité.\n• Sont repoussés ceux dont les DV sont inférieurs ou égaux à son niveau de prêtre effectif -10 ; détruits ceux à -20 ou moins.\n• Un mort-vivant à l’abri total n’est pas affecté."
+      },
+      "prerequisite": "level() >= 21 and @ability.cha.score >= 25 and @turn_undead.level >= 1",
+      "note": "Rejet du Mal : pas vérifié."
+    },
+    {
+      "id": "feat.unholy_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Coup impie",
+        "en": "Unholy Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic"
+      ],
+      "description": {
+        "fr": "Entre ses mains, n’importe quelle arme prend un tranchant maléfique contre les gens de bien.\n\nEn jeu\n• Conditions : châtiment du Bien, alignement mauvais.\n• Toute arme qu’il manie devient impie et inflige +2d6 dégâts aux créatures d’alignement bon.\n• Ne se cumule pas avec un effet semblable (sans effet sur une arme déjà impie)."
+      },
+      "prerequisite": "level() >= 21 and has('power.blackguard_smite_good')",
+      "note": "Les +2d6 contre le Bien ne sont pas modélisés."
+    },
+    {
+      "id": "feat.holy_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Coup saint",
+        "en": "Holy Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic"
+      ],
+      "description": {
+        "fr": "Entre ses mains, n’importe quelle arme brûle d’une lumière sacrée contre les créatures mauvaises.\n\nEn jeu\n• Conditions : châtiment du Mal, alignement bon.\n• Toute arme qu’il manie devient sainte et inflige +2d6 dégâts aux créatures d’alignement mauvais.\n• Ne se cumule pas avec un effet semblable (sans effet sur une arme déjà sainte)."
+      },
+      "prerequisite": "level() >= 21 and (has('power.paladin_smite_evil') or has('power.hunter_of_the_dead_undead_smite') or has('power.crusader_smite') or has('power.knight_of_the_chalice_smite_fiends'))",
+      "note": "Les +2d6 contre le Mal ne sont pas modélisés."
+    },
+    {
+      "id": "feat.spectral_strike",
+      "type": "feat",
+      "name": {
+        "fr": "Coup spectral",
+        "en": "Spectral Strike"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic"
+      ],
+      "description": {
+        "fr": "Ses coups traversent le voile et atteignent les êtres sans corps comme s’ils étaient solides.\n\nEn jeu\n• Conditions : Sag 19, pouvoir de renvoi ou d’intimidation des morts-vivants.\n• Ses attaques ne subissent aucun risque d’échec dû à l’intangibilité.\n• Normal : même une arme qui blesse une créature intangible a 50 % de risque de ne rien infliger."
+      },
+      "prerequisite": "level() >= 21 and @ability.wis.score >= 19 and @turn_undead.level >= 1"
+    },
+    {
+      "id": "feat.epic_devotion",
+      "type": "feat",
+      "name": {
+        "fr": "Dévotion épique",
+        "en": "Epic Devotion"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic"
+      ],
+      "description": {
+        "fr": "Une foi si forte qu’elle le protège des sorts d’un camp que son dieu rejette.\n\nEn jeu\n• Conditions : Sag 21, Volonté de fer, une composante d’alignement qu’il n’a pas et que sa divinité tutélaire n’accepte pas chez ses prêtres.\n• À l’acquisition, il choisit cette composante (bien, chaos, loi, mal).\n• +4 aux jets de sauvegarde contre les sorts de ce registre.\n• Peut être pris plusieurs fois, avec une autre composante."
+      },
+      "prerequisite": "level() >= 21 and @ability.wis.score >= 21 and has('feat.iron_will')",
+      "note": "La composante choisie n’est pas modélisée : le +4 n’est pas appliqué. Alignement et divinité : pas vérifiés."
+    },
+    {
+      "id": "feat.bonus_domain",
+      "type": "feat",
+      "name": {
+        "fr": "Domaine supplémentaire",
+        "en": "Bonus Domain"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic"
+      ],
+      "description": {
+        "fr": "Son dieu lui ouvre l’accès à un domaine de plus.\n\nEn jeu\n• Conditions : Sag 21, faculté de lancer des sorts divins de niveau 9.\n• Il choisit un domaine supplémentaire parmi ceux de son dieu : il obtient le pouvoir accordé et choisit un sort de domaine par niveau dans sa liste.\n• Peut être pris plusieurs fois, avec un domaine différent."
+      },
+      "prerequisite": "level() >= 21 and @ability.wis.score >= 21",
+      "note": "Le domaine supplémentaire n’est pas modélisé ; sorts de niveau 9 : pas vérifiés."
+    },
+    {
+      "id": "feat.magical_beast_wild_shape",
+      "type": "feat",
+      "name": {
+        "fr": "Forme animale de créature magique",
+        "en": "Magical Beast Wild Shape"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic",
+        "wild"
+      ],
+      "description": {
+        "fr": "Sa forme animale s’ouvre aux créatures magiques et à leurs pouvoirs surnaturels.\n\nEn jeu\n• Conditions : Sag 25, 27 degrés en Connaissances (nature), pouvoir de forme animale (6 fois par jour).\n• Il peut utiliser forme animale pour devenir une créature magique, avec les mêmes limites de taille que pour un animal.\n• Il obtient tous les pouvoirs surnaturels de la créature."
+      },
+      "prerequisite": "level() >= 21 and @ability.wis.score >= 25 and @skill.knowledge_nature.ranks >= 27 and has('power.druid_wild_shape')",
+      "note": "Six utilisations par jour : non vérifié."
+    },
+    {
+      "id": "feat.undead_mastery",
+      "type": "feat",
+      "name": {
+        "fr": "Maîtrise des morts-vivants",
+        "en": "Undead Mastery"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic",
+        "divine"
+      ],
+      "description": {
+        "fr": "Il tient sous sa coupe de véritables armées de morts-vivants.\n\nEn jeu\n• Conditions : Cha 21, pouvoir d’intimidation des morts-vivants.\n• Il peut contrôler des morts-vivants dont le total de DV vaut jusqu’à dix fois son niveau."
+      },
+      "prerequisite": "level() >= 21 and @ability.cha.score >= 21 and @turn_undead.level >= 1"
+    },
+    {
+      "id": "feat.negative_energy_burst",
+      "type": "feat",
+      "name": {
+        "fr": "Rayonnement d’énergie négative",
+        "en": "Negative Energy Burst"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic",
+        "divine"
+      ],
+      "description": {
+        "fr": "Une onde d’énergie négative jaillit de lui et draine la vie autour.\n\nEn jeu\n• Conditions : Cha 25, pouvoir d’intimidation des morts-vivants, faculté de lancer blessure critique, alignement mauvais.\n• Il dépense une tentative d’intimidation pour libérer un rayonnement de 18 m de rayon, avec un jet de renvoi normal visant les créatures vivantes.\n• Celles qui auraient été intimidées gagnent 1 niveau négatif ; celles qui auraient été contrôlées en gagnent 2.\n• Vigueur pour retirer les niveaux 24 h plus tard : DD 10 + 1/2 niveau de prêtre effectif + mod. de Cha."
+      },
+      "prerequisite": "level() >= 21 and @ability.cha.score >= 25 and @turn_undead.level >= 1",
+      "note": "Blessure critique et alignement : pas vérifiés."
+    },
+    {
+      "id": "feat.zone_of_animation",
+      "type": "feat",
+      "name": {
+        "fr": "Zone d’animation",
+        "en": "Zone of Animation"
+      },
+      "provenance": "official",
+      "source": "Complete Divine",
+      "labels": [
+        "epic",
+        "divine"
+      ],
+      "description": {
+        "fr": "Il fait lever les cadavres alentour d’un flot d’énergie positive, qui se plient aussitôt à sa volonté.\n\nEn jeu\n• Conditions : Cha 25, Maîtrise des morts-vivants, pouvoir d’intimidation des morts-vivants.\n• Il dépense une tentative d’intimidation pour animer des cadavres à portée, en zombis s’ils sont frais, sinon en squelettes ; ils sont automatiquement sous son contrôle.\n• Total animé : le nombre de DV qu’il peut contrôler, moins ceux déjà contrôlés ; limité par les cadavres disponibles."
+      },
+      "prerequisite": "level() >= 21 and @ability.cha.score >= 25 and has('feat.undead_mastery') and @turn_undead.level >= 1"
+    }
+  ]
+}

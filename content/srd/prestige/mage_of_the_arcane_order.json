@@ -1,0 +1,353 @@
+{
+  "entities": [
+    {
+      "id": "class.mage_of_the_arcane_order",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Mage de l’ordre profane",
+        "en": "Mage of the Arcane Order"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "arcane"
+      ],
+      "description": {
+        "fr": "On l’appelle « mage de guilde », et il en est fier : l’Ordre Profane lui donne une chambre, une bibliothèque, des collègues et, surtout, un accès à sa réserve de sorts. En échange, il paie sa cotisation, rend visite à l’académie et accepte les missions de ses aînés. La plupart sont des magiciens : l’Ordre aime la magie bien rangée.\n\nEn jeu\n• Dé de vie : d4. Points de compétence : 2 + modificateur d’Intelligence par niveau.\n• Conditions : 8 rangs en Connaissances (mystères) ; dons Coordination de sort et un don de métamagie au choix ; capable de préparer et de lancer des sorts profanes du 2e niveau ; droit d’entrée de 750 po.\n• Aucune formation nouvelle aux armes, aux armures ou aux boucliers.\n• Compétences de classe : Art de la magie, Artisanat, Concentration, Connaissances (chaque domaine à part), Décryptage, Langue, Profession.\n• Sorts : +1 niveau de lanceur de sorts profanes à chaque niveau (1 à 10), pour une classe profane qu’il avait déjà.\n• Aptitudes : membre de la guilde et réserve de sorts I (niv. 1), don de métamagie supplémentaire (niv. 2 et 9), langue supplémentaire (niv. 3 et 6), réserve de sorts II (niv. 4), nouveau sort (niv. 5 et 8), réserve de sorts III (niv. 7), régent (niv. 10).\n• Niveaux épiques (au-delà du niveau 10, possible seulement à partir du niveau de personnage 20) : dés de vie et points de compétence continuent normalement ; +1 niveau de lanceur de sorts profanes par niveau de classe, mais pas de sorts par jour en plus (un magicien apprend 2 sorts de plus par niveau) ; une langue de plus tous les 4 niveaux (14, 18…) ; un don supplémentaire tous les 4 niveaux (14, 18, 22…) ; avec Campagnes Légendaires et le don Magie épique, il peut appeler des sorts épiques de la réserve (le MD peut en exclure)."
+      },
+      "hitDie": 4,
+      "skillPoints": 2,
+      "prerequisite": "@skill.knowledge_arcana.ranks >= 8 and has('feat.cooperative_spell') and @spellcasting.arcane.max_level >= 2",
+      "note": "Conditions : « un don de métamagie au choix », « préparer » des sorts et le droit d’entrée de 750 po : texte seul. feat.cooperative_spell (Coordination de sort) pas encore écrit. Niveaux épiques : le don supplémentaire (tous les 4 niveaux après le 10) compte dans feat_slots.epic_bonus, sans filtre de liste ; niveau de lanceur de sorts, langues et sorts appris : texte seul.",
+      "effects": [
+        {
+          "target": "feat_slots.epic_bonus",
+          "op": "add",
+          "value": "max(0, floor((level('class.mage_of_the_arcane_order') - 10) / 4))",
+          "bonusType": "untyped"
+        }
+      ]
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts",
+        "en": "Spells per day"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Les cours de l’Ordre ne s’arrêtent jamais : à chaque grade, le mage progresse dans son art profane.\n\nEn jeu\n• À chaque niveau (1 à 10) : +1 niveau effectif de lanceur de sorts dans une classe profane qu’il possède déjà (choisie dans la fiche de niveau).\n• Il gagne les sorts par jour et le niveau de lanceur de ce niveau effectif.\n• Il ne gagne pas les autres aptitudes de la classe (don supplémentaire, etc.)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_guild_member",
+      "type": "class_power",
+      "name": {
+        "fr": "Membre de la guilde",
+        "en": "Guild Member"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Une carte de membre, une clé de chambre et une liste de devoirs : la vie à l’Ordre a ses avantages et ses obligations.\n\nEn jeu\n• Cotisation : 30 po par mois. Plus de trois mois de retard : radié, plus d’accès à la réserve de sorts (il garde les dons et sorts déjà acquis).\n• Devoirs : passer à l’académie au moins une fois tous les six mois, accepter les missions des membres de plus haut rang.\n• Logement et repas à l’académie : 5 pa par jour.\n• Accès libre à la bibliothèque (pas de grimoires) et aux laboratoires communs pour créer des objets magiques mineurs ou intermédiaires (coûts à sa charge).\n• Tableau des annonces et réseau de collègues : contacts, alliances, ventes d’objets."
+      },
+      "effects": [],
+      "note": "Règles de la guilde : texte seul."
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_spellpool",
+      "type": "class_power",
+      "name": {
+        "fr": "Réserve de sorts I",
+        "en": "Spellpool I"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Grâce à un petit objet reçu à son initiation, le mage peut puiser, où qu’il soit, dans la réserve de sorts que l’Ordre garde sous son siège.\n\nEn jeu\n• Capacité surnaturelle. Focaliseur personnel (bague, broche, foulard…) : ne marche que pour lui ; perdu, il faut une nouvelle initiation.\n• Appeler un sort : action complexe (provoque des attaques d’opportunité), à n’importe quelle distance. Le sort arrive au début de son tour suivant et doit être lancé dans la minute par niveau de lanceur, sinon il s’efface.\n• Il faut un emplacement libre (non préparé) du niveau du sort, et un niveau de sort qu’il peut déjà lancer. Sorts des listes de magicien et d’ensorceleur du Manuel des Joueurs (et autres au choix du MD), jamais de niveau 0. Un magicien ne peut pas recopier un sort appelé.\n• Par jour : total des niveaux appelés ≤ la moitié de son niveau de lanceur (minimum 1).\n• Dette : rendre autant de niveaux de sorts (sorts préparés ou emplacements), action complexe chacun, dans un délai d’autant de jours que son niveau de classe ; sinon l’accès est suspendu ; plus d’un an de retard : exclu de l’Ordre. Il peut aussi donner d’avance.\n• Accès I (niveau 1) : sorts du 1er au 3e niveau."
+      },
+      "effects": [],
+      "note": "Réserve de sorts : texte seul (sorts appelés et dette pas dans le modèle). Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_spellpool_ii",
+      "type": "class_power",
+      "name": {
+        "fr": "Réserve de sorts II",
+        "en": "Spellpool II"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Son rang dans l’Ordre lui ouvre des rayons plus profonds de la réserve.\n\nEn jeu\n• Au niveau 4 : il peut appeler des sorts du 4e au 6e niveau (mêmes règles que la réserve de sorts I)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_spellpool_iii",
+      "type": "class_power",
+      "name": {
+        "fr": "Réserve de sorts III",
+        "en": "Spellpool III"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Les plus grands sorts de la réserve lui sont désormais confiés.\n\nEn jeu\n• Au niveau 7 : il peut appeler des sorts du 7e au 9e niveau (mêmes règles que la réserve de sorts I)."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_bonus_metamagic_feat",
+      "type": "class_power",
+      "name": {
+        "fr": "Don de métamagie supplémentaire",
+        "en": "Bonus Metamagic Feat"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Les vieux grimoires de l’Ordre regorgent de façons oubliées de tordre un sort ; le mage en tire de nouvelles techniques.\n\nEn jeu\n• Un don de métamagie supplémentaire aux niveaux 2 et 9.\n• Il doit remplir les conditions du don.\n• Ces dons s’ajoutent aux dons gagnés par le niveau."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.mage_of_the_arcane_order_bonus",
+          "op": "add",
+          "value": "if(level('class.mage_of_the_arcane_order') >= 9, 2, 1)"
+        }
+      ],
+      "note": "Emplacement de don feat_slots.mage_of_the_arcane_order_bonus : la liste (dons de métamagie) n’est pas encore filtrée par le modèle. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_bonus_language",
+      "type": "class_power",
+      "name": {
+        "fr": "Langue supplémentaire",
+        "en": "Bonus Language"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Entre deux missions, la bibliothèque de l’Ordre lui apprend une langue de plus.\n\nEn jeu\n• Une langue supplémentaire aux niveaux 3 et 6."
+      },
+      "effects": [],
+      "note": "Langues : pas encore dans le modèle, texte seul. Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_new_spell",
+      "type": "class_power",
+      "name": {
+        "fr": "Nouveau sort",
+        "en": "New Spell"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Un collègue lui ouvre son grimoire : entre membres de l’Ordre, on partage.\n\nEn jeu\n• Aux niveaux 5 et 8 : il recopie un sort du grimoire d’un collègue dans le sien (choix du joueur, accord du MD), sans test d’Art de la magie.\n• Un spécialiste ne peut pas prendre ainsi un sort d’une école interdite.\n• Sans grimoire, cette aptitude ne sert à rien."
+      },
+      "effects": [],
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "power.mage_of_the_arcane_order_regent",
+      "type": "class_power",
+      "name": {
+        "fr": "Régent",
+        "en": "Regent"
+      },
+      "source": "Complete Arcane",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "mage_of_the_arcane_order"
+      ],
+      "description": {
+        "fr": "Arrivé au sommet, le mage siège au Conseil des Régents et décide de la politique de l’Ordre.\n\nEn jeu\n• Au niveau 10 : +2 d’aptitude aux tests liés au Charisme face aux membres de l’Ordre de niveau inférieur.\n• Conseil des Régents chaque mois : il doit assister à au moins six conseils par an, sinon il perd son siège (pas ses niveaux ni ses autres avantages).\n• Une nouvelle règle ou l’abandon d’une ancienne demande une majorité des trois cinquièmes.\n• Le Conseil confie des missions aux membres et un régent peut mener un groupe formé pour une tâche précise (enquête, fouille, etc.)."
+      },
+      "effects": [],
+      "note": "Bonus de +2 face aux membres de l’Ordre seulement : trop étroit pour une situation, texte seul."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 1,
+      "bab": 0,
+      "fort": 0,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.mage_of_the_arcane_order_spells",
+        "power.mage_of_the_arcane_order_guild_member",
+        "power.mage_of_the_arcane_order_spellpool"
+      ]
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 2,
+      "bab": 1,
+      "fort": 0,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.mage_of_the_arcane_order_bonus_metamagic_feat"
+      ]
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 3,
+      "bab": 1,
+      "fort": 1,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.mage_of_the_arcane_order_bonus_language"
+      ]
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 4,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.mage_of_the_arcane_order_spellpool_ii"
+      ]
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 5,
+      "bab": 2,
+      "fort": 1,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.mage_of_the_arcane_order_new_spell"
+      ]
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 6,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 7,
+      "bab": 3,
+      "fort": 2,
+      "ref": 2,
+      "will": 5,
+      "grants": [
+        "power.mage_of_the_arcane_order_spellpool_iii"
+      ]
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 8,
+      "bab": 4,
+      "fort": 2,
+      "ref": 2,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 9,
+      "bab": 4,
+      "fort": 3,
+      "ref": 3,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.mage_of_the_arcane_order",
+      "level": 10,
+      "bab": 5,
+      "fort": 3,
+      "ref": 3,
+      "will": 7,
+      "grants": [
+        "power.mage_of_the_arcane_order_regent"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.mage_of_the_arcane_order",
+      "relation": "class_skill",
+      "to": "skill.spellcraft"
+    },
+    {
+      "from": "class.mage_of_the_arcane_order",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.mage_of_the_arcane_order",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.mage_of_the_arcane_order",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.mage_of_the_arcane_order",
+      "relation": "class_skill",
+      "to": "skill.decipher_script"
+    },
+    {
+      "from": "class.mage_of_the_arcane_order",
+      "relation": "class_skill",
+      "to": "skill.speak_language"
+    },
+    {
+      "from": "class.mage_of_the_arcane_order",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    }
+  ]
+}

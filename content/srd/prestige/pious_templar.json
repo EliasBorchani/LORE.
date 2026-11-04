@@ -1,0 +1,392 @@
+{
+  "entities": [
+    {
+      "id": "class.pious_templar",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Templier consacré",
+        "en": "Pious Templar"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial",
+        "divine",
+        "prepared"
+      ],
+      "description": {
+        "fr": "Le templier consacré est un guerrier pieux, béni par son dieu : il tient bon quand les autres tombent et manie l'arme de sa foi dans chaque combat. Il garde un lieu saint, défend son culte et marche parfois jusqu'au cœur du territoire ennemi.\n\nEn jeu\n• Dé de vie : d10. Points de compétence : 2 + modificateur d'Intelligence par niveau.\n• Conditions : bonus de base à l'attaque +5 ; Connaissances (religion) 4 rangs ; dons Arme de prédilection (arme de sa divinité) et Vraie foi.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Artisanat, Concentration, Connaissances (religion), Escalade, Natation, Premiers secours, Profession, Saut.\n• Sorts : divins préparés du niveau 1 au niveau 4, basés sur la Sagesse, avec la liste du paladin ou du chevalier noir selon l'alignement.\n• Aptitudes : ardeur (1) ; châtiment (2, 6, 10) ; réduction des dégâts (3, 7) ; spécialisation martiale (3) ; dons supplémentaires (4, 8)."
+      },
+      "hitDie": 10,
+      "skillPoints": 2,
+      "spellcasting": {
+        "ability": "wis",
+        "kind": "divine",
+        "mode": "prepared"
+      },
+      "prerequisite": "@bab >= 5 and @skill.knowledge_religion.ranks >= 4 and has('feat.weapon_focus') and has('feat.true_believer')",
+      "note": "Arme de prédilection de la divinité : texte seul. Sorts par jour : 0 = seulement les sorts en bonus (valeur imprimée), null pour « — »."
+    },
+    {
+      "id": "power.pious_templar_spells",
+      "type": "class_power",
+      "name": {
+        "fr": "Sorts de templier consacré",
+        "en": "Templar spells"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "pious_templar"
+      ],
+      "description": {
+        "fr": "Sa foi lui accorde quelques prières de guerre, juste de quoi tenir sa position.\n\nEn jeu\n• Sorts divins préparés, du niveau 1 au niveau 4, comme un prêtre, sans conversion en soins ou en blessures.\n• Liste : celle du paladin pour un templier bon (ou neutre servant un dieu bon), celle du chevalier noir pour un templier mauvais (ou neutre d'un dieu mauvais) ; un templier neutre qui sert un dieu neutre choisit l'une ou l'autre, une fois pour toutes.\n• Sagesse au moins 10 + niveau du sort. DD : 10 + niveau du sort + modificateur de Sagesse. Sorts en bonus grâce à la Sagesse ; un « 0 » dans la table veut dire seulement ces sorts en bonus."
+      },
+      "effects": [],
+      "note": "Pas de liste propre : il utilise en entier la liste du paladin ou celle du chevalier noir (à rattacher à ces classes à la fusion). Niveau de lanceur de sorts : niveau de templier consacré . Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.pious_templar_ardor",
+      "type": "class_power",
+      "name": {
+        "fr": "Ardeur",
+        "en": "Ardor"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "pious_templar"
+      ],
+      "description": {
+        "fr": "La bénédiction de son dieu l'empêche de subir ce qu'un sort aurait dû lui faire.\n\nEn jeu\n• Capacité surnaturelle : un jet de Volonté ou de Vigueur réussi contre un sort dont l'effet serait seulement réduit annule l'effet entièrement.\n• Seuls les sorts dont le jet est « Vigueur, 1/2 dégâts », « Volonté, partiel » ou équivalent en profitent."
+      },
+      "effects": [],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.pious_templar_smite",
+      "type": "class_power",
+      "name": {
+        "fr": "Châtiment",
+        "en": "Smite"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "pious_templar"
+      ],
+      "description": {
+        "fr": "Une seule frappe, portée avec toute la ferveur de son dieu.\n\nEn jeu\n• Capacité surnaturelle, 1 fois par jour au niveau 2, 2 fois au niveau 6, 3 fois au niveau 10.\n• À annoncer avant le jet : +4 à l'attaque au corps à corps et, si elle touche, +1 dégât par niveau de templier consacré.\n• S'il a déjà un châtiment ou un châtiment du Mal (paladin, domaine de la Destruction), il gagne 1 utilisation de plus par jour (2 au niveau 7) ; le bonus de dégâts compte alors ses niveaux cumulés (templier + prêtre ou paladin), l'attaque reste à +4."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.templar_smite')"
+        },
+        {
+          "target": "damage.all",
+          "op": "add",
+          "value": "level('class.pious_templar')",
+          "condition": "active('toggle.templar_smite')"
+        }
+      ],
+      "usesPerDay": "if(level('class.pious_templar') >= 10, 3, if(level('class.pious_templar') >= 6, 2, 1))",
+      "note": "Utilisations en plus avec un autre châtiment et niveaux cumulés pour les dégâts : texte seul. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.pious_templar_damage_reduction",
+      "type": "class_power",
+      "name": {
+        "fr": "Réduction des dégâts",
+        "en": "Damage reduction"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "pious_templar"
+      ],
+      "description": {
+        "fr": "Son endurance dépasse le simple entraînement.\n\nEn jeu\n• Capacité extraordinaire : réduction des dégâts 1/— au niveau 3, 2/— au niveau 7."
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": "if(level('class.pious_templar') >= 7, 2, 1)"
+        }
+      ],
+      "note": "Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.pious_templar_weapon_specialization",
+      "type": "class_power",
+      "name": {
+        "fr": "Spécialisation martiale",
+        "en": "Weapon specialization"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "pious_templar"
+      ],
+      "description": {
+        "fr": "Il connaît l'arme de son dieu mieux que quiconque.\n\nEn jeu\n• Niveau 3 : reçoit le don Spécialisation martiale avec l'arme de prédilection de sa divinité, sans en remplir les conditions."
+      },
+      "effects": [],
+      "note": "Le don est donné par relation ; l'arme choisie n'est pas dans le modèle. Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    },
+    {
+      "id": "power.pious_templar_bonus_feats",
+      "type": "class_power",
+      "name": {
+        "fr": "Dons supplémentaires",
+        "en": "Bonus feats"
+      },
+      "source": "Complete Divine",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "pious_templar"
+      ],
+      "description": {
+        "fr": "L'entraînement militaire du temple lui apprend d'autres astuces.\n\nEn jeu\n• Un don supplémentaire aux niveaux 4 et 8, pris dans la liste des dons supplémentaires du guerrier (Manuel des Joueurs ou autre source).\n• Un don qui s'applique à une arme précise doit l'être à l'arme de prédilection de sa divinité."
+      },
+      "effects": [
+        {
+          "target": "feat_slots.pious_templar_bonus",
+          "op": "add",
+          "value": "if(level('class.pious_templar') >= 8, 2, 1)"
+        }
+      ],
+      "note": "Type d'emplacement feat_slots.pious_templar_bonus (dons du guerrier seulement) : à ajouter aux types connus (targets.ts, fiches de niveau). Nom anglais du pouvoir à confirmer (traduction fidèle)."
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.pious_templar",
+      "level": 1,
+      "bab": 1,
+      "fort": 2,
+      "ref": 0,
+      "will": 2,
+      "grants": [
+        "power.pious_templar_spells",
+        "power.pious_templar_ardor"
+      ],
+      "spellsPerDay": [
+        null,
+        0,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 2,
+      "bab": 2,
+      "fort": 3,
+      "ref": 0,
+      "will": 3,
+      "grants": [
+        "power.pious_templar_smite"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 3,
+      "bab": 3,
+      "fort": 3,
+      "ref": 1,
+      "will": 3,
+      "grants": [
+        "power.pious_templar_damage_reduction",
+        "power.pious_templar_weapon_specialization"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 4,
+      "bab": 4,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [
+        "power.pious_templar_bonus_feats"
+      ],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 5,
+      "bab": 5,
+      "fort": 4,
+      "ref": 1,
+      "will": 4,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        0,
+        null
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 6,
+      "bab": 6,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 7,
+      "bab": 7,
+      "fort": 5,
+      "ref": 2,
+      "will": 5,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 8,
+      "bab": 8,
+      "fort": 6,
+      "ref": 2,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 9,
+      "bab": 9,
+      "fort": 6,
+      "ref": 3,
+      "will": 6,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "classId": "class.pious_templar",
+      "level": 10,
+      "bab": 10,
+      "fort": 7,
+      "ref": 3,
+      "will": 7,
+      "grants": [],
+      "spellsPerDay": [
+        null,
+        2,
+        2,
+        2,
+        1
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.knowledge_religion"
+    },
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.heal"
+    },
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.pious_templar",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "power.pious_templar_weapon_specialization",
+      "relation": "grants",
+      "to": "feat.weapon_specialization"
+    }
+  ]
+}

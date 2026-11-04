@@ -117,6 +117,10 @@ data class Entity(
     val spell: SpellInfo? = null,
     /** A maneuver's or stance's display data, and what the sheet checks when a character learns it. */
     val maneuver: ManeuverInfo? = null,
+    /** How a class (counts and highest grade from its table columns) gives warlock invocations (Complete Arcane). */
+    val invoking: InvokingDef? = null,
+    /** An invocation's display data, and what the sheet checks when a character learns it. */
+    val invocation: InvocationInfo? = null,
     /** An item's display data. Its numbers are effects (weapon dice scoped to `item`, armor on `ac.armor`). */
     val item: ItemInfo? = null,
     /** How a skill is computed; the skill's statistic key is its entity id. */
@@ -218,6 +222,48 @@ enum class ManeuverKind {
     @SerialName("boost") BOOST,
     @SerialName("counter") COUNTER,
     @SerialName("stance") STANCE,
+}
+
+@Serializable
+data class InvokingDef(
+    /** The class's key ability (`cha` for the Warlock). Shown only: each invocation writes its own save DC. */
+    val ability: Ability? = null,
+)
+
+/**
+ * A warlock invocation. Text fields are shown as written; the sheet checks [grade] against the class's highest grade.
+ * [level] is the spell level it counts as (dispelling, save DCs).
+ */
+@Serializable
+data class InvocationInfo(
+    val grade: InvocationGrade,
+    val level: Int,
+    val kind: InvocationKind = InvocationKind.OTHER,
+    val action: String? = null,
+    val range: String? = null,
+    val target: String? = null,
+    val area: String? = null,
+    val effect: String? = null,
+    val duration: String? = null,
+    val savingThrow: String? = null,
+    val spellResistance: String? = null,
+)
+
+/** Grades in order: a class that reaches one may learn it and every lower grade. */
+@Serializable
+enum class InvocationGrade {
+    @SerialName("least") LEAST,
+    @SerialName("lesser") LESSER,
+    @SerialName("greater") GREATER,
+    @SerialName("dark") DARK,
+}
+
+/** Eldritch essences and blast shapes change the eldritch blast; the others are separate powers. */
+@Serializable
+enum class InvocationKind {
+    @SerialName("essence") ESSENCE,
+    @SerialName("blast_shape") BLAST_SHAPE,
+    @SerialName("other") OTHER,
 }
 
 /** Rules text of a spell, shown as written; nothing here is computed. */
@@ -392,6 +438,9 @@ data class ProgressionRow(
     val maneuversKnown: Int? = null,
     val maneuversReadied: Int? = null,
     val stancesKnown: Int? = null,
+    /** Invocations known and the highest grade the class can learn, for classes with `invoking`. */
+    val invocationsKnown: Int? = null,
+    val invocationGrade: InvocationGrade? = null,
 )
 
 /**

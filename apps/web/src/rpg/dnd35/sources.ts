@@ -5,6 +5,9 @@ const ALIASES: Record<string, string> = {
   'SRD (épique)': 'source.srd',
   'Complete Arcane': 'source.complete_arcane',
   'Complete Mage': 'source.complete_mage',
+  'Complete Adventurer': 'source.complete_adventurer',
+  'Complete Warrior': 'source.complete_warrior',
+  'Complete Divine': 'source.complete_divine',
   'Book of Nine Swords': 'source.tome_of_battle',
 }
 

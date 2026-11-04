@@ -1,0 +1,495 @@
+{
+  "entities": [
+    {
+      "id": "spell.cloud_chariot",
+      "type": "spell",
+      "name": {
+        "fr": "Char de nuage",
+        "en": "Cloud Chariot"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation",
+        "wu_jen_water"
+      ],
+      "description": {
+        "fr": "Un nuage dense se forme sous les pieds du wu jen et de ses compagnons, puis les emporte à travers le ciel, si vite et si doucement que la tempête elle-même ne les touche pas.\n\nEn jeu\n• Emporte le lanceur et 1 créature de taille M ou moins (avec son équipement, jusqu'à sa charge maximale) par tranche de 4 niveaux de lanceur ; une créature G compte pour 2 M, une TG pour 2 G, etc.\n• Vitesse : 15 km par minute, soit 150 km sur la durée du sort ; le lanceur choisit la direction.\n• Ni la vitesse ni la météo ne gênent les passagers.\n• À la fin du sort, le nuage se pose ; s'il est encore en l'air, il descend de 18 m par round pendant 1d6 rounds, puis les passagers chutent (dégâts de chute normaux).\n• Dissipé : il descend doucement de la même façon ; dans une zone d'antimagie, il disparaît aussitôt.\n• Composante : une boulette de coton."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "création",
+        "descriptors": [
+          "eau"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "contact et personnelle",
+        "target": "le lanceur de sorts et les créatures consentantes touchées",
+        "duration": "10 minutes (T)"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.greater_blink",
+      "type": "spell",
+      "name": {
+        "fr": "Clignotement suprême",
+        "en": "Greater Blink"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Le lanceur glisse entre le monde matériel et le plan Éthéré quand il le veut, et non plus au hasard : la lame qui le visait ne rencontre que du vide.\n\nEn jeu\n• Comme clignotement, mais le lanceur choisit quand il passe d'un plan à l'autre.\n• Il peut préparer une action pour clignoter contre une attaque ou un sort précis : l'attaque échoue d'office, sauf si elle touche aussi les créatures éthérées (effets de force).\n• Aucune chance d'échec pour ses propres attaques et sorts.\n• Il traverse les obstacles solides ; s'il finit son déplacement dans l'un d'eux, il est expulsé vers l'espace libre le plus proche et subit 1d6 points de dégâts par tranche de 1,50 m parcourue."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau (T)"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Les chances de rater et les effets de clignotement ne sont pas sur la feuille."
+    },
+    {
+      "id": "spell.heart_of_stone",
+      "type": "spell",
+      "name": {
+        "fr": "Cœur de pierre",
+        "en": "Heart of Stone"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Le mage sort son propre cœur de sa poitrine et le remplace par une pierre sculptée. Son corps devient dur comme le roc, mais le cœur qui bat encore, caché quelque part, est désormais sa seule faiblesse.\n\nEn jeu\n• Réduction des dégâts 5/— et résistance 5 à l'électricité, au feu et au froid.\n• Guérison naturelle limitée à 1 point de vie par jour.\n• Tout soin par un sort d'Invocation (guérison) ou un effet semblable exige un test de niveau de lanceur (DD 10 + niveau de lanceur du mage).\n• Si le cœur caché est abîmé ou détruit, le mage meurt aussitôt.\n• Dissipé : le cœur revient dans la poitrine et la pierre prend sa place ; dans une zone d'antimagie, les deux s'échangent le temps d'y rester.\n• Transmutation de la pierre en chair met fin au sort (jet de Vigueur pour résister).\n• Focaliseur : un cœur sculpté en pierre de qualité (jade, obsidienne ou marbre veiné d'or) de 5 000 po. Coût : 1 000 PX."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, F, PX",
+        "castingTime": "1 heure",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 an"
+      },
+      "effects": [
+        {
+          "target": "damage_reduction.none",
+          "op": "add",
+          "value": 5,
+          "condition": "active('toggle.heart_of_stone')"
+        }
+      ],
+      "source": "Complete Arcane",
+      "note": "Les résistances à l'énergie (5 électricité, feu, froid) ne sont pas dans le modèle : texte seulement."
+    },
+    {
+      "id": "spell.commune_with_lesser_spirit",
+      "type": "spell",
+      "name": {
+        "fr": "Communion avec les esprits mineure",
+        "en": "Commune with Lesser Spirit"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Le wu jen brûle de l'encens et dépose une offrande devant l'esprit d'un lieu. L'esprit, s'il le veut bien, répond à ses questions sur ce qu'il a vu autour de lui.\n\nEn jeu\n• Vise un esprit du lieu de 4 DV au plus, que le wu jen connaît et qui se trouve à 3 m ou moins.\n• 1 question par tranche de 2 niveaux de lanceur ; réponses d'un mot (ou une phrase de 5 mots au plus si le MD le juge utile).\n• L'esprit ne sait que ce qui touche les environs, et n'est pas omniscient.\n• Sans effet si l'esprit a déjà été contacté par une communion avec les esprits dans la semaine.\n• Un esprit d'alignement différent a droit à un jet de Volonté.\n• Les questions non posées à la fin du sort sont perdues.\n• Composantes : encens et offrande de 10 po."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "10 minutes",
+        "range": "3 m",
+        "target": "1 esprit mineur",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule ; voir description",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.commune_with_greater_spirit",
+      "type": "spell",
+      "name": {
+        "fr": "Communion avec les esprits suprême",
+        "en": "Commune with Greater Spirit"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "La même prière, adressée cette fois aux grands esprits : ceux des montagnes, des fleuves anciens, des forêts sacrées.\n\nEn jeu\n• Comme communion avec les esprits mineure, mais vise un esprit de n'importe quel nombre de DV.\n• 1 question par niveau de lanceur.\n• Composantes : encens et offrande de 25 po. Coût : 100 PX."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M, PX",
+        "castingTime": "10 minutes",
+        "range": "3 m",
+        "target": "1 esprit",
+        "duration": "1 minute/niveau",
+        "savingThrow": "Volonté, annule ; voir description",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.aiming_at_the_target",
+      "type": "spell",
+      "name": {
+        "fr": "Concentration accrue",
+        "en": "Aiming at the Target"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "D'un geste bref, le lanceur protège le fil de son attention : le sort qu'il maintient déjà ne lui échappera pas, quoi qu'il arrive autour de lui.\n\nEn jeu\n• Se lance par une action rapide, même en maintenant la concentration sur un autre sort.\n• Bonus de circonstances de +10 aux tests de Concentration pour garder la concentration sur cet autre sort.\n• Dure tant que le lanceur reste concentré sur l'autre sort, jusqu'à 20 minutes."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "concentration, jusqu'à 20 minutes ; voir description"
+      },
+      "effects": [
+        {
+          "target": "skill.concentration",
+          "op": "add",
+          "value": 10,
+          "bonusType": "circumstance",
+          "situation": "situation.maintaining_concentration",
+          "condition": "active('toggle.aiming_at_the_target')"
+        }
+      ],
+      "source": "Complete Arcane",
+      "note": "Le bloc indique « jusqu'à 20 minutes/niveau », le texte « jusqu'à un maximum de 20 minutes » : on garde 20 minutes."
+    },
+    {
+      "id": "spell.greater_aiming_at_the_target",
+      "type": "spell",
+      "name": {
+        "fr": "Concentration suprême",
+        "en": "Greater Aiming at the Target"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "L'esprit du wu jen tient seul le sort précédent, comme une main qui n'a plus besoin qu'on pense à elle. Il peut se battre, marcher ou lancer d'autres sorts sans le perdre.\n\nEn jeu\n• Comme concentration accrue, mais la concentration sur le sort précédent se maintient seule : le wu jen agit librement (se déplacer, attaquer, lancer des sorts).\n• Seuls sa mort ou un sort mental (confusion, débilité…) peuvent rompre cette concentration.\n• Charme ou suggestion peuvent le pousser à y mettre fin lui-même (et donc au sort maintenu).\n• Dure 10 minutes."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "G",
+        "castingTime": "1 action rapide",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "10 minutes (T)"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Nom anglais à confirmer. Composantes, temps d'incantation et portée repris de concentration accrue (le bloc ne les répète pas)."
+    },
+    {
+      "id": "spell.backlash",
+      "type": "spell",
+      "name": {
+        "fr": "Contrecoup réciproque",
+        "en": "Backlash"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le mage tord la magie qui protège sa cible et la retourne contre elle : plus elle est chargée de sorts, plus le choc est violent.\n\nEn jeu\n• 1d6 points de dégâts par niveau de chaque sort ou pouvoir magique qui vise la cible (25d6 au plus) ; Volonté pour la moitié.\n• Si le jet de Volonté échoue, jet de Vigueur ou hébété 1d6 rounds.\n• Ne comptent que les sorts lancés sur la cible : ni les sorts de zone, ni les effets continus d'objets magiques (mais un sort lancé avec une baguette compte).\n• Composante : une minuscule boucle de cuivre fermée."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 créature ou objet",
+        "duration": "instantanée",
+        "savingThrow": "Volonté, 1/2 dégâts puis Vigueur, annule ; voir description",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Les dés dépendent des sorts actifs sur la cible : texte seulement."
+    },
+    {
+      "id": "spell.summon_elemental_monolith",
+      "type": "spell",
+      "name": {
+        "fr": "Convocation de monolithe élémentaire",
+        "en": "Summon Elemental Monolith"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "invocation"
+      ],
+      "description": {
+        "fr": "La terre se soulève, le feu monte en colonne, l'eau ou le vent se dressent : un monolithe élémentaire, plus grand que tous les élémentaires ordinaires, répond à l'appel.\n\nEn jeu\n• Convoque un monolithe élémentaire (Air, Eau, Feu ou Terre) qui attaque aussitôt les ennemis du lanceur.\n• Le lanceur peut lui donner d'autres ordres s'il parle sa langue et se tient assez près.\n• Impossible dans un milieu hostile à la créature (monolithe de Feu sous l'eau, de Terre dans les airs…).\n• Le sort prend le registre de l'élément convoqué (air, eau, feu ou terre).\n• Dure tant que le lanceur se concentre, jusqu'à 1 round/niveau.\n• Composante : une gemme de 100 po (aigue-marine pour l'air, perle pour l'eau, grenat pour le feu, tourmaline pour la terre)."
+      },
+      "spell": {
+        "school": "Invocation",
+        "subschool": "convocation",
+        "descriptors": [
+          "voir description"
+        ],
+        "components": "V, G, M/FD",
+        "castingTime": "1 round",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "effect": "monolithe élémentaire convoqué",
+        "duration": "concentration, jusqu'à 1 round/niveau (T)",
+        "savingThrow": "aucun",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.greater_disembodiment",
+      "type": "spell",
+      "name": {
+        "fr": "Décorporation suprême",
+        "en": "Greater Disembodiment"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "L'esprit du wu jen se détache de sa chair et flotte, intangible, tandis que son corps reste derrière lui, à demi éveillé, comme un somnambule.\n\nEn jeu\n• L'esprit est intangible (déplacements, avantages et faiblesses) ; vitesse 27 m, jamais à plus de 60 m du corps.\n• Sous cette forme, il ne lance que des sorts à composante verbale seule, et ne peut ni attaquer physiquement ni agir sur le monde matériel.\n• Communion avec les esprits (mineure ou suprême) permet de lui parler.\n• Rejoindre son corps : action simple, pendant son tour.\n• Le corps a une action de mouvement par round, perd son bonus de Dextérité à la CA et donne +2 aux jets d'attaque contre lui ; à 1,50 m ou moins, l'esprit peut lui faire faire des gestes simples (marcher, parler mal, manger).\n• Les dégâts subis par l'esprit ou le corps se cumulent sur les mêmes points de vie.\n• Le wu jen meurt si le corps est à plus de 60 m de l'esprit sans pouvoir être suivi, ou s'il ne l'a pas rejoint à la fin du sort.\n• Composante : un petit moulin à prières."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 minute (T)"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.disfigure",
+      "type": "spell",
+      "name": {
+        "fr": "Défiguration",
+        "en": "Disfigure"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "illusion"
+      ],
+      "description": {
+        "fr": "D'une touche, le wu jen change un visage en cauchemar : peau bleuie, bec, trompe, crocs pourris. Ceux qui le regardent reculent malgré eux.\n\nEn jeu\n• Le lanceur choisit des traits hideux, mais ne peut pas imiter une créature ou une personne précise.\n• Toute créature qui voit la cible, sauf le lanceur et ses alliés, doit réussir un jet de Volonté ou être secouée.\n• Composante : une petite palette de couleurs disparates."
+      },
+      "spell": {
+        "school": "Illusion",
+        "subschool": "fantasme",
+        "descriptors": [
+          "mental",
+          "terreur"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "contact",
+        "target": "la créature touchée",
+        "duration": "1 round/niveau",
+        "savingThrow": "Volonté, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.melt",
+      "type": "spell",
+      "name": {
+        "fr": "Dégel",
+        "en": "Melt"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "évocation",
+        "wu_jen_fire"
+      ],
+      "description": {
+        "fr": "Un souffle de chaleur passe sur la glace et la neige, qui fondent en ruisseaux. Les créatures nées du froid, elles, sentent leur corps se défaire.\n\nEn jeu\n• Glace et neige ordinaires fondent sans jet ni résistance à la magie ; la glace donne autant d'eau, la neige un dixième de son volume (l'eau peut regeler).\n• Créatures du froid : 2 points de dégâts par niveau de lanceur (10 au plus), Vigueur pour la moitié ; leur résistance à la magie s'applique.\n• Glace ou neige magique (mur de glace) : mêmes dégâts, elle peut se briser mais ne fond pas.\n• Composantes : quelques cristaux de sel et une pincée de suie."
+      },
+      "spell": {
+        "school": "Évocation",
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "cube de glace de 1,50 m d'arête/niveau, cube de neige de 3 m d'arête/niveau ou 1 créature du froid/niveau",
+        "duration": "instantanée",
+        "savingThrow": "aucun ou Vigueur, 1/2 dégâts ; voir description",
+        "spellResistance": "voir description"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "add",
+          "value": "min(2 * @spell.caster_level, 10)",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.flensing",
+      "type": "spell",
+      "name": {
+        "fr": "Dépeçage",
+        "en": "Flensing"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "transmutation"
+      ],
+      "description": {
+        "fr": "Une force invisible arrache la peau et la chair de la victime, lambeau après lambeau. La douleur brise le corps autant que l'esprit.\n\nEn jeu\n• Chaque round, jusqu'à 4 rounds : 2d6 points de dégâts, plus 1d6 d'affaiblissement temporaire de Charisme ou 1d6 de Constitution.\n• Jet de Vigueur chaque round : en cas de réussite, pas d'affaiblissement, dégâts réduits de moitié, et le sort prend fin.\n• Sans effet sur une créature à l'état gazeux.\n• Composante : un oignon."
+      },
+      "spell": {
+        "school": "Transmutation",
+        "descriptors": [
+          "mal"
+        ],
+        "components": "V, G, M",
+        "castingTime": "1 action simple",
+        "range": "courte (7,50 m + 1,50 m/2 niveaux)",
+        "target": "1 créature tangible ; voir description",
+        "duration": "jusqu'à 4 rounds ; voir description",
+        "savingThrow": "Vigueur, partiel ; voir description",
+        "spellResistance": "oui"
+      },
+      "effects": [
+        {
+          "target": "spell.damage",
+          "op": "dice",
+          "value": "2d6",
+          "scope": "spell"
+        }
+      ],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.withering_palm",
+      "type": "spell",
+      "name": {
+        "fr": "Dépérissement",
+        "en": "Withering Palm"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "nécromancie"
+      ],
+      "description": {
+        "fr": "Une paume posée sur la poitrine, et la vie de la victime se flétrit : ses muscles fondent, son souffle se fait court.\n\nEn jeu\n• Attaque de contact au corps à corps.\n• Affaiblissement temporaire de 1 point de Force et 1 point de Constitution par tranche de 2 niveaux de lanceur (15 au plus chacun) ; Vigueur, annule.\n• Sur un coup critique, c'est une diminution permanente à la place."
+      },
+      "spell": {
+        "school": "Nécromancie",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "contact",
+        "target": "la créature vivante touchée",
+        "duration": "instantanée",
+        "savingThrow": "Vigueur, annule",
+        "spellResistance": "oui"
+      },
+      "effects": [],
+      "source": "Complete Arcane"
+    },
+    {
+      "id": "spell.detect_shapechanger",
+      "type": "spell",
+      "name": {
+        "fr": "Détection des métamorphes",
+        "en": "Detect Shapechanger"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "divination"
+      ],
+      "description": {
+        "fr": "Un baume de miel et de lotus sur les paupières, et les masques tombent : le lanceur voit ce qui se cache sous la forme empruntée.\n\nEn jeu\n• Par une action simple de concentration, examine 1 créature visible à 18 m ou moins par round.\n• Il apprend si elle est métamorphosée, déguisée ou transmuée, et quelle est sa vraie forme.\n• Face à un métamorphe sous sa vraie forme, il sait que c'en est un, sans connaître ses autres formes.\n• Métamorphe : sous-type métamorphe ou pouvoir extraordinaire ou surnaturel de transformation (un barghest l'est, un magicien qui connaît modification d'apparence non).\n• Composante : un baume de miel et de fleurs de lotus sur les paupières."
+      },
+      "spell": {
+        "school": "Divination",
+        "components": "V, G, M",
+        "castingTime": "1 round",
+        "range": "personnelle",
+        "target": "le jeteur de sorts",
+        "duration": "1 round/niveau"
+      },
+      "effects": [],
+      "source": "Complete Arcane",
+      "note": "Nom anglais à confirmer."
+    },
+    {
+      "id": "spell.reaving_dispel",
+      "type": "spell",
+      "name": {
+        "fr": "Dissipation voleuse",
+        "en": "Reaving Dispel"
+      },
+      "provenance": "official",
+      "labels": [
+        "spell",
+        "abjuration"
+      ],
+      "description": {
+        "fr": "Le mage ne se contente pas de défaire la magie des autres : il l'arrache et la garde pour lui, protections ennemies comprises.\n\nEn jeu\n• Comme dissipation de la magie, mais le bonus de niveau de lanceur au test de dissipation va jusqu'à +25 (au lieu de +10).\n• Comme dissipation suprême, peut aussi dissiper les effets sensibles à délivrance des malédictions.\n• Dissipation ciblée : chaque sort dissipé peut être volé ; il agit alors sur le mage pour sa durée restante, comme si son auteur l'avait lancé sur lui. Si la cible en était l'auteur, le mage peut y mettre fin ou maintenir sa concentration à sa place.\n• Art de la magie (DD 25 + niveau du sort) pour identifier chaque sort ; on peut voler un sort non identifié, mais à ses risques (pas de résistance à la magie contre lui, même jet de sauvegarde que la cible d'origine).\n• Contresort : le mage peut voler le sort contré une fois lancé et le rediriger vers les cibles ou la zone de son choix (Art de la magie DD 25 + niveau du sort pour l'identifier) ; si les conditions du sort ne sont pas remplies, il échoue.\n• Dissipation de zone : bonus jusqu'à +25, mais rien n'est volé."
+      },
+      "spell": {
+        "school": "Abjuration",
+        "components": "V, G",
+        "castingTime": "1 action simple",
+        "range": "moyenne (30 m + 3 m/niveau)",
+        "target": "1 lanceur de sorts, créature ou objet ; ou rayonnement de 6 m de rayon",
+        "duration": "instantanée",
+        "savingThrow": "voir description",
+        "spellResistance": "non"
+      },
+      "effects": [],
+      "source": "Complete Arcane"
+    }
+  ]
+}

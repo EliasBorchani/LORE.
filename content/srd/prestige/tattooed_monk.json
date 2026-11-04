@@ -1,0 +1,1232 @@
+{
+  "entities": [
+    {
+      "id": "class.tattooed_monk",
+      "type": "prestige_class",
+      "name": {
+        "fr": "Moine tatoué",
+        "en": "Tattooed Monk"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class",
+        "prestige",
+        "martial"
+      ],
+      "description": {
+        "fr": "Sur son crâne rasé et sur sa peau s'écrit peu à peu un bestiaire sacré : chaque tatouage est une promesse faite à une bête, une fleur ou un astre, et le corps tient parole. Le moine tatoué cherche l'illumination, et l'encre le suit sur le chemin.\n\nEn jeu\n• Dé de vie : d8. Points de compétence : 4 + modificateur d'Intelligence par niveau.\n• Conditions : alignement loyal ; bonus de base à l'attaque +3 ; 8 rangs en Connaissances (religion) ; dons Endurance, Science de la lutte et Science du combat à mains nues.\n• Aucune formation nouvelle aux armes ni aux armures.\n• Compétences de classe : Acrobaties, Artisanat, Concentration, Connaissances, Déplacement silencieux, Diplomatie, Discrétion, Équilibre, Escalade, Évasion, Natation, Perception auditive, Profession, Représentation, Saut.\n• Aptitudes : aptitudes de moine et un tatouage (1) ; un nouveau tatouage à chaque niveau impair (3, 5, 7, 9).\n• Un moine peut prendre des niveaux de moine tatoué sans interrompre sa carrière de moine."
+      },
+      "hitDie": 8,
+      "skillPoints": 4,
+      "note": "Condition d'alignement loyal : texte seul. Nom anglais du tatouage à confirmer : Mallow (« Marante », nom exact incertain).",
+      "prerequisite": "@bab >= 3 and @skill.knowledge_religion.ranks >= 8 and has('feat.endurance') and has('feat.improved_grapple') and has('feat.improved_unarmed_strike')"
+    },
+    {
+      "id": "power.tattooed_monk_monk_abilities",
+      "type": "class_power",
+      "name": {
+        "fr": "Aptitudes de moine",
+        "en": "Monk abilities"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk"
+      ],
+      "description": {
+        "fr": "Ses années de monastère comptent double : l'encre n'a pas fait de lui un autre homme, seulement un moine plus accompli.\n\nEn jeu\n• Ses niveaux de moine tatoué comptent comme niveaux de moine pour les dégâts à mains nues, le bonus à la CA et le déplacement accéléré. Ils se cumulent avec ses vrais niveaux de moine.\n• Les autres aptitudes de moine (déluge de coups, dons supplémentaires, esquive totale…) ne comptent pas ses niveaux de moine tatoué."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor((level('class.monk') + level('class.tattooed_monk')) / 5) - floor(level('class.monk') / 5)"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d6",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.tattooed_monk')) >= 1 and (level('class.monk') + level('class.tattooed_monk')) < 4"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d8",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.tattooed_monk')) >= 4 and (level('class.monk') + level('class.tattooed_monk')) < 8"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "1d10",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.tattooed_monk')) >= 8 and (level('class.monk') + level('class.tattooed_monk')) < 12"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d6",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.tattooed_monk')) >= 12 and (level('class.monk') + level('class.tattooed_monk')) < 16"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d8",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.tattooed_monk')) >= 16 and (level('class.monk') + level('class.tattooed_monk')) < 20"
+        },
+        {
+          "target": "unarmed.damage",
+          "op": "set",
+          "value": "2d10",
+          "layer": "base",
+          "condition": "(level('class.monk') + level('class.tattooed_monk')) >= 20"
+        },
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": "3 * floor((level('class.monk') + level('class.tattooed_monk')) / 3) - 3 * floor(level('class.monk') / 3)"
+        }
+      ],
+      "note": "Même modèle que le poing illuminé : le bonus de CA ajoute ce que le total (moine + moine tatoué) donne de plus que les seuls niveaux de moine, sans Sagesse s'il n'a pas de niveau de moine (le Codex ne le précise pas). Dégâts à mains nues : le plus fort des deux. Armure et charge : non gérées, comme pour le moine."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage",
+        "en": "Tattoo"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk"
+      ],
+      "description": {
+        "fr": "Chaque tatouage est un pouvoir gravé dans la peau : une bête, une fleur ou un astre qui prête son don à celui qui le porte.\n\nEn jeu\n• Surnaturel (le croissant de lune et le mille-pattes sont magiques). Un tatouage au niveau 1, puis un de plus à chaque niveau impair : 5 tatouages au niveau 9.\n• Trois tatouages demandent un niveau minimum de classe : mille-pattes (5), phénix (7), croissant de lune (9).\n• Comme des objets magiques : dans un champ d'antimagie, le moine tatoué perd tous les bénéfices de ses tatouages.\n• Les effets qui ne sont pas continus s'activent par une action de mouvement qui ne provoque pas d'attaque d'opportunité. Beaucoup d'entre eux s'emploient une fois par jour par tatouage possédé, et leur bonus égale le nombre de tatouages.\n• Liste : araignée, bambou, caméléon, campanule, chauve-souris, chrysanthème, crabe, croissant de lune, dragon, faucon, grue, guêpe, libellule, licorne, lion, marante, masque blanc, mille-pattes, montagne, océan, papillon, phénix, pin, pleine lune, rossignol, scorpion, singe, soleil, tigre, tortue."
+      },
+      "effects": [],
+      "note": "Choix des tatouages : une relation « choice » de la classe vers chaque tatouage (comme les hautes arcanes de l'archimage), un par niveau impair. Les bonus « égal au nombre de tatouages » lisent ⌊(niveau + 1) / 2⌋ : ils supposent que le joueur a bien pris un tatouage à chaque niveau impair."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_spider",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : araignée",
+        "en": "Tattoo: Spider"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Huit pattes d'encre courent sur sa main, et son poing devient venimeux.\n\nEn jeu\n• Surnaturel. Il faut avoir le don Poing étourdissant.\n• À la place d'une attaque étourdissante, il inocule un poison de contact par une attaque à mains nues. DD du jet de Vigueur : 10 + niveau de classe + modificateur de Constitution. Effets initial et secondaire : 2 points d'affaiblissement de Constitution.\n• Chaque emploi dépense une attaque de Poing étourdissant quotidienne."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_bamboo",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : bambou",
+        "en": "Tattoo: Bamboo"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Il plie sans rompre : son corps s'endurcit comme une tige.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé.\n• Bonus d'altération en Constitution égal à son nombre de tatouages, pendant 1 round par niveau de classe."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.tattooed_monk_bamboo')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_chameleon",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : caméléon",
+        "en": "Tattoo: Chameleon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Sa peau prend les couleurs de la rue, et son visage celles de la foule.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : effet similaire au sort modification d'apparence, pendant 1 heure par niveau de classe."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_bellflower",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : campanule",
+        "en": "Tattoo: Bellflower"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Une fleur sur la joue, et sa parole pèse autant que son corps.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : il applique son modificateur de Charisme à l'une de ses caractéristiques (Charisme compris), pendant 1 round par niveau de classe."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)",
+      "note": "Le choix de la caractéristique et le cas du Charisme (il s'ajoute à lui-même) ne sont pas modélisés : texte seul."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_bat",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : chauve-souris",
+        "en": "Tattoo: Bat"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Il vole à travers les coups avec une grâce de chauve-souris.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé.\n• Bonus d'altération en Dextérité égal à son nombre de tatouages, pendant 1 round par niveau de classe."
+      },
+      "effects": [
+        {
+          "target": "ability.dex.score",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.tattooed_monk_bat')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_chrysanthemum",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : chrysanthème",
+        "en": "Tattoo: Chrysanthemum"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Le soleil le nourrit comme une fleur, et ses plaies se referment sous la lumière.\n\nEn jeu\n• Surnaturel : il regagne un nombre de points de vie égal à son niveau (de personnage) pour chaque heure passée au soleil.\n• Un effet de lumière du jour ne suffit pas : il faut la lumière naturelle."
+      },
+      "effects": [],
+      "note": "Soins en plein soleil : texte seul."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_crab",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : crabe",
+        "en": "Tattoo: Crab"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Une carapace d'encre : les armes ordinaires glissent dessus.\n\nEn jeu\n• Surnaturel : réduction des dégâts 2/magie, augmentée de 2 pour chaque autre tatouage possédé (soit 2 par tatouage au total)."
+      },
+      "effects": [],
+      "note": "Réduction des dégâts /magie : le modèle ne tient que la réduction « sans type » (damage_reduction.none), texte seul. Valeur : 2 × nombre de tatouages."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_crescent_moon",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : croissant de lune",
+        "en": "Tattoo: Crescent Moon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "La lune montante le rend léger comme une brume : il glisse hors du monde.\n\nEn jeu\n• Magique, une fois par jour : forme éthérée sur lui-même (comme le sort).\n• Il faut être au moins niveau 9 de moine tatoué pour obtenir ce tatouage."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_dragon",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : dragon",
+        "en": "Tattoo: Dragon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un dragon enroulé sur le torse : il en crache le feu.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : il crache du feu comme avec l'élixir de souffle enflammé (Guide du Maître)."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_falcon",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : faucon",
+        "en": "Tattoo: Falcon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Le regard du faucon ne cille devant rien, et ceux qui le suivent non plus.\n\nEn jeu\n• Surnaturel : immunité contre la terreur (magique ou non).\n• Ses alliés à 3 m ou moins ont un bonus de moral aux jets de sauvegarde contre la terreur égal à son bonus de Charisme + son nombre de tatouages."
+      },
+      "effects": [],
+      "note": "Immunité et bonus des alliés : texte seul (le bonus des alliés n'est pas sur sa propre feuille)."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_crane",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : grue",
+        "en": "Tattoo: Crane"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "La grue vit longtemps : l'encre défie la maladie, le poison et le temps.\n\nEn jeu\n• Surnaturel, progressif : à l'obtention, immunité contre les maladies non magiques.\n• Au tatouage suivant (lequel que ce soit) : immunité contre les poisons.\n• Au tatouage d'après : plus de malus dus à l'âge, plus de vieillissement magique (les malus déjà acquis restent). Les bonus dus à l'âge continuent de s'accumuler, et il meurt de vieillesse le moment venu."
+      },
+      "effects": [],
+      "note": "Immunités : texte seul."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_hornet",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : guêpe",
+        "en": "Tattoo: Hornet"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un mouvement plus vif que l'œil : il bourdonne comme une guêpe.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : effet similaire à rapidité sur lui-même, pendant 1 round par niveau de classe.\n• Rapidité : +1 aux jets d'attaque, +1 en CA et aux jets de Réflexes (esquive), vitesse +9 m, une attaque supplémentaire dans une attaque à outrance."
+      },
+      "effects": [
+        {
+          "target": "attack.all",
+          "op": "add",
+          "value": 1,
+          "condition": "active('toggle.tattooed_monk_hornet')"
+        },
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge",
+          "condition": "active('toggle.tattooed_monk_hornet')"
+        },
+        {
+          "target": "save.ref",
+          "op": "add",
+          "value": 1,
+          "bonusType": "dodge",
+          "condition": "active('toggle.tattooed_monk_hornet')"
+        },
+        {
+          "target": "speed.land",
+          "op": "add",
+          "value": 9,
+          "bonusType": "enhancement",
+          "condition": "active('toggle.tattooed_monk_hornet')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)",
+      "note": "Mêmes valeurs que le sort rapidité. L'attaque supplémentaire reste à la charge du joueur."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_dragonfly",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : libellule",
+        "en": "Tattoo: Dragonfly"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Il danse entre les coups comme une libellule entre les roseaux.\n\nEn jeu\n• Surnaturel, une fois par jour : bonus d'esquive à la CA égal à son nombre de tatouages, pendant 1 round par niveau de classe."
+      },
+      "effects": [
+        {
+          "target": "ac.total",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "dodge",
+          "condition": "active('toggle.tattooed_monk_dragonfly')"
+        }
+      ],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_unicorn",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : licorne",
+        "en": "Tattoo: Unicorn"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "La chance sourit à qui porte la corne : un second essai, une fois par jour.\n\nEn jeu\n• Surnaturel, une fois par jour : il relance un d20 qu'il vient de lancer et garde le nouveau résultat, même s'il est pire.\n• Il doit annoncer l'emploi avant de connaître les résultats de son jet."
+      },
+      "effects": [],
+      "usesPerDay": 1
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_lion",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : lion",
+        "en": "Tattoo: Lion"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Le lion frappe une fois, et fort : l'adversaire désigné s'en souvient.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : il châtie un adversaire par une seule attaque de corps à corps, avec +4 au jet d'attaque et un bonus aux dégâts égal à son niveau de classe.\n• Il annonce l'emploi avant le jet d'attaque. En cas d'échec, l'emploi est quand même décompté."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.tattooed_monk_lion')"
+        },
+        {
+          "target": "damage.melee",
+          "op": "add",
+          "value": "level('class.tattooed_monk')",
+          "condition": "active('toggle.tattooed_monk_lion')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)",
+      "note": "À activer pour une seule attaque."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_mallow",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : marante",
+        "en": "Tattoo: Mallow"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Ses mains apaisent : une plante médicinale gravée sur la paume.\n\nEn jeu\n• Surnaturel : il soigne une créature touchée (pas lui-même). Total par jour : son bonus de Sagesse × son niveau de classe, en une ou plusieurs fois."
+      },
+      "effects": [],
+      "note": "Soins : texte seul. Nom anglais à confirmer (Mallow)."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_white_mask",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : masque blanc",
+        "en": "Tattoo: White Mask"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un visage blanc sur le sien : aucune pensée ne le traverse, aucun mensonge ne le trahit.\n\nEn jeu\n• Surnaturel : immunité contre détection des pensées, détection du mensonge et les tentatives magiques de détecter son alignement.\n• +10 à tous ses tests de Bluff."
+      },
+      "effects": [
+        {
+          "target": "skill.bluff",
+          "op": "add",
+          "value": 10
+        }
+      ],
+      "note": "Immunités : texte seul. Le bonus de +10 est sans type."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_centipede",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : mille-pattes",
+        "en": "Tattoo: Centipede"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Cent pattes qui courent d'ombre en ombre.\n\nEn jeu\n• Magique, une fois par semaine : effet similaire à traversée des ombres, pour de longs trajets. Il doit finir son voyage sur le plan Matériel.\n• Il faut être au moins niveau 5 de moine tatoué pour obtenir ce tatouage."
+      },
+      "effects": [],
+      "usesPerDay": 1,
+      "note": "Une fois par semaine, pas par jour : le compteur est à gérer à la main."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_mountain",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : montagne",
+        "en": "Tattoo: Mountain"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Une montagne sur le dos : impossible de le déplacer, difficile de le faire céder.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : il devient aussi solide qu'une montagne pendant 1 round par niveau de classe (il peut arrêter l'effet par une action libre).\n• Il ne peut plus bouger, subit −20 aux tests de compétence liés à la Dextérité, est immunisé contre bousculade et croc-en-jambe, et gagne +4 en Constitution et en Sagesse.\n• Les points de vie de la Constitution sont perdus à la fin de l'effet, mais pas en premier (contrairement aux points de vie temporaires)."
+      },
+      "effects": [
+        {
+          "target": "ability.con.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.tattooed_monk_mountain')"
+        },
+        {
+          "target": "ability.wis.score",
+          "op": "add",
+          "value": 4,
+          "condition": "active('toggle.tattooed_monk_mountain')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)",
+      "note": "Le −20 aux tests de Dextérité et l'immobilité sont à la charge du joueur. Bonus sans type."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_ocean",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : océan",
+        "en": "Tattoo: Ocean"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Il porte l'océan sous la peau : ni faim, ni soif, ni sommeil.\n\nEn jeu\n• Surnaturel : plus besoin de manger, de boire ni de dormir."
+      },
+      "effects": []
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_butterfly",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : papillon",
+        "en": "Tattoo: Butterfly"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un papillon sur l'épaule, et l'esprit s'éclaircit.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : bonus d'altération en Sagesse égal à son nombre de tatouages, pendant 1 round par niveau de classe."
+      },
+      "effects": [
+        {
+          "target": "ability.wis.score",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "enhancement",
+          "condition": "active('toggle.tattooed_monk_butterfly')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_phoenix",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : phénix",
+        "en": "Tattoo: Phoenix"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un oiseau de feu, et la magie hostile s'y consume.\n\nEn jeu\n• Surnaturel : résistance à la magie de 15 + niveau de classe.\n• Il faut être au moins niveau 7 de moine tatoué pour obtenir ce tatouage."
+      },
+      "effects": [
+        {
+          "target": "spell_resistance",
+          "op": "set",
+          "value": "15 + level('class.tattooed_monk')",
+          "layer": "base"
+        }
+      ],
+      "note": "Comme le moine (âme de diamant), la résistance à la magie est un « set » de base : on garde la plus haute."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_pine",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : pin",
+        "en": "Tattoo: Pine"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un pin tient debout dans la tempête : son corps aussi.\n\nEn jeu\n• Surnaturel : il obtient les avantages du don Dur à cuire (Robustesse, +3 points de vie)."
+      },
+      "effects": [],
+      "note": "Relation « grants » vers le don Dur à cuire (Toughness)."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_full_moon",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : pleine lune",
+        "en": "Tattoo: Full Moon"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "La pleine lune guide son geste, une fois la nuit tombée.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : bonus de chance de +2 sur un seul jet d'attaque, test de compétence ou de caractéristique.\n• Impossible pendant les heures du jour."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_nightingale",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : rossignol",
+        "en": "Tattoo: Nightingale"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un chant d'encre qui referme les plaies.\n\nEn jeu\n• Surnaturel : il soigne une créature touchée (lui compris). Total par jour : deux fois son niveau de classe en points de vie, en une ou plusieurs fois."
+      },
+      "effects": [],
+      "note": "Soins : texte seul."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_scorpion",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : scorpion",
+        "en": "Tattoo: Scorpion"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un dard invisible : l'ennemi frappe de travers.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : il oblige un adversaire à utiliser, pour un jet d'attaque, sa caractéristique la plus basse entre Force et Dextérité à la place de son modificateur normal.\n• Il peut l'activer pendant le tour de l'adversaire, avant que la réussite de l'attaque soit connue. Seulement contre une attaque dont il est conscient, et s'il n'est pas pris au dépourvu."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_monkey",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : singe",
+        "en": "Tattoo: Monkey"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Un singe sur l'épaule : il grimpe, se faufile et crochète comme lui.\n\nEn jeu\n• Surnaturel : bonus d'aptitude égal à son nombre de tatouages aux tests d'Acrobaties, de Crochetage, de Déplacement silencieux, de Discrétion, d'Équilibre, d'Escalade et d'Évasion."
+      },
+      "effects": [
+        {
+          "target": "skill.tumble",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.open_lock",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.move_silently",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.hide",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.balance",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.climb",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "competence"
+        },
+        {
+          "target": "skill.escape_artist",
+          "op": "add",
+          "value": "floor((level('class.tattooed_monk') + 1) / 2)",
+          "bonusType": "competence"
+        }
+      ]
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_sun",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : soleil",
+        "en": "Tattoo: Sun"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Le soleil guide son geste, mais seulement tant qu'il fait jour.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : bonus de chance de +2 sur un seul jet d'attaque, test de compétence ou de caractéristique.\n• Utilisable seulement pendant les heures du jour."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_tiger",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : tigre",
+        "en": "Tattoo: Tiger"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "Il bondit, griffe, et la peau du tigre lui sert de seconde peau.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : à mains nues, +1 aux jets d'attaque et +1d6 de dégâts, pendant 1 round par niveau de classe."
+      },
+      "effects": [
+        {
+          "target": "attack.melee",
+          "op": "add",
+          "value": 1,
+          "condition": "active('toggle.tattooed_monk_tiger')"
+        },
+        {
+          "target": "damage.tattooed_monk_tiger",
+          "op": "dice",
+          "value": "1d6",
+          "condition": "active('toggle.tattooed_monk_tiger')"
+        }
+      ],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)",
+      "note": "Les dés sont sur une statistique à part, damage.tattooed_monk_tiger, active avec la case."
+    },
+    {
+      "id": "power.tattooed_monk_tattoo_tortoise",
+      "type": "class_power",
+      "name": {
+        "fr": "Tatouage : tortue",
+        "en": "Tattoo: Tortoise"
+      },
+      "source": "Complete Warrior",
+      "provenance": "official",
+      "labels": [
+        "class_power",
+        "tattooed_monk",
+        "tattoo"
+      ],
+      "description": {
+        "fr": "La carapace du savoir : même ce qu'il n'a jamais appris, il le sait un peu.\n\nEn jeu\n• Surnaturel, une fois par jour par tatouage possédé : un seul jet d'une compétence où il n'a aucun rang, comme s'il avait un nombre de rangs égal à son niveau de classe.\n• Exemple : niveau 4 et deux tatouages, il peut faire deux tests d'Utilisation d'objets magiques comme avec 4 rangs (modificateur de Charisme normal)."
+      },
+      "effects": [],
+      "usesPerDay": "floor((level('class.tattooed_monk') + 1) / 2)"
+    }
+  ],
+  "progressions": [
+    {
+      "classId": "class.tattooed_monk",
+      "level": 1,
+      "bab": 0,
+      "fort": 2,
+      "ref": 2,
+      "will": 2,
+      "grants": [
+        "power.tattooed_monk_monk_abilities",
+        "power.tattooed_monk_tattoo"
+      ]
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 2,
+      "bab": 1,
+      "fort": 3,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 3,
+      "bab": 2,
+      "fort": 3,
+      "ref": 3,
+      "will": 3,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 4,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 5,
+      "bab": 3,
+      "fort": 4,
+      "ref": 4,
+      "will": 4,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 6,
+      "bab": 4,
+      "fort": 5,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 7,
+      "bab": 5,
+      "fort": 5,
+      "ref": 5,
+      "will": 5,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 8,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 9,
+      "bab": 6,
+      "fort": 6,
+      "ref": 6,
+      "will": 6,
+      "grants": []
+    },
+    {
+      "classId": "class.tattooed_monk",
+      "level": 10,
+      "bab": 7,
+      "fort": 7,
+      "ref": 7,
+      "will": 7,
+      "grants": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.tumble"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.craft"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.concentration"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.knowledge"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.move_silently"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.diplomacy"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.hide"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.balance"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.climb"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.escape_artist"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.swim"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.listen"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.profession"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.perform"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "class_skill",
+      "to": "skill.jump"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_spider",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_bamboo",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_chameleon",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_bellflower",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_bat",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_chrysanthemum",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_crab",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_crescent_moon",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_dragon",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_falcon",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_crane",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_hornet",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_dragonfly",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_unicorn",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_lion",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_mallow",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_white_mask",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_centipede",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_mountain",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_ocean",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_butterfly",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_phoenix",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_pine",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_full_moon",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_nightingale",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_scorpion",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_monkey",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_sun",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_tiger",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "class.tattooed_monk",
+      "relation": "choice",
+      "to": "power.tattooed_monk_tattoo_tortoise",
+      "note": "Tatouage : un au niveau 1 et un à chaque niveau impair"
+    },
+    {
+      "from": "power.tattooed_monk_tattoo_pine",
+      "relation": "grants",
+      "to": "feat.toughness"
+    }
+  ]
+}
