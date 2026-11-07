@@ -208,6 +208,4 @@ as missing): such files must use the new id.
 - The limit per address counts every try, right or wrong, and lives in Caddy's memory: a restart clears it. Caddy is
   built with the `caddy-ratelimit` plugin (`apps/web/Dockerfile`, Caddy and plugin versions pinned there); updating
   Caddy means changing both versions together.
-- The core rule sections (statistics, bonus types, dice steps) come from `test-references/danalieth/catalog.json`.
-  They should move to a batch of their own in `content/` so production does not depend on a test file.
 - Images are built on the server. If that ever becomes too slow, GitHub Actions can build them instead.

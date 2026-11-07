@@ -31,6 +31,21 @@ data class Catalog(
     val rules: List<Rule> = emptyList(),
     val relations: List<Relation> = emptyList(),
     val diceSteps: DiceSteps = DiceSteps(),
+    /** What changes when a creature grows into each size (the SRD table), for forms advanced past their base size. */
+    val sizeChanges: List<SizeChange> = emptyList(),
+)
+
+/**
+ * Growing one size category into [size] (Medium to Large: Str +8, Dex −2, Con +4, natural armor +2). Shrinking takes
+ * the same values off.
+ */
+@Serializable
+data class SizeChange(
+    val size: String,
+    val str: Long = 0,
+    val dex: Long = 0,
+    val con: Long = 0,
+    val naturalArmor: Long = 0,
 )
 
 /**
@@ -127,6 +142,70 @@ data class Entity(
     val skill: SkillInfo? = null,
     /** Skill points a class gives per level, before the Intelligence modifier (×4 at character level 1). */
     val skillPoints: Long? = null,
+    /** A creature a character can turn into (wild shape, polymorph): its physical statistics and natural attacks. */
+    val creature: CreatureInfo? = null,
+    /** How a power or a spell lets the character take a creature's form, and the limits it sets. */
+    val shaping: ShapingDef? = null,
+)
+
+/**
+ * A creature's statistics a form uses. Only Str, Dex and Con replace the character's; Int, Wis and Cha are shown.
+ * [advancement] lists the hit dice bands past [hitDice] with their size (brown bear: up to 10 Large, up to 18 Huge).
+ */
+@Serializable
+data class CreatureInfo(
+    /** Creature type: `animal`, `plant`, `elemental`, `magical_beast`, `vermin`… */
+    val kind: String,
+    val subtypes: List<String> = emptyList(),
+    val hitDice: Int,
+    val size: String,
+    /** Missing Con (undead, constructs): the form leaves the character's Con alone. */
+    val abilities: Map<Ability, Long> = emptyMap(),
+    val naturalArmor: Long = 0,
+    /** Movement modes in metres: `land`, `fly`, `swim`, `climb`, `burrow`. Modes it lacks stay the character's. */
+    val speeds: Map<String, Fraction> = emptyMap(),
+    /** `clumsy`, `poor`, `average`, `good`, `perfect`. */
+    val flyManeuverability: String? = null,
+    val attacks: List<NaturalAttack> = emptyList(),
+    val advancement: List<AdvancementBand> = emptyList(),
+    /** Special qualities and attacks, in short sentences. */
+    val qualities: LocalizedText = emptyMap(),
+)
+
+/**
+ * [dice]: a dice formula for the creature's base size, without the Strength bonus (`1d8`, `2d6 + 2d6 fire`); untyped
+ * dice take [damageType]. [count] attacks of this kind in a full attack.
+ */
+@Serializable
+data class NaturalAttack(
+    val id: String,
+    val name: LocalizedText,
+    val count: Int = 1,
+    val dice: String,
+    val damageType: String? = null,
+    /** A secondary attack takes the secondary penalty and half the Strength bonus. */
+    val primary: Boolean = true,
+)
+
+@Serializable
+data class AdvancementBand(val maxHd: Int, val size: String)
+
+/**
+ * A way to take a creature's form. [maxHd], [minSize] and [maxSize] are formulas (`level('class.druid')`,
+ * `if(level('class.druid') >= 15, 'huge', 'large')`). An entity whose [extends] names another shaping entity adds its
+ * [kinds] to that one (Magical Beast Wild Shape adds `magical_beast` to Wild Shape).
+ */
+@Serializable
+data class ShapingDef(
+    val kinds: List<String> = emptyList(),
+    val maxHd: EffectValue? = null,
+    val minSize: EffectValue? = null,
+    val maxSize: EffectValue? = null,
+    /** Equipment melds into the form and stops working, except items labelled `wilding`. */
+    val meldsEquipment: Boolean = false,
+    /** The feat that allows casting in the form (Natural Spell); null means the form can cast. */
+    val castingFeat: String? = null,
+    val extends: String? = null,
 )
 
 /** The value picked at the table, from 1 to [max] (a number or a formula: `@bab`); read as `@toggle.<id>.value`. */

@@ -3,6 +3,7 @@ package dndtools.engine.resolve
 import dndtools.engine.math.Fraction
 import dndtools.engine.model.Ability
 import dndtools.engine.model.Character
+import dndtools.engine.model.SavedForm
 
 /**
  * A fact read from the character's choices rather than from another statistic. The resolver records the inputs each
@@ -47,7 +48,13 @@ internal sealed interface Input {
     data class ClassSkill(val skillId: String) : Input
     data object ClassSkillPoints : Input
     data object SkillPointsSpent : Input
+
+    /** The saved form the character is in, or none: read by the `form.*` and `natural.*` statistics. */
+    data object ActiveForm : Input
 }
+
+/** What [Input.ActiveForm] reads: a value, so a change of form (or of its build) marks its readers dirty. */
+internal data class FormFacts(val form: SavedForm?)
 
 /** A spell as the character casts it: from a saved variant, or from a toggle naming a spell and its metamagic. */
 internal data class VariantDef(val spell: String, val casterClass: String?, val metamagic: List<String>, val heighten: Int = 0)
@@ -84,6 +91,19 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         }
     }
 
+    /** The form of the first toggle naming a saved form; a second one is reported and ignored. */
+    val activeForm: SavedForm? = character.activeToggles.firstNotNullOfOrNull { toggle ->
+        toggle.form?.let { id -> character.forms.firstOrNull { it.id == id } }
+    }
+    val formToggles: Int = character.activeToggles.count { toggle -> character.forms.any { it.id == toggle.form } }
+    val race: String? = character.race
+
+    /** The active form's creature, when the catalog has it. */
+    val formCreature: String? = activeForm?.creature?.takeIf { catalog.entity(it)?.creature != null }
+
+    private val melds: Boolean = activeForm != null && !activeForm.keepEquipment &&
+        catalog.entity(activeForm.source)?.shaping?.meldsEquipment == true
+
     private val skillRanks: Map<String, Long> = buildMap {
         putAll(character.skillRanks)
         for (record in records) record.skillRanks.forEach { (skill, ranks) -> put(skill, (get(skill) ?: 0) + ranks) }
@@ -100,7 +120,11 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
             record.feats.forEach { add(it.id) }
             record.gained.forEach(::add)
         }
-        character.items.filter { it.equipped }.forEach { add(it.id) }
+        // Melded equipment stops working; wilding items keep theirs.
+        character.items
+            .filter { it.equipped && (!melds || WILDING in catalog.entity(it.id)?.labels.orEmpty()) }
+            .forEach { add(it.id) }
+        add(formCreature)
         // A skill with ranks is had, so its synergy effects (Tumble 5 ranks: +2 Balance) can apply.
         skillRanks.filter { it.value > 0 }.keys.forEach(::add)
         spellVariants.keys.forEach(::add)
@@ -193,6 +217,7 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
             (catalog.entity(record.classId)?.skillPoints ?: 0L) * (if (record.level == 1) 4 else 1)
         }
         // Simplification: the cost follows today's class skills, not the ones the character had when buying.
+        Input.ActiveForm -> FormFacts(activeForm)
         Input.SkillPointsSpent -> skillRanks.entries.sumOf { (skill, ranks) -> ranks * (if (isClassSkill(skill)) 1 else 2) }
     }
 
@@ -286,6 +311,7 @@ internal class CharacterState(character: Character, atLevel: Int?, private val c
         private val SKILL_RANKS = Regex("($SLUG?skill\\..+)\\.ranks")
         private val CLASS_SKILL = Regex("($SLUG?skill\\..+)\\.class_skill")
         private const val KNOWLEDGE = "skill.knowledge"
+        const val WILDING = "wilding"
         private const val KNOWLEDGE_FIELD = "skill.knowledge_"
 
         /**

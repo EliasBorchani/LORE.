@@ -1,0 +1,991 @@
+{
+  "entities": [
+    {
+      "id": "creature.light_warhorse",
+      "type": "creature",
+      "name": {
+        "fr": "Cheval de guerre léger",
+        "en": "Light Warhorse"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un destrier vif et nerveux, dressé pour ne pas broncher dans le fracas d'une bataille. Il frappe des sabots autant que des dents.\n\nEn jeu\n• Animal de taille G, 3 DV, vitesse 18 m.\n• Attaques : 2 sabots 1d4, morsure 1d3 (secondaire).\n• Odorat, vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "large",
+        "abilities": {
+          "str": 16,
+          "dex": 13,
+          "con": 17,
+          "int": 2,
+          "wis": 13,
+          "cha": 6
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 18
+        },
+        "attacks": [
+          {
+            "id": "hoof",
+            "name": {
+              "fr": "Sabot",
+              "en": "Hoof"
+            },
+            "count": 2,
+            "dice": "1d4",
+            "damageType": "bludgeoning"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d3",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.heavy_warhorse",
+      "type": "creature",
+      "name": {
+        "fr": "Cheval de guerre lourd",
+        "en": "Heavy Warhorse"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Massif et courageux, il charge sans hésiter au milieu des lances. Ses sabots brisent des boucliers.\n\nEn jeu\n• Animal de taille G, 4 DV, vitesse 15 m.\n• Attaques : 2 sabots 1d6, morsure 1d4 (secondaire).\n• Odorat, vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 4,
+        "size": "large",
+        "abilities": {
+          "str": 18,
+          "dex": 13,
+          "con": 17,
+          "int": 2,
+          "wis": 13,
+          "cha": 6
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "hoof",
+            "name": {
+              "fr": "Sabot",
+              "en": "Hoof"
+            },
+            "count": 2,
+            "dice": "1d6",
+            "damageType": "bludgeoning"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d4",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.light_horse",
+      "type": "creature",
+      "name": {
+        "fr": "Cheval léger",
+        "en": "Light Horse"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Une monture rapide pour les longues routes. Elle préfère fuir plutôt que se battre, et ne combat qu'avec son cavalier en selle.\n\nEn jeu\n• Animal de taille G, 3 DV, vitesse 18 m.\n• Attaques : 2 sabots 1d4 (secondaires).\n• Odorat, vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "large",
+        "abilities": {
+          "str": 14,
+          "dex": 13,
+          "con": 15,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 18
+        },
+        "attacks": [
+          {
+            "id": "hoof",
+            "name": {
+              "fr": "Sabot",
+              "en": "Hoof"
+            },
+            "count": 2,
+            "dice": "1d4",
+            "damageType": "bludgeoning",
+            "primary": false
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.heavy_horse",
+      "type": "creature",
+      "name": {
+        "fr": "Cheval lourd",
+        "en": "Heavy Horse"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un grand cheval de trait ou de selle, solide et patient. Il tire des charges que d'autres refusent de bouger.\n\nEn jeu\n• Animal de taille G, 3 DV, vitesse 15 m.\n• Attaques : 2 sabots 1d6 (secondaires).\n• Odorat, vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "large",
+        "abilities": {
+          "str": 16,
+          "dex": 13,
+          "con": 15,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "hoof",
+            "name": {
+              "fr": "Sabot",
+              "en": "Hoof"
+            },
+            "count": 2,
+            "dice": "1d6",
+            "damageType": "bludgeoning",
+            "primary": false
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dog",
+      "type": "creature",
+      "name": {
+        "fr": "Chien",
+        "en": "Dog"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un petit chien fidèle, qui flaire tout et aboie au moindre bruit. Il chasse en meute et épuise ses proies.\n\nEn jeu\n• Animal de taille P, 1 DV, vitesse 12 m.\n• Attaque : morsure 1d4.\n• Odorat, vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "small",
+        "abilities": {
+          "str": 13,
+          "dex": 17,
+          "con": 15,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 1,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d4",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.riding_dog",
+      "type": "creature",
+      "name": {
+        "fr": "Chien de selle",
+        "en": "Riding Dog"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un grand chien dressé pour porter un cavalier léger et pour faire tomber un adversaire.\n\nEn jeu\n• Animal de taille M, 2 DV, vitesse 12 m.\n• Attaque : morsure 1d6.\n• Odorat, vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "str": 15,
+          "dex": 15,
+          "con": 15,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.owl",
+      "type": "creature",
+      "name": {
+        "fr": "Chouette",
+        "en": "Owl"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Une chasseuse nocturne au vol silencieux. Elle fond sur sa proie et la saisit avec ses serres.\n\nEn jeu\n• Animal de taille TP, 1 DV, vitesse 3 m, vol 12 m (moyenne).\n• Attaque : serres 1d4.\n• Vision nocturne.\n• Progression : jusqu'à 2 DV (taille P)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 4,
+          "dex": 17,
+          "con": 10,
+          "int": 2,
+          "wis": 14,
+          "cha": 4
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 3,
+          "fly": 12
+        },
+        "flyManeuverability": "average",
+        "attacks": [
+          {
+            "id": "talon",
+            "name": {
+              "fr": "Serres",
+              "en": "Talons"
+            },
+            "dice": "1d4",
+            "damageType": "slashing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 2,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Vision nocturne.",
+          "en": "Low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.raven",
+      "type": "creature",
+      "name": {
+        "fr": "Corbeau",
+        "en": "Raven"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un oiseau noir et malin, qui rôde près des charognes. Il se bat peu et se contente de griffer.\n\nEn jeu\n• Animal de taille TP, 1/4 DV, vitesse 3 m, vol 12 m (moyenne).\n• Attaque : serres 1d2.\n• Vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 1,
+          "dex": 15,
+          "con": 10,
+          "int": 2,
+          "wis": 14,
+          "cha": 6
+        },
+        "naturalArmor": 0,
+        "speeds": {
+          "land": 3,
+          "fly": 12
+        },
+        "flyManeuverability": "average",
+        "attacks": [
+          {
+            "id": "talon",
+            "name": {
+              "fr": "Serres",
+              "en": "Talons"
+            },
+            "dice": "1d2",
+            "damageType": "slashing"
+          }
+        ],
+        "qualities": {
+          "fr": "Vision nocturne.",
+          "en": "Low-light vision."
+        }
+      },
+      "note": "1/4 DV dans le livre ; hitDice mis à 1 (entier requis)."
+    },
+    {
+      "id": "creature.toad",
+      "type": "creature",
+      "name": {
+        "fr": "Crapaud",
+        "en": "Toad"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un minuscule batracien des marais, inoffensif et à peine visible dans la vase. Sa peau terne le rend presque invisible quand il reste immobile.\n\nEn jeu\n• Animal de taille Min, 1/4 DV, vitesse 1,50 m.\n• Aucune attaque.\n• Discrétion : bonus racial de +4 grâce à sa peau.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "diminutive",
+        "abilities": {
+          "str": 1,
+          "dex": 12,
+          "con": 11,
+          "int": 1,
+          "wis": 14,
+          "cha": 4
+        },
+        "naturalArmor": 0,
+        "speeds": {
+          "land": 1.5
+        },
+        "qualities": {
+          "fr": "Aucune particularité.",
+          "en": "None."
+        }
+      },
+      "note": "1/4 DV dans le livre ; hitDice mis à 1 (entier requis). Aucune attaque."
+    },
+    {
+      "id": "creature.crocodile",
+      "type": "creature",
+      "name": {
+        "fr": "Crocodile",
+        "en": "Crocodile"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un prédateur patient caché sous l'eau, qui ne laisse affleurer que ses yeux et ses narines. Il attrape sa proie et la noie.\n\nEn jeu\n• Animal de taille M, 3 DV, vitesse 6 m, nage 9 m.\n• Attaque : morsure 1d8 ou coup de queue 1d12.\n• Étreinte : après une morsure, lutte par une action libre, sans attaque d'opportunité.\n• Retient son souffle (4 × Con rounds), vision nocturne.\n• Progression : 4-5 DV (taille M)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 19,
+          "dex": 12,
+          "con": 17,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 6,
+          "swim": 9
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          },
+          {
+            "id": "tail_slap",
+            "name": {
+              "fr": "Coup de queue",
+              "en": "Tail slap"
+            },
+            "dice": "1d12",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 5,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Étreinte (morsure), retient son souffle, vision nocturne.",
+          "en": "Improved grab (bite), hold breath, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.giant_crocodile",
+      "type": "creature",
+      "name": {
+        "fr": "Crocodile géant",
+        "en": "Giant Crocodile"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un monstre de plus de six mètres, qui chasse dans l'eau salée. Il agit comme son petit cousin, avec bien plus de force.\n\nEn jeu\n• Animal de taille TG, 7 DV, vitesse 6 m, nage 9 m.\n• Attaque : morsure 2d8 ou coup de queue 1d12.\n• Étreinte : après une morsure, lutte par une action libre, sans attaque d'opportunité.\n• Retient son souffle, vision nocturne.\n• Progression : 8-14 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 7,
+        "size": "huge",
+        "abilities": {
+          "str": 27,
+          "dex": 12,
+          "con": 19,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 7,
+        "speeds": {
+          "land": 6,
+          "swim": 9
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d8",
+            "damageType": "piercing"
+          },
+          {
+            "id": "tail_slap",
+            "name": {
+              "fr": "Coup de queue",
+              "en": "Tail slap"
+            },
+            "dice": "1d12",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 14,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Étreinte (morsure), retient son souffle, vision nocturne.",
+          "en": "Improved grab (bite), hold breath, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.elephant",
+      "type": "creature",
+      "name": {
+        "fr": "Éléphant",
+        "en": "Elephant"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un herbivore énorme, souvent placide mais imprévisible. Il charge les créatures menaçantes et piétine ce qui est dans son chemin.\n\nEn jeu\n• Animal de taille TG, 11 DV, vitesse 12 m.\n• Attaques : coup 2d6, 2 pattes 2d6 (secondaires) ; ou défenses 2d8.\n• Piétinement : 2d8 + 1,5 × Force, jet de Réflexes DD 25 pour moitié.\n• Odorat, vision nocturne.\n• Progression : 12-22 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 11,
+        "size": "huge",
+        "abilities": {
+          "str": 30,
+          "dex": 10,
+          "con": 21,
+          "int": 2,
+          "wis": 13,
+          "cha": 7
+        },
+        "naturalArmor": 7,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d6",
+            "damageType": "bludgeoning"
+          },
+          {
+            "id": "stamp",
+            "name": {
+              "fr": "Patte",
+              "en": "Stamp"
+            },
+            "count": 2,
+            "dice": "2d6",
+            "damageType": "bludgeoning",
+            "primary": false
+          },
+          {
+            "id": "gore",
+            "name": {
+              "fr": "Défense",
+              "en": "Gore"
+            },
+            "dice": "2d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 22,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Piétinement (2d8+15, Réflexes DD 25), odorat, vision nocturne.",
+          "en": "Trample (2d8+15, Reflex DC 25), scent, low-light vision."
+        }
+      },
+      "note": "Attaque à outrance : coup + 2 pattes, ou défenses ; les défenses sont une alternative, donc primaires. Le coup (2d6+10) est lui aussi primaire."
+    },
+    {
+      "id": "creature.hawk",
+      "type": "creature",
+      "name": {
+        "fr": "Faucon",
+        "en": "Hawk"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Semblable à l'aigle mais plus petit, il fond sur sa proie du ciel avec ses deux serres.\n\nEn jeu\n• Animal de taille TP, 1 DV, vitesse 3 m, vol 18 m (moyenne).\n• Attaque : serres 1d4.\n• Vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 6,
+          "dex": 17,
+          "con": 10,
+          "int": 2,
+          "wis": 14,
+          "cha": 6
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 3,
+          "fly": 18
+        },
+        "flyManeuverability": "average",
+        "attacks": [
+          {
+            "id": "talon",
+            "name": {
+              "fr": "Serres",
+              "en": "Talons"
+            },
+            "dice": "1d4",
+            "damageType": "slashing"
+          }
+        ],
+        "qualities": {
+          "fr": "Vision nocturne.",
+          "en": "Low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.wolverine",
+      "type": "creature",
+      "name": {
+        "fr": "Glouton",
+        "en": "Wolverine"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un petit carnassier trapu, féroce et obstiné. Blessé, il entre dans une rage aveugle.\n\nEn jeu\n• Animal de taille M, 3 DV, vitesse 9 m, creusement 3 m, escalade 3 m.\n• Attaques : 2 griffes 1d4, morsure 1d6 (secondaire).\n• Rage : blessé, +4 Force et +4 Constitution, -2 CA, sans pouvoir se calmer.\n• Odorat, vision nocturne.\n• Progression : 4-5 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 14,
+          "dex": 15,
+          "con": 19,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 9,
+          "burrow": 3,
+          "climb": 3
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d4",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 5,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Rage, odorat, vision nocturne.",
+          "en": "Rage, scent, low-light vision."
+        }
+      },
+      "note": "PV 3d8+15 imprimés avec Con 19 (le bonus serait +12) ; sans effet sur les données."
+    },
+    {
+      "id": "creature.ape",
+      "type": "creature",
+      "name": {
+        "fr": "Gorille",
+        "en": "Ape"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un grand singe omnivore, bien plus agressif qu'on ne le croit. Il s'annonce par des démonstrations bruyantes avant de frapper.\n\nEn jeu\n• Animal de taille G, 4 DV, vitesse 9 m, escalade 9 m.\n• Attaques : 2 griffes 1d6, morsure 1d6 (secondaire).\n• Odorat, vision nocturne.\n• Progression : 5-8 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 4,
+        "size": "large",
+        "abilities": {
+          "str": 21,
+          "dex": 15,
+          "con": 14,
+          "int": 2,
+          "wis": 12,
+          "cha": 7
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 9,
+          "climb": 9
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d6",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 8,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      },
+      "note": "Lu dans le livre : 4d8+11 avec Con 14 (le bonus serait +8) ; sans effet sur les données."
+    },
+    {
+      "id": "creature.cheetah",
+      "type": "creature",
+      "name": {
+        "fr": "Guépard",
+        "en": "Cheetah"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un félin fin et élégant qui écume les plaines. Il accélère sur une courte distance pour attraper ses proies.\n\nEn jeu\n• Animal de taille M, 3 DV, vitesse 15 m.\n• Attaques : morsure 1d6, 2 griffes 1d2 (secondaires).\n• Croc-en-jambe : une morsure réussie tente un croc-en-jambe par une action libre (+3).\n• Sprint : une fois par heure, vitesse ×10 en chargeant.\n• Odorat, vision nocturne.\n• Progression : 4-5 DV (taille M)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 16,
+          "dex": 19,
+          "con": 15,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 1,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          },
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d2",
+            "damageType": "slashing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 5,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Croc-en-jambe, sprint, odorat, vision nocturne.",
+          "en": "Trip, sprint, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.hyena",
+      "type": "creature",
+      "name": {
+        "fr": "Hyène",
+        "en": "Hyena"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Une charognarde rusée qui chasse en meute, connue pour ses jappements stridents. Elle envoie quelques individus devant et attaque les flancs.\n\nEn jeu\n• Animal de taille M, 2 DV, vitesse 15 m.\n• Attaque : morsure 1d6.\n• Croc-en-jambe : une morsure réussie tente un croc-en-jambe par une action libre (+2).\n• Odorat, vision nocturne.\n• Progression : 3 DV (taille M) ; 4-5 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "str": 14,
+          "dex": 15,
+          "con": 15,
+          "int": 2,
+          "wis": 13,
+          "cha": 6
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "medium"
+          },
+          {
+            "maxHd": 5,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Croc-en-jambe, odorat, vision nocturne.",
+          "en": "Trip, scent, low-light vision."
+        }
+      }
+    }
+  ]
+}

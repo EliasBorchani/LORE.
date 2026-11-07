@@ -1,4 +1,4 @@
-import { CharacterSheet, SheetEngine } from 'dnd-engine'
+import { CharacterSheet, SheetEngine, type FormLine } from 'dnd-engine'
 import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState, type ReactNode } from 'react'
 import { api, ApiError } from '../api/client'
 import type { Character, CharacterRecord, Closure, Entity, ToggleChoice } from '../api/types'
@@ -37,6 +37,14 @@ interface SheetData {
   dailyUses: DailyUseView[]
   setToggle: (toggle: ToggleView, on: boolean) => void
   setToggleValue: (id: string, value: string) => void
+  /** Saved forms, computed. */
+  forms: FormLine[]
+  /** The form the character is in, or null. */
+  activeForm: FormLine | null
+  /** A statistic as it is without the form, to show what the form changes; null in the character's own form. */
+  ownStat: (key: string) => string | null
+  /** Turns into a saved form (spending a use of its source), or back with null. */
+  setForm: (formId: string | null) => void
   dispatch: (action: Exclude<PlayAction, { type: 'toggleOn' | 'toggleOff' | 'toggleValue' }>) => void
   saveCharacter: (next: Character) => Promise<'saved' | 'conflict'>
   /** Loads the character and its catalog again: after a save that brings new entities (a class, a feat, a spell). */
@@ -44,6 +52,9 @@ interface SheetData {
 }
 
 const Context = createContext<SheetData | null>(null)
+
+/** The engine's toggle holding the active form (`FORM_TOGGLE` in SheetEngine.kt). */
+export const FORM_TOGGLE = 'toggle.form'
 
 export function useSheet(): SheetData {
   const data = useContext(Context)
@@ -72,13 +83,26 @@ export function SheetProvider(props: { record: CharacterRecord; closure: Closure
 
   useEffect(() => savePlay(id, play), [id, play])
 
+  // The sheet without the form, opened only when asked (to show what the form changes) and kept until the build or
+  // the other toggles change.
+  const ownRef = useRef<{ key: string; sheet: CharacterSheet } | null>(null)
+  const ownSheet = () => {
+    const toggles = play.toggles.filter((t) => !t.form)
+    const key = JSON.stringify([record.updatedAt, toggles])
+    if (ownRef.current?.key !== key) {
+      ownRef.current = { key, sheet: engine.open(JSON.stringify({ ...record.character, activeToggles: toggles }), 0) }
+    }
+    return ownRef.current.sheet
+  }
+
   const value = useMemo<SheetData>(() => {
     const name = (entityId: string) => entityName(entities.get(entityId), entityId)
     const engineToggles = sheet.toggles.asJsReadonlyArrayView()
     const defaults = record.character.activeToggles ?? []
+    // The form toggle has its own block (« Transformation »), not a row in « Effets ».
     const ids = [
-      ...defaults.map((t) => t.toggle),
-      ...play.toggles.map((t) => t.toggle),
+      ...defaults.filter((t) => !t.form).map((t) => t.toggle),
+      ...play.toggles.filter((t) => !t.form).map((t) => t.toggle),
       ...engineToggles.map((t) => t.id),
     ].filter((t, i, all) => all.indexOf(t) === i)
 
@@ -98,11 +122,33 @@ export function SheetProvider(props: { record: CharacterRecord; closure: Closure
       .map((u) => ({ entity: u.entity, max: toInteger(u.uses) ?? 0 }))
       .filter((u) => u.max > 0)
 
+    const forms = sheet.forms.asJsReadonlyArrayView().slice()
+    const activeForm = sheet.activeForm ?? null
+
     return {
       record,
       closure,
       sheet,
       play,
+      forms,
+      activeForm,
+      ownStat: (key) => (activeForm ? ownSheet()?.statistic(key)?.text ?? null : null),
+      setForm(formId) {
+        sheet.setForm(formId)
+        if (formId == null) {
+          dispatchPlay({ type: 'toggleOff', toggle: FORM_TOGGLE })
+        } else {
+          dispatchPlay({ type: 'toggleOn', choice: { toggle: FORM_TOGGLE, form: formId } })
+          // Taking a form spends a use of its source (wild shape) when it has uses per day.
+          const source = forms.find((f) => f.id === formId)?.source
+          const uses = dailyUses.find((u) => u.entity === source)
+          const used = source ? play.usesSpent[source] ?? 0 : 0
+          if (source && uses && used < uses.max) {
+            dispatchPlay({ type: 'setUsed', entity: source, name: name(source), used: used + 1, max: uses.max })
+          }
+        }
+        bump()
+      },
       name,
       entity: (entityId) => entities.get(entityId),
       stat: (key) => sheet.statistic(key)?.text ?? null,

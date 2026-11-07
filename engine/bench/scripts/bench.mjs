@@ -3,7 +3,9 @@ import { readFileSync } from 'node:fs'
 import { SheetEngine } from 'dnd-engine'
 
 const read = (file) => readFileSync(new URL(`../../../test-references/danalieth/${file}`, import.meta.url), 'utf8')
-const catalog = read('catalog.json')
+// Danalieth's file holds her entities; the core rule sections live in content/srd/core.json.
+const core = JSON.parse(readFileSync(new URL('../../../content/srd/core.json', import.meta.url), 'utf8'))
+const catalog = JSON.stringify({ ...core, ...JSON.parse(read('catalog.json')) })
 const character = read('character.json')
 
 const time = (work) => {

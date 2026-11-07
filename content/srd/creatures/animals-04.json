@@ -1,0 +1,969 @@
+{
+  "entities": [
+    {
+      "id": "creature.warpony",
+      "type": "creature",
+      "name": {
+        "fr": "Poney de guerre",
+        "en": "Warpony"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un petit cheval robuste, dressé dès le poulain pour ne pas broncher au milieu des armes. Il porte son cavalier au combat et rue quand l'ennemi s'approche.\n\nEn jeu\n• Animal de taille M, 2 DV, vitesse 12 m.\n• Attaques : 2 sabots 1d3.\n• Odorat, vision nocturne.\n• Charge transportable : légère jusqu'à 50 kg, intermédiaire jusqu'à 100 kg, lourde jusqu'à 150 kg ; il tire jusqu'à 750 kg.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "str": 15,
+          "dex": 13,
+          "con": 14,
+          "int": 2,
+          "wis": 11,
+          "cha": 4
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "hoof",
+            "name": {
+              "fr": "Sabot",
+              "en": "Hoof"
+            },
+            "count": 2,
+            "dice": "1d3",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      },
+      "note": "Sabots : le livre marque 1d3+2 avec For 15 (+2), donc attaque primaire (le poney de guerre est dressé au combat, contrairement au poney ordinaire)."
+    },
+    {
+      "id": "creature.manta_ray",
+      "type": "creature",
+      "name": {
+        "fr": "Raie manta",
+        "en": "Manta Ray"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un grand disque plat qui glisse en silence dans les eaux chaudes en filtrant le plancton. Pacifique, elle ne se défend que si on la bouscule.\n\nEn jeu\n• Animal aquatique de taille G, 4 DV, nage 9 m.\n• Attaques : coup de tête 1d6 (secondaire).\n• Vision nocturne.\n• Compétences : +8 aux tests de Natation pour une tâche spéciale ou éviter un danger ; elle peut faire 10 et courir en ligne droite.\n• Progression : jusqu'à 6 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 4,
+        "size": "large",
+        "abilities": {
+          "str": 15,
+          "dex": 11,
+          "con": 10,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "swim": 9
+        },
+        "attacks": [
+          {
+            "id": "butt",
+            "name": {
+              "fr": "Coup de tête",
+              "en": "Ram"
+            },
+            "dice": "1d6",
+            "damageType": "bludgeoning",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 6,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Vision nocturne.",
+          "en": "Low-light vision."
+        }
+      },
+      "note": "Le livre imprime l'attaque comme secondaire (astérisque, 1d6+1 = demi-bonus de For 15). Progression imprimée « 5-6 DV (taille M) » : erreur du livre (la raie est de taille G ; SRD : 5-6 DV, Large), corrigée en taille G."
+    },
+    {
+      "id": "creature.rat",
+      "type": "creature",
+      "name": {
+        "fr": "Rat",
+        "en": "Rat"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Petit rongeur qu'on trouve partout, dans les égouts comme dans les greniers. Il fuit à la moindre menace et ne mord qu'acculé.\n\nEn jeu\n• Animal de taille TP, 1/4 DV, vitesse 4,5 m, escalade 4,5 m, nage 4,5 m.\n• Attaques : morsure 1d3.\n• Odorat, vision nocturne.\n• Compétences : +4 en Déplacement silencieux et Discrétion, +8 en Équilibre, Escalade et Natation ; il utilise sa Dextérité en Escalade et Natation.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 2,
+          "dex": 15,
+          "con": 10,
+          "int": 2,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 0,
+        "speeds": {
+          "land": 4.5,
+          "climb": 4.5,
+          "swim": 4.5
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d3",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      },
+      "note": "Dés de vie 1/4 : hitDice 1 (le moteur veut un entier ; le livre dit 1/4 DV)."
+    },
+    {
+      "id": "creature.medium_shark",
+      "type": "creature",
+      "name": {
+        "fr": "Requin, taille moyenne",
+        "en": "Medium Shark"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un chasseur marin rapide qui rôde en bordure des récifs. Il attaque presque tout ce qui bouge à sa portée.\n\nEn jeu\n• Animal aquatique de taille M, 3 DV, nage 18 m.\n• Attaques : morsure 1d6.\n• Odorat surdéveloppé : repère ses proies à 54 m ; dans l'eau, il sent le sang à 1,5 km.\n• Perception aveugle : localise les créatures à 9 m ou moins sous l'eau.\n• Compétences : +8 aux tests de Natation pour une tâche spéciale ou éviter un danger ; il peut faire 10 et courir.\n• Progression : jusqu'à 6 DV (taille M)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 13,
+          "dex": 15,
+          "con": 13,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "swim": 18
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 6,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat surdéveloppé, perception aveugle (9 m).",
+          "en": "Keen scent, blindsense (9 m)."
+        }
+      }
+    },
+    {
+      "id": "creature.large_shark",
+      "type": "creature",
+      "name": {
+        "fr": "Requin, grande taille",
+        "en": "Large Shark"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un grand requin de plus de quatre mètres, vraie menace pour un nageur isolé. Il tourne autour de sa proie avant de foncer.\n\nEn jeu\n• Animal aquatique de taille G, 7 DV, nage 18 m.\n• Attaques : morsure 1d8.\n• Odorat surdéveloppé : repère ses proies à 54 m ; dans l'eau, il sent le sang à 1,5 km.\n• Perception aveugle : localise les créatures à 9 m ou moins sous l'eau.\n• Compétences : +8 aux tests de Natation pour une tâche spéciale ou éviter un danger ; il peut faire 10 et courir.\n• Progression : jusqu'à 9 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 7,
+        "size": "large",
+        "abilities": {
+          "str": 17,
+          "dex": 15,
+          "con": 13,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "swim": 18
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 9,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat surdéveloppé, perception aveugle (9 m).",
+          "en": "Keen scent, blindsense (9 m)."
+        }
+      }
+    },
+    {
+      "id": "creature.huge_shark",
+      "type": "creature",
+      "name": {
+        "fr": "Requin, très grande taille",
+        "en": "Huge Shark"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un géant des mers, long de plus de six mètres comme le grand requin blanc. Rien ne l'arrête une fois le sang dans l'eau.\n\nEn jeu\n• Animal aquatique de taille TG, 10 DV, nage 18 m.\n• Attaques : morsure 2d6.\n• Odorat surdéveloppé : repère ses proies à 54 m ; dans l'eau, il sent le sang à 1,5 km.\n• Perception aveugle : localise les créatures à 9 m ou moins sous l'eau.\n• Compétences : +8 aux tests de Natation pour une tâche spéciale ou éviter un danger ; il peut faire 10 et courir.\n• Progression : jusqu'à 17 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 10,
+        "size": "huge",
+        "abilities": {
+          "str": 21,
+          "dex": 15,
+          "con": 15,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 5,
+        "speeds": {
+          "swim": 18
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 17,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat surdéveloppé, perception aveugle (9 m).",
+          "en": "Keen scent, blindsense (9 m)."
+        }
+      }
+    },
+    {
+      "id": "creature.rhinoceros",
+      "type": "creature",
+      "name": {
+        "fr": "Rhinocéros",
+        "en": "Rhinoceros"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un herbivore massif au mauvais caractère, qui charge tête baissée tout ce qui trouble sa tranquillité. Sa corne perce un cuir comme une lance.\n\nEn jeu\n• Animal de taille G, 8 DV, vitesse 9 m.\n• Attaques : corne 2d6.\n• Charge en puissance : une charge avec la corne inflige 4d6+24 dégâts.\n• Vision nocturne.\n• Progression : jusqu'à 12 DV (taille G) ; jusqu'à 24 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 8,
+        "size": "large",
+        "abilities": {
+          "str": 26,
+          "dex": 10,
+          "con": 21,
+          "int": 2,
+          "wis": 13,
+          "cha": 2
+        },
+        "naturalArmor": 7,
+        "speeds": {
+          "land": 9
+        },
+        "attacks": [
+          {
+            "id": "gore",
+            "name": {
+              "fr": "Corne",
+              "en": "Gore"
+            },
+            "dice": "2d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 12,
+            "size": "large"
+          },
+          {
+            "maxHd": 24,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Charge en puissance (4d6+24), vision nocturne.",
+          "en": "Powerful charge (4d6+24), low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.boar",
+      "type": "creature",
+      "name": {
+        "fr": "Sanglier",
+        "en": "Boar"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un cochon sauvage au poil rêche, noir ou gris foncé, qui n'aime pas qu'on le dérange. Il charge sans hésiter et ne lâche rien.\n\nEn jeu\n• Animal de taille M, 3 DV, vitesse 12 m.\n• Attaques : défenses 1d8.\n• Férocité : il continue de se battre sans malus même à 0 point de vie ou moins, jusqu'à la mort.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 5 DV (taille M)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 15,
+          "dex": 10,
+          "con": 17,
+          "int": 2,
+          "wis": 13,
+          "cha": 4
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "gore",
+            "name": {
+              "fr": "Défenses",
+              "en": "Gore"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 5,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Férocité, odorat, vision nocturne.",
+          "en": "Ferocity, scent, low-light vision."
+        }
+      },
+      "note": "Les défenses sont une seule attaque (1d8+3) : count 1, id « gore » comme dans le SRD."
+    },
+    {
+      "id": "creature.constrictor_snake",
+      "type": "creature",
+      "name": {
+        "fr": "Serpent constricteur",
+        "en": "Constrictor Snake"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un serpent musclé qui saisit sa proie dans sa gueule puis l'enserre dans ses anneaux. Il ne chasse que pour se nourrir et préfère fuir un adversaire trop gros.\n\nEn jeu\n• Animal de taille M, 3 DV, vitesse 6 m, escalade 6 m, nage 6 m.\n• Attaques : morsure 1d3.\n• Constriction : après une lutte gagnée, inflige 1d3+4 dégâts par round.\n• Étreinte : une morsure qui touche permet d'engager une lutte par une action libre, sans attaque d'opportunité.\n• Odorat.\n• Compétences : +4 en Détection, Discrétion, Perception auditive, +8 en Équilibre, Escalade et Natation.\n• Progression : jusqu'à 5 DV (taille M) ; jusqu'à 10 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 17,
+          "dex": 17,
+          "con": 13,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 6,
+          "climb": 6,
+          "swim": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d3",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 5,
+            "size": "medium"
+          },
+          {
+            "maxHd": 10,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Étreinte (morsure), constriction (1d3+4), odorat.",
+          "en": "Improved grab (bite), constrict (1d3+4), scent."
+        }
+      },
+      "note": "For 17, Dex 17 relus sur l'image de p283 (colonne de droite, OCR confus)."
+    },
+    {
+      "id": "creature.giant_constrictor_snake",
+      "type": "creature",
+      "name": {
+        "fr": "Serpent constricteur géant",
+        "en": "Giant Constrictor Snake"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un monstre de plus de dix mètres qui peut avaler une proie entière après l'avoir broyée. Il lui faut beaucoup de nourriture, donc il est bien plus agressif que ses cousins.\n\nEn jeu\n• Animal de taille TG, 11 DV, vitesse 6 m, escalade 6 m, nage 6 m.\n• Attaques : morsure 1d8.\n• Constriction : après une lutte gagnée, inflige 1d8+10 dégâts par round.\n• Étreinte : une morsure qui touche permet d'engager une lutte par une action libre, sans attaque d'opportunité.\n• Odorat.\n• Progression : jusqu'à 16 DV (taille TG) ; jusqu'à 33 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 11,
+        "size": "huge",
+        "abilities": {
+          "str": 25,
+          "dex": 17,
+          "con": 13,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 6,
+          "climb": 6,
+          "swim": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "huge"
+          },
+          {
+            "maxHd": 33,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Étreinte (morsure), constriction (1d8+10), odorat.",
+          "en": "Improved grab (bite), constrict (1d8+10), scent."
+        }
+      }
+    },
+    {
+      "id": "creature.tiny_viper",
+      "type": "creature",
+      "name": {
+        "fr": "Serpent venimeux, très petit",
+        "en": "Tiny Viper"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un serpent dont la morsure est sa meilleure défense. Il mord surtout en dernier recours, avant de battre en retraite.\n\nEn jeu\n• Animal de taille TP, 1/4 DV, vitesse 4,5 m, escalade 4,5 m, nage 4,5 m.\n• Attaques : morsure 1 plus venin.\n• Venin : morsure, Vigueur DD 10, affaiblissement initial et secondaire 1d6 Con.\n• Odorat.\n• Compétences : +4 en Détection, Discrétion, Perception auditive, +8 en Équilibre, Escalade et Natation.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 4,
+          "dex": 17,
+          "con": 11,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 4.5,
+          "climb": 4.5,
+          "swim": 4.5
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Venin (Vigueur DD 10, 1d6 Con), odorat.",
+          "en": "Poison (Fort DC 10, 1d6 Con), scent."
+        }
+      },
+      "note": "Dés de vie 1/4 : hitDice 1 (le moteur veut un entier ; le livre dit 1/4 DV). Morsure imprimée « 1 » (For 4, -3, minimum 1)."
+    },
+    {
+      "id": "creature.small_viper",
+      "type": "creature",
+      "name": {
+        "fr": "Serpent venimeux, petit",
+        "en": "Small Viper"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un serpent dont la morsure est sa meilleure défense. Il mord surtout en dernier recours, avant de battre en retraite.\n\nEn jeu\n• Animal de taille P, 1 DV, vitesse 6 m, escalade 6 m, nage 6 m.\n• Attaques : morsure 1d2 plus venin.\n• Venin : morsure, Vigueur DD 10, affaiblissement initial et secondaire 1d6 Con.\n• Odorat.\n• Compétences : +4 en Détection, Discrétion, Perception auditive, +8 en Équilibre, Escalade et Natation.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "small",
+        "abilities": {
+          "str": 6,
+          "dex": 17,
+          "con": 11,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 6,
+          "climb": 6,
+          "swim": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d2",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Venin (Vigueur DD 10, 1d6 Con), odorat.",
+          "en": "Poison (Fort DC 10, 1d6 Con), scent."
+        }
+      }
+    },
+    {
+      "id": "creature.medium_viper",
+      "type": "creature",
+      "name": {
+        "fr": "Serpent venimeux, taille moyenne",
+        "en": "Medium Viper"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un serpent dont la morsure est sa meilleure défense. Il mord surtout en dernier recours, avant de battre en retraite.\n\nEn jeu\n• Animal de taille M, 2 DV, vitesse 6 m, escalade 6 m, nage 6 m.\n• Attaques : morsure 1d4 plus venin.\n• Venin : morsure, Vigueur DD 11, affaiblissement initial et secondaire 1d6 Con.\n• Odorat.\n• Compétences : +4 en Détection, Discrétion, Perception auditive, +8 en Équilibre, Escalade et Natation.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "str": 8,
+          "dex": 17,
+          "con": 11,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 6,
+          "climb": 6,
+          "swim": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d4",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Venin (Vigueur DD 11, 1d6 Con), odorat.",
+          "en": "Poison (Fort DC 11, 1d6 Con), scent."
+        }
+      }
+    },
+    {
+      "id": "creature.large_viper",
+      "type": "creature",
+      "name": {
+        "fr": "Serpent venimeux, grand",
+        "en": "Large Viper"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un serpent dont la morsure est sa meilleure défense. Il mord surtout en dernier recours, avant de battre en retraite.\n\nEn jeu\n• Animal de taille G, 3 DV, vitesse 6 m, escalade 6 m, nage 6 m.\n• Attaques : morsure 1d4 plus venin.\n• Venin : morsure, Vigueur DD 11, affaiblissement initial et secondaire 1d6 Con.\n• Odorat.\n• Compétences : +4 en Détection, Discrétion, Perception auditive, +8 en Équilibre, Escalade et Natation.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "large",
+        "abilities": {
+          "str": 10,
+          "dex": 17,
+          "con": 11,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 6,
+          "climb": 6,
+          "swim": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d4",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Venin (Vigueur DD 11, 1d6 Con), odorat.",
+          "en": "Poison (Fort DC 11, 1d6 Con), scent."
+        }
+      }
+    },
+    {
+      "id": "creature.huge_viper",
+      "type": "creature",
+      "name": {
+        "fr": "Serpent venimeux, très grand",
+        "en": "Huge Viper"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un serpent dont la morsure est sa meilleure défense. Il mord surtout en dernier recours, avant de battre en retraite.\n\nEn jeu\n• Animal de taille TG, 6 DV, vitesse 6 m, escalade 6 m, nage 6 m.\n• Attaques : morsure 1d6 plus venin.\n• Venin : morsure, Vigueur DD 14, affaiblissement initial et secondaire 1d6 Con.\n• Odorat.\n• Compétences : +4 en Détection, Discrétion, Perception auditive, +8 en Équilibre, Escalade et Natation.\n• Progression : jusqu'à 18 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 6,
+        "size": "huge",
+        "abilities": {
+          "str": 16,
+          "dex": 15,
+          "con": 13,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 5,
+        "speeds": {
+          "land": 6,
+          "climb": 6,
+          "swim": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 18,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Venin (Vigueur DD 14, 1d6 Con), odorat.",
+          "en": "Poison (Fort DC 14, 1d6 Con), scent."
+        }
+      },
+      "note": "Progression imprimée « 7-18 DV (taille TG) »."
+    },
+    {
+      "id": "creature.monkey",
+      "type": "creature",
+      "name": {
+        "fr": "Singe",
+        "en": "Monkey"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un petit singe vif qui vit dans les arbres. Il fuit à l'abri des branches, mais mord férocement s'il est acculé.\n\nEn jeu\n• Animal de taille TP, 1 DV, vitesse 9 m, escalade 9 m.\n• Attaques : morsure 1d3.\n• Vision nocturne.\n• Compétences : +8 en Équilibre et Escalade ; il peut faire 10 en Escalade et utilise sa Dextérité à la place de sa Force.\n• Progression : jusqu'à 3 DV (taille P)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 3,
+          "dex": 15,
+          "con": 10,
+          "int": 2,
+          "wis": 12,
+          "cha": 5
+        },
+        "naturalArmor": 0,
+        "speeds": {
+          "land": 9,
+          "climb": 9
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d3",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Vision nocturne.",
+          "en": "Low-light vision."
+        }
+      },
+      "note": "Progression imprimée « 2-3 DV (taille M) » : un singe TP ne passe pas à M en 3 DV (SRD : 2-3 DV, Small), corrigée en taille P."
+    },
+    {
+      "id": "creature.tiger",
+      "type": "creature",
+      "name": {
+        "fr": "Tigre",
+        "en": "Tiger"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un grand félin rayé de près de trois mètres, chasseur solitaire des forêts chaudes. Il bondit sur sa proie, la saisit et la lacère de ses pattes arrière.\n\nEn jeu\n• Animal de taille G, 6 DV, vitesse 12 m.\n• Attaques : 2 griffes 1d8, morsure 2d6 (secondaire).\n• Bond : lors d'une charge, il peut faire une attaque à outrance.\n• Étreinte : une griffe ou une morsure qui touche permet d'engager une lutte par une action libre, sans attaque d'opportunité.\n• Pattes arrière : en lutte, 2 attaques à +9 de 1d8+3 chacune.\n• Odorat, vision nocturne.\n• Compétences : +4 en Déplacement silencieux, Discrétion et Équilibre ; +8 en Discrétion dans les herbes hautes.\n• Progression : jusqu'à 12 DV (taille G) ; jusqu'à 18 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 6,
+        "size": "large",
+        "abilities": {
+          "str": 23,
+          "dex": 15,
+          "con": 17,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d8",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d6",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 12,
+            "size": "large"
+          },
+          {
+            "maxHd": 18,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Bond, étreinte (griffe ou morsure), pattes arrière (+9, 1d8+3), odorat, vision nocturne.",
+          "en": "Pounce, improved grab, rake (+9, 1d8+3), scent, low-light vision."
+        }
+      }
+    }
+  ]
+}

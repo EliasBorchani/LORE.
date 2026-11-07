@@ -2,6 +2,7 @@ package dndtools.engine.model
 
 import dndtools.engine.formula.Formula
 import dndtools.engine.formula.ParseResult
+import dndtools.engine.resolve.Forms
 import dndtools.engine.resolve.SizeDice
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -27,12 +28,14 @@ data class ModelIssue(
         @SerialName("invalid_formula") INVALID_FORMULA,
         @SerialName("unknown_damage_type") UNKNOWN_DAMAGE_TYPE,
         @SerialName("missing_hit_die") MISSING_HIT_DIE,
+        @SerialName("invalid_creature") INVALID_CREATURE,
     }
 }
 
 /** Checks on the data before any computation: structure, references, and that every formula parses. */
 object ModelCheck {
     private val CLASS_TYPES = setOf("class", "prestige_class")
+    private val SPEEDS = setOf("land", "fly", "swim", "climb", "burrow")
 
     fun catalog(catalog: Catalog): List<ModelIssue> = buildList {
         duplicates(catalog.bonusTypes.map { it.id }, "bonusTypes")
@@ -83,6 +86,27 @@ object ModelCheck {
                 add(ModelIssue(ModelIssue.Code.MISSING_HIT_DIE, "entity:${entity.id}", "A class needs a hit die"))
             }
             entity.prerequisite?.let { formula("entity:${entity.id}/prerequisite", it) }
+            entity.shaping?.let { shaping ->
+                listOf("maxHd" to shaping.maxHd, "minSize" to shaping.minSize, "maxSize" to shaping.maxSize).forEach { (name, value) ->
+                    (value as? EffectValue.Text)?.let { formula("entity:${entity.id}/shaping.$name", it.text) }
+                }
+            }
+            entity.creature?.let { creature ->
+                val at = "entity:${entity.id}/creature"
+                fun bad(where: String, message: String) = add(ModelIssue(ModelIssue.Code.INVALID_CREATURE, "$at.$where", message))
+                val sizes = Forms.SIZES
+                if (creature.size !in sizes) bad("size", "'${creature.size}' is not a size")
+                if (creature.hitDice < 1) bad("hitDice", "A creature has at least 1 hit die")
+                creature.advancement.forEachIndexed { i, band ->
+                    if (band.size !in sizes) bad("advancement[$i].size", "'${band.size}' is not a size")
+                    if (band.maxHd <= creature.hitDice) bad("advancement[$i].maxHd", "A band starts past the creature's ${creature.hitDice} hit dice")
+                }
+                creature.attacks.forEachIndexed { i, attack ->
+                    formula("$at.attacks[$i].dice", attack.dice)
+                    attack.damageType?.let { if (it !in damageTypes) add(ModelIssue(ModelIssue.Code.UNKNOWN_DAMAGE_TYPE, "$at.attacks[$i]", "Unknown damage type '$it'")) }
+                }
+                creature.speeds.keys.filter { it !in SPEEDS }.forEach { bad("speeds", "Unknown movement mode '$it'") }
+            }
             (entity.usesPerDay as? EffectValue.Text)?.let { formula("entity:${entity.id}/usesPerDay", it.text) }
             (entity.tableValue?.max as? EffectValue.Text)?.let { formula("entity:${entity.id}/tableValue.max", it.text) }
             entity.effects.forEachIndexed { i, effect ->
@@ -158,6 +182,13 @@ object ModelCheck {
             ref("activeToggles[$i].entity", toggle.entity)
             ref("activeToggles[$i].casterClass", toggle.casterClass)
             toggle.metamagic.forEachIndexed { j, id -> ref("activeToggles[$i].metamagic[$j]", id) }
+            toggle.form?.let { id ->
+                if (character.forms.none { it.id == id }) add(ModelIssue(ModelIssue.Code.UNKNOWN_REFERENCE, "activeToggles[$i].form", "Unknown saved form '$id'"))
+            }
+        }
+        character.forms.forEachIndexed { i, form ->
+            ref("forms[$i].creature", form.creature)
+            ref("forms[$i].source", form.source)
         }
     }
 

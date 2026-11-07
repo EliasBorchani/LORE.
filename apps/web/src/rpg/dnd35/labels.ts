@@ -20,6 +20,7 @@ function family(colour: LabelColour, types: string[], rows: Row[]): Label[] {
 }
 
 export const LABELS: Label[] = [
+  ...family('seal', ['creature'], [['animal', 'Animal', 'Animal'], ['plant', 'Plante', 'Plant']]),
   ...family('muted', ['feat'], [
     ['general', 'Général', 'General'], ['skill', 'Compétence', 'Skill'], ['epic', 'Épique', 'Epic'],
     ['monster', 'Monstre', 'Monster'], ['story', 'Histoire', 'Story'], ['custom', 'Maison', 'House'],

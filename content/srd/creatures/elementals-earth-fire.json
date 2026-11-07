@@ -1,0 +1,726 @@
+{
+  "entities": [
+    {
+      "id": "creature.earth_elemental_small",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de la Terre, taille P",
+        "en": "Earth Elemental, Small"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un bloc de pierre et de terre qui marche, sourd aux coups comme aux supplications. Il avance, et ce qui se trouve devant lui finit par céder.\n\nEn jeu\n• Élémentaire de taille P, 2 DV, vitesse 6 m (creuse 6 m).\n• Attaques : coup 1d6.\n• Maîtrise de la Terre : +1 à l'attaque et aux dégâts si lui et l'adversaire touchent le sol, −4 si l'adversaire est dans l'eau ou en l'air.\n• Poussée : peut bousculer sans provoquer d'attaque d'opportunité, avec les bonus ou malus de la maîtrise de la Terre au test de Force.\n• Nage dans la terre : traverse pierre et sol meuble (pas le métal) sans laisser de trace ; un glissement de terrain le repousse de 9 m et l'étourdit 1 round (Vigueur DD 15 pour annuler).\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 3 DV (taille P)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "earth",
+          "extraplanar"
+        ],
+        "hitDice": 2,
+        "size": "small",
+        "abilities": {
+          "str": 17,
+          "dex": 8,
+          "con": 13,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 7,
+        "speeds": {
+          "land": 6,
+          "burrow": 6
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Maîtrise de la Terre, poussée, élémentaire, nage dans la terre, vision dans le noir (18 m).",
+          "en": "Earth mastery, push, elemental traits, earth glide, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.earth_elemental_medium",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de la Terre, taille M",
+        "en": "Earth Elemental, Medium"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un bloc de pierre et de terre qui marche, sourd aux coups comme aux supplications. Il avance, et ce qui se trouve devant lui finit par céder.\n\nEn jeu\n• Élémentaire de taille M, 4 DV, vitesse 6 m (creuse 6 m).\n• Attaques : coup 1d8.\n• Maîtrise de la Terre : +1 à l'attaque et aux dégâts si lui et l'adversaire touchent le sol, −4 si l'adversaire est dans l'eau ou en l'air.\n• Poussée : peut bousculer sans provoquer d'attaque d'opportunité, avec les bonus ou malus de la maîtrise de la Terre au test de Force.\n• Nage dans la terre : traverse pierre et sol meuble (pas le métal) sans laisser de trace ; un glissement de terrain le repousse de 9 m et l'étourdit 1 round (Vigueur DD 15 pour annuler).\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 7 DV (taille M)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "earth",
+          "extraplanar"
+        ],
+        "hitDice": 4,
+        "size": "medium",
+        "abilities": {
+          "str": 21,
+          "dex": 8,
+          "con": 17,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "land": 6,
+          "burrow": 6
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d8",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 7,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Maîtrise de la Terre, poussée, élémentaire, nage dans la terre, vision dans le noir (18 m).",
+          "en": "Earth mastery, push, elemental traits, earth glide, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.earth_elemental_large",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de la Terre, taille G",
+        "en": "Earth Elemental, Large"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un bloc de pierre et de terre qui marche, sourd aux coups comme aux supplications. Il avance, et ce qui se trouve devant lui finit par céder.\n\nEn jeu\n• Élémentaire de taille G, 8 DV, vitesse 6 m (creuse 6 m).\n• Attaques : 2 coups 2d8.\n• Maîtrise de la Terre : +1 à l'attaque et aux dégâts si lui et l'adversaire touchent le sol, −4 si l'adversaire est dans l'eau ou en l'air.\n• Poussée : peut bousculer sans provoquer d'attaque d'opportunité, avec les bonus ou malus de la maîtrise de la Terre au test de Force.\n• Nage dans la terre : traverse pierre et sol meuble (pas le métal) sans laisser de trace ; un glissement de terrain le repousse de 9 m et l'étourdit 1 round (Vigueur DD 15 pour annuler).\n• Vision dans le noir 18 m.\n• Réduction des dégâts 5/—.\n• Progression : jusqu'à 15 DV (taille G)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "earth",
+          "extraplanar"
+        ],
+        "hitDice": 8,
+        "size": "large",
+        "abilities": {
+          "str": 25,
+          "dex": 8,
+          "con": 19,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 10,
+        "speeds": {
+          "land": 6,
+          "burrow": 6
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d8",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 15,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Maîtrise de la Terre, poussée, élémentaire, nage dans la terre, réduction des dégâts 5/—, vision dans le noir (18 m).",
+          "en": "Earth mastery, push, elemental traits, earth glide, damage reduction 5/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.earth_elemental_huge",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de la Terre, taille TG",
+        "en": "Earth Elemental, Huge"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un bloc de pierre et de terre qui marche, sourd aux coups comme aux supplications. Il avance, et ce qui se trouve devant lui finit par céder.\n\nEn jeu\n• Élémentaire de taille TG, 16 DV, vitesse 6 m (creuse 6 m).\n• Attaques : 2 coups 2d10.\n• Maîtrise de la Terre : +1 à l'attaque et aux dégâts si lui et l'adversaire touchent le sol, −4 si l'adversaire est dans l'eau ou en l'air.\n• Poussée : peut bousculer sans provoquer d'attaque d'opportunité, avec les bonus ou malus de la maîtrise de la Terre au test de Force.\n• Nage dans la terre : traverse pierre et sol meuble (pas le métal) sans laisser de trace ; un glissement de terrain le repousse de 9 m et l'étourdit 1 round (Vigueur DD 15 pour annuler).\n• Vision dans le noir 18 m.\n• Réduction des dégâts 5/—.\n• Progression : jusqu'à 20 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "earth",
+          "extraplanar"
+        ],
+        "hitDice": 16,
+        "size": "huge",
+        "abilities": {
+          "str": 29,
+          "dex": 8,
+          "con": 21,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 11,
+        "speeds": {
+          "land": 6,
+          "burrow": 6
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d10",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 20,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Maîtrise de la Terre, poussée, élémentaire, nage dans la terre, réduction des dégâts 5/—, vision dans le noir (18 m).",
+          "en": "Earth mastery, push, elemental traits, earth glide, damage reduction 5/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.earth_elemental_greater",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de la Terre, noble",
+        "en": "Earth Elemental, Greater"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un bloc de pierre et de terre qui marche, sourd aux coups comme aux supplications. Il avance, et ce qui se trouve devant lui finit par céder.\n\nEn jeu\n• Élémentaire de taille TG, 21 DV, vitesse 6 m (creuse 6 m).\n• Attaques : 2 coups 2d10.\n• Maîtrise de la Terre : +1 à l'attaque et aux dégâts si lui et l'adversaire touchent le sol, −4 si l'adversaire est dans l'eau ou en l'air.\n• Poussée : peut bousculer sans provoquer d'attaque d'opportunité, avec les bonus ou malus de la maîtrise de la Terre au test de Force.\n• Nage dans la terre : traverse pierre et sol meuble (pas le métal) sans laisser de trace ; un glissement de terrain le repousse de 9 m et l'étourdit 1 round (Vigueur DD 15 pour annuler).\n• Vision dans le noir 18 m.\n• Réduction des dégâts 10/—.\n• Progression : jusqu'à 23 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "earth",
+          "extraplanar"
+        ],
+        "hitDice": 21,
+        "size": "huge",
+        "abilities": {
+          "str": 31,
+          "dex": 8,
+          "con": 21,
+          "int": 8,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 13,
+        "speeds": {
+          "land": 6,
+          "burrow": 6
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d10",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 23,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Maîtrise de la Terre, poussée, élémentaire, nage dans la terre, réduction des dégâts 10/—, vision dans le noir (18 m).",
+          "en": "Earth mastery, push, elemental traits, earth glide, damage reduction 10/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.earth_elemental_elder",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de la Terre, seigneur",
+        "en": "Earth Elemental, Elder"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un bloc de pierre et de terre qui marche, sourd aux coups comme aux supplications. Il avance, et ce qui se trouve devant lui finit par céder.\n\nEn jeu\n• Élémentaire de taille TG, 24 DV, vitesse 6 m (creuse 6 m).\n• Attaques : 2 coups 2d10 (critique 19-20).\n• Maîtrise de la Terre : +1 à l'attaque et aux dégâts si lui et l'adversaire touchent le sol, −4 si l'adversaire est dans l'eau ou en l'air.\n• Poussée : peut bousculer sans provoquer d'attaque d'opportunité, avec les bonus ou malus de la maîtrise de la Terre au test de Force.\n• Nage dans la terre : traverse pierre et sol meuble (pas le métal) sans laisser de trace ; un glissement de terrain le repousse de 9 m et l'étourdit 1 round (Vigueur DD 15 pour annuler).\n• Vision dans le noir 18 m.\n• Réduction des dégâts 10/—.\n• Progression : jusqu'à 48 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "earth",
+          "extraplanar"
+        ],
+        "hitDice": 24,
+        "size": "huge",
+        "abilities": {
+          "str": 33,
+          "dex": 8,
+          "con": 21,
+          "int": 10,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 15,
+        "speeds": {
+          "land": 6,
+          "burrow": 6
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d10",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 48,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Maîtrise de la Terre, poussée, élémentaire, nage dans la terre, réduction des dégâts 10/—, vision dans le noir (18 m).",
+          "en": "Earth mastery, push, elemental traits, earth glide, damage reduction 10/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.fire_elemental_small",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire du Feu, taille P",
+        "en": "Fire Elemental, Small"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une flamme vivante qui danse et dévore tout ce qu'elle touche. Elle ne hait personne : le feu consume, c'est tout.\n\nEn jeu\n• Élémentaire de taille P, 2 DV, vitesse 15 m.\n• Attaques : coup 1d4 et 1d4 de feu.\n• Départ de feu : la cible touchée doit réussir un jet de Réflexes (DD 11) ou s'enflammer et brûler 1d4 rounds ; une action de mouvement éteint les flammes. Qui le frappe à mains nues ou avec une arme naturelle subit aussi les dégâts de feu et risque de s'enflammer.\n• Immunité contre le feu, vulnérabilité au froid.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 3 DV (taille P)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "fire",
+          "extraplanar"
+        ],
+        "hitDice": 2,
+        "size": "small",
+        "abilities": {
+          "str": 10,
+          "dex": 13,
+          "con": 10,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d4 + 1d4 fire",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Départ de feu (DD 11), élémentaire, immunité contre le feu, vulnérabilité au froid, vision dans le noir (18 m).",
+          "en": "Burn (DC 11), elemental traits, immunity to fire, vulnerability to cold, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.fire_elemental_medium",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire du Feu, taille M",
+        "en": "Fire Elemental, Medium"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une flamme vivante qui danse et dévore tout ce qu'elle touche. Elle ne hait personne : le feu consume, c'est tout.\n\nEn jeu\n• Élémentaire de taille M, 4 DV, vitesse 15 m.\n• Attaques : coup 1d6 et 1d6 de feu.\n• Départ de feu : la cible touchée doit réussir un jet de Réflexes (DD 14) ou s'enflammer et brûler 1d4 rounds ; une action de mouvement éteint les flammes. Qui le frappe à mains nues ou avec une arme naturelle subit aussi les dégâts de feu et risque de s'enflammer.\n• Immunité contre le feu, vulnérabilité au froid.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 7 DV (taille M)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "fire",
+          "extraplanar"
+        ],
+        "hitDice": 4,
+        "size": "medium",
+        "abilities": {
+          "str": 12,
+          "dex": 17,
+          "con": 14,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d6 + 1d6 fire",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 7,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Départ de feu (DD 14), élémentaire, immunité contre le feu, vulnérabilité au froid, vision dans le noir (18 m).",
+          "en": "Burn (DC 14), elemental traits, immunity to fire, vulnerability to cold, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.fire_elemental_large",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire du Feu, taille G",
+        "en": "Fire Elemental, Large"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une flamme vivante qui danse et dévore tout ce qu'elle touche. Elle ne hait personne : le feu consume, c'est tout.\n\nEn jeu\n• Élémentaire de taille G, 8 DV, vitesse 15 m.\n• Attaques : 2 coups 2d6 et 2d6 de feu.\n• Départ de feu : la cible touchée doit réussir un jet de Réflexes (DD 17) ou s'enflammer et brûler 1d4 rounds ; une action de mouvement éteint les flammes. Qui le frappe à mains nues ou avec une arme naturelle subit aussi les dégâts de feu et risque de s'enflammer.\n• Immunité contre le feu, vulnérabilité au froid.\n• Vision dans le noir 18 m.\n• Réduction des dégâts 5/—.\n• Progression : jusqu'à 15 DV (taille G)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "fire",
+          "extraplanar"
+        ],
+        "hitDice": 8,
+        "size": "large",
+        "abilities": {
+          "str": 14,
+          "dex": 21,
+          "con": 16,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d6 + 2d6 fire",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 15,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Départ de feu (DD 17), élémentaire, immunité contre le feu, vulnérabilité au froid, réduction des dégâts 5/—, vision dans le noir (18 m).",
+          "en": "Burn (DC 17), elemental traits, immunity to fire, vulnerability to cold, damage reduction 5/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.fire_elemental_huge",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire du Feu, taille TG",
+        "en": "Fire Elemental, Huge"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une flamme vivante qui danse et dévore tout ce qu'elle touche. Elle ne hait personne : le feu consume, c'est tout.\n\nEn jeu\n• Élémentaire de taille TG, 16 DV, vitesse 15 m.\n• Attaques : 2 coups 2d8 et 2d8 de feu.\n• Départ de feu : la cible touchée doit réussir un jet de Réflexes (DD 22) ou s'enflammer et brûler 1d4 rounds ; une action de mouvement éteint les flammes. Qui le frappe à mains nues ou avec une arme naturelle subit aussi les dégâts de feu et risque de s'enflammer.\n• Immunité contre le feu, vulnérabilité au froid.\n• Vision dans le noir 18 m.\n• Réduction des dégâts 5/—.\n• Progression : jusqu'à 20 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "fire",
+          "extraplanar"
+        ],
+        "hitDice": 16,
+        "size": "huge",
+        "abilities": {
+          "str": 18,
+          "dex": 25,
+          "con": 18,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d8 + 2d8 fire",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 20,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Départ de feu (DD 22), élémentaire, immunité contre le feu, vulnérabilité au froid, réduction des dégâts 5/—, vision dans le noir (18 m).",
+          "en": "Burn (DC 22), elemental traits, immunity to fire, vulnerability to cold, damage reduction 5/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.fire_elemental_greater",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire du Feu, noble",
+        "en": "Fire Elemental, Greater"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une flamme vivante qui danse et dévore tout ce qu'elle touche. Elle ne hait personne : le feu consume, c'est tout.\n\nEn jeu\n• Élémentaire de taille TG, 21 DV, vitesse 15 m.\n• Attaques : 2 coups 2d8 et 2d8 de feu.\n• Départ de feu : la cible touchée doit réussir un jet de Réflexes (DD 24) ou s'enflammer et brûler 1d4 rounds ; une action de mouvement éteint les flammes. Qui le frappe à mains nues ou avec une arme naturelle subit aussi les dégâts de feu et risque de s'enflammer.\n• Immunité contre le feu, vulnérabilité au froid.\n• Vision dans le noir 18 m.\n• Réduction des dégâts 10/—.\n• Progression : jusqu'à 23 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "fire",
+          "extraplanar"
+        ],
+        "hitDice": 21,
+        "size": "huge",
+        "abilities": {
+          "str": 20,
+          "dex": 27,
+          "con": 18,
+          "int": 8,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 8,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d8 + 2d8 fire",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 23,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Départ de feu (DD 24), élémentaire, immunité contre le feu, vulnérabilité au froid, réduction des dégâts 10/—, vision dans le noir (18 m).",
+          "en": "Burn (DC 24), elemental traits, immunity to fire, vulnerability to cold, damage reduction 10/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.fire_elemental_elder",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire du Feu, seigneur",
+        "en": "Fire Elemental, Elder"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une flamme vivante qui danse et dévore tout ce qu'elle touche. Elle ne hait personne : le feu consume, c'est tout.\n\nEn jeu\n• Élémentaire de taille TG, 24 DV, vitesse 15 m.\n• Attaques : 2 coups 2d8 et 2d8 de feu.\n• Départ de feu : la cible touchée doit réussir un jet de Réflexes (DD 26) ou s'enflammer et brûler 1d4 rounds ; une action de mouvement éteint les flammes. Qui le frappe à mains nues ou avec une arme naturelle subit aussi les dégâts de feu et risque de s'enflammer.\n• Immunité contre le feu, vulnérabilité au froid.\n• Vision dans le noir 18 m.\n• Réduction des dégâts 10/—.\n• Progression : jusqu'à 48 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "fire",
+          "extraplanar"
+        ],
+        "hitDice": 24,
+        "size": "huge",
+        "abilities": {
+          "str": 22,
+          "dex": 29,
+          "con": 18,
+          "int": 10,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 8,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "2d8 + 2d8 fire",
+            "damageType": "bludgeoning",
+            "count": 2
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 48,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Départ de feu (DD 26), élémentaire, immunité contre le feu, vulnérabilité au froid, réduction des dégâts 10/—, vision dans le noir (18 m).",
+          "en": "Burn (DC 26), elemental traits, immunity to fire, vulnerability to cold, damage reduction 10/—, darkvision 18 m."
+        }
+      }
+    }
+  ]
+}

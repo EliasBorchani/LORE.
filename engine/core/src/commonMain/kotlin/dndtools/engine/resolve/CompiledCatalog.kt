@@ -13,9 +13,13 @@ import dndtools.engine.model.EffectValue
 import dndtools.engine.model.Entity
 import dndtools.engine.model.InitiatingDef
 import dndtools.engine.model.InvokingDef
+import dndtools.engine.model.Layer
 import dndtools.engine.model.Op
 import dndtools.engine.model.ProgressionRow
+import dndtools.engine.model.ShapingDef
 import dndtools.engine.model.SkillInfo
+import dndtools.engine.model.Ability
+import dndtools.engine.model.CreatureInfo
 import dndtools.engine.model.SpellcastingDef
 import dndtools.engine.model.StatisticDef
 
@@ -106,6 +110,24 @@ internal class CompiledCatalog(val catalog: Catalog) {
     private val disciplines: Map<String, List<String>> = catalog.relations
         .filter { it.relation == INITIATES }
         .groupBy({ it.from }, { it.to })
+
+    /** Creatures a character can turn into. */
+    val creatures: Map<String, CreatureInfo> = catalog.entities.mapNotNull { e -> e.creature?.let { e.id to it } }.toMap()
+
+    /** Powers and spells that give forms, with their limits. */
+    val shapers: Map<String, ShapingDef> = catalog.entities.mapNotNull { e -> e.shaping?.let { e.id to it } }.toMap()
+
+    /** Shaping entity id to its compiled `maxHd`, `minSize` and `maxSize`. */
+    val shapingLimits = HashMap<String, Map<String, CompiledValue>>()
+
+    /** Creature id to the statistics its form writes, where the character's race no longer counts. */
+    val formTargets = HashMap<String, Set<String>>()
+
+    /** Built-in statistics whose base the session computes from the active form (`form.*`, `natural.<n>.*`). */
+    val formKeys = HashSet<String>()
+
+    /** Statistics that also take the effects written on others: a natural attack takes the melee attack's. */
+    private val inherits = HashMap<String, List<String>>()
 
     /** Skills (entities with a `skill` block): their statistic key is their id. */
     val skills: Map<String, SkillInfo> = catalog.entities.mapNotNull { e -> e.skill?.let { e.id to it } }.toMap()
@@ -234,7 +256,53 @@ internal class CompiledCatalog(val catalog: Catalog) {
             define("$id.max_ranks", "if(@$id.class_skill == 1, level() + 3, floor((level() + 3) / 2))", "skill:$id")
         }
 
+        // Forms (wild shape, polymorph): the session computes the `form.*` statistics from the active saved form, and
+        // each creature writes them onto the character's own statistics while it is the form. Natural attacks are
+        // numbered slots, the creature's attacks in order; each takes the effects of the melee attack and damage.
+        if (creatures.isNotEmpty()) {
+            fun builtIn(key: String, components: List<String> = emptyList(), steps: String? = null) {
+                if (key in defs) return
+                val compiledSteps = steps?.let { compile(it, "forms:$key") }
+                defs[key] = CompiledDef(StatisticDef(key, components = components.filter { it in defs || it.startsWith("natural.") }), null, compiledSteps)
+                formKeys += key
+            }
+            FORM_STATS.forEach { builtIn(it) }
+            define(NATURAL_SECONDARY_PENALTY, "-5", "forms")
+            for (n in 1..MAX_NATURAL_ATTACKS) {
+                builtIn("natural.$n.penalty")
+                builtIn("natural.$n.ability")
+                builtIn("natural.$n.attack", listOf("bab", "ability.str.mod", "size.modifier", "natural.$n.penalty"))
+                builtIn("natural.$n.damage", listOf("natural.$n.ability"), steps = "@size.steps - @$FORM_BASE_SIZE_STEPS")
+                inherits["natural.$n.attack"] = listOf("attack.melee", NATURAL_ATTACK)
+                inherits["natural.$n.damage"] = listOf("damage.melee", NATURAL_DAMAGE)
+            }
+        }
+        for ((id, shaping) in shapers) {
+            shapingLimits[id] = buildMap {
+                listOf("maxHd" to shaping.maxHd, "minSize" to shaping.minSize, "maxSize" to shaping.maxSize).forEach { (name, value) ->
+                    value?.let { compile(it, "$id/shaping.$name") }?.let { put(name, it) }
+                }
+            }
+        }
+
         val groups = catalog.targetGroups.associate { it.key to it.members }
+        for ((id, creature) in creatures) {
+            val base = entities.getValue(id).effects.size
+            val writes = ArrayList<Pair<String, String>>()
+            for (ability in listOf(Ability.STR, Ability.DEX, Ability.CON)) {
+                val short = ability.name.lowercase()
+                if (ability in creature.abilities) writes += "ability.$short.score" to "@form.ability.$short"
+            }
+            writes += "ac.natural" to "@$FORM_NATURAL_ARMOR"
+            writes += "size" to "@$FORM_SIZE"
+            for ((mode, metres) in creature.speeds) writes += "speed.$mode" to metres.toString()
+            writes.forEachIndexed { i, (target, formula) ->
+                val effect = Effect(target, Op.SET, EffectValue.Text(formula), layer = Layer.BASE)
+                val value = compile(effect.value, "$id/form[$i]") ?: return@forEachIndexed
+                effectsByTarget.getOrPut(target) { ArrayList() } += CompiledEffect(id, base + i, effect, value, null)
+            }
+            formTargets[id] = writes.mapTo(HashSet()) { it.first }
+        }
         for (entity in catalog.entities) {
             entity.effects.forEachIndexed { index, effect ->
                 if (effect.op == Op.GRANT) return@forEachIndexed
@@ -331,13 +399,27 @@ internal class CompiledCatalog(val catalog: Catalog) {
 
     fun effectsFor(key: String): List<CompiledEffect> {
         parseVariant(key)?.let { (_, target) -> return spellEffectsByTarget[target].orEmpty() }
-        val own = effectsByTarget[key].orEmpty()
+        val own = effectsByTarget[key].orEmpty() + inherits[key].orEmpty().flatMap { effectsByTarget[it].orEmpty() }
         val family = familyKey(key)?.let { effectsByTarget[it] }.orEmpty()
         return if (family.isEmpty()) own else own + family
     }
 
     companion object {
         const val CHOICE = "{choice}"
+        const val FORM_HIT_DICE = "form.hit_dice"
+        const val FORM_SIZE = "form.size"
+        const val FORM_NATURAL_ARMOR = "form.natural_armor"
+        /** The creature's own size as steps (Medium 0): its attack dice are written for it. */
+        const val FORM_BASE_SIZE_STEPS = "form.base_size_steps"
+        val FORM_STATS = listOf(
+            FORM_HIT_DICE, FORM_SIZE, FORM_NATURAL_ARMOR, FORM_BASE_SIZE_STEPS,
+            "form.ability.str", "form.ability.dex", "form.ability.con",
+        )
+        const val NATURAL_SECONDARY_PENALTY = "natural.secondary_penalty"
+        const val NATURAL_ATTACK = "natural.attack"
+        const val NATURAL_DAMAGE = "natural.damage"
+        /** Natural attack slots on the sheet: a creature lists its kinds of attack (bite, claws…), rarely more. */
+        const val MAX_NATURAL_ATTACKS = 6
         const val SPELL_NUMERIC = "spell.numeric"
         const val SPELL_CASTER_LEVEL = "spell.caster_level"
         /** The spell's level on its caster class's list. */

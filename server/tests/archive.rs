@@ -15,10 +15,19 @@ use server::catalog::import::import;
 use sqlx::PgPool;
 
 fn golden(file: &str) -> Value {
-    let path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../test-references/danalieth")
-        .join(file);
-    serde_json::from_str(&fs::read_to_string(path).unwrap()).unwrap()
+    let read = |path: std::path::PathBuf| -> Value {
+        serde_json::from_str(&std::fs::read_to_string(path).unwrap()).unwrap()
+    };
+    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("..");
+    let mut value = read(root.join("test-references/danalieth").join(file));
+    // Danalieth's catalog holds her entities; the core rule sections live in content/srd/core.json.
+    if file == "catalog.json"
+        && let (Value::Object(own), Value::Object(core)) =
+            (&mut value, read(root.join("content/srd/core.json")))
+    {
+        own.extend(core);
+    }
+    value
 }
 
 /// A fresh folder under the system temp directory, removed when dropped.

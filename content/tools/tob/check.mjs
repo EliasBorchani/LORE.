@@ -11,7 +11,7 @@ const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'source', 'labe
 const LABELS = new Set(['strike', 'boost', 'counter', 'supernatural'])
 const DISCIPLINES = ['desert_wind', 'devoted_spirit', 'diamond_mind', 'iron_heart', 'setting_sun', 'shadow_hand', 'stone_dragon', 'tiger_claw', 'white_raven'].map((d) => 'discipline.' + d)
 
-const catalog = read(R + 'test-references/danalieth/catalog.json')
+const catalog = { ...read(R + 'content/srd/core.json'), ...read(R + 'test-references/danalieth/catalog.json') }
 const add = (batch) => {
   catalog.entities = catalog.entities.filter((e) => !batch.entities?.some((b) => b.id === e.id)).concat(batch.entities ?? [])
   catalog.progressions.push(...(batch.progressions ?? []))

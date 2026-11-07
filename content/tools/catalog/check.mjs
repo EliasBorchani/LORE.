@@ -5,7 +5,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs'
 const R = new URL('../../../', import.meta.url).pathname
 const { ContentCheck } = await import(R + 'apps/web/node_modules/dnd-engine/dnd-engine.mjs')
 const read = (p) => JSON.parse(readFileSync(p, 'utf8'))
-const core = JSON.stringify((({ entities, ...sections }) => sections)(read(R + 'test-references/danalieth/catalog.json')))
+const core = JSON.stringify(read(R + 'content/srd/core.json'))
 const problems = []
 
 const KINDS = { source: { file: 'sources.json', names: ['en'] }, situation: { file: 'situations.json', names: ['fr', 'en'] } }

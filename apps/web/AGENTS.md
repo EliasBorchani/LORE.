@@ -93,6 +93,14 @@ here: `npm install`, `npm run dev` (port 5173), `npm test`, `npm run build`. A f
   a « Compétences » block edits a draft of `skillRanks` (+ / −, points left, cross-class ranks cost 2) and saves it in
   one go. Combat tab: an Initiative row and both attacks (melee with Strength, ranged with Dexterity; damage keeps
   Strength for both, owner's choice for now).
+- Forms (wild shape, polymorph): Build's « Formes » lists the saved forms (source, size, HD, Str/Dex/Con, problems,
+  remove) and opens the builder (`src/screens/sheet/FormBuilderScreen.tsx`, route `forms/new`): a source (closure
+  entities with `shaping`), a creature (`GET /entities?type=creature`), the hit dice (the most allowed by default, a
+  stepper), where each +1 of the extra hit dice goes (Str, Dex or Con), « Garder l'équipement actif »; previewed live
+  with `previewForm` on the draft's closure, saved into `character.forms`. Combat's « Transformation »: one button per
+  form (it spends a use of the source, play state `toggle.form`), then what the form changes (before → after, from a
+  second sheet without the form), its natural attacks with breakdown links, and « Reprendre sa forme »; the weapon
+  block is hidden. Magic warns when the form cannot cast (no Natural Spell).
 - Magic tab (`src/screens/sheet/MagicTab.tsx`): per casting class, slots left / total (tap to spend), saved variants
   with « Lancer » (spends a slot of the variant's slot level), spells known, and « Nouvelle variante » (spell +
   metamagic feats the character has, previewed live with `previewVariant`, saved into `character.variants`). A

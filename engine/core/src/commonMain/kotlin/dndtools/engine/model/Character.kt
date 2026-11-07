@@ -24,6 +24,8 @@ data class Character(
     /** Invoker class id to the invocations learned through it. */
     val invocations: Map<String, InvocationChoice> = emptyMap(),
     val activeToggles: List<ToggleChoice> = emptyList(),
+    /** Forms built in the transformation builder; a toggle with `form` turns the character into one. */
+    val forms: List<SavedForm> = emptyList(),
     /**
      * Entity id to the option the player picked for it, e.g. the class Spell Improvement applies to. Effects read it
      * through `{choice}` in their target. One choice per entity for the spike.
@@ -124,6 +126,23 @@ enum class SpellcastingMode {
     @SerialName("free_slots") FREE_SLOTS,
 }
 
+/**
+ * A creature form as the player built it: from [source] (an entity with `shaping`), at [hitDice] (null = the most
+ * the creature's advancement and the source allow). [abilityIncreases]: one ability per +1 the extra hit dice give
+ * (one every 4 hit dice past the creature's own), in order.
+ */
+@Serializable
+data class SavedForm(
+    val id: String,
+    val name: String? = null,
+    val creature: String,
+    val source: String,
+    val hitDice: Int? = null,
+    val abilityIncreases: List<Ability> = emptyList(),
+    /** House rule: equipment keeps working even when the source melds it. */
+    val keepEquipment: Boolean = false,
+)
+
 /** A toggle the player switched on, optionally pointing to a spell variant or carrying a chosen value. */
 @Serializable
 data class ToggleChoice(
@@ -136,6 +155,8 @@ data class ToggleChoice(
     val casterClass: String? = null,
     /** Metamagic feats applied to [spell]: the toggle uses the computed spell variant. */
     val metamagic: List<String> = emptyList(),
+    /** A saved form this toggle turns the character into (wild shape, polymorph). */
+    val form: String? = null,
     /** Value picked by the player, read by formulas as `@toggle.<id>.value` (Power Attack). */
     val value: Fraction? = null,
 )

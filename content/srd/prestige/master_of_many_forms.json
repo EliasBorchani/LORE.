@@ -53,6 +53,7 @@
         "class_power",
         "master_of_many_forms"
       ],
+      "shaping": {"kinds": ["humanoid", "giant", "monstrous_humanoid", "fey", "vermin", "aberration", "plant", "ooze", "elemental", "dragon"], "extends": "power.druid_wild_shape"},
       "description": {
         "fr": "Chaque niveau lui ouvre une nouvelle famille de créatures, et une nouvelle gamme de tailles.\n\nEn jeu\n• Surnaturel. Forme animale peut prendre des formes de plus en plus variées : humanoïde (niveau 1), géant (2), humanoïde monstrueux (3), fée (4), vermine (5), aberration (6), plante (7), vase (8), élémentaire (9), dragon (10).\n• Tailles : G (niveau 2), TP (4), TG (6), Min (8), Gig (10).\n• Ses niveaux s’ajoutent à ceux des autres classes avec forme animale pour la limite de dés de vie de la forme et la durée.\n• +1 utilisation par jour de forme animale par niveau de maître des formes multiples."
       },

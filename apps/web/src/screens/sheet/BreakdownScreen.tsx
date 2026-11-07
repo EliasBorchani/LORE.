@@ -6,6 +6,7 @@ import { formatModifier, formatNumber, splitDice } from '../../format'
 import { bonusTypes, breakdownStatus, breakdownSteps, fr, statLabels } from '../../i18n/fr'
 import { situationName } from '../../rpg/dnd35/formulas'
 import { useSheet } from '../../sheet/SheetContext'
+import { localized } from '../../sheet/names'
 import { CharacterHeader } from './CharacterLayout'
 import { useGroupPath } from '../../group/GroupContext'
 
@@ -13,11 +14,20 @@ import { useGroupPath } from '../../group/GroupContext'
 export function BreakdownScreen() {
   const groupPath = useGroupPath()
   const key = useParams().key!
-  const { sheet, stat, record, name, entity, closure } = useSheet()
+  const { sheet, stat, record, name, entity, closure, activeForm } = useSheet()
   const openInfo = useEntityInfo()
   const total = stat(key)
   const rows = sheet.explain(key).asJsReadonlyArrayView()
-  const label = statLabels[key] ?? (entity(key) ? name(key) : key)
+  // A natural attack slot (`natural.1.attack`) is named after the active form's attack (« Attaque : Griffe »).
+  const naturalLabel = (k: string) => {
+    const m = /^natural\.(\d+)\.(attack|damage|penalty|ability)$/.exec(k)
+    if (!m) return null
+    const attack = activeForm && entity(activeForm.creature)?.creature?.attacks?.[Number(m[1]) - 1]
+    const attackName = localized(attack?.name) ?? fr.forms.naturalAttacks
+    const kind = m[2]
+    return kind === 'attack' || kind === 'damage' ? fr.forms.slot[kind](attackName) : fr.forms.slot[kind as 'penalty' | 'ability']
+  }
+  const label = statLabels[key] ?? naturalLabel(key) ?? (entity(key) ? name(key) : key)
 
   // A line's source is an entity, a component statistic, or `definition` for the base formula.
   // A house rule of the group says so: the number differs from the book's.
@@ -26,7 +36,7 @@ export function BreakdownScreen() {
       ? fr.breakdown.base
       : entity(source)
         ? name(source) + (closure.houseRules?.[source] ? ` · ${fr.catalog.houseRule}` : '')
-        : (statLabels[source] ?? source)
+        : (statLabels[source] ?? naturalLabel(source) ?? source)
   const counted = rows.filter((r) => r.status !== 'situational')
   const situational = rows.filter((r) => r.status === 'situational')
 

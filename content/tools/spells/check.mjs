@@ -7,9 +7,9 @@ const read = (p) => JSON.parse(readFileSync(p, 'utf8'))
 const files = process.argv.slice(2)
 const problems = []
 const SPELL_KEYS = new Set(['school', 'subschool', 'descriptors', 'components', 'castingTime', 'range', 'target', 'area', 'effect', 'duration', 'savingThrow', 'spellResistance'])
-const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'labels', 'description', 'spell', 'effects', 'note', 'usesPerDay', 'source', 'status'])
+const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'labels', 'description', 'spell', 'effects', 'note', 'usesPerDay', 'source', 'status', 'shaping'])
 
-const catalog = read(R + 'test-references/danalieth/catalog.json')
+const catalog = { ...read(R + 'content/srd/core.json'), ...read(R + 'test-references/danalieth/catalog.json') }
 const add = (batch) => {
   catalog.entities = catalog.entities.filter((e) => !batch.entities?.some((b) => b.id === e.id)).concat(batch.entities ?? [])
   catalog.progressions.push(...(batch.progressions ?? []))

@@ -1,7 +1,11 @@
 import { useMemo, useState } from 'react'
 import { CharacterSheet, SheetEngine } from 'dnd-engine'
-import catalogJson from '../../../test-references/danalieth/catalog.json?raw'
+import danalieth from '../../../test-references/danalieth/catalog.json?raw'
+import core from '../../../content/srd/core.json?raw'
 import characterJson from '../../../test-references/danalieth/character.json?raw'
+
+// Danalieth's file holds her entities; the core rule sections live in content/srd/core.json.
+const catalogJson = JSON.stringify({ ...JSON.parse(core), ...JSON.parse(danalieth) })
 
 const MAX_LEVEL = 59
 

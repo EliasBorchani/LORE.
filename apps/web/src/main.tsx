@@ -23,6 +23,7 @@ import { MagicTab } from './screens/sheet/MagicTab'
 import { FeatsTab } from './screens/sheet/OtherTabs'
 import { SkillsTab } from './screens/sheet/SkillsTab'
 import { LevelUpScreen } from './screens/sheet/LevelUpScreen'
+import { FormBuilderScreen } from './screens/sheet/FormBuilderScreen'
 import { NewCharacterScreen } from './screens/NewCharacterScreen'
 import { applyTheme, savedTheme } from './theme/theme'
 import './app.css'
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
               { path: 'stat/:key', element: <BreakdownScreen /> },
               { path: 'build', element: <BuildScreen /> },
               { path: 'level-up', element: <LevelUpScreen /> },
+              { path: 'forms/new', element: <FormBuilderScreen /> },
             ],
           },
           { path: 'catalog', element: <CatalogScreen /> },

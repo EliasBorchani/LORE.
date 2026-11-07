@@ -195,6 +195,7 @@
         "class_power",
         "druid"
       ],
+      "shaping": {"kinds": ["animal", "plant"], "maxHd": "level('class.druid') + level('class.master_of_many_forms')", "minSize": "if(level('class.master_of_many_forms') >= 8, 'diminutive', if(level('class.druid') >= 11 or level('class.master_of_many_forms') >= 4 or level('class.daggerspell_shaper') >= 2, 'tiny', 'small'))", "maxSize": "if(level('class.master_of_many_forms') >= 10, 'gargantuan', if(level('class.druid') >= 15 or level('class.master_of_many_forms') >= 6, 'huge', if(level('class.druid') >= 8 or level('class.master_of_many_forms') >= 2 or level('class.daggerspell_shaper') >= 4, 'large', 'medium')))", "meldsEquipment": true, "castingFeat": "feat.natural_spell"},
       "description": {
         "fr": "Le druide ferme les yeux, et quand il les rouvre ce sont ceux d’un loup. Il ne se déguise pas en bête : il en devient une, pour quelques heures, avec ses crocs, son flair et ses instincts.\n\nEn jeu\n• Se transforme en un animal qu’il connaît bien et revient à sa forme : action simple, sans attaque d’opportunité. Fonctionne comme métamorphose.\n• Dure une heure par niveau de druide, ou jusqu’à son retour.\n• Utilisations : 1/jour au niveau 5, puis 2 (6), 3 (7), 4 (10), 5 (14), 6 (18).\n• Taille : P ou M, puis G (8), TP (11), TG (15). Dés de vie de la forme : au plus son niveau de druide.\n• Dès le niveau 12, peut aussi prendre la forme d’une créature végétale.\n• Ne parle pas sous forme animale, mais communique avec les animaux de la même espèce."
       },
@@ -265,6 +266,7 @@
         "class_power",
         "druid"
       ],
+      "shaping": {"kinds": ["elemental"], "maxHd": "level('class.druid') + level('class.master_of_many_forms')", "minSize": "'small'", "maxSize": "if(level('class.druid') >= 20, 'huge', 'large')", "meldsEquipment": true, "castingFeat": "feat.natural_spell"},
       "description": {
         "fr": "Le vent, la pierre, la vague, la flamme. Au sommet de son art, le druide ne se contente plus des bêtes : il devient l’élément.\n\nEn jeu\n• Se transforme en élémentaire d’Air, d’Eau, de Feu ou de Terre de taille P, M ou G ; TG au niveau 20.\n• Utilisations : 1/jour au niveau 16, 2 (18), 3 (20), en plus des formes animales.\n• Gagne les pouvoirs extraordinaires, surnaturels et magiques et les dons de l’élémentaire, mais garde son propre type."
       },

@@ -120,6 +120,7 @@
         "epic",
         "wild"
       ],
+      "shaping": {"kinds": ["magical_beast"], "extends": "power.druid_wild_shape"},
       "description": {
         "fr": "Sa forme animale s’ouvre aux créatures magiques et à leurs pouvoirs surnaturels.\n\nEn jeu\n• Conditions : Sag 25, 27 degrés en Connaissances (nature), pouvoir de forme animale (6 fois par jour).\n• Il peut utiliser forme animale pour devenir une créature magique, avec les mêmes limites de taille que pour un animal.\n• Il obtient tous les pouvoirs surnaturels de la créature."
       },

@@ -2,7 +2,8 @@
 # Imports every official batch into a production database that already has a catalog (the first import is
 # deploy/import-content.sh). An import only writes a new version when an entity changed, so running it on every file
 # is safe and unchanged files cost nothing.
-# Danalieth's reference catalog is left out: it would put back her drafts of entities the SRD batches replaced.
+# The core rule sections (content/srd/core.json) come first. Danalieth's reference catalog is left out: it would put back
+# her drafts of entities the SRD batches replaced.
 # Before importing, it stops if an official entity was last edited in the app: the import would replace that edit
 # (spell levels included, from lists.json). Check those first, then run again with --force.
 # Usage: deploy/import-update.sh [--dry-run] [--force]
@@ -46,8 +47,8 @@ run() {
     --note "${NOTE:-official content update}" ${DRY_RUN:+--dry-run}
 }
 
-for file in content/srd/rules.json content/srd/sources.json content/srd/situations.json content/srd/races.json content/srd/domains.json \
+for file in content/srd/core.json content/srd/rules.json content/srd/sources.json content/srd/situations.json content/srd/races.json content/srd/domains.json \
             content/srd/tob/*.json content/srd/arcane/*.json content/srd/classes/*.json content/srd/prestige/*.json content/srd/feats/*.json \
-            content/srd/equipment/*.json content/srd/spells/*.json; do
+            content/srd/equipment/*.json content/srd/spells/*.json content/srd/creatures/*.json; do
   run "$file"
 done

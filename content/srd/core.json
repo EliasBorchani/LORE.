@@ -1,0 +1,490 @@
+{
+  "version": "batch-1-v5",
+  "bonusTypes": [
+    {
+      "id": "enhancement",
+      "stacks": false
+    },
+    {
+      "id": "morale",
+      "stacks": false
+    },
+    {
+      "id": "luck",
+      "stacks": false
+    },
+    {
+      "id": "insight",
+      "stacks": false
+    },
+    {
+      "id": "deflection",
+      "stacks": false
+    },
+    {
+      "id": "natural_armor",
+      "stacks": false
+    },
+    {
+      "id": "competence",
+      "stacks": false
+    },
+    {
+      "id": "circumstance",
+      "stacks": false
+    },
+    {
+      "id": "sacred",
+      "stacks": false
+    },
+    {
+      "id": "profane",
+      "stacks": false
+    },
+    {
+      "id": "racial",
+      "stacks": false
+    },
+    {
+      "id": "size",
+      "stacks": false
+    },
+    {
+      "id": "resistance",
+      "stacks": false
+    },
+    {
+      "id": "inherent",
+      "stacks": false
+    },
+    {
+      "id": "ioun",
+      "stacks": false
+    },
+    {
+      "id": "nature",
+      "stacks": false
+    },
+    {
+      "id": "untyped",
+      "stacks": true
+    },
+    {
+      "id": "dodge",
+      "stacks": true
+    },
+    {
+      "id": "template",
+      "stacks": true
+    }
+  ],
+  "damageTypes": [
+    {
+      "id": "acid"
+    },
+    {
+      "id": "cold"
+    },
+    {
+      "id": "electricity"
+    },
+    {
+      "id": "fire"
+    },
+    {
+      "id": "sonic"
+    },
+    {
+      "id": "force"
+    },
+    {
+      "id": "bludgeoning"
+    },
+    {
+      "id": "piercing"
+    },
+    {
+      "id": "slashing"
+    },
+    {
+      "id": "bludgeoning_fire",
+      "parts": [
+        "bludgeoning",
+        "fire"
+      ]
+    }
+  ],
+  "statistics": [
+    {
+      "key": "ability.str.score",
+      "base": "@ability.str.base"
+    },
+    {
+      "key": "ability.str.mod",
+      "base": "floor((@ability.str.score - 10) / 2)"
+    },
+    {
+      "key": "ability.dex.score",
+      "base": "@ability.dex.base"
+    },
+    {
+      "key": "ability.dex.mod",
+      "base": "floor((@ability.dex.score - 10) / 2)"
+    },
+    {
+      "key": "ability.con.score",
+      "base": "@ability.con.base"
+    },
+    {
+      "key": "ability.con.mod",
+      "base": "floor((@ability.con.score - 10) / 2)"
+    },
+    {
+      "key": "ability.int.score",
+      "base": "@ability.int.base"
+    },
+    {
+      "key": "ability.int.mod",
+      "base": "floor((@ability.int.score - 10) / 2)"
+    },
+    {
+      "key": "ability.wis.score",
+      "base": "@ability.wis.base"
+    },
+    {
+      "key": "ability.wis.mod",
+      "base": "floor((@ability.wis.score - 10) / 2)"
+    },
+    {
+      "key": "ability.cha.score",
+      "base": "@ability.cha.base"
+    },
+    {
+      "key": "ability.cha.mod",
+      "base": "floor((@ability.cha.score - 10) / 2)"
+    },
+    {
+      "key": "level",
+      "base": "level()"
+    },
+    {
+      "key": "level_from_xp",
+      "base": "floor((1 + isqrt(1 + 8 * @xp / 1000)) / 2)"
+    },
+    {
+      "key": "bab.classes",
+      "base": "@progression.bab"
+    },
+    {
+      "key": "bab",
+      "base": "@bab.classes"
+    },
+    {
+      "key": "save.fort",
+      "components": [
+        "progression.fort",
+        "ability.con.mod"
+      ]
+    },
+    {
+      "key": "save.ref",
+      "components": [
+        "progression.ref",
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "save.will",
+      "components": [
+        "progression.will",
+        "ability.wis.mod"
+      ]
+    },
+    {
+      "key": "hp.base",
+      "base": "3 / 4 * @hit_dice.total"
+    },
+    {
+      "key": "hp.max",
+      "base": "@hp.base + @ability.con.mod * level()"
+    },
+    {
+      "key": "weapon.attack",
+      "base": 0
+    },
+    {
+      "key": "attack.melee",
+      "components": [
+        "bab",
+        "ability.str.mod",
+        "weapon.attack",
+        "size.modifier"
+      ]
+    },
+    {
+      "key": "attack.ranged",
+      "components": [
+        "bab",
+        "ability.dex.mod",
+        "weapon.attack",
+        "size.modifier"
+      ]
+    },
+    {
+      "key": "damage.melee",
+      "components": [
+        "damage.melee.weapon",
+        "damage.melee.ability"
+      ]
+    },
+    {
+      "key": "damage.melee.weapon",
+      "base": "@weapon.damage"
+    },
+    {
+      "key": "damage.melee.ability",
+      "base": "@ability.str.mod"
+    },
+    {
+      "key": "ac.dex_bonus",
+      "base": "@ability.dex.mod"
+    },
+    {
+      "key": "ac.armor",
+      "base": 0
+    },
+    {
+      "key": "ac.natural",
+      "base": 0
+    },
+    {
+      "key": "ac.shield",
+      "base": 0
+    },
+    {
+      "key": "ac.total",
+      "base": "10 + @ac.armor + @ac.shield + @ac.natural + @ac.dex_bonus + @size.modifier"
+    },
+    {
+      "key": "caster_level.class[*]",
+      "base": 0
+    },
+    {
+      "key": "caster_level.wizard",
+      "base": "level('class.wizard') + @spellcasting.advances[class.wizard] + @caster_level.arcane + @caster_level.class[class.wizard]"
+    },
+    {
+      "key": "caster_level.sorcerer",
+      "base": "level('class.sorcerer') + @spellcasting.advances[class.sorcerer] + @caster_level.arcane + @caster_level.class[class.sorcerer]"
+    },
+    {
+      "key": "size",
+      "base": "'medium'"
+    },
+    {
+      "key": "size.steps",
+      "base": "if(@size == 'fine', -4, if(@size == 'diminutive', -3, if(@size == 'tiny', -2, if(@size == 'small', -1, if(@size == 'large', 1, if(@size == 'huge', 2, if(@size == 'gargantuan', 3, if(@size == 'colossal', 4, 0))))))))"
+    },
+    {
+      "key": "size.modifier",
+      "base": "if(@size == 'fine', 8, if(@size == 'diminutive', 4, if(@size == 'tiny', 2, if(@size == 'small', 1, if(@size == 'large', -1, if(@size == 'huge', -2, if(@size == 'gargantuan', -4, if(@size == 'colossal', -8, 0))))))))"
+    },
+    {
+      "key": "weapon.size_steps",
+      "base": "@size.steps"
+    },
+    {
+      "key": "weapon.damage",
+      "diceSteps": "@weapon.size_steps"
+    },
+    {
+      "key": "unarmed.damage",
+      "diceSteps": "@size.steps"
+    },
+    {
+      "key": "initiative",
+      "components": [
+        "ability.dex.mod"
+      ]
+    },
+    {
+      "key": "feat_slots.general",
+      "base": "1 + floor(min(level(), 20) / 3)"
+    },
+    {
+      "key": "feat_slots.epic",
+      "base": "max(0, floor(level() / 3) - 6)"
+    }
+  ],
+  "targetGroups": [
+    {
+      "key": "ability.all.score",
+      "members": [
+        "ability.str.score",
+        "ability.dex.score",
+        "ability.con.score",
+        "ability.int.score",
+        "ability.wis.score",
+        "ability.cha.score"
+      ]
+    },
+    {
+      "key": "save.all",
+      "members": [
+        "save.fort",
+        "save.ref",
+        "save.will"
+      ]
+    },
+    {
+      "key": "attack.all",
+      "members": [
+        "attack.melee",
+        "attack.ranged"
+      ]
+    },
+    {
+      "key": "damage.all",
+      "members": [
+        "damage.melee"
+      ]
+    }
+  ],
+  "progressionRules": {
+    "epicAfterLevel": 20,
+    "epicPerLevel": {
+      "bab": 0.5,
+      "fort": 0.5,
+      "ref": 0.5,
+      "will": 0.5
+    }
+  },
+  "rules": [
+    {
+      "id": "rule.epic",
+      "appliesTo": "each level after 20",
+      "text": "Règle maison : BBA et sauvegardes +½ par niveau épique, additionnés en fractions, arrondis une fois",
+      "note": "Retrouvé sur la fiche : total 39 / 29 / 35 / 29"
+    },
+    {
+      "id": "rule.hit_points",
+      "appliesTo": "each level",
+      "text": "Points de vie par niveau = ¾ du dé de vie (d12 → 9, d4 → 3)",
+      "note": "Retrouvé sur la fiche : 297 PV de base"
+    },
+    {
+      "id": "rule.experience",
+      "appliesTo": "level n",
+      "text": "XP requis = n × (n − 1) / 2 × 1000",
+      "note": "1 718 250 XP → niveau 59"
+    },
+    {
+      "id": "rule.epic_progression",
+      "formula": "Each class level gained at character level > 20 gives +0.5 BAB and +0.5 to each save, whatever the class table says. Fractions are summed across classes and rounded down once."
+    },
+    {
+      "id": "rule.hit_points",
+      "formula": "Per level: 3/4 of the hit die (d12 -> 9, d4 -> 3)."
+    },
+    {
+      "id": "rule.experience",
+      "formula": "XP needed for level n = n * (n - 1) / 2 * 1000"
+    }
+  ],
+  "diceSteps": {
+    "up": {
+      "1": "1d2",
+      "1d2": "1d3",
+      "1d3": "1d4",
+      "1d4": "1d6",
+      "1d6": "1d8",
+      "1d8": "2d6",
+      "2d6": "3d6",
+      "3d6": "4d6",
+      "4d6": "6d6",
+      "6d6": "8d6",
+      "8d6": "12d6",
+      "1d10": "2d8",
+      "2d8": "3d8",
+      "3d8": "4d8",
+      "4d8": "6d8",
+      "6d8": "8d8",
+      "8d8": "12d8",
+      "1d12": "3d6",
+      "2d4": "2d6",
+      "2d10": "4d8"
+    },
+    "down": {
+      "1": "0",
+      "1d2": "1",
+      "1d3": "1d2",
+      "1d4": "1d3",
+      "1d6": "1d4",
+      "1d8": "1d6",
+      "1d10": "1d8",
+      "1d12": "1d10",
+      "2d4": "1d6",
+      "2d6": "1d10",
+      "2d8": "2d6",
+      "2d10": "2d8",
+      "3d6": "2d6",
+      "3d8": "2d8",
+      "4d6": "3d6",
+      "4d8": "3d8",
+      "6d6": "4d6",
+      "6d8": "4d8",
+      "8d6": "6d6",
+      "8d8": "6d8",
+      "12d6": "8d6",
+      "12d8": "8d8"
+    }
+  },
+  "sizeChanges": [
+    {
+      "size": "diminutive",
+      "dex": -2
+    },
+    {
+      "size": "tiny",
+      "str": 2,
+      "dex": -2
+    },
+    {
+      "size": "small",
+      "str": 4,
+      "dex": -2
+    },
+    {
+      "size": "medium",
+      "str": 4,
+      "dex": -2,
+      "con": 2
+    },
+    {
+      "size": "large",
+      "str": 8,
+      "dex": -2,
+      "con": 4,
+      "naturalArmor": 2
+    },
+    {
+      "size": "huge",
+      "str": 8,
+      "dex": -2,
+      "con": 4,
+      "naturalArmor": 3
+    },
+    {
+      "size": "gargantuan",
+      "str": 8,
+      "con": 4,
+      "naturalArmor": 4
+    },
+    {
+      "size": "colossal",
+      "str": 8,
+      "con": 4,
+      "naturalArmor": 5
+    }
+  ]
+}

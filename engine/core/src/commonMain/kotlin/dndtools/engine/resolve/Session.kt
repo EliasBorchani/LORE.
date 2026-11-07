@@ -2,10 +2,13 @@ package dndtools.engine.resolve
 
 import dndtools.engine.formula.DiceValue
 import dndtools.engine.formula.EvalResult
+import dndtools.engine.formula.Formula
 import dndtools.engine.formula.FormulaEnv
+import dndtools.engine.formula.ParseResult
 import dndtools.engine.formula.StatUnavailable
 import dndtools.engine.formula.Value
 import dndtools.engine.math.Fraction
+import dndtools.engine.model.Ability
 import dndtools.engine.model.Character
 import dndtools.engine.model.Layer
 import dndtools.engine.model.MultMode
@@ -63,6 +66,9 @@ class Session internal constructor(
         val values = LinkedHashMap<String, Value>()
         val issues = ArrayList(compiled.issues)
         issues += choiceIssues()
+        if (state.formToggles > 1) {
+            issues += SheetIssue(SheetIssue.Code.INVALID_VALUE, source = "activeToggles", message = "Several forms are active: only the first counts")
+        }
         for (key in compiled.keys.sorted()) {
             val record = records.getValue(key)
             record.value?.let { values[key] = it }
@@ -134,10 +140,29 @@ class Session internal constructor(
         is CompiledValue.Expr -> (max.formula.evaluate(Frame("tableValue:$entityId")) as? EvalResult.Ok)?.value
     }
 
+    /** The shaping source's limit (`maxHd`, `minSize`, `maxSize`) for this character; null when it has none or it fails. */
+    internal fun shapingLimit(sourceId: String, name: String): Value? = when (val limit = compiled.shapingLimits[sourceId]?.get(name)) {
+        null -> null
+        is CompiledValue.Const -> limit.value
+        is CompiledValue.Expr -> (limit.formula.evaluate(Frame("shaping:$sourceId")) as? EvalResult.Ok)?.value
+    }
+
+    internal val activeForm get() = state.activeForm
+    internal val formCreature get() = state.formCreature
+
+    /** A form replaces the race on the statistics it writes: the race's bonuses and sets there stop counting. */
+    private fun replacedByForm(key: String, state: CharacterState): List<CompiledEffect> {
+        val creature = state.formCreature ?: return emptyList()
+        val race = state.race ?: return emptyList()
+        if (key !in compiled.formTargets[creature].orEmpty()) return emptyList()
+        return compiled.effectsFor(key).filter { it.entityId == race }
+    }
+
     private fun activeEffects(key: String, state: CharacterState): List<CompiledEffect> {
         val variant = CompiledCatalog.parseVariant(key)
+        val replaced = replacedByForm(key, state)
         val fixed = compiled.effectsFor(key).filter {
-            if (variant != null) isVariantEffect(variant.first, it.entityId, state) else state.isSource(it.entityId)
+            if (variant != null) isVariantEffect(variant.first, it.entityId, state) else state.isSource(it.entityId) && it !in replaced
         }
         if (variant != null) return fixed
         // A repeatable entity applies its effects once per take; a choice effect once per take that chose this key.
@@ -280,6 +305,10 @@ class Session internal constructor(
                 current = eval(base, "definition") ?: throw ResolveError("definition", "Base formula failed")
                 lines += BreakdownLine(Step.BASE, "definition", current)
             }
+            if (key in compiled.formKeys) {
+                current = formBase()
+                lines += BreakdownLine(Step.BASE, "definition", current)
+            }
             definition?.def?.components?.forEach { component ->
                 val part = try {
                     stat(component) ?: throw ResolveError(component, "Unknown component '$component'")
@@ -325,6 +354,14 @@ class Session internal constructor(
                 it.effect.effect.op == op && (op != Op.SET || (it.effect.effect.layer ?: Layer.BASE) == layer)
             }
 
+            val creature = state.formCreature
+            for (effect in replacedByForm(key, state)) {
+                if (effect.effect.situation != null) continue
+                eval(effect.value, effect.ref)?.let {
+                    lines += BreakdownLine(stepOf(effect.effect.op, effect.effect.layer), effect.entityId, it, Status.REPLACED,
+                        bonusType = effect.effect.bonusType, suppressedBy = creature)
+                }
+            }
             var before = lines.size
             pickSet(ofOp(Op.SET, Layer.BASE), Step.SET_BASE)?.let { winner ->
                 markReplaced(before)
@@ -465,6 +502,74 @@ class Session internal constructor(
             return winner
         }
 
+        /**
+         * The base of a `form.*` or `natural.<n>.*` statistic, from the active saved form: its hit dice (the most the
+         * creature and the source allow, or fewer if the player chose so), then the creature advanced to them.
+         * Without a form, numbers are 0 and the size is the character's.
+         */
+        private fun formBase(): Value {
+            val form = (input(Input.ActiveForm) as FormFacts).form
+            val creature = form?.let { compiled.creatures[it.creature] }
+            fun num(v: Long) = Value.Num(Fraction.of(v))
+            if (form == null || creature == null) {
+                return if (key == CompiledCatalog.FORM_SIZE) Value.Text("medium") else num(0)
+            }
+            fun hitDice(): Int = (stat(CompiledCatalog.FORM_HIT_DICE) as Value.Num).value.floor().toInt()
+            fun shape() = Forms.shape(creature, hitDice(), form.abilityIncreases, compiled.catalog.sizeChanges)
+            val slot = NATURAL_SLOT.matchEntire(key)
+            if (slot != null) {
+                val attack = creature.attacks.getOrNull(slot.groupValues[1].toInt() - 1) ?: return num(0)
+                return when (slot.groupValues[2]) {
+                    "penalty" -> if (attack.primary) num(0) else stat(CompiledCatalog.NATURAL_SECONDARY_PENALTY) ?: num(-5)
+                    // Strength bonus ×1.5 on a creature's only attack, ×½ on secondary ones; a penalty counts in full.
+                    "ability" -> {
+                        val mod = (stat("ability.str.mod") as? Value.Num)?.value ?: Fraction.ZERO
+                        val only = creature.attacks.sumOf { it.count } == 1
+                        val factor = when {
+                            mod.signum() < 0 -> Fraction.ONE
+                            !attack.primary -> Fraction.of(1, 2)
+                            only -> Fraction.of(3, 2)
+                            else -> Fraction.ONE
+                        }
+                        Value.Num(mod * factor)
+                    }
+                    // Untyped dice take the attack's damage type: `2d6 + 2d6 fire` is a slam of 2d6 bludgeoning and 2d6 fire.
+                    "damage" -> when (val parsed = Formula.parse(attack.dice)) {
+                        is ParseResult.Error -> throw ResolveError("definition", "'${attack.dice}': ${parsed.message}")
+                        is ParseResult.Ok -> when (val r = parsed.formula.evaluate(this)) {
+                            is EvalResult.Error -> throw ResolveError("definition", "'${attack.dice}': ${r.message}")
+                            is EvalResult.Ok -> (r.value as? Value.Dice)?.let { dice ->
+                                Value.Dice(dice.value.copy(terms = dice.value.terms.map { if (it.type == null) it.copy(type = attack.damageType) else it }))
+                            } ?: r.value
+                        }
+                    }
+                    else -> num(0)
+                }
+            }
+            return when (key) {
+                CompiledCatalog.FORM_HIT_DICE -> {
+                    var limit = Forms.maxHitDice(creature)
+                    shapingLimit(form.source)?.let { limit = minOf(limit, it) }
+                    form.hitDice?.let { limit = minOf(limit, it) }
+                    num(maxOf(limit, creature.hitDice).toLong())
+                }
+                CompiledCatalog.FORM_SIZE -> Value.Text(shape().size)
+                CompiledCatalog.FORM_NATURAL_ARMOR -> num(shape().naturalArmor)
+                CompiledCatalog.FORM_BASE_SIZE_STEPS -> num((Forms.steps(creature.size) ?: 0).toLong())
+                else -> {
+                    val ability = Ability.entries.first { it.name.lowercase() == key.substringAfterLast('.') }
+                    num(shape().abilities[ability] ?: 0)
+                }
+            }
+        }
+
+        /** The source's `maxHd` in this frame, so the form's hit dice follow the druid level or caster level. */
+        private fun shapingLimit(sourceId: String): Int? {
+            val limit = compiled.shapingLimits[sourceId]?.get("maxHd") ?: return null
+            val value = eval(limit, "$sourceId/shaping.maxHd") as? Value.Num ?: return null
+            return value.value.floor().toInt()
+        }
+
         /** Values a variant starts from, read from the character rather than from effects. */
         private fun variantBase(variantId: String, target: String): Value? = when (target) {
             CompiledCatalog.SPELL_CASTER_LEVEL -> casterStat(variantId, "caster_level.") { it.removePrefix("class.") }
@@ -581,6 +686,7 @@ class Session internal constructor(
 
     private companion object {
         const val UNTYPED = "untyped"
+        val NATURAL_SLOT = Regex("natural\\.(\\d+)\\.(penalty|ability|attack|damage)")
 
         /** Fine to Colossal is 8 steps; epic growth goes further. */
         const val MAX_SIZE_STEPS = 20L

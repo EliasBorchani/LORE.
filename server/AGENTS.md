@@ -14,7 +14,8 @@ rule sections plus the closure of its character's entities, and later only what 
 - Debug builds keep full debug info for our code only (`[profile.dev.package."*"]` in `Cargo.toml`): the libraries'
   made `target/` several GB. `cargo clean` empties it when needed.
 - Full stack, from the repository root: `docker compose up -d --build`, then
-  `docker compose exec server server import /test-references/danalieth/catalog.json --author import`. In Docker the
+  `docker compose exec server server import /content/srd/core.json --author import` (the core rule sections), then
+  the same with `/test-references/danalieth/catalog.json` (her entities). In Docker the
   server sees `./content` as `/content`, `./test-references` as `/test-references` (both read-only) and `./exports` as
   `/exports`.
 

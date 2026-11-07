@@ -154,6 +154,22 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
   `tsc` clean.
 - Verified end to end: Docker stack up, golden catalog imported (92 entities, 38 relations, 67 class rows, 7 sections;
   a second import changes nothing), Danalieth's closure fed to the JVM golden runner gives the same 20 verified values.
+- Forms (2026-11-05): wild shape, polymorph and shapechange. Engine: `creature` and `shaping` blocks,
+  `character.forms`, advanced creatures (size bands, `sizeChanges`, +1 per 4 HD placed by the player), the form
+  replaces the race on what it writes, melded equipment (except `wilding`), natural attack slots, API `forms` /
+  `activeForm` / `setForm` / `previewForm` (`FormsTest`). Core statistics: `size.modifier` in attacks and AC (the
+  Gnome's and Halfling's hand-written +1 removed); `sizeChanges` section. Content: 109 creatures from the owner's
+  Monster Manual (writer + reviewer agents on the page images), `shaping` on the druid's powers, Polymorph,
+  Shapechange and 3 feats/powers. Web: builder, Combat « Transformation », Build « Formes ». Imported in the local
+  database (sections `statistics` and `sizeChanges`, races, druid, the 3 changed spell/feat files, the creatures; not
+  `divine-epic.json` and `master_of_many_forms.json`, never imported locally before). The core rule sections moved
+  out of Danalieth's test catalog into `content/srd/core.json` (owner's choice; golden runner, content checks, bench
+  and server tests join them back); `deploy/import-update.sh` and `import-content.sh` import it first and now include
+  the creatures. **On the VPS**: `deploy/import-update.sh --dry-run`, then without. Engine, content checks and web tests pass. Checked in Chrome (2026-11-05) on a Human druid 20 « Sylvan (test
+  formes) » in a test account `forms-tester@lore.test` (local `dnd` database; note that the dev server
+  someone left on port 8080 used the `lore_check` database): builder (dire bear at 20 HD Huge: Str 41, Dex 11, Con
+  23, AC 18, HP 240, claws 2 × 2d6 + 15 at +28, secondary bite 3d8 + 7 at +23), the Build list, taking the form (a
+  Wild Shape use spent), the Magic warning, the claw breakdown, back to the own form. Not reviewed.
 
 ## Next steps
 
@@ -276,6 +292,10 @@ On 2026-10-19 the repository was reorganized before the first commit: `engine/` 
 - `rule.hit_points` and `rule.experience` are still defined twice in the golden catalog (stored as is in the `rules`
   section).
 - Relations and class tables have no history (only entities are versioned, as in the Catalog model).
+- Forms: size spells (Enlarge Person, Giant Size…) still write their own bonuses and do not change `size`, so their
+  weapon dice do not grow. Natural attacks ignore Weapon Finesse and criticals; special attacks (grab, rake, trample,
+  poison, burn's catching fire) are text. Polymorph's HD limit reads the character level, not the caster level.
+  Fractional HD (½, ¼) count as 1. Shapes are checked (kind, size, HD) but never refused.
 
 ## How the owner works
 

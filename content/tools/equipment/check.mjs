@@ -9,7 +9,7 @@ const files = process.argv.slice(2)
 const problems = []
 const ENTITY_KEYS = new Set(['id', 'type', 'name', 'provenance', 'source', 'labels', 'description', 'item', 'effects', 'usesPerDay', 'note', 'status'])
 
-const catalog = read(R + 'test-references/danalieth/catalog.json')
+const catalog = { ...read(R + 'content/srd/core.json'), ...read(R + 'test-references/danalieth/catalog.json') }
 const add = (batch) => {
   const ids = new Set((batch.entities ?? []).map((e) => e.id))
   const froms = new Set([...ids, ...(batch.relations ?? []).map((r) => r.from)])

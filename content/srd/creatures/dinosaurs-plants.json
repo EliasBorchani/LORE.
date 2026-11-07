@@ -1,0 +1,746 @@
+{
+  "entities": [
+    {
+      "id": "creature.deinonychus",
+      "type": "creature",
+      "name": {
+        "fr": "Deinonychus",
+        "en": "Deinonychus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un chasseur rapide et rusé, qui se jette sur sa proie en groupe, pattes arrière en avant.\n\nEn jeu\n• Animal de taille G, 4 DV, vitesse 18 m.\n• Attaques : ergots 2d6 (les deux pattes arrière comptent comme une seule attaque), 2 griffes 1d3 (secondaire), morsure 2d4 (secondaire).\n• Élan : en chargeant, il peut porter une attaque à outrance.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 8 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 4,
+        "size": "large",
+        "abilities": {
+          "str": 19,
+          "dex": 15,
+          "con": 19,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 5,
+        "speeds": {
+          "land": 18
+        },
+        "attacks": [
+          {
+            "id": "talon",
+            "name": {
+              "fr": "Ergots",
+              "en": "Talons"
+            },
+            "dice": "2d6",
+            "damageType": "slashing"
+          },
+          {
+            "id": "foreclaw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Foreclaw"
+            },
+            "count": 2,
+            "dice": "1d3",
+            "damageType": "slashing",
+            "primary": false
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d4",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 8,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Élan, odorat, vision nocturne.",
+          "en": "Bond, scent, low-light vision."
+        }
+      },
+      "note": "Les ergots (2 pattes arrière) comptent comme une seule attaque dans le livre; modélisés avec count 1. Nom français du bond: « Bond » = Élan (nos mots)."
+    },
+    {
+      "id": "creature.elasmosaurus",
+      "type": "creature",
+      "name": {
+        "fr": "Élasmosaure",
+        "en": "Elasmosaurus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un reptile marin au long cou, féroce et agile dans l'eau, qui garde la tête hors des flots pour saisir ses proies.\n\nEn jeu\n• Animal de taille TG, 10 DV, vitesse 6 m, nage 15 m.\n• Attaque : morsure 2d8.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 20 DV (taille TG), puis 30 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 10,
+        "size": "huge",
+        "abilities": {
+          "str": 26,
+          "dex": 14,
+          "con": 22,
+          "int": 2,
+          "wis": 13,
+          "cha": 9
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 6,
+          "swim": 15
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 20,
+            "size": "huge"
+          },
+          {
+            "maxHd": 30,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Odorat, vision nocturne.",
+          "en": "Scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.megaraptor",
+      "type": "creature",
+      "name": {
+        "fr": "Mégaraptor",
+        "en": "Megaraptor"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Cousin plus massif du deinonychus, avec les mêmes habitudes de chasse et la même vitesse meurtrière.\n\nEn jeu\n• Animal de taille TG, 8 DV, vitesse 18 m.\n• Attaques : ergots 2d8, 2 griffes 1d4 (secondaire), morsure 2d6 (secondaire).\n• Élan : en chargeant, il peut porter une attaque à outrance.\n• Odorat, vision nocturne.\n• Progression : 9 à 16 DV (taille TG), puis jusqu'à 24 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 8,
+        "size": "huge",
+        "abilities": {
+          "str": 21,
+          "dex": 15,
+          "con": 21,
+          "int": 2,
+          "wis": 15,
+          "cha": 10
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "land": 18
+        },
+        "attacks": [
+          {
+            "id": "talon",
+            "name": {
+              "fr": "Ergots",
+              "en": "Talons"
+            },
+            "dice": "2d8",
+            "damageType": "slashing"
+          },
+          {
+            "id": "foreclaw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Foreclaw"
+            },
+            "count": 2,
+            "dice": "1d4",
+            "damageType": "slashing",
+            "primary": false
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d6",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "huge"
+          },
+          {
+            "maxHd": 24,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Élan, odorat, vision nocturne.",
+          "en": "Bond, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.triceratops",
+      "type": "creature",
+      "name": {
+        "fr": "Tricératops",
+        "en": "Triceratops"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un herbivore massif et colérique, cuirassé d'une collerette osseuse et armé de trois cornes, qui charge tout intrus sur son territoire.\n\nEn jeu\n• Animal de taille TG, 16 DV, vitesse 9 m.\n• Attaque : cornes 2d8.\n• Charge en puissance : une charge inflige 4d8 points de dégâts avec les cornes.\n• Piétinement : contre les créatures de taille G ou moins, Réflexes DD 28 pour moitié.\n• Odorat, vision dans le noir.\n• Progression : 17 à 32 DV (taille Gig), puis 33 à 48 DV (taille C)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 16,
+        "size": "huge",
+        "abilities": {
+          "str": 30,
+          "dex": 9,
+          "con": 25,
+          "int": 1,
+          "wis": 12,
+          "cha": 7
+        },
+        "naturalArmor": 11,
+        "speeds": {
+          "land": 9
+        },
+        "attacks": [
+          {
+            "id": "gore",
+            "name": {
+              "fr": "Corne",
+              "en": "Gore"
+            },
+            "dice": "2d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 32,
+            "size": "gargantuan"
+          },
+          {
+            "maxHd": 48,
+            "size": "colossal"
+          }
+        ],
+        "qualities": {
+          "fr": "Charge en puissance (4d8), piétinement (DD 28), odorat, vision dans le noir.",
+          "en": "Powerful charge (4d8), trample (DC 28), scent, darkvision."
+        }
+      }
+    },
+    {
+      "id": "creature.tyrannosaurus",
+      "type": "creature",
+      "name": {
+        "fr": "Tyrannosaure",
+        "en": "Tyrannosaurus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Le plus redoutable des grands carnivores, affamé en permanence, qui avale tout ce qui bouge.\n\nEn jeu\n• Animal de taille TG, 18 DV, vitesse 12 m.\n• Attaque : morsure 3d6.\n• Étreinte : après une morsure sur une créature plus petite, lutte par une action libre.\n• Engloutissement : avale une créature plus petite agrippée ; elle subit des dégâts contondants et acides chaque round.\n• Odorat, vision nocturne.\n• Progression : 19 à 36 DV (taille Gig), puis 37 à 54 DV (taille C)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 18,
+        "size": "huge",
+        "abilities": {
+          "str": 28,
+          "dex": 12,
+          "con": 21,
+          "int": 2,
+          "wis": 15,
+          "cha": 10
+        },
+        "naturalArmor": 5,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "3d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 36,
+            "size": "gargantuan"
+          },
+          {
+            "maxHd": 54,
+            "size": "colossal"
+          }
+        ],
+        "qualities": {
+          "fr": "Engloutissement, étreinte, odorat, vision nocturne.",
+          "en": "Improved grab, swallow whole, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.assassin_vine",
+      "type": "creature",
+      "name": {
+        "fr": "Liane chasseresse",
+        "en": "Assassin Vine"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "plant"
+      ],
+      "description": {
+        "fr": "Une plante semi-mobile qui plante ses racines près de ses victimes pour les laisser pourrir et s'en nourrir.\n\nEn jeu\n• Plante de taille G, 4 DV, vitesse 1,50 m.\n• Attaque : coup 1d6.\n• Allonge 3 m (6 m avec la liane).\n• Étreinte et constriction : maintient et écrase une proie (1d6 + Force).\n• Enchevêtrement : les vrilles retiennent les créatures proches.\n• Vision aveugle (9 m), vision nocturne.\n• Progression : 5 à 16 DV (taille TG), puis 17 à 32 DV (taille Gig), au-delà 33 DV (taille C)."
+      },
+      "creature": {
+        "kind": "plant",
+        "hitDice": 4,
+        "size": "large",
+        "abilities": {
+          "str": 20,
+          "dex": 10,
+          "con": 16,
+          "wis": 13,
+          "cha": 9
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "land": 1.5
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "huge"
+          },
+          {
+            "maxHd": 32,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Constriction (1d6+7), enchevêtrement, étreinte, camouflage, immunité contre l'électricité, résistance au feu et au froid, vision aveugle, vision nocturne.",
+          "en": "Constrict (1d6+7), entangle, improved grab, camouflage, electricity immunity, fire and cold resistance, blindsight, low-light vision."
+        }
+      },
+      "note": "Progression lue p169 : 5-16 DV TG, 17-32 DV Gig, 33+ DV C (la bande 33+ n'a pas de maxHd, omise). Les tailles du livre français décalent d'un cran celles de la créature de base (taille G)."
+    },
+    {
+      "id": "creature.shambling_mound",
+      "type": "creature",
+      "name": {
+        "fr": "Tertre errant",
+        "en": "Shambling Mound"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "plant"
+      ],
+      "description": {
+        "fr": "Un tas de végétation pourrissante qui est en fait une plante carnivore intelligente, silencieuse et presque invisible dans les marais.\n\nEn jeu\n• Plante de taille G, 8 DV, vitesse 6 m, nage 6 m.\n• Attaques : 2 coups 2d6.\n• Étreinte : si les deux coups touchent, lutte par une action libre.\n• Constriction : 2d6 + Force à chaque lutte gagnée.\n• Immunité contre l'électricité : un éclair le soigne temporairement (1d4 points de Constitution).\n• Résistance au feu (10), vision dans le noir (18 m).\n• Progression : 9 à 12 DV (taille G), puis 13 à 24 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "plant",
+        "hitDice": 8,
+        "size": "large",
+        "abilities": {
+          "str": 21,
+          "dex": 10,
+          "con": 17,
+          "int": 7,
+          "wis": 10,
+          "cha": 9
+        },
+        "naturalArmor": 11,
+        "speeds": {
+          "land": 6,
+          "swim": 6
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 12,
+            "size": "large"
+          },
+          {
+            "maxHd": 24,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Constriction (2d6+7), étreinte, immunité contre l'électricité, résistance au feu (10), vision dans le noir (18 m).",
+          "en": "Constrict (2d6+7), improved grab, electricity immunity, fire resistance (10), darkvision (60 ft)."
+        }
+      }
+    },
+    {
+      "id": "creature.treant",
+      "type": "creature",
+      "name": {
+        "fr": "Sylvanien",
+        "en": "Treant"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "plant"
+      ],
+      "description": {
+        "fr": "Un être mi-arbre mi-humain, pacifique, mais terrible quand on met le feu à sa forêt.\n\nEn jeu\n• Plante de taille TG, 7 DV, vitesse 9 m.\n• Attaques : 2 branches 2d6.\n• Animation d'arbres : réveille des arbres proches pour combattre à ses côtés.\n• Dégâts doublés contre les objets ; piétinement (DD 22, demi-dégâts).\n• Réduction des dégâts 10/perforant, vulnérabilité au feu, vision nocturne.\n• Progression : 8 à 16 DV (taille TG), puis 17 à 21 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "plant",
+        "hitDice": 7,
+        "size": "huge",
+        "abilities": {
+          "str": 29,
+          "dex": 8,
+          "con": 21,
+          "int": 12,
+          "wis": 16,
+          "cha": 12
+        },
+        "naturalArmor": 13,
+        "speeds": {
+          "land": 9
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Branche",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "huge"
+          },
+          {
+            "maxHd": 21,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Animation d'arbres, dégâts doublés contre les objets, piétinement, plante, réduction des dégâts (10/perforant), vision nocturne, vulnérabilité au feu.",
+          "en": "Animate trees, double damage against objects, trample, plant, damage reduction (10/piercing), low-light vision, vulnerability to fire."
+        }
+      }
+    },
+    {
+      "id": "creature.tendriculos",
+      "type": "creature",
+      "name": {
+        "fr": "Tendriculaire",
+        "en": "Tendriculos"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "plant"
+      ],
+      "description": {
+        "fr": "Un amas de branches et d'épines autour d'une gueule béante, qui pousse à une vitesse effrayante en se nourrissant de proies.\n\nEn jeu\n• Plante de taille TG, 9 DV, vitesse 6 m.\n• Attaques : morsure 2d8, 2 appendices 1d6 (secondaire).\n• Étreinte puis engloutissement : la proie avalée est paralysée (Vigueur DD 20) et subit de l'acide.\n• Régénération 10 : l'acide et les armes contondantes ne la soignent pas.\n• Vision nocturne.\n• Progression : 10 à 16 DV (taille TG), puis 17 à 27 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "plant",
+        "hitDice": 9,
+        "size": "huge",
+        "abilities": {
+          "str": 28,
+          "dex": 9,
+          "con": 22,
+          "int": 3,
+          "wis": 8,
+          "cha": 3
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "land": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d8",
+            "damageType": "piercing"
+          },
+          {
+            "id": "tendril",
+            "name": {
+              "fr": "Appendice",
+              "en": "Tendril"
+            },
+            "count": 2,
+            "dice": "1d6",
+            "damageType": "bludgeoning",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "huge"
+          },
+          {
+            "maxHd": 27,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Engloutissement, étreinte, paralysie, régénération (10), vision nocturne.",
+          "en": "Swallow whole, improved grab, paralysis, regeneration (10), low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.violet_fungus",
+      "type": "creature",
+      "name": {
+        "fr": "Thallophyte violette",
+        "en": "Violet Fungus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "plant"
+      ],
+      "description": {
+        "fr": "Un champignon de la taille d'un humain, porté par des fibrilles, dont les tentacules frappent tout ce qui s'approche.\n\nEn jeu\n• Plante de taille M, 2 DV, vitesse 3 m.\n• Attaques : 4 tentacules 1d6.\n• Venin : Vigueur DD 14, 1d4 points de Force et de Constitution (effet initial et secondaire).\n• Vision nocturne.\n• Progression : 3 à 6 DV (taille M)."
+      },
+      "creature": {
+        "kind": "plant",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "str": 14,
+          "dex": 8,
+          "con": 16,
+          "wis": 11,
+          "cha": 9
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 3
+        },
+        "attacks": [
+          {
+            "id": "tentacle",
+            "name": {
+              "fr": "Tentacule",
+              "en": "Tentacle"
+            },
+            "count": 4,
+            "dice": "1d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 6,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Venin, plante, vision nocturne.",
+          "en": "Poison, plant, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.phantom_fungus",
+      "type": "creature",
+      "name": {
+        "fr": "Thallophyte spectrale",
+        "en": "Phantom Fungus"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "plant"
+      ],
+      "description": {
+        "fr": "Un champignon mobile, naturellement invisible, qui guette ses proies isolées en silence.\n\nEn jeu\n• Plante de taille M, 2 DV, vitesse 6 m.\n• Attaque : morsure 1d6.\n• Invisibilité suprême en permanence (niveau de lanceur de sorts 12) ; elle disparaît 1 minute après sa mort.\n• Vision nocturne.\n• Progression : 3 à 4 DV (taille M), puis 5 à 6 DV (taille G)."
+      },
+      "creature": {
+        "kind": "plant",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "str": 14,
+          "dex": 10,
+          "con": 16,
+          "int": 2,
+          "wis": 11,
+          "cha": 9
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 4,
+            "size": "medium"
+          },
+          {
+            "maxHd": 6,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Invisibilité suprême, plante, vision nocturne.",
+          "en": "Improved invisibility, plant, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.shrieker",
+      "type": "creature",
+      "name": {
+        "fr": "Criard",
+        "en": "Shrieker"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "plant"
+      ],
+      "description": {
+        "fr": "Un champignon de la taille d'un humain, immobile, qui hurle dès qu'on s'approche pour attirer des prédateurs, dont les thallophytes violettes profitent.\n\nEn jeu\n• Plante de taille M, 2 DV, vitesse 0 m.\n• Aucune attaque.\n• Hurlement : dès qu'il perçoit un mouvement ou de la lumière à 3 m, il crie 1d3 rounds et peut attirer des créatures.\n• Vision nocturne.\n• Progression : 3 DV (taille M)."
+      },
+      "creature": {
+        "kind": "plant",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "dex": 1,
+          "con": 13,
+          "wis": 2,
+          "cha": 1
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 0
+        },
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Hurlement, plante, vision nocturne.",
+          "en": "Shriek, plant, low-light vision."
+        }
+      },
+      "note": "Le livre imprime Dex « — » mais la CA donne -5 Dex : Dex 1 (comme la SRD). Sorts de lumière ou mouvement à 3 m déclenchent le hurlement."
+    }
+  ]
+}

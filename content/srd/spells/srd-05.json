@@ -408,6 +408,7 @@
         "spell",
         "transmutation"
       ],
+      "shaping": {"maxHd": "min(25, level())", "minSize": "'fine'", "maxSize": "'colossal'"},
       "description": {
         "fr": "Dragon, puce, golem, nuage de brume : la chair devient argile, et l'on change de corps à chaque battement de cœur.\n\nEn jeu\n• Comme métamorphose, mais toute créature non unique de taille I à C, de n'importe quel type, jusqu'à autant de DV que le niveau de lanceur (25 au plus).\n• Formes intangibles et gazeuses permises ; le lanceur prend le type de la forme.\n• Gagne les attaques et particularités extraordinaires et surnaturelles de la forme, pas ses pouvoirs magiques ; perd ses propres pouvoirs surnaturels.\n• Changer de forme : une action libre, une fois par round, avant ou après son action.\n• +10 aux tests de Déguisement en se faisant passer pour une autre créature.\n• Dure 10 minutes/niveau. Focaliseur : serre-tête de jade de 1 500 po."
       },

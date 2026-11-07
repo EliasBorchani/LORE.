@@ -37,7 +37,10 @@ Expected values in the small cases were derived by hand (see each `how`).
 
 ## danalieth/
 
-Level 59 character from the group, used as the stress case. Every verified value was re-derived by hand from
+Level 59 character from the group, used as the stress case. Its `catalog.json` holds only her entities, class tables
+and relations: the core rule sections (statistics, bonus types, dice steps, size changes…) are
+`content/srd/core.json`, which `golden-runner`, the content checks, the bench and the server tests add to it. A case
+catalog with a `version` (the six small cases) is complete on its own. Every verified value was re-derived by hand from
 the sheet's components; see `content/Danalieth_batch_1_v5.xlsx`, tabs "Danalieth abilities" and "Danalieth checks".
 
 Known gaps, listed in `character.json > assumptions`: level order, feat placement and the level of each

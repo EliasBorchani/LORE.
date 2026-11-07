@@ -1,0 +1,842 @@
+{
+  "entities": [
+    {
+      "id": "creature.eagle",
+      "type": "creature",
+      "name": {
+        "fr": "Aigle",
+        "en": "Eagle"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un rapace de montagne qui guette depuis son nid perché, puis fond sur sa proie les serres en avant.\n\nEn jeu\n• Animal de taille P, 1d8+1 (5 pv), vitesse sol 3 m, vol 24 m (moyenne).\n• Attaques : 2 serres 1d4, bec 1d4 (secondaire).\n• Vision nocturne.\n• Bonus racial de +8 aux tests de Détection.\n• Progression : jusqu'à 3 DV (taille P)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "small",
+        "abilities": {
+          "str": 10,
+          "dex": 15,
+          "con": 12,
+          "int": 2,
+          "wis": 14,
+          "cha": 6
+        },
+        "naturalArmor": 1,
+        "speeds": {
+          "land": 3,
+          "fly": 24
+        },
+        "flyManeuverability": "average",
+        "attacks": [
+          {
+            "id": "talon",
+            "name": {
+              "fr": "Serre",
+              "en": "Talon"
+            },
+            "count": 2,
+            "dice": "1d4",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Bec",
+              "en": "Beak"
+            },
+            "dice": "1d4",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Vision nocturne.",
+          "en": "Low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.ass",
+      "type": "creature",
+      "name": {
+        "fr": "Âne",
+        "en": "Ass"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Têtu et sobre, il porte sans broncher de lourdes charges sur les chemins les plus rudes.\n\nEn jeu\n• Animal de taille M, 2d8+2 (11 pv), vitesse 9 m.\n• Attaques : morsure 1d2.\n• Odorat, vision nocturne.\n• Charge transportable : 25 kg en charge légère, 50 kg en intermédiaire, 75 kg en lourde ; il peut tirer 375 kg.\n• Bonus racial de +2 aux tests d'Équilibre.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 2,
+        "size": "medium",
+        "abilities": {
+          "str": 10,
+          "dex": 13,
+          "con": 12,
+          "int": 2,
+          "wis": 11,
+          "cha": 4
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 9
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d2",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "odorat, vision nocturne",
+          "en": "scent, low-light vision"
+        }
+      }
+    },
+    {
+      "id": "creature.baboon",
+      "type": "creature",
+      "name": {
+        "fr": "Babouin",
+        "en": "Baboon"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un singe agressif qui vit en troupe sur les plaines chaudes et se réfugie dans les arbres à la nuit.\n\nEn jeu\n• Animal de taille M, 1d8+1 (5 pv), vitesse 12 m, escalade 9 m.\n• Attaques : morsure 1d6.\n• Odorat, vision nocturne.\n• Bonus racial de +8 aux tests d'Escalade ; il peut faire 10 même pressé.\n• Progression : 2-3 DV (taille M)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "medium",
+        "abilities": {
+          "str": 15,
+          "dex": 14,
+          "con": 12,
+          "int": 2,
+          "wis": 12,
+          "cha": 4
+        },
+        "naturalArmor": 1,
+        "speeds": {
+          "land": 12,
+          "climb": 9
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "odorat, vision nocturne",
+          "en": "scent, low-light vision"
+        }
+      }
+    },
+    {
+      "id": "creature.weasel",
+      "type": "creature",
+      "name": {
+        "fr": "Belette",
+        "en": "Weasel"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Petit prédateur nerveux qui se faufile partout. Une fois ses crocs plantés, il ne lâche plus.\n\nEn jeu\n• Animal de taille TP, 1/2 DV (2 pv), vitesse 6 m, escalade 6 m.\n• Attaques : morsure 1d3.\n• Fixation : après une morsure réussie, elle s'accroche et inflige automatiquement ses dégâts chaque round ; elle perd son bonus de Dex à la CA (CA 12). La victime se libère en la tuant ou en l'immobilisant.\n• Odorat, vision nocturne.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 3,
+          "dex": 15,
+          "con": 10,
+          "int": 2,
+          "wis": 12,
+          "cha": 5
+        },
+        "naturalArmor": 0,
+        "speeds": {
+          "land": 6,
+          "climb": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d3",
+            "damageType": "piercing"
+          }
+        ],
+        "qualities": {
+          "fr": "Fixation, odorat, vision nocturne.",
+          "en": "Attach, scent, low-light vision."
+        }
+      },
+      "note": "Le livre donne 1/2 DV (hitDice mis à 1)."
+    },
+    {
+      "id": "creature.bison",
+      "type": "creature",
+      "name": {
+        "fr": "Bison",
+        "en": "Bison"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un grand bovin de la plaine qui vit en troupeau et ne cherche pas la bagarre, mais qui écrase tout quand il panique.\n\nEn jeu\n• Animal de taille G, 5d8+15 (37 pv), vitesse 12 m.\n• Attaques : cornes 1d8.\n• Charge folle : un troupeau affolé piétine tout sur son passage ; 1d12 dégâts aux créatures de taille G ou moins, Réflexes DD 18 pour moitié.\n• Odorat, vision nocturne.\n• Progression : 6-7 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 5,
+        "size": "large",
+        "abilities": {
+          "str": 22,
+          "dex": 10,
+          "con": 16,
+          "int": 2,
+          "wis": 11,
+          "cha": 4
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "gore",
+            "name": {
+              "fr": "Cornes",
+              "en": "Gore"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 7,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Charge folle, odorat, vision nocturne.",
+          "en": "Stampede, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.badger",
+      "type": "creature",
+      "name": {
+        "fr": "Blaireau",
+        "en": "Badger"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Petit fouisseur trapu aux griffes puissantes. Acculé, il se bat avec une rage de bête enragée.\n\nEn jeu\n• Animal de taille P, 1d8+2 (6 pv), vitesse 9 m, creusement 3 m.\n• Attaques : 2 griffes 1d2, morsure 1d3 (secondaire).\n• Rage : après une blessure, il entre en furie jusqu'à tuer ou mourir ; +4 For et Con, -2 CA.\n• Odorat, vision nocturne.\n• Progression : 2 DV (taille P)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "small",
+        "abilities": {
+          "str": 8,
+          "dex": 17,
+          "con": 15,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 1,
+        "speeds": {
+          "land": 9,
+          "burrow": 3
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d2",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d3",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 2,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Rage, odorat, vision nocturne.",
+          "en": "Rage, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.squid",
+      "type": "creature",
+      "name": {
+        "fr": "Calmar",
+        "en": "Squid"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un céphalopode vif qui se propulse par à-coups et trouble l'eau d'un nuage d'encre.\n\nEn jeu\n• Animal de taille M, 3d8 (13 pv), vitesse nage 18 m.\n• Attaques : tentacules 0, morsure 1d6 (secondaire).\n• Étreinte (tentacules) : après une touche, lutte en action libre sans attaque d'opportunité ; +4 aux tests de lutte.\n• Nuage d'encre : une fois par minute, action libre, cube de 3 m, camouflage total.\n• Propulsion : une fois par round, jet à 72 m en action complexe, sans attaque d'opportunité.\n• Vision nocturne ; +8 aux tests de Natation.\n• Progression : 4-6 DV (taille M) ; 7-11 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 14,
+          "dex": 17,
+          "con": 11,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "swim": 18
+        },
+        "attacks": [
+          {
+            "id": "tentacle",
+            "name": {
+              "fr": "Tentacules",
+              "en": "Tentacles"
+            },
+            "dice": "0"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 6,
+            "size": "medium"
+          },
+          {
+            "maxHd": 11,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Étreinte (tentacules), nuage d'encre, propulsion, vision nocturne.",
+          "en": "Improved grab (tentacles), ink cloud, jet, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.giant_squid",
+      "type": "creature",
+      "name": {
+        "fr": "Calmar géant",
+        "en": "Giant Squid"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un chasseur des abysses, long comme trois cabanes de pêcheur, qui attaque presque tout ce qui passe à portée de ses dix tentacules.\n\nEn jeu\n• Animal de taille TG, 12d8+18 (72 pv), vitesse nage 24 m.\n• Attaques : 10 tentacules 1d6, morsure 2d8 (secondaire).\n• Étreinte (tentacules), constriction 1d6+8.\n• Nuage d'encre et propulsion (96 m).\n• Un tentacule a 10 pv : le trancher libère la prise ; il repousse en 1d10+10 jours.\n• Vision nocturne ; +8 aux tests de Natation.\n• Progression : 13-18 DV (taille TG) ; 19-36 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 12,
+        "size": "huge",
+        "abilities": {
+          "str": 26,
+          "dex": 17,
+          "con": 13,
+          "int": 1,
+          "wis": 12,
+          "cha": 2
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "swim": 24
+        },
+        "attacks": [
+          {
+            "id": "tentacle",
+            "name": {
+              "fr": "Tentacule",
+              "en": "Tentacle"
+            },
+            "count": 10,
+            "dice": "1d6",
+            "damageType": "bludgeoning"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d8",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 18,
+            "size": "huge"
+          },
+          {
+            "maxHd": 36,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Étreinte (tentacules), constriction (1d6+8), nuage d'encre, propulsion, vision nocturne.",
+          "en": "Improved grab (tentacles), constrict (1d6+8), ink cloud, jet, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.baleen_whale",
+      "type": "creature",
+      "name": {
+        "fr": "Baleine",
+        "en": "Baleen Whale"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Malgré son immense taille, elle se nourrit de plancton et se montre étonnamment placide, sauf si on l'attaque.\n\nEn jeu\n• Animal de taille Gig, 12d8+78 (132 pv), vitesse nage 12 m.\n• Attaques : queue 1d8.\n• Retient son souffle ; vision aveugle (36 m), vision nocturne.\n• Bonus de +8 aux tests de Natation ; +4 en Détection et Perception auditive.\n• Progression : 13-18 DV (taille Gig) ; 19-36 DV (taille C)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 12,
+        "size": "gargantuan",
+        "abilities": {
+          "str": 35,
+          "dex": 13,
+          "con": 22,
+          "int": 2,
+          "wis": 12,
+          "cha": 6
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "swim": 12
+        },
+        "attacks": [
+          {
+            "id": "tail_slap",
+            "name": {
+              "fr": "Queue",
+              "en": "Tail slap"
+            },
+            "dice": "1d8",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 18,
+            "size": "gargantuan"
+          },
+          {
+            "maxHd": 36,
+            "size": "colossal"
+          }
+        ],
+        "qualities": {
+          "fr": "Retient son souffle, vision aveugle (36 m), vision nocturne.",
+          "en": "Hold breath, blindsight (36 m), low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.cachalot",
+      "type": "creature",
+      "name": {
+        "fr": "Cachalot",
+        "en": "Cachalot Whale"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Le grand chasseur de calmars géants : une mâchoire énorme et un souffle qui lui permet de plonger très longtemps.\n\nEn jeu\n• Animal de taille Gig, 12d8+87 (141 pv), vitesse nage 12 m.\n• Attaques : morsure 4d6, queue 1d8 (secondaire).\n• Retient son souffle ; vision aveugle (36 m), vision nocturne.\n• Bonus de +8 aux tests de Natation ; +4 en Détection et Perception auditive.\n• Progression : 13-18 DV (taille Gig) ; 19-36 DV (taille C)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 12,
+        "size": "gargantuan",
+        "abilities": {
+          "str": 35,
+          "dex": 13,
+          "con": 24,
+          "int": 2,
+          "wis": 14,
+          "cha": 6
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "swim": 12
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "4d6",
+            "damageType": "piercing"
+          },
+          {
+            "id": "tail_slap",
+            "name": {
+              "fr": "Queue",
+              "en": "Tail slap"
+            },
+            "dice": "1d8",
+            "damageType": "bludgeoning",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 18,
+            "size": "gargantuan"
+          },
+          {
+            "maxHd": 36,
+            "size": "colossal"
+          }
+        ],
+        "qualities": {
+          "fr": "Retient son souffle, vision aveugle (36 m), vision nocturne.",
+          "en": "Hold breath, blindsight (36 m), low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.orca",
+      "type": "creature",
+      "name": {
+        "fr": "Orque épaulard",
+        "en": "Orca"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un prédateur marin rapide qui chasse en groupe poissons, phoques et même baleines.\n\nEn jeu\n• Animal de taille TG, 9d8+48 (88 pv), vitesse nage 15 m.\n• Attaques : morsure 2d6.\n• Retient son souffle ; vision aveugle (36 m), vision nocturne.\n• Bonus de +8 aux tests de Natation ; +4 en Détection et Perception auditive.\n• Progression : 10-13 DV (taille TG) ; 14-27 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 9,
+        "size": "huge",
+        "abilities": {
+          "str": 27,
+          "dex": 15,
+          "con": 21,
+          "int": 2,
+          "wis": 14,
+          "cha": 6
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "swim": 15
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 13,
+            "size": "huge"
+          },
+          {
+            "maxHd": 27,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Retient son souffle, vision aveugle (36 m), vision nocturne.",
+          "en": "Hold breath, blindsight (36 m), low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.camel",
+      "type": "creature",
+      "name": {
+        "fr": "Chameau",
+        "en": "Camel"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Il traverse les déserts sans boire ni manger pendant des jours, et ne mord que s'il est poussé à bout.\n\nEn jeu\n• Animal de taille G, 3d8+6 (19 pv), vitesse 15 m.\n• Attaques : morsure 1d4 (secondaire).\n• Odorat, vision nocturne.\n• Charge transportable : 150 kg en charge légère, 300 kg en intermédiaire, 450 kg en lourde.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "large",
+        "abilities": {
+          "str": 18,
+          "dex": 16,
+          "con": 14,
+          "int": 2,
+          "wis": 11,
+          "cha": 4
+        },
+        "naturalArmor": 1,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d4",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "qualities": {
+          "fr": "odorat, vision nocturne",
+          "en": "scent, low-light vision"
+        }
+      }
+    },
+    {
+      "id": "creature.cat",
+      "type": "creature",
+      "name": {
+        "fr": "Chat",
+        "en": "Cat"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un chasseur discret qui s'approche sans bruit de sa proie.\n\nEn jeu\n• Animal de taille TP, 1/2 DV (2 pv), vitesse 9 m.\n• Attaques : 2 griffes 1d2, morsure 1d3 (secondaire).\n• Odorat, vision nocturne.\n• Bonus de +4 aux tests de Déplacement silencieux, Discrétion et Escalade, +8 en Équilibre.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "tiny",
+        "abilities": {
+          "str": 3,
+          "dex": 15,
+          "con": 10,
+          "int": 2,
+          "wis": 12,
+          "cha": 7
+        },
+        "naturalArmor": 0,
+        "speeds": {
+          "land": 9
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d2",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d3",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "qualities": {
+          "fr": "odorat, vision nocturne",
+          "en": "scent, low-light vision"
+        }
+      },
+      "note": "Le livre donne 1/2 DV (hitDice mis à 1)."
+    },
+    {
+      "id": "creature.bat",
+      "type": "creature",
+      "name": {
+        "fr": "Chauve-souris",
+        "en": "Bat"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un petit mammifère volant de nuit, qui se repère au son et chasse les insectes.\n\nEn jeu\n• Animal de taille Min, 1/4 DV (1 pv), vitesse sol 1,5 m, vol 12 m (bonne).\n• Attaques : aucune.\n• Perception aveugle (6 m) ; vision nocturne.\n• Bonus de +4 en Détection et Perception auditive, perdu si elle ne peut pas utiliser son sonar.\n• Progression : aucune."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "diminutive",
+        "abilities": {
+          "str": 1,
+          "dex": 15,
+          "con": 10,
+          "int": 2,
+          "wis": 14,
+          "cha": 4
+        },
+        "naturalArmor": 0,
+        "speeds": {
+          "land": 1.5,
+          "fly": 12
+        },
+        "flyManeuverability": "good",
+        "qualities": {
+          "fr": "Perception aveugle (6 m), vision nocturne.",
+          "en": "Blindsense (6 m), low-light vision."
+        }
+      },
+      "note": "Le livre donne 1/4 DV (hitDice mis à 1). Aucune attaque."
+    }
+  ]
+}

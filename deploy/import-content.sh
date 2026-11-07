@@ -1,7 +1,7 @@
 #!/bin/sh
 # Imports the whole official catalog into a fresh production database, in an order that works:
-# 1. Danalieth's reference catalog, which holds the core rule sections (statistics, bonus types, dice steps...)
-#    and her entities; 2. the SRD batches, which replace the drafts she had of the same entities (Wizard, Sorcerer).
+# 1. the core rule sections (content/srd/core.json: statistics, bonus types, dice steps...); 2. Danalieth's reference
+#    catalog (her entities); 3. the SRD batches, which replace the drafts she had of the same entities (Wizard, Sorcerer).
 # Usage: deploy/import-content.sh [--dry-run]. For an empty database only: run again, step 1 would put back her drafts
 # and step 2 replace them again, a useless version each time. Later batches are imported one by one (docs/deploy.md).
 set -eu
@@ -20,9 +20,10 @@ run() {
 }
 [ "${1:-}" = "--dry-run" ] && DRY_RUN=1
 
+run content/srd/core.json
 run test-references/danalieth/catalog.json
 for file in content/srd/rules.json content/srd/sources.json content/srd/situations.json content/srd/races.json content/srd/domains.json \
             content/srd/tob/*.json content/srd/arcane/*.json content/srd/classes/*.json content/srd/prestige/*.json content/srd/feats/*.json \
-            content/srd/equipment/*.json content/srd/spells/*.json; do
+            content/srd/equipment/*.json content/srd/spells/*.json content/srd/creatures/*.json; do
   run "$file"
 done

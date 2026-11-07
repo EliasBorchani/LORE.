@@ -74,6 +74,29 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
   1d2 down is 1). `weapon.damage` uses `@weapon.size_steps` (= `@size.steps`, the `size` word as a number, M = 0;
   `size` defaults to `'medium'`), `unarmed.damage` uses `@size.steps`. A die with no next step stops there and is
   reported. The breakdown shows a `size` line.
+  `size.modifier` (core statistic: +1 Small, −1 Large, −2 Huge…) is part of `attack.melee`, `attack.ranged` and
+  `ac.total`, so a size never writes its own attack or AC bonus.
+- **Forms (wild shape, polymorph):** an entity with a `creature` block (`kind`, `hitDice`, `size`, Str/Dex/Con,
+  `naturalArmor`, `speeds` in metres, `attacks` with dice for its own size, `advancement` bands `{maxHd, size}`) is a
+  form; an entity with `shaping` (`kinds`, `maxHd` / `minSize` / `maxSize` formulas, `meldsEquipment`,
+  `castingFeat`, `extends`) gives forms. `character.forms` are the player's saved forms (creature, source, `hitDice`
+  or null for the most allowed, `abilityIncreases`, `keepEquipment`); a toggle with `form` (`toggle.form`) turns the
+  character into one, the first counts. Hit dice = min(the creature's last band, the source's `maxHd`, the chosen
+  ones), never below the creature's own. The creature is advanced (Monster Manual): the size of its band, the
+  catalog's `sizeChanges` (the SRD table, one entry per size grown into; shrinking takes it off), and one ability
+  point per 4 hit dice past its own, placed in `abilityIncreases` order. Built in when the catalog has creatures:
+  `form.hit_dice`, `form.size`, `form.ability.<str|dex|con>`, `form.natural_armor`, `form.base_size_steps`. While
+  active, the creature is had and writes base-layer `set` effects on `ability.<a>.score` (only the abilities it has),
+  `ac.natural`, `size` and its own `speed.<mode>` (modes it lacks stay the character's); bonuses still add on top.
+  On those statistics the race's effects stop counting (breakdown `replaced`, `suppressedBy` the creature). A source
+  that melds equipment turns off the items without the label `wilding`, unless the form keeps its equipment.
+  Natural attacks are slots `natural.<n>.attack` (BAB + Str mod + `size.modifier` + `natural.<n>.penalty`: 0, or
+  `natural.secondary_penalty` = −5 for a secondary one) and `natural.<n>.damage` (the creature's dice moved by
+  `@size.steps − @form.base_size_steps`, + `natural.<n>.ability`: Str mod ×1.5 on a creature's only attack, ×½ on a
+  secondary one, a penalty in full); they also take the effects on `attack.melee` / `natural.attack` and `damage.melee` /
+  `natural.damage`. The API lists `forms` and `activeForm` (hit dice, size, abilities, `naturalAttacks`, `canCast`,
+  issues `unknown`, `not_had`, `kind_not_allowed`, `too_many_hd`, `size_not_allowed`, `unspent`,
+  `too_many_increases`, `size_changes_missing`), `setForm(id or null)` and `previewForm(json)` for the builder.
 - **Spell variants:** effects scoped to `spell` target `variant[<variant id>].<stat>`. A variant is a saved one
   (`character.variants`: id, spell, casterClass, metamagic) or a toggle naming `spell` + `metamagic` (its id is then
   the spell id). It takes spell-scoped effects from its spell, its chosen modifiers, and what the character has that
@@ -145,7 +168,8 @@ turns a character's choices and the catalog into a sheet. It has its own Gradle 
 
 ## Reference tests (`test-references/`)
 
-`test-references/danalieth/`: catalog, character (level 59) and expected sheet. 20 values are verified by hand
+`test-references/danalieth/`: catalog (her entities; the core sections are `content/srd/core.json`, joined at build
+time), character (level 59) and expected sheet. 20 values are verified by hand
 (abilities, BAB 39 / 49, saves 81 / 84 / 44, HP 297 / 2480, attack 135, damage 3d6 + 138 ≈ 148, level,
 caster levels Wizard 60 / Sorcerer 29, spell resistance 72). Spellcraft is pending (her skill ranks are not entered yet).
 Six small cases cover the rules one by one (stacking, multipliers, layers, worked examples, level 60, errors).

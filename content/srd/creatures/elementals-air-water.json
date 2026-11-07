@@ -1,0 +1,733 @@
+{
+  "entities": [
+    {
+      "id": "creature.air_elemental_small",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Air, taille P",
+        "en": "Small Air Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un vent qui a pris corps : on le sent avant de le voir, et il frappe d'un seul coup comme une rafale.\n\nEn jeu\n• Élémentaire (Air, extraplanaire) de taille P, 2 DV, vol 30 m (parfaite).\n• Attaques : coup 1d4.\n• Cyclone : 1 fois par 10 minutes, se change en cyclone (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 6 m de haut. Les créatures de taille inférieure à la sienne subissent 1d4/round (Réflexes DD 11 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 15 + niveau).\n• Maîtrise de l'Air : les créatures volantes subissent −1 aux jets d'attaque et de dégâts contre lui.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 3 DV (taille P)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "air",
+          "extraplanar"
+        ],
+        "hitDice": 2,
+        "size": "small",
+        "abilities": {
+          "str": 10,
+          "dex": 17,
+          "con": 10,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "fly": 30
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d4",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Cyclone (DD 11, 1d4), maîtrise de l'Air (−1 aux volants), vision dans le noir 18 m.",
+          "en": "Whirlwind (DC 11, 1d4), air mastery (−1 to fliers), darkvision 18 m."
+        },
+        "flyManeuverability": "perfect"
+      }
+    },
+    {
+      "id": "creature.air_elemental_medium",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Air, taille M",
+        "en": "Medium Air Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un vent qui a pris corps : on le sent avant de le voir, et il frappe d'un seul coup comme une rafale.\n\nEn jeu\n• Élémentaire (Air, extraplanaire) de taille M, 4 DV, vol 30 m (parfaite).\n• Attaques : coup 1d6.\n• Cyclone : 1 fois par 10 minutes, se change en cyclone (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 9 m de haut. Les créatures de taille inférieure à la sienne subissent 1d6/round (Réflexes DD 13 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 15 + niveau).\n• Maîtrise de l'Air : les créatures volantes subissent −1 aux jets d'attaque et de dégâts contre lui.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 7 DV (taille M)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "air",
+          "extraplanar"
+        ],
+        "hitDice": 4,
+        "size": "medium",
+        "abilities": {
+          "str": 12,
+          "dex": 21,
+          "con": 14,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "fly": 30
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 7,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Cyclone (DD 13, 1d6), maîtrise de l'Air (−1 aux volants), vision dans le noir 18 m.",
+          "en": "Whirlwind (DC 13, 1d6), air mastery (−1 to fliers), darkvision 18 m."
+        },
+        "flyManeuverability": "perfect"
+      }
+    },
+    {
+      "id": "creature.air_elemental_large",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Air, taille G",
+        "en": "Large Air Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un vent qui a pris corps : on le sent avant de le voir, et il frappe d'un seul coup comme une rafale.\n\nEn jeu\n• Élémentaire (Air, extraplanaire) de taille G, 8 DV, vol 30 m (parfaite).\n• Attaques : 2 coups 2d6.\n• Cyclone : 1 fois par 10 minutes, se change en cyclone (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 12 m de haut. Les créatures de taille inférieure à la sienne subissent 2d6/round (Réflexes DD 16 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 15 + niveau).\n• Maîtrise de l'Air : les créatures volantes subissent −1 aux jets d'attaque et de dégâts contre lui.\n• Réduction des dégâts 5/—.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 15 DV (taille G)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "air",
+          "extraplanar"
+        ],
+        "hitDice": 8,
+        "size": "large",
+        "abilities": {
+          "str": 14,
+          "dex": 25,
+          "con": 16,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "fly": 30
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 15,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Cyclone (DD 16, 2d6), maîtrise de l'Air (−1 aux volants), réduction des dégâts 5/—, vision dans le noir 18 m.",
+          "en": "Whirlwind (DC 16, 2d6), air mastery (−1 to fliers), damage reduction 5/—, darkvision 18 m."
+        },
+        "flyManeuverability": "perfect"
+      }
+    },
+    {
+      "id": "creature.air_elemental_huge",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Air, taille TG",
+        "en": "Huge Air Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un vent qui a pris corps : on le sent avant de le voir, et il frappe d'un seul coup comme une rafale.\n\nEn jeu\n• Élémentaire (Air, extraplanaire) de taille TG, 16 DV, vol 30 m (parfaite).\n• Attaques : 2 coups 2d8.\n• Cyclone : 1 fois par 10 minutes, se change en cyclone (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 15 m de haut. Les créatures de taille inférieure à la sienne subissent 2d8/round (Réflexes DD 22 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 15 + niveau).\n• Maîtrise de l'Air : les créatures volantes subissent −1 aux jets d'attaque et de dégâts contre lui.\n• Réduction des dégâts 5/—.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 20 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "air",
+          "extraplanar"
+        ],
+        "hitDice": 16,
+        "size": "huge",
+        "abilities": {
+          "str": 18,
+          "dex": 29,
+          "con": 18,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "fly": 30
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d8",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 20,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Cyclone (DD 22, 2d8), maîtrise de l'Air (−1 aux volants), réduction des dégâts 5/—, vision dans le noir 18 m.",
+          "en": "Whirlwind (DC 22, 2d8), air mastery (−1 to fliers), damage reduction 5/—, darkvision 18 m."
+        },
+        "flyManeuverability": "perfect"
+      }
+    },
+    {
+      "id": "creature.air_elemental_greater",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Air, noble",
+        "en": "Greater Air Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un vent qui a pris corps : on le sent avant de le voir, et il frappe d'un seul coup comme une rafale.\n\nEn jeu\n• Élémentaire (Air, extraplanaire) de taille TG, 21 DV, vol 30 m (parfaite).\n• Attaques : 2 coups 2d8.\n• Cyclone : 1 fois par 10 minutes, se change en cyclone (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 18 m de haut. Les créatures de taille inférieure à la sienne subissent 2d8/round (Réflexes DD 25 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 15 + niveau).\n• Maîtrise de l'Air : les créatures volantes subissent −1 aux jets d'attaque et de dégâts contre lui.\n• Réduction des dégâts 10/—.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 23 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "air",
+          "extraplanar"
+        ],
+        "hitDice": 21,
+        "size": "huge",
+        "abilities": {
+          "str": 20,
+          "dex": 31,
+          "con": 18,
+          "int": 8,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 8,
+        "speeds": {
+          "fly": 30
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d8",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 23,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Cyclone (DD 25, 2d8), maîtrise de l'Air (−1 aux volants), réduction des dégâts 10/—, vision dans le noir 18 m.",
+          "en": "Whirlwind (DC 25, 2d8), air mastery (−1 to fliers), damage reduction 10/—, darkvision 18 m."
+        },
+        "flyManeuverability": "perfect"
+      }
+    },
+    {
+      "id": "creature.air_elemental_elder",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Air, seigneur",
+        "en": "Elder Air Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Un vent qui a pris corps : on le sent avant de le voir, et il frappe d'un seul coup comme une rafale.\n\nEn jeu\n• Élémentaire (Air, extraplanaire) de taille TG, 24 DV, vol 30 m (parfaite).\n• Attaques : 2 coups 2d8.\n• Cyclone : 1 fois par 10 minutes, se change en cyclone (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 18 m de haut. Les créatures de taille inférieure à la sienne subissent 2d8/round (Réflexes DD 28 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 15 + niveau).\n• Maîtrise de l'Air : les créatures volantes subissent −1 aux jets d'attaque et de dégâts contre lui.\n• Réduction des dégâts 10/—.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 48 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "air",
+          "extraplanar"
+        ],
+        "hitDice": 24,
+        "size": "huge",
+        "abilities": {
+          "str": 22,
+          "dex": 33,
+          "con": 20,
+          "int": 10,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 8,
+        "speeds": {
+          "fly": 30
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d8",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 48,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Cyclone (DD 28, 2d8), maîtrise de l'Air (−1 aux volants), réduction des dégâts 10/—, vision dans le noir 18 m.",
+          "en": "Whirlwind (DC 28, 2d8), air mastery (−1 to fliers), damage reduction 10/—, darkvision 18 m."
+        },
+        "flyManeuverability": "perfect"
+      }
+    },
+    {
+      "id": "creature.water_elemental_small",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Eau, taille P",
+        "en": "Small Water Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une vague qui se dresse et décide de marcher : froide, lourde et sans pitié pour ceux qui en croisent le chemin.\n\nEn jeu\n• Élémentaire (Eau, extraplanaire) de taille P, 2 DV, vitesse 6 m, nage 27 m.\n• Attaques : coup 1d6.\n• Extinction du feu : son contact éteint torches et feux non magiques de taille G ou moins, et peut dissiper un feu magique.\n• Maelström : sous l'eau, 1 fois par 10 minutes, se change en tourbillon (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 6 m de haut. Les créatures de taille inférieure à la sienne subissent 1d4/round (Réflexes DD 13 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 10 + niveau).\n• Maîtrise de l'Eau : +1 à l'attaque et aux dégâts si lui et son adversaire touchent l'eau ; −4 si l'un d'eux est sur la terre ferme.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 3 DV (taille P)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "water",
+          "extraplanar"
+        ],
+        "hitDice": 2,
+        "size": "small",
+        "abilities": {
+          "str": 14,
+          "dex": 10,
+          "con": 13,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "land": 6,
+          "swim": 27
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d6",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "small"
+          }
+        ],
+        "qualities": {
+          "fr": "Extinction du feu, maelström (DD 13, 1d4), maîtrise de l'Eau, vision dans le noir 18 m.",
+          "en": "Drench, vortex (DC 13, 1d4), water mastery, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.water_elemental_medium",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Eau, taille M",
+        "en": "Medium Water Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une vague qui se dresse et décide de marcher : froide, lourde et sans pitié pour ceux qui en croisent le chemin.\n\nEn jeu\n• Élémentaire (Eau, extraplanaire) de taille M, 4 DV, vitesse 6 m, nage 27 m.\n• Attaques : coup 1d8.\n• Extinction du feu : son contact éteint torches et feux non magiques de taille G ou moins, et peut dissiper un feu magique.\n• Maelström : sous l'eau, 1 fois par 10 minutes, se change en tourbillon (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 9 m de haut. Les créatures de taille inférieure à la sienne subissent 1d6/round (Réflexes DD 15 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 10 + niveau).\n• Maîtrise de l'Eau : +1 à l'attaque et aux dégâts si lui et son adversaire touchent l'eau ; −4 si l'un d'eux est sur la terre ferme.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 7 DV (taille M)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "water",
+          "extraplanar"
+        ],
+        "hitDice": 4,
+        "size": "medium",
+        "abilities": {
+          "str": 16,
+          "dex": 12,
+          "con": 17,
+          "int": 4,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 8,
+        "speeds": {
+          "land": 6,
+          "swim": 27
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "dice": "1d8",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 7,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Extinction du feu, maelström (DD 15, 1d6), maîtrise de l'Eau, vision dans le noir 18 m.",
+          "en": "Drench, vortex (DC 15, 1d6), water mastery, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.water_elemental_large",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Eau, taille G",
+        "en": "Large Water Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une vague qui se dresse et décide de marcher : froide, lourde et sans pitié pour ceux qui en croisent le chemin.\n\nEn jeu\n• Élémentaire (Eau, extraplanaire) de taille G, 8 DV, vitesse 6 m, nage 27 m.\n• Attaques : 2 coups 2d8.\n• Extinction du feu : son contact éteint torches et feux non magiques de taille G ou moins, et peut dissiper un feu magique.\n• Maelström : sous l'eau, 1 fois par 10 minutes, se change en tourbillon (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 12 m de haut. Les créatures de taille inférieure à la sienne subissent 2d6/round (Réflexes DD 19 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 10 + niveau).\n• Maîtrise de l'Eau : +1 à l'attaque et aux dégâts si lui et son adversaire touchent l'eau ; −4 si l'un d'eux est sur la terre ferme.\n• Réduction des dégâts 10/+1.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 15 DV (taille G)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "water",
+          "extraplanar"
+        ],
+        "hitDice": 8,
+        "size": "large",
+        "abilities": {
+          "str": 20,
+          "dex": 14,
+          "con": 19,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "land": 6,
+          "swim": 27
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d8",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 15,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Extinction du feu, maelström (DD 19, 2d6), maîtrise de l'Eau, réduction des dégâts 10/+1, vision dans le noir 18 m.",
+          "en": "Drench, vortex (DC 19, 2d6), water mastery, damage reduction 10/+1, darkvision 18 m."
+        }
+      },
+      "note": "Le livre français imprime 10/+1 pour la taille G (le SRD 3.5 donne 5/—). Valeur du livre gardée ; la réduction n'est pas modélisée, texte seulement."
+    },
+    {
+      "id": "creature.water_elemental_huge",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Eau, taille TG",
+        "en": "Huge Water Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une vague qui se dresse et décide de marcher : froide, lourde et sans pitié pour ceux qui en croisent le chemin.\n\nEn jeu\n• Élémentaire (Eau, extraplanaire) de taille TG, 16 DV, vitesse 6 m, nage 27 m.\n• Attaques : 2 coups 2d10.\n• Extinction du feu : son contact éteint torches et feux non magiques de taille G ou moins, et peut dissiper un feu magique.\n• Maelström : sous l'eau, 1 fois par 10 minutes, se change en tourbillon (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 15 m de haut. Les créatures de taille inférieure à la sienne subissent 2d8/round (Réflexes DD 25 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 10 + niveau).\n• Maîtrise de l'Eau : +1 à l'attaque et aux dégâts si lui et son adversaire touchent l'eau ; −4 si l'un d'eux est sur la terre ferme.\n• Réduction des dégâts 5/—.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 20 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "water",
+          "extraplanar"
+        ],
+        "hitDice": 16,
+        "size": "huge",
+        "abilities": {
+          "str": 24,
+          "dex": 18,
+          "con": 21,
+          "int": 6,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "land": 6,
+          "swim": 27
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d10",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 20,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Extinction du feu, maelström (DD 25, 2d8), maîtrise de l'Eau, réduction des dégâts 5/—, vision dans le noir 18 m.",
+          "en": "Drench, vortex (DC 25, 2d8), water mastery, damage reduction 5/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.water_elemental_greater",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Eau, noble",
+        "en": "Greater Water Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une vague qui se dresse et décide de marcher : froide, lourde et sans pitié pour ceux qui en croisent le chemin.\n\nEn jeu\n• Élémentaire (Eau, extraplanaire) de taille TG, 21 DV, vitesse 6 m, nage 27 m.\n• Attaques : 2 coups 2d10.\n• Extinction du feu : son contact éteint torches et feux non magiques de taille G ou moins, et peut dissiper un feu magique.\n• Maelström : sous l'eau, 1 fois par 10 minutes, se change en tourbillon (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 18 m de haut. Les créatures de taille inférieure à la sienne subissent 2d8/round (Réflexes DD 28 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 10 + niveau).\n• Maîtrise de l'Eau : +1 à l'attaque et aux dégâts si lui et son adversaire touchent l'eau ; −4 si l'un d'eux est sur la terre ferme.\n• Réduction des dégâts 10/—.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 23 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "water",
+          "extraplanar"
+        ],
+        "hitDice": 21,
+        "size": "huge",
+        "abilities": {
+          "str": 26,
+          "dex": 20,
+          "con": 21,
+          "int": 8,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "land": 6,
+          "swim": 27
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d10",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 23,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Extinction du feu, maelström (DD 28, 2d8), maîtrise de l'Eau, réduction des dégâts 10/—, vision dans le noir 18 m.",
+          "en": "Drench, vortex (DC 28, 2d8), water mastery, damage reduction 10/—, darkvision 18 m."
+        }
+      }
+    },
+    {
+      "id": "creature.water_elemental_elder",
+      "type": "creature",
+      "name": {
+        "fr": "Élémentaire de l'Eau, seigneur",
+        "en": "Elder Water Elemental"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "elemental"
+      ],
+      "description": {
+        "fr": "Une vague qui se dresse et décide de marcher : froide, lourde et sans pitié pour ceux qui en croisent le chemin.\n\nEn jeu\n• Élémentaire (Eau, extraplanaire) de taille TG, 24 DV, vitesse 6 m, nage 27 m.\n• Attaques : 2 coups 2d10 (critique 19–20).\n• Extinction du feu : son contact éteint torches et feux non magiques de taille G ou moins, et peut dissiper un feu magique.\n• Maelström : sous l'eau, 1 fois par 10 minutes, se change en tourbillon (1 round max par 2 DV) de 1,50 m à 9 m de large et 3 à 18 m de haut. Les créatures de taille inférieure à la sienne subissent 2d8/round (Réflexes DD 31 pour éviter) et sont emportées en cas d'échec, avec −4 Dex, −2 attaque, sans lancer de sort facilement (Concentration DD 10 + niveau).\n• Maîtrise de l'Eau : +1 à l'attaque et aux dégâts si lui et son adversaire touchent l'eau ; −4 si l'un d'eux est sur la terre ferme.\n• Réduction des dégâts 10/—.\n• Vision dans le noir 18 m.\n• Progression : jusqu'à 48 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "elemental",
+        "subtypes": [
+          "water",
+          "extraplanar"
+        ],
+        "hitDice": 24,
+        "size": "huge",
+        "abilities": {
+          "str": 28,
+          "dex": 22,
+          "con": 21,
+          "int": 10,
+          "wis": 11,
+          "cha": 11
+        },
+        "naturalArmor": 9,
+        "speeds": {
+          "land": 6,
+          "swim": 27
+        },
+        "attacks": [
+          {
+            "id": "slam",
+            "name": {
+              "fr": "Coup",
+              "en": "Slam"
+            },
+            "count": 2,
+            "dice": "2d10",
+            "damageType": "bludgeoning"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 48,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Extinction du feu, maelström (DD 31, 2d8), maîtrise de l'Eau, réduction des dégâts 10/—, vision dans le noir 18 m.",
+          "en": "Drench, vortex (DC 31, 2d8), water mastery, damage reduction 10/—, darkvision 18 m."
+        }
+      }
+    }
+  ]
+}

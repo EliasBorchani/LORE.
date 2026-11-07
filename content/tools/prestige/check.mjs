@@ -9,7 +9,7 @@ const file = process.argv[2]
 const problems = []
 const warnings = []
 
-const catalog = read(R + 'test-references/danalieth/catalog.json')
+const catalog = { ...read(R + 'content/srd/core.json'), ...read(R + 'test-references/danalieth/catalog.json') }
 const danalieth = new Set(catalog.entities.map((e) => e.id))
 const add = (batch) => {
   const ids = new Set((batch.entities ?? []).map((e) => e.id))

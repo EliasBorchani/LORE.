@@ -9,10 +9,12 @@ import dndtools.engine.math.Fraction
 import dndtools.engine.model.Character
 import dndtools.engine.model.InvocationGrade
 import dndtools.engine.model.ManeuverKind
+import dndtools.engine.model.SavedForm
 import dndtools.engine.model.SpellVariant
 import dndtools.engine.model.ToggleChoice
 import dndtools.engine.resolve.BreakdownLine
 import dndtools.engine.resolve.CompiledCatalog
+import dndtools.engine.resolve.Forms
 import dndtools.engine.resolve.Session
 import kotlin.js.ExperimentalJsExport
 import kotlin.js.JsExport
@@ -53,7 +55,7 @@ class CharacterSheet internal constructor(private val engine: Engine, private va
         get() {
             val active = character.activeToggles.mapTo(HashSet()) { it.toggle }
             val read = session.toggleSources()
-            val known = knownToggles.values.map {
+            val known = knownToggles.values.filter { it.form == null }.map {
                 val source = it.spell ?: it.entity ?: read[it.toggle]
                 ToggleLine(it.toggle, it.toggle in active, it.value?.toString(), source, maxValue(source))
             }
@@ -242,6 +244,86 @@ class CharacterSheet internal constructor(private val engine: Engine, private va
         )
     }
 
+    /** The character's saved forms, each advanced as far as the creature and its source allow (or as chosen). */
+    val forms: List<FormLine>
+        get() = character.forms.map { formLine(session, it) }
+
+    /** The form the character is in, with its natural attacks; null in its own form. */
+    val activeForm: FormLine?
+        get() = session.activeForm?.let { formLine(session, it) }
+
+    /** Turns the character into a saved form, or back into itself with null. Returns the statistics that changed. */
+    fun setForm(formId: String?): List<String> {
+        knownToggles.remove(FORM_TOGGLE)
+        val others = character.activeToggles.filter { it.form == null }
+        val toggles = if (formId == null) others else others + ToggleChoice(FORM_TOGGLE, form = formId)
+        return update(character.copy(activeToggles = toggles))
+    }
+
+    /** A form as it would be if saved and taken, without changing this sheet: for the transformation builder. */
+    fun previewForm(formJson: String): FormPreview {
+        val form = EngineJson.decode(SavedForm.serializer(), formJson)
+        val next = character.copy(
+            forms = character.forms.filter { it.id != form.id } + form,
+            activeToggles = character.activeToggles.filter { it.form == null } + ToggleChoice(FORM_TOGGLE, form = form.id),
+        )
+        val preview = engine.session(next, atLevel)
+        val stats = FORM_PREVIEW_STATS.mapNotNull { key -> preview.sheet.values[key]?.let { StatLine(key, text(it)) } }
+        return FormPreview(formLine(preview, form), stats)
+    }
+
+    private fun formLine(session: Session, form: SavedForm): FormLine {
+        val creature = engine.entity(form.creature)?.creature
+        val shaping = engine.entity(form.source)?.shaping
+        val active = session.activeForm?.id == form.id && session.formCreature != null
+        if (creature == null || shaping == null) {
+            return FormLine(form.id, form.name, form.creature, form.source, active, null, null, null, null, null, null, null, null, 0, 0,
+                canCast = true, issues = listOf("unknown"), naturalAttacks = emptyList())
+        }
+        val limit = (session.shapingLimit(form.source, "maxHd") as? Value.Num)?.value?.floor()?.toInt()
+        val most = listOfNotNull(Forms.maxHitDice(creature), limit, form.hitDice).min()
+        val hitDice = maxOf(most, creature.hitDice)
+        val shape = Forms.shape(creature, hitDice, form.abilityIncreases, engine.sizeChanges)
+        val kinds = shaping.kinds + engine.shapers.filter { (id, def) -> def.extends == form.source && session.isSource(id) }.values.flatMap { it.kinds }
+        fun sizeLimit(name: String) = (session.shapingLimit(form.source, name) as? Value.Text)?.value?.let(Forms::steps)
+        val steps = Forms.steps(shape.size)
+        val issues = buildList {
+            if (engine.entity(form.source)?.type != "spell" && !session.isSource(form.source)) add("not_had")
+            if (kinds.isNotEmpty() && creature.kind !in kinds) add("kind_not_allowed")
+            if (limit != null && creature.hitDice > limit) add("too_many_hd")
+            if (steps != null && (sizeLimit("minSize")?.let { steps < it } == true || sizeLimit("maxSize")?.let { steps > it } == true)) add("size_not_allowed")
+            if (shape.unspent > 0) add("unspent")
+            if (shape.extra > 0) add("too_many_increases")
+            if (shape.missingSizes.isNotEmpty()) add("size_changes_missing")
+        }
+        val casting = shaping.castingFeat
+        val attacks = if (!active) emptyList() else creature.attacks.take(CompiledCatalog.MAX_NATURAL_ATTACKS).mapIndexed { i, attack ->
+            val n = i + 1
+            NaturalAttackLine(
+                id = attack.id, count = attack.count, primary = attack.primary,
+                attackKey = "natural.$n.attack", damageKey = "natural.$n.damage",
+                attack = session.sheet.values["natural.$n.attack"]?.let(::text),
+                damage = session.sheet.values["natural.$n.damage"]?.let(::text),
+            )
+        }
+        return FormLine(
+            id = form.id, name = form.name, creature = form.creature, source = form.source, active = active,
+            hitDice = hitDice.toString(),
+            maxHitDice = maxOf(listOfNotNull(Forms.maxHitDice(creature), limit).min(), creature.hitDice).toString(),
+            size = shape.size,
+            str = shape.abilities[dndtools.engine.model.Ability.STR]?.toString(),
+            dex = shape.abilities[dndtools.engine.model.Ability.DEX]?.toString(),
+            con = shape.abilities[dndtools.engine.model.Ability.CON]?.toString(),
+            naturalArmor = shape.naturalArmor.toString(),
+            kind = creature.kind,
+            abilityPoints = Forms.abilityPoints(creature, hitDice),
+            unspent = shape.unspent,
+            canCast = casting == null || session.isSource(casting),
+            issues = issues,
+            naturalAttacks = attacks,
+        )
+    }
+
     /** Prerequisites of what the character has that are not met or cannot be checked. The choices are kept. */
     val prerequisites: List<PrerequisiteLine>
         get() = session.sheet.prerequisites.map { PrerequisiteLine(it.entity, it.failed, it.unknown) }
@@ -306,6 +388,14 @@ class CharacterSheet internal constructor(private val engine: Engine, private va
 }
 
 private const val FEAT_SLOTS = "feat_slots."
+/** The toggle that holds the active form; the web app keeps it in play state like any other toggle. */
+const val FORM_TOGGLE = "toggle.form"
+
+/** What the transformation builder compares before and after. */
+private val FORM_PREVIEW_STATS = listOf(
+    "size", "ability.str.score", "ability.dex.score", "ability.con.score", "ac.total", "ac.natural", "hp.max",
+    "attack.melee", "speed.land", "speed.fly", "speed.swim", "speed.climb", "speed.burrow",
+)
 private const val GENERAL_SLOT = "general"
 
 /** Variant statistics worth showing when the spell or its metamagic changes them. */
@@ -405,6 +495,54 @@ data class VariantLine(
  */
 @JsExport
 data class ToggleLine(val id: String, val active: Boolean, val value: String?, val source: String?, val maxValue: String? = null)
+
+/**
+ * A saved form, computed. Numbers are text; [str], [dex], [con] are null when the creature has none. [issues]:
+ * `unknown` (creature or source missing), `not_had` (the character lacks the source), `kind_not_allowed`,
+ * `too_many_hd` (the creature's own hit dice are above the source's limit), `size_not_allowed`, `unspent` (ability
+ * points not placed), `too_many_increases`, `size_changes_missing` (the catalog's `sizeChanges` lacks a size crossed).
+ */
+@JsExport
+data class FormLine(
+    val id: String,
+    val name: String?,
+    val creature: String,
+    val source: String,
+    val active: Boolean,
+    val hitDice: String?,
+    /** The most hit dice the creature and the source allow. */
+    val maxHitDice: String?,
+    val size: String?,
+    val str: String?,
+    val dex: String?,
+    val con: String?,
+    val naturalArmor: String?,
+    val kind: String?,
+    /** +1 ability points the extra hit dice give, and how many are not placed. */
+    val abilityPoints: Int,
+    val unspent: Int,
+    /** False when the source needs a feat to cast in the form (Natural Spell) and the character lacks it. */
+    val canCast: Boolean,
+    val issues: List<String>,
+    /** Only for the active form: its attacks as the sheet computes them. */
+    val naturalAttacks: List<NaturalAttackLine>,
+)
+
+/** A natural attack of the active form; [attackKey] and [damageKey] open their breakdown. */
+@JsExport
+data class NaturalAttackLine(
+    val id: String,
+    val count: Int,
+    val primary: Boolean,
+    val attackKey: String,
+    val damageKey: String,
+    val attack: String?,
+    val damage: String?,
+)
+
+/** A form in the builder: its line and the main statistics of the sheet with the form taken. */
+@JsExport
+data class FormPreview(val form: FormLine, val stats: List<StatLine>)
 
 @JsExport
 data class DailyUse(val entity: String, val uses: String?)

@@ -32,6 +32,7 @@ Needs Docker, JDK 21, Node 22+ and Rust (through `rustup`).
 ```sh
 cp .env.example .env                      # then set POSTGRES_PASSWORD and JWT_SECRET
 docker compose up -d --build              # PostgreSQL + the server on 127.0.0.1:8080
+docker compose exec server server import /content/srd/core.json --author import
 docker compose exec server server import /test-references/danalieth/catalog.json --author import
 docker compose exec server server user add <login> --role admin
 

@@ -21,6 +21,10 @@ class Engine(catalog: Catalog) {
 
     internal fun entity(id: String) = compiled.entity(id)
 
+    internal val shapers get() = compiled.shapers
+
+    internal val sizeChanges get() = compiled.catalog.sizeChanges
+
     internal fun disciplines(classId: String) = compiled.disciplines(classId)
 
     /** Skills of the catalog, with their ability and armor check penalty. */

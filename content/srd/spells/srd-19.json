@@ -120,6 +120,7 @@
       "name": { "fr": "Métamorphose", "en": "Polymorph" },
       "provenance": "official",
       "labels": ["spell", "transmutation"],
+      "shaping": {"kinds": ["aberration", "animal", "dragon", "fey", "giant", "humanoid", "magical_beast", "monstrous_humanoid", "ooze", "plant", "vermin"], "maxHd": "min(15, level())", "minSize": "'fine'"},
       "description": {
         "fr": "La peau se couvre d’écailles, les os s’allongent, et l’allié consentant se relève sous une forme toute neuve, prêt à mordre.\n\nEn jeu\n• Une créature vivante et consentante prend la forme d’une autre créature vivante : de son type, ou aberration, animal, créature magique, dragon, fée, géant, humanoïde, humanoïde monstrueux, plante, vase ou vermine.\n• DV de la forme : au plus le niveau de lanceur (ou les DV du sujet si plus haut), 15 DV au maximum ; pas plus petit que Infime, ni intangible, ni gazeux.\n• Le sujet prend la For, la Dex et la Con de la forme, ses armes naturelles, son armure naturelle, ses déplacements et ses attaques spéciales extraordinaires ; il garde Int, Sag, Cha, points de vie, BBA et sauvegardes de base.\n• Il récupère des points de vie comme après une nuit de repos, au moment de la transformation.\n• Le sujet prend le type de la forme ; à sa mort, il retrouve sa vraie forme.\n• Sans effet sur les créatures intangibles ou gazeuses ; un métamorphe peut reprendre sa forme par une action simple."
       },

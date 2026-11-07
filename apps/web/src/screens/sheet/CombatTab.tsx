@@ -7,6 +7,8 @@ import { fr, statLabels } from '../../i18n/fr'
 import { useSheet, type ToggleView } from '../../sheet/SheetContext'
 import { AbilityTiles } from './AbilitiesTab'
 import { useGroupPath } from '../../group/GroupContext'
+import { localized } from '../../sheet/names'
+import { DAMAGE_TYPES } from '../../rpg/dnd35/describe'
 
 export function CombatTab() {
   return (
@@ -19,6 +21,7 @@ export function CombatTab() {
         </div>
       </div>
       <div className="sheet-body">
+        <Transformation />
         <Weapon />
         <Effects />
         <DailyUses />
@@ -113,9 +116,95 @@ function Defenses() {
   )
 }
 
+/** `2d6 slashing + 15` → `2d6 tranchant + 15`: the engine writes damage types by id. */
+const frenchDamageTypes = (text: string) => text.replace(/\b[a-z_]+\b/g, (word) => DAMAGE_TYPES[word] ?? word)
+
+/** What a form changes, before → after: the statistics a player checks first. */
+const FORM_CHANGES = ['ability.str.score', 'ability.dex.score', 'ability.con.score', 'ac.total', 'hp.max', 'size', 'speed.land', 'speed.fly', 'speed.swim']
+
+/** The saved forms as one-tap buttons; in a form, what it changes, its natural attacks and the way back. */
+function Transformation() {
+  const groupPath = useGroupPath()
+  const { forms, activeForm, setForm, stat, ownStat, name, record, dailyUses, play, entity } = useSheet()
+  if (forms.length === 0) return null
+  const to = (key: string) => groupPath(`/characters/${record.id}/stat/${key}`)
+  const formName = (f: { name?: string | null; creature: string }) => f.name || name(f.creature)
+  const size = (s?: string | null) => (s ? fr.forms.sizes[s] ?? s : '')
+  const show = (key: string, v: string) => (key === 'size' ? size(v) : key.startsWith('speed.') ? `${formatNumber(v)} m` : formatNumber(v))
+
+  if (!activeForm) {
+    return (
+      <StatBlock title={fr.forms.combatTitle} label={fr.forms.combatTitle}>
+        <div className="chips">
+          {forms.map((f) => {
+            const uses = dailyUses.find((u) => u.entity === f.source)
+            const left = uses ? uses.max - (play.usesSpent[f.source] ?? 0) : null
+            return (
+              <button key={f.id} className="btn btn-secondary" onClick={() => setForm(f.id)} disabled={left === 0}
+                aria-label={fr.forms.transform(formName(f))}>
+                {formName(f)}
+                <span className="muted"> · {fr.forms.facts(size(f.size), f.hitDice ?? '?')}{left != null ? ` · ${fr.forms.usesLeft(left)}` : ''}</span>
+              </button>
+            )
+          })}
+        </div>
+      </StatBlock>
+    )
+  }
+
+  const changes = FORM_CHANGES.flatMap((key) => {
+    const after = stat(key)
+    const before = ownStat(key)
+    return after != null && before != null && after !== before ? [{ key, before, after }] : []
+  })
+  return (
+    <StatBlock title={fr.forms.activeAs(formName(activeForm))} label={fr.forms.combatTitle}
+      subtitle={<EntityName id={activeForm.creature}>{name(activeForm.creature)}</EntityName>}
+      aside={<button className="btn btn-primary btn-small" onClick={() => setForm(null)}>{fr.forms.revert}</button>}>
+      <p className="muted">{fr.forms.facts(size(activeForm.size), activeForm.hitDice ?? '?')}</p>
+      {changes.length > 0 && (
+        <dl className="facts" aria-label={fr.forms.changes}>
+          {changes.map((c) => (
+            <div key={c.key} style={{ display: 'contents' }}>
+              <dt>{fr.forms.stats[c.key] ?? statLabels[c.key] ?? c.key}</dt>
+              <dd>{show(c.key, c.before)} → <strong>{show(c.key, c.after)}</strong></dd>
+            </div>
+          ))}
+        </dl>
+      )}
+      <h3 className="type-label">{fr.forms.naturalAttacks}</h3>
+      {activeForm.naturalAttacks.asJsReadonlyArrayView().map((a) => {
+        const attackName = naturalAttackName(activeForm.creature, a.id)
+        const dice = a.damage ? splitDice(frenchDamageTypes(a.damage)) : null
+        return (
+          <div className="weapon-nums" key={a.id}>
+            <Link className="weapon-num" to={to(a.attackKey)} aria-label={fr.sheet.seeBreakdown(attackName)}>
+              <span className="lab">{a.count > 1 ? `${a.count} × ` : ''}{attackName}{a.primary ? '' : ` (${fr.forms.secondary})`}</span>
+              <span className="xl">{a.attack != null ? formatModifier(a.attack) : '—'}</span>
+            </Link>
+            {dice && (
+              <Link className="weapon-num" to={to(a.damageKey)} aria-label={fr.sheet.seeBreakdown(fr.sheet.damage)}>
+                <span className="lab">{fr.sheet.damage}</span>
+                <span className="m">{dice.expression}</span>
+                {dice.average && <span className="gilt">~{dice.average}</span>}
+              </Link>
+            )}
+          </div>
+        )
+      })}
+    </StatBlock>
+  )
+
+  function naturalAttackName(creatureId: string, attackId: string): string {
+    return localized(entity(creatureId)?.creature?.attacks?.find((a) => a.id === attackId)?.name) ?? attackId
+  }
+}
+
 function Weapon() {
   const groupPath = useGroupPath()
-  const { stat, record, name, entity } = useSheet()
+  const { stat, record, name, entity, activeForm } = useSheet()
+  // In a form the weapon is not wielded: the natural attacks show instead.
+  if (activeForm) return null
   const attack = stat('attack.melee')
   const ranged = stat('attack.ranged')
   const damage = stat('damage.melee')

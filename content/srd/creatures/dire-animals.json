@@ -1,0 +1,768 @@
+{
+  "entities": [
+    {
+      "id": "creature.dire_weasel",
+      "type": "creature",
+      "name": {
+        "fr": "Belette sanguinaire",
+        "en": "Dire Weasel"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Une belette de la taille d'un homme, fine et nerveuse, qui s'accroche à sa victime et la vide de son sang.\n\nEn jeu\n• Animal de taille M, 3 DV, vitesse 12 m.\n• Attaques : morsure 1d6.\n• Absorption de sang : tant qu'elle est accrochée, elle draine 1d4 points de Constitution par round.\n• Fixation : une fois la morsure réussie, elle s'accroche (perd son bonus de Dex à la CA) ; on peut la frapper ou lutter pour l'arracher.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 6 DV (taille G) ; 7-9 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 14,
+          "dex": 19,
+          "con": 10,
+          "int": 2,
+          "wis": 12,
+          "cha": 11
+        },
+        "naturalArmor": 2,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 6,
+            "size": "large"
+          },
+          {
+            "maxHd": 9,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Absorption de sang, fixation, odorat, vision nocturne.",
+          "en": "Blood drain, attach, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_badger",
+      "type": "creature",
+      "name": {
+        "fr": "Blaireau sanguinaire",
+        "en": "Dire Badger"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un blaireau massif aux griffes de fouisseur. Il défend son terrier avec une humeur de dogue.\n\nEn jeu\n• Animal de taille M, 3 DV, vitesse 9 m, creusement 3 m.\n• Attaques : 2 griffes 1d4, morsure 1d6 (secondaire).\n• Rage : blessé en combat, il devient enragé au round suivant : +4 For et Con, -2 CA, et il ne se calme plus volontairement.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 9 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 3,
+        "size": "medium",
+        "abilities": {
+          "str": 14,
+          "dex": 17,
+          "con": 19,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 9,
+          "burrow": 3
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d4",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d6",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 9,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Rage, odorat, vision nocturne.",
+          "en": "Rage, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_bat",
+      "type": "creature",
+      "name": {
+        "fr": "Chauve-souris sanguinaire",
+        "en": "Dire Bat"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Une chauve-souris de la taille d'un cheval, aux ailes immenses. Elle chasse en silence, guidée par les sons.\n\nEn jeu\n• Animal de taille G, 4 DV, vitesse 6 m, vol 12 m (bonne).\n• Attaques : morsure 1d8.\n• Perception aveugle : repère créatures et objets à 12 m par le son ; imprécise, mais sans camouflage total pour l'adversaire.\n• Elle perd son bonus racial de +4 en Détection et Perception auditive si elle ne peut pas utiliser sa vision aveugle.\n• Progression : jusqu'à 12 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 4,
+        "size": "large",
+        "abilities": {
+          "str": 17,
+          "dex": 22,
+          "con": 17,
+          "int": 2,
+          "wis": 14,
+          "cha": 6
+        },
+        "naturalArmor": 5,
+        "speeds": {
+          "land": 6,
+          "fly": 12
+        },
+        "flyManeuverability": "good",
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 12,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Perception aveugle (12 m).",
+          "en": "Blindsense (12 m)."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_wolverine",
+      "type": "creature",
+      "name": {
+        "fr": "Glouton sanguinaire",
+        "en": "Dire Wolverine"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un glouton gros comme un ours, bas sur pattes et sans aucune peur. Il se jette sur n'importe quel adversaire.\n\nEn jeu\n• Animal de taille G, 5 DV, vitesse 9 m, escalade 3 m.\n• Attaques : 2 griffes 1d6, morsure 1d8 (secondaire).\n• Rage : blessé en combat, il devient enragé au round suivant : +4 For et Con, -2 CA, et il ne se calme plus volontairement.\n• Odorat, vision nocturne.\n• Bonus racial de +8 en Escalade, et il peut faire 10 même pressé.\n• Progression : jusqu'à 15 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 5,
+        "size": "large",
+        "abilities": {
+          "str": 22,
+          "dex": 17,
+          "con": 19,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 9,
+          "climb": 3
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d6",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 15,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Rage, odorat, vision nocturne.",
+          "en": "Rage, scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_ape",
+      "type": "creature",
+      "name": {
+        "fr": "Gorille sanguinaire",
+        "en": "Dire Ape"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un singe puissant de la taille d'un ogre, torse large et bras interminables. Il chasse tout intrus de son domaine.\n\nEn jeu\n• Animal de taille G, 5 DV, vitesse 9 m, escalade 4,5 m.\n• Attaques : 2 griffes 1d6, morsure 1d8 (secondaire).\n• Éventration : si les deux griffes touchent, elle inflige 2d6+9 dégâts supplémentaires.\n• Odorat, vision nocturne.\n• Bonus racial de +8 en Escalade, et il peut faire 10 même pressé.\n• Progression : jusqu'à 15 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 5,
+        "size": "large",
+        "abilities": {
+          "str": 22,
+          "dex": 15,
+          "con": 14,
+          "int": 2,
+          "wis": 12,
+          "cha": 7
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 9,
+          "climb": 4.5
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d6",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 15,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Éventration (2d6+9), odorat, vision nocturne.",
+          "en": "Rend (2d6+9), scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_lion",
+      "type": "creature",
+      "name": {
+        "fr": "Lion sanguinaire",
+        "en": "Dire Lion"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un lion énorme dont les épaules et les yeux sont couverts de plaques osseuses. Il guette ses proies avant de bondir sur elles.\n\nEn jeu\n• Animal de taille G, 8 DV, vitesse 12 m.\n• Attaques : 2 griffes 1d6, morsure 1d8 (secondaire).\n• Bond : en charge, il peut faire une attaque à outrance complète.\n• Étreinte : après une morsure réussie, lutte par action libre sans attaque d'opportunité ; il lacère alors avec ses pattes arrière (+12, 1d6+3).\n• Odorat, vision nocturne.\n• Progression : jusqu'à 16 DV (taille G) ; 17-24 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 8,
+        "size": "large",
+        "abilities": {
+          "str": 25,
+          "dex": 15,
+          "con": 17,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 4,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "1d6",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "large"
+          },
+          {
+            "maxHd": 24,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Bond, étreinte, pattes arrière (1d6+3), odorat, vision nocturne.",
+          "en": "Pounce, improved grab, rake (1d6+3), scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_wolf",
+      "type": "creature",
+      "name": {
+        "fr": "Loup sanguinaire",
+        "en": "Dire Wolf"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un loup préhistorique aussi grand qu'un cheval, au poil gris et dru. Il fait équipe avec sa meute pour renverser sa proie.\n\nEn jeu\n• Animal de taille G, 6 DV, vitesse 15 m.\n• Attaques : morsure 1d8.\n• Croc-en-jambe : après une morsure réussie, il tente un croc-en-jambe (+11) par action libre, sans attaque d'opportunité ni riposte.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 18 DV (taille G)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 6,
+        "size": "large",
+        "abilities": {
+          "str": 25,
+          "dex": 15,
+          "con": 17,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 3,
+        "speeds": {
+          "land": 15
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 18,
+            "size": "large"
+          }
+        ],
+        "qualities": {
+          "fr": "Croc-en-jambe (+11), odorat, vision nocturne.",
+          "en": "Trip (+11), scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_bear",
+      "type": "creature",
+      "name": {
+        "fr": "Ours sanguinaire",
+        "en": "Dire Bear"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un ours monstrueux, hérissé d'os saillants et armé de griffes comme des faux. Il garde son repas avec une rage sauvage.\n\nEn jeu\n• Animal de taille G, 12 DV, vitesse 12 m.\n• Attaques : 2 griffes 2d4, morsure 2d8 (secondaire).\n• Étreinte : une griffe qui touche permet d'engager une lutte par action libre, sans attaque d'opportunité.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 16 DV (taille G) ; 17-36 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 12,
+        "size": "large",
+        "abilities": {
+          "str": 31,
+          "dex": 13,
+          "con": 19,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 7,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "2d4",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d8",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "large"
+          },
+          {
+            "maxHd": 36,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Étreinte (griffe), odorat, vision nocturne.",
+          "en": "Improved grab (claw), scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_rat",
+      "type": "creature",
+      "name": {
+        "fr": "Rat sanguinaire",
+        "en": "Dire Rat"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un rat grand comme un chien, au poil ébouriffé et à la queue nue. Il se bat surtout pour protéger son nid, souvent en groupe.\n\nEn jeu\n• Animal de taille P, 1 DV, vitesse 12 m, escalade 6 m.\n• Attaques : morsure 1d4.\n• Maladie : fièvre des marais, jet de Vigueur DD 11, incubation 1d3 jours, 1d3 Dex et 1d3 Con.\n• Odorat, vision nocturne.\n• Bonus racial de +8 en Escalade et en Natation ; utilise sa Dex au lieu de sa For pour ces tests.\n• Progression : 2-3 DV (taille P) ; 4-6 DV (taille M)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 1,
+        "size": "small",
+        "abilities": {
+          "str": 10,
+          "dex": 17,
+          "con": 12,
+          "int": 1,
+          "wis": 12,
+          "cha": 4
+        },
+        "naturalArmor": 1,
+        "speeds": {
+          "land": 12,
+          "climb": 6
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "1d4",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 3,
+            "size": "small"
+          },
+          {
+            "maxHd": 6,
+            "size": "medium"
+          }
+        ],
+        "qualities": {
+          "fr": "Maladie (fièvre des marais), odorat, vision nocturne.",
+          "en": "Disease (filth fever), scent, low-light vision."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_shark",
+      "type": "creature",
+      "name": {
+        "fr": "Requin sanguinaire",
+        "en": "Dire Shark"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un requin gigantesque, dos triangulaire et mâchoires immenses. Rien de ce qui nage près de lui n'est à l'abri.\n\nEn jeu\n• Animal aquatique de taille TG, 18 DV, vitesse nage 18 m.\n• Attaques : morsure 2d8.\n• Engloutissement : s'il agrippe une créature plus petite, il peut l'avaler (2d6+6 contondant et 1d6+4 acide par round).\n• Étreinte : après une morsure réussie, lutte par action libre sans attaque d'opportunité.\n• Odorat surdéveloppé : détecte les proies à 54 m ; le sang à plus d'un kilomètre sous l'eau.\n• Bonus racial de +8 en Natation ; peut faire 10 même pressé.\n• Progression : 19-32 DV (taille TG) ; 33-54 DV (taille Gig)."
+      },
+      "creature": {
+        "kind": "animal",
+        "subtypes": [
+          "aquatic"
+        ],
+        "hitDice": 18,
+        "size": "huge",
+        "abilities": {
+          "str": 23,
+          "dex": 15,
+          "con": 17,
+          "int": 1,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 7,
+        "speeds": {
+          "swim": 18
+        },
+        "attacks": [
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 32,
+            "size": "huge"
+          },
+          {
+            "maxHd": 54,
+            "size": "gargantuan"
+          }
+        ],
+        "qualities": {
+          "fr": "Engloutissement, étreinte, odorat surdéveloppé.",
+          "en": "Improved grab, swallow whole, keen scent."
+        }
+      }
+    },
+    {
+      "id": "creature.dire_boar",
+      "type": "creature",
+      "name": {
+        "fr": "Sanglier sanguinaire",
+        "en": "Dire Boar"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un sanglier colossal, couvert de plaques osseuses et armé de défenses énormes. Il fouille le sol mais charge tout ce qui l'approche.\n\nEn jeu\n• Animal de taille G, 7 DV, vitesse 12 m.\n• Attaques : défenses 1d8.\n• Férocité : il continue à se battre sans malus même hors de combat ou mourant.\n• Odorat, vision nocturne.\n• Progression : jusqu'à 16 DV (taille G) ; 17-21 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 7,
+        "size": "large",
+        "abilities": {
+          "str": 27,
+          "dex": 10,
+          "con": 17,
+          "int": 2,
+          "wis": 13,
+          "cha": 8
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "tusk",
+            "name": {
+              "fr": "Défense",
+              "en": "Tusk"
+            },
+            "dice": "1d8",
+            "damageType": "piercing"
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 16,
+            "size": "large"
+          },
+          {
+            "maxHd": 21,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Férocité, odorat, vision nocturne.",
+          "en": "Ferocity, scent, low-light vision."
+        }
+      },
+      "note": "Le livre imprime « défenses » au pluriel mais une seule attaque (1d8+12) : count 1."
+    },
+    {
+      "id": "creature.dire_tiger",
+      "type": "creature",
+      "name": {
+        "fr": "Tigre sanguinaire",
+        "en": "Dire Tiger"
+      },
+      "provenance": "official",
+      "source": "SRD",
+      "labels": [
+        "creature",
+        "animal"
+      ],
+      "description": {
+        "fr": "Un tigre immense, aussi haut qu'un homme au garrot, rayé de noir. Il épie sa proie et bondit dessus à l'improviste.\n\nEn jeu\n• Animal de taille G, 16 DV, vitesse 12 m.\n• Attaques : 2 griffes 2d4, morsure 2d6 (secondaire).\n• Bond : en charge, il peut faire une attaque à outrance complète.\n• Étreinte : après une morsure réussie, lutte par action libre sans attaque d'opportunité ; il lacère alors avec ses pattes arrière (+18, 2d4+4).\n• Odorat, vision nocturne.\n• Progression : jusqu'à 32 DV (taille G) ; 33-48 DV (taille TG)."
+      },
+      "creature": {
+        "kind": "animal",
+        "hitDice": 16,
+        "size": "large",
+        "abilities": {
+          "str": 27,
+          "dex": 15,
+          "con": 17,
+          "int": 2,
+          "wis": 12,
+          "cha": 10
+        },
+        "naturalArmor": 6,
+        "speeds": {
+          "land": 12
+        },
+        "attacks": [
+          {
+            "id": "claw",
+            "name": {
+              "fr": "Griffe",
+              "en": "Claw"
+            },
+            "count": 2,
+            "dice": "2d4",
+            "damageType": "slashing"
+          },
+          {
+            "id": "bite",
+            "name": {
+              "fr": "Morsure",
+              "en": "Bite"
+            },
+            "dice": "2d6",
+            "damageType": "piercing",
+            "primary": false
+          }
+        ],
+        "advancement": [
+          {
+            "maxHd": 32,
+            "size": "large"
+          },
+          {
+            "maxHd": 48,
+            "size": "huge"
+          }
+        ],
+        "qualities": {
+          "fr": "Bond, étreinte, pattes arrière (2d4+4), odorat, vision nocturne.",
+          "en": "Pounce, improved grab, rake (2d4+4), scent, low-light vision."
+        }
+      }
+    }
+  ]
+}

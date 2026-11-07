@@ -41,8 +41,57 @@ export function BuildScreen() {
       <Maneuvers />
       <Invocations />
       <Items />
+      <Forms />
       <MoveCharacter />
     </>
+  )
+}
+
+/** Saved forms (wild shape, polymorph): what each one gives, its problems, remove; « Nouvelle forme » opens the builder. */
+function Forms() {
+  const groupPath = useGroupPath()
+  const { record, forms, activeForm, name, saveCharacter, setForm, reload } = useSheet()
+  const [busy, setBusy] = useState(false)
+  const [message, setMessage] = useState<string | null>(null)
+  const saved = record.character.forms ?? []
+  const size = (s?: string | null) => (s ? fr.forms.sizes[s] ?? s : '')
+
+  async function remove(formId: string) {
+    setBusy(true)
+    setMessage(null)
+    try {
+      if (activeForm?.id === formId) setForm(null)
+      const result = await saveCharacter({ ...record.character, forms: saved.filter((f) => f.id !== formId) })
+      setMessage(result === 'saved' ? fr.build.saved : fr.build.conflict)
+      reload()
+    } catch (error) {
+      setMessage(`${fr.build.saveFailed} ${messageOf(error)}`)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <StatBlock title={fr.forms.title}
+      aside={<Link className="btn btn-primary btn-small" to={groupPath(`/characters/${record.id}/forms/new`)}>{fr.forms.newForm}</Link>}>
+      {forms.length === 0 && <p className="muted">{fr.forms.none}</p>}
+      {forms.map((f) => {
+        const label = f.name || name(f.creature)
+        const abilitiesLine = [['For', f.str], ['Dex', f.dex], ['Con', f.con]].filter(([, v]) => v != null).map(([k, v]) => `${k} ${v}`).join(' · ')
+        return (
+          <div className="power-row" key={f.id}>
+            <span className="list-row-text">
+              <EntityName id={f.creature}>{label}</EntityName>
+              <span className="muted">{name(f.source)} · {fr.forms.facts(size(f.size), f.hitDice ?? '?')} · {abilitiesLine}</span>
+              {f.issues.asJsReadonlyArrayView().map((code) => <span key={code} className="warning">{fr.forms.issues[code] ?? code}</span>)}
+            </span>
+            <button type="button" className="btn btn-secondary btn-small" disabled={busy} aria-label={fr.forms.remove(label)}
+              onClick={() => void remove(f.id)}>×</button>
+          </div>
+        )
+      })}
+      {message && <p role="status" className="muted">{message}</p>}
+    </StatBlock>
   )
 }
 

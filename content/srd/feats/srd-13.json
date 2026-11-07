@@ -224,6 +224,7 @@
         "epic",
         "magic"
       ],
+      "shaping": {"kinds": ["elemental"], "extends": "power.druid_wild_shape"},
       "description": {
         "fr": "Le druide ne se contente plus des quatre grands éléments. Fumée, magma, vapeur, boue : toute matière vivante des plans élémentaires devient une forme qu’il peut revêtir.\n\nEn jeu\n• Condition : Sagesse 25, pouvoir de forme animale élémentaire.\n• Avec sa forme animale, le personnage peut prendre la forme de n’importe quelle créature de type élémentaire (méphite, magmatique…) d’une taille qu’il peut prendre comme animal.\n• Il gagne alors les pouvoirs extraordinaires et surnaturels de cette créature.\n• Normal : la forme animale élémentaire se limite aux quatre élémentaires classiques (Air, Eau, Feu, Terre), de taille P, M ou G."
       },

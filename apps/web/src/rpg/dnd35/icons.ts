@@ -239,6 +239,8 @@ export const LABEL_ICONS: Record<string, IconDrawing> = {
   greater: { d: STAR4(12, 6.5, 3.5) + STAR4(7, 16, 3.5) + STAR4(17, 16, 3.5) },
   dark: { d: C(12, 12, 8, 1) },
   wild: { d: FOOT(12, 12, 0) },
+  animal: { d: FOOT(12, 13, 0) + C(12, 12, 10) },
+  plant: { d: P('M5 19c0-8 6-14 14-14 0 8-6 14-14 14zM5 19l8-8') },
   bardic_music: { d: P('M9 18V5l10-2v13') + C(7, 18, 2) + C(17, 16, 2) },
   scout_bonus: { d: EYE + C(12, 12, 2.5) + P('M12 2v2.5M12 19.5V22') },
   hexblade_bonus: { d: SWORD_V + P('M12 2v2.5') + STAR4(18.5, 6, 2) },

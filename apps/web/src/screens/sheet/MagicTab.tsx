@@ -15,7 +15,7 @@ const HEIGHTEN = 'feat.heighten_spell'
 
 /** Spells per casting class: slots to spend, saved variants to cast, known spells, and the variant builder. */
 export function MagicTab() {
-  const { sheet, dispatch } = useSheet()
+  const { sheet, dispatch, activeForm } = useSheet()
   const casters = list(sheet.spellcasting)
   if (casters.length === 0) return <p className="muted">{fr.sheet.magicNone}</p>
   return (
@@ -24,6 +24,7 @@ export function MagicTab() {
         <Log />
         <button className="btn btn-secondary btn-small" onClick={() => dispatch({ type: 'newDay' })}>{fr.sheet.newDay}</button>
       </div>
+      {activeForm && !activeForm.canCast && <p className="warning" role="status">{fr.forms.cannotCast}</p>}
       {casters.map((caster) => <CasterSection key={caster.classId} caster={caster} />)}
     </>
   )

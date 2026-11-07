@@ -36,6 +36,8 @@ export interface ToggleChoice {
   metamagic?: string[]
   /** Exact number, as text or JSON number. */
   value?: string | number
+  /** A saved form this toggle turns the character into (`toggle.form`). */
+  form?: string
 }
 
 export interface LevelRecord {
@@ -69,9 +71,23 @@ export interface Character {
   /** Invoker class id (Warlock) to the invocations it learned. */
   invocations?: Record<string, { known?: string[] }>
   variants?: SpellVariant[]
+  /** Forms built in the transformation builder. */
+  forms?: SavedForm[]
   /** Skill id to ranks, for the whole character. */
   skillRanks?: Record<string, number>
   [field: string]: unknown
+}
+
+/** A creature form built from a shaping power or spell (wild shape, polymorph). */
+export interface SavedForm {
+  id: string
+  name?: string
+  creature: string
+  source: string
+  /** Null or absent: the most the creature and the source allow. */
+  hitDice?: number
+  abilityIncreases?: string[]
+  keepEquipment?: boolean
 }
 
 /** A spell saved with its metamagic, cast from the Magic tab. */
@@ -119,7 +135,35 @@ export interface Entity {
   /** Can be taken more than once; `choose` is what each take applies to (`{choice}` in effect targets). */
   repeatable?: { choose?: ChoiceKind }
   effects?: Effect[]
+  creature?: CreatureInfo
+  shaping?: ShapingDef
   [field: string]: unknown
+}
+
+/** A creature a character can turn into (engine `CreatureInfo`). */
+export interface CreatureInfo {
+  kind: string
+  subtypes?: string[]
+  hitDice: number
+  size: string
+  abilities?: Record<string, number>
+  naturalArmor?: number
+  speeds?: Record<string, number | string>
+  flyManeuverability?: string
+  attacks?: { id: string; name: Localized; count?: number; dice: string; damageType?: string; primary?: boolean }[]
+  advancement?: { maxHd: number; size: string }[]
+  qualities?: Localized
+}
+
+/** How a power or spell gives forms (engine `ShapingDef`). */
+export interface ShapingDef {
+  kinds?: string[]
+  maxHd?: string | number
+  minSize?: string
+  maxSize?: string
+  meldsEquipment?: boolean
+  castingFeat?: string
+  extends?: string
 }
 
 export type ChoiceKind = 'skill' | 'school' | 'class'

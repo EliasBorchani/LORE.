@@ -266,18 +266,6 @@
           "value": "'small'"
         },
         {
-          "target": "ac.total",
-          "op": "add",
-          "value": 1,
-          "bonusType": "size"
-        },
-        {
-          "target": "attack.all",
-          "op": "add",
-          "value": 1,
-          "bonusType": "size"
-        },
-        {
           "target": "skill.hide",
           "op": "add",
           "value": 4,
@@ -367,18 +355,6 @@
           "target": "size",
           "op": "set",
           "value": "'small'"
-        },
-        {
-          "target": "ac.total",
-          "op": "add",
-          "value": 1,
-          "bonusType": "size"
-        },
-        {
-          "target": "attack.all",
-          "op": "add",
-          "value": 1,
-          "bonusType": "size"
         },
         {
           "target": "skill.hide",
